@@ -11,7 +11,7 @@
 #import "NewThreadTypeModel.h"
 #import "AllOneButtonCell.h"
 #import "VoteTitleCell.h"
-#import "PostSelectTypeCell.h"
+#import "DZPostSelectTypeCell.h"
 #import "ActiveDetailCell.h"
 #import "ViewpointCell.h"
 #import "EndtimeCell.h"
@@ -132,9 +132,9 @@
                     if (indexPath.row == 1) {
                         
                         NSString *typesId = @"selectTypeId";
-                        PostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
+                        DZPostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
                         if (typeCell == nil) {
-                            typeCell = [[PostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
+                            typeCell = [[DZPostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
                             typeCell.selectField.inputView = self.pickView;
                         }
                         typeCell.selectField.delegate = self;
@@ -370,7 +370,7 @@
 - (void)toolbarDidButtonClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row {
     
     self.debateModel.typeId = self.typeArray[row].typeId;
-    PostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    DZPostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     cell.selectField.text = resultString;
     
 }

@@ -1,19 +1,14 @@
 //
-//  PostSelectTypeCell.m
+//  DZPostSelectTypeCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/4/25.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "PostSelectTypeCell.h"
+#import "DZPostSelectTypeCell.h"
 
-@implementation PostSelectTypeCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+@implementation DZPostSelectTypeCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

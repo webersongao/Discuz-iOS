@@ -16,6 +16,9 @@
 #import "DZMobileCtrl.h"
 #import "DZMessageListController.h"
 
+#import "DZPostEditViewController.h"
+#import "DZPostUIEditViewController.h"
+
 @interface DZRootTabBarController () <UITabBarControllerDelegate>
 @property (nonatomic, assign) NSInteger oldSelected;
 @property (nonatomic, assign) NSInteger notitySelected;
@@ -31,19 +34,19 @@
     [DZMobileCtrl sharedCtrl];
     [self addChildViewControllers];
     
-//    [self.tabBar addSubview:self.composeButton];
-//    CGFloat b_width = self.tabBar.width / self.childViewControllers.count;
-//    CGFloat b_height = self.tabBar.height;
-//    self.composeButton.frame = CGRectMake(b_width, 0, b_width, b_height);
-//    [self.composeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@4);
-//        make.height.equalTo(@(b_height));
-//        make.width.equalTo(@(b_width));
-//    }];
-
+    //    [self.tabBar addSubview:self.composeButton];
+    //    CGFloat b_width = self.tabBar.width / self.childViewControllers.count;
+    //    CGFloat b_height = self.tabBar.height;
+    //    self.composeButton.frame = CGRectMake(b_width, 0, b_width, b_height);
+    //    [self.composeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(@4);
+    //        make.height.equalTo(@(b_height));
+    //        make.width.equalTo(@(b_width));
+    //    }];
+    
     self.tabBar.tintColor = K_Color_Theme;
     self.tabBar.translucent = YES;
-//    [[UINavigationBar appearance] setBarTintColor:K_Color_NaviBar];
+    //    [[UINavigationBar appearance] setBarTintColor:K_Color_NaviBar];
     self.selectedIndex = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ttsetSelectInex:) name:DZ_configSelectedIndex_Notify object:nil];
@@ -67,7 +70,7 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if ([viewController isKindOfClass:[UINavigationController class]]) {
-       [[DZMobileCtrl sharedCtrl] setTababar:self mainNavi:self.selectedViewController];
+        [[DZMobileCtrl sharedCtrl] setTababar:self mainNavi:self.selectedViewController];
     }
 }
 
@@ -114,19 +117,25 @@
 
 - (void)addChildViewControllers {
     
-    DZHomeManagerController *homeVC = [[DZHomeManagerController alloc] init];
-    DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
-    DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
-//    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
-    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
-    DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
+    DZPostEditViewController *editVC = [[DZPostEditViewController alloc] init];
+    [self addChildVc:editVC title:@"默认输入" image:@"homem" selectedImage:@"homes"];
     
-    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:dicoverVC title:@"发现" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:forumVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
-//    [self addChildVc:fastVC title:@"" image:@"clarity" selectedImage:@""];
-    [self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:userVC title:@"我的" image:@"my" selectedImage:@"mys"];
+    DZPostUIEditViewController *editUIVC = [[DZPostUIEditViewController alloc] init];
+    [self addChildVc:editUIVC title:@"UI输入" image:@"forumm" selectedImage:@"fourms"];
+    
+    //    DZHomeManagerController *homeVC = [[DZHomeManagerController alloc] init];
+    //    DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
+    //    DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
+    ////    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
+    //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
+    //    DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
+    //
+    //    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
+    //    [self addChildVc:dicoverVC title:@"发现" image:@"homem" selectedImage:@"homes"];
+    //    [self addChildVc:forumVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
+    ////    [self addChildVc:fastVC title:@"" image:@"clarity" selectedImage:@""];
+    //    [self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
+    //    [self addChildVc:userVC title:@"我的" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {
@@ -134,7 +143,7 @@
     childVc.title = title;
     
     // 设置子控制器的图片
-//    childVc.tabBarItem.image = [UIImage imageNamed:image];
+    //    childVc.tabBarItem.image = [UIImage imageNamed:image];
     childVc.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     // 设置文字的样式

@@ -55,7 +55,7 @@
 
 
 #define KFont(fontSize)             [UIFont systemFontOfSize:fontSize]
-#define KBoldFont(fontSize)         [UIFont systemFontOfSize:fontSize]
-#define KExtraBoldFont(fontSize)    [UIFont systemFontOfSize:fontSize]
+#define KBoldFont(fontSize)         [UIFont boldSystemFontOfSize:fontSize]
+#define KExtraBoldFont(fontSize)    [UIFont systemFontOfSize:fontSize weight:UIFontWeightMedium]
 
 #endif /* Color_h */

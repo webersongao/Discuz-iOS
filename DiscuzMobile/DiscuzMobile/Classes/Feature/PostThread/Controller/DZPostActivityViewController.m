@@ -20,7 +20,7 @@
 #import "ActiveContentCell.h"
 #import "ActiveDetailCell.h"
 #import "AllOneButtonCell.h"
-#import "PostSelectTypeCell.h"
+#import "DZPostSelectTypeCell.h"
 #import "SeccodeverifyView.h"
 #import "ActiveUserFieldCell.h"
 #import "ActiveExtendCell.h"
@@ -131,7 +131,7 @@
     } else {
         self.activityModel.typeId = self.typeArray[row].typeId;
         
-        PostSelectTypeCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        DZPostSelectTypeCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
         cell.selectField.text = resultString;
     }
     
@@ -451,9 +451,9 @@
                 if (indexPath.row == 1) {
                     
                     NSString *typesId = @"acSelectTypeId";
-                    PostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
+                    DZPostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
                     if (typeCell == nil) {
-                        typeCell = [[PostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
+                        typeCell = [[DZPostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
                     }
                     
                     typeCell.selectField.delegate = self;

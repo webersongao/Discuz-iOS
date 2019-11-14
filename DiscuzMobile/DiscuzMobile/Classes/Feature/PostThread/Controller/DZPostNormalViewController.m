@@ -15,10 +15,10 @@
 
 #import "SeccodeverifyView.h"
 #import "NewThreadTypeModel.h"
-#import "PostSelectTypeCell.h"
+#import "DZPostSelectTypeCell.h"
 #import "VoteTitleCell.h"
 #import "NormalDetailCell.h"
-#import "NormalThreadToolCell.h"
+#import "DZNormalThreadToolCell.h"
 #import "DZAudioListCell.h"
 
 #import "ZHPickView.h"
@@ -161,9 +161,9 @@
                     if (indexPath.row == 1) {
                         
                         NSString *typesId = @"selectTypeId";
-                        PostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
+                        DZPostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
                         if (typeCell == nil) {
-                            typeCell = [[PostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
+                            typeCell = [[DZPostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
                             typeCell.selectField.inputView = self.pickView;
                             typeCell.selectField.tag = 1003;
                         }
@@ -236,11 +236,11 @@
     return detailCell;
 }
 
-- (NormalThreadToolCell *)ToolCell {
+- (DZNormalThreadToolCell *)ToolCell {
     NSString *toolId = @"toolId";
-    NormalThreadToolCell *toolCell = [self.tableView dequeueReusableCellWithIdentifier:toolId];
+    DZNormalThreadToolCell *toolCell = [self.tableView dequeueReusableCellWithIdentifier:toolId];
     if (toolCell == nil) {
-        toolCell = [[NormalThreadToolCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:toolId];
+        toolCell = [[DZNormalThreadToolCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:toolId];
         toolCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         WEAKSELF;
@@ -282,7 +282,7 @@
     
     self.normalModel.typeId = self.typeArray[row].typeId;
     
-    PostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    DZPostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     cell.selectField.text = resultString;
     
 }
@@ -371,7 +371,7 @@
         }
     }
     
-    NormalThreadToolCell *cell = [self getToolCell];
+    DZNormalThreadToolCell *cell = [self getToolCell];
     if (cell.uploadView.uploadModel.aidArray.count > 0) {
         for (int i=0; i < cell.uploadView.uploadModel.aidArray.count; i++) {
             NSString *description = @"";
@@ -417,18 +417,18 @@
                                    @"type":@"image",
                                    }.mutableCopy;
     
-    NormalThreadToolCell *cell = [self getToolCell];
+    DZNormalThreadToolCell *cell = [self getToolCell];
     [self.HUD showLoadingMessag:@"" toView:self.view];
     [cell.uploadView uploadImageArray:imageArr.copy getDic:getdic postDic:dic];
     
 }
 
-- (NormalThreadToolCell *)getToolCell {
+- (DZNormalThreadToolCell *)getToolCell {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     if ([AudioTool shareInstance].audioArray.count > 0) {
         indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     }
-    NormalThreadToolCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    DZNormalThreadToolCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     return cell;
 }
 
@@ -473,7 +473,7 @@
         [UIView animateWithDuration:0 animations:^{
             [self.tableView reloadData];
         } completion:^(BOOL finished) {
-            NormalThreadToolCell *cell = [self getToolCell];
+            DZNormalThreadToolCell *cell = [self getToolCell];
             [cell.recordView resetAction];
         }];
     } failure:^(NSError *error) {

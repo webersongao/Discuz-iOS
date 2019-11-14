@@ -18,7 +18,9 @@
         [self publicDo:responseObject];
         success(responseObject,type);
     } failed:^(NSError *error) {
-        failed(error);
+        if (failed) {
+            failed(error);
+        }
     }];
 }
 

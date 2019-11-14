@@ -1,15 +1,15 @@
 //
-//  NormalThreadToolCell.m
+//  DZNormalThreadToolCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/7.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "NormalThreadToolCell.h"
+#import "DZNormalThreadToolCell.h"
 #import "AudioManager.h"
 
-@implementation NormalThreadToolCell
+@implementation DZNormalThreadToolCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

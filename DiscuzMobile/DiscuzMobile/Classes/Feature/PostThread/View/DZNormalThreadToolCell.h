@@ -1,5 +1,5 @@
 //
-//  NormalThreadToolCell.h
+//  DZNormalThreadToolCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/7.
@@ -15,7 +15,7 @@
 typedef void(^addImageBlock)(void);
 typedef void(^HideKeyboardBlock)(void);
 
-@interface NormalThreadToolCell : UITableViewCell<UIScrollViewDelegate>
+@interface DZNormalThreadToolCell : UITableViewCell<UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *imageViews;
 

@@ -13,7 +13,7 @@
 #import "PostVoteModel.h"
 
 #import "VoteTitleCell.h"
-#import "PostSelectTypeCell.h"
+#import "DZPostSelectTypeCell.h"
 #import "VoteSelectCell.h"
 #import "VoteContentCell.h"
 #import "VoteDayVisableCell.h"
@@ -76,7 +76,7 @@
     
     self.voteModel.typeId = self.typeArray[row].typeId;
     
-    PostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    DZPostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     cell.selectField.text = resultString;
     
 }
@@ -231,9 +231,9 @@ static int i = 0 ;
                     if (indexPath.row == 1) {
                         
                         NSString *typesId = @"selectTypeId";
-                        PostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
+                        DZPostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
                         if (typeCell == nil) {
-                            typeCell = [[PostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
+                            typeCell = [[DZPostSelectTypeCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:typesId];
                             typeCell.selectField.inputView = self.pickView;
                         }
                         typeCell.selectField.delegate = self;

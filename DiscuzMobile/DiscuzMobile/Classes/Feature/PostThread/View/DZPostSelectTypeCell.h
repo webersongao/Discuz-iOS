@@ -1,5 +1,5 @@
 //
-//  PostSelectTypeCell.h
+//  DZPostSelectTypeCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/4/25.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PostSelectTypeCell : UITableViewCell
+@interface DZPostSelectTypeCell : UITableViewCell
 
 @property (nonatomic, strong) UITextField *selectField;
 

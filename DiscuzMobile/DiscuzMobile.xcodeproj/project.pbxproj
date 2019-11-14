@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18FC8C838C3D86A101C02EBC /* Pods_DiscuzMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F46790DE09CD7D48F77C38 /* Pods_DiscuzMobile.framework */; };
 		2700AF161DEBE25300C50D0C /* DZShareCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2700AF151DEBE25300C50D0C /* DZShareCenter.m */; };
 		270C3E721F00F45D000F3E42 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 270C3E711F00F45D000F3E42 /* reset.css */; };
 		270C3E741F00F49D000F3E42 /* public.js in Resources */ = {isa = PBXBuildFile; fileRef = 270C3E731F00F49D000F3E42 /* public.js */; };
@@ -105,10 +104,15 @@
 		27F615AB1ED42ACD0066CD4C /* ui-bg_gloss-wave_35_f6a828_500x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F615841ED42ACD0066CD4C /* ui-bg_gloss-wave_35_f6a828_500x100.png */; };
 		27F615AC1ED42ACD0066CD4C /* ui-bg_highlight-soft_100_eeeeee_1x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F615851ED42ACD0066CD4C /* ui-bg_highlight-soft_100_eeeeee_1x100.png */; };
 		27FA1DC61F01056D0011DA6B /* thread_temp_debate.html in Resources */ = {isa = PBXBuildFile; fileRef = 27FA1DC51F01056D0011DA6B /* thread_temp_debate.html */; };
+		6AE6C679A8C99E4E21268BDF /* Pods_DiscuzMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB1166028FC6D29257DCF18 /* Pods_DiscuzMobile.framework */; };
 		703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C4238237CF71D0046C398 /* iflyMSC.framework */; };
 		703C423B237CF7B40046C398 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C423A237CF7B40046C398 /* CoreLocation.framework */; };
 		703C4242237CF9510046C398 /* AppDelegate+iflyMSC.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4241237CF9510046C398 /* AppDelegate+iflyMSC.m */; };
 		703C4245237CFAAB0046C398 /* AppDelegate+SDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4244237CFAAB0046C398 /* AppDelegate+SDK.m */; };
+		703C4249237D27AF0046C398 /* DZPostEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4248237D27AF0046C398 /* DZPostEditViewController.m */; };
+		703C424E237D29150046C398 /* UIButton+Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 703C424C237D29150046C398 /* UIButton+Utils.mm */; };
+		703C424F237D29150046C398 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C424D237D29150046C398 /* UIButton+ImageTitleSpacing.m */; };
+		703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4251237D32180046C398 /* DZPostUIEditViewController.m */; };
 		7062106D237935ED00130B9D /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062104F237935ED00130B9D /* UUDatePicker.m */; };
 		7062106E237935ED00130B9D /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621050237935ED00130B9D /* UUDatePicker_DateModel.m */; };
 		7062106F237935ED00130B9D /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 70621054237935ED00130B9D /* ReleaseNotes.txt */; };
@@ -153,7 +157,7 @@
 		7062128B237936C900130B9D /* PostTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D0237936C800130B9D /* PostTextFieldView.m */; };
 		7062128C237936C900130B9D /* SelectTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D1237936C800130B9D /* SelectTipView.m */; };
 		7062128D237936C900130B9D /* UploadImageContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D2237936C800130B9D /* UploadImageContainView.m */; };
-		7062128E237936C900130B9D /* NormalThreadToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D6237936C800130B9D /* NormalThreadToolCell.m */; };
+		7062128E237936C900130B9D /* DZNormalThreadToolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D6237936C800130B9D /* DZNormalThreadToolCell.m */; };
 		7062128F237936C900130B9D /* EndtimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D8237936C800130B9D /* EndtimeCell.m */; };
 		70621290237936C900130B9D /* ViewpointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210D9237936C800130B9D /* ViewpointCell.m */; };
 		70621291237936C900130B9D /* RefereeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210DC237936C800130B9D /* RefereeCell.m */; };
@@ -161,7 +165,7 @@
 		70621293237936C900130B9D /* VoteSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210E6237936C800130B9D /* VoteSelectCell.m */; };
 		70621294237936C900130B9D /* VoteDayVisableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210E7237936C800130B9D /* VoteDayVisableCell.m */; };
 		70621295237936C900130B9D /* VoteContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210E8237936C800130B9D /* VoteContentCell.m */; };
-		70621296237936C900130B9D /* PostSelectTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210EB237936C800130B9D /* PostSelectTypeCell.m */; };
+		70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210EB237936C800130B9D /* DZPostSelectTypeCell.m */; };
 		70621297237936C900130B9D /* SelectTypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210EC237936C800130B9D /* SelectTypeButton.m */; };
 		70621298237936C900130B9D /* DZAudioListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210ED237936C800130B9D /* DZAudioListCell.m */; };
 		70621299237936C900130B9D /* ActiveExtendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210F0237936C800130B9D /* ActiveExtendCell.m */; };
@@ -589,8 +593,8 @@
 		27F615841ED42ACD0066CD4C /* ui-bg_gloss-wave_35_f6a828_500x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui-bg_gloss-wave_35_f6a828_500x100.png"; sourceTree = "<group>"; };
 		27F615851ED42ACD0066CD4C /* ui-bg_highlight-soft_100_eeeeee_1x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ui-bg_highlight-soft_100_eeeeee_1x100.png"; sourceTree = "<group>"; };
 		27FA1DC51F01056D0011DA6B /* thread_temp_debate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = thread_temp_debate.html; sourceTree = "<group>"; };
-		38F46790DE09CD7D48F77C38 /* Pods_DiscuzMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscuzMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA7C7422E802898AE0DE10A /* Pods-DiscuzMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscuzMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile.release.xcconfig"; sourceTree = "<group>"; };
+		5AB1166028FC6D29257DCF18 /* Pods_DiscuzMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiscuzMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		703C4232237CF6160046C398 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		703C4238237CF71D0046C398 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		703C423A237CF7B40046C398 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -600,6 +604,14 @@
 		703C4241237CF9510046C398 /* AppDelegate+iflyMSC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+iflyMSC.m"; sourceTree = "<group>"; };
 		703C4243237CFAAB0046C398 /* AppDelegate+SDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+SDK.h"; sourceTree = "<group>"; };
 		703C4244237CFAAB0046C398 /* AppDelegate+SDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDK.m"; sourceTree = "<group>"; };
+		703C4247237D27AF0046C398 /* DZPostEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostEditViewController.h; sourceTree = "<group>"; };
+		703C4248237D27AF0046C398 /* DZPostEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostEditViewController.m; sourceTree = "<group>"; };
+		703C424A237D29150046C398 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		703C424B237D29150046C398 /* UIButton+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Utils.h"; sourceTree = "<group>"; };
+		703C424C237D29150046C398 /* UIButton+Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIButton+Utils.mm"; sourceTree = "<group>"; };
+		703C424D237D29150046C398 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		703C4250237D32180046C398 /* DZPostUIEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostUIEditViewController.h; sourceTree = "<group>"; };
+		703C4251237D32180046C398 /* DZPostUIEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostUIEditViewController.m; sourceTree = "<group>"; };
 		7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
 		7062104F237935ED00130B9D /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
 		70621050237935ED00130B9D /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
@@ -688,8 +700,8 @@
 		706210D2237936C800130B9D /* UploadImageContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageContainView.m; sourceTree = "<group>"; };
 		706210D3237936C800130B9D /* DZAudioListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZAudioListCell.h; sourceTree = "<group>"; };
 		706210D4237936C800130B9D /* SelectTypeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTypeButton.h; sourceTree = "<group>"; };
-		706210D5237936C800130B9D /* PostSelectTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostSelectTypeCell.h; sourceTree = "<group>"; };
-		706210D6237936C800130B9D /* NormalThreadToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalThreadToolCell.m; sourceTree = "<group>"; };
+		706210D5237936C800130B9D /* DZPostSelectTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostSelectTypeCell.h; sourceTree = "<group>"; };
+		706210D6237936C800130B9D /* DZNormalThreadToolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNormalThreadToolCell.m; sourceTree = "<group>"; };
 		706210D8237936C800130B9D /* EndtimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndtimeCell.m; sourceTree = "<group>"; };
 		706210D9237936C800130B9D /* ViewpointCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewpointCell.m; sourceTree = "<group>"; };
 		706210DA237936C800130B9D /* RefereeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefereeCell.h; sourceTree = "<group>"; };
@@ -707,8 +719,8 @@
 		706210E7237936C800130B9D /* VoteDayVisableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteDayVisableCell.m; sourceTree = "<group>"; };
 		706210E8237936C800130B9D /* VoteContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteContentCell.m; sourceTree = "<group>"; };
 		706210E9237936C800130B9D /* SelectTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTipView.h; sourceTree = "<group>"; };
-		706210EA237936C800130B9D /* NormalThreadToolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalThreadToolCell.h; sourceTree = "<group>"; };
-		706210EB237936C800130B9D /* PostSelectTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostSelectTypeCell.m; sourceTree = "<group>"; };
+		706210EA237936C800130B9D /* DZNormalThreadToolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNormalThreadToolCell.h; sourceTree = "<group>"; };
+		706210EB237936C800130B9D /* DZPostSelectTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostSelectTypeCell.m; sourceTree = "<group>"; };
 		706210EC237936C800130B9D /* SelectTypeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTypeButton.m; sourceTree = "<group>"; };
 		706210ED237936C800130B9D /* DZAudioListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZAudioListCell.m; sourceTree = "<group>"; };
 		706210EF237936C800130B9D /* ActiveDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDetailCell.h; sourceTree = "<group>"; };
@@ -1022,7 +1034,6 @@
 		706AB91D237C085F00BE649F /* DZUserMsgBoxTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUserMsgBoxTabController.m; sourceTree = "<group>"; };
 		706AB91F237C08B000BE649F /* DZSendMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSendMsgViewController.h; sourceTree = "<group>"; };
 		706AB920237C08B000BE649F /* DZSendMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSendMsgViewController.m; sourceTree = "<group>"; };
-		706F3E2623742B75003C55AD /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DFD76B237A95DD00A13F0F /* DZBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseNavigationController.m; sourceTree = "<group>"; };
 		70DFD76C237A95DD00A13F0F /* DZBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseViewController.h; sourceTree = "<group>"; };
 		70DFD76D237A95DD00A13F0F /* DZRootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRootTabBarController.m; sourceTree = "<group>"; };
@@ -1064,8 +1075,6 @@
 		70DFD7B4237A96CD00A13F0F /* DZBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseTableViewCell.m; sourceTree = "<group>"; };
 		70DFD7B5237A96CE00A13F0F /* DZBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseTableViewCell.h; sourceTree = "<group>"; };
 		70E69D3523742C3D00760DC4 /* DiscuzMobile copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DiscuzMobile copy-Info.plist"; sourceTree = "<group>"; };
-		70E69D3723742D0E00760DC4 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70E69D3B23742D2900760DC4 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F19E54237A8E9900499BED /* TPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPNavigationBar.h; sourceTree = "<group>"; };
 		70F19E55237A8E9900499BED /* TPNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPNavItemButton.h; sourceTree = "<group>"; };
 		70F19E56237A8E9900499BED /* UIBarButtonItem+TPBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+TPBarButtonItem.m"; sourceTree = "<group>"; };
@@ -1278,7 +1287,7 @@
 				27714EA41DDC4A36008CDC7A /* libicucore.tbd in Frameworks */,
 				27714EA01DDC4A23008CDC7A /* libz.1.2.5.tbd in Frameworks */,
 				27714E9C1DDC4A0C008CDC7A /* libsqlite3.0.tbd in Frameworks */,
-				18FC8C838C3D86A101C02EBC /* Pods_DiscuzMobile.framework in Frameworks */,
+				6AE6C679A8C99E4E21268BDF /* Pods_DiscuzMobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1880,10 +1889,10 @@
 			children = (
 				706210D3237936C800130B9D /* DZAudioListCell.h */,
 				706210ED237936C800130B9D /* DZAudioListCell.m */,
-				706210D5237936C800130B9D /* PostSelectTypeCell.h */,
-				706210EB237936C800130B9D /* PostSelectTypeCell.m */,
-				706210EA237936C800130B9D /* NormalThreadToolCell.h */,
-				706210D6237936C800130B9D /* NormalThreadToolCell.m */,
+				706210D5237936C800130B9D /* DZPostSelectTypeCell.h */,
+				706210EB237936C800130B9D /* DZPostSelectTypeCell.m */,
+				706210EA237936C800130B9D /* DZNormalThreadToolCell.h */,
+				706210D6237936C800130B9D /* DZNormalThreadToolCell.m */,
 				706210D7237936C800130B9D /* PostdebateCell */,
 				706210DE237936C800130B9D /* PostTextFieldView.h */,
 				706210D0237936C800130B9D /* PostTextFieldView.m */,
@@ -2660,6 +2669,10 @@
 			children = (
 				706AB8D0237BF63600BE649F /* RecommendController.h */,
 				706AB8CF237BF63600BE649F /* RecommendController.m */,
+				703C4247237D27AF0046C398 /* DZPostEditViewController.h */,
+				703C4248237D27AF0046C398 /* DZPostEditViewController.m */,
+				703C4250237D32180046C398 /* DZPostUIEditViewController.h */,
+				703C4251237D32180046C398 /* DZPostUIEditViewController.m */,
 			);
 			path = DemoVC;
 			sourceTree = "<group>";
@@ -2945,10 +2958,14 @@
 		70F9F891237AA72B0067B308 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
+				703C424B237D29150046C398 /* UIButton+Utils.h */,
+				703C424C237D29150046C398 /* UIButton+Utils.mm */,
 				70F9F892237AA72B0067B308 /* UIButton+EnlargeEdge.h */,
-				70F9F893237AA72B0067B308 /* UIControl+DelayEnable.h */,
 				70F9F894237AA72B0067B308 /* UIButton+EnlargeEdge.m */,
+				70F9F893237AA72B0067B308 /* UIControl+DelayEnable.h */,
 				70F9F895237AA72B0067B308 /* UIControl+DelayEnable.m */,
+				703C424A237D29150046C398 /* UIButton+ImageTitleSpacing.h */,
+				703C424D237D29150046C398 /* UIButton+ImageTitleSpacing.m */,
 			);
 			path = UIButton;
 			sourceTree = "<group>";
@@ -3393,9 +3410,6 @@
 				703C423C237CF7C30046C398 /* Contacts.framework */,
 				703C423A237CF7B40046C398 /* CoreLocation.framework */,
 				703C4237237CF71D0046C398 /* iflyMSC */,
-				70E69D3B23742D2900760DC4 /* AFNetworking.framework */,
-				70E69D3723742D0E00760DC4 /* AFNetworking.framework */,
-				706F3E2623742B75003C55AD /* AFNetworking.framework */,
 				9458DC472192BF3200691A2C /* AudioToolbox.framework */,
 				9458DC452192BEEC00691A2C /* Starscream.framework */,
 				9458DC432192BEE100691A2C /* SocketIO.framework */,
@@ -3422,7 +3436,7 @@
 				27714E9F1DDC4A23008CDC7A /* libz.1.2.5.tbd */,
 				27714E9D1DDC4A16008CDC7A /* libc++.tbd */,
 				27714E9B1DDC4A0C008CDC7A /* libsqlite3.0.tbd */,
-				38F46790DE09CD7D48F77C38 /* Pods_DiscuzMobile.framework */,
+				5AB1166028FC6D29257DCF18 /* Pods_DiscuzMobile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3761,6 +3775,7 @@
 				7062129C237936C900130B9D /* NormalDetailCell.m in Sources */,
 				70F9F8E3237AA72C0067B308 /* UIImageView+FindHairline.m in Sources */,
 				706212E4237936C900130B9D /* DZJudgeBoundController.m in Sources */,
+				703C424F237D29150046C398 /* UIButton+ImageTitleSpacing.m in Sources */,
 				706213C523793DB700130B9D /* DZThreadRootController.m in Sources */,
 				70621335237936C900130B9D /* FastLevelCell.m in Sources */,
 				706212A4237936C900130B9D /* MyPerson.m in Sources */,
@@ -3809,6 +3824,7 @@
 				27473ACD1DD30C380024375F /* DZFontSize.m in Sources */,
 				947ECB202064D403002D3536 /* WSPhotosBroseVC.m in Sources */,
 				94195AED20246E120024D074 /* DZURLStrings.m in Sources */,
+				703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */,
 				70621078237935ED00130B9D /* RNCachingURLProtocol.m in Sources */,
 				277EDC701E6D5B8D00E8F0E1 /* QRadioButton.m in Sources */,
 				706212CC237936C900130B9D /* ViewPollpotionViewController.m in Sources */,
@@ -3819,6 +3835,7 @@
 				706AB910237C06B800BE649F /* ChatContentCell.m in Sources */,
 				7062129F237936C900130B9D /* NSDictionary+ResMessage.m in Sources */,
 				70DFD79C237A95DE00A13F0F /* DZBaseViewController.m in Sources */,
+				703C424E237D29150046C398 /* UIButton+Utils.mm in Sources */,
 				706212E5237936C900130B9D /* DZResetPwdController.m in Sources */,
 				9494508821196F8B0074C79E /* AudioModel.m in Sources */,
 				70621279237936C900130B9D /* PostTypeSelectView.m in Sources */,
@@ -3912,6 +3929,7 @@
 				706213C923793DB700130B9D /* ReplyModel.m in Sources */,
 				70DFD7B3237A96AA00A13F0F /* DZBaseTableView.m in Sources */,
 				70F9F8D9237AA72B0067B308 /* UIImage+Palette.m in Sources */,
+				703C4249237D27AF0046C398 /* DZPostEditViewController.m in Sources */,
 				7062136D23793D8A00130B9D /* DZSlideShowScrollView.m in Sources */,
 				706212A5237936C900130B9D /* LoginModule.m in Sources */,
 				947ECB052064D403002D3536 /* JFImageCollectionViewController.m in Sources */,
@@ -3940,7 +3958,7 @@
 				70621280237936C900130B9D /* ThreadListCell.m in Sources */,
 				7062132A237936C900130B9D /* DZForumInfoModel.m in Sources */,
 				706213BE23793DB700130B9D /* FootForumController.m in Sources */,
-				70621296237936C900130B9D /* PostSelectTypeCell.m in Sources */,
+				70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */,
 				70632291237C1401005943AB /* DigestListController.m in Sources */,
 				706213C823793DB700130B9D /* CenterManageModel.m in Sources */,
 				70DFD7A7237A95DE00A13F0F /* DZAttachment.m in Sources */,
@@ -4006,7 +4024,7 @@
 				706213BB23793DB700130B9D /* CollectionRootController.m in Sources */,
 				706AB907237C06B800BE649F /* MessageNoticeCenter.m in Sources */,
 				7062126E237936C800130B9D /* LianCollectionController.m in Sources */,
-				7062128E237936C900130B9D /* NormalThreadToolCell.m in Sources */,
+				7062128E237936C900130B9D /* DZNormalThreadToolCell.m in Sources */,
 				70F9F8E4237AA72C0067B308 /* UITableViewCell+GetReuseID.m in Sources */,
 				706212DF237936C900130B9D /* PartInPayCell.m in Sources */,
 				706213C723793DB700130B9D /* BoundInfoModel.m in Sources */,
@@ -4196,10 +4214,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = H5J89P9FJL;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DA3FD732H4;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4254,7 +4272,7 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "56ce636d-6762-4b86-bc74-9e16be0e6f93";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_development_wildcard_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
@@ -4269,8 +4287,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = H5J89P9FJL;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = DA3FD732H4;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4325,7 +4344,7 @@
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e4dbcae1-e5da-497c-b2de-c25159204981";
-				PROVISIONING_PROFILE_SPECIFIER = iOS_development_wildcard_profile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
