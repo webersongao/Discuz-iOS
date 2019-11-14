@@ -334,7 +334,7 @@ NSString * const debugPassword = @"debugPassword";
 
 #pragma mark ZhpickVIewDelegate
 
--(void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row{
+-(void)toolbarDidButtonClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row{
     
     self.logView.securityView.userNameTextField.text = resultString;
     

@@ -11,6 +11,7 @@
 #import "RNCachingURLProtocol.h"
 #import "DZRootTabBarController.h"
 #import "DZShareCenter.h"
+#import "AppDelegate+SDK.h"
 #import "DZLaunchScreenManager.h"
 #import "WebImageCacheUrlProtocol.h"
 
@@ -65,6 +66,7 @@ static AppDelegate *m_appDelegate;
     
 //    [self printFamilyName];
 //    [NSThread sleepForTimeInterval:1];
+    [self launchSDKConfigWithOptions:launchOptions];
     
     return YES;
 }

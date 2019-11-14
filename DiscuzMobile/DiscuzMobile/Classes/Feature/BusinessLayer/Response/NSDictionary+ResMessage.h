@@ -11,9 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDictionary (ResMessage)
+
 - (NSString *)messageval;
 
 - (NSString *)messagestr;
+
 @end
 
 NS_ASSUME_NONNULL_END

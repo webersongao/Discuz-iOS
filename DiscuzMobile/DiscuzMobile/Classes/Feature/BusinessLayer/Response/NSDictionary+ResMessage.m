@@ -9,6 +9,8 @@
 #import "NSDictionary+ResMessage.h"
 
 @implementation NSDictionary (ResMessage)
+
+
 - (NSString *)messageval {
     NSString *messageval = @"";
     if ([DataCheck isValidDictionary:self] && [DataCheck isValidDictionary:[self objectForKey:@"Message"]]
@@ -26,4 +28,6 @@
     }
     return [messagestr transformationStr];
 }
+
+
 @end

@@ -162,7 +162,7 @@
         [self.HUD hide];
         [self.tableView.mj_header endRefreshing];
         
-        BOOL haveAuther = [ResponseMessage autherityJudgeResponseObject:responseObject refuseBlock:^(NSString *message) {
+        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
             [UIAlertController alertTitle:nil message:message controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                 [self.navigationController popViewControllerAnimated:YES];
             } cancelHandle:nil];

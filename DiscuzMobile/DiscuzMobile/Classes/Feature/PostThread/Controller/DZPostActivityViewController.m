@@ -115,7 +115,7 @@
 }
 
 #pragma mark ZhpickVIewDelegate
-- (void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row {
+- (void)toolbarDidButtonClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row {
     
     if (pickView == self.sexPickView) {
         ActiveContentCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];

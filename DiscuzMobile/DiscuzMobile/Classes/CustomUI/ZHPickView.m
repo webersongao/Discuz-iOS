@@ -379,8 +379,8 @@
 //        _resultString=  [NSString stringWithFormat:@"%@",_datePicker.date];
         _resultString = dateStr;
     }
-    if ([self.delegate respondsToSelector:@selector(toobarDonBtnHaveClick:resultString:androw:)]) {
-        [self.delegate toobarDonBtnHaveClick:self resultString:_resultString androw:_selectRow];
+    if ([self.delegate respondsToSelector:@selector(toolbarDidButtonClick:resultString:androw:)]) {
+        [self.delegate toolbarDidButtonClick:self resultString:_resultString androw:_selectRow];
     }
     [self remove];
 }
@@ -407,6 +407,9 @@
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:nil];
 }
+
+
+
 @end
 
 

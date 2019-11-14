@@ -367,7 +367,7 @@
 }
 
 #pragma mark ZhpickVIewDelegate
-- (void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row {
+- (void)toolbarDidButtonClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row {
     
     self.debateModel.typeId = self.typeArray[row].typeId;
     PostSelectTypeCell *cell  = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];

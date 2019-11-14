@@ -81,7 +81,7 @@
         [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     } success:^(id responseObject, JTLoadType type) {
         [self.HUD hide];
-        BOOL haveAuther = [ResponseMessage autherityJudgeResponseObject:responseObject refuseBlock:^(NSString *message) {
+        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
             [UIAlertController alertTitle:nil message:message controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                 [self.navigationController popViewControllerAnimated:YES];
             } cancelHandle:nil];

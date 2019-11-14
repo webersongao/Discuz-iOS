@@ -10,7 +10,7 @@
 
 @implementation ResponseMessage
 
-+ (BOOL)autherityJudgeResponseObject:(NSDictionary *)responseObject refuseBlock:(void(^)(NSString *message))refuseBlock {
++ (BOOL)authorizeJudgeResponse:(NSDictionary *)responseObject refuseBlock:(void(^)(NSString *message))refuseBlock {
     NSString *messageval = [responseObject messageval];
     if ([messageval containsString:@"nonexistence"] || [messageval containsString:@"nopermission"] || [messageval containsString:@"nomedal"]) {
         refuseBlock?refuseBlock([responseObject messagestr]):nil;

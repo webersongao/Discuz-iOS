@@ -13,8 +13,8 @@
 #import "UploadTool.h"
 
 #import "ViewPollPotionNumberViewController.h"
-#import "ManageActivityController.h"
-#import "PartInActitivityController.h"
+#import "DZActivityEditController.h"
+#import "DZPartInActivityController.h"
 
 #import "ThreadDetailView.h"
 #import "ThreadModel.h"
@@ -309,7 +309,7 @@
     }];
     
     [_bridge registerHandler:@"manageActive" handler:^(id data, WVJBResponseCallback responseCallback) {
-        [weakSelf manageActivity];
+        [weakSelf manageTheActivity];
     }];
 }
 
@@ -320,7 +320,7 @@
     
     if (self.threadModel.isActivity) {
         //参加活动
-        PartInActitivityController * partinVc = [[PartInActitivityController alloc]init];
+        DZPartInActivityController * partinVc = [[DZPartInActivityController alloc]init];
         partinVc.threadModel = self.threadModel;
         [self.navigationController pushViewController:partinVc animated:YES];
         
@@ -334,8 +334,8 @@
     }
 }
 
-- (void)manageActivity {
-    ManageActivityController *mgActive = [[ManageActivityController alloc] init];
+- (void)manageTheActivity {
+    DZActivityEditController *mgActive = [[DZActivityEditController alloc] init];
     mgActive.threadModel = self.threadModel;
     [self showViewController:mgActive sender:nil];
 }
@@ -666,7 +666,7 @@
         request.parameters = dic;
     } success:^(id responseObject, JTLoadType type) {
         requestCount = 0;
-        BOOL haveAuther = [ResponseMessage autherityJudgeResponseObject:responseObject refuseBlock:^(NSString *message) {
+        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
             [UIAlertController alertTitle:nil message:message  controller:self doneText:@"确定" cancelText:nil doneHandle:^{
                 [self.navigationController popViewControllerAnimated:YES];
             } cancelHandle:nil];

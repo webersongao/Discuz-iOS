@@ -43,5 +43,9 @@
 #define DZ_XG_APPID     2200197269
 #define DZ_XG_APPKEY    @""
 
+
+// 讯飞语音识别
+#define DZ_iflyAppID      @"5dcbe00e"
+
 #endif
 

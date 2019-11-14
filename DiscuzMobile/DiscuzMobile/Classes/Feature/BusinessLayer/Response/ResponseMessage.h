@@ -10,6 +10,6 @@
 
 @interface ResponseMessage : NSObject
 
-+ (BOOL)autherityJudgeResponseObject:(NSDictionary *)responseObject refuseBlock:(void(^)(NSString *message))refuseBlock;
++ (BOOL)authorizeJudgeResponse:(NSDictionary *)responseObject refuseBlock:(void(^)(NSString *message))refuseBlock;
 
 @end

@@ -59,4 +59,9 @@ extern NSString * const CookieValue;
 + (void)saveCookie:(NSHTTPCookie *)cookie;
 // 获取cookie
 + (NSHTTPCookie *)getCookie;
+
+
+
+
+
 @end
