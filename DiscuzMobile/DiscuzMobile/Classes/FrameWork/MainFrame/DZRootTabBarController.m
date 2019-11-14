@@ -16,6 +16,7 @@
 #import "DZMobileCtrl.h"
 #import "DZMessageListController.h"
 
+#import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
 
@@ -116,6 +117,9 @@
 }
 
 - (void)addChildViewControllers {
+    
+    DZPostSiriViewController *editSiriVC = [[DZPostSiriViewController alloc] init];
+    [self addChildVc:editSiriVC title:@"Siri输入" image:@"my" selectedImage:@"mys"];
     
     DZPostEditViewController *editVC = [[DZPostEditViewController alloc] init];
     [self addChildVc:editVC title:@"默认输入" image:@"homem" selectedImage:@"homes"];

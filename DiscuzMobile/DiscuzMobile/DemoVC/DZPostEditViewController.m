@@ -73,9 +73,29 @@
         //设置识别参数
         //设置为听写模式
         _iFlySpeechRecognizer.delegate = self;
-        [_iFlySpeechRecognizer setParameter: @"iat" forKey: [IFlySpeechConstant IFLY_DOMAIN]];
+        //扩展参数
+        [_iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
+        //设置听写模式
+        [_iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
         //asr_audio_path 是录音文件名，设置value为nil或者为空取消保存，默认保存目录在Library/cache下。
         [_iFlySpeechRecognizer setParameter:@"iat.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+        //设置最长录音时间
+        [_iFlySpeechRecognizer setParameter:@"30000" forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
+        //设置后端点
+        [_iFlySpeechRecognizer setParameter:@"1800" forKey:[IFlySpeechConstant VAD_EOS]];
+        //设置前端点
+        [_iFlySpeechRecognizer setParameter:@"1800" forKey:[IFlySpeechConstant VAD_BOS]];
+        //网络等待时间
+        [_iFlySpeechRecognizer setParameter:@"20000" forKey:[IFlySpeechConstant NET_TIMEOUT]];
+        //设置采样率，推荐使用16K
+        [_iFlySpeechRecognizer setParameter:@"16000" forKey:[IFlySpeechConstant SAMPLE_RATE]];
+        //设置语言
+        [_iFlySpeechRecognizer setParameter:@"zh_cn" forKey:[IFlySpeechConstant LANGUAGE]];
+        //设置方言
+        [_iFlySpeechRecognizer setParameter:@"mandarin" forKey:[IFlySpeechConstant ACCENT]];
+        //设置是否返回标点符号
+        [_iFlySpeechRecognizer setParameter:@"1" forKey:[IFlySpeechConstant ASR_PTT]];
+        
     }
     return _iFlySpeechRecognizer;
 }
@@ -84,10 +104,9 @@
 
 -(UITextView *)contentView{
     if (_contentView == nil) {
-        [Environment sharedEnvironment].auth = @"sdgsdg";
-        [Environment sharedEnvironment].member_uid = @"sdgsdg";
         _contentView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 15.f, KScreenWidth- 30, KScreenHeight-280)];
-        _contentView.backgroundColor = [UIColor greenColor];
+        _contentView.layer.borderColor = [UIColor orangeColor].CGColor;
+        _contentView.layer.borderWidth = 1.f;
     }
     return _contentView;
 }
@@ -95,7 +114,7 @@
 -(UIButton *)inputButton{
     if (_inputButton == nil) {
         _inputButton = [UIButton ButtonTextWithFrame:CGRectMake(20, self.contentView.bottom+20.f, KScreenWidth-40, 40) titleStr:@"默认-输入文字" titleColor:[UIColor orangeColor] titleTouColor:[UIColor orangeColor] font:KBoldFont(16.f) Radius:4.f Target:self action:@selector(inputButtonAction:)];
-        _inputButton.backgroundColor = [UIColor redColor];
+        _inputButton.backgroundColor = [UIColor greenColor];
     }
     return _inputButton;
 }

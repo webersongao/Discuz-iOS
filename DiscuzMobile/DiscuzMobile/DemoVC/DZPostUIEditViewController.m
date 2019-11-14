@@ -70,7 +70,8 @@
 -(UITextView *)contentView{
     if (_contentView == nil) {
         _contentView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 15.f, KScreenWidth- 30, KScreenHeight-280)];
-        _contentView.backgroundColor = [UIColor greenColor];
+        _contentView.layer.borderColor = [UIColor orangeColor].CGColor;
+        _contentView.layer.borderWidth = 1.f;
     }
     return _contentView;
 }
@@ -78,7 +79,7 @@
 -(UIButton *)inputUIButton{
     if (_inputUIButton == nil) {
         _inputUIButton = [UIButton ButtonTextWithFrame:CGRectMake(20, self.contentView.bottom+20.f, KScreenWidth-40, 40) titleStr:@"自定义UI-输入文字" titleColor:[UIColor orangeColor] titleTouColor:[UIColor orangeColor] font:KBoldFont(16.f) Radius:4.f Target:self action:@selector(inputUIButtonAction:)];
-        _inputUIButton.backgroundColor = [UIColor redColor];
+        _inputUIButton.backgroundColor = [UIColor blueColor];
     }
     return _inputUIButton;
 }

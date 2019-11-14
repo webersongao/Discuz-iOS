@@ -113,6 +113,8 @@
 		703C424E237D29150046C398 /* UIButton+Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 703C424C237D29150046C398 /* UIButton+Utils.mm */; };
 		703C424F237D29150046C398 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C424D237D29150046C398 /* UIButton+ImageTitleSpacing.m */; };
 		703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4251237D32180046C398 /* DZPostUIEditViewController.m */; };
+		703C4258237D51330046C398 /* DZSiriTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4257237D51330046C398 /* DZSiriTool.m */; };
+		703C425B237D514A0046C398 /* DZiFlyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C425A237D514A0046C398 /* DZiFlyTool.m */; };
 		7062106D237935ED00130B9D /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062104F237935ED00130B9D /* UUDatePicker.m */; };
 		7062106E237935ED00130B9D /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621050237935ED00130B9D /* UUDatePicker_DateModel.m */; };
 		7062106F237935ED00130B9D /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 70621054237935ED00130B9D /* ReleaseNotes.txt */; };
@@ -305,6 +307,8 @@
 		706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632299237C151A005943AB /* EFSQLiteObject.m */; };
 		706322A1237C151A005943AB /* KeyValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063229A237C151A005943AB /* KeyValuePair.m */; };
 		706322A2237C151A005943AB /* EFSQLiteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063229B237C151A005943AB /* EFSQLiteHelper.m */; };
+		7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */; };
+		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		706AB8D1237BF63700BE649F /* RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706AB8CF237BF63600BE649F /* RecommendController.m */; };
 		706AB906237C06B800BE649F /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706AB8E7237C06B800BE649F /* MessageModel.m */; };
 		706AB907237C06B800BE649F /* MessageNoticeCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 706AB8EB237C06B800BE649F /* MessageNoticeCenter.m */; };
@@ -612,6 +616,10 @@
 		703C424D237D29150046C398 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
 		703C4250237D32180046C398 /* DZPostUIEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostUIEditViewController.h; sourceTree = "<group>"; };
 		703C4251237D32180046C398 /* DZPostUIEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostUIEditViewController.m; sourceTree = "<group>"; };
+		703C4256237D51330046C398 /* DZSiriTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZSiriTool.h; sourceTree = "<group>"; };
+		703C4257237D51330046C398 /* DZSiriTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZSiriTool.m; sourceTree = "<group>"; };
+		703C4259237D514A0046C398 /* DZiFlyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZiFlyTool.h; sourceTree = "<group>"; };
+		703C425A237D514A0046C398 /* DZiFlyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZiFlyTool.m; sourceTree = "<group>"; };
 		7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
 		7062104F237935ED00130B9D /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
 		70621050237935ED00130B9D /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
@@ -996,6 +1004,8 @@
 		7063229C237C151A005943AB /* EFSQLiteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFSQLiteObject.h; sourceTree = "<group>"; };
 		7063229D237C151A005943AB /* EFSQLiteContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFSQLiteContext.h; sourceTree = "<group>"; };
 		7063229E237C151A005943AB /* KeyValuePair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValuePair.h; sourceTree = "<group>"; };
+		7065C99F237D61CA0056737C /* DZPostSiriViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostSiriViewController.h; sourceTree = "<group>"; };
+		7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostSiriViewController.m; sourceTree = "<group>"; };
 		706AB8CF237BF63600BE649F /* RecommendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendController.m; sourceTree = "<group>"; };
 		706AB8D0237BF63600BE649F /* RecommendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendController.h; sourceTree = "<group>"; };
 		706AB8E6237C06B800BE649F /* MessageNoticeCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageNoticeCenter.h; sourceTree = "<group>"; };
@@ -1264,6 +1274,7 @@
 				27714EAE1DDC4A77008CDC7A /* QuartzCore.framework in Frameworks */,
 				703C423B237CF7B40046C398 /* CoreLocation.framework in Frameworks */,
 				27714EA21DDC4A2A008CDC7A /* libz.tbd in Frameworks */,
+				7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */,
 				703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */,
 				27714EBA1DDC4AE3008CDC7A /* UIKit.framework in Frameworks */,
 				27714EB61DDC4AC9008CDC7A /* Foundation.framework in Frameworks */,
@@ -1670,6 +1681,33 @@
 			path = SDKLaunch;
 			sourceTree = "<group>";
 		};
+		703C4253237D50570046C398 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				703C4255237D50840046C398 /* iFly */,
+				703C4254237D50660046C398 /* Siri */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		703C4254237D50660046C398 /* Siri */ = {
+			isa = PBXGroup;
+			children = (
+				703C4256237D51330046C398 /* DZSiriTool.h */,
+				703C4257237D51330046C398 /* DZSiriTool.m */,
+			);
+			path = Siri;
+			sourceTree = "<group>";
+		};
+		703C4255237D50840046C398 /* iFly */ = {
+			isa = PBXGroup;
+			children = (
+				703C4259237D514A0046C398 /* DZiFlyTool.h */,
+				703C425A237D514A0046C398 /* DZiFlyTool.m */,
+			);
+			path = iFly;
+			sourceTree = "<group>";
+		};
 		7062104C237935ED00130B9D /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -1742,6 +1780,7 @@
 		7062107A237936C800130B9D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				703C4253237D50570046C398 /* Speech */,
 				7062119C237936C800130B9D /* Login */,
 				70621142237936C800130B9D /* Search */,
 				7062115F237936C800130B9D /* Setting */,
@@ -2669,6 +2708,8 @@
 			children = (
 				706AB8D0237BF63600BE649F /* RecommendController.h */,
 				706AB8CF237BF63600BE649F /* RecommendController.m */,
+				7065C99F237D61CA0056737C /* DZPostSiriViewController.h */,
+				7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */,
 				703C4247237D27AF0046C398 /* DZPostEditViewController.h */,
 				703C4248237D27AF0046C398 /* DZPostEditViewController.m */,
 				703C4250237D32180046C398 /* DZPostUIEditViewController.h */,
@@ -3699,6 +3740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				706AB911237C06B800BE649F /* PmlistCell.m in Sources */,
+				7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */,
 				706212F0237936C900130B9D /* DZHomeIconTextView.m in Sources */,
 				706212EA237936C900130B9D /* LoginCustomView.m in Sources */,
 				7062132E237936C900130B9D /* ForumReusableView.m in Sources */,
@@ -3959,6 +4001,7 @@
 				7062132A237936C900130B9D /* DZForumInfoModel.m in Sources */,
 				706213BE23793DB700130B9D /* FootForumController.m in Sources */,
 				70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */,
+				703C4258237D51330046C398 /* DZSiriTool.m in Sources */,
 				70632291237C1401005943AB /* DigestListController.m in Sources */,
 				706213C823793DB700130B9D /* CenterManageModel.m in Sources */,
 				70DFD7A7237A95DE00A13F0F /* DZAttachment.m in Sources */,
@@ -3984,6 +4027,7 @@
 				706212E9237936C900130B9D /* JudgeBoundView.m in Sources */,
 				706212C9237936C900130B9D /* DZDomainListController.m in Sources */,
 				70621332237936C900130B9D /* ForumCell.m in Sources */,
+				703C425B237D514A0046C398 /* DZiFlyTool.m in Sources */,
 				70632290237C1401005943AB /* BaseThreadListController.m in Sources */,
 				706213CD23793DB700130B9D /* SubjectCell.m in Sources */,
 				947ECB0E2064D403002D3536 /* JFPhotoBrowserViewController.m in Sources */,
@@ -4233,7 +4277,7 @@
 					"DiscuzMobile=1",
 				);
 				INFOPLIST_FILE = DiscuzMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4305,7 +4349,7 @@
 					"DiscuzMobile=1",
 				);
 				INFOPLIST_FILE = DiscuzMobile/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
