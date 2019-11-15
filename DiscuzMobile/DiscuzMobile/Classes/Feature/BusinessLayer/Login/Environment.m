@@ -13,12 +13,10 @@
 + (Environment *)sharedEnvironment
 {
     static Environment * sharedEnvironment;
-    
     @synchronized(self) {
         if (!sharedEnvironment) {
             sharedEnvironment = [[Environment alloc] init];
         }
-        
         return sharedEnvironment;
     }
 }

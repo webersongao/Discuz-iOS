@@ -31,10 +31,8 @@
 }
 // shareSDK参数配置
 - (void)setupShareConfigure {
-    
-    
+
     //新版本注册方法不在需要进行 appkey的注册
-    
     [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
         //QQ
         [platformsRegister setupQQWithAppId:DZ_QQ_APPID appkey:DZ_QQ_APPKEY];

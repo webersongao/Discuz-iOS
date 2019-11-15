@@ -115,6 +115,10 @@
 		703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4251237D32180046C398 /* DZPostUIEditViewController.m */; };
 		703C4258237D51330046C398 /* DZSiriTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4257237D51330046C398 /* DZSiriTool.m */; };
 		703C425B237D514A0046C398 /* DZiFlyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C425A237D514A0046C398 /* DZiFlyTool.m */; };
+		704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8520237E92ED0098C48D /* NSDate+Additions.m */; };
+		704B8526237EA5780098C48D /* DZLocalContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8525237EA5780098C48D /* DZLocalContext.m */; };
+		704B8529237EA5A20098C48D /* DZLocalDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8528237EA5A20098C48D /* DZLocalDataHelper.m */; };
+		704B852D237EA7110098C48D /* DZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B852C237EA7110098C48D /* DZUserModel.m */; };
 		7062106D237935ED00130B9D /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062104F237935ED00130B9D /* UUDatePicker.m */; };
 		7062106E237935ED00130B9D /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621050237935ED00130B9D /* UUDatePicker_DateModel.m */; };
 		7062106F237935ED00130B9D /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 70621054237935ED00130B9D /* ReleaseNotes.txt */; };
@@ -620,6 +624,14 @@
 		703C4257237D51330046C398 /* DZSiriTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZSiriTool.m; sourceTree = "<group>"; };
 		703C4259237D514A0046C398 /* DZiFlyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZiFlyTool.h; sourceTree = "<group>"; };
 		703C425A237D514A0046C398 /* DZiFlyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZiFlyTool.m; sourceTree = "<group>"; };
+		704B8520237E92ED0098C48D /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Additions.m"; sourceTree = "<group>"; };
+		704B8521237E92ED0098C48D /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Additions.h"; sourceTree = "<group>"; };
+		704B8524237EA5780098C48D /* DZLocalContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLocalContext.h; sourceTree = "<group>"; };
+		704B8525237EA5780098C48D /* DZLocalContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLocalContext.m; sourceTree = "<group>"; };
+		704B8527237EA5A20098C48D /* DZLocalDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLocalDataHelper.h; sourceTree = "<group>"; };
+		704B8528237EA5A20098C48D /* DZLocalDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLocalDataHelper.m; sourceTree = "<group>"; };
+		704B852B237EA7110098C48D /* DZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZUserModel.h; sourceTree = "<group>"; };
+		704B852C237EA7110098C48D /* DZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZUserModel.m; sourceTree = "<group>"; };
 		7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
 		7062104F237935ED00130B9D /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
 		70621050237935ED00130B9D /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
@@ -1327,6 +1339,7 @@
 				7062104C237935ED00130B9D /* Library */,
 				706211B4237936C800130B9D /* Module */,
 				7062107A237936C800130B9D /* Feature */,
+				704B8523237EA5460098C48D /* DataBase */,
 				277EDC511E6D5B8D00E8F0E1 /* CustomUI */,
 				27714E361DDC4797008CDC7A /* Resources */,
 				70F9F885237AA72B0067B308 /* Categories */,
@@ -1708,6 +1721,27 @@
 			path = iFly;
 			sourceTree = "<group>";
 		};
+		704B8523237EA5460098C48D /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				704B852A237EA6EF0098C48D /* Model */,
+				704B8524237EA5780098C48D /* DZLocalContext.h */,
+				704B8525237EA5780098C48D /* DZLocalContext.m */,
+				704B8527237EA5A20098C48D /* DZLocalDataHelper.h */,
+				704B8528237EA5A20098C48D /* DZLocalDataHelper.m */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		704B852A237EA6EF0098C48D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				704B852B237EA7110098C48D /* DZUserModel.h */,
+				704B852C237EA7110098C48D /* DZUserModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7062104C237935ED00130B9D /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -1727,10 +1761,10 @@
 		7062104D237935ED00130B9D /* UUDatePicker_Block */ = {
 			isa = PBXGroup;
 			children = (
-				7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */,
-				7062104F237935ED00130B9D /* UUDatePicker.m */,
-				70621050237935ED00130B9D /* UUDatePicker_DateModel.m */,
 				70621051237935ED00130B9D /* UUDatePicker.h */,
+				7062104F237935ED00130B9D /* UUDatePicker.m */,
+				7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */,
+				70621050237935ED00130B9D /* UUDatePicker_DateModel.m */,
 			);
 			path = UUDatePicker_Block;
 			sourceTree = "<group>";
@@ -1749,15 +1783,15 @@
 		7062105A237935ED00130B9D /* TYLaunchAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				7062105B237935ED00130B9D /* TYLaunchFadeScaleAnimation.m */,
-				7062105C237935ED00130B9D /* UIImage+TYLaunchImage.h */,
-				7062105D237935ED00130B9D /* UIView+TYLaunchAnimation.h */,
 				7062105E237935ED00130B9D /* TYLaunchBaseAnimation.h */,
-				7062105F237935ED00130B9D /* TYLaunchFadeScaleAnimation.h */,
-				70621060237935ED00130B9D /* TYLaunchAnimationProtocol.h */,
-				70621061237935ED00130B9D /* UIView+TYLaunchAnimation.m */,
-				70621062237935ED00130B9D /* UIImage+TYLaunchImage.m */,
 				70621063237935ED00130B9D /* TYLaunchBaseAnimation.m */,
+				7062105C237935ED00130B9D /* UIImage+TYLaunchImage.h */,
+				70621062237935ED00130B9D /* UIImage+TYLaunchImage.m */,
+				70621060237935ED00130B9D /* TYLaunchAnimationProtocol.h */,
+				7062105D237935ED00130B9D /* UIView+TYLaunchAnimation.h */,
+				70621061237935ED00130B9D /* UIView+TYLaunchAnimation.m */,
+				7062105F237935ED00130B9D /* TYLaunchFadeScaleAnimation.h */,
+				7062105B237935ED00130B9D /* TYLaunchFadeScaleAnimation.m */,
 			);
 			path = TYLaunchAnimation;
 			sourceTree = "<group>";
@@ -1780,8 +1814,8 @@
 		7062107A237936C800130B9D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				703C4253237D50570046C398 /* Speech */,
 				7062119C237936C800130B9D /* Login */,
+				703C4253237D50570046C398 /* Speech */,
 				70621142237936C800130B9D /* Search */,
 				7062115F237936C800130B9D /* Setting */,
 				7062116A237936C800130B9D /* Thread */,
@@ -2915,11 +2949,11 @@
 			isa = PBXGroup;
 			children = (
 				70F19E54237A8E9900499BED /* TPNavigationBar.h */,
-				70F19E55237A8E9900499BED /* TPNavItemButton.h */,
-				70F19E56237A8E9900499BED /* UIBarButtonItem+TPBarButtonItem.m */,
-				70F19E57237A8E9900499BED /* TPNavItemButton.m */,
 				70F19E58237A8E9900499BED /* TPNavigationBar.m */,
+				70F19E55237A8E9900499BED /* TPNavItemButton.h */,
+				70F19E57237A8E9900499BED /* TPNavItemButton.m */,
 				70F19E59237A8E9900499BED /* UIBarButtonItem+TPBarButtonItem.h */,
+				70F19E56237A8E9900499BED /* UIBarButtonItem+TPBarButtonItem.m */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -2947,21 +2981,21 @@
 		70F9F885237AA72B0067B308 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				70F9F886237AA72B0067B308 /* UIImage */,
-				70F9F88B237AA72B0067B308 /* NSDictionary */,
-				70F9F88E237AA72B0067B308 /* UIScrollView */,
-				70F9F891237AA72B0067B308 /* UIButton */,
 				70F9F896237AA72B0067B308 /* UIColor */,
+				70F9F886237AA72B0067B308 /* UIImage */,
+				70F9F891237AA72B0067B308 /* UIButton */,
 				70F9F899237AA72B0067B308 /* iOSPalette */,
+				70F9F88E237AA72B0067B308 /* UIScrollView */,
+				70F9F88B237AA72B0067B308 /* NSDictionary */,
 				70F9F8AB237AA72B0067B308 /* UIAlertView */,
 				70F9F8AE237AA72B0067B308 /* UIView */,
-				70F9F8B3237AA72B0067B308 /* UIText */,
-				70F9F8B8237AA72B0067B308 /* UIDevice */,
-				70F9F8BB237AA72B0067B308 /* UIImageView */,
 				70F9F8BE237AA72B0067B308 /* Cell */,
-				70F9F8C1237AA72B0067B308 /* NSString */,
-				70F9F8C8237AA72B0067B308 /* MBProgressHUD */,
+				70F9F8B3237AA72B0067B308 /* UIText */,
 				70F9F8CC237AA72B0067B308 /* NSDate */,
+				70F9F8B8237AA72B0067B308 /* UIDevice */,
+				70F9F8C1237AA72B0067B308 /* NSString */,
+				70F9F8BB237AA72B0067B308 /* UIImageView */,
+				70F9F8C8237AA72B0067B308 /* MBProgressHUD */,
 			);
 			name = Categories;
 			path = Utility/Categories;
@@ -2970,10 +3004,10 @@
 		70F9F886237AA72B0067B308 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
-				70F9F887237AA72B0067B308 /* UIImage+Limit.m */,
-				70F9F888237AA72B0067B308 /* UIImage+DrawCricleImage.m */,
-				70F9F889237AA72B0067B308 /* UIImage+DrawCricleImage.h */,
 				70F9F88A237AA72B0067B308 /* UIImage+Limit.h */,
+				70F9F887237AA72B0067B308 /* UIImage+Limit.m */,
+				70F9F889237AA72B0067B308 /* UIImage+DrawCricleImage.h */,
+				70F9F888237AA72B0067B308 /* UIImage+DrawCricleImage.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -2981,8 +3015,8 @@
 		70F9F88B237AA72B0067B308 /* NSDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				70F9F88C237AA72B0067B308 /* NSDictionarySR.m */,
 				70F9F88D237AA72B0067B308 /* NSDictionarySR.h */,
+				70F9F88C237AA72B0067B308 /* NSDictionarySR.m */,
 			);
 			path = NSDictionary;
 			sourceTree = "<group>";
@@ -3070,10 +3104,10 @@
 		70F9F8AE237AA72B0067B308 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				70F9F8AF237AA72B0067B308 /* UIView+CurrentController.h */,
 				70F9F8B0237AA72B0067B308 /* UIView+Extension.h */,
-				70F9F8B1237AA72B0067B308 /* UIView+CurrentController.m */,
 				70F9F8B2237AA72B0067B308 /* UIView+Extension.m */,
+				70F9F8AF237AA72B0067B308 /* UIView+CurrentController.h */,
+				70F9F8B1237AA72B0067B308 /* UIView+CurrentController.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -3082,8 +3116,8 @@
 			isa = PBXGroup;
 			children = (
 				70F9F8B4237AA72B0067B308 /* UITextView+EmojiCheck.h */,
-				70F9F8B5237AA72B0067B308 /* UITextField+EmojiCheck.h */,
 				70F9F8B6237AA72B0067B308 /* UITextView+EmojiCheck.m */,
+				70F9F8B5237AA72B0067B308 /* UITextField+EmojiCheck.h */,
 				70F9F8B7237AA72B0067B308 /* UITextField+EmojiCheck.m */,
 			);
 			path = UIText;
@@ -3119,12 +3153,12 @@
 		70F9F8C1237AA72B0067B308 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
-				70F9F8C2237AA72B0067B308 /* NSMutableAttributedString+JsEmotion.m */,
 				70F9F8C3237AA72B0067B308 /* NSString+EmojiCheck.h */,
-				70F9F8C4237AA72B0067B308 /* NSString+MoreMethod.m */,
 				70F9F8C5237AA72B0067B308 /* NSString+EmojiCheck.m */,
-				70F9F8C6237AA72B0067B308 /* NSMutableAttributedString+JsEmotion.h */,
 				70F9F8C7237AA72B0067B308 /* NSString+MoreMethod.h */,
+				70F9F8C4237AA72B0067B308 /* NSString+MoreMethod.m */,
+				70F9F8C6237AA72B0067B308 /* NSMutableAttributedString+JsEmotion.h */,
+				70F9F8C2237AA72B0067B308 /* NSMutableAttributedString+JsEmotion.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -3142,6 +3176,8 @@
 		70F9F8CC237AA72B0067B308 /* NSDate */ = {
 			isa = PBXGroup;
 			children = (
+				704B8521237E92ED0098C48D /* NSDate+Additions.h */,
+				704B8520237E92ED0098C48D /* NSDate+Additions.m */,
 				70F9F8CD237AA72B0067B308 /* NSDate+Extension.h */,
 				70F9F8CE237AA72B0067B308 /* NSDate+Extension.m */,
 			);
@@ -3809,6 +3845,7 @@
 				70621331237936C900130B9D /* ForumRightCell.m in Sources */,
 				7062128A237936C900130B9D /* PostActivityModel.m in Sources */,
 				70F9F8DA237AA72B0067B308 /* PaletteColorModel.m in Sources */,
+				704B852D237EA7110098C48D /* DZUserModel.m in Sources */,
 				277EDC6F1E6D5B8D00E8F0E1 /* QCheckBox.m in Sources */,
 				706212E1237936C900130B9D /* ThreadDetailView.m in Sources */,
 				273F302C1ECE92EA00C78A6C /* DZArchieverTool.m in Sources */,
@@ -3891,6 +3928,7 @@
 				70621330237936C900130B9D /* ForumLeftCell.m in Sources */,
 				70621286237936C900130B9D /* NewThreadTypeModel.m in Sources */,
 				27CD9D2C1DDEA87F0075831B /* SDWaitingView.m in Sources */,
+				704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */,
 				70621333237936C900130B9D /* FastPostController.m in Sources */,
 				706212D5237936C900130B9D /* ActivityApplyCell.m in Sources */,
 				9492087E20243A8B00543C09 /* JTURLRequest.m in Sources */,
@@ -3978,6 +4016,7 @@
 				70F9F884237A9A9A0067B308 /* LocalStringUtil.m in Sources */,
 				70DFD7AA237A95DE00A13F0F /* DZNoticeModel.m in Sources */,
 				706212E3237936C900130B9D /* DZLoginController.m in Sources */,
+				704B8529237EA5A20098C48D /* DZLocalDataHelper.m in Sources */,
 				70621079237935ED00130B9D /* WebImageCacheUrlProtocol.m in Sources */,
 				9494509121196F8B0074C79E /* AudioManager.m in Sources */,
 				9445AA1C20649D0C0008F641 /* DZApiRequest.m in Sources */,
@@ -4040,6 +4079,7 @@
 				706212DB237936C900130B9D /* PartInNormalCell.m in Sources */,
 				706213E123793E7200130B9D /* DZPublicPMCell.m in Sources */,
 				70632295237C1401005943AB /* RecommendModel.m in Sources */,
+				704B8526237EA5780098C48D /* DZLocalContext.m in Sources */,
 				706AB90D237C06B800BE649F /* MsglistCell.m in Sources */,
 				70F9F8DD237AA72C0067B308 /* UIAlertController+Extension.m in Sources */,
 				706212E8237936C900130B9D /* DZLoginView.m in Sources */,

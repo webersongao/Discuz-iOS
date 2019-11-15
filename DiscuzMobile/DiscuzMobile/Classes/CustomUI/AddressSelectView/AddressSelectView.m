@@ -16,9 +16,7 @@
     NSMutableArray *shengArray;
     NSMutableArray *shiArray;
     NSMutableArray *xianArray;
-    
     UIPickerView *myPickerView;
-    
     NSMutableDictionary *chooseDic;
 }
 

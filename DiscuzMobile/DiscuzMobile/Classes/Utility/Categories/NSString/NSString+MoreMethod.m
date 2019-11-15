@@ -115,7 +115,8 @@
 - (NSString *)utf2gbk {
     NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     // 汉字GBK编码
-    NSString *dataGBK = [self stringByAddingPercentEscapesUsingEncoding:gbkEncoding];
+    NSString *dataGBK = [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
+//    NSString *dataGBK = [self stringByAddingPercentEscapesUsingEncoding:gbkEncoding];
     return  dataGBK;
 }
 
@@ -133,8 +134,7 @@
     else  if ([self floatValue] >= 10000) {
         float i = [self floatValue]/10000;
         return [NSString stringWithFormat:@"%.1f万",i];
-    }
-    else {
+    }else {
         return self;
     }
 }

@@ -19,6 +19,7 @@
 #import "DZURLStrings.h"
 
 #import "DZMobileHeader.h"
+#import "DZLocalContext.h"
 
 #import <FMDB.h>
 #import <YYKit.h>

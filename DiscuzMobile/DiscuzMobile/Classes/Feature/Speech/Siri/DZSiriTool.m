@@ -9,6 +9,8 @@
 #import "DZSiriTool.h"
 #import <AVFoundation/AVFoundation.h>
 #import <Speech/Speech.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface DZSiriTool ()
 
@@ -21,6 +23,11 @@
 @property (nonatomic, strong) SFSpeechRecognizer *speechRecognizer;
 
 @property (nonatomic, strong) SFSpeechAudioBufferRecognitionRequest *speechRequest;
+
+@property (nonatomic, strong) AVAudioRecorder *recorder; // 录音
+
+@property (nonatomic, strong) NSTimer *voiceTimer; // 录音音量计时器
+
 @end
 
 @implementation DZSiriTool
@@ -39,6 +46,7 @@ static DZSiriTool *instance = nil;
 {
     self = [super init];
     if (self) {
+        [self configRecorderStart];
         [self configSiriSpeechRecognizer];
     }
     return self;
@@ -151,6 +159,87 @@ static DZSiriTool *instance = nil;
     _speechRequest = nil;
 }
 
+-(void)configRecorderStart{
+//    https://www.jianshu.com/p/f4597bc61b3e
+    NSMutableDictionary  *recorderDict = [NSMutableDictionary dictionary];
+    // kAudioFormatMPEG4AAC ：xxx.acc；kAudioFormatLinearPCM ：xxx.caf
+    [recorderDict setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+    [recorderDict setValue:[NSNumber numberWithInt:16000] forKey:AVSampleRateKey];
+    
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL URLWithString:@"/Users/webersongao/Desktop/WechatIMG6.caf"] settings:recorderDict error:nil];
+    // 开启音量检测
+    self.recorder.meteringEnabled = YES;
+    
+    if (self.recorder)
+    {
+        // 录音时设置audioSession属性，否则不兼容Ios7
+        AVAudioSession *recordSession = [AVAudioSession sharedInstance];
+        [recordSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+        [recordSession setActive:YES error:nil];
+        
+        if ([self.recorder prepareToRecord])
+        {
+            [self.recorder record];
+            [self startVoiceTimer];
+        }
+    }
+}
 
+// 停止录音
+- (void)recorderStop
+{
+    if (self.recorder)
+    {
+        if ([self.recorder isRecording])
+        {
+            [self.recorder stop];
+            
+            // 停止录音后释放掉
+            self.recorder.delegate = nil;
+            self.recorder = nil;
+        }
+    }
+    
+    [self stopVoiceTimer];
+}
+
+// 开启音量检测
+- (void)startVoiceTimer
+{
+    self.voiceTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(detectionVoice) userInfo:nil repeats: YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.voiceTimer forMode:NSRunLoopCommonModes];
+    [self.voiceTimer setFireDate:[NSDate distantPast]];
+    NSLog(@"开始检测音量");
+}
+
+// 停止音量检测
+- (void)stopVoiceTimer
+{
+    if (self.voiceTimer)
+    {
+        [self.voiceTimer setFireDate:[NSDate distantFuture]];
+        if ([self.voiceTimer isValid])
+        {
+            [self.voiceTimer invalidate];
+        }
+        self.voiceTimer = nil;
+        NSLog(@"停止检测音量");
+    }
+}
+
+// 显示音量
+- (void)detectionVoice
+{
+    // 刷新音量数据
+    [self.recorder updateMeters];
+    
+    //    // 获取音量的平均值
+    //    [self.audioRecorder averagePowerForChannel:0];
+    //    // 音量的最大值
+    //    [self.audioRecorder peakPowerForChannel:0];
+    
+    double voice = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
+    NSLog(@"voice: %f", voice);
+}
 
 @end
