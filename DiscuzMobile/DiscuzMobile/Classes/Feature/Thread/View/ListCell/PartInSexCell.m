@@ -24,7 +24,7 @@
     self.titleLab.font = [DZFontSize HomecellTimeFontSize14];
     [self.contentView addSubview:self.titleLab];
     
-    self.sexSelectView =[[SelectTipView alloc] init];
+    self.sexSelectView =[[DZSelectTipView alloc] init];
     self.sexSelectView.layer.masksToBounds = YES;
     self.sexSelectView.tipLab.text = @"保密";
     [self.contentView addSubview:self.sexSelectView];

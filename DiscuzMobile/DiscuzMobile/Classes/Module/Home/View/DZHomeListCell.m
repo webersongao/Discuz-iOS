@@ -8,9 +8,9 @@
 
 #import "DZHomeListCell.h"
 #import "DZHomeIconTextView.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "UIView+WebCache.h"
-#import "PraiseHelper.h"
+#import "DZPraiseHelper.h"
 #import "JudgeImageModel.h"
 
 @interface DZHomeListCell()
@@ -234,14 +234,14 @@
         [MBProgressHUD showInfo:@"您已赞过该主题"];
     } else {
         
-        if ([LoginModule isLogged]) {
+        if ([DZLoginModule isLogged]) {
             
             self.info.recommend = @"1";
             self.info.recommend_add = [NSString stringWithFormat:@"%ld",[self.info.recommend_add integerValue] + 1];
             [self setPriceSelected];
             self.priceLab.iconV.tintColor = K_Color_Theme;
             self.priceLab.textLab.text = self.info.recommend_add;
-            [PraiseHelper praiseRequestTid:self.info.tid successBlock:^{
+            [DZPraiseHelper praiseRequestTid:self.info.tid successBlock:^{
                 if (self.info.isRecently) {
                     BACK(^{
                         if ([DataCheck isValidString:self.info.tid]) {

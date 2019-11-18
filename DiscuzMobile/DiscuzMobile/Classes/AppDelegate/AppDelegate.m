@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "RNCachingURLProtocol.h"
 #import "DZRootTabBarController.h"
 #import "DZShareCenter.h"
@@ -44,7 +44,7 @@ static AppDelegate *m_appDelegate;
     
     if (![self isFirstInstall]) {
         // 设置 自动登录 cookie等
-        [LoginModule setAutoLogin];
+        [DZLoginModule setAutoLogin];
         [self versionUpdate];
     }
     
@@ -156,7 +156,7 @@ static AppDelegate *m_appDelegate;
     } else {
         if (!self.isOpenUrl) {
             // 检查cookie是否过期
-            [LoginModule checkCookie];
+            [DZLoginModule checkCookie];
         }
         self.isOpenUrl = NO;
     }

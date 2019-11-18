@@ -171,7 +171,7 @@
 //                                                        @"username":user.nickname
                                                         }.mutableCopy;
                            
-                           weakSelf.bloginModel = [TTLoginModel initWithLogintype:type andOpenid:user.uid andGbkname:dataGBK andUsername:user.nickname];
+                           weakSelf.bloginModel = [DZLoginModel initWithLogintype:type andOpenid:user.uid andGbkname:dataGBK andUsername:user.nickname];
                            if ([type isEqualToString:@"weixin"]) {
                                if ([DataCheck isValidString:[user.rawData objectForKey:@"unionid"]]) {
                                    [dic setValue:[user.rawData objectForKey:@"unionid"]  forKey:@"unionid"];

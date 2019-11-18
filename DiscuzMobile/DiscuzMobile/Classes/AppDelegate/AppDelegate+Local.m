@@ -34,6 +34,8 @@ static const char *CLLocation_manager = "CLLocation_manager";
     objc_setAssociatedObject(self, CLLocation_manager, localManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+#pragma mark CLLocationManagerDelegate
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     // CLLocationDegrees lat = locations.lastObject.coordinate.latitude;
     // CLLocationDegrees longt = locations.lastObject.coordinate.longitude;
@@ -57,7 +59,7 @@ static const char *CLLocation_manager = "CLLocation_manager";
             }
         }
         [UIAlertController alertTitle:nil message:str.copy controller:self.window.rootViewController doneText:@"确定" cancelText:nil doneHandle:^{
-            
+            DLog(@"当前用户所在的位置是 %@ ",str);
         } cancelHandle:nil];
         DLog(@"%@",placemarks[0].name);  // 上地三街9号B-401号
         DLog(@"%@",placemarks[0].thoroughfare); // 上地三街

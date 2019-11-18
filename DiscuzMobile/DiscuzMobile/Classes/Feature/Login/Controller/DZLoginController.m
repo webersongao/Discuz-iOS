@@ -10,13 +10,13 @@
 
 #import <ShareSDK/ShareSDK.h>
 
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 
 #import "DZRegisterController.h"
 #import "DZJudgeBoundController.h"
 
 #import "DZLoginView.h"
-#import "LoginCustomView.h"
+#import "DZLoginCustomView.h"
 #import "ZHPickView.h"
 
 #import "DZShareCenter.h"

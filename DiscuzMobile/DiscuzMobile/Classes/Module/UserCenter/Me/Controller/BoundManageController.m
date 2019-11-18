@@ -154,7 +154,7 @@
             if ([DataCheck isValidString:messageStatus]) {
                 if ([messageStatus containsString:@"succeed"]) {
                     [MBProgressHUD showInfo:@"解绑成功"];
-                    //                        [LoginModule cleanLogType];
+                    //                        [DZLoginModule cleanLogType];
                     [self requestData];
                     return;
                 }

@@ -7,7 +7,7 @@
 //
 
 #import "DZUserBoundController.h"
-#import "LoginCustomView.h"
+#import "DZLoginCustomView.h"
 #import "DZAuthCodeView.h"
 #import "DZUserBoundView.h"
 #import "XinGeCenter.h"

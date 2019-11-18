@@ -9,7 +9,7 @@
 #import "DZMsgChatDetailController.h"
 #import "MessageModel.h"
 #import "EmoticonKeyboard.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "ChatContentCell.h"
 
 #import "DZOtherUserController.h"
@@ -254,7 +254,7 @@
         int i = 0;
         for (NSMutableDictionary * dict in dataArray) {//msgfromid   authorid
             NSMutableDictionary  * newDic = [NSMutableDictionary dictionaryWithDictionary:dict];
-            if ([[newDic objectForKey:@"msgfromid"] isEqualToString:[LoginModule getLoggedUid]]) {
+            if ([[newDic objectForKey:@"msgfromid"] isEqualToString:[DZLoginModule getLoggedUid]]) {
                 [newDic setValue:@"0" forKey:@"type"];
             } else {
                 [newDic setValue:@"1" forKey:@"type"];

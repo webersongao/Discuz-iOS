@@ -12,13 +12,13 @@
 
 #import "PostVoteModel.h"
 
-#import "VoteTitleCell.h"
+#import "DZVoteTitleCell.h"
 #import "DZPostSelectTypeCell.h"
-#import "VoteSelectCell.h"
-#import "VoteContentCell.h"
-#import "VoteDayVisableCell.h"
+#import "DZVoteSelectCell.h"
+#import "DZVoteContentCell.h"
+#import "DZVoteDayVisableCell.h"
 #import "AllOneButtonCell.h"
-#import "ActiveDetailCell.h"
+#import "DZActiveDetailCell.h"
 
 
 #import "ImagePickerView.h"
@@ -83,10 +83,10 @@
 
 //  投票项 和 上传图片按钮 放在一个View
 static int i = 0 ;
--(VoteContentCell *)voteContenView{
+-(DZVoteContentCell *)voteContenView{
     
     NSString *CellIdentifier = [NSString stringWithFormat:@"contentcell"];
-    VoteContentCell *contentCell = [[VoteContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    DZVoteContentCell *contentCell = [[DZVoteContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     contentCell.textField.tag = i + 100;
     contentCell.postImageBtn.tag = i + 200;
@@ -215,9 +215,9 @@ static int i = 0 ;
             if (indexPath.row == 0) {
                 
                 NSString *titleid = @"titleid";
-                VoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
+                DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
-                    titleCell = [[VoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
+                    titleCell = [[DZVoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
                 }
                 titleCell.titleTextField.delegate = self;
                 titleCell.titleTextField.tag = 1000 + 1;
@@ -241,9 +241,9 @@ static int i = 0 ;
                         return typeCell;
                     } else {
                         
-                        ActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
+                        DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
                         if (detailCell == nil) {
-                            detailCell = [[ActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+                            detailCell = [[DZActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
                         }
                         detailCell.detailTextView.delegate = self;
                         detailCell.detailTextView.placeholder = @" 详细描述";
@@ -254,9 +254,9 @@ static int i = 0 ;
                     
                 } else {
                     
-                    ActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
+                    DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
                     if (detailCell == nil) {
-                        detailCell = [[ActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+                        detailCell = [[DZActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
                     }
                     detailCell.detailTextView.delegate = self;
                     detailCell.detailTextView.placeholder = @" 详细描述";
@@ -270,7 +270,7 @@ static int i = 0 ;
 
         case 1: {
             
-            VoteContentCell *contentCell = [self.dataSourceArr objectAtIndex:indexPath.row];
+            DZVoteContentCell *contentCell = [self.dataSourceArr objectAtIndex:indexPath.row];
             
             return  contentCell;
             
@@ -280,9 +280,9 @@ static int i = 0 ;
         case 2: {
             
             NSString *dayid = @"dayid";
-            VoteDayVisableCell *dayVisableCell = [tableView dequeueReusableCellWithIdentifier:dayid];
+            DZVoteDayVisableCell *dayVisableCell = [tableView dequeueReusableCellWithIdentifier:dayid];
             if (dayVisableCell == nil) {
-                dayVisableCell = [[VoteDayVisableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dayid];
+                dayVisableCell = [[DZVoteDayVisableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dayid];
                 dayVisableCell.checkBox.delegate = self;
                 dayVisableCell.checkBox1.delegate = self;
                 dayVisableCell.dayNumTextField.delegate = self;
@@ -351,7 +351,7 @@ static int i = 0 ;
                 [MBProgressHUD showInfo:@"最少两个选项"];
             } else {
                 
-                VoteContentCell *contentCell = [self.dataSourceArr objectAtIndex:indexPath.row];
+                DZVoteContentCell *contentCell = [self.dataSourceArr objectAtIndex:indexPath.row];
                 NSInteger tag = contentCell.postImageBtn.tag;
                 if (self.pollImageDic.count > 0) {
                     [self.pollImageDic removeObjectForKey:[NSString stringWithFormat:@"%ld",tag]];
@@ -406,7 +406,7 @@ static int i = 0 ;
     self.voteModel.polloptionArr = [NSMutableArray array];
     
     for (int i = 0; i < self.dataSourceArr.count; i ++) {
-        VoteContentCell *cell = self.dataSourceArr[i];
+        DZVoteContentCell *cell = self.dataSourceArr[i];
         if (![DataCheck isValidString:cell.textField.text]) {
             [MBProgressHUD showInfo:@"投票选项为空请重新填写"];
             return;
@@ -466,7 +466,7 @@ static int i = 0 ;
 
 - (NSArray *)getPollImageArr {
     NSInteger t = 0;
-    for (VoteContentCell *cell in self.dataSourceArr) {
+    for (DZVoteContentCell *cell in self.dataSourceArr) {
         NSString *key = [NSString stringWithFormat:@"%ld",cell.postImageBtn.tag];
         if ([self.pollImageDic objectForKey:key] == nil) {
             [self.pollImageDic setValue:[NSString stringWithFormat:@"-%ld",t] forKey:key];

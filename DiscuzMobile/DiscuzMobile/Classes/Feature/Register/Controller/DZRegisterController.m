@@ -11,8 +11,8 @@
 
 #import "DZRegisterView.h"
 #import "DZAuthCodeView.h"
-#import "LoginCustomView.h"
-#import "Web2AuthCodeView.h"
+#import "DZLoginCustomView.h"
+#import "DZWeb2AuthCodeView.h"
 
 #import "XinGeCenter.h"
 #import "CheckHelper.h"
@@ -161,7 +161,7 @@
         }
     }
     
-    TTLoginModel *bloginModel = [DZShareCenter shareInstance].bloginModel;
+    DZLoginModel *bloginModel = [DZShareCenter shareInstance].bloginModel;
     if (bloginModel != nil) { // 三方登录过来的注册
         [getData setValue:bloginModel.logintype forKey:@"type"];
         [postData setValue:bloginModel.openid forKey:@"openid"];

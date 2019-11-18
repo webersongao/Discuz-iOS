@@ -10,7 +10,7 @@
 #import "DZSettingController.h"
 #import "RNCachingURLProtocol.h"
 #import "ForumCell.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "DZHomeListCell.h"
 #import "ThreadListModel.h"
 #import "DZForumInfoModel.h"
@@ -103,7 +103,7 @@
     // 注释banner接口，该模块暂不可用
 //    [self downLoadForumHomeBanner];
     
-    if ([LoginModule isLogged]) { // 收藏版块
+    if ([DZLoginModule isLogged]) { // 收藏版块
         [self downLoadFavForumData];
     } else { // 热门版块
         [self downLoadDataWtihForumType:@"hotforum"];

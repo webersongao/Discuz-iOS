@@ -7,7 +7,7 @@
 //
 
 #import "PartInMultiSelectCell.h"
-#import "SelectTypeButton.h"
+#import "DZSelectTypeButton.h"
 
 @interface PartInMultiSelectCell()
 
@@ -75,7 +75,7 @@
             
             [multiSelectArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 {
-                    SelectTypeButton *button = [SelectTypeButton buttonWithType:UIButtonTypeCustom];
+                    DZSelectTypeButton *button = [DZSelectTypeButton buttonWithType:UIButtonTypeCustom];
                     [button setTitle:obj forState:UIControlStateNormal];
                     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                     button.titleLabel.font = [DZFontSize forumtimeFontSize14];
@@ -132,7 +132,7 @@
 }
 
 
--(void)postxuangxiangClick:(SelectTypeButton *)btn {
+-(void)postxuangxiangClick:(DZSelectTypeButton *)btn {
     
     if (btn.isSelect) {
         if ([self.userArray containsObject:btn.activityValue]) {

@@ -12,8 +12,7 @@
 #import "XinGeCenter.h"
 #import "DZResetPwdView.h"
 #import "DZAuthCodeView.h"
-#import "LoginCustomView.h"
-#import "Web2AuthCodeView.h"
+#import "DZLoginCustomView.h"
 
 @interface DZResetPwdController ()
 @property (nonatomic,strong) DZResetPwdView *resetView;
@@ -131,7 +130,7 @@
         [self.HUD hide];
         if ([[responseObject messageval] containsString:@"succeed"]) {
             [MBProgressHUD showInfo:@"修改密码成功，请重新登录"];
-            [LoginModule signout];
+            [DZLoginModule signout];
             [self.navigationController popViewControllerAnimated:NO];
             [[NSNotificationCenter defaultCenter] postNotificationName:DZ_UserSignOut_Notify object:nil];
         } else {

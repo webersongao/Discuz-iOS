@@ -13,7 +13,7 @@
 #import "UIAlertController+Extension.h"
 
 #import "ThreadListModel.h"
-#import "ThreadListModel+Forumdisplay.h"
+#import "ThreadListModel+Display.h"
 #import "DZShareCenter.h"
 #import "ResponseMessage.h"
 #import "AsyncAppendency.h"

@@ -219,7 +219,7 @@
         //开启
         [[XinGeCenter shareInstance] Reregistration];
         
-        if (![LoginModule isLogged]) {
+        if (![DZLoginModule isLogged]) {
             return;
         } else {
             [[XinGeCenter shareInstance] setXG];

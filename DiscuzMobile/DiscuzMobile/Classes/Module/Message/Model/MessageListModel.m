@@ -30,8 +30,7 @@
 //    }
     else if ([key isEqualToString:@"message"]) {
         _message = [value transformationStr];
-    }
-    else {
+    }else {
         [super setValue:value forKey:key];
     }
 }

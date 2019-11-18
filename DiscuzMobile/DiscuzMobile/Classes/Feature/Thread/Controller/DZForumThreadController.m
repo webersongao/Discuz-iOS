@@ -9,7 +9,7 @@
 #import "DZForumThreadController.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
-#import "CollectionTool.h"
+#import "DZCollectionTool.h"
 #import "UploadTool.h"
 
 #import "ViewPollPotionNumberViewController.h"
@@ -20,7 +20,7 @@
 #import "ThreadModel.h"
 #import "ResponseMessage.h"
 #import "SeccodeverifyView.h"
-#import "PraiseHelper.h"
+#import "DZPraiseHelper.h"
 #import "WSImageModel.h"
 #import "JudgeImageModel.h"
 #import "DZDevice.h"
@@ -555,7 +555,7 @@
         [MBProgressHUD showInfo:@"您已赞过该主题"];
     } else {
         
-        [PraiseHelper praiseRequestTid:self.threadModel.tid successBlock:^{
+        [DZPraiseHelper praiseRequestTid:self.threadModel.tid successBlock:^{
             [self.HUD hide];
             [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
             self.threadModel.recommend = @"1";
@@ -601,7 +601,7 @@
     NSDictionary * getdic=@{@"id":self.tid};
     NSDictionary * dic=@{@"formhash":[Environment sharedEnvironment].formhash};
     if (btn.tag == 100001) {
-        [[CollectionTool shareInstance] collectionThread:getdic andPostdic:dic success:^{
+        [[DZCollectionTool shareInstance] collectionThread:getdic andPostdic:dic success:^{
             [self.HUD hide];
             [self setIsCollection:btn];
         } failure:nil];
@@ -614,7 +614,7 @@
         NSDictionary *postDic = @{@"deletesubmit":@"true",
                                   @"formhash":[Environment sharedEnvironment].formhash
                                   };
-        [[CollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
             [self setNotCollection:btn];
         } failure:nil];
     }
@@ -691,7 +691,7 @@
                 self.title = forumnames;
             }
             
-            if ([LoginModule isLogged]) {
+            if ([DZLoginModule isLogged]) {
                 if ([self.threadModel.favorited isEqualToString:@"1"]) {
                     [self setIsCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
                     

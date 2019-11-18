@@ -7,8 +7,8 @@
 //
 
 #import "DZRegisterView.h"
-#import "LoginCustomView.h"
-#import "Web2AuthCodeView.h"
+#import "DZLoginCustomView.h"
+#import "DZWeb2AuthCodeView.h"
 #import "DZShareCenter.h"
 
 #define TEXTHEIGHT 50
@@ -52,7 +52,7 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.usernameView = [[LoginCustomView alloc] init];
+    self.usernameView = [[DZLoginCustomView alloc] init];
     self.usernameView.userNameTextField.tag = 101;
     self.usernameView.userNameTextField.delegate = self;
     self.usernameView.imgView.image = [UIImage imageNamed:@"log_u"];
@@ -65,7 +65,7 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.passwordView = [[LoginCustomView alloc] init];
+    self.passwordView = [[DZLoginCustomView alloc] init];
     self.passwordView.userNameTextField.tag = 102;
     self.passwordView.userNameTextField.delegate = self;
     self.passwordView.userNameTextField.placeholder = @"密码";
@@ -79,7 +79,7 @@
         make.left.equalTo(self.usernameView.mas_left);
     }];
     
-    self.repassView = [[LoginCustomView alloc] init];
+    self.repassView = [[DZLoginCustomView alloc] init];
     self.repassView.userNameTextField.placeholder = @"重复密码";
     self.repassView.imgView.image = [UIImage imageNamed:@"log_r"];
     self.repassView.userNameTextField.tag = 103;
@@ -93,7 +93,7 @@
         make.left.equalTo(self.passwordView.mas_left);
     }];
     
-    self.emailView = [[LoginCustomView alloc] init];
+    self.emailView = [[DZLoginCustomView alloc] init];
     [contentView addSubview:self.emailView];
     self.emailView.backgroundColor = [UIColor whiteColor];
     self.emailView.imgView.image = [UIImage imageNamed:@"log_e"];
@@ -107,7 +107,7 @@
     }];
     
     // 验证码 有无
-    self.authCodeView = [[Web2AuthCodeView alloc] init];
+    self.authCodeView = [[DZWeb2AuthCodeView alloc] init];
     self.authCodeView.hidden = YES;
     self.authCodeView.textField.delegate = self;
     [contentView addSubview:self.authCodeView];

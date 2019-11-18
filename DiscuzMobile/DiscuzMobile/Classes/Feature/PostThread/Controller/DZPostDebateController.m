@@ -10,12 +10,12 @@
 #import "UIAlertController+Extension.h"
 #import "NewThreadTypeModel.h"
 #import "AllOneButtonCell.h"
-#import "VoteTitleCell.h"
+#import "DZVoteTitleCell.h"
 #import "DZPostSelectTypeCell.h"
-#import "ActiveDetailCell.h"
-#import "ViewpointCell.h"
-#import "EndtimeCell.h"
-#import "RefereeCell.h"
+#import "DZActiveDetailCell.h"
+#import "DZViewpointCell.h"
+#import "DZEndtimeCell.h"
+#import "DZRefereeCell.h"
 #import "SeccodeverifyView.h"
 #import "ZHPickView.h"
 
@@ -118,9 +118,9 @@
             if (indexPath.row == 0) {
                 
                 NSString *titleid = @"titleid";
-                VoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
+                DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
-                    titleCell = [[VoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
+                    titleCell = [[DZVoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
                 }
                 titleCell.titleTextField.delegate = self;
                 titleCell.titleTextField.tag = 1001;
@@ -157,15 +157,14 @@
         case 1:
         {
             NSString *viewpoinId = @"viewpointid";
-            ViewpointCell *viewpointCell = [tableView dequeueReusableCellWithIdentifier:viewpoinId];
-            if (viewpointCell == nil) {
-                viewpointCell = [[ViewpointCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:viewpoinId];
-                viewpointCell.positiveTextView.delegate = self;
-                viewpointCell.oppositeTextView.delegate = self;
-                viewpointCell.positiveTextView.tag = 2002;
-                viewpointCell.oppositeTextView.tag = 2003;
+            DZViewpointCell *pointCell = [tableView dequeueReusableCellWithIdentifier:viewpoinId];
+            if (pointCell == nil) {
+                pointCell = [[DZViewpointCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:viewpoinId];
+                pointCell.oppositeTextView.delegate = self;
+                pointCell.positiveTextView.tag = 2002;
+                pointCell.oppositeTextView.tag = 2003;
             }
-            return viewpointCell;
+            return pointCell;
         }
             break;
         case 2:
@@ -173,21 +172,21 @@
             NSString *endtimeId = @"endtimeid";
             NSString *refereeId = @"refereeid";
             if (indexPath.row == 0) {
-                EndtimeCell *endtimeCell = [tableView dequeueReusableCellWithIdentifier:endtimeId];
-                if (endtimeCell == nil) {
-                    endtimeCell = [[EndtimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:endtimeId];
-                    endtimeCell.contentTextfield.delegate =self;
-                    endtimeCell.contentTextfield.tag = 1002;
+                DZEndtimeCell *timeCell = [tableView dequeueReusableCellWithIdentifier:endtimeId];
+                if (timeCell == nil) {
+                    timeCell = [[DZEndtimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:endtimeId];
+                    timeCell.contentTextfield.delegate =self;
+                    timeCell.contentTextfield.tag = 1002;
                 }
-                return endtimeCell;
+                return timeCell;
             } else {
-                RefereeCell *refereeCell = [tableView dequeueReusableCellWithIdentifier:refereeId];
-                if (refereeCell == nil) {
-                    refereeCell = [[RefereeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:refereeId];
-                    refereeCell.contentTextfield.delegate =self;
-                    refereeCell.contentTextfield.tag = 1003;
+                DZRefereeCell *refereCell = [tableView dequeueReusableCellWithIdentifier:refereeId];
+                if (refereCell == nil) {
+                    refereCell = [[DZRefereeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:refereeId];
+                    refereCell.contentTextfield.delegate = self;
+                    refereCell.contentTextfield.tag = 1003;
                 }
-                return refereeCell;
+                return refereCell;
             }
         }
             break;
@@ -210,11 +209,11 @@
     }
 }
 
-- (ActiveDetailCell *)detailCell:(UITableView *)tableView {
+- (DZActiveDetailCell *)detailCell:(UITableView *)tableView {
     NSString *CellId = @"detailId";
-    ActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
     if (detailCell == nil) {
-        detailCell = [[ActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        detailCell = [[DZActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
     detailCell.detailTextView.delegate = self;
     detailCell.detailTextView.placeholder = @" 详细描述";

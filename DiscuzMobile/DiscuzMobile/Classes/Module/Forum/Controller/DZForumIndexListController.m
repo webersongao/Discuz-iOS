@@ -11,7 +11,7 @@
 #import "ForumLeftCell.h"
 #import "ForumRightCell.h"
 #import "LianMixAllViewController.h"
-#import "CollectionTool.h"
+#import "DZCollectionTool.h"
 #import "LightGrayButton.h"
 #import "AsyncAppendency.h"
 
@@ -260,7 +260,7 @@
         
         NSDictionary *getdic =@{@"id":model.fid};
         NSDictionary *dic = @{@"formhash":[Environment sharedEnvironment].formhash};
-        [[CollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
+        [[DZCollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
             btn.lighted = NO;
             model.favorited = @"1";
         } failure:nil];
@@ -272,7 +272,7 @@
         NSDictionary *postDic = @{@"deletesubmit":@"true",
                                   @"formhash":[Environment sharedEnvironment].formhash
                                   };
-        [[CollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
             btn.lighted = YES;
             model.favorited = @"0";
         } failure:nil];

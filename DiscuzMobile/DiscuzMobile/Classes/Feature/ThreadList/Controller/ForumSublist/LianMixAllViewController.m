@@ -8,7 +8,7 @@
 
 #import "LianMixAllViewController.h"
 
-#import "CollectionTool.h"
+#import "DZCollectionTool.h"
 
 #import "LianCollectionController.h"
 #import "FListController.h"
@@ -20,9 +20,9 @@
 #import "DZPostActivityViewController.h"
 #import "MySubjectViewController.h"
 
-#import "ForumListModel.h"
-#import "PostTypeSelectView.h"
-#import "ForumInfoView.h"
+#import "DZForumListModel.h"
+#import "DZPostTypeSelectView.h"
+#import "DZForumInfoView.h"
 
 #import "DZForumInfoModel.h"
 #import "RootForumCell.h"
@@ -32,7 +32,7 @@
 
 @interface LianMixAllViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) ForumInfoView *infoView;
+@property (nonatomic, strong) DZForumInfoView *infoView;
 
 @property (nonatomic, strong) NSDictionary *Variables;
 
@@ -46,7 +46,7 @@
 
 @property (nonatomic, strong) UITableViewCell *contentCell;
 
-@property (nonatomic, strong) NSMutableArray <ForumListModel *> *titleArr;
+@property (nonatomic, strong) NSMutableArray <DZForumListModel *> *titleArr;
 
 @property (nonatomic, strong) DZForumInfoModel *forumInfo;
 
@@ -55,7 +55,7 @@
 
 @property (nonatomic, strong) NSMutableArray<DZForumInfoModel *> *subForumArr;
 
-@property (nonatomic, strong) PostTypeSelectView *selectView;
+@property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, strong) DropTipView *tipView;
 
 @end
@@ -105,10 +105,10 @@
     self.foldTableView.dataSource = self;
     [self.headView addSubview:self.foldTableView];
     
-    ForumListModel *m1 = [ForumListModel initWithName:@"全部" andWithFid:self.forumFid];
-    ForumListModel *m2 = [ForumListModel initWithName:@"最新" andWithFid:self.forumFid];
-    ForumListModel *m3 = [ForumListModel initWithName:@"热门" andWithFid:self.forumFid];
-    ForumListModel *m4 = [ForumListModel initWithName:@"精华" andWithFid:self.forumFid];
+    DZForumListModel *m1 = [DZForumListModel initWithName:@"全部" andWithFid:self.forumFid];
+    DZForumListModel *m2 = [DZForumListModel initWithName:@"最新" andWithFid:self.forumFid];
+    DZForumListModel *m3 = [DZForumListModel initWithName:@"热门" andWithFid:self.forumFid];
+    DZForumListModel *m4 = [DZForumListModel initWithName:@"精华" andWithFid:self.forumFid];
     
     [self.titleArr addObject:m1];
     [self.titleArr addObject:m2];
@@ -137,7 +137,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTypeView)];
     [postBtn addGestureRecognizer:tap];
     [self.view addSubview:postBtn];
-    self.selectView = [[PostTypeSelectView alloc] init];
+    self.selectView = [[DZPostTypeSelectView alloc] init];
     self.selectView.typeBlock = ^(PostType type) {
         [weakSelf.selectView close];
         [weakSelf switchTypeTopost:type];
@@ -192,7 +192,7 @@
 
 - (void)setForumInfoHeader {
     
-    self.infoView = [[ForumInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 75 + 10)];
+    self.infoView = [[DZForumInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 75 + 10)];
     [self.infoView.collectionBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.headView addSubview:self.infoView];
@@ -231,7 +231,7 @@
         
         NSDictionary *getdic =@{@"id":self.forumFid};
         NSDictionary *dic = @{@"formhash":[Environment sharedEnvironment].formhash};
-        [[CollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
+        [[DZCollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
             [self setIsCollection];
         } failure:nil];
         
@@ -242,7 +242,7 @@
         NSDictionary *postDic = @{@"deletesubmit":@"true",
                                   @"formhash":[Environment sharedEnvironment].formhash
                                   };
-        [[CollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
             [self setNotCollection];
         } failure:nil];
         
@@ -464,7 +464,7 @@
         if (self.ctvArr.count == 0) {
             NSMutableArray *vcArr = [NSMutableArray array];
             WEAKSELF;
-            [self.titleArr enumerateObjectsUsingBlock:^(ForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.titleArr enumerateObjectsUsingBlock:^(DZForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 FListController *listVc = [[FListController alloc] init];
                 listVc.title = obj.name;

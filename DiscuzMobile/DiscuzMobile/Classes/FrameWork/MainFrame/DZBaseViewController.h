@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "EmptyAlertView.h"
 
 typedef NS_ENUM(NSUInteger, NavDirection) {

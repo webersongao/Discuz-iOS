@@ -345,7 +345,7 @@
 }
 
 - (void)signout {
-    [LoginModule signout];
+    [DZLoginModule signout];
     [self initData];
     [self.tableView reloadData];
     [self initLogin];

@@ -8,9 +8,9 @@
 
 #import "BaseStyleCell.h"
 #import "DZHomeIconTextView.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 #import "UIView+WebCache.h"
-#import "PraiseHelper.h"
+#import "DZPraiseHelper.h"
 #import "JudgeImageModel.h"
 
 @interface BaseStyleCell()
@@ -323,7 +323,7 @@
 
 - (void)recommendAction:(UIGestureRecognizer *)sender {
     
-    if (![LoginModule isLogged]) {
+    if (![DZLoginModule isLogged]) {
         UIViewController *controller = [self jtGetViewController];
         [[DZMobileCtrl sharedCtrl] PresentLoginController:controller tabSelect:YES];
         
@@ -340,7 +340,7 @@
         [self setPriceSelected];
         self.priceLab.iconV.tintColor = K_Color_Theme;
         self.priceLab.textLab.text = self.info.recommend_add;
-        [PraiseHelper praiseRequestTid:self.info.tid successBlock:^{
+        [DZPraiseHelper praiseRequestTid:self.info.tid successBlock:^{
             if (self.info.isRecently) {
                 BACK(^{
                     if ([DataCheck isValidString:self.info.tid]) {

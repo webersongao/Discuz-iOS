@@ -10,7 +10,7 @@
 #import "WSPhotosBroseVC.h"
 #import "JFImagePickerController.h"
 #import "JTImagePickerCell.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 
 static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
 
@@ -137,7 +137,7 @@ static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 //    NSMutableArray *tmpArray = [NSMutableArray new];
-    if (![LoginModule isLogged]) {
+    if (![DZLoginModule isLogged]) {
         [[DZMobileCtrl sharedCtrl] PresentLoginController:nil];
         return;
     }

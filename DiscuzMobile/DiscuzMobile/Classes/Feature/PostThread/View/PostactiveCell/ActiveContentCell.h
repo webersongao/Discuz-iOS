@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SelectTipView.h"
+#import "DZSelectTipView.h"
 
 @interface ActiveContentCell : UITableViewCell
 
@@ -15,9 +15,9 @@
 @property (nonatomic, strong) UITextField *cityTextField;
 @property (nonatomic, strong) UITextField *peopleNumTextField;
 @property (nonatomic, strong) UITextField *classTextField;
-@property (nonatomic, strong) SelectTipView *sexSelectView;
+@property (nonatomic, strong) DZSelectTipView *sexSelectView;
 @property (nonatomic, strong) UIButton * Dropdownbtn;
-@property (nonatomic, strong) SelectTipView *classSelectView;
+@property (nonatomic, strong) DZSelectTipView *classSelectView;
 
 @property (nonatomic, strong) UIButton *nameBtn;
 @property (nonatomic, strong) UIButton *phoneBtn;

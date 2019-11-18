@@ -13,8 +13,8 @@
 #import "DZShareCenter.h"
 
 #import "WXApi.h"
-#import "LoginCustomView.h"
-#import "Web2AuthCodeView.h"
+#import "DZLoginCustomView.h"
+#import "DZWeb2AuthCodeView.h"
 #import "ZHPickView.h"
 
 #define TEXTHEIGHT 50
@@ -57,7 +57,7 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.countView = [[LoginCustomView alloc] init];
+    self.countView = [[DZLoginCustomView alloc] init];
     self.countView.userNameTextField.tag = 101;
     self.countView.userNameTextField.placeholder = @"账号";
     self.countView.imgView.image = [UIImage imageNamed:@"log_u"];
@@ -69,7 +69,7 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.pwordView = [[LoginCustomView alloc] init];
+    self.pwordView = [[DZLoginCustomView alloc] init];
     self.pwordView.userNameTextField.tag = 102;
     self.pwordView.userNameTextField.placeholder = @"密码";
     self.pwordView.userNameTextField.secureTextEntry = YES;
@@ -82,7 +82,7 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.securityView = [[LoginCustomView alloc] init];
+    self.securityView = [[DZLoginCustomView alloc] init];
     self.securityView.userNameTextField.placeholder = @"安全提问（未设置请忽略）";
     self.securityView.imgView.image = [UIImage imageNamed:@"log_s"];
     self.securityView.userNameTextField.tag = 103;
@@ -98,7 +98,7 @@
     }];
     
     
-    self.answerView = [[LoginCustomView alloc] init];
+    self.answerView = [[DZLoginCustomView alloc] init];
     self.answerView.imgView.hidden = YES;
     [contentView addSubview:self.answerView];
     self.answerView.backgroundColor = [UIColor whiteColor];
@@ -114,7 +114,7 @@
     }];
     
     // 验证码 有无
-    self.authCodeView = [[Web2AuthCodeView alloc] init];
+    self.authCodeView = [[DZWeb2AuthCodeView alloc] init];
     self.authCodeView.hidden = YES;
     
     [contentView addSubview:self.authCodeView];

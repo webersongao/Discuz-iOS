@@ -80,7 +80,7 @@ NSString * const domainName = @"name";
                               };
         [self.dataSourceArr addObject:dic];
         [[DZFileManager shareInstance] writeDocumentPlist:@{domain:self.dataSourceArr} fileName:@"domainList"];
-        [LoginModule signout];
+        [DZLoginModule signout];
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_DomainUrlChange_Notify object:nil];
         [self.tableView reloadData];
     }];
@@ -129,7 +129,7 @@ NSString * const domainName = @"name";
     if (![detail isEqualToString:DZ_BASEURL] || !([DataCheck isValidString:nowDomain] && [nowDomain isEqualToString:detail])) {
         [userDefault setObject:detail forKey:domain];
         [userDefault synchronize];
-        [LoginModule signout];
+        [DZLoginModule signout];
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_DomainUrlChange_Notify object:Nil];
         [tableView reloadData];
     }

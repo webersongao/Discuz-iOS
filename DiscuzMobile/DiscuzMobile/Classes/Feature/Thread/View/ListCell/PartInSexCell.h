@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SelectTipView.h"
+#import "DZSelectTipView.h"
 
 @interface PartInSexCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLab;
-@property (nonatomic, strong) SelectTipView *sexSelectView;
+@property (nonatomic, strong) DZSelectTipView *sexSelectView;
 
 @end

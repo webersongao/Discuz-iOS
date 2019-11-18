@@ -16,8 +16,8 @@
 #import "SeccodeverifyView.h"
 #import "NewThreadTypeModel.h"
 #import "DZPostSelectTypeCell.h"
-#import "VoteTitleCell.h"
-#import "NormalDetailCell.h"
+#import "DZVoteTitleCell.h"
+#import "DZNormalDetailCell.h"
 #import "DZNormalThreadToolCell.h"
 #import "DZAudioListCell.h"
 
@@ -145,9 +145,9 @@
             if (indexPath.row == 0) {
                 
                 NSString *titleid = @"titleid";
-                VoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
+                DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
-                    titleCell = [[VoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
+                    titleCell = [[DZVoteTitleCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:titleid];
                 }
                 titleCell.titleTextField.delegate = self;
                 titleCell.titleTextField.text = self.normalModel.subject;
@@ -225,11 +225,11 @@
   
 }
 
-- (NormalDetailCell *)detailCell {
+- (DZNormalDetailCell *)detailCell {
     NSString *CellId = @"detailId";
-    NormalDetailCell *detailCell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
+    DZNormalDetailCell *detailCell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
     if (detailCell == nil) {
-        detailCell = [[NormalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        detailCell = [[DZNormalDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
     detailCell.textView.delegate = self;
     detailCell.textView.text = self.normalModel.message;
@@ -294,7 +294,7 @@
         if (self.typeArray.count > 0) {
             indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
         }
-        NormalDetailCell *detailCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        DZNormalDetailCell *detailCell = [self.tableView cellForRowAtIndexPath:indexPath];
         [detailCell.textView replaceRange:detailCell.textView.selectedTextRange withText:text];
         self.normalModel.message = detailCell.textView.text;
     }
@@ -305,7 +305,7 @@
     if (self.typeArray.count > 0) {
         indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     }
-    NormalDetailCell *detailCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    DZNormalDetailCell *detailCell = [self.tableView cellForRowAtIndexPath:indexPath];
     [detailCell.textView deleteBackward];
 }
 

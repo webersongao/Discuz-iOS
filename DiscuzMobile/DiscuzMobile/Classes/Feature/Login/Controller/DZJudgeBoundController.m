@@ -8,11 +8,11 @@
 
 #import "DZJudgeBoundController.h"
 #import "DZRegisterController.h"
-#import "JudgeBoundView.h"
+#import "DZJudgeBoundView.h"
 
 @interface DZJudgeBoundController ()
 
-@property (nonatomic,strong) JudgeBoundView *judgeView;
+@property (nonatomic,strong) DZJudgeBoundView *judgeView;
 
 @end
 
@@ -20,7 +20,7 @@
 
 - (void)loadView {
     [super loadView];
-    _judgeView = [[JudgeBoundView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _judgeView = [[DZJudgeBoundView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = _judgeView;
 }
 

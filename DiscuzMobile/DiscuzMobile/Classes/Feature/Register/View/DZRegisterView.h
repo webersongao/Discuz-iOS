@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "UsertermsView.h"
 
-@class LoginCustomView,DZAuthCodeView,Web2AuthCodeView;
+@class DZLoginCustomView,DZAuthCodeView,DZWeb2AuthCodeView;
 
 @interface DZRegisterView : UIScrollView <UITextFieldDelegate>
-@property (nonatomic, strong) LoginCustomView *usernameView;
-@property (nonatomic, strong) LoginCustomView *passwordView;
-@property (nonatomic, strong) LoginCustomView *repassView;
-@property (nonatomic, strong) LoginCustomView *emailView;
-@property (nonatomic, strong) Web2AuthCodeView *authCodeView;
+@property (nonatomic, strong) DZLoginCustomView *usernameView;
+@property (nonatomic, strong) DZLoginCustomView *passwordView;
+@property (nonatomic, strong) DZLoginCustomView *repassView;
+@property (nonatomic, strong) DZLoginCustomView *emailView;
+@property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 @property (nonatomic, strong) UILabel *thridAuthTipLabl;
 
 @property (nonatomic, strong) UIButton *registerButton;

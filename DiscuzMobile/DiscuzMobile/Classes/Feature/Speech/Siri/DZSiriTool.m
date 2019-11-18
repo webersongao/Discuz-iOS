@@ -209,7 +209,7 @@ static DZSiriTool *instance = nil;
     self.voiceTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(detectionVoice) userInfo:nil repeats: YES];
     [[NSRunLoop currentRunLoop] addTimer:self.voiceTimer forMode:NSRunLoopCommonModes];
     [self.voiceTimer setFireDate:[NSDate distantPast]];
-    NSLog(@"开始检测音量");
+    DLog(@"开始检测音量");
 }
 
 // 停止音量检测
@@ -223,7 +223,7 @@ static DZSiriTool *instance = nil;
             [self.voiceTimer invalidate];
         }
         self.voiceTimer = nil;
-        NSLog(@"停止检测音量");
+        DLog(@"停止检测音量");
     }
 }
 
@@ -239,7 +239,7 @@ static DZSiriTool *instance = nil;
     //    [self.audioRecorder peakPowerForChannel:0];
     
     double voice = pow(10, (0.05 * [self.recorder peakPowerForChannel:0]));
-    NSLog(@"voice: %f", voice);
+    DLog(@"WBS voice音量大小: %f", voice);
 }
 
 @end

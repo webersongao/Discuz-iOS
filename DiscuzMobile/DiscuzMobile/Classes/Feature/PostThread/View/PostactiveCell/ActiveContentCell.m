@@ -102,7 +102,7 @@
     sexNumLable.text = @"性别:";
     sexNumLable.font = [DZFontSize forumtimeFontSize14];
     [self.contentView addSubview:sexNumLable];
-    self.sexSelectView =[[SelectTipView alloc] initWithFrame:CGRectMake(sexNumLable.frame.size.width +sexNumLable.frame.origin.x + 5,CGRectGetMinY(self.peopleNumTextField.frame) + 5, KScreenWidth - numWidth - numspace - 70 - CGRectGetWidth(self.peopleNumTextField.frame), 33)];
+    self.sexSelectView =[[DZSelectTipView alloc] initWithFrame:CGRectMake(sexNumLable.frame.size.width +sexNumLable.frame.origin.x + 5,CGRectGetMinY(self.peopleNumTextField.frame) + 5, KScreenWidth - numWidth - numspace - 70 - CGRectGetWidth(self.peopleNumTextField.frame), 33)];
     self.sexSelectView.layer.masksToBounds = YES;
     self.sexSelectView.layer.borderColor = K_Color_Line.CGColor;
     self.sexSelectView.layer.borderWidth = 1;
@@ -115,7 +115,7 @@
 //    [self.contentView addSubview:lineLabel5];
     
     
-    self.classSelectView = [[SelectTipView alloc] initWithFrame:CGRectMake(self.classTextField.frame.size.width+self.classTextField.frame.origin.x +10,lineLabel2.frame.origin.y + lineLabel2.frame.size.height + 10, 100, 33)];
+    self.classSelectView = [[DZSelectTipView alloc] initWithFrame:CGRectMake(self.classTextField.frame.size.width+self.classTextField.frame.origin.x +10,lineLabel2.frame.origin.y + lineLabel2.frame.size.height + 10, 100, 33)];
     self.classSelectView.layer.masksToBounds = YES;
     self.classSelectView.layer.borderColor = K_Color_Line.CGColor;
     self.classSelectView.layer.borderWidth = 1;

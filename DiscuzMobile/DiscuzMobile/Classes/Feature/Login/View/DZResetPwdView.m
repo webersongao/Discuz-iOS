@@ -7,7 +7,7 @@
 //
 
 #import "DZResetPwdView.h"
-#import "LoginCustomView.h"
+#import "DZLoginCustomView.h"
 
 #define TEXTHEIGHT 50
 
@@ -39,7 +39,7 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.passwordView = [[LoginCustomView alloc] init];
+    self.passwordView = [[DZLoginCustomView alloc] init];
     self.passwordView.userNameTextField.tag = 102;
     self.passwordView.userNameTextField.delegate = self;
     self.passwordView.userNameTextField.placeholder = @"旧密码";
@@ -53,7 +53,7 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.newpasswordView = [[LoginCustomView alloc] init];
+    self.newpasswordView = [[DZLoginCustomView alloc] init];
     [contentView addSubview:self.newpasswordView];
     self.newpasswordView.backgroundColor = [UIColor whiteColor];
     self.newpasswordView.imgView.image = [UIImage imageNamed:@"log_p"];
@@ -67,7 +67,7 @@
         make.left.equalTo(self.passwordView.mas_left);
     }];
     
-    self.repassView = [[LoginCustomView alloc] init];
+    self.repassView = [[DZLoginCustomView alloc] init];
     self.repassView.userNameTextField.placeholder = @"重复新密码";
     self.repassView.imgView.image = [UIImage imageNamed:@"log_r"];
     self.repassView.userNameTextField.tag = 103;
@@ -83,7 +83,7 @@
     
     
     // 验证码 有无
-    self.authCodeView = [[Web2AuthCodeView alloc] init];
+    self.authCodeView = [[DZWeb2AuthCodeView alloc] init];
     self.authCodeView.hidden = YES;
     self.authCodeView.textField.delegate = self;
     [contentView addSubview:self.authCodeView];

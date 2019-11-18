@@ -11,7 +11,7 @@
 
 #import "CollectionForumCell.h"
 #import "LianMixAllViewController.h"
-#import "CollectionTool.h"
+#import "DZCollectionTool.h"
 
 @interface CollectionForumController ()
 
@@ -136,7 +136,7 @@
     NSDictionary *postDic = @{@"deletesubmit":@"true",
                               @"formhash":[Environment sharedEnvironment].formhash
                               };
-    [[CollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+    [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
         [self.dataSourceArr removeObjectAtIndex:index];
         [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
         [self.tableView reloadData];

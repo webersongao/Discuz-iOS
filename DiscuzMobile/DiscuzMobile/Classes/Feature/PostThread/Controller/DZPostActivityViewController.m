@@ -15,10 +15,10 @@
 #import "NewThreadTypeModel.h"
 #import "ImagePickerView.h"
 
-#import "VoteTitleCell.h"
+#import "DZVoteTitleCell.h"
 #import "DZActiveTimeCell.h"
 #import "ActiveContentCell.h"
-#import "ActiveDetailCell.h"
+#import "DZActiveDetailCell.h"
 #import "AllOneButtonCell.h"
 #import "DZPostSelectTypeCell.h"
 #import "SeccodeverifyView.h"
@@ -435,9 +435,9 @@
             
             if (indexPath.row == 0) {
                 NSString *titleid = @"titleid";
-                VoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
+                DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
-                    titleCell = [[VoteTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:titleid];
+                    titleCell = [[DZVoteTitleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:titleid];
                     titleCell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 titleCell.titleTextField.tag = 799;
@@ -461,9 +461,9 @@
                     return typeCell;
                 } else {
                     NSString *detailId = @"detailId";
-                    ActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:detailId];
+                    DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:detailId];
                     if (detailCell == nil) {
-                        detailCell = [[ActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailId];
+                        detailCell = [[DZActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailId];
                     }
                     detailCell.detailTextView.delegate = self;
                     
@@ -473,9 +473,9 @@
                 
             } else {
                 NSString *detailId = @"detailId";
-                ActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:detailId];
+                DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:detailId];
                 if (detailCell == nil) {
-                    detailCell = [[ActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailId];
+                    detailCell = [[DZActiveDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailId];
                 }
                 detailCell.detailTextView.delegate = self;
                 

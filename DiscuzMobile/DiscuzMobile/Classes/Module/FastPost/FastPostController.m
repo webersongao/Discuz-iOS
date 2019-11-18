@@ -11,7 +11,7 @@
 #import "ForumLeftCell.h"
 #import "FastLevelCell.h"
 #import "LightGrayButton.h"
-#import "PostTypeSelectView.h"
+#import "DZPostTypeSelectView.h"
 #import "PostTypeModel.h"
 
 #import "DZPostNormalViewController.h"
@@ -26,7 +26,7 @@
 @property (nonatomic,assign) BOOL isSelected;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UIButton *closeBtn;
-@property (nonatomic, strong) PostTypeSelectView *selectView;
+@property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, strong) NSString *selectFid;
 @property (nonatomic, strong) NSMutableDictionary *Variables;
 
@@ -87,7 +87,7 @@
     }];
     [self.closeBtn addTarget:self action:@selector(closeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    self.selectView = [[PostTypeSelectView alloc] init];
+    self.selectView = [[DZPostTypeSelectView alloc] init];
     WEAKSELF;
     self.selectView.typeBlock = ^(PostType type) {
         [weakSelf.selectView close];

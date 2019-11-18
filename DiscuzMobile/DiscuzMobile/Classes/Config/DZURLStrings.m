@@ -135,5 +135,14 @@ NSString * const DZ_Url_Pollvote = @"?module=pollvote&version=1&pollsubmit=yes";
 // 验证码图片地址 三种类型  注册 登录 发帖回帖
 NSString * const DZ_Url_SecureCode = @"?module=secure&version=5";
 
+
+/*
+ 左侧板块  家园（各种心情，随笔，空间）
+ 
+ 中间  广场
+ 
+ 右侧 我的（账户，消息相关操作）
+ 
+ */
 // 搜索 subject=%@
 NSString * const DZ_Url_Search = @"?module=search&version=5";

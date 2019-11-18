@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TTLoginModel.h"
+#import "DZLoginModel.h"
 
 @interface DZShareCenter : NSObject
 
-@property (nonatomic, strong) TTLoginModel * _Nullable bloginModel;
+@property (nonatomic, strong) DZLoginModel * _Nullable bloginModel;
 
 // 单例
 + (nonnull instancetype)shareInstance;

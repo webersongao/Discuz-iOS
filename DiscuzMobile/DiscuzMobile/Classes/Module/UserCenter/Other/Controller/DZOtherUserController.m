@@ -136,7 +136,7 @@
     } else if (section == 2) {
         return self.centerModel.infoArr.count;
     } else if (self.centerModel.myInfoDic.count > 0) {
-        if (![self.authorid isEqualToString:[LoginModule getLoggedUid]] && [self.isfriend isEqualToString:@"0"]) {
+        if (![self.authorid isEqualToString:[DZLoginModule getLoggedUid]] && [self.isfriend isEqualToString:@"0"]) {
             return 1;
         }
     }

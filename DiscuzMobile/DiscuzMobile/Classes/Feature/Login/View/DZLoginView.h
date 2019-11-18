@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginCustomView.h"
-#import "Web2AuthCodeView.h"
+#import "DZLoginCustomView.h"
+#import "DZWeb2AuthCodeView.h"
 #import "ZHPickView.h"
-@class LoginCustomView, Web2AuthCodeView, ZHPickView;
+@class DZLoginCustomView, DZWeb2AuthCodeView, ZHPickView;
 
 @interface DZLoginView : UIScrollView
 
-@property (nonatomic, strong) LoginCustomView *countView;
-@property (nonatomic, strong) LoginCustomView *pwordView;
-@property (nonatomic, strong) LoginCustomView *securityView;
-@property (nonatomic, strong) LoginCustomView *answerView;
-@property (nonatomic, strong) Web2AuthCodeView *authCodeView;
+@property (nonatomic, strong) DZLoginCustomView *countView;
+@property (nonatomic, strong) DZLoginCustomView *pwordView;
+@property (nonatomic, strong) DZLoginCustomView *securityView;
+@property (nonatomic, strong) DZLoginCustomView *answerView;
+@property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *forgetBtn;
 

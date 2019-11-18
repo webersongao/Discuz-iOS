@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Web2AuthCodeView.h"
+#import "DZWeb2AuthCodeView.h"
 
-@class LoginCustomView,DZAuthCodeView;
+@class DZLoginCustomView,DZAuthCodeView;
 
 @interface DZResetPwdView : UIScrollView <UITextFieldDelegate>
 
-@property (nonatomic, strong) LoginCustomView *passwordView;
-@property (nonatomic, strong) LoginCustomView *repassView;
-@property (nonatomic, strong) LoginCustomView *newpasswordView;
-@property (nonatomic, strong) Web2AuthCodeView *authCodeView;
+@property (nonatomic, strong) DZLoginCustomView *passwordView;
+@property (nonatomic, strong) DZLoginCustomView *repassView;
+@property (nonatomic, strong) DZLoginCustomView *newpasswordView;
+@property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 
 @property (nonatomic, strong) UIButton *submitButton;
 @end

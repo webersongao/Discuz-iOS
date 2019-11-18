@@ -8,7 +8,7 @@
 
 #import "ThreadModel.h"
 #import "ThreadListModel.h"
-#import "LoginModule.h"
+#import "DZLoginModule.h"
 
 @interface ThreadModel()
 
@@ -175,8 +175,8 @@
      ThreadListModel *listModel = [[ThreadListModel alloc] init];
      [listModel setValuesForKeysWithDictionary:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
     if (self.currentPage == 1) {
-        BACK(^{
-            if ([LoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
+        BACK(^{J
+            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
 //                [[DZDatabaseHandle defaultDataHelper] footThread:listModel];
             }
         });

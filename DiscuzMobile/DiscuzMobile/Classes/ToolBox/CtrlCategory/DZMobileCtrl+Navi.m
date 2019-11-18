@@ -12,7 +12,7 @@
 #import "LianMixAllViewController.h"
 #import "DZBaseUrlController.h"
 #import "DZLoginController.h"
-#import "TTSearchController.h"
+#import "DZSearchController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -78,7 +78,7 @@
 
 -(void)PushToSearchController{
     
-    TTSearchController *searchVC = [[TTSearchController alloc] init];
+    DZSearchController *searchVC = [[DZSearchController alloc] init];
     searchVC.hidesBottomBarWhenPushed = YES;
     [self.mainNavi pushViewController:searchVC animated:YES];
 }

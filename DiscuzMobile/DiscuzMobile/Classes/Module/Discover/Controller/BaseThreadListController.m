@@ -10,7 +10,7 @@
 #import "BaseStyleCell.h"
 #import "DiscoverModel.h"
 #import "ThreadListCell.h"
-#import "ThreadListModel+Forumdisplay.h"
+#import "ThreadListModel+Display.h"
 
 @interface BaseThreadListController ()
 @property (nonatomic, assign) BOOL isRequest;

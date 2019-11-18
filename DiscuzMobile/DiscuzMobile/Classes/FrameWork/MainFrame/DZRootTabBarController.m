@@ -33,7 +33,12 @@
     
     self.delegate = self;
     [DZMobileCtrl sharedCtrl];
+    
+#ifndef MACRO_PRODUCT
     [self addChildViewControllers];
+#else //测试环境
+    [self addDemoChildViewControllers];
+#endif
     
     //    [self.tabBar addSubview:self.composeButton];
     //    CGFloat b_width = self.tabBar.width / self.childViewControllers.count;
@@ -84,10 +89,10 @@
     }
     self.oldSelected = viewController.tabBarItem.tag;
     if (viewController.tabBarItem.tag == self.viewControllers.count - 1 || viewController.tabBarItem.tag == 2) {
-        if (![LoginModule isLogged]) {
-            [self login];
-            return NO;
-        }
+        //        if (![DZLoginModule isLogged]) {
+        //[[DZMobileCtrl sharedCtrl] PresentLoginController:self];
+        //            return NO;
+        //        }
     } else {
         self.notitySelected = viewController.tabBarItem.tag;
     }
@@ -111,12 +116,7 @@
     self.oldSelected = self.selectedIndex;
 }
 
-- (void)login {
-    
-    [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
-}
-
-- (void)addChildViewControllers {
+- (void)addDemoChildViewControllers {
     
     DZPostSiriViewController *editSiriVC = [[DZPostSiriViewController alloc] init];
     [self addChildVc:editSiriVC title:@"Siri输入" image:@"my" selectedImage:@"mys"];
@@ -127,19 +127,21 @@
     DZPostUIEditViewController *editUIVC = [[DZPostUIEditViewController alloc] init];
     [self addChildVc:editUIVC title:@"UI输入" image:@"forumm" selectedImage:@"fourms"];
     
-    //    DZHomeManagerController *homeVC = [[DZHomeManagerController alloc] init];
-    //    DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
-    //    DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
-    ////    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
-    //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
-    //    DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
-    //
-    //    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
-    //    [self addChildVc:dicoverVC title:@"发现" image:@"homem" selectedImage:@"homes"];
-    //    [self addChildVc:forumVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
-    ////    [self addChildVc:fastVC title:@"" image:@"clarity" selectedImage:@""];
-    //    [self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    //    [self addChildVc:userVC title:@"我的" image:@"my" selectedImage:@"mys"];
+}
+- (void)addChildViewControllers {
+    DZHomeManagerController *homeVC = [[DZHomeManagerController alloc] init];
+    DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
+    DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
+    //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
+    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
+    DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
+    
+    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:dicoverVC title:@"发现" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:forumVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
+    //    [self addChildVc:fastVC title:@"" image:@"clarity" selectedImage:@""];
+    [self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:userVC title:@"我的" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {
@@ -157,7 +159,6 @@
     selectTextAttrs[NSForegroundColorAttributeName] = K_Color_Theme;
     [childVc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [childVc.tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];
-    
     
     DZBaseNavigationController *nav = [[DZBaseNavigationController alloc] initWithRootViewController:childVc];
     nav.navigationBar.barTintColor = [UIColor whiteColor];

@@ -89,7 +89,7 @@
 }
 // 界面是否登录
 - (BOOL)isLogin {
-    if (![LoginModule isLogged]) {
+    if (![DZLoginModule isLogged]) {
         [self initLogin];
         return NO;
     }
