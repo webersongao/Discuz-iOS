@@ -561,7 +561,7 @@ static int i = 0 ;
                             @"operation":@"poll"};
     
     [self.HUD showLoadingMessag:@"上传图片" toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:JTAttacheVote getDic:getdic postDic:dic complete:^{
+    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:DZAttacheVote getDic:getdic postDic:dic complete:^{
         [self.HUD hideAnimated:YES];
     } success:^(id response) {
         

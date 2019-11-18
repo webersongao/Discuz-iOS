@@ -302,9 +302,9 @@
 		706213DE23793E1900130B9D /* DZUserManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706213DC23793E1900130B9D /* DZUserManagerController.m */; };
 		706213E123793E7200130B9D /* DZPublicPMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706213E023793E7100130B9D /* DZPublicPMCell.m */; };
 		70632290237C1401005943AB /* BaseThreadListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632283237C1401005943AB /* BaseThreadListController.m */; };
-		70632291237C1401005943AB /* DigestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632284237C1401005943AB /* DigestListController.m */; };
+		70632291237C1401005943AB /* DZDigestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632284237C1401005943AB /* DZDigestListController.m */; };
 		70632292237C1401005943AB /* DZDiscoverManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632286237C1401005943AB /* DZDiscoverManagerController.m */; };
-		70632293237C1401005943AB /* NewestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632289237C1401005943AB /* NewestListController.m */; };
+		70632293237C1401005943AB /* DZNewestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632289237C1401005943AB /* DZNewestListController.m */; };
 		70632294237C1401005943AB /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063228C237C1401005943AB /* DiscoverModel.m */; };
 		70632295237C1401005943AB /* RecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063228D237C1401005943AB /* RecommendModel.m */; };
 		7063229F237C151A005943AB /* EFSQLiteContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632298237C151A005943AB /* EFSQLiteContext.m */; };
@@ -998,12 +998,12 @@
 		706213DF23793E7100130B9D /* DZPublicPMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPublicPMCell.h; sourceTree = "<group>"; };
 		706213E023793E7100130B9D /* DZPublicPMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPublicPMCell.m; sourceTree = "<group>"; };
 		70632283237C1401005943AB /* BaseThreadListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseThreadListController.m; sourceTree = "<group>"; };
-		70632284237C1401005943AB /* DigestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigestListController.m; sourceTree = "<group>"; };
-		70632285237C1401005943AB /* NewestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewestListController.h; sourceTree = "<group>"; };
+		70632284237C1401005943AB /* DZDigestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDigestListController.m; sourceTree = "<group>"; };
+		70632285237C1401005943AB /* DZNewestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNewestListController.h; sourceTree = "<group>"; };
 		70632286237C1401005943AB /* DZDiscoverManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverManagerController.m; sourceTree = "<group>"; };
-		70632287237C1401005943AB /* DigestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigestListController.h; sourceTree = "<group>"; };
+		70632287237C1401005943AB /* DZDigestListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDigestListController.h; sourceTree = "<group>"; };
 		70632288237C1401005943AB /* BaseThreadListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseThreadListController.h; sourceTree = "<group>"; };
-		70632289237C1401005943AB /* NewestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewestListController.m; sourceTree = "<group>"; };
+		70632289237C1401005943AB /* DZNewestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNewestListController.m; sourceTree = "<group>"; };
 		7063228A237C1401005943AB /* DZDiscoverManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverManagerController.h; sourceTree = "<group>"; };
 		7063228C237C1401005943AB /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
 		7063228D237C1401005943AB /* RecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendModel.m; sourceTree = "<group>"; };
@@ -2379,8 +2379,8 @@
 		706211E6237936C800130B9D /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
-				706211E7237936C800130B9D /* Other */,
 				7062136E23793DB700130B9D /* Me */,
+				706211E7237936C800130B9D /* Other */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -2698,14 +2698,14 @@
 		70632282237C1401005943AB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				70632283237C1401005943AB /* BaseThreadListController.m */,
-				70632284237C1401005943AB /* DigestListController.m */,
-				70632285237C1401005943AB /* NewestListController.h */,
-				70632286237C1401005943AB /* DZDiscoverManagerController.m */,
-				70632287237C1401005943AB /* DigestListController.h */,
+				70632287237C1401005943AB /* DZDigestListController.h */,
+				70632284237C1401005943AB /* DZDigestListController.m */,
+				70632285237C1401005943AB /* DZNewestListController.h */,
+				70632289237C1401005943AB /* DZNewestListController.m */,
 				70632288237C1401005943AB /* BaseThreadListController.h */,
-				70632289237C1401005943AB /* NewestListController.m */,
+				70632283237C1401005943AB /* BaseThreadListController.m */,
 				7063228A237C1401005943AB /* DZDiscoverManagerController.h */,
+				70632286237C1401005943AB /* DZDiscoverManagerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2713,10 +2713,10 @@
 		7063228B237C1401005943AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7063228C237C1401005943AB /* DiscoverModel.m */,
-				7063228D237C1401005943AB /* RecommendModel.m */,
-				7063228E237C1401005943AB /* RecommendModel.h */,
 				7063228F237C1401005943AB /* DiscoverModel.h */,
+				7063228C237C1401005943AB /* DiscoverModel.m */,
+				7063228E237C1401005943AB /* RecommendModel.h */,
+				7063228D237C1401005943AB /* RecommendModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2800,10 +2800,10 @@
 		706AB8DA237C06B800BE649F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				706AB913237C071C00BE649F /* DZMessageListController.h */,
-				706AB914237C071C00BE649F /* DZMessageListController.m */,
 				706AB917237C077000BE649F /* DZMsgSubListController.h */,
 				706AB916237C077000BE649F /* DZMsgSubListController.m */,
+				706AB913237C071C00BE649F /* DZMessageListController.h */,
+				706AB914237C071C00BE649F /* DZMessageListController.m */,
 				706AB91F237C08B000BE649F /* DZSendMsgViewController.h */,
 				706AB920237C08B000BE649F /* DZSendMsgViewController.m */,
 				706AB91A237C07A500BE649F /* DZMsgChatDetailController.h */,
@@ -3919,7 +3919,7 @@
 				706213D823793DB700130B9D /* UserInfoCell.m in Sources */,
 				274F387D1EEA44F6009F4E10 /* ImagePickerView.m in Sources */,
 				70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */,
-				70632293237C1401005943AB /* NewestListController.m in Sources */,
+				70632293237C1401005943AB /* DZNewestListController.m in Sources */,
 				94A3E65B20E611B10039C560 /* TextbarView.m in Sources */,
 				27473ACF1DD30C380024375F /* DZDevice.m in Sources */,
 				70F9F8E1237AA72C0067B308 /* UITextField+EmojiCheck.m in Sources */,
@@ -4077,7 +4077,7 @@
 				706213BE23793DB700130B9D /* FootForumController.m in Sources */,
 				70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */,
 				703C4258237D51330046C398 /* DZSiriTool.m in Sources */,
-				70632291237C1401005943AB /* DigestListController.m in Sources */,
+				70632291237C1401005943AB /* DZDigestListController.m in Sources */,
 				706213C823793DB700130B9D /* CenterManageModel.m in Sources */,
 				70DFD7A7237A95DE00A13F0F /* DZAttachment.m in Sources */,
 				70621329237936C900130B9D /* DZForumIndexListController.m in Sources */,

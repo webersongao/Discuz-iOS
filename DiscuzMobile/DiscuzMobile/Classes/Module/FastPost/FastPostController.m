@@ -52,7 +52,7 @@
     
     self.navigationItem.title = @"选择发帖版块";
     _navBarHairlineImageView = [UIImageView findHairlineImageViewUnder:self.navigationController.navigationBar];
-    [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
+    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     
     // 判断左边菜单是否点击选中
     self.isSelected = NO;

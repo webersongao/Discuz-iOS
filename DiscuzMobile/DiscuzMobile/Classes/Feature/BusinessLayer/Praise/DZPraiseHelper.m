@@ -35,7 +35,7 @@
             failure?failure(error):nil;
         }];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"LOGIN" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_UserLogin_Notify object:nil];
     }
 }
 

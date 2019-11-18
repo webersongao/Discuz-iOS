@@ -331,10 +331,6 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([DataCheck isValidString:self.cost] && [self.cost integerValue] > 0) {
         if (indexPath.row == 0) {

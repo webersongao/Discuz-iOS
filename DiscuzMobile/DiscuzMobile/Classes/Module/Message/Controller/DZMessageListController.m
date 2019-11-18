@@ -12,7 +12,6 @@
 #import "DZMsgSubListController.h"
 
 #import "PmlistCell.h"
-
 #import "PmTypeModel.h"
 #import "MessageNoticeCenter.h"
 
@@ -21,15 +20,6 @@
 @end
 
 @implementation DZMessageListController
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.hidesBottomBarWhenPushed = YES;
-    }
-    return self;
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -40,14 +30,8 @@
     [super viewDidLoad];
     
     self.title = @"我的消息";
-    
-//    self.dataSourceArr = @[@"我的消息",@"我的帖子",@"坛友互动",@"系统提醒",@"管理工作"].mutableCopy;
-    self.dataSourceArr = @[@"我的消息",@"我的帖子"].mutableCopy;
-    // Do any additional setup after loading the view.
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    [self configNaviBar:nil type:NaviItemText Direction:NaviDirectionLeft];
+    self.dataSourceArr = @[@"我的消息",@"我的帖子",@"坛友互动",@"系统提醒",@"管理工作"].mutableCopy;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,7 +51,6 @@
     } else {
         
         cell.titleLab.attributedText = [self cellGetAttributeStr:title andNew:[[MessageNoticeCenter shareInstance].noticeDic objectForKey:@"newmypost"]];
-        
     }
     
     cell.iconV.image = [UIImage imageTintColorWithName:[NSString stringWithFormat:@"pm_%ld",indexPath.row] andImageSuperView:cell.iconV];
@@ -130,4 +113,15 @@
     }
 }
 
+
+
 @end
+
+
+
+
+
+
+
+
+

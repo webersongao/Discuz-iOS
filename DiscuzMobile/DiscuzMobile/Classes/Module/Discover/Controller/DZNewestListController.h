@@ -1,5 +1,5 @@
 //
-//  NewestListController.h
+//  DZNewestListController.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/10.
@@ -8,6 +8,6 @@
 
 #import "BaseThreadListController.h"
 
-@interface NewestListController : BaseThreadListController
+@interface DZNewestListController : BaseThreadListController
 
 @end

@@ -69,7 +69,7 @@
 
 - (void)addNotify {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_REFRESHCENTER_Notify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signout) name:DZ_UserSignOut_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UserSignout) name:DZ_UserSigOut_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_DomainUrlChange_Notify object:nil];
 }
 
@@ -79,8 +79,8 @@
 
 #pragma mark - 设置导航栏
 -(void)setNavc{
-    [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
-    [self createBarBtn:@"setting" type:NavItemImage Direction:NavDirectionRight];
+    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
+    [self configNaviBar:@"setting" type:NaviItemImage Direction:NaviDirectionRight];
     
     self.navigationItem.title = @"我的";
 }
@@ -156,15 +156,15 @@
         [self.tableView.mj_header endRefreshing];
         
         if ([[[responseObject objectForKey:@"Message"] objectForKey:@"messagestr"] isEqualToString:@"请先登录后才能继续浏览"]) {
-            [self signout];
-            [self initLogin];
+            [self UserSignout];
+            [self transtoUserLogin];
             return ;
         } else if ([DataCheck isValidString:[responseObject objectForKey:@"error"]]){
             if ([[responseObject objectForKey:@"error"] isEqualToString:@"user_banned"]) {
                 [MBProgressHUD showInfo:@"用户被禁止"];
             }
-            [self signout];
-            [self initLogin];
+            [self UserSignout];
+            [self transtoUserLogin];
             return;
         }
         [self.centerModel dealData:responseObject];
@@ -178,8 +178,8 @@
     } failed:^(NSError *error) {
         requestCount ++;
         if (requestCount == 5) {
-            [self signout];
-            [self initLogin];
+            [self UserSignout];
+            [self transtoUserLogin];
         }
         [self.HUD hide];
         [self.tableView.mj_header endRefreshing];
@@ -293,7 +293,7 @@
         NSString *donetip = @"退出";
 
         [UIAlertController alertTitle:@"提示" message:message controller:self doneText:donetip cancelText:@"取消" doneHandle:^{
-            [self signout];
+            [self UserSignout];
         } cancelHandle:nil];
     }
 }
@@ -302,7 +302,7 @@
     NSString *message = @"您确定退出？退出将不能体验全部功能。";
     NSString *donetip = @"确定";
     [UIAlertController alertTitle:@"提示" message:message controller:self doneText:donetip cancelText:@"取消" doneHandle:^{
-        [self signout];
+        [self UserSignout];
     } cancelHandle:nil];
 }
 
@@ -344,15 +344,15 @@
     }];
 }
 
-- (void)signout {
+- (void)UserSignout {
     [DZLoginModule signout];
     [self initData];
     [self.tableView reloadData];
-    [self initLogin];
+    [self transtoUserLogin];
     [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
 }
 
-- (void)initLogin {
+- (void)transtoUserLogin {
     [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
 }
 

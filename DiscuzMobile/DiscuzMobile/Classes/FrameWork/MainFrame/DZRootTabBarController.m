@@ -35,9 +35,9 @@
     [DZMobileCtrl sharedCtrl];
     
 #ifndef MACRO_PRODUCT
-    [self addChildViewControllers];
-#else //测试环境
     [self addDemoChildViewControllers];
+#else
+    [self addChildViewControllers];
 #endif
     
     //    [self.tabBar addSubview:self.composeButton];
@@ -88,13 +88,17 @@
         }
     }
     self.oldSelected = viewController.tabBarItem.tag;
-    if (viewController.tabBarItem.tag == self.viewControllers.count - 1 || viewController.tabBarItem.tag == 2) {
-        //        if (![DZLoginModule isLogged]) {
-        //[[DZMobileCtrl sharedCtrl] PresentLoginController:self];
-        //            return NO;
-        //        }
-    } else {
-        self.notitySelected = viewController.tabBarItem.tag;
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *baseNaviVC = (UINavigationController *)viewController;
+        UIViewController *baseVC = baseNaviVC.topViewController;
+        if ([baseVC isKindOfClass:[DZFastPlaceController class]]) {
+            if (![DZLoginModule isLogged]) {
+                [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
+                return NO;
+            }
+        }else {
+            self.notitySelected = viewController.tabBarItem.tag;
+        }
     }
     return YES;
 }
@@ -126,8 +130,8 @@
     
     DZPostUIEditViewController *editUIVC = [[DZPostUIEditViewController alloc] init];
     [self addChildVc:editUIVC title:@"UI输入" image:@"forumm" selectedImage:@"fourms"];
-    
 }
+
 - (void)addChildViewControllers {
     DZHomeManagerController *homeVC = [[DZHomeManagerController alloc] init];
     DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];

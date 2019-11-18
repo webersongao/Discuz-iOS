@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
     [self p_SetNavigationBar];
 }
 
@@ -71,10 +70,7 @@
 }
 
 - (void)setIsHiddenNavigationBar:(BOOL)isHiddenNavigationBar {
-    
 
-
-    
     _isHiddenNavigationBar = isHiddenNavigationBar;
     self.tp_NavigationBar.hidden = isHiddenNavigationBar;
 }
@@ -215,3 +211,8 @@
 
 
 @end
+
+
+
+
+

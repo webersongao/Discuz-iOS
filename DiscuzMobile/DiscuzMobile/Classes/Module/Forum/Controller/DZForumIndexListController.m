@@ -257,7 +257,6 @@
     }
     
     if (btn.lighted==YES) {// 收藏
-        
         NSDictionary *getdic =@{@"id":model.fid};
         NSDictionary *dic = @{@"formhash":[Environment sharedEnvironment].formhash};
         [[DZCollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{

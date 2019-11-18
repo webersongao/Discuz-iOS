@@ -258,8 +258,8 @@ NSString * const debugPassword = @"debugPassword";
 
 
 -(void)createBarBtn{
-    [self createBarBtn:@"back" type:NavItemImage Direction:NavDirectionLeft];
-    [self createBarBtn:@"注册" type:NavItemText Direction:NavDirectionRight];
+    [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"注册" type:NaviItemText Direction:NaviDirectionRight];
     
     self.navigationItem.title = @"";
 }

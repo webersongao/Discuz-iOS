@@ -1,5 +1,5 @@
 //
-//  DigestListController.h
+//  DZDigestListController.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/10.
@@ -8,6 +8,6 @@
 
 #import "BaseThreadListController.h"
 
-@interface DigestListController : BaseThreadListController
+@interface DZDigestListController : BaseThreadListController
 
 @end

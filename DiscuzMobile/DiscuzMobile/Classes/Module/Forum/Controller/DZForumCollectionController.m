@@ -27,7 +27,6 @@
 
 @implementation DZForumCollectionController
 
-
 static NSString *CellID = @"fourmCollection";
 static NSString * headerSection = @"CellHeader";
 

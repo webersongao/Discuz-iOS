@@ -192,7 +192,7 @@
     
     NSDictionary * getdic = @{@"fid":self.fid};
     [self.HUD showLoadingMessag:@"上传中" toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:JTAttacheImage getDic:getdic postDic:dic complete:^{
+    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:DZAttacheImage getDic:getdic postDic:dic complete:^{
         [self.HUD hide];
     } success:^(id response) {
         NSString *aidStr = [NSString stringWithFormat:@"%@",response];

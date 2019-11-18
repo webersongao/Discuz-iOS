@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _navBarHairlineImageView = [UIImageView findHairlineImageViewUnder:self.navigationController.navigationBar];
-    [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
+    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     
     self.listVc.tabbarHeight = self.tabbarHeight;
 }

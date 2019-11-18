@@ -8,10 +8,8 @@
 
 #import "DZBaseViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface DZPostSiriViewController : DZBaseViewController
 
 @end
 
-NS_ASSUME_NONNULL_END

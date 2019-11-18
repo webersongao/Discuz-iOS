@@ -56,7 +56,7 @@
 #pragma mark - 布局
 - (void)setupViews {
 
-    [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
+    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     [self.navigationItem setHidesBackButton:YES];
     
     self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 30)];

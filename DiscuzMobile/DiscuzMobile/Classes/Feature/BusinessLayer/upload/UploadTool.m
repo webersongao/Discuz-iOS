@@ -20,14 +20,14 @@
     return upTool;
 }
 
-- (void)upLoadAttachmentArr:(NSArray *)attachArr attacheType:(JTAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure {
+- (void)upLoadAttachmentArr:(NSArray *)attachArr attacheType:(DZAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure {
     
     NSMutableDictionary *getParam = getDic.mutableCopy;
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         
-        if (attacheType == JTAttacheImage || attacheType == JTAttacheVote) {
+        if (attacheType == DZAttacheImage || attacheType == DZAttacheVote) {
 //            type=image&
-            if (attacheType == JTAttacheImage) {
+            if (attacheType == DZAttacheImage) {
                 [getParam setValue:@"image" forKey:@"type"];
             }
             
@@ -37,7 +37,7 @@
                 NSString *fileName = [NSString stringWithFormat:@"%@.png", nowTime];
                 [request addFormDataWithName:@"Filedata" fileName:fileName mimeType:@"image/png" fileData:data];
             }
-        } else if (attacheType == JTAttacheAudio) {
+        } else if (attacheType == DZAttacheAudio) {
             for (NSString *soundPath in attachArr) {
                 NSData *audioData = [NSData dataWithContentsOfFile:soundPath];
                 NSString *nowTime = [[NSDate date] stringFromDateFormat:@"yyyyMMddHHmmss"];
@@ -56,7 +56,7 @@
         DLog(@"onProgress: %.2f", 100.f * progress.completedUnitCount/progress.totalUnitCount);
     } success:^(id responseObject, JTLoadType type) {
         complete?complete():nil;
-        if (attacheType == JTAttacheVote) {
+        if (attacheType == DZAttacheVote) {
             id resDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
             success?success(resDic):nil;
         } else {

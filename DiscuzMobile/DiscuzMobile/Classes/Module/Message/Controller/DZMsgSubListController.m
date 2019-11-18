@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
-        [self createBarBtn:@"发消息" type:NavItemText Direction:NavDirectionRight];
+        [self configNaviBar:@"发消息" type:NaviItemText Direction:NaviDirectionRight];
     }
     
     [self loadData];
@@ -130,9 +130,6 @@
     [self mj_endRefreshing];
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
         UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];

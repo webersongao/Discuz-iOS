@@ -1,21 +1,21 @@
 //
-//  NewestListController.m
+//  DZDigestListController.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/10.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "NewestListController.h"
+#import "DZDigestListController.h"
 
-@interface NewestListController ()
+@interface DZDigestListController ()
 
 @end
 
-@implementation NewestListController
+@implementation DZDigestListController
 
 - (SThreadListType)listType {
-    return SThreadListTypeNewest;
+    return SThreadListTypeDigest;
 }
 
 @end

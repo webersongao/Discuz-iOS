@@ -59,8 +59,8 @@
 #pragma mark - 设置导航栏
 //设置 nav
 -(void)setNavc{
-    [self createBarBtn:@"bar_message" type:NavItemImage Direction:NavDirectionLeft];
-    [self createBarBtn:@"bar_search" type:NavItemImage Direction:NavDirectionRight];
+    [self configNaviBar:@"bar_message" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
     self.navigationItem.title = DZ_APPNAME;
 }
 
@@ -99,7 +99,7 @@
 
 - (void)initRequest {
     // 热帖
-    [self downLoadHotThreadData];
+//    [self downLoadHotThreadData];
     // 注释banner接口，该模块暂不可用
 //    [self downLoadForumHomeBanner];
     
@@ -109,32 +109,6 @@
         [self downLoadDataWtihForumType:@"hotforum"];
     }
 }
-
-//- (void)downLoadForumHomeBanner {
-//
-//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//        request.urlString = DZ_Url_RecommendBanner;
-//    } success:^(id responseObject, JTLoadType type) {
-//        NSArray *list = [[responseObject objectForKey:@"Variables"] objectForKey:@"list"];
-//        if ([DataCheck isValidArray:list]) {
-//            if (self.scrollView.bannerArray.count > 0) {
-//                self.scrollView.bannerArray = [NSMutableArray array];
-//                for (UIView *v  in self.scrollView.subviews) {
-//                    [v removeFromSuperview];
-//                }
-//            }
-//            for (NSDictionary *dic in list) {
-//                DZHomeBannerModel *banner = [[DZHomeBannerModel alloc] init];
-//                [banner setValuesForKeysWithDictionary:dic];
-//                [self.scrollView.bannerArray addObject:banner];
-//            }
-//
-//            [self setBanner];
-//        }
-//    } failed:^(NSError *error) {
-//        [self showServerError:error];
-//    }];
-//}
 
 //  下载热门版块 hotforum（常去的版块）-- 未登录时候
 -(void)downLoadDataWtihForumType:(NSString *)forumType {
@@ -168,38 +142,63 @@
         } else {
             [self downLoadDataWtihForumType:@"hotforum"];
         }
-        
     } failed:^(NSError *error) {
         [self showServerError:error];
         DLog(@"%@",error);
     }];
 }
 
+//- (void)downLoadForumHomeBanner {
+//
+//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+//        request.urlString = DZ_Url_RecommendBanner;
+//    } success:^(id responseObject, JTLoadType type) {
+//        NSArray *list = [[responseObject objectForKey:@"Variables"] objectForKey:@"list"];
+//        if ([DataCheck isValidArray:list]) {
+//            if (self.scrollView.bannerArray.count > 0) {
+//                self.scrollView.bannerArray = [NSMutableArray array];
+//                for (UIView *v  in self.scrollView.subviews) {
+//                    [v removeFromSuperview];
+//                }
+//            }
+//            for (NSDictionary *dic in list) {
+//                DZHomeBannerModel *banner = [[DZHomeBannerModel alloc] init];
+//                [banner setValuesForKeysWithDictionary:dic];
+//                [self.scrollView.bannerArray addObject:banner];
+//            }
+//
+//            [self setBanner];
+//        }
+//    } failed:^(NSError *error) {
+//        [self showServerError:error];
+//    }];
+//}
+
 // 下载热门主题（热帖）
--(void)downLoadHotThreadData {
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        //获取热门主题
-        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-        
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hideAnimated:YES];
-        NSArray *data = [[responseObject objectForKey:@"Variables"] objectForKey:@"data"];
-        if ([DataCheck isValidArray:data]) {
-            self.dataSourceArr = data.mutableCopy;
-            if (self.hotSource.count > 0) {
-                [self.hotSource removeAllObjects];
-            }
-            for (NSDictionary *dic in self.dataSourceArr) {
-                ThreadListModel *home = [[ThreadListModel alloc] init];
-                [home setValuesForKeysWithDictionary:dic];
-                [self.hotSource addObject:home];
-            }
-        }
-    } failed:^(NSError *error) {
-        [self.HUD hideAnimated:YES];
-        [self showServerError:error];
-    }];
-}
+//-(void)downLoadHotThreadData {
+//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+//        //获取热门主题
+//        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+//
+//    } success:^(id responseObject, JTLoadType type) {
+//        [self.HUD hideAnimated:YES];
+//        NSArray *data = [[responseObject objectForKey:@"Variables"] objectForKey:@"data"];
+//        if ([DataCheck isValidArray:data]) {
+//            self.dataSourceArr = data.mutableCopy;
+//            if (self.hotSource.count > 0) {
+//                [self.hotSource removeAllObjects];
+//            }
+//            for (NSDictionary *dic in self.dataSourceArr) {
+//                ThreadListModel *home = [[ThreadListModel alloc] init];
+//                [home setValuesForKeysWithDictionary:dic];
+//                [self.hotSource addObject:home];
+//            }
+//        }
+//    } failed:^(NSError *error) {
+//        [self.HUD hideAnimated:YES];
+//        [self showServerError:error];
+//    }];
+//}
 
 //  处理热门版块数据
 - (void)setHotData:(NSArray *)dataArr {
@@ -221,7 +220,6 @@
     return 2;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if (indexPath.section ==0) {
         return 90.0;
     }else {
@@ -295,7 +293,6 @@
         DZHomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
         if (cell == nil) {
             cell = [[DZHomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
-            
         }
         
         ThreadListModel *model = [self.hotSource objectAtIndex:indexPath.row];
@@ -340,3 +337,8 @@
 }
 
 @end
+
+
+
+
+

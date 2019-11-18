@@ -8,9 +8,8 @@
 
 #import "DZDiscoverManagerController.h"
 #import "DZContainerController.h"
-//#import "RecommendController.h"
-#import "DigestListController.h"
-#import "NewestListController.h"
+#import "DZDigestListController.h"
+#import "DZNewestListController.h"
 #import "FootmarkController.h"
 #import "DZSettingController.h"
 
@@ -31,15 +30,14 @@
 }
 
 -(void)configNaviBar {
-    [self createBarBtn:@"setting" type:NavItemImage Direction:NavDirectionLeft];
-    [self createBarBtn:@"bar_search" type:NavItemImage Direction:NavDirectionRight];
+    [self configNaviBar:@"setting" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
 - (void)configDiscoverPageView {
     
-//    [self addItemClass:[RecommendController class] andTitle:@"推荐"];
-    [self addItemClass:[NewestListController class] andTitle:@"最新"];
-    [self addItemClass:[DigestListController class] andTitle:@"精华"];
+    [self addItemClass:[DZNewestListController class] andTitle:@"最新"];
+    [self addItemClass:[DZDigestListController class] andTitle:@"精华"];
     
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
     self.rootVC = [[DZContainerController alloc] init];

@@ -33,9 +33,9 @@
     
     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:K_Color_NaviTitle,NSForegroundColorAttributeName,[DZFontSize NavTitleFontSize18],NSFontAttributeName, nil];
     self.navigationController.navigationBar.titleTextAttributes = dict;
-    [self createBarBtn:@"back" type:NavItemImage Direction:NavDirectionLeft];
+    [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
     
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initLogin) name:@"LOGIN" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transToLogin) name:DZ_UserLogin_Notify object:nil];
     // 监听UIWindow隐藏 播放视频的时候，状态栏会自动消失，处理后让状态栏重新出现
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:UIWindowDidBecomeHiddenNotification object:nil];
     
@@ -45,7 +45,6 @@
     UIWindow * win = (UIWindow *)noti.object;
     if(win){
         UIViewController *rootVC = win.rootViewController;
-        
         NSArray<__kindof UIViewController *> *vcs = rootVC.childViewControllers;
         if([vcs.firstObject isKindOfClass:NSClassFromString(@"AVPlayerViewController")]){
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
@@ -69,7 +68,8 @@
 - (void)showServerError:(NSError *)error {
     if (error != nil) {
         NSString *message = [NSString stringWithFormat:@"错误:%@",[error localizedDescription]];
-#ifdef DEBUG        
+#ifdef DEBUG
+        DLog(@"WBS 出现错误 %s 提示：%@",__FUNCTION__,message);
 #else
         if (error.code == NSURLErrorTimedOut) {
             message = @"网络请求超时！";
@@ -82,15 +82,14 @@
 }
 
 // 弹出登录界面
-- (void)initLogin {
-    
+- (void)transToLogin {
     [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
-    
 }
+
 // 界面是否登录
 - (BOOL)isLogin {
     if (![DZLoginModule isLogged]) {
-        [self initLogin];
+        [self transToLogin];
         return NO;
     }
     return YES;
@@ -102,11 +101,11 @@
  @param type  类型 图片 或者 title
  @param direction  方向 左右
  */
--(void)createBarBtn:(NSString *)titleORImageUrl type:(NavItemContentType)type Direction:(NavDirection)direction {
+-(void)configNaviBar:(NSString *)titleORImageUrl type:(NaviItemType)type Direction:(NaviDirection)direction {
     
-    if (direction == NavDirectionLeft) {
+    if (direction == NaviDirectionLeft) {
         UIBarButtonItem *leftBtn;
-        if (type == NavItemText) {
+        if (type == NaviItemText) {
             if ([DataCheck isValidString:titleORImageUrl]) {
                 leftBtn = [[UIBarButtonItem alloc] initWithTitle:titleORImageUrl style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
             }
@@ -117,7 +116,7 @@
         self.navigationItem.leftBarButtonItem.tintColor = K_Color_MainTitle;
     } else {
         UIBarButtonItem *rightBtn;
-        if (type == NavItemText) {
+        if (type == NaviItemText) {
             if ([DataCheck isValidString:titleORImageUrl]) {
                 rightBtn = [[UIBarButtonItem alloc] initWithTitle:titleORImageUrl style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
             }

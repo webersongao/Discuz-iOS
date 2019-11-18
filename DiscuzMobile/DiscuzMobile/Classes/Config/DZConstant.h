@@ -105,7 +105,7 @@
 // 刷新个人中心资料
 #define DZ_REFRESHCENTER_Notify     @"get6Ziliao"
 #define DZ_IMAGEORNOT_Notify        @"IMGOR3NOT_Notify"
-#define DZ_UserSignOut_Notify       @"SIGNOUT4NOTIFY"
+#define DZ_UserSigOut_Notify       @"SIGNOUT4NOTIFY"
 // 点中statusbar
 #define DZ_STATUSBARTAP_Notify @"statuBarTappedNotification"
 // 防止首次加载APP的时候没有数据，划过导航页面的时候刷新一次
@@ -122,5 +122,6 @@
 #define DZ_RefreshWeb_Notify @"refreshL9ocalWeb"
 
 #define DZ_DomainUrlChange_Notify @"DomainN4ameChange"
+#define DZ_UserLogin_Notify @"user9LoginNotification"
 
 #endif /* const_h */

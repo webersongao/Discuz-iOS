@@ -21,7 +21,7 @@
     self.navigationItem.title = @"发送消息";
     [self initUI];
     if ([DataCheck isValidString:self.uid]) {
-        [self createBarBtn:@"取消" type:NavItemText Direction:NavDirectionLeft];
+        [self configNaviBar:@"取消" type:NaviItemText Direction:NaviDirectionLeft];
     }
 }
 

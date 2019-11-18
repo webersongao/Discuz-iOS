@@ -23,7 +23,7 @@ NSString * const domainName = @"name";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self createBarBtn:@"添加" type:NavItemText Direction:NavDirectionRight];
+    [self configNaviBar:@"添加" type:NaviItemText Direction:NaviDirectionRight];
     
     NSDictionary *dic = [[DZFileManager shareInstance] readDocumentPlist:domainList];
     if ([DataCheck isValidDictionary:dic] && [DataCheck isValidArray:dic[domain]]) {

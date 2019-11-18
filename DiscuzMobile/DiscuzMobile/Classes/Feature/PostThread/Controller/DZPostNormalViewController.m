@@ -53,7 +53,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"发帖";
     
-    [self createBarBtn:@"发布" type:NavItemText Direction:NavDirectionRight];
+    [self configNaviBar:@"发布" type:NaviItemText Direction:NaviDirectionRight];
     self.tableView.backgroundColor = [UIColor whiteColor];
     
     if (self.typeArray.count > 0) {
@@ -463,7 +463,7 @@
     NSDictionary * getdic=@{@"fid":self.fid};
     NSArray *arr = @[[AudioTool shareInstance].mp3Url.absoluteString];
     [self.HUD showLoadingMessag:@"正在上传语音..." toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:arr attacheType:JTAttacheAudio getDic:getdic postDic:dic complete:^{
+    [[UploadTool shareInstance] upLoadAttachmentArr:arr attacheType:DZAttacheAudio getDic:getdic postDic:dic complete:^{
         [self.HUD hide];
     } success:^(id response) {
         

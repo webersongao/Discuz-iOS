@@ -134,9 +134,7 @@
 }
 
 #pragma mark - tableView delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
    
     UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];

@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, JTAttacheType) {
-    JTAttacheImage,
-    JTAttacheVote,
-    JTAttacheAudio,
-    JTAttacheCustom,
+typedef NS_ENUM(NSUInteger, DZAttacheType) {
+    DZAttacheImage,
+    DZAttacheVote,
+    DZAttacheAudio,
+    DZAttacheCustom,
 };
 
 @interface UploadTool : NSObject
@@ -31,6 +31,6 @@ typedef NS_ENUM(NSUInteger, JTAttacheType) {
  @param success 成功回调
  @param failure 失败回调
  */
-- (void)upLoadAttachmentArr:(NSArray *)attachArr attacheType:(JTAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure;
+- (void)upLoadAttachmentArr:(NSArray *)attachArr attacheType:(DZAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure;
 
 @end

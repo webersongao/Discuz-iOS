@@ -34,13 +34,11 @@ static const NSInteger RowFaceCount = 9;
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardDidHideNotification object:nil];
-        
         toolBarHeight = 40;
         keyboardHeight = 216;
         emotionVHeight = 0;
         TextBarHeight = 50;
         SCHeight = 0;
-        
         [self initKeyboardComponment];
         
     }

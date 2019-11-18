@@ -25,7 +25,6 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    
     return [self.topViewController preferredStatusBarStyle];
 }
 

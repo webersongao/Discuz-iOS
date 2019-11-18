@@ -37,10 +37,10 @@ static NSString *isFourmList = @"isFourmList";
 }
 
 -(void)setNavc {
-//    [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
+//    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     NSString *leftTitle = _isList ? @"forum_list" : @"forum_ranctangle";
-    [self createBarBtn:leftTitle type:NavItemImage Direction:NavDirectionLeft];
-    [self createBarBtn:@"bar_search" type:NavItemImage Direction:NavDirectionRight];
+    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
 - (void)setPageView {
@@ -50,15 +50,14 @@ static NSString *isFourmList = @"isFourmList";
 //    [self pageOfController:hot andTitle:@"热门"];
     if (_isList) {
         [self pageOfController:self.indexVC andTitle:@"全部"];
-    }
-    else {
+    }else {
         [self pageOfController:self.allVC andTitle:@"全部"];
     }
     _containVc = [[DZContainerController alloc] init];
-    [self setTab];
+    [self setNaviTab];
 }
 
-- (void)setTab {
+- (void)setNaviTab {
     //    CGRect segmentRect = CGRectMake(0, 0, WIDTH, 44);
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
     [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
@@ -82,7 +81,7 @@ static NSString *isFourmList = @"isFourmList";
         [self pageOfController:self.allVC andTitle:@"全部"];
     }
     
-    [self setTab];
+    [self setNaviTab];
     [self setNavc];
     
     [[NSUserDefaults standardUserDefaults] setBool:_isList forKey:isFourmList];
@@ -93,10 +92,10 @@ static NSString *isFourmList = @"isFourmList";
     if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
 //        id new = change[NSKeyValueChangeNewKey];
 //        if ([new integerValue] == 0) {
-//            [self createBarBtn:@"" type:NavItemText Direction:NavDirectionLeft];
+//            [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
 //        } else if ([new integerValue] == 1) {
 //            NSString *leftTitle = _isList ? @"forum_list" : @"forum_ranctangle";
-//            [self createBarBtn:leftTitle type:NavItemImage Direction:NavDirectionLeft];
+//            [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
 //        }
     }
 }

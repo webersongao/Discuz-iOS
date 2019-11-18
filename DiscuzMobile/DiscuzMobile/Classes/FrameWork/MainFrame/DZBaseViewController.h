@@ -10,14 +10,14 @@
 #import "DZLoginModule.h"
 #import "EmptyAlertView.h"
 
-typedef NS_ENUM(NSUInteger, NavDirection) {
-    NavDirectionLeft,
-    NavDirectionRight,
+typedef NS_ENUM(NSUInteger, NaviDirection) {
+    NaviDirectionLeft,
+    NaviDirectionRight,
 };
 
-typedef NS_ENUM(NSUInteger, NavItemContentType) {
-    NavItemImage,
-    NavItemText,
+typedef NS_ENUM(NSUInteger, NaviItemType) {
+    NaviItemImage,
+    NaviItemText,
 };
 
 @interface DZBaseViewController : UIViewController
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, NavItemContentType) {
  @param type  类型 图片 或者 文字
  @param direction  方向 right or left
 */
--(void)createBarBtn:(NSString *)titleORImageUrl type:(NavItemContentType)type Direction:(NavDirection)direction;
+-(void)configNaviBar:(NSString *)titleORImageUrl type:(NaviItemType)type Direction:(NaviDirection)direction;
 
 /**
  服务器返回错误提示
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, NavItemContentType) {
 /**
  弹出登录界面
  */
-- (void)initLogin;
+- (void)transToLogin;
 
 /**
  判断是否登录，未登录弹出登录界面
