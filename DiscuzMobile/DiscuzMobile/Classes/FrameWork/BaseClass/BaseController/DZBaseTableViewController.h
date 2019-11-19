@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
-@property (nonatomic, strong) NSMutableDictionary *cellHeights;
+@property (nonatomic, strong) NSMutableDictionary *cellHeightDict;
 
 @property (nonatomic, assign) NSInteger page;
 

@@ -63,7 +63,7 @@
     [self initData];
     
     [self downLoadData];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf initData];
         [weakSelf downLoadData];
@@ -174,7 +174,7 @@
     } else {
         AllOneButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:OneID];
         if (cell == nil) {
-            WEAKSELF;
+            KWEAKSELF;
             cell = [[AllOneButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OneID];
             cell.actionBlock = ^(UIButton *sender) {
                 [weakSelf isSure:sender];

@@ -11,7 +11,7 @@
 #import "DZCollectionTool.h"
 
 #import "LianCollectionController.h"
-#import "FListController.h"
+#import "DZForumListController.h"
 #import "LianContainTableView.h"
 
 #import "DZPostNormalViewController.h"
@@ -42,7 +42,7 @@
 
 @property (nonatomic, strong) LianContainTableView *tableView;
 
-@property (nonatomic, strong) NSMutableArray<FListController *> *ctvArr;
+@property (nonatomic, strong) NSMutableArray<DZForumListController *> *ctvArr;
 
 @property (nonatomic, strong) UITableViewCell *contentCell;
 
@@ -118,11 +118,11 @@
     
     self.selectIndex = 0;
     
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         if (weakSelf.ctvArr.count > 0) {
-            FListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
+            DZForumListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
             [fVc refreshData];
         } else {
             [weakSelf.tableView.mj_header endRefreshing];
@@ -294,40 +294,39 @@
 }
 
 - (void)postNormal {
-    WEAKSELF;
+    KWEAKSELF;
     DZPostNormalViewController * tvc = [[DZPostNormalViewController alloc] init];
     tvc.dataForumTherad = self.Variables;
     tvc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
-    [self.navigationController pushViewController:tvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:tvc];
 }
 
 - (void)postVote {
-    WEAKSELF;
+    KWEAKSELF;
     DZPostVoteViewController * vcv = [[DZPostVoteViewController alloc] init];
     vcv.dataForumTherad = self.Variables;
     vcv.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
-    [self.navigationController pushViewController:vcv animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:vcv];
 }
 
 - (void)postActivity {
-    WEAKSELF;
+    KWEAKSELF;
     
     DZPostActivityViewController * ivc = [[DZPostActivityViewController alloc] init];
     ivc.dataForumTherad = self.Variables;
     ivc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
-    
-    [self.navigationController pushViewController:ivc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:ivc];
 }
 
 - (void)postDebate {
     
-    WEAKSELF;
+    KWEAKSELF;
     DZPostDebateController *debateVC = [[DZPostDebateController alloc] init];
     debateVC.dataForumTherad = self.Variables;
     debateVC.pushDetailBlock = ^(NSString *tid) {
@@ -339,7 +338,7 @@
 
 - (void)loginedRefresh {
     if (self.ctvArr.count > 0) {
-        FListController *fVc = self.ctvArr[self.selectIndex];
+        DZForumListController *fVc = self.ctvArr[self.selectIndex];
         [fVc refreshData];
     } else {
         [self.tableView.mj_header endRefreshing];
@@ -458,10 +457,10 @@
         
         if (self.ctvArr.count == 0) {
             NSMutableArray *vcArr = [NSMutableArray array];
-            WEAKSELF;
+            KWEAKSELF;
             [self.titleArr enumerateObjectsUsingBlock:^(DZForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                FListController *listVc = [[FListController alloc] init];
+                DZForumListController *listVc = [[DZForumListController alloc] init];
                 listVc.title = obj.name;
                 listVc.fid = obj.fid;
                 listVc.order = idx;
@@ -603,7 +602,7 @@
         DZForumInfoModel *node = self.subForumArr[indexPath.row];
         LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
         foVC.forumFid = node.fid;
-        [self.navigationController pushViewController:foVC animated:YES];
+        [[DZMobileCtrl sharedCtrl] PushToController:foVC];
     }
 }
 

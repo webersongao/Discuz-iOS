@@ -269,7 +269,7 @@
         [self showServerError:error];
     }];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.verifyView.submitBlock = ^{
         [weakSelf postData];
     };

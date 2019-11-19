@@ -87,7 +87,7 @@
     [self.closeBtn addTarget:self action:@selector(closeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
     self.selectView = [[DZPostTypeSelectView alloc] init];
-    WEAKSELF;
+    KWEAKSELF;
     self.selectView.typeBlock = ^(PostType type) {
         [weakSelf.selectView close];
         [weakSelf switchTypeTopost:type];
@@ -224,13 +224,13 @@
 }
 
 - (void)publicPostControllerSet:(DZPostBaseController *)controller {
-    WEAKSELF;
+    KWEAKSELF;
     controller.dataForumTherad = self.Variables;
     controller.fid = self.selectFid;
     controller.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
-    [self.navigationController pushViewController:controller animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:controller];
 }
 
 - (void)postNormal {

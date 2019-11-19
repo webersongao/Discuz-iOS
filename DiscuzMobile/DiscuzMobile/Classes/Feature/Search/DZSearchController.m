@@ -41,7 +41,7 @@
         [self.searchView.searchBar becomeFirstResponder];
     }
     
-    WEAKSELF;
+    KWEAKSELF;
     self.historyVC.SearchClick = ^(NSString *searchText) {
         weakSelf.searchView.searchBar.text = searchText;
         [weakSelf searchBarEndActive];
@@ -71,7 +71,7 @@
     
     [self.tableView registerClass:[DZSearchListCell class] forCellReuseIdentifier:[DZSearchListCell getReuseId]];
     self.tableView.backgroundColor = [UIColor whiteColor];
-    WEAKSELF
+    KWEAKSELF
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf requestData];
@@ -140,10 +140,10 @@
     return 40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.cellHeights[indexPath]) {
-        self.cellHeights[indexPath] = @([self caculateCellHeight:indexPath]);
+    if (!self.cellHeightDict[indexPath]) {
+        self.cellHeightDict[indexPath] = @([self caculateCellHeight:indexPath]);
     }
-    return [self.cellHeights[indexPath] floatValue];
+    return [self.cellHeightDict[indexPath] floatValue];
 }
 
 - (CGFloat)caculateCellHeight:(NSIndexPath *)indexPath {
@@ -186,7 +186,7 @@
     
     if (self.dataSourceArr.count > 0) {
         self.dataSourceArr = [NSMutableArray array];
-        [self.cellHeights removeAllObjects];
+        [self.cellHeightDict removeAllObjects];
     }
     [self.tableView reloadData];
     self.tableView.mj_footer.hidden = YES;
@@ -264,7 +264,7 @@
         if (self.dataSourceArr.count > 0) {
             self.dataSourceArr = [NSMutableArray array];
             self.tableView.mj_footer.hidden = YES;
-            [self.cellHeights removeAllObjects];
+            [self.cellHeightDict removeAllObjects];
             [self.tableView reloadData];
         }
     }

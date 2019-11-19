@@ -151,7 +151,7 @@
     
     self.bloginModel = nil;
     
-    WEAKSELF;
+    KWEAKSELF;
     [ShareSDK getUserInfo:platformType
            onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
                dispatch_async(dispatch_get_main_queue(), ^{
@@ -179,7 +179,6 @@
                                }
                            }
                            success?success(dic,@{@"type":type}):nil;
-                           
                        } else {
                            [MBProgressHUD showInfo:@"服务器繁忙请重试"];
                        }

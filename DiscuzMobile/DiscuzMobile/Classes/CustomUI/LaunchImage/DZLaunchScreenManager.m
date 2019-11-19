@@ -48,7 +48,7 @@
     
 //    [self test];
 //    return;
-    WEAKSELF;
+    KWEAKSELF;
     [self.launchImageView showInWindowWithAnimation:[TYLaunchFadeScaleAnimation fadeAnimationWithDelay:5.0] completion:^(BOOL finished) {
         DLog(@"finished");
     }];
@@ -68,7 +68,7 @@
 }
 
 - (void)test {
-    WEAKSELF;
+    KWEAKSELF;
     [self.launchImageView showInWindowWithAnimation:[TYLaunchFadeScaleAnimation fadeAnimationWithDelay:5.0] completion:^(BOOL finished) {
         DLog(@"finished");
     }];

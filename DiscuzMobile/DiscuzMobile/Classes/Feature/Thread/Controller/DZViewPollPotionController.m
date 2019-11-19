@@ -64,7 +64,7 @@
     if ([DataCheck isValidString:cell.nameLabel.text]) {
          senVC.uid = cell.nameLabel.text;
     }
-    [self.navigationController pushViewController:senVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:senVC];
 }
 
 - (void)downLoadData {

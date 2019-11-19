@@ -88,18 +88,18 @@
 }
 // 有图无图
 - (void)reloadImage {
-    if (self.cellHeights.count > 0) {
-        [self.cellHeights removeAllObjects];
+    if (self.cellHeightDict.count > 0) {
+        [self.cellHeightDict removeAllObjects];
     }
     [self.tableView reloadData];
 }
 
 #pragma mark setter getter
-- (NSMutableDictionary *)cellHeights {
-    if (!_cellHeights) {
-        _cellHeights = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)cellHeightDict {
+    if (!_cellHeightDict) {
+        _cellHeightDict = [NSMutableDictionary dictionary];
     }
-    return _cellHeights;
+    return _cellHeightDict;
 }
 
 - (NSMutableArray *)dataSourceArr {

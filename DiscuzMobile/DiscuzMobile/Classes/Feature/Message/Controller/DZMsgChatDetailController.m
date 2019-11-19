@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *sourceDic;
 @property (nonatomic, strong) NSMutableArray<MessageModel *> *messageModelArr;
-@property (nonatomic, strong) NSMutableDictionary *cellHeights;  // 缓存cell高度
+@property (nonatomic, strong) NSMutableDictionary *cellHeightDict;  // 缓存cell高度
 // 表情键盘
 @property (nonatomic, strong) EmoticonKeyboard *emoKeyboard;
 
@@ -95,7 +95,7 @@
 
 #pragma mark - 请求方法
 - (void)refreshMethod {
-    WEAKSELF;
+    KWEAKSELF;
     // 页数
     self.chatTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         DLog(@"刷新");
@@ -134,8 +134,7 @@
     _emoKeyboard.textBarView.textView.placeholderText = @"回复消息";
     [_emoKeyboard.textBarView.sendBtn setTitle:@"发送" forState:UIControlStateNormal];
     
-    WEAKSELF;
-    
+    KWEAKSELF;
     self.emoKeyboard.sendBlock = ^ {
         [weakSelf sendAction];
     };
@@ -280,7 +279,7 @@
 }
 
 - (void)updateData {
-    [self.cellHeights removeAllObjects];
+    [self.cellHeightDict removeAllObjects];
     [self loadData:[NSString stringWithFormat:@"%ld",(long)self.page]];
 }
 
@@ -381,7 +380,7 @@
         [menuvc setMenuVisible:YES animated:YES];
         
         self.pressIndexRow = pressedIndexPath.row;
-        WEAKSELF;
+        KWEAKSELF;
         cell.messageLabel.copyBlock = ^{
             [weakSelf copyText];
         };
@@ -412,7 +411,7 @@
         if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.pressIndexRow inSection:0];
             [self.messageModelArr removeObjectAtIndex:self.pressIndexRow];
-            [self.cellHeights removeAllObjects];
+            [self.cellHeightDict removeAllObjects];
             [self.chatTableView beginUpdates];
             [self.chatTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
             [self.chatTableView endUpdates];
@@ -436,10 +435,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.cellHeights[indexPath]) {
-        self.cellHeights[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
+    if (!self.cellHeightDict[indexPath]) {
+        self.cellHeightDict[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
     }
-    return [self.cellHeights[indexPath] floatValue];
+    return [self.cellHeightDict[indexPath] floatValue];
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -472,11 +471,11 @@
     return _sourceDic;
 }
 
-- (NSMutableDictionary *)cellHeights {
-    if (!_cellHeights) {
-        _cellHeights = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)cellHeightDict {
+    if (!_cellHeightDict) {
+        _cellHeightDict = [NSMutableDictionary dictionary];
     }
-    return _cellHeights;
+    return _cellHeightDict;
 }
 
 @end

@@ -45,8 +45,7 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)setPageView {
     
-    DZForumCollectionController *hot = [[DZForumCollectionController alloc] init];
-    hot.type = Forum_hot;
+//    DZForumCollectionController *hot = [[DZForumCollectionController alloc] initWithType:Forum_hot];
 //    [self pageOfController:hot andTitle:@"热门"];
     if (_isList) {
         [self pageOfController:self.indexVC andTitle:@"全部"];
@@ -121,8 +120,7 @@ static NSString *isFourmList = @"isFourmList";
 
 - (DZForumCollectionController *)allVC {
     if (_allVC == nil) {
-        _allVC = [[DZForumCollectionController alloc] init];
-        _allVC.type = Forum_index;
+        _allVC = [[DZForumCollectionController alloc] initWithType:Forum_index];
     }
     return _allVC;
 }

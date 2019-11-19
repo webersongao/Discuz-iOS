@@ -20,7 +20,7 @@
 /// 设置tabbar 和 mainNavi
 -(void)setTababar:(UITabBarController *)Tababar mainNavi:(UINavigationController *)mainNavi;
 
-
+- (void)showServerAlertError:(NSError *)error;
 
 @end
 

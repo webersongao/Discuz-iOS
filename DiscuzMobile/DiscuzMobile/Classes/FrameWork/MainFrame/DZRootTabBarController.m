@@ -16,6 +16,7 @@
 #import "DZMobileCtrl.h"
 #import "DZMessageListController.h"
 
+#import "DZHomeController.h"
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"

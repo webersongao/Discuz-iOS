@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, ForumType) {
 
 @interface DZForumCollectionController : DZBaseViewController
 
-@property (nonatomic, assign) ForumType type;
+- (instancetype)initWithType:(ForumType)type;
+
 
 @end

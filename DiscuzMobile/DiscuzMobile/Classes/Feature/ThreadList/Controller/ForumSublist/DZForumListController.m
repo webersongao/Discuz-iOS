@@ -1,12 +1,12 @@
 //
-//  FListController.m
+//  DZForumListController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "FListController.h"
+#import "DZForumListController.h"
 #import "DZForumThreadController.h"
 #import "LianCollectionController.h"
 #import "MySubjectViewController.h"
@@ -24,7 +24,7 @@
 #import "VerifyThreadRemindView.h"
 
 
-@interface FListController ()
+@interface DZForumListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
 @property (nonatomic ,strong) NSDictionary *forumInfoDic;
 
@@ -39,7 +39,7 @@
 
 @end
 
-@implementation FListController
+@implementation DZForumListController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -247,8 +247,8 @@
     if (self.dataSourceArr.count > 0) {
         [self.dataSourceArr removeAllObjects];
     }
-    if (self.cellHeights.count > 0) {
-        [self.cellHeights removeAllObjects];
+    if (self.cellHeightDict.count > 0) {
+        [self.cellHeightDict removeAllObjects];
     }
     if (self.topThreadArray.count > 0) {
         [self.topThreadArray removeAllObjects];
@@ -304,10 +304,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (!self.cellHeights[indexPath]) {
-        self.cellHeights[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
+    if (!self.cellHeightDict[indexPath]) {
+        self.cellHeightDict[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
     }
-    return [self.cellHeights[indexPath] floatValue];
+    return [self.cellHeightDict[indexPath] floatValue];
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -359,33 +359,24 @@
     
     //判断是不是置顶帖子  displayorder  3，2，1 置顶  0 正常  -1 回收站  -2 审核中  -3 审核忽略  -4草稿
     if (self.topThreadArray.count > 0) {
-        
         if (indexPath.section == 0) {
-            
             static NSString * CellId = @"ForumTopThreadCellId";
-
             TopMlCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
             if (cell == nil) {
                 cell = [[TopMlCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
             }
-            
             if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
                 [cell setDataWithModel:nil];
             } else {
                 ThreadListModel *listModel = self.topThreadArray[indexPath.row - 1];
                 [cell setDataWithModel:listModel];
             }
-            
             return cell;
         } else {
-            
             ThreadListModel *listModel = self.commonThreadArray[indexPath.row];
             return [self listCell:listModel];
-
         }
-        
     } else {
-        
         ThreadListModel *listModel = self.dataSourceArr[indexPath.row];
          return [self listCell:listModel];
     }
@@ -470,7 +461,7 @@
 - (VerifyThreadRemindView *)verifyThreadRemindView {
     if (!_verifyThreadRemindView) {
         _verifyThreadRemindView = [[VerifyThreadRemindView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 44)];
-        WEAKSELF;
+        KWEAKSELF;
         _verifyThreadRemindView.clickRemindBlock = ^{
             [weakSelf ToMySubjectViewController];
         };

@@ -30,7 +30,7 @@
 
     [self downLoadData];
     [self.view addSubview:self.tableView];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf reloadData];
     }];

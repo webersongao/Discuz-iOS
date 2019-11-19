@@ -26,7 +26,7 @@
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [self downLoadFavForumData];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.tableView.mj_footer resetNoMoreData];
         weakSelf.page = 1;

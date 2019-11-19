@@ -17,11 +17,11 @@
 
 @interface DZForumCollectionController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
-
 @property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *dataSourceArr;
-
-@property (nonatomic, strong) NSString *currentType;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, assign) NSString * urlString;  //!< 属性注释
+@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic, assign) ForumType type;
 
 @end
 
@@ -30,15 +30,19 @@
 static NSString *CellID = @"fourmCollection";
 static NSString * headerSection = @"CellHeader";
 
+- (instancetype)initWithType:(ForumType)type{
+    self = [super init];
+    if (self) {
+        self.type = type;
+        self.typeString = (type == Forum_hot) ? @"hotforum" : @"forumindex";
+        self.urlString = (type == Forum_hot) ? DZ_Url_Hotforum : DZ_Url_Forumindex;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.currentType = self.type == Forum_hot ? @"hotforum" : @"forumindex";
-    
     [self initCollectionView];
-    
     [self cacheRequest];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TABBARREFRESH_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_IMAGEORNOT_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
@@ -57,7 +61,7 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)refreshData {
     // 刷新
-    [self loadData:self.currentType andLoadType:JTRequestTypeRefresh];
+    [self loadData:self.typeString andLoadType:JTRequestTypeRefresh];
 }
 
 - (void)reloadImage {
@@ -83,7 +87,6 @@ static NSString * headerSection = @"CellHeader";
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     flowLayout.minimumLineSpacing = 10;
     flowLayout.minimumInteritemSpacing = 4;
-//    flowLayout.itemSize = CGSizeMake((WIDTH - 18 - 18) / 3, WIDTH / 3 + 52);
     flowLayout.itemSize = CGSizeMake((KScreenWidth - 20 - 20) / 3, KScreenWidth / 3 + 40);
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) collectionViewLayout:flowLayout];
@@ -97,18 +100,17 @@ static NSString * headerSection = @"CellHeader";
     self.collectionView.delegate = self;
     [self.view addSubview:self.collectionView];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadData:weakSelf.currentType andLoadType:JTRequestTypeRefresh];
+        [weakSelf loadData:weakSelf.typeString andLoadType:JTRequestTypeRefresh];
     }];
 }
 
 - (void)cacheRequest {
     [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
-    [self loadData:self.currentType andLoadType:JTRequestTypeCache]; // 读缓存，没有缓存的话自己会请求网络
-    NSString *urlStr = self.type == Forum_hot ? DZ_Url_Hotforum : DZ_Url_Forumindex;
-    if ([JTRequestManager isCache:urlStr andParameters:nil]) { // 缓存有的话，要刷新一次。缓存没有的话，不请求了，上面那个方法已经请求了
-        [self loadData:self.currentType andLoadType:JTRequestTypeRefresh];
+    [self loadData:self.typeString andLoadType:JTRequestTypeCache]; // 读缓存，没有缓存的话自己会请求网络
+    if ([JTRequestManager isCache:self.urlString andParameters:nil]) { // 缓存有的话，要刷新一次。缓存没有的话，不请求了，上面那个方法已经请求了
+        [self loadData:self.typeString andLoadType:JTRequestTypeRefresh];
     }
 }
 
@@ -126,9 +128,7 @@ static NSString * headerSection = @"CellHeader";
         
         if (self.type == Forum_hot) {
             [self setHotData:responseObject];
-            
         } else {
-            
             [self setForumList:responseObject];
         }
         [self.collectionView reloadData];
@@ -153,15 +153,12 @@ static NSString * headerSection = @"CellHeader";
 }
 
 - (void)emptyShow {
-    
     if (self.dataSourceArr.count > 0) {
         self.emptyView.hidden = YES;
     } else {
         self.emptyView.hidden = NO;
         self.emptyView.frame = self.collectionView.frame;
-        
         if (!self.emptyView.isOnView) {
-            
             [self.collectionView addSubview:self.emptyView];
             self.emptyView.isOnView = YES;
         }
@@ -217,7 +214,6 @@ static NSString * headerSection = @"CellHeader";
         
     }
     return cell;
-   
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -250,10 +246,10 @@ static NSString * headerSection = @"CellHeader";
 }
 
 - (void)pushThreadList:(DZTreeViewNode *)node {
-
+    
     LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
     foVC.forumFid = node.infoModel.fid;
-    [self.navigationController pushViewController:foVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:foVC];
 }
 
 - (void)didSelectHeaderWithSection:(UITapGestureRecognizer *)sender {
@@ -272,3 +268,9 @@ static NSString * headerSection = @"CellHeader";
 }
 
 @end
+
+
+
+
+
+

@@ -33,7 +33,7 @@
     
     [self downLoadData];
     [self.view addSubview:self.tableView];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
     }];
@@ -61,10 +61,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
 //    return 85.0;
-    if (!self.cellHeights[indexPath]) {
-        self.cellHeights[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
+    if (!self.cellHeightDict[indexPath]) {
+        self.cellHeightDict[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
     }
-    return [self.cellHeights[indexPath] floatValue];
+    return [self.cellHeightDict[indexPath] floatValue];
     
 }
 
@@ -189,7 +189,7 @@
     if (self.replyArr.count > 0) {
         [self.replyArr removeAllObjects];
     }
-    self.cellHeights = [NSMutableDictionary dictionary];
+    self.cellHeightDict = [NSMutableDictionary dictionary];
 }
 
 - (NSMutableArray *)replyArr {

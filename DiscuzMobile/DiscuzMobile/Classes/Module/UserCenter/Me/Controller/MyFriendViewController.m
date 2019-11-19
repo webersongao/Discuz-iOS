@@ -28,7 +28,7 @@
    
     [self downLoadData];
     self.title = @"我的好友";
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf refreshData];

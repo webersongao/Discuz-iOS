@@ -42,7 +42,7 @@
     _registerView.delegate = self;
     [_registerView.registerButton addTarget:self action:@selector(registerBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.registerView.authCodeView.refreshAuthCodeBlock = ^{
         [weakSelf downlodyan];
     };

@@ -188,7 +188,7 @@
             return attString;
         }];
         
-        WEAKSELF;
+        KWEAKSELF;
         [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
             [weakSelf setSelectedAtIndex:index];
         }];

@@ -55,7 +55,7 @@ NSString * const debugPassword = @"debugPassword";
     [super viewDidLoad];
     [self createBarBtn];
     [[CheckHelper shareInstance] checkAPIRequest];
-    WEAKSELF;
+    KWEAKSELF;
     self.logView.authCodeView.refreshAuthCodeBlock = ^{
         [weakSelf downlodyan];
     };

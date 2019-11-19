@@ -7,7 +7,7 @@
 //
 
 #import "LianCollectionController.h"
-#import "FListController.h"
+#import "DZForumListController.h"
 #import "LianMixAllViewController.h"
 
 @interface LianCollectionController () <UICollectionViewDataSource, UICollectionViewDelegate>

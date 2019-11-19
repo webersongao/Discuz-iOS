@@ -503,7 +503,7 @@ static int voteIndex = 0 ;
         [self showServerError:error];
     }];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.verifyView.submitBlock = ^{
         [weakSelf postVote];
     };
@@ -512,7 +512,7 @@ static int voteIndex = 0 ;
 - (void)openMenu:(UIButton *)sender {
     
     [self.view endEditing:YES];
-    WEAKSELF;
+    KWEAKSELF;
     self.pickerView.finishPickingBlock = ^(UIImage *image) {
         [weakSelf uploadImage:image andTag:sender.tag];
     };

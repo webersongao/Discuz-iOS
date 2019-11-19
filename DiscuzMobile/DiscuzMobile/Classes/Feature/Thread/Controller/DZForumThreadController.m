@@ -130,7 +130,7 @@
     tapges.delegate = self;
     [self.detailView.webView addGestureRecognizer:tapges];
     
-    WEAKSELF;
+    KWEAKSELF;
     
     self.detailView.emoKeyboard.textBarView.praiseBlock = ^ {
         [weakSelf createPraise:nil];
@@ -210,7 +210,7 @@
     /*
      * 必写，JS调用OC
      */
-    WEAKSELF;
+    KWEAKSELF;
     _bridge = [WebViewJavascriptBridge bridgeForWebView:self.detailView.webView];
     [_bridge setWebViewDelegate:self];
     
@@ -322,8 +322,7 @@
         //参加活动
         DZPartInActivityController * partinVc = [[DZPartInActivityController alloc]init];
         partinVc.threadModel = self.threadModel;
-        [self.navigationController pushViewController:partinVc animated:YES];
-        
+        [[DZMobileCtrl sharedCtrl] PushToController:partinVc];
     } else {
         
         NSString *message = @"确定取消报名？";
@@ -456,7 +455,7 @@
 -(void)createVisitVotesrs:(id)data {
     DZViewPollPotionNumController * vppnvc = [[DZViewPollPotionNumController alloc]init];
     vppnvc.tid=self.tid;
-    [self.navigationController pushViewController:vppnvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:vppnvc];
 }
 
 #pragma mark  -  查看用户详情
@@ -644,7 +643,7 @@
         [self showServerError:error];
     }];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.verifyView.submitBlock = ^{
         [weakSelf postReplay];
     };

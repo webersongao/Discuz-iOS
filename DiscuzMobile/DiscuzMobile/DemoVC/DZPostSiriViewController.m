@@ -28,7 +28,7 @@
 }
 
 -(void)inputButtoninsideAction:(UIButton *)button{
-    WEAKSELF
+    KWEAKSELF
     [[DZSiriTool sharedTool] cancelSpeechRecognizer:^{
         [weakSelf.inputButton setTitle:@"Siri-输入文字" forState:UIControlStateNormal];
     }];
@@ -36,7 +36,7 @@
 
 -(void)inputButtonDownAction:(UIButton *)button{
     //启动识别服务
-    WEAKSELF
+    KWEAKSELF
     [[DZSiriTool sharedTool] stardSpeechRecognizer:^{
         [weakSelf.inputButton setTitle:@"Siri-语音识别中..." forState:UIControlStateNormal];
     } endBlock:^(NSString *String,BOOL isFinal) {

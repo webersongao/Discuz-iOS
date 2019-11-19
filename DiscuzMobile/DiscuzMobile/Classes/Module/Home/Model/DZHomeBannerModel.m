@@ -17,13 +17,11 @@
 + (NSArray *)setBannerData:(id)responseObject {
     NSMutableArray *bannerArr = [NSMutableArray array];
     if ([DataCheck isValidArray:[[responseObject objectForKey:@"iweset"] objectForKey:@"recommend"]]) {
-        
         for (NSDictionary *dic in [[responseObject objectForKey:@"iweset"] objectForKey:@"recommend"]) {
             DZHomeBannerModel *banner = [[DZHomeBannerModel alloc] init];
             [banner setValuesForKeysWithDictionary:dic];
             [bannerArr addObject:banner];
         }
-        
     }
     return bannerArr;
 }

@@ -39,7 +39,7 @@
     
     //refresh superview height
     [pickerView refreshImagePickerViewWithPhotoArray:nil];
-    WEAKSELF;
+    KWEAKSELF;
     self.pickerView.deleteBtnBlock = ^(NSInteger sort) {
         if (weakSelf.uploadModel.aidArray.count > sort) {
             [weakSelf.uploadModel.aidArray removeObjectAtIndex:sort];

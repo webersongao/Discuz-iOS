@@ -22,7 +22,7 @@
 // 邮箱
 #define DeveloperEmail @"zjt182163@163.com"
 
-#define WEAKSELF __weak typeof(self) weakSelf = self;
+#define KWEAKSELF __weak typeof(self) weakSelf = self;
 #define STRONGSELF __strong typeof(weakSelf) strongSelf = weakSelf;
 
 #define KScreenBounds [[UIScreen mainScreen] bounds]
@@ -95,6 +95,22 @@
 #define StatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height
 #define SafeAreaTopHeight ((KScreenHeight >= 812.0) && [[UIDevice currentDevice].model isEqualToString:@"iPhone"] ? 88 : 64)
 #define SafeAreaBottomHeight ((KScreenHeight >= 812.0) && [[UIDevice currentDevice].model isEqualToString:@"iPhone"]  ? 30 : 0)
+#define DZNetError(_domain, _code, _desc)   [NSError errorWithDomain:checkNull(_domain) code:(_code) userInfo:@{NSLocalizedFailureReasonErrorKey : (checkNull(_desc).length ? checkNull(_desc) : @"网络错误，请稍后再试")}]
+
+typedef void(^backNoneBlock)();
+typedef void(^backStateBlock)(id data,BOOL bSuccess);
+typedef void(^backStringBlock)(NSString * String);
+typedef void(^backArrayBlock)(NSArray * Array);
+typedef void(^backSetBlock)(NSSet * setArr);
+typedef void(^backBoolBlock)(BOOL boolState);
+typedef void(^completeBoolBlock)(BOOL bSuccess);
+typedef void(^backButtonBlock)(UIButton * button);
+typedef void(^backDictionaryBlock)(NSDictionary * Dictionary);
+typedef void(^backArraySizeBlock)(NSArray * Array,int64_t allSize);
+
+typedef void(^completeBlock)(id data,NSError *error);
+typedef void(^ProgressBlock)(double Progress,NSError *error);
+
 
 #pragma mark - 通知 ================================================
 
@@ -123,5 +139,7 @@
 
 #define DZ_DomainUrlChange_Notify @"DomainN4ameChange"
 #define DZ_UserLogin_Notify @"user9LoginNotification"
+
+
 
 #endif /* const_h */

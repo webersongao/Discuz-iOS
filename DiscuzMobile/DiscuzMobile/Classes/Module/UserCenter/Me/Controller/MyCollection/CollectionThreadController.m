@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     [self downLoadMyFavThread];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf.tableView.mj_footer resetNoMoreData];

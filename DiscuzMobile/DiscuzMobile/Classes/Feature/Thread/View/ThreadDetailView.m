@@ -52,7 +52,7 @@
     [self addSubview:self.emoKeyboard];
     self.emoKeyboard.backgroundColor = K_Color_MainGray;
     self.emoKeyboard.textBarView.style = detail_textBar;
-    WEAKSELF;
+    KWEAKSELF;
     __block CGFloat height = 0;
     self.emoKeyboard.changeBlock = ^(CGFloat everyHeight, CGFloat changeHeight) {
         height = changeHeight;

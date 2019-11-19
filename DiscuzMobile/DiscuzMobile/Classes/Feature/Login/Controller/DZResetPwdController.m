@@ -35,7 +35,7 @@
     _resetView.delegate = self;
     [_resetView.submitButton addTarget:self action:@selector(submitButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.resetView.authCodeView.refreshAuthCodeBlock = ^{
         [weakSelf downlodyan];
     };

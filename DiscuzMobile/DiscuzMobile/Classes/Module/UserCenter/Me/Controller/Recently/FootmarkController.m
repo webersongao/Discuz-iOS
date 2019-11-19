@@ -31,7 +31,7 @@
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [self refreshFoot];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshFoot];
     }];
@@ -46,7 +46,7 @@
 
 - (void)refreshFoot {
     self.page = 1;
-    WEAKSELF;
+    KWEAKSELF;
     BACK(^{
         weakSelf.dataSourceArr = [NSMutableArray arrayWithArray:[[DZDatabaseHandle defaultDataHelper] searchFootWithUid:[Environment sharedEnvironment].member_uid andPage:weakSelf.page andPerpage:weakSelf.perPage]];
         MAIN(^{
@@ -65,7 +65,7 @@
 
 - (void)addFoot {
     
-    WEAKSELF;
+    KWEAKSELF;
     BACK(^{
         weakSelf.page ++;
         [weakSelf.dataSourceArr addObjectsFromArray:[[DZDatabaseHandle defaultDataHelper] searchFootWithUid:[Environment sharedEnvironment].member_uid andPage:weakSelf.page andPerpage:weakSelf.perPage]];

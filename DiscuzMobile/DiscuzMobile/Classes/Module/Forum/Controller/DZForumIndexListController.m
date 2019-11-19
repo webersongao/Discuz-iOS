@@ -147,7 +147,7 @@
         return cell;
     } else {
         ForumRightCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumRightCell getReuseId]];
-        WEAKSELF;
+        KWEAKSELF;
         cell.collectionBlock = ^(LightGrayButton *sender,DZForumInfoModel *infoModel) {
             [weakSelf collectAction:sender andModel:infoModel];
         };
@@ -192,7 +192,7 @@
     DLog(@"%@",node.infoModel.fid);
     foVC.forumFid = node.infoModel.fid;
     
-    WEAKSELF;
+    KWEAKSELF;
     foVC.cForumBlock = ^(BOOL isCollection) {
         if (isCollection) {
             node.infoModel.favorited = @"1";
@@ -201,7 +201,7 @@
         }
         [weakSelf.tableView reloadData];
     };
-    [self.navigationController pushViewController:foVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:foVC];
 }
 
 // 向下滑（将出现的要重新计算一下）

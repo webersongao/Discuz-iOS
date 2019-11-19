@@ -50,7 +50,7 @@
 - (void)initTableView {
     
     [self.tableView registerClass:[ThreadListCell class] forCellReuseIdentifier:[ThreadListCell getReuseId]];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
         if ([weakSelf.view hu_intersectsWithAnotherView:nil]) {
@@ -139,8 +139,8 @@
 }
 
 - (void)clearDatasource {
-    if (self.cellHeights.count > 0) {
-        [self.cellHeights removeAllObjects];
+    if (self.cellHeightDict.count > 0) {
+        [self.cellHeightDict removeAllObjects];
     }
     if (self.dataSourceArr.count > 0) {
         [self.dataSourceArr removeAllObjects];
@@ -164,10 +164,10 @@
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (!self.cellHeights[indexPath]) {
-        self.cellHeights[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
+    if (!self.cellHeightDict[indexPath]) {
+        self.cellHeightDict[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
     }
-    return [self.cellHeights[indexPath] floatValue];
+    return [self.cellHeightDict[indexPath] floatValue];
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {

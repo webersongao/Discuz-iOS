@@ -10,11 +10,11 @@
 #import "DZSettingController.h"
 #import "RNCachingURLProtocol.h"
 #import "ForumCell.h"
+#import "DZHomeNetTool.h"
 #import "DZLoginModule.h"
 #import "DZHomeListCell.h"
 #import "ThreadListModel.h"
 #import "DZForumInfoModel.h"
-#import "DZHomeBannerModel.h"
 #import "DZBaseUrlController.h"
 #import "DZSlideShowScrollView.h"
 #import "LianMixAllViewController.h"
@@ -23,9 +23,8 @@
 
 @interface DZHomeManagerController ()
 
-@property (nonatomic, strong) NSMutableArray *offenSource;
-@property (nonatomic, strong) NSMutableArray *hotSource;
-@property (nonatomic, strong) DZSlideShowScrollView *scrollView;
+@property (nonatomic, strong) NSMutableArray <DZForumInfoModel *>*offenSource;
+@property (nonatomic, strong) NSMutableArray <ThreadListModel *>*hotSource;
 
 @end
 
@@ -44,175 +43,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self commitInit];
     [self initRequest];
+    self.navigationItem.title = DZ_APPNAME;
     [self.view addSubview:self.tableView];
 }
 
 
 - (void)commitInit {
-    [self setNavc];
-    [self initTableView];
-    [self setBanner];
-}
-
-#pragma mark - 设置导航栏
-//设置 nav
--(void)setNavc{
     [self configNaviBar:@"bar_message" type:NaviItemImage Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
-    self.navigationItem.title = DZ_APPNAME;
-}
-
--(void)initTableView{
-    
+    KWEAKSELF
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.tableView.mj_header endRefreshing];
-        [self initRequest];
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf initRequest];
     }];
-}
-
-- (void)setBanner {
-    
-    if (self.scrollView.bannerArray.count == 0) {
-        self.scrollView.frame =  CGRectMake(0, 0, KScreenWidth, 0);
-        [self.scrollView.pageControl removeFromSuperview];
-        return;
-    } else {
-        self.scrollView.frame = CGRectMake(0, 0, KScreenWidth, KScreenWidth * 9 / 20 + 6);
-    }
-    self.tableView.tableHeaderView = self.scrollView;
-//    self.scrollView.isPlaceholder = YES;
-    [self.scrollView setAddsPicture];
-    
-    WEAKSELF;
-    [self.scrollView touchInSlideShow:^(NSInteger currentPage) {
-        if ([DataCheck isValidString:weakSelf.scrollView.bannerArray[currentPage].link]) {
-            DZBaseUrlController *urlCt = [[DZBaseUrlController alloc] init];
-            urlCt.hidesBottomBarWhenPushed = YES;
-            urlCt.urlString = weakSelf.scrollView.bannerArray[currentPage].link;
-            [weakSelf.navigationController pushViewController:urlCt animated:YES];
-        }
-    }];
-    
 }
 
 - (void)initRequest {
-    // 热帖
-//    [self downLoadHotThreadData];
-    // 注释banner接口，该模块暂不可用
-//    [self downLoadForumHomeBanner];
-    
-    if ([DZLoginModule isLogged]) { // 收藏版块
-        [self downLoadFavForumData];
-    } else { // 热门版块
-        [self downLoadDataWtihForumType:@"hotforum"];
-    }
+//    if ([DZLoginModule isLogged]) { // 收藏版块
+//        [self downLoadFavForumData];
+//    } else { // 热门版块
+        [self downLoadHotforumData];
+//    }
 }
 
 //  下载热门版块 hotforum（常去的版块）-- 未登录时候
--(void)downLoadDataWtihForumType:(NSString *)forumType {
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Hotforum;
-    } success:^(id responseObject, JTLoadType type) {
-        DLog(@"_hotForumListArray1=%@",responseObject);
-        if ([forumType isEqualToString:@"hotforum"]){
-            [self setHotData:[[responseObject objectForKey:@"Variables"]objectForKey:@"data" ]];
+-(void)downLoadHotforumData {
+    KWEAKSELF
+    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+        if (error) {
+            [weakSelf showServerError:error];
+        }else{
+            [weakSelf setForumHotData:array];
         }
-        [self.tableView reloadData];
-        DLog(@"下载成功");
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        DLog(@"%@",error);
     }];
 }
 
 // 下载收藏版块（常去的版块）-- 登录时候
 -(void)downLoadFavForumData{
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_CollectionForum;
-    } success:^(id responseObject, JTLoadType type) {
-        DLog(@"responseObject myfacforum=====%@",responseObject);
-        // 判断 list 表单是否存在   存在则存储
-        NSArray *list = [[responseObject objectForKey:@"Variables"]objectForKey:@"list"];
-        if ([DataCheck isValidArray:list]) {
-            [self setHotData:list];
-            [self.tableView reloadData];
-        } else {
-            [self downLoadDataWtihForumType:@"hotforum"];
+    KWEAKSELF
+    [DZHomeNetTool DZ_HomeDownLoadFavForumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+        if (error) {
+            if (error.localizedDescription) {
+                [weakSelf showServerError:error];
+            }else{
+                [weakSelf downLoadHotforumData];
+            }
+        }else{
+            [weakSelf setForumHotData:array];
         }
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        DLog(@"%@",error);
     }];
 }
 
-//- (void)downLoadForumHomeBanner {
-//
-//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//        request.urlString = DZ_Url_RecommendBanner;
-//    } success:^(id responseObject, JTLoadType type) {
-//        NSArray *list = [[responseObject objectForKey:@"Variables"] objectForKey:@"list"];
-//        if ([DataCheck isValidArray:list]) {
-//            if (self.scrollView.bannerArray.count > 0) {
-//                self.scrollView.bannerArray = [NSMutableArray array];
-//                for (UIView *v  in self.scrollView.subviews) {
-//                    [v removeFromSuperview];
-//                }
-//            }
-//            for (NSDictionary *dic in list) {
-//                DZHomeBannerModel *banner = [[DZHomeBannerModel alloc] init];
-//                [banner setValuesForKeysWithDictionary:dic];
-//                [self.scrollView.bannerArray addObject:banner];
-//            }
-//
-//            [self setBanner];
-//        }
-//    } failed:^(NSError *error) {
-//        [self showServerError:error];
-//    }];
-//}
-
-// 下载热门主题（热帖）
-//-(void)downLoadHotThreadData {
-//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//        //获取热门主题
-//        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-//
-//    } success:^(id responseObject, JTLoadType type) {
-//        [self.HUD hideAnimated:YES];
-//        NSArray *data = [[responseObject objectForKey:@"Variables"] objectForKey:@"data"];
-//        if ([DataCheck isValidArray:data]) {
-//            self.dataSourceArr = data.mutableCopy;
-//            if (self.hotSource.count > 0) {
-//                [self.hotSource removeAllObjects];
-//            }
-//            for (NSDictionary *dic in self.dataSourceArr) {
-//                ThreadListModel *home = [[ThreadListModel alloc] init];
-//                [home setValuesForKeysWithDictionary:dic];
-//                [self.hotSource addObject:home];
-//            }
-//        }
-//    } failed:^(NSError *error) {
-//        [self.HUD hideAnimated:YES];
-//        [self showServerError:error];
-//    }];
-//}
-
 //  处理热门版块数据
-- (void)setHotData:(NSArray *)dataArr {
-    if (self.offenSource != nil) {
+- (void)setForumHotData:(NSArray <DZForumInfoModel *>*)dataModelArr {
+    if (self.offenSource.count) {
         [self.offenSource removeAllObjects];
     }
-    for (int i = 0; i < dataArr.count; i++)  {
-        DZForumInfoModel * infoModel = [[DZForumInfoModel alloc] init];
-        NSMutableDictionary *nodeDic = [NSMutableDictionary dictionary];
-        nodeDic = [dataArr[i] mutableCopy];
-        [infoModel setValuesForKeysWithDictionary:nodeDic];
-        [self.offenSource addObject:infoModel];
-    }
+    self.offenSource = dataModelArr.copy;
+    [self.tableView reloadData];
 }
 
 #pragma mark - tableView delegate
@@ -308,7 +198,7 @@
         DZForumInfoModel *infoModel = self.offenSource[indexPath.row];
         LianMixAllViewController *fvc = [[LianMixAllViewController alloc] init];
         fvc.forumFid = infoModel.fid;
-        [self.navigationController pushViewController:fvc animated:YES];
+        [[DZMobileCtrl sharedCtrl] PushToController:fvc];
     } else {
         ThreadListModel *model = self.hotSource[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToDetailController:model.tid];
@@ -316,21 +206,14 @@
 }
 
 #pragma mark - getter
-- (DZSlideShowScrollView *)scrollView {
-    if (_scrollView == nil) {
-        _scrollView = [[DZSlideShowScrollView alloc] init];
-    }
-    return _scrollView;
-}
-
-- (NSMutableArray *)offenSource {
+- (NSMutableArray <DZForumInfoModel *>*)offenSource {
     if (!_offenSource) {
         _offenSource = [NSMutableArray array];
     }
     return _offenSource;
 }
 
-- (NSMutableArray *)hotSource {
+- (NSMutableArray <ThreadListModel *>*)hotSource {
     if (!_hotSource) {
         _hotSource = [NSMutableArray array];
     }

@@ -11,15 +11,15 @@
 extern NSString * const DZ_Url_BaseCheck;
 #pragma mark - 发现
 // 推荐 banner
-extern NSString * const DZ_Url_RecommendBanner;
+extern NSString * const FUCK_DZ_Url_RecommendBanner;
 // 推荐 列表
-extern NSString * const DZ_Url_RecommendList;
+extern NSString * const FUCK_DZ_Url_RecommendList;
 // 所有热帖
-extern NSString * const DZ_Url_HotAll;
+extern NSString * const FUCK_DZ_Url_HotAll;
 
 // 精华
 extern NSString * const DZ_Url_DigestAll;
-// 所有最新
+// 最新
 extern NSString * const DZ_Url_NewAll;
 
 #pragma mark - 版块

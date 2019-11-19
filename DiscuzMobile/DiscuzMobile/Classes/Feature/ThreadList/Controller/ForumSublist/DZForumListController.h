@@ -1,5 +1,5 @@
 //
-//  FListController.h
+//  DZForumListController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
@@ -11,7 +11,7 @@
 typedef void(^SendValueBlock)(NSDictionary *dic);
 typedef void(^EndRefreshBlock)(void);
 
-@interface FListController : LianBaseTableController
+@interface DZForumListController : LianBaseTableController
 
 @property (nonatomic, strong) NSString *fid;
 @property (nonatomic, assign) NSInteger order;

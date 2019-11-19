@@ -243,7 +243,7 @@
         toolCell = [[DZNormalThreadToolCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:toolId];
         toolCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        WEAKSELF;
+        KWEAKSELF;
         toolCell.uploadView.pickerView.navigationController = self.navigationController;
         toolCell.uploadView.pickerView.HUD = self.HUD;
         [WBEmoticonInputView sharedView].delegate = self;
@@ -398,7 +398,7 @@
         
     }];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.verifyView.submitBlock = ^{
         [weakSelf postData];
     };

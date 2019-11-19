@@ -264,7 +264,7 @@
 - (AddressSelectView *)cityPickView {
     if (_cityPickView == nil) {
         _cityPickView = [[AddressSelectView alloc] initWithFrame:CGRectMake(0, KScreenHeight - 260, KScreenWidth, 260)];
-        WEAKSELF;
+        KWEAKSELF;
         _cityPickView.addressBlock = ^(NSString *address) {
             [weakSelf selectAddress:address];
             [weakSelf.cityPickView remove];

@@ -41,7 +41,7 @@
     
     [self downLoadData];
     [self.view addSubview:self.tableView];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
     }];
@@ -157,7 +157,7 @@
     if (self.replyArr.count > 0) {
         [self.replyArr removeAllObjects];
     }
-    self.cellHeights = [NSMutableDictionary dictionary];
+    self.cellHeightDict = [NSMutableDictionary dictionary];
 }
 
 - (NSMutableArray *)replyArr {

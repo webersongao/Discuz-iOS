@@ -174,7 +174,7 @@
 
 - (void)photoTapped{
     [self.view endEditing:YES];
-    WEAKSELF;
+    KWEAKSELF;
     self.pickerView.finishPickingBlock = ^(UIImage *image) {
         [weakSelf uploadImage:image];
     };
@@ -322,7 +322,7 @@
         [self showServerError:error];
     }];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.verifyView.submitBlock = ^{
         [weakSelf postActiviti];
     };
@@ -538,7 +538,7 @@
                         userFieldCell = [[ActiveUserFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userCellID];
                         userFieldCell.activityfield = self.userFieldDic;
                         
-                        WEAKSELF;
+                        KWEAKSELF;
                         userFieldCell.senduserBlock = ^(NSArray *userArray) {
                             weakSelf.activityModel.userArray = [NSMutableArray arrayWithArray:userArray];
                         };

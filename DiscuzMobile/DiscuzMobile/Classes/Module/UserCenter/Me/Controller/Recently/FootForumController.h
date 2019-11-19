@@ -1,5 +1,5 @@
 //
-//  DZForumCollectionController.h
+//  FootForumController.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.

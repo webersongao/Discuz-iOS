@@ -59,7 +59,7 @@
     [self.HUD showLoadingMessag:@"拉取信息" toView:self.view];
     [self downLoadData];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf downLoadData];
     }];
@@ -88,7 +88,7 @@
 - (void)rightBarBtnClick {
     
     DZSettingController * svc = [[DZSettingController alloc] init];
-    [self.navigationController pushViewController:svc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToController:svc];
 }
 
 - (void)notiReloadData {
@@ -102,7 +102,7 @@
 
 // toobar 点击事件
 - (void)tooBarAction {
-    WEAKSELF;
+    KWEAKSELF;
     self.myHeader.tooView.toolItemClickBlock = ^(VerticalImageTextView *sender, NSInteger index, NSString *name) {
         
         if (![weakSelf isLogin]) {
@@ -112,27 +112,27 @@
             case 0:          //我的好友
             {
                 MyFriendViewController *mfvc = [[MyFriendViewController alloc] init];
-                [weakSelf.navigationController pushViewController:mfvc animated:YES];
+                [[DZMobileCtrl sharedCtrl] PushToController:mfvc];
             }
                 break;
             case 1:          //我的收藏
             {
                 CollectionRootController *mfvc = [[CollectionRootController alloc] init];
-                [weakSelf.navigationController pushViewController:mfvc animated:YES];
+                [[DZMobileCtrl sharedCtrl] PushToController:mfvc];
             }
                 break;
             case 2:          //我的提醒
             {
 
                 DZMessageListController *pmVC = [[DZMessageListController alloc] init];
-                [weakSelf.navigationController pushViewController:pmVC animated:YES];
+                [[DZMobileCtrl sharedCtrl] PushToController:pmVC];
             }
                 break;
             case 3:          //我的主题
             {
                 DZThreadRootController *trVc = [[DZThreadRootController alloc] init];
                 trVc.hidesBottomBarWhenPushed = YES;
-                [weakSelf.navigationController pushViewController:trVc animated:YES];
+                [[DZMobileCtrl sharedCtrl] PushToController:trVc];
             }
                 break;
                 
@@ -306,7 +306,7 @@
 }
 
 - (void)modifyAvatar {
-    WEAKSELF;
+    KWEAKSELF;
     self.pickerView.finishPickingBlock = ^(UIImage *image) {
         [weakSelf uploadImage:image];
     };

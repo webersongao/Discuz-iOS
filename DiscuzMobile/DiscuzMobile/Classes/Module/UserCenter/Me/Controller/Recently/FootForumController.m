@@ -1,5 +1,5 @@
 //
-//  DZForumCollectionController.m
+//  FootForumController.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
@@ -37,7 +37,7 @@ static NSString * headerSection = @"CellHeader";
     
     [self loadData];
     
-    WEAKSELF;
+    KWEAKSELF;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadData];
     }];

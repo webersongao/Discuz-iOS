@@ -83,7 +83,7 @@ static const NSInteger RowFaceCount = 9;
     textBarView = [[TextbarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, TextBarHeight)];
     textBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     imageboaudIsShow = NO;
-    WEAKSELF;
+    KWEAKSELF;
     
     textBarView.changeKeyboardBlock = ^(NSInteger tag) {
         [weakSelf resignTextView:tag];

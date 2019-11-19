@@ -31,7 +31,7 @@
 
 -(void)initTableView {
     _scrollView = [[DZSlideShowScrollView alloc] init];
-    WEAKSELF;
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.tableView.mj_header endRefreshing];
         [weakSelf initRequest:JTRequestTypeRefresh];
@@ -46,7 +46,7 @@
         [self requestWithLoadType:type];
         if (type == JTRequestTypeCache) {
             [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-            if ([DZApiRequest isCache:DZ_Url_RecommendList andParameters:nil]) {// 有cache才请求，让他去刷新, 没有cache，上面那个方法会自动请求
+            if ([DZApiRequest isCache:FUCK_DZ_Url_RecommendList andParameters:nil]) {// 有cache才请求，让他去刷新, 没有cache，上面那个方法会自动请求
                 [self initRequest:JTRequestTypeRefresh];
             }
         }
@@ -68,7 +68,7 @@
 - (void)downLoadHomeBanner:(JTLoadType)type {
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_RecommendBanner;
+        request.urlString = FUCK_DZ_Url_RecommendBanner;
         request.isCache = YES;
         request.loadType = type;
     } success:^(id responseObject, JTLoadType type) {
@@ -85,7 +85,7 @@
 -(void)downLoadRecommendData:(JTLoadType)type {
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_RecommendList;
+        request.urlString = FUCK_DZ_Url_RecommendList;
         request.isCache = YES;
         request.loadType = type;
     } success:^(id responseObject, JTLoadType type) {
@@ -116,7 +116,7 @@
     }
     self.tableView.tableHeaderView = self.scrollView;
     [self.scrollView setAddsPicture];
-    WEAKSELF;
+    KWEAKSELF;
     [self.scrollView touchInSlideShow:^(NSInteger currentPage) {
         if ([DataCheck isValidString:weakSelf.scrollView.bannerArray[currentPage].link]) {
             DZHomeBannerModel *banner = weakSelf.scrollView.bannerArray[currentPage];
