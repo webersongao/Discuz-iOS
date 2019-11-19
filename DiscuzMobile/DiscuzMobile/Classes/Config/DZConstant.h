@@ -46,10 +46,10 @@
 // nav
 #define KStatusBarHeight [PRLayouter statusBarHeight]  //  竖屏 状态条 X: 44 N: 20
 #define KNavigation_Bar_Height [PRLayouter navigation_Bar_Height_Portrait] // X: 横竖屏44 N: 横竖屏44
-#define KNavigation_ContainStatusBar_Height [PRLayouter navigation_Bar_ContainStatusBar_Height] // X: 竖屏88 横屏64 N: 横竖屏64
+#define KNavi_ContainStatusBar_Height [PRLayouter navigation_Bar_ContainStatusBar_Height] // X: 竖屏88 横屏64 N: 横竖屏64
 #define KNavigation_Bar_Gap  [PRLayouter navigation_Bar_Gap_2X] // X: 竖屏24
-#define KContent_OringY (KNavigation_ContainStatusBar_Height + 1)// vc里面内容Y坐标
-
+#define KContent_OringY (KNavi_ContainStatusBar_Height + 1)// vc里面内容Y坐标
+#define KView_OutNavi_Bounds   CGRectMake(0,KNavi_ContainStatusBar_Height,KScreenWidth,KScreenHeight-KNavi_ContainStatusBar_Height)
 
 // tab
 #define KTabbar_Height  [PRLayouter tabbar_Height] // X: 竖屏83 横屏70

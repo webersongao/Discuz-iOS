@@ -1,23 +1,23 @@
 //
-//  BaseThreadListController.m
+//  DZThreadListBaseController.m
 //  DiscuzMobile
 //
-//  Created by ZhangJitao on 2018/7/10.
+//  Created by WebersonGao on 2019/11/10.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "BaseThreadListController.h"
+#import "DZThreadListBaseController.h"
 #import "BaseStyleCell.h"
 #import "DiscoverModel.h"
 #import "ThreadListCell.h"
 #import "ThreadListModel+Display.h"
 
-@interface BaseThreadListController ()
+@interface DZThreadListBaseController ()
 @property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, strong) NSString *urlString;
 @end
 
-@implementation BaseThreadListController
+@implementation DZThreadListBaseController
 
 - (SThreadListType)listType {
     return 0;

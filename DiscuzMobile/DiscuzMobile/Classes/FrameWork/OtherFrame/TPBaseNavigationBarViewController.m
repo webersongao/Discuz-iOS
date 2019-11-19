@@ -28,7 +28,7 @@
     
     if (!_tp_NavigationBar) {
         
-        _tp_NavigationBar = [[TPNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavigation_ContainStatusBar_Height)];
+        _tp_NavigationBar = [[TPNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
     }
     return _tp_NavigationBar;
 }
