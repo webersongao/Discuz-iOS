@@ -47,7 +47,7 @@
     self.hotSearches = @[@"discuz",@"App",@"微社区",@"小程序",@"定制开发",@"应用中心",@"插件"].mutableCopy;
     self.hotSearchTags = [self addAndLayoutTagsWithTagsContentView:self.hotSearchView tagTexts:self.hotSearches].mutableCopy;
     [self setHotSearchStyle];
-    
+    [self.view addSubview:self.tableView];
     UILabel *tipLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
     tipLab.textAlignment = NSTextAlignmentCenter;
     tipLab.font = [UIFont systemFontOfSize:14];

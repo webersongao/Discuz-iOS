@@ -1,5 +1,5 @@
 //
-//  ViewPollpotionViewController.h
+//  DZViewPollPotionController.h
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/8/24.
@@ -8,7 +8,7 @@
 
 #import "DZBaseTableViewController.h"
 
-@interface ViewPollpotionViewController : DZBaseTableViewController
+@interface DZViewPollPotionController : DZBaseTableViewController
 @property (nonatomic ,strong) NSString * pollid; //第几项
 @property (nonatomic ,strong) NSString *tid;
 @end

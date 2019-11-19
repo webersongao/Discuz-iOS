@@ -36,6 +36,8 @@
 
 @end
 
+static int voteIndex = 0 ;
+
 @implementation DZPostVoteViewController
 
 - (NSMutableDictionary *)pollImageDic {
@@ -51,22 +53,19 @@
     self.imgBtnTag = 0;
     self.navigationItem.title = @"发起投票";
     
-    [self.tableView removeFromSuperview];
-    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - self.navbarMaxY) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 80)];
     
     for (int i = 0 ; i < 2; i++) {
         [self.dataSourceArr addObject:[self voteContenView]];
-        
     }
     
     if (self.typeArray.count > 0) {
         self.pickView.delegate = self;
     }
+    [self.view addSubview:self.tableView];
 
 }
 
@@ -82,17 +81,15 @@
 }
 
 //  投票项 和 上传图片按钮 放在一个View
-static int i = 0 ;
 -(DZVoteContentCell *)voteContenView{
     
     NSString *CellIdentifier = [NSString stringWithFormat:@"contentcell"];
     DZVoteContentCell *contentCell = [[DZVoteContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    contentCell.textField.tag = i + 100;
-    contentCell.postImageBtn.tag = i + 200;
+    contentCell.textField.tag = voteIndex + 100;
+    contentCell.postImageBtn.tag = voteIndex + 200;
     [contentCell.postImageBtn addTarget:self action:@selector(openMenu:) forControlEvents:UIControlEventTouchUpInside];
     contentCell.textField.delegate = self;
-    i ++;
+    voteIndex ++;
     return contentCell;
 }
 

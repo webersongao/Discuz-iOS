@@ -1,26 +1,26 @@
 //
-//  ViewPollPotionNumberViewController.m
+//  DZViewPollPotionNumController.m
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/8/24.
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "ViewPollPotionNumberViewController.h"
-#import "ViewPollpotionViewController.h"
+#import "DZViewPollPotionNumController.h"
+#import "DZViewPollPotionController.h"
 
-@interface ViewPollPotionNumberViewController()
+@interface DZViewPollPotionNumController()
 
 @end
 
-@implementation ViewPollPotionNumberViewController
+@implementation DZViewPollPotionNumController
 
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.navigationItem.title = @"查看投票参与人";
-    
     [self downLoadData];
+    [self.view addSubview:self.tableView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,7 +55,7 @@
     
     NSString *pollidNumber= [[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"polloptionid"];
     NSString * tid =[[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"tid"];
-    ViewPollpotionViewController *vc=[[ViewPollpotionViewController alloc]init];
+    DZViewPollPotionController *vc=[[DZViewPollPotionController alloc]init];
     vc.pollid=pollidNumber;
     vc.tid=tid;
     vc.title = [NSString stringWithFormat:@"选择第%ld项目的人",indexPath.row + 1];

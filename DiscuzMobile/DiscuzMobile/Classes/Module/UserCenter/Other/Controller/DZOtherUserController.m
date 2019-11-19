@@ -55,7 +55,7 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-    
+    [self.view addSubview:self.tableView];
     self.userInfoView = [[CenterUserInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 140)];
     self.tableView.tableHeaderView = self.userInfoView;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];

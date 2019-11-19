@@ -29,6 +29,7 @@
     self.navigationItem.title = @"我的主题";
 
     [self downLoadData];
+    [self.view addSubview:self.tableView];
     WEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf reloadData];

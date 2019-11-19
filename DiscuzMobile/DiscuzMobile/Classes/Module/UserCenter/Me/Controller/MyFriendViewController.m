@@ -38,6 +38,7 @@
         [weakSelf refreshData];
     }];
     self.tableView.mj_footer.hidden = YES;
+    [self.view addSubview:self.tableView];
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 

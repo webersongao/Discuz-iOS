@@ -14,14 +14,14 @@
 #import "LogoutCell.h"
 #import "CenterCell.h"
 
-#import "MyFriendViewController.h"
 #import "CollectionRootController.h"
+#import "DZMessageListController.h"
+#import "MyFriendViewController.h"
 #import "DZThreadRootController.h"
 #import "BoundManageController.h"
-#import "DZMessageListController.h"
+#import "DZResetPwdController.h"
 #import "DZSettingController.h"
 #import "FootRootController.h"
-#import "DZResetPwdController.h"
 
 #import "TextIconModel.h"
 #import "CenterUserInfoView.h"
@@ -53,7 +53,7 @@
     [self.myHeader.userInfoView.headView addGestureRecognizer:tapGes];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
-    
+    [self.view addSubview:self.tableView];
     [self tooBarAction];
     
     [self.HUD showLoadingMessag:@"拉取信息" toView:self.view];
@@ -185,7 +185,6 @@
         [self.tableView.mj_header endRefreshing];
         [self showServerError:error];
         [self.tableView reloadData];
-        
     }];
 }
 

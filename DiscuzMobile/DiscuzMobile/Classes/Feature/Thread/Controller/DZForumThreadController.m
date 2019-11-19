@@ -12,7 +12,7 @@
 #import "DZCollectionTool.h"
 #import "UploadTool.h"
 
-#import "ViewPollPotionNumberViewController.h"
+#import "DZViewPollPotionNumController.h"
 #import "DZActivityEditController.h"
 #import "DZPartInActivityController.h"
 
@@ -454,7 +454,7 @@
 
 #pragma mark  - 查看参与投票人
 -(void)createVisitVotesrs:(id)data {
-    ViewPollPotionNumberViewController * vppnvc = [[ViewPollPotionNumberViewController alloc]init];
+    DZViewPollPotionNumController * vppnvc = [[DZViewPollPotionNumController alloc]init];
     vppnvc.tid=self.tid;
     [self.navigationController pushViewController:vppnvc animated:YES];
 }

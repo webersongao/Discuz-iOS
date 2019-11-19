@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
-    
+    [self.view addSubview:self.tableView];
     if (self.type == searchPostionTypeNext) {
         [self.searchView.searchBar becomeFirstResponder];
     }

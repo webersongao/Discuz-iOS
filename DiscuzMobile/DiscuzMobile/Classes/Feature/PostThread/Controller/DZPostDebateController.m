@@ -36,9 +36,7 @@
     [super viewDidLoad];
     
     self.title = @"发起辩论";
-    
-    [self.tableView removeFromSuperview];
-    
+
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - self.navbarMaxY) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

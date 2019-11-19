@@ -47,6 +47,7 @@
     
     [self commitInit];
     [self initRequest];
+    [self.view addSubview:self.tableView];
 }
 
 

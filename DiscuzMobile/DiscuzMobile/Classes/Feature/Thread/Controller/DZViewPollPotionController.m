@@ -1,18 +1,18 @@
 //
-//  ViewPollpotionViewController.m
+//  DZViewPollPotionController.m
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/8/24.
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "ViewPollpotionViewController.h"
+#import "DZViewPollPotionController.h"
 #import "ViewPollpotionCell.h"
 #import "DZSendMsgViewController.h"
 #import "ResponseMessage.h"
 #import "UIAlertController+Extension.h"
 
-@interface ViewPollpotionViewController()<ViewPollpotionCellDelegate>
+@interface DZViewPollPotionController()<ViewPollpotionCellDelegate>
 
 @property (strong,nonatomic)UITableView *tableview;
 @property (strong,nonatomic)NSArray *array;
@@ -20,11 +20,12 @@
 
 @end
 
-@implementation ViewPollpotionViewController
+@implementation DZViewPollPotionController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self downLoadData];
+    [self.view addSubview:self.tableView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

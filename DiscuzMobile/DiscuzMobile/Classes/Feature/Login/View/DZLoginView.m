@@ -36,7 +36,7 @@
     self.showsVerticalScrollIndicator = NO;
     
     UIImageView *nameImageV = [[UIImageView alloc] init];
-    nameImageV.image = [UIImage imageNamed:DZ_LOGONAME];
+//    nameImageV.image = [UIImage imageNamed:DZ_LOGONAME];
     nameImageV.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:nameImageV];
     [nameImageV mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -22,7 +22,6 @@ NSString * const domainName = @"name";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self configNaviBar:@"添加" type:NaviItemText Direction:NaviDirectionRight];
     
     NSDictionary *dic = [[DZFileManager shareInstance] readDocumentPlist:domainList];
@@ -46,6 +45,7 @@ NSString * const domainName = @"name";
         [[DZFileManager shareInstance] writeDocumentPlist:@{domain:domainArray} fileName:@"domainList"];
         self.dataSourceArr = domainArray.mutableCopy;
     }
+    [self.view addSubview:self.tableView];
 }
 
 - (void)rightBarBtnClick {

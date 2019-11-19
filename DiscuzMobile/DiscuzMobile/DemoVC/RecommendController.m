@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     [self initTableView];
-    
+    [self.view addSubview:self.tableView];
     [self initRequest:JTRequestTypeCache];
 }
 

@@ -22,12 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (@available(iOS 11.0, *)) {
-        self.tableView.estimatedRowHeight = 0;
-        self.tableView.estimatedSectionFooterHeight = 0;
-        self.tableView.estimatedSectionHeaderHeight = 0;
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
+    [self.view addSubview:self.tableView];
     self.tableView.showsVerticalScrollIndicator = NO;
 }
 

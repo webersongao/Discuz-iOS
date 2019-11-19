@@ -30,6 +30,7 @@
         weakSelf.page ++;
         [weakSelf downLoadMyFavThread];
     }];
+    [self.view addSubview:self.tableView];
     self.tableView.mj_footer.hidden = YES;
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }

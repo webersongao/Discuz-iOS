@@ -93,7 +93,7 @@
 //            [self testData];
         }
     }
-    
+    [self.view addSubview:self.tableView];
     // 加入留言
     ParInActiveModel *partModel = [[ParInActiveModel alloc] init];
     partModel.formtype = @"textarea";

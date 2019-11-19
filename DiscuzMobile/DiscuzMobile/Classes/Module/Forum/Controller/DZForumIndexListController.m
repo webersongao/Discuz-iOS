@@ -34,6 +34,7 @@
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = K_Color_NaviBack;
     [self.view addSubview:line];
+    [self.view addSubview:self.tableView];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.width.equalTo(self.view);
         make.height.equalTo(@0.5);
@@ -55,7 +56,6 @@
         make.height.equalTo(self.view);
     }];
     self.tableView.backgroundColor = K_Color_ForumGray;
-    
     [self.leftTable registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
     [self.tableView registerClass:[ForumRightCell class] forCellReuseIdentifier:[ForumRightCell getReuseId]];
     

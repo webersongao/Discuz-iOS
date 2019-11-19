@@ -29,8 +29,8 @@
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
         [self configNaviBar:@"发消息" type:NaviItemText Direction:NaviDirectionRight];
     }
-    
     [self loadData];
+    [self.view addSubview:self.tableView];
     WEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;

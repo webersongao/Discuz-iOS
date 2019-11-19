@@ -23,6 +23,7 @@
     [super viewDidLoad];
     
     self.title = @"报名管理";
+    [self.view addSubview:self.tableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = mRGBColor(249, 251, 253);
     

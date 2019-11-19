@@ -15,7 +15,6 @@
     [super viewDidLoad];
     
     self.page = 1;
-    [self.view addSubview:self.tableView];
     
     // 点击导航栏到顶部
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_STATUSBARTAP_Notify object:nil];

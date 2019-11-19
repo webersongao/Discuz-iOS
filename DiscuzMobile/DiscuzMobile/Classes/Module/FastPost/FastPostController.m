@@ -56,7 +56,7 @@
     
     // 判断左边菜单是否点击选中
     self.isSelected = NO;
-    
+    [self.view addSubview:self.tableView];
     self.view.backgroundColor = K_Color_ForumGray;
     // 做菜单
     [self.view addSubview:self.leftTable];
@@ -75,7 +75,6 @@
         make.height.equalTo(self.view).offset(-self.tabbarHeight);
     }];
     self.tableView.backgroundColor = K_Color_ForumGray;
-    
     [self.leftTable registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
     [self.tableView registerClass:[FastLevelCell class] forCellReuseIdentifier:[FastLevelCell getReuseId]];
     

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27D1C8E21DD2BE8E00B835B7"
-               BuildableName = "DiscuzMobile.app"
+               BuildableName = "&#x4f60;&#x8bf4;&#x5565;&#x5b50;.app"
                BlueprintName = "DiscuzMobile"
                ReferencedContainer = "container:DiscuzMobile.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27D1C8E21DD2BE8E00B835B7"
-            BuildableName = "DiscuzMobile.app"
+            BuildableName = "&#x4f60;&#x8bf4;&#x5565;&#x5b50;.app"
             BlueprintName = "DiscuzMobile"
             ReferencedContainer = "container:DiscuzMobile.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27D1C8E21DD2BE8E00B835B7"
-            BuildableName = "DiscuzMobile.app"
+            BuildableName = "&#x4f60;&#x8bf4;&#x5565;&#x5b50;.app"
             BlueprintName = "DiscuzMobile"
             ReferencedContainer = "container:DiscuzMobile.xcodeproj">
          </BuildableReference>

@@ -39,6 +39,7 @@
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf addFoot];
     }];
+    [self.view addSubview:self.tableView];
     self.tableView.mj_footer.hidden = YES;
     
 }

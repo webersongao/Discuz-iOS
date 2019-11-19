@@ -62,6 +62,7 @@
         [self downLoadData:self.page andLoadType:JTRequestTypeRefresh];
     }];
     self.tableView.mj_footer.hidden = YES;
+    [self.view addSubview:self.tableView];
     ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -10;
 }
 

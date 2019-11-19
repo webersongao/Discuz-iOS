@@ -22,6 +22,7 @@
 
 @interface DZSettingController ()
 @property (nonatomic,strong) NSString * strcache;
+@property (nonatomic, strong) NSMutableArray *listArray;  //!< <#属性注释#>
 @end
 
 @implementation DZSettingController
@@ -38,33 +39,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"通用设置";
+    self.dataSourceArr = self.listArray.copy;
     
-    [self.tableView removeFromSuperview];
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];
-    if (@available(iOS 11.0, *)) {
-        self.tableView.estimatedRowHeight = 0;
-        self.tableView.estimatedSectionFooterHeight = 0;
-        self.tableView.estimatedSectionHeaderHeight = 0;
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
-    
-    NSMutableArray *setArr = @[@"无图浏览模式",
-                     // @"通知中心设置",
-                        @"清除程序缓存",
-                        @"切换网站",
-                        ].mutableCopy;
-    
-    NSArray *appArr = @[
-//                        @"反馈问题",
-                        @"评价应用",
-                        @"分享应用"];
-    
-    NSArray *aboutArr = @[[NSString stringWithFormat:@"关于“%@”",DZ_APPNAME],
-                          @"服务条款"];
-    self.dataSourceArr = @[setArr,appArr,aboutArr].mutableCopy;
 }
 
 #pragma mark - UITableViewDataSource
@@ -94,13 +74,11 @@
     cell.textLabel.text = [settingArr objectAtIndex:indexPath.row];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
             UISwitch * sw = [[UISwitch alloc] init];
             [sw addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
             [sw setOn:[JudgeImageModel graphFreeModel]];
             cell.accessoryView = sw;
         } else if (indexPath.row == 1) {
-            
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",[[DZFileManager shareInstance] filePathSize]];
         }
     }
@@ -178,7 +156,7 @@
     if (@available(iOS 10.0, *)) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
     } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
     }
 }
 
@@ -291,6 +269,25 @@
     [self.HUD hide];
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:1 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(NSMutableArray *)listArray{
+    if (_listArray == nil) {
+        _listArray = [NSMutableArray array];
+            NSMutableArray *setArr = @[@"无图浏览模式",
+                             // @"通知中心设置",
+                                @"清除程序缓存",
+                                @"切换网站",
+                                ].mutableCopy;
+            NSArray *appArr = @[
+        //                        @"反馈问题",
+                                @"评价应用",
+                                @"分享应用"];
+            NSArray *aboutArr = @[[NSString stringWithFormat:@"关于“%@”",DZ_APPNAME],
+                                  @"服务条款"];
+            _listArray = @[setArr,appArr,aboutArr].mutableCopy;
+    }
+    return _listArray;
 }
 
 

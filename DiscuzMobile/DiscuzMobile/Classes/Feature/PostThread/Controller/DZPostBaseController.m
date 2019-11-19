@@ -70,6 +70,7 @@
     }
     
     [self checkPostAuth];
+    [self.view addSubview:self.tableView];
 }
 
 // 检查权限 : 发帖 回帖 上传权限
