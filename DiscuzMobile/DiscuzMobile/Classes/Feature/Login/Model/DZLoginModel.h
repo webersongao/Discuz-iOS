@@ -10,11 +10,11 @@
 
 @interface DZLoginModel : NSObject
 
-@property (nonatomic,strong) NSString *logintype;
-@property (nonatomic,strong) NSString *openid;
-@property (nonatomic,strong) NSString *unionid;
-@property (nonatomic,strong) NSString *username;
-@property (nonatomic,strong) NSString *gbkname;
+@property (nonatomic,copy) NSString *logintype;
+@property (nonatomic,copy) NSString *openid;
+@property (nonatomic,copy) NSString *unionid;
+@property (nonatomic,copy) NSString *username;
+@property (nonatomic,copy) NSString *gbkname;
 
 - (instancetype)initWithLogintype:(NSString *)logintype andOpenid:(NSString *)openid andGbkname:(NSString *)gbkname andUsername:(NSString *)username;
 + (instancetype)initWithLogintype:(NSString *)logintype andOpenid:(NSString *)openid andGbkname:(NSString *)gbkname andUsername:(NSString *)username;

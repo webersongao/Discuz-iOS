@@ -33,7 +33,7 @@ NSString * const debugPassword = @"debugPassword";
 }
 
 @property (nonatomic, strong) DZLoginView *logView;
-@property (nonatomic, strong) NSString *preSalkey;
+@property (nonatomic, copy) NSString *preSalkey;
 
 @end
 

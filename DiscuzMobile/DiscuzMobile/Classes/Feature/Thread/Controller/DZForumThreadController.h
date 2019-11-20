@@ -10,13 +10,13 @@
 
 @interface DZForumThreadController : DZBaseViewController
 
-@property (nonatomic, strong) NSString * tid;
-@property (nonatomic, strong) NSString * forumtitle;
-@property (nonatomic, strong) NSString * threadtitle;
+@property (nonatomic, copy) NSString * tid;
+@property (nonatomic, copy) NSString * forumtitle;
+@property (nonatomic, copy) NSString * threadtitle;
 @property (nonatomic)         int currentPageId;
 @property (nonatomic, assign) BOOL isOnePage;
 
-@property (nonatomic, strong) NSString * allowPostSpecial; // 发帖 数帖子的标记
+@property (nonatomic, copy) NSString * allowPostSpecial; // 发帖 数帖子的标记
 @property (nonatomic, strong) NSDictionary * dataForumTherad;
 
 -(void)postReplay;

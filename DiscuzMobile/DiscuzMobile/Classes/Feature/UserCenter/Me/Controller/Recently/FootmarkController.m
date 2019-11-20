@@ -123,7 +123,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ThreadListModel *model = self.dataSourceArr[indexPath.row];
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:model.tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
 }
 
 

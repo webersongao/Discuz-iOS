@@ -21,7 +21,7 @@
 #import "DZDevice.h"
 
 @interface DZSettingController ()
-@property (nonatomic,strong) NSString * strcache;
+@property (nonatomic,copy) NSString * strcache;
 @property (nonatomic, strong) NSMutableArray *listArray;  //!< <#属性注释#>
 @end
 

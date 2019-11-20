@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) CenterManageModel *centerModel;
 
-@property (nonatomic, strong) NSString *isfriend;
+@property (nonatomic, copy) NSString *isfriend;
 
 @end
 

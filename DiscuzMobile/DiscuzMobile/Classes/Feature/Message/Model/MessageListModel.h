@@ -10,23 +10,23 @@
 
 @interface MessageListModel : NSObject
 
-@property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSString *authorid;
-@property (nonatomic, strong) NSString *category;
-@property (nonatomic, strong) NSString *dateline;
-@property (nonatomic, strong) NSString *vdateline;
-@property (nonatomic, strong) NSString *tousername;
-@property (nonatomic, strong) NSString *toavatar;
-@property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSString *from_id;
-@property (nonatomic, strong) NSString *from_idtype;
-@property (nonatomic, strong) NSString *from_num;
-@property (nonatomic, strong) NSString *msgid;
-@property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *mnew;
-@property (nonatomic, strong) NSString *note;
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSString *touid;
+@property (nonatomic, copy) NSString *author;
+@property (nonatomic, copy) NSString *authorid;
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *dateline;
+@property (nonatomic, copy) NSString *vdateline;
+@property (nonatomic, copy) NSString *tousername;
+@property (nonatomic, copy) NSString *toavatar;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *from_id;
+@property (nonatomic, copy) NSString *from_idtype;
+@property (nonatomic, copy) NSString *from_num;
+@property (nonatomic, copy) NSString *msgid;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *mnew;
+@property (nonatomic, copy) NSString *note;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *touid;
 @property (nonatomic, strong) NSMutableDictionary *notevar;
 
 @end

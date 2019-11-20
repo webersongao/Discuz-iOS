@@ -11,6 +11,6 @@
 @interface DZPlaceholderTextView : UITextView<UITextViewDelegate>
 
 @property (nonatomic, strong) UIColor *placeholderColor;
-@property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, copy) NSString *placeholder;
 
 @end

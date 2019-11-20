@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "DZSelectTipView.h"
 
-@interface PartInSexCell : UITableViewCell
+@interface PartInSexCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) DZSelectTipView *sexSelectView;

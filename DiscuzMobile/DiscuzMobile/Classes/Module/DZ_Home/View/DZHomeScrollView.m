@@ -7,13 +7,11 @@
 //
 
 #import "DZHomeScrollView.h"
-#import "DZHomeCollectionView.h"
-#import "DZThreadContentController.h"
+#import "DZThreadContentView.h"
 
-@interface DZHomeScrollView ()
+@interface DZHomeScrollView ()<HeaderCollectionDelegate>
 
-@property (nonatomic, strong) DZHomeCollectionView *HeaderView;  //!< 属性注释
-@property (nonatomic, strong) DZThreadContentController *contentVC;  //!< 属性注释
+@property (nonatomic, strong) DZThreadContentView *contentView;  //!< 属性注释
 
 @end
 
@@ -24,9 +22,60 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        [self configDZHomeScrollView];
     }
     return self;
 }
 
+
+-(void)configDZHomeScrollView{
+    [self addSubview:self.HeaderView];
+    [self addSubview:self.contentView];
+    self.HeaderView.headerDelegate = self;
+}
+
+#pragma mark   /********************* HeaderCollectionDelegate *************************/
+
+- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell indexPath:(NSIndexPath *)indexPath{
+    
+}
+
+- (void)collectionView:(DZHomeCollectionView *)collectionView longPressItemCell:(DZHomeCollectionCell *)itemCell{
+    DLog(@"WBS 别按啦，暂时长按没有效果");
+}
+
+- (void)collectionView:(DZHomeCollectionView *)collectionView scrollDidScroll:(CGFloat)offsetY{
+    
+}
+
+- (void)collectionViewWillBeginDragging{
+    
+}
+
+- (void)collectionViewDidEndRoll{
+    
+}
+
+-(DZHomeCollectionView *)HeaderView{
+    if (_HeaderView == nil) {
+        _HeaderView = [[DZHomeCollectionView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, kHomeHeaderHeight) collectionViewLayout:[DZHomeCollectionView gridLayout]];
+    }
+    return _HeaderView;
+}
+
+
+-(DZThreadContentView *)contentView{
+    if (_contentView == nil) {
+        _contentView = [[DZThreadContentView alloc] initWithFrame:CGRectMake(0, self.HeaderView.bottom, KScreenWidth, KScreenHeight)];
+    }
+    return _contentView;
+}
+
 @end
+
+
+
+
+
+
+

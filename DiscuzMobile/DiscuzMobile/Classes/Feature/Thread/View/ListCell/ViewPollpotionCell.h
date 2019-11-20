@@ -6,8 +6,7 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import "DZBaseTableViewCell.h"
 
 @class ViewPollpotionCell;
 
@@ -17,7 +16,7 @@
 
 @end
 
-@interface ViewPollpotionCell : UITableViewCell
+@interface ViewPollpotionCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) id<ViewPollpotionCellDelegate>delegate;
 @property (nonatomic, strong) UIImageView *headImageView;

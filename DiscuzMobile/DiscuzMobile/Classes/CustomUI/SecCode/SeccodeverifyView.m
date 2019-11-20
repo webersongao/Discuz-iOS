@@ -13,7 +13,7 @@
 @interface SeccodeverifyView() <UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) BOOL isCreate;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *type;
 
 @end
 

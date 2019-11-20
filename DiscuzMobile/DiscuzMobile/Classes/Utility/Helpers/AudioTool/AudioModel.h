@@ -10,7 +10,7 @@
 
 @interface AudioModel : NSObject
 
-@property (nonatomic, strong) NSString *audioUploadId;
+@property (nonatomic, copy) NSString *audioUploadId;
 @property (nonatomic, strong) NSURL *recordFileUrl;
 @property (nonatomic, strong) NSURL *mp3Url;
 @property (nonatomic, assign) NSInteger time;

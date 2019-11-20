@@ -84,7 +84,7 @@
         return;
     }
     NSString *error = [responseObject objectForKey:@"error"];
-    if ([DataCheck isValidString:error] && [error isEqualToString:@"module_not_exists"]) {
+    if ([DataCheck isValidString:error] && [error hasSuffix:@"module_not_exists"]) {
         [MBProgressHUD showInfo:@"该模块暂未开放"];
     }
 }

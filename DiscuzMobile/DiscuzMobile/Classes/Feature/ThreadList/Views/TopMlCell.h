@@ -6,12 +6,12 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "TopLabel.h"
 
 @class ThreadListModel;
 
-@interface TopMlCell : UITableViewCell
+@interface TopMlCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) TopLabel *titleLabel;
 

@@ -1,6 +1,6 @@
 //
 //  TPNavItemButton.h
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/4/4.
 //  Copyright © 2019 ZHWenXue. All rights reserved.

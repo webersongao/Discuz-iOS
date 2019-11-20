@@ -6,9 +6,9 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface LogoutCell : UITableViewCell
+@interface LogoutCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *lab;
 

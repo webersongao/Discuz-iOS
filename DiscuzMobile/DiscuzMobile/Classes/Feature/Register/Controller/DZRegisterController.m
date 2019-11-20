@@ -19,7 +19,7 @@
 
 @interface DZRegisterController ()
 @property (nonatomic,strong) DZRegisterView *registerView;
-@property (nonatomic, strong) NSString *bbrulestxt;
+@property (nonatomic, copy) NSString *bbrulestxt;
 @end
 
 @implementation DZRegisterController

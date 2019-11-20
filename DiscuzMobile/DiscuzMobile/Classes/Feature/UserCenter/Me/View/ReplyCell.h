@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class ReplyModel;
 
-@interface ReplyCell : UITableViewCell
+@interface ReplyCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *timeLab;
 @property (nonatomic, strong) UILabel *floorLab;

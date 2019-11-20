@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "QCheckBox.h"
 
-@interface DZVoteDayVisableCell : UITableViewCell
+@interface DZVoteDayVisableCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UITextField *selectNumTextField; // 最多可选
 @property (nonatomic, strong) UITextField *dayNumTextField; // 计票天数

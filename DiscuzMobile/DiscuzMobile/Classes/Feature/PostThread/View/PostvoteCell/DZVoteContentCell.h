@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
 
-@interface DZVoteContentCell : UITableViewCell
+@interface DZVoteContentCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIButton *postImageBtn;

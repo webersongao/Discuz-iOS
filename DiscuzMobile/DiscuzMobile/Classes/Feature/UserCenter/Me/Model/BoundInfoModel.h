@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface BoundInfoModel : NSObject
-@property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *openid;
-@property (nonatomic, strong) NSString *status;
-@property (nonatomic, strong) NSString *session_key;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *openid;
+@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy) NSString *session_key;
+@property (nonatomic, copy) NSString *type;
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *icon;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *icon;
 @end

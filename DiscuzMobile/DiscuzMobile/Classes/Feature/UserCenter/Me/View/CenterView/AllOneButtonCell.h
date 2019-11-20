@@ -6,11 +6,11 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
 typedef void(^BtnActionBlock)(UIButton *sender);
 
-@interface AllOneButtonCell : UITableViewCell
+@interface AllOneButtonCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIButton *ActionBtn;
 

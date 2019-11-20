@@ -10,14 +10,14 @@
 
 @interface ParInActiveModel : NSObject
 
-@property (nonatomic, strong) NSString *available;
-@property (nonatomic, strong) NSString *choices;
+@property (nonatomic, copy) NSString *available;
+@property (nonatomic, copy) NSString *choices;
 @property (nonatomic, strong) NSArray *choicesArray;
-@property (nonatomic, strong) NSString *fieldid;
-@property (nonatomic, strong) NSString *formtype;
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *payment;
+@property (nonatomic, copy) NSString *fieldid;
+@property (nonatomic, copy) NSString *formtype;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *payment;
 
-@property (nonatomic, strong) NSString *fieldValue;
+@property (nonatomic, copy) NSString *fieldValue;
 
 @end

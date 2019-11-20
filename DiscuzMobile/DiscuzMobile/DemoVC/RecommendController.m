@@ -121,10 +121,10 @@
         if ([DataCheck isValidString:weakSelf.scrollView.bannerArray[currentPage].link]) {
             DZHomeBannerModel *banner = weakSelf.scrollView.bannerArray[currentPage];
             if ([banner.link_type isEqualToString:@"1"]) {
-                [[DZMobileCtrl sharedCtrl] PushToDetailController:banner.link];
+                [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:banner.link];
                 return;
             } else if ([banner.link_type isEqualToString:@"2"]) {
-                    [[DZMobileCtrl sharedCtrl] PushToForumlistController:banner.link];
+                    [[DZMobileCtrl sharedCtrl] PushToForumListController:banner.link];
                 return;
             }
             [[DZMobileCtrl sharedCtrl] PushToWebViewController:banner.link];
@@ -169,7 +169,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ThreadListModel *model = self.dataSourceArr[indexPath.row];
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:model.tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
 }
 
 - (void)toOtherCenter:(UITapGestureRecognizer *)sender {

@@ -6,11 +6,11 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "ThreadListModel.h"
 #import "DZHomeIconTextView.h"
 
-@interface DZHomeListCell : UITableViewCell
+@interface DZHomeListCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *headV;  // 头像
 @property (nonatomic, strong) UILabel *nameLab;    // 用户名

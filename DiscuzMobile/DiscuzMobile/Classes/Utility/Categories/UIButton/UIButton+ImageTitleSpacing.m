@@ -1,6 +1,6 @@
 //
 //  UIButton+ImageTitleSpacing.m
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by WebersonGao on 16/8/15.
 //  Copyright © 2015 wiwide. All rights reserved.

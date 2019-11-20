@@ -89,7 +89,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.dataSourceArr.count > 0) {
         NSString * tidStr = [[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"tid"];
-        [[DZMobileCtrl sharedCtrl] PushToDetailController:tidStr];
+        [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tidStr];
     }
 }
 

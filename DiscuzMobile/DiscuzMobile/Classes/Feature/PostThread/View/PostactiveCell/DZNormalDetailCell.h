@@ -6,8 +6,8 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface DZNormalDetailCell : UITableViewCell
+@interface DZNormalDetailCell : DZBaseTableViewCell
 @property (nonatomic,strong) YYTextView *textView;;
 @end

@@ -11,7 +11,6 @@
 
 #import "ForumItemCell.h"
 #import "ForumReusableView.h"
-#import "LianMixAllViewController.h"
 
 @interface FootForumController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -190,9 +189,7 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)pushThreadList:(DZTreeViewNode *)node {
 
-    LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
-    foVC.forumFid = node.infoModel.fid;
-    [self.navigationController pushViewController:foVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid];
 }
 
 - (NSMutableArray<DZTreeViewNode *> *)dataSource {

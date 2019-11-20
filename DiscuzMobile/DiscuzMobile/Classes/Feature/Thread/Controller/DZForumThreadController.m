@@ -35,15 +35,15 @@
 @property (nonatomic, strong) WebViewJavascriptBridge * javascriptBridge;
 
 @property (nonatomic, assign) BOOL  isReferenceReply;           // 是否是 引用回复
-@property (nonatomic, strong) NSString * noticetrimstr;         // 引用回复内容
-@property (nonatomic, strong) NSString * reppid;                // 被引用帖子pid
-@property (nonatomic, strong) NSString * jubaoPid;              // 举报 id
+@property (nonatomic, copy) NSString * noticetrimstr;         // 引用回复内容
+@property (nonatomic, copy) NSString * reppid;                // 被引用帖子pid
+@property (nonatomic, copy) NSString * jubaoPid;              // 举报 id
 
 @property (nonatomic,strong) NSMutableArray *picurlArray; // 页面图片 （接口限制，只有一张）
 
 // 验证码
 @property (nonatomic, strong) SeccodeverifyView *verifyView;
-@property (nonatomic, strong) NSString *preSalkey;
+@property (nonatomic, copy) NSString *preSalkey;
 @property (nonatomic, strong) ThreadModel *threadModel;
 
 @end

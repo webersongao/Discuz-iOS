@@ -1,6 +1,6 @@
 //
 //  DZRootTabBar.h
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/3/7.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.

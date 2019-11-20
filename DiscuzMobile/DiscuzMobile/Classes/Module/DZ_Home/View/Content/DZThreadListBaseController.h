@@ -7,6 +7,7 @@
 //
 
 #import "DZBaseTableViewController.h"
+#import "HomeHeader.h"
 
 typedef NS_ENUM(NSUInteger, SThreadListType) {
     SThreadListTypeDigest,

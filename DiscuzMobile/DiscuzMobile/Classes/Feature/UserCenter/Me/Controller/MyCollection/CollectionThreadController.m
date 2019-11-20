@@ -111,7 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *tidStr = [[self.dataSourceArr objectAtIndex:indexPath.row]objectForKey:@"id"];
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:tidStr];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tidStr];
 }
 
 

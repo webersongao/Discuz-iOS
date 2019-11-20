@@ -16,11 +16,11 @@
 
 @implementation DZMobileCtrl (Navi)
 
--(void)PushToController:(UIViewController *)CtrlVC{
+- (void)PushToController:(UIViewController *)CtrlVC{
     [self.mainNavi pushViewController:CtrlVC animated:YES];
 }
 
--(void)PushToOtherUserController:(NSString *)userId{
+- (void)PushToOtherUserController:(NSString *)userId{
     NSString *userIdStr = checkNull(userId);
     if (userIdStr.length) {
         DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
@@ -29,22 +29,28 @@
     }
 }
 
-
-- (void)PushToDetailController:(NSString *)tid {
+/// 帖子详情页
+- (void)PushToThreadDetailController:(NSString *)tid {
     DZForumThreadController * threadVC = [[DZForumThreadController alloc] init];
     threadVC.tid = tid;
     [self.mainNavi pushViewController:threadVC animated:YES];
 }
 
-- (void)ShowDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid{
+/// 帖子详情页
+- (void)ShowThreadDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid{
     DZForumThreadController *threadVC = [[DZForumThreadController alloc] init];
     threadVC.tid = checkNull(tid);
     [selfVC showViewController:threadVC sender:nil];
 }
 
-- (void)PushToForumlistController:(NSString *)fid {
+/// 论坛版块帖子列表
+- (void)PushToForumListController:(NSString *)fid {
+    [self PushToForumListController:fid block:nil];
+}
+- (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block{
     LianMixAllViewController *lianMixVc = [[LianMixAllViewController alloc] init];
     lianMixVc.forumFid = fid;
+    lianMixVc.cForumBlock = block;
     [self.mainNavi pushViewController:lianMixVc animated:YES];
 }
 
@@ -56,12 +62,12 @@
 }
 
 
--(void)PresentLoginController:(UIViewController *)selfVC{
+- (void)PresentLoginController:(UIViewController *)selfVC{
     
     [self PresentLoginController:selfVC tabSelect:NO];
 }
 
--(void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select{
+- (void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select{
 
     DZLoginController *loginVC = [[DZLoginController alloc] init];
     loginVC.isKeepTabbarSelected = select;
@@ -76,7 +82,7 @@
 
 
 
--(void)PushToSearchController{
+- (void)PushToSearchController{
     
     DZSearchController *searchVC = [[DZSearchController alloc] init];
     searchVC.hidesBottomBarWhenPushed = YES;

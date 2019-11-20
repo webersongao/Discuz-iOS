@@ -6,11 +6,11 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "DZPlaceholderTextView.h"
 #import "DZBaseTextField.h"
 
-@interface DZVoteTitleCell : UITableViewCell
+@interface DZVoteTitleCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UITextField *titleTextField;
 

@@ -10,13 +10,13 @@
 
 @interface ApplyActiver : NSObject
 
-@property (nonatomic, strong) NSString *applyid;
-@property (nonatomic, strong) NSString *dateline;
-@property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *verified;
-@property (nonatomic, strong) NSString *payment;
+@property (nonatomic, copy) NSString *applyid;
+@property (nonatomic, copy) NSString *dateline;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *verified;
+@property (nonatomic, copy) NSString *payment;
 @property (nonatomic, strong) NSDictionary *dbufielddata;
 @property (nonatomic, strong) NSMutableArray *userfield;
 

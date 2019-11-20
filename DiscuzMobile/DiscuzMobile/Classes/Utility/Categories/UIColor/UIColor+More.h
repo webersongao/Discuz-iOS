@@ -1,6 +1,6 @@
 //
 //  UIColor+More.h
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/3/1.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.

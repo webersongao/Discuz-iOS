@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "QRadioButton.h"
 
-@interface DZVoteSelectCell : UITableViewCell
+@interface DZVoteSelectCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) QRadioButton *singleRadio;

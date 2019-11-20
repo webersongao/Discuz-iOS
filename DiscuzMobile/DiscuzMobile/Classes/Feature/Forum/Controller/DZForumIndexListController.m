@@ -10,7 +10,6 @@
 #import "DZTreeViewNode.h"
 #import "ForumLeftCell.h"
 #import "ForumRightCell.h"
-#import "LianMixAllViewController.h"
 #import "DZCollectionTool.h"
 #import "LightGrayButton.h"
 #import "AsyncAppendency.h"
@@ -187,21 +186,15 @@
 
 // 跳转列表页
 - (void)pushThreadList:(DZTreeViewNode *)node {
-    
-    LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
-    DLog(@"%@",node.infoModel.fid);
-    foVC.forumFid = node.infoModel.fid;
-    
     KWEAKSELF;
-    foVC.cForumBlock = ^(BOOL isCollection) {
-        if (isCollection) {
+    [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid block:^(BOOL boolState) {
+       if (boolState) {
             node.infoModel.favorited = @"1";
         } else {
             node.infoModel.favorited = @"0";
         }
         [weakSelf.tableView reloadData];
-    };
-    [[DZMobileCtrl sharedCtrl] PushToController:foVC];
+    }];
 }
 
 // 向下滑（将出现的要重新计算一下）

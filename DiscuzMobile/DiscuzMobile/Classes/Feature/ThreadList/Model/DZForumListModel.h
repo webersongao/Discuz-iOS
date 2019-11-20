@@ -10,8 +10,8 @@
 
 @interface DZForumListModel : NSObject
 
-@property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *fid;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *fid;
 
 - (instancetype)initWithName:(NSString *)name andWithFid:(NSString *)fid;
 

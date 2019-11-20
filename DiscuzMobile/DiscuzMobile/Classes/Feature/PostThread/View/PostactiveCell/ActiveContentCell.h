@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "DZSelectTipView.h"
 
-@interface ActiveContentCell : UITableViewCell
+@interface ActiveContentCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UITextField *placeTextField;
 @property (nonatomic, strong) UITextField *cityTextField;

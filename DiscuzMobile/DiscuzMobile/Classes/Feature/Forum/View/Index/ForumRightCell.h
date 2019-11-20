@@ -6,12 +6,12 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class DZForumInfoModel, LightGrayButton;
 
 typedef void(^CollectionForumBlock)(LightGrayButton *sender, DZForumInfoModel *infoModel);
 
-@interface ForumRightCell : UITableViewCell
+@interface ForumRightCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;

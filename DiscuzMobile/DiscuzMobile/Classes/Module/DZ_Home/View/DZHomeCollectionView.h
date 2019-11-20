@@ -7,11 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeHeader.h"
+#import "DZHomeCollectionCell.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@class DZHomeCollectionView,DZHomeCollectionCell;
+@protocol HeaderCollectionDelegate <NSObject>
+@optional
+- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell indexPath:(NSIndexPath *)indexPath;
 
-@interface DZHomeCollectionView : UICollectionView
+- (void)collectionView:(DZHomeCollectionView *)collectionView longPressItemCell:(DZHomeCollectionCell *)itemCell;
+
+- (void)collectionView:(DZHomeCollectionView *)collectionView scrollDidScroll:(CGFloat)offsetY;
+
+- (void)collectionViewWillBeginDragging;
+
+- (void)collectionViewDidEndRoll;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface DZHomeCollectionView : UICollectionView
+
++(UICollectionViewFlowLayout *)gridLayout;
+@property(nonatomic,strong,readonly) NSArray *dataArray;
+@property(nonatomic,weak) id<HeaderCollectionDelegate> headerDelegate;
+
+
+
+// 重置 书架数组数据 的唯一方法
+-(void)reloadDataSource:(NSArray <DZForumInfoModel *>*)array;
+@end
+
+

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "DZHomeCollectionView.h"
 
 @interface DZHomeScrollView : UIScrollView
 
+@property (nonatomic, strong) DZHomeCollectionView *HeaderView;  //!< 属性注释
+
+
 @end
 
-NS_ASSUME_NONNULL_END

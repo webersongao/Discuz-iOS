@@ -6,9 +6,9 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface UserInfoCell : UITableViewCell
+@interface UserInfoCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *headImageV;
 @property (nonatomic, strong) UILabel *nameLabel;

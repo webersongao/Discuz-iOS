@@ -186,7 +186,7 @@
 }
 
 - (void)postSucceedToDetail:(NSString *)tid {
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
 }
 
 
@@ -504,8 +504,7 @@
     if ([DataCheck isValidDictionary:[dic objectForKey:@"forum"]]) { // 版块信息设置
         
         self.forumInfo = [[DZForumInfoModel alloc] init];
-        [self.forumInfo setValuesForKeysWithDictionary:[dic objectForKey:@"forum"]];
-        
+        self.forumInfo = [DZForumInfoModel modelWithJSON:[dic dictionaryForKey:@"forum"]];
         if ([DataCheck isValidString:self.forumInfo.favorited]) {
             if ([self.forumInfo.favorited isEqualToString:@"1"]) {
                 [self setIsCollection];
@@ -599,10 +598,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.foldTableView) {
         
-        DZForumInfoModel *node = self.subForumArr[indexPath.row];
-        LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
-        foVC.forumFid = node.fid;
-        [[DZMobileCtrl sharedCtrl] PushToController:foVC];
+        DZForumInfoModel *infoModel = self.subForumArr[indexPath.row];
+        [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
     }
 }
 

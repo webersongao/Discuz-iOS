@@ -9,5 +9,5 @@
 #import "DZBaseTableViewController.h"
 
 @interface DZOtherUserController : DZBaseTableViewController
-@property (nonatomic ,strong) NSString *authorid;
+@property (nonatomic ,copy) NSString *authorid;
 @end

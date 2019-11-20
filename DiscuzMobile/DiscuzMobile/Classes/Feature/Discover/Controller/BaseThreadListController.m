@@ -14,7 +14,7 @@
 
 @interface BaseThreadListController ()
 @property (nonatomic, assign) BOOL isRequest;
-@property (nonatomic, strong) NSString *urlString;
+@property (nonatomic, copy) NSString *urlString;
 @end
 
 @implementation BaseThreadListController
@@ -179,7 +179,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:listModel.tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:listModel.tid];
 }
 
 #pragma mark - Action

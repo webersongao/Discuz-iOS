@@ -6,9 +6,9 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface ForumLeftCell : UITableViewCell
+@interface ForumLeftCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *titleLab;
 

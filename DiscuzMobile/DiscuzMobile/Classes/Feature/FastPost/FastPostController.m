@@ -27,7 +27,7 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) DZPostTypeSelectView *selectView;
-@property (nonatomic, strong) NSString *selectFid;
+@property (nonatomic, copy) NSString *selectFid;
 @property (nonatomic, strong) NSMutableDictionary *Variables;
 
 @property (nonatomic, strong) UIImageView *navBarHairlineImageView;
@@ -254,7 +254,7 @@
 }
 
 - (void)postSucceedToDetail:(NSString *)tid {
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
 }
 
 - (void)closeBtnClick {

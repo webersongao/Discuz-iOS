@@ -15,7 +15,7 @@ typedef void(^CForumBlock)(BOOL isCollection);
 
 @property (nonatomic, strong) UIView *contentView;
 
-@property (nonatomic ,strong) NSString *forumFid;
+@property (nonatomic ,copy) NSString *forumFid;
 
 @property (nonatomic, assign) NSInteger selectIndex;
 

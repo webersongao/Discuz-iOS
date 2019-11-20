@@ -11,7 +11,7 @@
 
 @interface XinGeCenter()
 
-@property (nonatomic, strong) NSString *xgts;
+@property (nonatomic, copy) NSString *xgts;
 
 @end
 

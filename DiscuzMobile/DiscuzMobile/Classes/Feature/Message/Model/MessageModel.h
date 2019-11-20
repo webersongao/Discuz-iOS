@@ -17,16 +17,16 @@
 
 @interface MessageModel : NSObject
 
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *time;
-@property (nonatomic, strong) NSString *authorid;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *time;
+@property (nonatomic, copy) NSString *authorid;
+@property (nonatomic, copy) NSString *type;
 @property (nonatomic, assign) BOOL showTime;
-@property (nonatomic, strong) NSString *touid;
-@property (nonatomic, strong) NSString *plid;
-@property (nonatomic, strong) NSString *pmid;
-@property (nonatomic, strong) NSString *fromavatar;
-@property (nonatomic, strong) NSString *toavatar;
+@property (nonatomic, copy) NSString *touid;
+@property (nonatomic, copy) NSString *plid;
+@property (nonatomic, copy) NSString *pmid;
+@property (nonatomic, copy) NSString *fromavatar;
+@property (nonatomic, copy) NSString *toavatar;
 
 @property (nonatomic, assign) CGFloat textHeight;
 @property (nonatomic, strong) YYTextLayout *textLayout; //文本

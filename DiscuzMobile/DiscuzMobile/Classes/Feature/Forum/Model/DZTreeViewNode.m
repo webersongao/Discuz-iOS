@@ -45,7 +45,7 @@
         treeNode1.nodeLevel = 1;
         treeNode1.isExpanded = NO;
         treeNode1.nodeName = [fourmInfo objectForKey:@"name"];
-        [treeNode1.infoModel setValuesForKeysWithDictionary:fourmInfo];
+        treeNode1.infoModel = [DZForumInfoModel modelWithJSON:fourmInfo];
         
         [treeNode1 sublistNode:fourmInfo];
         

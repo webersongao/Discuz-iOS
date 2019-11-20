@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong) NSIndexPath *currentIndexPath;
 
-@property (nonatomic, strong) NSString *cost;
+@property (nonatomic, copy) NSString *cost;
 
 @end
 

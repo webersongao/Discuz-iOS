@@ -9,5 +9,5 @@
 #import "DZBaseTableViewController.h"
 
 @interface DZViewPollPotionNumController : DZBaseTableViewController
-@property (nonatomic ,strong) NSString *  tid;
+@property (nonatomic ,copy) NSString *  tid;
 @end

@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class HorizontalImageTextView,BoundInfoModel;
 
-@interface BoundManageCell : UITableViewCell
+@interface BoundManageCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) HorizontalImageTextView *nameV;
 @property (nonatomic, strong) UIButton *detailBtn;

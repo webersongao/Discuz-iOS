@@ -6,11 +6,11 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
 typedef void(^SendUserArrayBlock)(NSArray *userArray);
 
-@interface PartInMultiSelectCell : UITableViewCell
+@interface PartInMultiSelectCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) NSMutableArray *userArray;
 @property (nonatomic, strong) UILabel *titleLab;

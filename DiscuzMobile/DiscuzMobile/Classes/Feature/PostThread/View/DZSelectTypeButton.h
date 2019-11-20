@@ -12,7 +12,7 @@
 
 @property (nonatomic, assign) BOOL isSelect;
 
-@property (nonatomic, strong) NSString *activityKey;
-@property (nonatomic, strong) NSString *activityValue;
+@property (nonatomic, copy) NSString *activityKey;
+@property (nonatomic, copy) NSString *activityValue;
 
 @end

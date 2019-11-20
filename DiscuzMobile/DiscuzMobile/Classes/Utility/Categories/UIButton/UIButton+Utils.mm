@@ -1,6 +1,6 @@
 //
 //  UIButton+Utils.m
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by WebersonGao on 15/11/6.
 //

@@ -10,7 +10,7 @@
 
 @interface CheckHelper : NSObject
 
-@property (nonatomic, strong) NSString *regUrl;
+@property (nonatomic, copy) NSString *regUrl;
 @property (nonatomic, strong) NSDictionary *regKeyDic;
 
 + (instancetype)shareInstance;

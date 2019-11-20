@@ -6,11 +6,11 @@
 //  Copyright © 2018年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
 @class DZSearchModel;
 
-@interface DZSearchListCell : UITableViewCell
+@interface DZSearchListCell : DZBaseTableViewCell
 
 @property (strong, nonatomic)  UILabel *contentLabel;
 @property (strong, nonatomic)  UILabel *timeLabel;

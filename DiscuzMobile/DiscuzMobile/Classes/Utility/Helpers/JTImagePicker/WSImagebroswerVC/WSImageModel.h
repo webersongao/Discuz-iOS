@@ -11,9 +11,9 @@
 
 @interface WSImageModel : NSObject
 
-@property (nonatomic, strong) NSString *imageUrl;
+@property (nonatomic, copy) NSString *imageUrl;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) NSInteger sort;
-@property (nonatomic, strong) NSString *aid;
+@property (nonatomic, copy) NSString *aid;
 
 @end

@@ -145,15 +145,15 @@
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
     DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
     
-    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:dicoverVC title:@"发现" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:dicoverVC title:@"首页2" image:@"homem" selectedImage:@"homes"];
     
-    [self addChildVc:forVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forumVC title:@"版块" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:forVC title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
     
     //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
     //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:userVC title:@"我的" image:@"my" selectedImage:@"mys"];
+    [self addChildVc:userVC title:@"账户" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {

@@ -17,7 +17,6 @@
 #import "DZForumInfoModel.h"
 #import "DZBaseUrlController.h"
 #import "DZSlideShowScrollView.h"
-#import "LianMixAllViewController.h"
 
 #import "RootForumCell.h"
 
@@ -196,12 +195,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         DZForumInfoModel *infoModel = self.offenSource[indexPath.row];
-        LianMixAllViewController *fvc = [[LianMixAllViewController alloc] init];
-        fvc.forumFid = infoModel.fid;
-        [[DZMobileCtrl sharedCtrl] PushToController:fvc];
+        [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
     } else {
         ThreadListModel *model = self.hotSource[indexPath.row];
-        [[DZMobileCtrl sharedCtrl] PushToDetailController:model.tid];
+        [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
     }
 }
 

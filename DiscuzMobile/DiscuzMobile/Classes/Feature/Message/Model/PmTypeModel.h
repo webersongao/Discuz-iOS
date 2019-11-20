@@ -10,11 +10,11 @@
 
 @interface PmTypeModel : NSObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *module;
-@property (nonatomic, strong) NSString *filter;
-@property (nonatomic, strong) NSString *view;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *module;
+@property (nonatomic, copy) NSString *filter;
+@property (nonatomic, copy) NSString *view;
+@property (nonatomic, copy) NSString *type;
 
 - (instancetype)initWithTitle:(NSString *)title andModule:(NSString *)module anFilter:(NSString *)filter andView:(NSString *)view andType:(NSString *)type;
 

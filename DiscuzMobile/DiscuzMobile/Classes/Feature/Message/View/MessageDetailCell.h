@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
 @class CellFrameModel;
 
-@interface MessageDetailCell : UITableViewCell
+@interface MessageDetailCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) CellFrameModel *cellFrame;
 

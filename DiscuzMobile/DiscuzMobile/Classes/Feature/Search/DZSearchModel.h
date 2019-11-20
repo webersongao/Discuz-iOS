@@ -10,14 +10,14 @@
 
 @interface DZSearchModel : NSObject
 
-@property (nonatomic, strong) NSString *tid;
-@property (nonatomic, strong) NSString *subject;
-@property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSString *authorid;
-@property (nonatomic, strong) NSString *dateline;
-@property (nonatomic, strong) NSString *fid;
-@property (nonatomic, strong) NSString *replies;
-@property (nonatomic, strong) NSString *views;
-@property (nonatomic, strong) NSString *keyword;
+@property (nonatomic, copy) NSString *tid;
+@property (nonatomic, copy) NSString *subject;
+@property (nonatomic, copy) NSString *author;
+@property (nonatomic, copy) NSString *authorid;
+@property (nonatomic, copy) NSString *dateline;
+@property (nonatomic, copy) NSString *fid;
+@property (nonatomic, copy) NSString *replies;
+@property (nonatomic, copy) NSString *views;
+@property (nonatomic, copy) NSString *keyword;
 
 @end

@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "DZPlaceholderTextView.h"
 
-@interface DZViewpointCell : UITableViewCell
+@interface DZViewpointCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *positiveLab;
 @property (nonatomic, strong) UILabel *oppositeLab;

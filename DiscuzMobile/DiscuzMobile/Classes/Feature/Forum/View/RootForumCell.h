@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class DZTreeViewNode;
 
-@interface RootForumCell : UITableViewCell
+@interface RootForumCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) DZTreeViewNode * node;
 @property (nonatomic, strong) UILabel *textLab;

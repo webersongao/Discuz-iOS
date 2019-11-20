@@ -12,16 +12,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DZBaseVarModel : DZBaseModel
-@property (nonatomic, strong) NSString *cookiepre;
-@property (nonatomic, strong) NSString *auth;
-@property (nonatomic, strong) NSString *saltkey;
-@property (nonatomic, strong) NSString *member_uid;
-@property (nonatomic, strong) NSString *member_username;
-@property (nonatomic, strong) NSString *member_avatar;
-@property (nonatomic, strong) NSString *groupid;
-@property (nonatomic, strong) NSString *formhash;
-@property (nonatomic, strong) NSString *ismoderator;
-@property (nonatomic, strong) NSString *readaccess;
+@property (nonatomic, copy) NSString *cookiepre;
+@property (nonatomic, copy) NSString *auth;
+@property (nonatomic, copy) NSString *saltkey;
+@property (nonatomic, copy) NSString *member_uid;
+@property (nonatomic, copy) NSString *member_username;
+@property (nonatomic, copy) NSString *member_avatar;
+@property (nonatomic, copy) NSString *groupid;
+@property (nonatomic, copy) NSString *formhash;
+@property (nonatomic, copy) NSString *ismoderator;
+@property (nonatomic, copy) NSString *readaccess;
 @property (nonatomic, strong) DZNoticeModel *notice;
 @end
 

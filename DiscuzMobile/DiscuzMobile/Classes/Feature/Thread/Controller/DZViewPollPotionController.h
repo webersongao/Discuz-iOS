@@ -9,6 +9,6 @@
 #import "DZBaseTableViewController.h"
 
 @interface DZViewPollPotionController : DZBaseTableViewController
-@property (nonatomic ,strong) NSString * pollid; //第几项
-@property (nonatomic ,strong) NSString *tid;
+@property (nonatomic ,copy) NSString * pollid; //第几项
+@property (nonatomic ,copy) NSString *tid;
 @end

@@ -1,6 +1,6 @@
 //
 //  PRLayouter.h
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by changle on 2017/11/9.
 //

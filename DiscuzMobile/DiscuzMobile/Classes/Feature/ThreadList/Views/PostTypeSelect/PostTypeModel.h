@@ -16,8 +16,8 @@ typedef NS_ENUM(NSUInteger, PostType) {
 
 @interface PostTypeModel : NSObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, assign) PostType type;
 
 - (instancetype)initWithTitle:(NSString *)title imageName:(NSString *)imageName type:(PostType)type;

@@ -7,6 +7,7 @@
 //
 
 #import "DZMobileCtrl.h"
+#import "PRLayouter.h"
 
 @implementation DZMobileCtrl
 
@@ -20,6 +21,15 @@ static DZMobileCtrl *instance = nil;
     return instance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        // 初始化布局管理器
+        [PRLayouter sharedLayouter];
+    }
+    return self;
+}
 
 -(void)setTababar:(UITabBarController *)Tababar mainNavi:(UINavigationController *)mainNavi{
     if ([Tababar isKindOfClass:[DZRootTabBarController class]]) {

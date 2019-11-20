@@ -10,7 +10,7 @@
 
 @interface MyPerson : NSObject
 
-@property (nonatomic,strong) NSString * uid;         //  用户id
-@property (nonatomic,strong) NSString * uname;         // 用户名
+@property (nonatomic,copy) NSString * uid;         //  用户id
+@property (nonatomic,copy) NSString * uname;         // 用户名
 
 @end

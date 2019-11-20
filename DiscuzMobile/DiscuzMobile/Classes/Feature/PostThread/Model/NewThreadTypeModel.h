@@ -10,8 +10,8 @@
 
 @interface NewThreadTypeModel : NSObject
 
-@property (nonatomic, strong) NSString *fid;
-@property (nonatomic, strong) NSString *typeId;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy) NSString *fid;
+@property (nonatomic, copy) NSString *typeId;
+@property (nonatomic, copy) NSString *name;
 
 @end

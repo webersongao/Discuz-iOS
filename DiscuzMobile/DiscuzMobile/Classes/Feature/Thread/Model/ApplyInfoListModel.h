@@ -10,7 +10,7 @@
 
 @interface ApplyInfoListModel : NSObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *value;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *value;
 
 @end

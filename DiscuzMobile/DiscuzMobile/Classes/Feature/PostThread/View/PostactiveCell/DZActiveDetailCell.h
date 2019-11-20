@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "DZPlaceholderTextView.h"
 
-@interface DZActiveDetailCell : UITableViewCell
+@interface DZActiveDetailCell : DZBaseTableViewCell
 
 @property (nonatomic,strong) DZPlaceholderTextView *detailTextView;
 

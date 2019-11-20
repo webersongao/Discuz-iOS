@@ -9,7 +9,7 @@
 #import "DZBaseViewController.h"
 
 @interface DZMsgChatDetailController : DZBaseViewController
-@property (nonatomic, strong) NSString *touid;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *nametitle;
+@property (nonatomic, copy) NSString *touid;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *nametitle;
 @end

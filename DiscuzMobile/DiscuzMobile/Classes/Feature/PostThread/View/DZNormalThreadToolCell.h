@@ -6,7 +6,7 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "AudioRecordView.h"
 #import "WBEmoticonInputView.h"
 #import "WSImagePickerView.h"
@@ -15,7 +15,7 @@
 typedef void(^addImageBlock)(void);
 typedef void(^HideKeyboardBlock)(void);
 
-@interface DZNormalThreadToolCell : UITableViewCell<UIScrollViewDelegate>
+@interface DZNormalThreadToolCell : DZBaseTableViewCell<UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *imageViews;
 

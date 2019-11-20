@@ -1,6 +1,6 @@
 //
 //  DZBaseTableViewCell.m
-//  PandaReader
+//  DiscuzMobile
 //
 //  Created by 孙震 on 2019/5/13.
 //  Copyright © 2019 ZHWenXue. All rights reserved.
@@ -14,6 +14,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self loadSetting];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -23,10 +24,6 @@
     self.selectedBackgroundView.backgroundColor = KColor(KF7F7F8_Color, 1);
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

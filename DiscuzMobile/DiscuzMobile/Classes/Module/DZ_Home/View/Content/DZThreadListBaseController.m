@@ -14,7 +14,7 @@
 
 @interface DZThreadListBaseController ()
 @property (nonatomic, assign) BOOL isRequest;
-@property (nonatomic, strong) NSString *urlString;
+@property (nonatomic, copy) NSString *urlString;
 @end
 
 @implementation DZThreadListBaseController
@@ -61,6 +61,7 @@
         weakSelf.page ++;
         [weakSelf downLoadData:self.page andLoadType:JTRequestTypeRefresh];
     }];
+    self.tableView.height = KView_OutNavi_Bounds.size.height - kHomeSegmentHeight;
     self.tableView.mj_footer.hidden = YES;
     [self.view addSubview:self.tableView];
     ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -10;
@@ -179,7 +180,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    [[DZMobileCtrl sharedCtrl] PushToDetailController:listModel.tid];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:listModel.tid];
 }
 
 #pragma mark - Action

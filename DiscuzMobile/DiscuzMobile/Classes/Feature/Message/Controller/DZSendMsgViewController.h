@@ -10,7 +10,7 @@
 
 @interface DZSendMsgViewController : DZBaseViewController
 
-@property (nonatomic , strong) NSString * uid;
-@property (nonatomic , strong) NSString * otherusername;
+@property (nonatomic , copy) NSString * uid;
+@property (nonatomic , copy) NSString * otherusername;
 @property (nonatomic ,strong)UITextField * titleTextField;
 @end

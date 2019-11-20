@@ -10,10 +10,10 @@
 
 @interface PostNormalModel : NSObject
 
-@property (nonatomic, strong) NSString *subject;     // 标题
-@property (nonatomic, strong) NSString *message;     // 详细
+@property (nonatomic, copy) NSString *subject;     // 标题
+@property (nonatomic, copy) NSString *message;     // 详细
 @property (nonatomic, strong) NSMutableArray *aidArray;
 
-@property (nonatomic, strong) NSString *typeId;     // 选择类型
+@property (nonatomic, copy) NSString *typeId;     // 选择类型
 
 @end

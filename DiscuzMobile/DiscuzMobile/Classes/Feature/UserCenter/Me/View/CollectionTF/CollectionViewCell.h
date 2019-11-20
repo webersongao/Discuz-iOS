@@ -6,9 +6,9 @@
 //  Copyright © 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface CollectionViewCell : UITableViewCell
+@interface CollectionViewCell : DZBaseTableViewCell
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;

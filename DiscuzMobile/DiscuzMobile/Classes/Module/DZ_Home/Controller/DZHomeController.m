@@ -7,8 +7,13 @@
 //
 
 #import "DZHomeController.h"
+#import "DZHomeNetTool.h"
+#import "DZHomeScrollView.h"
+
 
 @interface DZHomeController ()
+
+@property (nonatomic, strong) DZHomeScrollView *homeView;  //!< 属性注释
 
 @end
 
@@ -16,9 +21,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configHomeControllerView];
+    [self loadHomeForumDataFromServer];
+    [self configHomeScroolViewAction];
+}
+
+-(void)configHomeControllerView{
+    
+    [self.view addSubview:self.homeView];
+    [self configNaviBar:@"bar_message" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
     
 }
 
+-(void)configHomeScroolViewAction{
+    
+}
+
+-(void)loadHomeForumDataFromServer{
+    KWEAKSELF
+    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+        if (error) {
+            [weakSelf showServerError:error];
+        }else{
+            [weakSelf setHeadHotForumData:array];
+        }
+    }];
+}
+
+
+-(void)setHeadHotForumData:(NSArray <DZForumInfoModel *>*)listArray{
+    [self.homeView.HeaderView reloadDataSource:listArray];
+}
+
+ /********************* 响应事件 *************************/
+- (void)leftBarBtnClick {
+    if (![self isLogin]) {
+        return;
+    }
+}
+
+- (void)rightBarBtnClick {
+    [[DZMobileCtrl sharedCtrl]PushToSearchController];
+}
+
+ /********************* 初始化 *************************/
+
+-(DZHomeScrollView *)homeView{
+    if (_homeView == nil) {
+        _homeView = [[DZHomeScrollView alloc] initWithFrame:self.view.bounds];
+        _homeView.contentSize = CGSizeMake(KScreenWidth, KScreenHeight + kHomeHeaderHeight);
+    }
+    return _homeView;
+}
 
 
 @end

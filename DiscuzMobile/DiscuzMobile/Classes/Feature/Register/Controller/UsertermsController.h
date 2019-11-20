@@ -10,6 +10,6 @@
 
 @interface UsertermsController : DZBaseViewController
 
-@property (nonatomic, strong) NSString *bbrulestxt;
+@property (nonatomic, copy) NSString *bbrulestxt;
 
 @end

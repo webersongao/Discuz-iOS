@@ -16,7 +16,7 @@
 
 @interface DZResetPwdController ()
 @property (nonatomic,strong) DZResetPwdView *resetView;
-@property (nonatomic, strong) NSString *bbrulestxt;
+@property (nonatomic, copy) NSString *bbrulestxt;
 @end
 
 @implementation DZResetPwdController

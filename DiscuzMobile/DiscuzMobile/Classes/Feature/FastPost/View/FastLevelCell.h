@@ -6,10 +6,10 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class DZTreeViewNode;
 
-@interface FastLevelCell : UITableViewCell
+@interface FastLevelCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;

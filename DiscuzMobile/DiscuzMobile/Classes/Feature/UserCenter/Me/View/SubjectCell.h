@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface SubjectCell : UITableViewCell
+@interface SubjectCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *nameLabel;

@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "QRadioButton.h"
 
-@interface PartInPayCell : UITableViewCell
+@interface PartInPayCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *tipLab;
 @property (nonatomic, strong) UILabel *tipLab2;

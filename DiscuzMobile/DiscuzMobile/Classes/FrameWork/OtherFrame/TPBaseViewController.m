@@ -3,7 +3,7 @@
 //  PandaReader
 //
 //  Created by WebersonGao on 2019/2/28.
-//  Copyright © 2019 comsenz-service.com.  All rights reserved.
+//  Copyright © 2019 ZHWenXue. All rights reserved.
 //
 
 #import "TPBaseViewController.h"

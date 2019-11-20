@@ -20,7 +20,7 @@
 @interface DropDownView : UIView
 
 @property (nonatomic ,weak) id <DropDownViewDelegate> delegate;
-@property (nonatomic ,strong) NSString * fourdID;
+@property (nonatomic ,copy) NSString * fourdID;
 -(id)initWithFrame:(CGRect)frame postType:(NSString*)type allowPostSpecial:(NSString *)allowpostspecial allowsPecialOnly:(NSString *)allowspecialonly;
 
 - (id)initWithFrame:(CGRect)frame activityType:(NSMutableArray *)arr;

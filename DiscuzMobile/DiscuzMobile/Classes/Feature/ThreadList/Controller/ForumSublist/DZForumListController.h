@@ -13,7 +13,7 @@ typedef void(^EndRefreshBlock)(void);
 
 @interface DZForumListController : LianBaseTableController
 
-@property (nonatomic, strong) NSString *fid;
+@property (nonatomic, copy) NSString *fid;
 @property (nonatomic, assign) NSInteger order;
 
 @property (nonatomic, copy) SendValueBlock sendBlock;

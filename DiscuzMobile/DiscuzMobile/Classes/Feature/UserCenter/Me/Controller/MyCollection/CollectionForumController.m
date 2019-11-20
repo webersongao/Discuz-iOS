@@ -10,7 +10,6 @@
 #import "UIAlertController+Extension.h"
 
 #import "CollectionForumCell.h"
-#import "LianMixAllViewController.h"
 #import "DZCollectionTool.h"
 
 @interface CollectionForumController ()
@@ -143,11 +142,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LianMixAllViewController * ftvc = [[LianMixAllViewController alloc]init];
-    ftvc.forumFid = [[self.dataSourceArr objectAtIndex:indexPath.row]objectForKey:@"id"];
 
-    [self.navigationController pushViewController:ftvc animated:YES];
-    
+    NSString *forumId = [[self.dataSourceArr objectAtIndex:indexPath.row]objectForKey:@"id"];
+    [[DZMobileCtrl sharedCtrl] PushToForumListController:forumId];
 }
 
 - (void)didReceiveMemoryWarning {

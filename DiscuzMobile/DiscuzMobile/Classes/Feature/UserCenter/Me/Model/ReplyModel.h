@@ -10,11 +10,11 @@
 
 @interface ReplyModel : NSObject
 
-@property (nonatomic, strong) NSString *tid;
-@property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSString *subject;
-@property (nonatomic, strong) NSString *auther;
-@property (nonatomic, strong) NSString *positions;
-@property (nonatomic, strong) NSString *dateline;
+@property (nonatomic, copy) NSString *tid;
+@property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSString *subject;
+@property (nonatomic, copy) NSString *auther;
+@property (nonatomic, copy) NSString *positions;
+@property (nonatomic, copy) NSString *dateline;
 
 @end

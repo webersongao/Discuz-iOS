@@ -10,9 +10,9 @@
 
 @interface TextIconModel : NSObject
 
-@property (nonatomic, strong) NSString *iconName;
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *detail;
+@property (nonatomic, copy) NSString *iconName;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *detail;
 
 - (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail;
 + (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail;

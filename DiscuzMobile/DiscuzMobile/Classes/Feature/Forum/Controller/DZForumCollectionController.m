@@ -12,7 +12,6 @@
 #import "ForumItemCell.h"
 #import "ForumReusableView.h"
 #import "DZForumManagerController.h"
-#import "LianMixAllViewController.h"
 #import "AsyncAppendency.h"
 
 @interface DZForumCollectionController () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -20,7 +19,7 @@
 @property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *dataSourceArr;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSString * urlString;  //!< 属性注释
-@property (nonatomic, strong) NSString *typeString;
+@property (nonatomic, copy) NSString *typeString;
 @property (nonatomic, assign) ForumType type;
 
 @end
@@ -246,10 +245,7 @@ static NSString * headerSection = @"CellHeader";
 }
 
 - (void)pushThreadList:(DZTreeViewNode *)node {
-    
-    LianMixAllViewController *foVC = [[LianMixAllViewController alloc] init];
-    foVC.forumFid = node.infoModel.fid;
-    [[DZMobileCtrl sharedCtrl] PushToController:foVC];
+    [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid];
 }
 
 - (void)didSelectHeaderWithSection:(UITapGestureRecognizer *)sender {

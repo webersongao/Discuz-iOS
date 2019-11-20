@@ -27,7 +27,7 @@
 
 @property (nonatomic, strong) PostNormalModel *normalModel;
 
-@property (nonatomic ,strong) NSString * filePath;
+@property (nonatomic ,copy) NSString * filePath;
 
 @property (nonatomic, strong) NSMutableArray *imageViews;
 

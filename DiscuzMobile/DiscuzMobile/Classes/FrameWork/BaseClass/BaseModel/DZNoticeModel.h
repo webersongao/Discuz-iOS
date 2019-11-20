@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DZNoticeModel : DZBaseModel
-@property (nonatomic, strong) NSString *newpush;
-@property (nonatomic, strong) NSString *newpm;
-@property (nonatomic, strong) NSString *newprompt;
-@property (nonatomic, strong) NSString *newmypost;
+@property (nonatomic, copy) NSString *newpush;
+@property (nonatomic, copy) NSString *newpm;
+@property (nonatomic, copy) NSString *newprompt;
+@property (nonatomic, copy) NSString *newmypost;
 @end
 
 NS_ASSUME_NONNULL_END

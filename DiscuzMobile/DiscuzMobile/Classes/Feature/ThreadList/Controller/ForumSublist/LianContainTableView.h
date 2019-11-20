@@ -6,8 +6,8 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableView.h"
 
-@interface LianContainTableView : UITableView
+@interface LianContainTableView : DZBaseTableView
 
 @end

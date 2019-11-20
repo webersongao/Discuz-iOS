@@ -10,23 +10,25 @@
 
 @interface DZMobileCtrl (Navi)
 
--(void)PushToController:(UIViewController *)CtrlVC;
+- (void)PushToController:(UIViewController *)CtrlVC;
 
--(void)PushToOtherUserController:(NSString *)userId;
+- (void)PushToOtherUserController:(NSString *)userId;
 
-- (void)PushToDetailController:(NSString *)tid;
+/// 帖子详情页
+- (void)PushToThreadDetailController:(NSString *)tid;
+- (void)ShowThreadDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid;
 
-- (void)ShowDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid;
-
-- (void)PushToForumlistController:(NSString *)fid;
+/// 论坛版块帖子列表
+- (void)PushToForumListController:(NSString *)fid;
+- (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block;
 
 - (void)PushToWebViewController:(NSString *)link;
+- (void)PresentLoginController:(UIViewController *)selfVC;
 
--(void)PresentLoginController:(UIViewController *)selfVC;
+// 跳转登录
+- (void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select;
 
--(void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select;
-
--(void)PushToSearchController;
+- (void)PushToSearchController;
 
 @end
 

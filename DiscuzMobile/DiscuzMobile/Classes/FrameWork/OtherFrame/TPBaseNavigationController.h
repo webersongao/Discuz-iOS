@@ -3,7 +3,7 @@
 //  PandaReader
 //
 //  Created by WebersonGao on 2019/3/1.
-//  Copyright © 2019 comsenz-service.com.  All rights reserved.
+//  Copyright © 2019 ZHWenXue. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

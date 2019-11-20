@@ -11,15 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DZAttachment : DZBaseModel
-@property (nonatomic, strong) NSString *aid;
-@property (nonatomic, strong) NSString *tid;
-@property (nonatomic, strong) NSString *pid;
-@property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *dateline;
-@property (nonatomic, strong) NSString *attachment;
-@property (nonatomic, strong) NSString *thumb;
-@property (nonatomic, strong) NSString *readperm;
-@property (nonatomic, strong) NSString *type;
+@property (nonatomic, copy) NSString *aid;
+@property (nonatomic, copy) NSString *tid;
+@property (nonatomic, copy) NSString *pid;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *dateline;
+@property (nonatomic, copy) NSString *attachment;
+@property (nonatomic, copy) NSString *thumb;
+@property (nonatomic, copy) NSString *readperm;
+@property (nonatomic, copy) NSString *type;
 @end
 
 NS_ASSUME_NONNULL_END

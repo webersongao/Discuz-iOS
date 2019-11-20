@@ -24,7 +24,7 @@
 
 @interface DZPostDebateController () <ZHPickViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 
-@property (nonatomic, strong) NSString *detail;
+@property (nonatomic, copy) NSString *detail;
 
 @property (nonatomic, strong) PostDebateModel *debateModel;
 

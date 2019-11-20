@@ -10,7 +10,7 @@
 
 @interface AudioTool : NSObject
 
-@property (nonatomic, strong) NSString *recordPath;
+@property (nonatomic, copy) NSString *recordPath;
 @property (nonatomic, strong) NSURL *mp3Url;
 @property (nonatomic, assign) NSInteger recordTime;
 

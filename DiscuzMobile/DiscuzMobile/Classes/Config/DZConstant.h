@@ -21,6 +21,7 @@
 
 // 邮箱
 #define DeveloperEmail @"zjt182163@163.com"
+#define kDeafultCover  [UIImage imageNamed:@"discuz_default"]
 
 #define KWEAKSELF __weak typeof(self) weakSelf = self;
 #define STRONGSELF __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -33,6 +34,12 @@
 
 #define TIME 1.0
 #define ALINE 35
+
+#define kMargin10   10.0
+#define kMargin15   15.0
+#define kMargin20   20.0
+#define kMargin25   25.0
+#define kMargin30   30.0
 
 /**
  * iPhone X Screen Insets

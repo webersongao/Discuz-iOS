@@ -6,9 +6,9 @@
 //  Copyright © 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 
-@interface DZPublicPMCell : UITableViewCell
+@interface DZPublicPMCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *headImageView;
 @property (nonatomic, strong) UILabel * nameLabel;

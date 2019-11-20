@@ -195,7 +195,7 @@
     if ([DataCheck isValidString:self.typeModel.view] && [self.typeModel.view isEqualToString:@"mypost"]) {
         if ([DataCheck isValidDictionary:model.notevar]) {
             if ([DataCheck isValidString:[model.notevar objectForKey:@"tid"]]) {
-                [[DZMobileCtrl sharedCtrl] ShowDetailControllerFromVC:self tid:[model.notevar objectForKey:@"tid"]];
+                [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:[model.notevar objectForKey:@"tid"]];
             }
             
         } else {
@@ -205,7 +205,7 @@
                 NSString *containTid = arr[1];
                 NSString *tid = [containTid componentsSeparatedByString:@"\" "][0];
                 if ([tid isNum:tid]) {
-                    [[DZMobileCtrl sharedCtrl] ShowDetailControllerFromVC:self tid:tid];
+                    [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:tid];
                 }
                
             }

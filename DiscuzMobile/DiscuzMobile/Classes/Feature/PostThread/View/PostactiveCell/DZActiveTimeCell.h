@@ -6,10 +6,10 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "UUDatePicker.h"
 
-@interface DZActiveTimeCell : UITableViewCell
+@interface DZActiveTimeCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *postImageView;
 @property (nonatomic, strong) UITextField *beginTimeField;

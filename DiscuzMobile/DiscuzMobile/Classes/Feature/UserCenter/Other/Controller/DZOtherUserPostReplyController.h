@@ -9,6 +9,6 @@
 #import "DZBaseTableViewController.h"
 
 @interface DZOtherUserPostReplyController : DZBaseTableViewController
-@property (nonatomic, strong) NSString * Titilestr;
-@property (nonatomic, strong) NSString * uidstr;
+@property (nonatomic, copy) NSString * Titilestr;
+@property (nonatomic, copy) NSString * uidstr;
 @end

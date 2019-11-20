@@ -6,10 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 @class HorizontalImageTextView,TextIconModel;
 
-@interface CenterCell : UITableViewCell
+@interface CenterCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) HorizontalImageTextView *nameV;
 @property (nonatomic, strong) UILabel *detailLab;

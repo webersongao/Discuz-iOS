@@ -104,7 +104,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.dataSourceArr.count > 0) {
         ReplyModel *model = self.replyArr[indexPath.row];
-        [[DZMobileCtrl sharedCtrl] PushToDetailController:model.tid];
+        [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
     }
 }
 - (void)downLoadData {

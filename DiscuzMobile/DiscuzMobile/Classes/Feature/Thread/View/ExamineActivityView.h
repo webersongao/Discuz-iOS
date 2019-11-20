@@ -15,6 +15,6 @@
 @property (nonatomic, strong) UIButton *allowBtn;
 @property (nonatomic, strong) UIButton *rejectBtn;
 
-@property (nonatomic, strong) NSString *reason;
+@property (nonatomic, copy) NSString *reason;
 
 @end

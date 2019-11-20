@@ -6,11 +6,11 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseTableViewCell.h"
 #import "ChatYYLabel.h"
 #import "MessageModel.h"
 
-@interface ChatContentCell : UITableViewCell
+@interface ChatContentCell : DZBaseTableViewCell
 @property (nonatomic, strong) UIImageView *headView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) ChatYYLabel *messageLabel;
