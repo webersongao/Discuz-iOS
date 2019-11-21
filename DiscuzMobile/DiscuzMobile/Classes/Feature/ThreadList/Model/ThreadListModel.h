@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class DZAttachment;
+@class DZAttachModel;
 
 @interface ThreadListModel : NSObject
 
@@ -26,7 +26,7 @@
 @property (nonatomic, copy) NSString *fid;
 @property (nonatomic, copy) NSString *digest;
 @property (nonatomic, copy) NSString *attachment;
-@property (nonatomic, strong) NSMutableArray<DZAttachment*> *attachlist;
+@property (nonatomic, strong) NSMutableArray<DZAttachModel*> *attachlist;
 @property (nonatomic, copy) NSString *special; //判断帖子类型 0普通 1投票 2商品  3悬赏 4活动 5辩论
 @property (nonatomic, assign) BOOL isRecently;
 @property (nonatomic, copy) NSString *typeId;

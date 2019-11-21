@@ -1,13 +1,13 @@
 //
-//  DZAttachment.m
+//  DZAttachModel.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2019/7/22.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZAttachment.h"
+#import "DZAttachModel.h"
 
-@implementation DZAttachment
+@implementation DZAttachModel
 
 @end

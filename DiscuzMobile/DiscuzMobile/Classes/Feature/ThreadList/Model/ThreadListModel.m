@@ -7,7 +7,7 @@
 //
 
 #import "ThreadListModel.h"
-#import "DZAttachment.h"
+#import "DZAttachModel.h"
 
 @implementation ThreadListModel
 
@@ -20,7 +20,7 @@ MJCodingImplementation
             return @{@"typeId":@"typeid"};
         }];
         [ThreadListModel mj_setupObjectClassInArray:^NSDictionary *{
-            return @{@"attachlist":@"DZAttachment"};
+            return @{@"attachlist":@"DZAttachModel"};
         }];
     }
 }
@@ -39,7 +39,7 @@ MJCodingImplementation
 - (void)setValue:(id)value forKey:(NSString *)key {
     
     if ([key isEqualToString:@"attachlist"]) {
-        for (DZAttachment *attItem in value) {
+        for (DZAttachModel *attItem in value) {
             if ([DataCheck isValidString:attItem.type]) {
                 if ([attItem.type isEqualToString:@"image"]) {
                     [self.imglist addObject:attItem.thumb];

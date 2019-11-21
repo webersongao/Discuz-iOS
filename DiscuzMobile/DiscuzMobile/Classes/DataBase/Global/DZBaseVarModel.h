@@ -6,12 +6,11 @@
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBaseModel.h"
-@class DZNoticeModel;
+#import "DZNoticeModel.h"
+#import "DZGroupModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface DZBaseVarModel : NSObject
 
-@interface DZBaseVarModel : DZBaseModel
 @property (nonatomic, copy) NSString *cookiepre;
 @property (nonatomic, copy) NSString *auth;
 @property (nonatomic, copy) NSString *saltkey;
@@ -22,7 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *formhash;
 @property (nonatomic, copy) NSString *ismoderator;
 @property (nonatomic, copy) NSString *readaccess;
+
+@property (nonatomic, copy) NSString *member_email;
+@property (nonatomic, copy) NSString *member_credits;
+@property (nonatomic, copy) NSString *setting_bbclosed;
+
+@property (nonatomic, strong) DZGroupModel *group;
 @property (nonatomic, strong) DZNoticeModel *notice;
+
 @end
 
-NS_ASSUME_NONNULL_END
+
+
+

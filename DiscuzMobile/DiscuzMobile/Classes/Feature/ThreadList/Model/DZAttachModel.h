@@ -1,16 +1,14 @@
 //
-//  DZAttachment.h
+//  DZAttachModel.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2019/7/22.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBaseModel.h"
+#import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface DZAttachment : DZBaseModel
+@interface DZAttachModel : NSObject
 @property (nonatomic, copy) NSString *aid;
 @property (nonatomic, copy) NSString *tid;
 @property (nonatomic, copy) NSString *pid;

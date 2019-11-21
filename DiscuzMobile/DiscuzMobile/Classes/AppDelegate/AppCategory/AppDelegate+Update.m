@@ -8,13 +8,13 @@
 
 #import "AppDelegate+Update.h"
 #import "DZVersionUpdate.h"
-#import "SELUpdateAlert.h"
+#import "DZUpdateAlertView.h"
 
 @implementation AppDelegate (Update)
 
 - (void)checkAppDZVersionUpdate {
     [DZVersionUpdate compareUpdate:^(NSString * _Nonnull newVersion, NSString * _Nonnull releaseNotes) {
-        [SELUpdateAlert showUpdateAlertWithVersion:newVersion Descriptions:@[releaseNotes]];
+        [DZUpdateAlertView showUpdateAlertWithVersion:newVersion Descriptions:@[releaseNotes]];
     }];
 }
 

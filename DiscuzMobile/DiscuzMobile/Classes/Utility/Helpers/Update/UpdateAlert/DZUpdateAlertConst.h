@@ -1,6 +1,6 @@
 //
-//  SELUpdateAlertConst.h
-//  SelUpdateAlert
+//  DZUpdateAlertConst.h
+//  DZUpdateAlertView
 //
 //  Created by zhuku on 2018/2/7.
 //  Copyright © 2018年 selwyn. All rights reserved.

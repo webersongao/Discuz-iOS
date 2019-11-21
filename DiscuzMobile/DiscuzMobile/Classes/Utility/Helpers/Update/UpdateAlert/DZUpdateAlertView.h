@@ -1,6 +1,6 @@
 //
-//  SELUpdateAlert.h
-//  SelUpdateAlert
+//  DZUpdateAlertView.h
+//  DZUpdateAlertView
 //
 //  Created by zhuku on 2018/2/7.
 //  Copyright © 2018年 selwyn. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SELUpdateAlert : UIView
+@interface DZUpdateAlertView : UIView
 
 /**
  添加版本更新提示

@@ -1,17 +1,17 @@
 //
-//  SELUpdateAlert.m
-//  SelUpdateAlert
+//  DZUpdateAlertView.m
+//  DZUpdateAlertView
 //
 //  Created by zhuku on 2018/2/7.
 //  Copyright © 2018年 selwyn. All rights reserved.
 //
 
-#import "SELUpdateAlert.h"
-#import "SELUpdateAlertConst.h"
+#import "DZUpdateAlertView.h"
+#import "DZUpdateAlertConst.h"
 
 #define DEFAULT_MAX_HEIGHT SCREEN_HEIGHT/3*2
 
-@interface SELUpdateAlert()
+@interface DZUpdateAlertView()
 
 /** 版本号 */
 @property (nonatomic, copy) NSString *version;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation SELUpdateAlert
+@implementation DZUpdateAlertView
 
 /**
  添加版本更新提示
@@ -49,7 +49,7 @@
         }
     }
     DLog(@"====%@",description);
-    SELUpdateAlert *updateAlert = [[SELUpdateAlert alloc]initVersion:version description:description];
+    DZUpdateAlertView *updateAlert = [[DZUpdateAlertView alloc]initVersion:version description:description];
     [[UIApplication sharedApplication].delegate.window addSubview:updateAlert];
 }
 
@@ -63,7 +63,7 @@ description 格式如 @"1.xxxxxx\n2.xxxxxx"
  */
 + (void)showUpdateAlertWithVersion:(NSString *)version Description:(NSString *)description
 {
-    SELUpdateAlert *updateAlert = [[SELUpdateAlert alloc]initVersion:version description:description];
+    DZUpdateAlertView *updateAlert = [[DZUpdateAlertView alloc]initVersion:version description:description];
     [[UIApplication sharedApplication].delegate.window addSubview:updateAlert];
 }
 

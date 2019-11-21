@@ -6,15 +6,14 @@
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBaseModel.h"
+#import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface DZNoticeModel : DZBaseModel
+@interface DZNoticeModel : NSObject
 @property (nonatomic, copy) NSString *newpush;
 @property (nonatomic, copy) NSString *newpm;
 @property (nonatomic, copy) NSString *newprompt;
 @property (nonatomic, copy) NSString *newmypost;
+
 @end
 
-NS_ASSUME_NONNULL_END
+
