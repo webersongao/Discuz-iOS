@@ -11,7 +11,6 @@
 
 @interface JTRequestOperation()
 
-@property (nonatomic, assign) BOOL networkError;
 @property (nonatomic, strong) NSError *serializationError;
 
 @end
@@ -36,6 +35,7 @@
         self.securityPolicy = [AFSecurityPolicy defaultPolicy];
         self.securityPolicy.allowInvalidCertificates = YES;
         self.securityPolicy.validatesDomainName = NO;
+        _netWork = networkError;
 //        /*因为与缓存互通 服务器返回的数据 必须是二进制*/
         self.responseSerializer = [AFHTTPResponseSerializer serializer];
         self.operationQueue.maxConcurrentOperationCount = 5;
@@ -83,7 +83,7 @@
 
 - (NSURLSessionDataTask *)dataTaskWithGetRequest:(JTURLRequest *)request progress:(JTProgressBlock)progress success:(JTRequestSuccess)success failed:(JTRequestFailed)failed{
     
-    if ([JTRequestOperation shareInstance].networkError == YES) {
+    if ([JTRequestOperation shareInstance].netWork == networkError) {
         [MBProgressHUD showInfo:@"网络连接断开,请检查网络!"];
         failed ? failed(nil) : nil;
         return nil;
@@ -147,7 +147,7 @@
 }
 
 - (NSURLSessionDataTask *)dataTaskWithPostRequest:(JTURLRequest *)request loadType:(JTLoadType)type progress:(JTProgressBlock)progress success:(JTRequestSuccess)success failed:(JTRequestFailed)failed {
-    if ([JTRequestOperation shareInstance].networkError == YES) {
+    if ([JTRequestOperation shareInstance].netWork == networkError) {
         [MBProgressHUD showInfo:@"网络连接断开,请检查网络!"];
         failed ? failed(nil) : nil;
         return nil;
@@ -322,19 +322,18 @@
         {
             case AFNetworkReachabilityStatusUnknown: // 未知网络
                 JTRLog(@"未知网络");
-                
-                [JTRequestOperation shareInstance].networkError = NO;
+                [JTRequestOperation shareInstance].netWork = networkUnknown;
                 break;
             case AFNetworkReachabilityStatusNotReachable: // 没有网络(断网)
-                [JTRequestOperation shareInstance].networkError = YES;
+                [JTRequestOperation shareInstance].netWork = networkError;
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN: // 手机自带网络
                 JTRLog(@"手机自带网络");
-                [JTRequestOperation shareInstance].networkError = NO;
+                [JTRequestOperation shareInstance].netWork = networkWWAN;
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi: // WIFI
                 JTRLog(@"WIFI");
-                [JTRequestOperation shareInstance].networkError = NO;
+                [JTRequestOperation shareInstance].netWork = networkWIFI;
                 break;
         }
     }];

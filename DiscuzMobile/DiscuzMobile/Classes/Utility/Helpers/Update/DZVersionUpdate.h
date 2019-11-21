@@ -1,5 +1,5 @@
 //
-//  VersionUpdate.h
+//  DZVersionUpdate.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/11/29.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VersionUpdate : NSObject
+@interface DZVersionUpdate : NSObject
 
 
 /**

@@ -21,7 +21,7 @@
 
 - (void)loadSetting {
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
-    self.selectedBackgroundView.backgroundColor = KColor(KF7F7F8_Color, 1);
+    self.selectedBackgroundView.backgroundColor = KColor(@"#F7F7F8", 1);
 }
 
 

@@ -2,7 +2,7 @@
 //  NSDate+Additions.h
 //  ChatRoom_Demo
 //
-//  Created by 李红 on 14-11-3.
+//  Created by Gao on 14-11-3.
 //
 
 #import <Foundation/Foundation.h>

@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configBaseViewController];
-    self.view.backgroundColor = KColor(KFFFFFF_Color, 1.0);
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view setExclusiveTouch:YES];
 }
 

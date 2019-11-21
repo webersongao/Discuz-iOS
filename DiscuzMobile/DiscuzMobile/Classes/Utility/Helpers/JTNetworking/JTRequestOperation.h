@@ -10,10 +10,18 @@
 #import "JTURLRequest.h"
 #import <AFNetworking.h>
 
+typedef enum : NSUInteger {
+    networkError,
+    networkWIFI,
+    networkWWAN,
+    networkUnknown, // 未知 已经联网
+} netStatus;
+
 @interface JTRequestOperation : AFHTTPSessionManager
 
 + (instancetype)shareInstance;
 
+@property (nonatomic, assign) netStatus netWork;
 /**
  发起请求
  

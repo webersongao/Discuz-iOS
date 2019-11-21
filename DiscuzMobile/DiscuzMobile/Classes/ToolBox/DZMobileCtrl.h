@@ -17,6 +17,11 @@
 
 @property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;
 
++ (BOOL)IsEnableWifi;
+
+//网络是否联通，不仅仅wifi
++ (BOOL)connectedNetwork;
+
 /// 设置tabbar 和 mainNavi
 -(void)setTababar:(UITabBarController *)Tababar mainNavi:(UINavigationController *)mainNavi;
 

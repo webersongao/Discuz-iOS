@@ -12,11 +12,11 @@
 #import "DZRootTabBarController.h"
 #import "DZShareCenter.h"
 #import "AppDelegate+SDK.h"
-#import "DZLaunchScreenManager.h"
+#import "AppDelegate+Launch.h"
+#import "AppDelegate+Data.h"
+#import "AppDelegate+Update.h"
 #import "WebImageCacheUrlProtocol.h"
 
-#import "VersionUpdate.h"
-#import "SELUpdateAlert.h"
 
 #define _IPHONE80_ 80000
 
@@ -45,37 +45,29 @@ static AppDelegate *m_appDelegate;
     if (![self isFirstInstall]) {
         // 设置 自动登录 cookie等
         [DZLoginModule setAutoLogin];
-        [self versionUpdate];
+        [self checkAppDZVersionUpdate];
     }
     
-    
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    // 开启拉取全局配置参数
+    [self loadForumGlobalInfofromServer];
     
     // 分享平台参数配置
     [[DZShareCenter shareInstance] setupShareConfigure];
     
-//    // 设置开机启动画面
-//    [self setLaunchView];
-//    [[DZLaunchScreenManager shareInstance] setLaunchView];
+    // 设置开机启动画面
+    [self loadAppLaunchScreenView];
     
     [self initCacheConfigure];
     
     // 修改iOS12.1 tababar的图标漂浮上移的问题
     [[UITabBar appearance] setTranslucent:NO];
-    //    [UINavigationBar appearance].translucent = NO;
     
-//    [self printFamilyName];
 //    [NSThread sleepForTimeInterval:1];
     [self launchSDKConfigWithOptions:launchOptions];
     
     return YES;
 }
 
-- (void)versionUpdate {
-    [VersionUpdate compareUpdate:^(NSString * _Nonnull newVersion, NSString * _Nonnull releaseNotes) {
-        [SELUpdateAlert showUpdateAlertWithVersion:newVersion Descriptions:@[releaseNotes]];
-    }];
-}
 
 - (void)initCacheConfigure {
     // 离线缓存
@@ -102,18 +94,6 @@ static AppDelegate *m_appDelegate;
     CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
     if (CGRectContainsPoint(statusBarFrame, location)) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_STATUSBARTAP_Notify object:nil];
-    }
-}
-
-#pragma 打印系统支持字体
-- (void)printFamilyName {
-    NSArray *familyNames = [UIFont familyNames];
-    for(NSString *familyName in familyNames) {
-        DLog(@"%@", familyName);
-        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
-        for(NSString *fontName in fontNames) {
-            DLog(@"\t%@", fontName);
-        }
     }
 }
 

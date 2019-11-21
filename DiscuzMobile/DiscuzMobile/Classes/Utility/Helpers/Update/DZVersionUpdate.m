@@ -1,14 +1,14 @@
 //
-//  VersionUpdate.m
+//  DZVersionUpdate.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/11/29.
 //  Copyright © 2018年 comsenz-service.com. All rights reserved.
 //
 
-#import "VersionUpdate.h"
+#import "DZVersionUpdate.h"
 
-@implementation VersionUpdate
+@implementation DZVersionUpdate
 
 + (NSString *)timePath {
     NSString *homePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;

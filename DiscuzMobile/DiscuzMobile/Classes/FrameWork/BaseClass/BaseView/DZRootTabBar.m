@@ -28,8 +28,8 @@
 -(void)configRootTabBarSubView{
     self.translucent = NO;
     badgeDotWH = KWidthScale(6.f);
-    self.tintColor = KColor(KFFCE2E_Color, 1.0);
-    self.barTintColor = KColor(K2A2C2F_Color, 1.0);
+    self.tintColor = KColor(@"#FFCE2E", 1.0);
+    self.barTintColor = KColor(@"#2A2C2F", 1.0);
 }
 
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated {

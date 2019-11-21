@@ -8,7 +8,7 @@
 
 #import "DZMobileCtrl.h"
 #import "PRLayouter.h"
-
+#import "JTRequestOperation.h"
 @implementation DZMobileCtrl
 
 static DZMobileCtrl *instance = nil;
@@ -56,5 +56,16 @@ static DZMobileCtrl *instance = nil;
         [MBProgressHUD showInfo:message];
     }
 }
+
+
++ (BOOL)IsEnableWifi{
+    return ([JTRequestOperation shareInstance].netWork == networkWIFI);
+}
+
+//网络是否联通，不仅仅wifi
++ (BOOL)connectedNetwork{
+    return ([JTRequestOperation shareInstance].netWork != networkError);
+}
+
 
 @end

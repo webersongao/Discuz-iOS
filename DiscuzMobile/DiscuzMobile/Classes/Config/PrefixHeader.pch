@@ -32,6 +32,7 @@
 #import "MBProgressHUD+Add.h"
 #import "UIView+Extension.h"
 #import "NSDate+Extension.h"
+#import "NSString+Common.h"
 #import "NSString+MoreMethod.h"
 #import "UIControl+DelayEnable.h"
 #import "UIImage+DrawCricleImage.h"
