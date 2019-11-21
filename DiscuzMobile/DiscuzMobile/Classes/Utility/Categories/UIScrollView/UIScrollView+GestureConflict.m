@@ -20,7 +20,7 @@
             return YES;
         }
     }
-    DLog(@"%lf,%lf",self.contentOffset.x,self.contentOffset.y);
+//    DLog(@"%lf,%lf",self.contentOffset.x,self.contentOffset.y);
     return NO;
 }
 @end

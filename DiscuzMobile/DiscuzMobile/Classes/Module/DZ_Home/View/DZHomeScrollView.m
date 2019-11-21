@@ -9,7 +9,7 @@
 #import "DZHomeScrollView.h"
 #import "DZThreadContentView.h"
 
-@interface DZHomeScrollView ()<HeaderCollectionDelegate>
+@interface DZHomeScrollView ()<HeaderCollectionDelegate,UIScrollViewDelegate,ThreadContentViewDelegate>
 
 @property (nonatomic, strong) DZThreadContentView *contentView;  //!< 属性注释
 
@@ -22,6 +22,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.bounces = NO;
+        self.delegate = self;
         [self configDZHomeScrollView];
     }
     return self;
@@ -32,6 +34,12 @@
     [self addSubview:self.HeaderView];
     [self addSubview:self.contentView];
     self.HeaderView.headerDelegate = self;
+    self.contentView.listDelgate = self;
+    self.contentView.ListScrollEnabled = NO;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 #pragma mark   /********************* HeaderCollectionDelegate *************************/
@@ -52,8 +60,29 @@
     
 }
 
-- (void)collectionViewDidEndRoll{
+- (void)collectionViewDidEndScroll{
     
+}
+
+#pragma mark   /********************* UIScrollViewDelegate *************************/
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    DLog(@"上面 偏移量%.2f",scrollView.contentOffset.y);
+    [self homeViewScrollViewYScroll:scrollView];
+}
+
+#pragma mark   /********************* ThreadContentViewDelegate *************************/
+
+- (void)threadListContentView:(UIScrollView *)scrollView scrollDidScroll:(CGFloat)offsetY{
+    DLog(@"下面 偏移量%.2f",offsetY);
+    [self homeViewScrollViewYScroll:scrollView];
+}
+
+-(void)homeViewScrollViewYScroll:(UIScrollView *)scrollView{
+    if ([scrollView isEqual:self]) {
+        
+    }else if ([scrollView isKindOfClass:[UITableView class]]){
+        
+    }
 }
 
 -(DZHomeCollectionView *)HeaderView{

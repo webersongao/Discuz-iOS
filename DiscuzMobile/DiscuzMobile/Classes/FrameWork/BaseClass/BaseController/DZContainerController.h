@@ -15,11 +15,12 @@
 @property (nonatomic, assign) BOOL sendNotify;
 
 @property (nonatomic, weak) UIViewController *parentController;
-@property (strong, nonatomic) NSArray *viewControllers;
+@property (strong, nonatomic) NSArray <UITableViewController *>*viewControllers;
+@property (strong, nonatomic) UITableViewController *currentController;
 @property (nonatomic,weak) UICollectionView *collectonView;
 @property (nonatomic,weak) UICollectionViewFlowLayout *flowLayout;
 @property (strong, nonatomic) DZSegmentedControl *segmentedControl;
 
-- (void)setSubControllers:(NSArray<UIViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect;
+- (void)setSubControllers:(NSArray<UITableViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect;
 
 @end

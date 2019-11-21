@@ -8,6 +8,19 @@
 
 #import "DZBaseViewController.h"
 
+@protocol ThreadListContentDelegate <NSObject>
+
+@optional
+- (void)threadListContentView:(UIScrollView *)ScrollView scrollDidScroll:(CGFloat)offsetY;
+
+@end
+
+
 @interface DZThreadContentController : DZBaseViewController
+
+@property (nonatomic, assign) CGPoint listOffSet;  //!< 属性注释
+@property (nonatomic, assign) BOOL contentScrollEnabled;  //!< 属性注释
+@property (nonatomic, weak) id<ThreadListContentDelegate> contentDelegate;  //!< 属性注释
+
 
 @end

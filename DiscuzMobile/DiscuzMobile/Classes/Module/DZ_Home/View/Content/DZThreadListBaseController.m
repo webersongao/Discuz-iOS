@@ -183,6 +183,14 @@
     [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:listModel.tid];
 }
 
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.didScrollAction) {
+        self.didScrollAction(scrollView);
+    }
+}
+
 #pragma mark - Action
 - (void)toOtherCenter:(UITapGestureRecognizer *)sender {
     

@@ -111,18 +111,17 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionViewDidEndRoll)]) {
-        [self.headerDelegate collectionViewDidEndRoll];
+    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionViewDidEndScroll)]) {
+        [self.headerDelegate collectionViewDidEndScroll];
     }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate) {
-        if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionViewDidEndRoll)]) {
-            [self.headerDelegate collectionViewDidEndRoll];
+        if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionViewDidEndScroll)]) {
+            [self.headerDelegate collectionViewDidEndScroll];
         }
     }
-    
 }
 
 // 书架 九宫格模式 布局

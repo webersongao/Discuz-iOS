@@ -45,9 +45,36 @@
     [self.rootVC setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
 }
 
+-(void)setListOffSetY:(CGPoint)listOffSet{
+    _listOffSet = listOffSet;
+    self.rootVC.currentController.tableView.contentOffset = listOffSet;
+}
+
+-(void)setContentScrollEnabled:(BOOL)contentScrollEnabled{
+    _contentScrollEnabled = contentScrollEnabled;
+//    self.rootVC.currentController.tableView.scrollEnabled = contentScrollEnabled;
+    for (UITableViewController *listVC in self.rootVC.viewControllers) {
+        if ([listVC isEqual:self.rootVC.currentController]) {
+            self.rootVC.currentController.tableView.scrollEnabled = contentScrollEnabled;
+        }else{
+           self.rootVC.currentController.tableView.scrollEnabled = !contentScrollEnabled;
+        }
+    }
+}
+-(void)listViewDidScroll:(UIScrollView *)scrollView{
+    if (self.contentDelegate && [self.contentDelegate respondsToSelector:@selector(threadListContentView:scrollDidScroll:)]) {
+        [self.contentDelegate threadListContentView:scrollView scrollDidScroll:scrollView.contentOffset.y];
+    }
+}
+
+
 - (void)addItemClass:(Class)class andTitle:(NSString *)title {
-    UIViewController *vc = [class new];
+    DZThreadListBaseController *vc = [class new];
     vc.title = title;
+    KWEAKSELF
+    vc.didScrollAction = ^(UIScrollView *scrollView) {
+        [weakSelf listViewDidScroll:scrollView];
+    };
     [self.controllerArr addObject:vc];
 }
 

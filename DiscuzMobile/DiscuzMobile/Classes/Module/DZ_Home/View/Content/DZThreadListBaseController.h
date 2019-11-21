@@ -15,5 +15,9 @@ typedef NS_ENUM(NSUInteger, SThreadListType) {
 };
 
 @interface DZThreadListBaseController : DZBaseTableViewController
+
 - (SThreadListType)listType;
+
+@property (nonatomic, copy) void(^didScrollAction)(UIScrollView *scrollView);  //!< 属性注释
+
 @end

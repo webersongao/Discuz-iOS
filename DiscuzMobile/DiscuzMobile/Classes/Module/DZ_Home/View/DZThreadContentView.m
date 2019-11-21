@@ -9,7 +9,7 @@
 #import "DZThreadContentView.h"
 #import "DZThreadContentController.h"
 
-@interface DZThreadContentView ()
+@interface DZThreadContentView ()<ThreadListContentDelegate>
 @property (nonatomic, strong) DZThreadContentController *contentVC;  //!< 属性注释
 @end
 
@@ -30,10 +30,28 @@
     [self addSubview:self.contentVC.view];
 }
 
+-(void)setOffSetY:(CGPoint)offSet{
+    _offSet = offSet;
+    self.contentVC.listOffSet = offSet;
+}
+-(void)setListScrollEnabled:(BOOL)ListScrollEnabled{
+    _ListScrollEnabled = ListScrollEnabled;
+    self.contentVC.contentScrollEnabled = ListScrollEnabled;
+}
+
+#pragma mark   /********************* ThreadListContentDelegate *************************/
+
+- (void)threadListContentView:(UIScrollView *)ScrollView scrollDidScroll:(CGFloat)offsetY{
+    if (self.listDelgate && [self.listDelgate respondsToSelector:@selector(threadListContentView:scrollDidScroll:)]) {
+        [self.listDelgate threadListContentView:ScrollView scrollDidScroll:offsetY];
+    }
+}
+
 
 -(DZThreadContentController *)contentVC{
     if (_contentVC == nil) {
         _contentVC = [[DZThreadContentController alloc] init];
+        _contentVC.contentDelegate = self;
     }
     return _contentVC;
 }

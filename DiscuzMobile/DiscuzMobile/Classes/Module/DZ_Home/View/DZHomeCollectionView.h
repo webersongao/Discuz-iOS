@@ -21,7 +21,7 @@
 
 - (void)collectionViewWillBeginDragging;
 
-- (void)collectionViewDidEndRoll;
+- (void)collectionViewDidEndScroll;
 
 @end
 

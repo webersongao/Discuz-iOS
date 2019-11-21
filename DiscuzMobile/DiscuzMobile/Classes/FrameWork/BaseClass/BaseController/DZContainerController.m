@@ -56,7 +56,7 @@
     }
 }
 
-- (void)setSubControllers:(NSArray<UIViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect {
+- (void)setSubControllers:(NSArray<UITableViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect {
     
     [self setViewControllers:viewControllers];
     [self setParentControl:vc];
@@ -152,6 +152,24 @@
     
     CGFloat offsetX = self.view.bounds.size.width * selectedIndex;
     self.collectonView.contentOffset = CGPointMake(offsetX, 0);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+   [self scrollViewToCurrentTarget:scrollView.contentOffset.x];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (decelerate) {return;}
+    [self scrollViewToCurrentTarget:scrollView.contentOffset.x];
+}
+
+-(void)scrollViewToCurrentTarget:(CGFloat)offsetX{
+    int index = ceilf(offsetX/KScreenWidth);
+    if (offsetX > 0 && index >= 0 && index < self.viewControllers.count) {
+        self.currentController = self.viewControllers[index];
+    }else{
+        self.currentController = self.viewControllers.firstObject;
+    }
 }
 
 #pragma mark - getting

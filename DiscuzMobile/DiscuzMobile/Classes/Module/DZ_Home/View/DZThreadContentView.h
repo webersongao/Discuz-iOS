@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ThreadContentViewDelegate <NSObject>
+
+@optional
+- (void)threadListContentView:(UIScrollView *)ScrollView scrollDidScroll:(CGFloat)offsetY;
+
+@end
 
 @interface DZThreadContentView : UIView
 
-
-
+@property (nonatomic, assign) BOOL ListScrollEnabled;  //!< 属性注释
+@property (nonatomic, assign) CGPoint offSet;  //!< 属性注释
+@property (nonatomic, weak) id<ThreadContentViewDelegate> listDelgate;  //!< 属性注释
 
 
 @end
