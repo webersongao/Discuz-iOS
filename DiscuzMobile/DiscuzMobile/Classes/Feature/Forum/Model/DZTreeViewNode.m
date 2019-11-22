@@ -7,7 +7,7 @@
 //
 
 #import "DZTreeViewNode.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 
 @interface DZTreeViewNode()
 
@@ -32,7 +32,7 @@
             self.nodeLevel = [[dic objectForKey:@"level"] integerValue];
         }
     } else { // 热门版块
-        [self.infoModel setValuesForKeysWithDictionary:dic];
+        self.infoModel = [DZForumModel modelWithJSON:dic];
         self.nodeLevel = 1;
     }
 
@@ -45,7 +45,7 @@
         treeNode1.nodeLevel = 1;
         treeNode1.isExpanded = NO;
         treeNode1.nodeName = [fourmInfo objectForKey:@"name"];
-        treeNode1.infoModel = [DZForumInfoModel modelWithJSON:fourmInfo];
+        treeNode1.infoModel = [DZForumModel modelWithJSON:fourmInfo];
         
         [treeNode1 sublistNode:fourmInfo];
         
@@ -66,7 +66,7 @@
                 treeNode.nodeLevel = self.nodeLevel + 1;
                 treeNode.isExpanded = NO;
                 treeNode.nodeName = [info objectForKey:@"name"];
-                [treeNode.infoModel setValuesForKeysWithDictionary:info];
+                treeNode.infoModel = [DZForumModel modelWithJSON:info];
                 [self.nodeChildren addObject:treeNode];
                 if ([DataCheck isValidArray:[info objectForKey:@"sublist"]]) { // 递归判断
                     [treeNode sublistNode:info];
@@ -111,7 +111,7 @@
 }
 
 #pragma mark - hot
-+ (NSArray *)setHotData:(id)responseObject { // 热门全部版块  无主导航
++ (NSArray *)setNodeHotData:(id)responseObject { // 热门全部版块  无主导航
     NSMutableArray *hotArr = [NSMutableArray array];
     NSArray *dataArr = [[responseObject objectForKey:@"Variables"] objectForKey:@"data"];
     if ([DataCheck isValidArray:dataArr]) {
@@ -154,9 +154,9 @@
     return _forumListArr;
 }
 
-- (DZForumInfoModel *)infoModel {
+- (DZForumModel *)infoModel {
     if (!_infoModel) {
-        self.infoModel = [[DZForumInfoModel alloc] init];
+        self.infoModel = [[DZForumModel alloc] init];
     }
     return _infoModel;
 }

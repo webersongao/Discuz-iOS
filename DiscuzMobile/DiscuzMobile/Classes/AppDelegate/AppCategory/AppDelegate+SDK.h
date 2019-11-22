@@ -4,7 +4,7 @@
 //
 //  Created by WebersonGao on 2019/11/14.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
-//
+//  启动SDK
 
 #import "AppDelegate.h"
 

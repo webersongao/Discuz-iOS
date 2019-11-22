@@ -35,7 +35,7 @@
 }
 
 
--(void)updateForumCellWithModel:(DZForumInfoModel *)cellModel{
+-(void)updateForumCellWithModel:(DZForumModel *)cellModel{
     _cellModel = cellModel;
     self.NameLabel.text = cellModel.name;
     [self.iconImage sd_setImageWithURL:KURLString(cellModel.icon) placeholderImage:kDeafultCover];

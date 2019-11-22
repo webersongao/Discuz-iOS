@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class DZForumInfoModel;
+@class DZForumModel;
 
 @interface SubForumCell : DZBaseTableViewCell
 
@@ -20,6 +20,6 @@
 /**
  * 设置直接显示的cell数据
  */
-- (void)setInfo:(DZForumInfoModel *)node;
+- (void)setInfo:(DZForumModel *)node;
 
 @end

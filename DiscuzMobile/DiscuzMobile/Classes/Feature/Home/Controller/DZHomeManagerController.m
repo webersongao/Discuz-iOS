@@ -14,7 +14,7 @@
 #import "DZLoginModule.h"
 #import "DZHomeListCell.h"
 #import "ThreadListModel.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "DZBaseUrlController.h"
 #import "DZSlideShowScrollView.h"
 
@@ -22,7 +22,7 @@
 
 @interface DZHomeManagerController ()
 
-@property (nonatomic, strong) NSMutableArray <DZForumInfoModel *>*offenSource;
+@property (nonatomic, strong) NSMutableArray <DZForumModel *>*offenSource;
 @property (nonatomic, strong) NSMutableArray <ThreadListModel *>*hotSource;
 
 @end
@@ -70,7 +70,7 @@
 //  下载热门版块 hotforum（常去的版块）-- 未登录时候
 -(void)downLoadHotforumData {
     KWEAKSELF
-    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumModel *>*array, NSError *error) {
         if (error) {
             [weakSelf showServerError:error];
         }else{
@@ -82,7 +82,7 @@
 // 下载收藏版块（常去的版块）-- 登录时候
 -(void)downLoadFavForumData{
     KWEAKSELF
-    [DZHomeNetTool DZ_HomeDownLoadFavForumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+    [DZHomeNetTool DZ_HomeDownLoadFavForumData:^(NSArray <DZForumModel *>*array, NSError *error) {
         if (error) {
             if (error.localizedDescription) {
                 [weakSelf showServerError:error];
@@ -96,7 +96,7 @@
 }
 
 //  处理热门版块数据
-- (void)setForumHotData:(NSArray <DZForumInfoModel *>*)dataModelArr {
+- (void)setForumHotData:(NSArray <DZForumModel *>*)dataModelArr {
     if (self.offenSource.count) {
         [self.offenSource removeAllObjects];
     }
@@ -166,7 +166,7 @@
         if (cell == nil) {
             cell = [[ForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:OffenId];
         }
-        DZForumInfoModel * infoModel;
+        DZForumModel * infoModel;
         
         if (self.offenSource.count > indexPath.row) {
             infoModel = self.offenSource[indexPath.row];
@@ -194,7 +194,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
-        DZForumInfoModel *infoModel = self.offenSource[indexPath.row];
+        DZForumModel *infoModel = self.offenSource[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
     } else {
         ThreadListModel *model = self.hotSource[indexPath.row];
@@ -203,7 +203,7 @@
 }
 
 #pragma mark - getter
-- (NSMutableArray <DZForumInfoModel *>*)offenSource {
+- (NSMutableArray <DZForumModel *>*)offenSource {
     if (!_offenSource) {
         _offenSource = [NSMutableArray array];
     }

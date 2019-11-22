@@ -7,7 +7,7 @@
 //
 
 #import "ForumItemCell.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "JudgeImageModel.h"
 
 @implementation ForumItemCell
@@ -70,7 +70,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZForumInfoModel *)infoModel {
+- (void)setInfo:(DZForumModel *)infoModel {
     
     if ([DataCheck isValidString:infoModel.title]) {
         self.titleLab.text = infoModel.title;

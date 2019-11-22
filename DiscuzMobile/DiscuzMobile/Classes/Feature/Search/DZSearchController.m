@@ -216,8 +216,7 @@
                 NSArray *dataArr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"];
                 for (NSDictionary *dic in dataArr) {
                     
-                    DZSearchModel *model = [[DZSearchModel alloc] init];
-                    [model setValuesForKeysWithDictionary:dic];
+                    DZSearchModel *model = [DZSearchModel modelWithJSON:dic];
                     model.keyword = self.searchView.searchBar.text;
                     [self.dataSourceArr addObject:model];
                     

@@ -9,17 +9,17 @@
 #import "ReplyModel.h"
 
 @implementation ReplyModel
-
-- (void)setValue:(id)value forKey:(NSString *)key {
-    if ([key isEqualToString:@"position"]) {
-        self.positions = value;
-    } else {
-        [super setValue:value forKey:key];
-    }
-}
-
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
-}
+//
+//- (void)setValue:(id)value forKey:(NSString *)key {
+//    if ([key isEqualToString:@"position"]) {
+//        self.positions = value;
+//    } else {
+//        [super setValue:value forKey:key];
+//    }
+//}
+//
+//- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+//    
+//}
 
 @end

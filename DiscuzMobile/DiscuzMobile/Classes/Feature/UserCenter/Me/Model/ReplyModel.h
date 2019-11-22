@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *auther;
-@property (nonatomic, copy) NSString *positions;
+@property (nonatomic, copy) NSString *position;
 @property (nonatomic, copy) NSString *dateline;
 
 @end

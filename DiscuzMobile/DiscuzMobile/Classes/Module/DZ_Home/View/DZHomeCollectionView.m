@@ -39,7 +39,7 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 }
 
 // 重置 书架数组数据 的唯一方法
--(void)reloadDataSource:(NSArray <DZForumInfoModel *>*)array{
+-(void)reloadDataSource:(NSArray <DZForumModel *>*)array{
     if (array && [array isKindOfClass:[NSArray class]]) {
         _dataArray = array;
     }

@@ -64,44 +64,28 @@ static FMDatabase *_db;
 
 // 获取数据库中的所有用户
 - (NSArray *)getAllPerson {
-    
-    
     NSString *sqlStr = @"select * from t_person";
-    
     FMResultSet *resultSet = [_db executeQuery:sqlStr];
-    
     NSMutableArray *dataArray = [NSMutableArray array];
-    
     while (resultSet.next) {
-        
         MyPerson *person = [[MyPerson alloc] init];
-        
         person.uid = [resultSet stringForColumn:@"uid"];
         person.uname = [resultSet stringForColumn:@"uname"];
         [dataArray addObject:person];
     }
-    
     return dataArray;
 }
 
 // 查询用户单个
 - (MyPerson *)searchPerson:(NSString *)uid {
-    
     NSString *sqlStr = @"select * from t_person where uid = ?";
-    
     FMResultSet *resultSet = [_db executeQuery:sqlStr,uid];
-    
     MyPerson *person = [[MyPerson alloc] init];
-    
     while (resultSet.next) {
-        
         person.uid = [resultSet stringForColumn:@"uid"];
         person.uname = [resultSet stringForColumn:@"uname"];
-        
     }
-    
     return person;
-    
 }
 
 // 删除用户

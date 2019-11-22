@@ -11,7 +11,6 @@
 
 #import "ForumItemCell.h"
 #import "ForumReusableView.h"
-#import "DZForumManagerController.h"
 #import "AsyncAppendency.h"
 
 @interface DZForumCollectionController () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -126,7 +125,7 @@ static NSString * headerSection = @"CellHeader";
         [self.collectionView.mj_header endRefreshing];
         
         if (self.type == Forum_hot) {
-            [self setHotData:responseObject];
+            [self setHotForumData:responseObject];
         } else {
             [self setForumList:responseObject];
         }
@@ -142,8 +141,8 @@ static NSString * headerSection = @"CellHeader";
 }
 
 //  处理热门版块数据
-- (void)setHotData:(id)responseObject {
-    self.dataSourceArr = [NSMutableArray arrayWithArray:[DZTreeViewNode setHotData:responseObject]];
+- (void)setHotForumData:(id)responseObject {
+    self.dataSourceArr = [NSMutableArray arrayWithArray:[DZTreeViewNode setNodeHotData:responseObject]];
 }
 
 // 处理全部版块数据

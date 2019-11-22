@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 
 
 @interface DZHomeNetTool : NSObject
 
 
 /// 拉取 热门
-+(void)DZ_HomeDownLoadHotforumData:(void(^)(NSArray <DZForumInfoModel *>*array,NSError *error))completion;
++(void)DZ_HomeDownLoadHotforumData:(void(^)(NSArray <DZForumModel *>*array,NSError *error))completion;
 
  //下载收藏版块（常去的版块）-- 登录时候
-+(void)DZ_HomeDownLoadFavForumData:(void(^)(NSArray <DZForumInfoModel *>*array,NSError *error))completion;
++(void)DZ_HomeDownLoadFavForumData:(void(^)(NSArray <DZForumModel *>*array,NSError *error))completion;
 
 @end
 

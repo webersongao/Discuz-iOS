@@ -8,7 +8,7 @@
 
 #import "FastLevelCell.h"
 #import "DZTreeViewNode.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "UIButton+EnlargeEdge.h"
 
@@ -77,7 +77,7 @@
  * 设置数据
  */
 - (void)setInfo:(DZTreeViewNode *)node {
-    DZForumInfoModel *infoModel = node.infoModel;
+    DZForumModel *infoModel = node.infoModel;
     
     if ([DataCheck isValidString:infoModel.title]) {
         self.titleLab.text = infoModel.title;

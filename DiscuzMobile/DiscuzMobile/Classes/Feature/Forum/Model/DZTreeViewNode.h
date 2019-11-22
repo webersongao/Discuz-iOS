@@ -7,24 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 
 @interface DZTreeViewNode : NSObject
 
-@property (nonatomic) NSUInteger nodeLevel; // 级别
 @property (nonatomic) BOOL isExpanded;  // 展开状态 NO 开始的时候全部收起， YES 开始的时候全部展开；
+@property (nonatomic) NSUInteger nodeLevel; // 级别
+
 @property (nonatomic, copy) NSString * nodeName;
 @property (nonatomic, strong) NSMutableArray *fids;
-@property (nonatomic, strong) DZForumInfoModel *infoModel;
-
-@property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *nodeChildren;
+@property (nonatomic, strong) DZForumModel *infoModel;
 
 @property (nonatomic, strong) NSMutableArray *forumListArr;
+@property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *nodeChildren;
 
 - (void)setTreeNode:(NSDictionary *)dic;
 
 + (NSArray *)setAllforumData:(id)responseObject;
 
-+ (NSArray *)setHotData:(id)responseObject;
++ (NSArray *)setNodeHotData:(id)responseObject;
 
 @end

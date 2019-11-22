@@ -8,7 +8,7 @@
 
 #import "SubForumCell.h"
 #import "DZTreeViewNode.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 
 @interface SubForumCell()
@@ -86,7 +86,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZForumInfoModel *)infoModel {
+- (void)setInfo:(DZForumModel *)infoModel {
     //    self.textLabel.text = node.infoModel.name;
     if ([DataCheck isValidString:infoModel.title]) {
         self.titleLab.text = infoModel.title;

@@ -57,8 +57,8 @@ static NSString *isFourmList = @"isFourmList";
 }
 
 - (void)setNaviTab {
-    //    CGRect segmentRect = CGRectMake(0, 0, WIDTH, 44);
-    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
+        CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
+//    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
     [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
     [_containVc.segmentedControl addObserver:self forKeyPath:@"selectedSegmentIndex" options:NSKeyValueObservingOptionNew context:nil];
 }

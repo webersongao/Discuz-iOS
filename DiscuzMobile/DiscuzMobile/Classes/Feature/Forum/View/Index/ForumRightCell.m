@@ -8,14 +8,14 @@
 
 #import "ForumRightCell.h"
 #import "DZTreeViewNode.h"
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "LightGrayButton.h"
 #import "JudgeImageModel.h"
 
 @interface ForumRightCell()
 
-@property (nonatomic, strong) DZForumInfoModel *info;
+@property (nonatomic, strong) DZForumModel *info;
 
 @end
 
@@ -122,7 +122,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZForumInfoModel *)infoModel {
+- (void)setInfo:(DZForumModel *)infoModel {
     //    self.textLabel.text = node.infoModel.name;
     if ([DataCheck isValidString:infoModel.title]) {
         self.titleLab.text = infoModel.title;

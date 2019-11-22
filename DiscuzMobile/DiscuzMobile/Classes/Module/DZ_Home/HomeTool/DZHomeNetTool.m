@@ -12,7 +12,7 @@
 @implementation DZHomeNetTool
 
 // 拉取 热门
-+(void)DZ_HomeDownLoadHotforumData:(void(^)(NSArray <DZForumInfoModel *>*array,NSError *error))completion {
++(void)DZ_HomeDownLoadHotforumData:(void(^)(NSArray <DZForumModel *>*array,NSError *error))completion {
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_Hotforum;
@@ -22,7 +22,7 @@
             if ([DataCheck isValidArray:localArr]) {
                 NSMutableArray *localModelArr = [[NSMutableArray alloc] init];
                 for (NSDictionary *dict in localArr) {
-                    DZForumInfoModel *model = [DZForumInfoModel modelWithJSON:dict];
+                    DZForumModel *model = [DZForumModel modelWithJSON:dict];
                     [localModelArr addObject:model];
                 }
                 completion(localModelArr,nil);
@@ -38,7 +38,7 @@
 }
 
 //下载收藏版块（常去的版块）-- 登录时候
-+(void)DZ_HomeDownLoadFavForumData:(void(^)(NSArray <DZForumInfoModel *>*array,NSError *error))completion {
++(void)DZ_HomeDownLoadFavForumData:(void(^)(NSArray <DZForumModel *>*array,NSError *error))completion {
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_CollectionForum;
     } success:^(id responseObject, JTLoadType type) {
@@ -48,7 +48,7 @@
         if (completion &&[DataCheck isValidArray:list]) {
             NSMutableArray *localModelArr = [[NSMutableArray alloc] init];
             for (NSDictionary *dict in list) {
-                DZForumInfoModel *model = [DZForumInfoModel modelWithJSON:dict];
+                DZForumModel *model = [DZForumModel modelWithJSON:dict];
                 [localModelArr addObject:model];
             }
             completion(localModelArr,nil);

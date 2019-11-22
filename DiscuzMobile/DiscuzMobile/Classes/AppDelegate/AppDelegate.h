@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DZInstroductionView.h"
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

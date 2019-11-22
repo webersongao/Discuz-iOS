@@ -19,7 +19,6 @@
 
 - (void)closeDB;
 
-
 // 获取数据库中的所有用户
 - (NSArray *)getAllPerson;
 

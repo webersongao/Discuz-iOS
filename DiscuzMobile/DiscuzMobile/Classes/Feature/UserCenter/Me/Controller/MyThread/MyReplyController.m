@@ -140,10 +140,9 @@
             
             for (NSDictionary *replyDic in arr) {
                 
-                ReplyModel *reply = [[ReplyModel alloc] init];
-                [reply setValuesForKeysWithDictionary:replyDic];
-                reply.auther = [dic objectForKey:@"auther"];
-                reply.subject = [dic objectForKey:@"subject"];
+                ReplyModel *reply = [ReplyModel modelWithJSON:replyDic];
+//                reply.auther = [dic objectForKey:@"auther"];
+//                reply.subject = [dic objectForKey:@"subject"];
                 [self.replyArr addObject:reply];
             }
         }

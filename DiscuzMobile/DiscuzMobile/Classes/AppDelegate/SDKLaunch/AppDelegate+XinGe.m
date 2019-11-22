@@ -12,7 +12,7 @@
 @implementation AppDelegate (XinGe)
 
 // 连接信鸽
-- (void)connectXinge:(NSDictionary *)launchOptions {
+- (void)launchToInitXinGe:(NSDictionary *)launchOptions {
     
     // 注册通知,信鸽注册设备
     [[XinGeCenter shareInstance] Reregistration];
@@ -111,7 +111,6 @@
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     
     [[XinGeCenter shareInstance] getNotiToview:response.notification.request.content.userInfo];
-    
 }
 
 #pragma mark - 收到推送处理(APP运行时)

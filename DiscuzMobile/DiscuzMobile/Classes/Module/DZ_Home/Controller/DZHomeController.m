@@ -40,7 +40,7 @@
 
 -(void)loadHomeForumDataFromServer{
     KWEAKSELF
-    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumInfoModel *>*array, NSError *error) {
+    [DZHomeNetTool DZ_HomeDownLoadHotforumData:^(NSArray <DZForumModel *>*array, NSError *error) {
         if (error) {
             [weakSelf showServerError:error];
         }else{
@@ -50,7 +50,7 @@
 }
 
 
--(void)setHeadHotForumData:(NSArray <DZForumInfoModel *>*)listArray{
+-(void)setHeadHotForumData:(NSArray <DZForumModel *>*)listArray{
     [self.homeView.HeaderView reloadDataSource:listArray];
 }
 

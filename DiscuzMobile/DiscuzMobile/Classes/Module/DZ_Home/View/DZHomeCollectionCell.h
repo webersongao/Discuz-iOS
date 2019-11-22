@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 
 @interface DZHomeCollectionCell : UICollectionViewCell
 
-@property (nonatomic, strong, readonly) DZForumInfoModel *cellModel;  //!< <#属性注释#>
+@property (nonatomic, strong, readonly) DZForumModel *cellModel;  //!< <#属性注释#>
 
--(void)updateForumCellWithModel:(DZForumInfoModel *)cellModel;
+-(void)updateForumCellWithModel:(DZForumModel *)cellModel;
 
 @end
 

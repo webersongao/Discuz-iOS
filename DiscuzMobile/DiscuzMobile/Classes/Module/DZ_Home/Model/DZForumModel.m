@@ -1,14 +1,14 @@
 //
-//  DZForumInfoModel.m
+//  DZForumModel.m
 //  DiscuzMobile
 //
 //  Created by HB on 16/12/21.
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 
-@implementation DZForumInfoModel
+@implementation DZForumModel
 
 //- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
 //

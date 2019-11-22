@@ -17,6 +17,6 @@
 
  @param launchOptions 进入程序的时候传入
  */
-- (void)connectXinge:(NSDictionary *)launchOptions;
+- (void)launchToInitXinGe:(NSDictionary *)launchOptions;
 
 @end

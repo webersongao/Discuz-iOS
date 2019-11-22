@@ -24,7 +24,7 @@
 #import "DZPostTypeSelectView.h"
 #import "DZForumInfoView.h"
 
-#import "DZForumInfoModel.h"
+#import "DZForumModel.h"
 #import "RootForumCell.h"
 #import "SubForumCell.h"
 #import "JudgeImageModel.h"
@@ -48,12 +48,12 @@
 
 @property (nonatomic, strong) NSMutableArray <DZForumListModel *> *titleArr;
 
-@property (nonatomic, strong) DZForumInfoModel *forumInfo;
+@property (nonatomic, strong) DZForumModel *forumInfo;
 
 @property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) UITableView *foldTableView;
 
-@property (nonatomic, strong) NSMutableArray<DZForumInfoModel *> *subForumArr;
+@property (nonatomic, strong) NSMutableArray<DZForumModel *> *subForumArr;
 
 @property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, strong) DropTipView *tipView;
@@ -358,8 +358,7 @@
             if (self.subForumArr.count == 0) {
                 NSArray *arr = [self.Variables objectForKey:@"sublist"];
                 for (NSDictionary *dic in arr) {
-                    DZForumInfoModel *model = [[DZForumInfoModel alloc] init];
-                    [model setValuesForKeysWithDictionary:dic];
+                    DZForumModel *model = [DZForumModel modelWithJSON:dic];
                     [self.subForumArr addObject:model];
                 }
             }
@@ -441,7 +440,7 @@
             
         }
         
-        DZForumInfoModel *model = self.subForumArr[indexPath.row];
+        DZForumModel *model = self.subForumArr[indexPath.row];
         [cell setInfo:model];
         
         return cell;
@@ -503,8 +502,8 @@
     
     if ([DataCheck isValidDictionary:[dic objectForKey:@"forum"]]) { // 版块信息设置
         
-        self.forumInfo = [[DZForumInfoModel alloc] init];
-        self.forumInfo = [DZForumInfoModel modelWithJSON:[dic dictionaryForKey:@"forum"]];
+        self.forumInfo = [[DZForumModel alloc] init];
+        self.forumInfo = [DZForumModel modelWithJSON:[dic dictionaryForKey:@"forum"]];
         if ([DataCheck isValidString:self.forumInfo.favorited]) {
             if ([self.forumInfo.favorited isEqualToString:@"1"]) {
                 [self setIsCollection];
@@ -598,7 +597,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.foldTableView) {
         
-        DZForumInfoModel *infoModel = self.subForumArr[indexPath.row];
+        DZForumModel *infoModel = self.subForumArr[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
     }
 }
@@ -647,7 +646,7 @@
     return _titleArr;
 }
 
-- (NSMutableArray<DZForumInfoModel *> *)subForumArr {
+- (NSMutableArray<DZForumModel *> *)subForumArr {
     if (!_subForumArr) {
         _subForumArr = [NSMutableArray array];
     }
