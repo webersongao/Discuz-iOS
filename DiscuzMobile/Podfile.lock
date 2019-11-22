@@ -35,13 +35,8 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - IQKeyboardManager (6.5.3)
-  - libPusher (1.6.3):
-    - libPusher/Core (= 1.6.3)
-  - libPusher/Core (1.6.3):
-    - SocketRocket (= 0.5.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJExtension (3.2.1)
   - MJRefresh (3.2.0)
   - mob_sharesdk (4.3.3):
     - mob_sharesdk/ShareSDK (= 4.3.3)
@@ -67,7 +62,6 @@ PODS:
   - SDWebImage (5.2.3):
     - SDWebImage/Core (= 5.2.3)
   - SDWebImage/Core (5.2.3)
-  - SocketRocket (0.5.1)
   - WebViewJavascriptBridge (6.0.3)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -78,10 +72,8 @@ DEPENDENCIES:
   - DTCoreText
   - FMDB
   - IQKeyboardManager
-  - libPusher
   - Masonry
   - MBProgressHUD
-  - MJExtension
   - MJRefresh
   - mob_sharesdk
   - mob_sharesdk/ShareSDKExtension
@@ -100,15 +92,12 @@ SPEC REPOS:
     - DTFoundation
     - FMDB
     - IQKeyboardManager
-    - libPusher
     - Masonry
     - MBProgressHUD
-    - MJExtension
     - MJRefresh
     - mob_sharesdk
     - MOBFoundation
     - SDWebImage
-    - SocketRocket
     - WebViewJavascriptBridge
     - YYKit
 
@@ -118,18 +107,15 @@ SPEC CHECKSUMS:
   DTFoundation: 25aa19bb7c6e225b1dfae195604fb8cf1da0ab4c
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   IQKeyboardManager: c2f901164d56807a35788483584d09fa69192e8e
-  libPusher: b7fcf16e2db51c37915613652311d66065743ead
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   mob_sharesdk: 48cb240a4b9cc393be2d6ff9c5b597ae77a1da73
   MOBFoundation: 08c456357888e4c984fba23bbf04cfd2f4fc1e02
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
-  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9dc98bcbd730ca4691d59925c16a9f1fd3c6f937
+PODFILE CHECKSUM: 83594e7af860c3a3aa697e9a8de5539a5346993a
 
 COCOAPODS: 1.8.4

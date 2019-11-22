@@ -7,9 +7,9 @@
 //
 
 #import "TPBaseNavigationBarViewController.h"
-#import "TPNavItemButton.h"
+#import "DZNavItemButton.h"
 
-#import "UIBarButtonItem+TPBarButtonItem.h"
+#import "UIBarButtonItem+DZBarButtonItem.h"
 
 @interface TPBaseNavigationBarViewController ()
 
@@ -24,11 +24,11 @@
     [self p_SetNavigationBar];
 }
 
-- (TPNavigationBar *)tp_NavigationBar{
+- (DZNavigationBar *)tp_NavigationBar{
     
     if (!_tp_NavigationBar) {
         
-        _tp_NavigationBar = [[TPNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
+        _tp_NavigationBar = [[DZNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
     }
     return _tp_NavigationBar;
 }
@@ -81,7 +81,7 @@
     
     if (isShow) {
         //创建btn
-        TPNavItemButton *backBtn = [[TPNavItemButton alloc] initWithFrame:CGRectMake(8, KStatusBarHeight, 44, 44)];
+        DZNavItemButton *backBtn = [[DZNavItemButton alloc] initWithFrame:CGRectMake(8, KStatusBarHeight, 44, 44)];
         backBtn.isLeft = YES;
         [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateNormal];
         [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateHighlighted];

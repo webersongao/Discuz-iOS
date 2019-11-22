@@ -8,14 +8,12 @@
 
 #import "AddressSelectView.h"
 #import "addressModel.h"
-#import <MJExtension.h>
 
 @interface AddressSelectView ()  <UIPickerViewDelegate,UIPickerViewDataSource>
-
 {
-    NSMutableArray *shengArray;
-    NSMutableArray *shiArray;
-    NSMutableArray *xianArray;
+    NSArray *shengArray;
+    NSArray *shiArray;
+    NSArray *xianArray;
     UIPickerView *myPickerView;
     NSMutableDictionary *chooseDic;
 }
@@ -51,14 +49,14 @@
     chooseDic=[NSMutableDictionary dictionary];
     
     //省数组
-    shengArray=[addressModel mj_objectArrayWithKeyValuesArray:dataArray];
+    shengArray = [NSArray modelArrayWithClass:[addressModel class] json:dataArray];
     //市数组，默认省数组第一个
     addressModel *model=shengArray[0];
-    shiArray=[addressModel mj_objectArrayWithKeyValuesArray:model.son];
+    shiArray = [NSArray modelArrayWithClass:[addressModel class] json:model.son];
     
     //县数组，默认市数组第一个
     addressModel *model1=shiArray[0];
-    xianArray=[addressModel mj_objectArrayWithKeyValuesArray:model1.son];
+    xianArray = [NSArray modelArrayWithClass:[addressModel class] json:model1.son];
     addressModel *model2=xianArray[0];
     
     [chooseDic setValue:model.area_id forKey:@"sheng"];
@@ -147,12 +145,12 @@
     DLog(@"选中%ld列---%ld行",(long)component,(long)row);
     if (component==0) {
         addressModel *model=shengArray[row];
-        shiArray=[addressModel mj_objectArrayWithKeyValuesArray:model.son];
+        shiArray = [NSArray modelArrayWithClass:[addressModel class] json:model.son];
         [pickerView reloadComponent:1];
         [pickerView selectRow:0 inComponent:1 animated:NO];
         //默认第一个
         addressModel *model1=shiArray[0];
-        xianArray=[addressModel mj_objectArrayWithKeyValuesArray:model1.son];
+        xianArray = [NSArray modelArrayWithClass:[addressModel class] json:model1.son];
         [pickerView reloadComponent:2];
         [pickerView selectRow:0 inComponent:2 animated:NO];
         addressModel *model2=xianArray[0];
@@ -162,7 +160,7 @@
     }
     if (component==1) {
         addressModel *model1=shiArray[row];
-        xianArray=[addressModel mj_objectArrayWithKeyValuesArray:model1.son];
+        xianArray = [NSArray modelArrayWithClass:[addressModel class] json:model1.son];
         [pickerView reloadComponent:2];
         [pickerView selectRow:0 inComponent:2 animated:NO];
         addressModel *model2=xianArray[0];

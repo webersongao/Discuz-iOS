@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZForumIndexModel.h"
 
 @interface DZGlobalTool : NSObject
 
-+(void)requestGlobalForumCategoryData:(backArrayBlock)categoryBlock;
++(void)requestGlobalForumCategoryData:(void(^)(DZForumIndexModel *indexModel))categoryBlock;
 
 @end
 

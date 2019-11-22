@@ -11,7 +11,7 @@
 @interface AppDelegate (Global)
 
 
--(void)loadForumGlobalInfofromServer;
+-(void)Global_loadForumGlobalInfofromServer;
 
 @end
 

@@ -40,9 +40,5 @@
 //    }
 //}
 
-- (NSString *)description {
-    return [NSString stringWithFormat:@"fid:%@，版块名：%@",_fid,_name];
-}
-
 
 @end

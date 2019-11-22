@@ -72,7 +72,7 @@
     
 //    ThreadListModel *listModel = [[ThreadListModel alloc] init];
 //    [listModel setValuesForKeysWithDictionary:dic];
-    ThreadListModel *listModel = [ThreadListModel mj_objectWithKeyValues:dic];
+    ThreadListModel *listModel = [ThreadListModel modelWithJSON:dic];
     if ([DataCheck isValidDictionary:groupDic]) {
         listModel.grouptitle = [groupDic objectForKey:listModel.authorid];
     }

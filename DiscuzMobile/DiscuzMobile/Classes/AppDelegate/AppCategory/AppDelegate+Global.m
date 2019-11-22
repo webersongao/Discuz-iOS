@@ -12,11 +12,14 @@
 @implementation AppDelegate (Global)
 
 
--(void)loadForumGlobalInfofromServer{
+-(void)Global_loadForumGlobalInfofromServer{
     
-    [DZGlobalTool requestGlobalForumCategoryData:^(NSArray *Array) {
+    [DZGlobalTool requestGlobalForumCategoryData:^(DZForumIndexModel *indexModel) {
+        
+        [DZMobileCtrl sharedCtrl].forumInfo = indexModel;
         
     }];
+    
     
 }
 

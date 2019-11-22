@@ -35,7 +35,7 @@
         self.securityPolicy = [AFSecurityPolicy defaultPolicy];
         self.securityPolicy.allowInvalidCertificates = YES;
         self.securityPolicy.validatesDomainName = NO;
-        _netWork = networkError;
+        _netWork = networkUnknown; // 默认可以联网
 //        /*因为与缓存互通 服务器返回的数据 必须是二进制*/
         self.responseSerializer = [AFHTTPResponseSerializer serializer];
         self.operationQueue.maxConcurrentOperationCount = 5;
@@ -84,7 +84,6 @@
 - (NSURLSessionDataTask *)dataTaskWithGetRequest:(JTURLRequest *)request progress:(JTProgressBlock)progress success:(JTRequestSuccess)success failed:(JTRequestFailed)failed{
     
     if ([JTRequestOperation shareInstance].netWork == networkError) {
-        [MBProgressHUD showInfo:@"网络连接断开,请检查网络!"];
         failed ? failed(nil) : nil;
         return nil;
     }
@@ -148,7 +147,6 @@
 
 - (NSURLSessionDataTask *)dataTaskWithPostRequest:(JTURLRequest *)request loadType:(JTLoadType)type progress:(JTProgressBlock)progress success:(JTRequestSuccess)success failed:(JTRequestFailed)failed {
     if ([JTRequestOperation shareInstance].netWork == networkError) {
-        [MBProgressHUD showInfo:@"网络连接断开,请检查网络!"];
         failed ? failed(nil) : nil;
         return nil;
     }

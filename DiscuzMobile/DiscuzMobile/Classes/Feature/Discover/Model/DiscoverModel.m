@@ -7,16 +7,20 @@
 //
 
 #import "DiscoverModel.h"
+#import "ThreadListModel.h"
 
 @implementation DiscoverModel
 
-+ (void)initialize
-{
-    if (self == [DiscoverModel class]) {
-        [DiscoverModel mj_setupObjectClassInArray:^NSDictionary *{
-            return @{@"data":@"ThreadListModel"};
-        }];
-    }
-}
+//+ (void)initialize
+//{
+//    if (self == [DiscoverModel class]) {
+//        [DiscoverModel mj_setupObjectClassInArray:^NSDictionary *{
+//            return @{@"data":@"ThreadListModel"};
+//        }];
+//    }
+//}
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"data" : [ThreadListModel class]};
+}
 @end

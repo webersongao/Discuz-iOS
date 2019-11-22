@@ -25,7 +25,6 @@
 #import <YYKit.h>
 #import <MJRefresh.h>
 #import <SDWebImage.h>
-#import <MJExtension.h>
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 #import <Masonry/Masonry.h>

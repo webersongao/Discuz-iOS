@@ -33,7 +33,7 @@
 
 
 
-// 重置 书架数组数据 的唯一方法
+// 重置 列表数组数据 的唯一方法
 -(void)reloadDataSource:(NSArray <DZForumModel *>*)array;
 @end
 

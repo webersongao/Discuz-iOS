@@ -26,8 +26,6 @@
 #define  kHeaderTextHeight     (kCellHeight - kHeaderIconHeight)
 #define  kHomeVerticalMargin   KWidthScale(5.f)
 
-#define  kShelfNaviBarHeight    ((IS_iPhoneX ? 12.5 : 25) + KNavigation_ContainStatusBar_Height)  // 书架导航条高度
-
 
 
 

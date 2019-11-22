@@ -49,9 +49,9 @@
     self.timeLab.text = info.dateline;
     
     NSArray *floorArr = @[@"楼主",@"沙发",@"板凳",@"地板"];
-    NSString *floor = [NSString stringWithFormat:@"%ld楼",[info.positions integerValue]];
-    if (floorArr.count >= [info.positions integerValue]) {
-        floor = floorArr[[info.positions integerValue] - 1];
+    NSString *floor = [NSString stringWithFormat:@"%ld楼",[info.position integerValue]];
+    if (floorArr.count >= [info.position integerValue]) {
+        floor = floorArr[[info.position integerValue] - 1];
     }
     self.floorLab.text = floor;
     self.messageLab.text = [info.message transformationStr];

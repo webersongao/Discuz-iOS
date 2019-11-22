@@ -38,19 +38,19 @@ static NSString * const cellIdentifier = @"DZThreadCell";
     [self addGestureRecognizer:longPress];
 }
 
-// 重置 书架数组数据 的唯一方法
+// 重置 列表数组数据 的唯一方法
 -(void)reloadDataSource:(NSArray <DZForumModel *>*)array{
     if (array && [array isKindOfClass:[NSArray class]]) {
         _dataArray = array;
     }
     self.hidden = self.dataArray.count ? NO : YES;
     self.PageControl.numberOfPages = ceil(array.count/(kRowNumber * 1.0));
-    [self reloadShelfBookData];
+    [self reloadHomeListThreadData];
 }
 
 
-// 书架刷新
--(void)reloadShelfBookData{
+// 列表刷新
+-(void)reloadHomeListThreadData{
     [self reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
@@ -124,7 +124,7 @@ static NSString * const cellIdentifier = @"DZThreadCell";
     }
 }
 
-// 书架 九宫格模式 布局
+// 列表 九宫格模式 布局
 +(UICollectionViewFlowLayout *)gridLayout{
     UICollectionViewFlowLayout * gridLayout = [[UICollectionViewFlowLayout alloc] init];
     gridLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;

@@ -11,18 +11,26 @@
 
 @implementation ThreadListModel
 
-MJCodingImplementation
+//+ (void)initialize
+//{
+//    if (self == [ThreadListModel class]) {
+//        [ThreadListModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+//            return @{@"typeId":@"typeid"};
+//        }];
+//        [ThreadListModel mj_setupObjectClassInArray:^NSDictionary *{
+//            return @{@"attachlist":@"DZAttachModel"};
+//        }];
+//    }
+//}
 
-+ (void)initialize
-{
-    if (self == [ThreadListModel class]) {
-        [ThreadListModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-            return @{@"typeId":@"typeid"};
-        }];
-        [ThreadListModel mj_setupObjectClassInArray:^NSDictionary *{
-            return @{@"attachlist":@"DZAttachModel"};
-        }];
-    }
++ (NSDictionary*)modelCustomPropertyMapper {
+    return @{
+        @"typeId" : @"typeid",
+    };
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"attachlist" : [DZAttachModel class]};
 }
 
 - (instancetype)init {

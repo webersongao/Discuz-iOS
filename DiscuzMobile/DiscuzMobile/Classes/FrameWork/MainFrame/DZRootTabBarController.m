@@ -17,7 +17,7 @@
 #import "DZMessageListController.h"
 
 #import "DZHomeController.h"
-#import "DZForumController.h"
+#import "DZForumIndexController.h"
 #import "DZForumOldController.h"
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
@@ -139,7 +139,7 @@
     DZHomeController *homeVC = [[DZHomeController alloc] init];
     DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
     
-    DZForumController *for001 = [[DZForumController alloc] init];
+    DZForumIndexController *for001 = [[DZForumIndexController alloc] init];
     DZForumOldController *forVC = [[DZForumOldController alloc] init];
     DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
     

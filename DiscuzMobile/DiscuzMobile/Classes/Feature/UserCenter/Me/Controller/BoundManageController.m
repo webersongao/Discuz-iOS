@@ -47,7 +47,7 @@
         [self.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:[info objectForKey:@"member_avatar"]]];
         NSArray *users = [info objectForKey:@"users"];
         if ([DataCheck isValidArray:users]) {
-            self.dataSourceArr = [BoundInfoModel mj_objectArrayWithKeyValuesArray:users];
+            self.dataSourceArr = [[NSMutableArray alloc] initWithArray:[NSArray modelArrayWithClass:[BoundInfoModel class] json:users]];
         }
         [self.tableView reloadData];
     } failed:^(NSError *error) {

@@ -32,7 +32,7 @@
         }
         
         // 开启拉取全局配置参数
-        [self loadForumGlobalInfofromServer];
+        [self Global_loadForumGlobalInfofromServer];
         
         // 分享平台参数配置
         [[DZShareCenter shareInstance] setupShareConfigure];

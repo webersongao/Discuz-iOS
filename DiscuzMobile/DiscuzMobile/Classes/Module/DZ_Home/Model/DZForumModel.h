@@ -6,9 +6,9 @@
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DZBaseForumModel.h"
 
-@interface DZForumModel : NSObject
+@interface DZForumModel : DZBaseForumModel
 
 //"fid": "2",
 //"name": "默认版块",
@@ -30,40 +30,31 @@
 //price = 0;
 //threadcount = 0;
 
-
-// 板块 公共字段 1
-@property (nonatomic, copy) NSString *fid;  // 版块ID
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *threads;    // 主题数
-@property (nonatomic, copy) NSString *posts;      // 帖子数
-@property (nonatomic, copy) NSString *todayposts; // 今日
-
-//  公共字段 2
-@property (nonatomic, copy) NSString *lastpost;  //!< 最后发布事件
+// 公共字段 2
+@property (nonatomic, copy) NSString *lastpost;  //!< 最新发布 时间
 @property (nonatomic, copy) NSString *lastposter;  //!< 最新发布用户名
-@property (nonatomic, copy) NSString *forum_desc;  //!< 板块描述
-@property (nonatomic, copy) NSString *lastpost_tid;  //!< 属性注释
-@property (nonatomic, copy) NSString *lastpost_subject;  //!< 最新发布主题名称
+@property (nonatomic, copy) NSString *lastpost_tid;  //!< 最新帖子ID
+@property (nonatomic, copy) NSString *lastpost_subject;  //!< 最新发布 主题名称
 
 // 以下字段 区分接口使用 慎用！！！
-@property (nonatomic, copy) NSString *icon;
-@property (nonatomic, copy) NSString *allowspecialonly;
-@property (nonatomic, copy) NSString *autoclose;
-@property (nonatomic, copy) NSString *favorited;
-@property (nonatomic, copy) NSString *fup;
-@property (nonatomic, copy) NSString *livetid;
-@property (nonatomic, copy) NSString *password;
-@property (nonatomic, copy) NSString *picstyle;
 @property (nonatomic, copy) NSString *rank;
-@property (nonatomic, assign) NSInteger price;  //!< 属性注释
-@property (nonatomic, assign) NSInteger threadcount;  //!< 属性注释
-
-
-@property (nonatomic, strong) NSDictionary *infoDic;
+@property (nonatomic, copy) NSString *favorited;
 @property (nonatomic, copy) NSString *descrip;
-@property (nonatomic, copy) NSString *allowpostspecial;
 @property (nonatomic, copy) NSString *threadmodcount;
 @property (nonatomic, copy) NSString *title;
+
+
+//@property (nonatomic, copy) NSString *allowspecialonly;
+//@property (nonatomic, copy) NSString *autoclose;
+//@property (nonatomic, copy) NSString *fup;
+//@property (nonatomic, copy) NSString *livetid;
+//@property (nonatomic, copy) NSString *password;
+//@property (nonatomic, copy) NSString *picstyle;
+//@property (nonatomic, assign) NSInteger price;  //!< 属性注释
+//@property (nonatomic, assign) NSInteger threadcount;  //!< 属性注释
+
+//@property (nonatomic, strong) NSDictionary *infoDic;
+//@property (nonatomic, copy) NSString *allowpostspecial;
 
 
 

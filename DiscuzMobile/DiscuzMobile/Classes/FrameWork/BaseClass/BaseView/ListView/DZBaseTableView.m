@@ -1,6 +1,6 @@
 //
 //  DZBaseTableView.m
-//  DiscuzMobile
+//  PandaReader
 //
 //  Created by 孙震 on 2019/5/13.
 //  Copyright © 2019 ZHWenXue. All rights reserved.
@@ -9,6 +9,15 @@
 #import "DZBaseTableView.h"
 
 @implementation DZBaseTableView
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.backgroundColor = KRandom_Color;
+    }
+    return self;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     self = [super initWithFrame:frame style:style];

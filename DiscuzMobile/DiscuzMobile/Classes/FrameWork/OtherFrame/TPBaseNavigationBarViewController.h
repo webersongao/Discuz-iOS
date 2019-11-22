@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TPNavigationBar.h"
+#import "DZNavigationBar.h"
 
 typedef NS_ENUM(NSInteger, TPNavigationItemType) {
     TPNavigationItemType_None,
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TPBaseNavigationBarViewController : UIViewController
 
 /** 控制共用的NavigationBar 可直接Hidden隐藏 */
-@property(nonatomic,strong) TPNavigationBar *tp_NavigationBar;
+@property(nonatomic,strong) DZNavigationBar *tp_NavigationBar;
 /** NavigationBar 上的 NavigationItem 导航条目 接收左右的item */
 @property(nonatomic,strong) UINavigationItem *tp_NavigationItem;
 

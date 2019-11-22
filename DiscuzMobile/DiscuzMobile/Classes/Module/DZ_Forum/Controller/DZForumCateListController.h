@@ -1,25 +1,21 @@
 //
 //  DZForumCateListController.h
-//  PandaReader
+//  DiscuzMobile
 //
-//  Created by WebersonGao on 2018/10/25.
+//  Created by WebersonGao on 2019/11/22.
+//  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
 #import "DZBaseViewController.h"
-#import "DZForumListTableView.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@class DZBaseForumModel;
 
 @interface DZForumCateListController : DZBaseViewController
 
-@property (nonatomic,copy) NSString *column;
-@property (nonatomic,copy) NSString *subtype;
+- (instancetype)initWithFrame:(CGRect)frame Model:(DZBaseForumModel *)model;
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
--(void)loadChildsViewFirstDataFromServer;
 
 
 @end
 
-NS_ASSUME_NONNULL_END
+
