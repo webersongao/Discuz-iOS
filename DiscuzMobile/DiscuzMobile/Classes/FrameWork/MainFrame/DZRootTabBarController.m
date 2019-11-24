@@ -8,7 +8,6 @@
 
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
-#import "DZDiscoverManagerController.h"
 #import "DZForumManagerController.h"
 #import "DZUserManagerController.h"
 #import "DZHomeManagerController.h"
@@ -136,7 +135,6 @@
 
 - (void)addChildViewControllers {
     DZHomeController *homeVC = [[DZHomeController alloc] init];
-    DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
     
     DZForumIndexController *for001 = [[DZForumIndexController alloc] init];
     DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
@@ -146,7 +144,6 @@
     DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
     
     [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:dicoverVC title:@"首页2" image:@"homem" selectedImage:@"homes"];
     
     [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
     [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
