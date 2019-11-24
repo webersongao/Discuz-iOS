@@ -1,5 +1,5 @@
 //
-//  DZBannerImageView.h
+//  BannerImageView.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZBannerImageView : UIImageView
+@interface BannerImageView : UIImageView
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIView *bgView;

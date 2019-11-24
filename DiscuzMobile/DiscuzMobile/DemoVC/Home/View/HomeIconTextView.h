@@ -1,5 +1,5 @@
 //
-//  DZHomeIconTextView.h
+//  HomeIconTextView.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZHomeIconTextView : UIView
+@interface HomeIconTextView : UIView
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *textLab;

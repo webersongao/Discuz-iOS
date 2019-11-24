@@ -1,26 +1,26 @@
 //
-//  DZHomeManagerController.m
+//  HomeManagerController.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZHomeManagerController.h"
+#import "HomeManagerController.h"
 #import "DZSettingController.h"
 #import "RNCachingURLProtocol.h"
 #import "ForumCell.h"
 #import "DZHomeNetTool.h"
 #import "DZLoginModule.h"
-#import "DZHomeListCell.h"
+#import "HomeListCell.h"
 #import "ThreadListModel.h"
 #import "DZForumModel.h"
 #import "DZBaseUrlController.h"
-#import "DZSlideShowScrollView.h"
+#import "SlideShowScrollView.h"
 
 #import "RootForumCell.h"
 
-@interface DZHomeManagerController ()
+@interface HomeManagerController ()
 
 @property (nonatomic, strong) NSMutableArray <DZForumModel *>*offenSource;
 @property (nonatomic, strong) NSMutableArray <ThreadListModel *>*hotSource;
@@ -28,7 +28,7 @@
 @end
 
 
-@implementation DZHomeManagerController
+@implementation HomeManagerController
 
 - (void)leftBarBtnClick {
     if (![self isLogin]) {
@@ -114,7 +114,7 @@
         return 90.0;
     }else {
         UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-        return [(DZHomeListCell *)cell cellHeight];
+        return [(HomeListCell *)cell cellHeight];
     }
 }
 
@@ -180,9 +180,9 @@
     } else {
         
         static  NSString  * CellIdentiferId = @"HomeCellCellID";
-        DZHomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
+        HomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
         if (cell == nil) {
-            cell = [[DZHomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
+            cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
         }
         
         ThreadListModel *model = [self.hotSource objectAtIndex:indexPath.row];

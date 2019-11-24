@@ -1,19 +1,19 @@
 //
-//  DZThreadContentView.m
+//  DZHomeThreadContentView.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/20.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZThreadContentView.h"
-#import "DZThreadContentController.h"
+#import "DZHomeThreadContentView.h"
+#import "DZHomeThreadContentCtrl.h"
 
-@interface DZThreadContentView ()<ThreadListContentDelegate>
-@property (nonatomic, strong) DZThreadContentController *contentVC;  //!< 属性注释
+@interface DZHomeThreadContentView ()<ThreadListContentDelegate>
+@property (nonatomic, strong) DZHomeThreadContentCtrl *contentVC;  //!< 属性注释
 @end
 
-@implementation DZThreadContentView
+@implementation DZHomeThreadContentView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -48,9 +48,9 @@
 }
 
 
--(DZThreadContentController *)contentVC{
+-(DZHomeThreadContentCtrl *)contentVC{
     if (_contentVC == nil) {
-        _contentVC = [[DZThreadContentController alloc] init];
+        _contentVC = [[DZHomeThreadContentCtrl alloc] init];
         _contentVC.contentDelegate = self;
     }
     return _contentVC;

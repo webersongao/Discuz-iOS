@@ -7,11 +7,11 @@
 //
 
 #import "DZHomeScrollView.h"
-#import "DZThreadContentView.h"
+#import "DZHomeThreadContentView.h"
 
 @interface DZHomeScrollView ()<HeaderCollectionDelegate,UIScrollViewDelegate,ThreadContentViewDelegate>
 
-@property (nonatomic, strong) DZThreadContentView *contentView;  //!< 属性注释
+@property (nonatomic, strong) DZHomeThreadContentView *contentView;  //!< 属性注释
 
 @end
 
@@ -93,9 +93,9 @@
 }
 
 
--(DZThreadContentView *)contentView{
+-(DZHomeThreadContentView *)contentView{
     if (_contentView == nil) {
-        _contentView = [[DZThreadContentView alloc] initWithFrame:CGRectMake(0, self.HeaderView.bottom, KScreenWidth, KScreenHeight)];
+        _contentView = [[DZHomeThreadContentView alloc] initWithFrame:CGRectMake(0, self.HeaderView.bottom, KScreenWidth, KScreenHeight)];
     }
     return _contentView;
 }

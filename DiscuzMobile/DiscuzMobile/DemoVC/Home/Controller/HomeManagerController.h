@@ -1,5 +1,5 @@
 //
-//  DZHomeManagerController.h
+//  HomeManagerController.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
@@ -8,6 +8,6 @@
 
 #import "DZBaseTableViewController.h"
 
-@interface DZHomeManagerController : DZBaseTableViewController
+@interface HomeManagerController : DZBaseTableViewController
 
 @end

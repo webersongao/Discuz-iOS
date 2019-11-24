@@ -8,7 +8,7 @@
 
 #import "DZThreadListBaseCtrl.h"
 #import "BaseStyleCell.h"
-#import "DiscoverModel.h"
+#import "DZDiscoverModel.h"
 #import "ThreadListCell.h"
 #import "ThreadListModel+Display.h"
 
@@ -112,7 +112,7 @@
         [self.HUD hide];
         [self.tableView.mj_header endRefreshing];
         
-        DiscoverModel *discover = [DiscoverModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
+        DZDiscoverModel *discover = [DZDiscoverModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
         
         if (self.page == 1) { // 刷新列表 刷新的时候移除数据源
             [self clearDatasource];

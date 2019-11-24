@@ -1,26 +1,26 @@
 //
-//  DZThreadContentController.m
+//  DZHomeThreadContentCtrl.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/4.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZThreadContentController.h"
+#import "DZHomeThreadContentCtrl.h"
 #import "DZContainerController.h"
 #import "DZBestListController.h"
 #import "DZNewListController.h"
 #import "FootmarkController.h"
 #import "DZSettingController.h"
 
-@interface DZThreadContentController ()
+@interface DZHomeThreadContentCtrl ()
 
 @property (nonatomic, strong) NSMutableArray *controllerArr;
 @property (nonatomic, strong) DZContainerController *rootVC;
 
 @end
 
-@implementation DZThreadContentController
+@implementation DZHomeThreadContentCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];

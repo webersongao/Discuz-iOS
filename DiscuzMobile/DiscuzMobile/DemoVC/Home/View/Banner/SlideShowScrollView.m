@@ -1,17 +1,17 @@
 //
-//  DZSlideShowScrollView.m
+//  SlideShowScrollView.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZSlideShowScrollView.h"
-#import "DZHomeBannerModel.h"
-#import "DZBannerImageView.h"
+#import "SlideShowScrollView.h"
+#import "HomeBannerModel.h"
+#import "BannerImageView.h"
 #import "JudgeImageModel.h"
 
-@implementation DZSlideShowScrollView
+@implementation SlideShowScrollView
 
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -59,7 +59,7 @@
     
     if (_isPlaceholder) {
         
-        DZBannerImageView *placeholderV = [[DZBannerImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - 6)];
+        BannerImageView *placeholderV = [[BannerImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - 6)];
         placeholderV.image = [UIImage imageNamed:@"wutu"];
         [self addSubview:placeholderV];
         placeholderV.bgView.hidden = YES;
@@ -75,17 +75,17 @@
     UITapGestureRecognizer *tap =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
     self.pageControl.numberOfPages = self.bannerArray.count;
     
-    DZBannerImageView *v1 = [self imageViewWithIndex:-1];
+    BannerImageView *v1 = [self imageViewWithIndex:-1];
     [self addSubview:v1];
     
     for (int i = 0; i < self.bannerArray.count; i++) {
         
-        DZBannerImageView *temp = [self imageViewWithIndex:i];
+        BannerImageView *temp = [self imageViewWithIndex:i];
         temp.titleLabel.text = self.bannerArray[i].title;
         [self addSubview:temp];
     }
     
-    DZBannerImageView *v2 = [self imageViewWithIndex:self.bannerArray.count];
+    BannerImageView *v2 = [self imageViewWithIndex:self.bannerArray.count];
     [self addSubview:v2];
     
     [self addGestureRecognizer:tap];
@@ -97,9 +97,9 @@
     }
 }
 
-- (DZBannerImageView *)imageViewWithIndex:(NSInteger)index {
+- (BannerImageView *)imageViewWithIndex:(NSInteger)index {
     
-    DZBannerImageView *temp = [[DZBannerImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) * (index + 1), 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - 6)];
+    BannerImageView *temp = [[BannerImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) * (index + 1), 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - 6)];
     
     NSInteger bannerIndex = [self bannerOfIndex:index];
     

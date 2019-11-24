@@ -1,19 +1,19 @@
 //
-//  DZHomeListCell.m
+//  HomeListCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZHomeListCell.h"
-#import "DZHomeIconTextView.h"
+#import "HomeListCell.h"
+#import "HomeIconTextView.h"
 #import "DZLoginModule.h"
 #import "UIView+WebCache.h"
 #import "DZPraiseHelper.h"
 #import "JudgeImageModel.h"
 
-@interface DZHomeListCell()
+@interface HomeListCell()
 
 @property (nonatomic, strong) CALayer *lineV;
 @property (nonatomic, strong) CALayer *sepLine;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation DZHomeListCell
+@implementation HomeListCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -353,25 +353,25 @@
     return _tipLab;
 }
 
-- (DZHomeIconTextView *)viewsLab {
+- (HomeIconTextView *)viewsLab {
     if (_viewsLab == nil) {
-        _viewsLab = [[DZHomeIconTextView alloc] init];;
+        _viewsLab = [[HomeIconTextView alloc] init];;
         _viewsLab.backgroundColor = [UIColor whiteColor];
     }
     return _viewsLab;
 }
 
-- (DZHomeIconTextView *)repliesLab {
+- (HomeIconTextView *)repliesLab {
     if (_repliesLab == nil) {
-        _repliesLab = [[DZHomeIconTextView alloc] init];
+        _repliesLab = [[HomeIconTextView alloc] init];
         _repliesLab.backgroundColor = [UIColor whiteColor];
     }
     return _repliesLab;
 }
 
-- (DZHomeIconTextView *)priceLab {
+- (HomeIconTextView *)priceLab {
     if (_priceLab == nil) {
-        _priceLab = [[DZHomeIconTextView alloc] init];
+        _priceLab = [[HomeIconTextView alloc] init];
         _priceLab.backgroundColor = [UIColor whiteColor];
     }
     return _priceLab;

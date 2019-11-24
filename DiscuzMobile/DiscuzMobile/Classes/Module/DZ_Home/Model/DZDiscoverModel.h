@@ -1,5 +1,5 @@
 //
-//  DiscoverModel.h
+//  DZDiscoverModel.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2019/7/22.
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DiscoverModel : DZBaseVarModel
+@interface DZDiscoverModel : DZBaseVarModel
 
 @property (nonatomic, strong) NSArray<ThreadListModel *> *data;
-@property (nonatomic, copy) NSString *total;
+//@property (nonatomic, copy) NSString *total;
 
 @end
 

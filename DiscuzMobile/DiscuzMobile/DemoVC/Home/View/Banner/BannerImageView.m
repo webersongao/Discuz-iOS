@@ -1,15 +1,15 @@
 //
-//  DZBannerImageView.m
+//  BannerImageView.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBannerImageView.h"
+#import "BannerImageView.h"
 
 
-@implementation DZBannerImageView
+@implementation BannerImageView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

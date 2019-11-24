@@ -11,7 +11,7 @@
 @implementation DZForumIndexModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"catlist" : [DZCateListModel class],
+    return @{@"catlist" : [DZForumCateListModel class],
              @"forumlist" : [DZBaseForumModel class]
     };
 }

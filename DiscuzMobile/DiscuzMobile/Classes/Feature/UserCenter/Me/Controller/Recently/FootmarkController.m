@@ -9,7 +9,7 @@
 #import "FootmarkController.h"
 
 #import "ThreadListModel.h"
-#import "DZHomeListCell.h"
+#import "HomeListCell.h"
 
 @interface FootmarkController ()
 
@@ -87,7 +87,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    return [(DZHomeListCell *)cell cellHeight];
+    return [(HomeListCell *)cell cellHeight];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -98,9 +98,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static  NSString  * CellIdentiferId = @"HomeCellCellID";
-    DZHomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
+    HomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
     if (cell == nil) {
-        cell = [[DZHomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
+        cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
         
     }
     

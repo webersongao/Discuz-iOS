@@ -1,5 +1,5 @@
 //
-//  DZHomeListCell.h
+//  HomeListCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
@@ -8,9 +8,9 @@
 
 #import "DZBaseTableViewCell.h"
 #import "ThreadListModel.h"
-#import "DZHomeIconTextView.h"
+#import "HomeIconTextView.h"
 
-@interface DZHomeListCell : DZBaseTableViewCell
+@interface HomeListCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *headV;  // 头像
 @property (nonatomic, strong) UILabel *nameLab;    // 用户名
@@ -22,9 +22,9 @@
 @property (nonatomic, strong) UILabel *datelineLab; // 时间
 @property (nonatomic, assign) BOOL hasPic;
 
-@property (nonatomic, strong) DZHomeIconTextView *viewsLab;   // 浏览数
-@property (nonatomic, strong) DZHomeIconTextView *repliesLab; // 回复数
-@property (nonatomic, strong) DZHomeIconTextView *priceLab;   // 点赞数
+@property (nonatomic, strong) HomeIconTextView *viewsLab;   // 浏览数
+@property (nonatomic, strong) HomeIconTextView *repliesLab; // 回复数
+@property (nonatomic, strong) HomeIconTextView *priceLab;   // 点赞数
 
 @property (nonatomic, strong) ThreadListModel *info;
 

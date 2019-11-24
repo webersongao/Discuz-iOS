@@ -1,5 +1,5 @@
 //
-//  DZHomeBannerModel.h
+//  HomeBannerModel.h
 //  DiscuzMobile
 //
 //  Created by HB on 16/4/18.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DZHomeBannerModel : NSObject
+@interface HomeBannerModel : NSObject
 
 @property (nonatomic, copy) NSString *imagefile; // 图片路径 有的时候优先取
 @property (nonatomic,copy) NSString *imageurl;  // 图片路径

@@ -10,7 +10,6 @@
 #import "DZBaseNavigationController.h"
 #import "DZForumManagerController.h"
 #import "DZUserManagerController.h"
-#import "DZHomeManagerController.h"
 #import "DZFastPlaceController.h"
 #import "DZMobileCtrl.h"
 #import "DZMessageListController.h"

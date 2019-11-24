@@ -38,8 +38,7 @@
 }
 
 - (void)setData:(BoundInfoModel *)model {
-    if (model != nil) {
-        
+    if (model.name != nil) {
         self.nameV.iconV.image = [UIImage imageNamed:model.icon];
         NSString *name = model.name;
         self.detailBtn.selected = YES;
@@ -52,7 +51,7 @@
                 [self.detailBtn setTitleColor:K_Color_LightText forState:UIControlStateNormal];
             }
         }
-        NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:name];
+        NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:checkNull(name)];
         NSRange brange = {name.length - 5, 5};
         [attName addAttribute:NSFontAttributeName value:[DZFontSize forumInfoFontSize12] range:brange];
         [attName addAttribute:NSForegroundColorAttributeName value:K_Color_Message range:brange];

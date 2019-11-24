@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseVarModel.h"
-#import "DZCateListModel.h"
+#import "DZForumCateListModel.h"
 #import "DZBaseForumModel.h"
 
 
@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSArray<DZBaseForumModel *> *forumlist;
 
 // 论坛板块分类
-@property (nonatomic, strong) NSArray<DZCateListModel *> *catlist;
+@property (nonatomic, strong) NSArray<DZForumCateListModel *> *catlist;
 
 
 @end

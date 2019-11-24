@@ -7,7 +7,7 @@
 //
 
 #import "BaseStyleCell.h"
-#import "DZHomeIconTextView.h"
+#import "HomeIconTextView.h"
 #import "DZLoginModule.h"
 #import "UIView+WebCache.h"
 #import "DZPraiseHelper.h"
@@ -449,25 +449,25 @@
     return _tipLab;
 }
 
-- (DZHomeIconTextView *)viewsLab {
+- (HomeIconTextView *)viewsLab {
     if (_viewsLab == nil) {
-        _viewsLab = [[DZHomeIconTextView alloc] init];;
+        _viewsLab = [[HomeIconTextView alloc] init];;
         _viewsLab.backgroundColor = [UIColor whiteColor];
     }
     return _viewsLab;
 }
 
-- (DZHomeIconTextView *)repliesLab {
+- (HomeIconTextView *)repliesLab {
     if (_repliesLab == nil) {
-        _repliesLab = [[DZHomeIconTextView alloc] init];
+        _repliesLab = [[HomeIconTextView alloc] init];
         _repliesLab.backgroundColor = [UIColor whiteColor];
     }
     return _repliesLab;
 }
 
-- (DZHomeIconTextView *)priceLab {
+- (HomeIconTextView *)priceLab {
     if (_priceLab == nil) {
-        _priceLab = [[DZHomeIconTextView alloc] init];
+        _priceLab = [[HomeIconTextView alloc] init];
         _priceLab.backgroundColor = [UIColor whiteColor];
     }
     return _priceLab;

@@ -1,5 +1,5 @@
 //
-//  DZThreadContentView.h
+//  DZHomeThreadContentView.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/20.
@@ -15,7 +15,7 @@
 
 @end
 
-@interface DZThreadContentView : UIView
+@interface DZHomeThreadContentView : UIView
 
 @property (nonatomic, assign) BOOL ListScrollEnabled;  //!< 属性注释
 @property (nonatomic, assign) CGPoint offSet;  //!< 属性注释

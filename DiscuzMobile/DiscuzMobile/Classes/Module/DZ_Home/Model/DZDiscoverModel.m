@@ -1,20 +1,20 @@
 //
-//  DiscoverModel.m
+//  DZDiscoverModel.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2019/7/22.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DiscoverModel.h"
+#import "DZDiscoverModel.h"
 #import "ThreadListModel.h"
 
-@implementation DiscoverModel
+@implementation DZDiscoverModel
 
 //+ (void)initialize
 //{
-//    if (self == [DiscoverModel class]) {
-//        [DiscoverModel mj_setupObjectClassInArray:^NSDictionary *{
+//    if (self == [DZDiscoverModel class]) {
+//        [DZDiscoverModel mj_setupObjectClassInArray:^NSDictionary *{
 //            return @{@"data":@"ThreadListModel"};
 //        }];
 //    }
@@ -23,4 +23,9 @@
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"data" : [ThreadListModel class]};
 }
+
+
 @end
+
+
+

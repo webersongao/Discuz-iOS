@@ -126,7 +126,7 @@
 		7002A3742383D8CD00BC0C61 /* FastPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A34C2383D8CD00BC0C61 /* FastPostController.m */; };
 		7002A3752383D8CD00BC0C61 /* DZFastPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A34D2383D8CD00BC0C61 /* DZFastPlaceController.m */; };
 		7002A3762383D8CD00BC0C61 /* FastLevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3502383D8CD00BC0C61 /* FastLevelCell.m */; };
-		7002A37B2383D8CD00BC0C61 /* DiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A35E2383D8CD00BC0C61 /* DiscoverModel.m */; };
+		7002A37B2383D8CD00BC0C61 /* DZDiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A35E2383D8CD00BC0C61 /* DZDiscoverModel.m */; };
 		7002A37C2383D8CD00BC0C61 /* RecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A35F2383D8CD00BC0C61 /* RecommendModel.m */; };
 		701F378B238520A1000F7953 /* DZHomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F378A238520A1000F7953 /* DZHomeCollectionCell.m */; };
 		703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C4238237CF71D0046C398 /* iflyMSC.framework */; };
@@ -299,13 +299,13 @@
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
 		70BA483123852BA200634D76 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA483023852BA200634D76 /* UILabel+Common.m */; };
-		70BA4834238531A000634D76 /* DZThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZThreadContentView.m */; };
+		70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZHomeThreadContentView.m */; };
 		70CA22E42386DF490053B31B /* DZGlobalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA22E32386DF490053B31B /* DZGlobalTool.m */; };
 		70CA22E82386E91A0053B31B /* DZGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA22E72386E91A0053B31B /* DZGroupModel.m */; };
 		70DE5D0F2384026300686F2D /* DZBestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D0E2384026300686F2D /* DZBestListController.m */; };
 		70DE5D132384029300686F2D /* DZNewListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D112384029300686F2D /* DZNewListController.m */; };
 		70DE5D16238402FF00686F2D /* DZThreadListBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */; };
-		70DE5D192384035500686F2D /* DZThreadContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D182384035500686F2D /* DZThreadContentController.m */; };
+		70DE5D192384035500686F2D /* DZHomeThreadContentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D182384035500686F2D /* DZHomeThreadContentCtrl.m */; };
 		70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD76B237A95DD00A13F0F /* DZBaseNavigationController.m */; };
 		70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD76D237A95DD00A13F0F /* DZRootTabBarController.m */; };
 		70DFD79C237A95DE00A13F0F /* DZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD76F237A95DD00A13F0F /* DZBaseViewController.m */; };
@@ -327,7 +327,7 @@
 		70DFD7B6237A96CE00A13F0F /* DZBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD7B4237A96CD00A13F0F /* DZBaseTableViewCell.m */; };
 		70E69D3623742C3E00760DC4 /* DiscuzMobile copy-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70E69D3523742C3D00760DC4 /* DiscuzMobile copy-Info.plist */; };
 		70EBEB7D2387C408005333D4 /* DZForumIndexModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB7C2387C408005333D4 /* DZForumIndexModel.m */; };
-		70EBEB802387C432005333D4 /* DZCateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB7F2387C432005333D4 /* DZCateListModel.m */; };
+		70EBEB802387C432005333D4 /* DZForumCateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB7F2387C432005333D4 /* DZForumCateListModel.m */; };
 		70EBEB832387C4C1005333D4 /* DZBaseForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */; };
 		70F19E5A237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E56237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m */; };
 		70F19E5B237A8E9900499BED /* DZNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E57237A8E9900499BED /* DZNavItemButton.m */; };
@@ -365,12 +365,12 @@
 		70F9F8EA237AA72C0067B308 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F8CE237AA72B0067B308 /* NSDate+Extension.m */; };
 		70F9F8F1237AA7580067B308 /* DZMobileCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F8EB237AA7570067B308 /* DZMobileCtrl.m */; };
 		70F9F8F2237AA7580067B308 /* DZMobileCtrl+Navi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */; };
-		70FBDCD42383FC1B00FC296E /* DZHomeManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC4D2383FC1B00FC296E /* DZHomeManagerController.m */; };
-		70FBDCD52383FC1B00FC296E /* DZHomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC502383FC1B00FC296E /* DZHomeBannerModel.m */; };
-		70FBDCD62383FC1B00FC296E /* DZHomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC532383FC1B00FC296E /* DZHomeListCell.m */; };
-		70FBDCD72383FC1B00FC296E /* DZBannerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC562383FC1B00FC296E /* DZBannerImageView.m */; };
-		70FBDCD82383FC1B00FC296E /* DZSlideShowScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC572383FC1B00FC296E /* DZSlideShowScrollView.m */; };
-		70FBDCD92383FC1B00FC296E /* DZHomeIconTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC592383FC1B00FC296E /* DZHomeIconTextView.m */; };
+		70FBDCD42383FC1B00FC296E /* HomeManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC4D2383FC1B00FC296E /* HomeManagerController.m */; };
+		70FBDCD52383FC1B00FC296E /* HomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC502383FC1B00FC296E /* HomeBannerModel.m */; };
+		70FBDCD62383FC1B00FC296E /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC532383FC1B00FC296E /* HomeListCell.m */; };
+		70FBDCD72383FC1B00FC296E /* BannerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC562383FC1B00FC296E /* BannerImageView.m */; };
+		70FBDCD82383FC1B00FC296E /* SlideShowScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC572383FC1B00FC296E /* SlideShowScrollView.m */; };
+		70FBDCD92383FC1B00FC296E /* HomeIconTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC592383FC1B00FC296E /* HomeIconTextView.m */; };
 		70FBDCDA2383FC1B00FC296E /* DZOtherUserThreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC5E2383FC1B00FC296E /* DZOtherUserThreadController.m */; };
 		70FBDCDB2383FC1B00FC296E /* DZOtherUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC5F2383FC1B00FC296E /* DZOtherUserController.m */; };
 		70FBDCDC2383FC1B00FC296E /* DZOtherUserPostReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC622383FC1B00FC296E /* DZOtherUserPostReplyController.m */; };
@@ -683,10 +683,10 @@
 		7002A3502383D8CD00BC0C61 /* FastLevelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastLevelCell.m; sourceTree = "<group>"; };
 		7002A3512383D8CD00BC0C61 /* FastPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastPostController.h; sourceTree = "<group>"; };
 		7002A3522383D8CD00BC0C61 /* DZFastPlaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFastPlaceController.h; sourceTree = "<group>"; };
-		7002A35E2383D8CD00BC0C61 /* DiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverModel.m; sourceTree = "<group>"; };
+		7002A35E2383D8CD00BC0C61 /* DZDiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverModel.m; sourceTree = "<group>"; };
 		7002A35F2383D8CD00BC0C61 /* RecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendModel.m; sourceTree = "<group>"; };
 		7002A3602383D8CD00BC0C61 /* RecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendModel.h; sourceTree = "<group>"; };
-		7002A3612383D8CD00BC0C61 /* DiscoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverModel.h; sourceTree = "<group>"; };
+		7002A3612383D8CD00BC0C61 /* DZDiscoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverModel.h; sourceTree = "<group>"; };
 		701F378823851D0D000F7953 /* HomeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeader.h; sourceTree = "<group>"; };
 		701F3789238520A1000F7953 /* DZHomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeCollectionCell.h; sourceTree = "<group>"; };
 		701F378A238520A1000F7953 /* DZHomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZHomeCollectionCell.m; sourceTree = "<group>"; };
@@ -1029,8 +1029,8 @@
 		709F704A2387831800FEC4A9 /* AppDelegate+Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Config.m"; sourceTree = "<group>"; };
 		70BA482F23852BA200634D76 /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
 		70BA483023852BA200634D76 /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
-		70BA4832238531A000634D76 /* DZThreadContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZThreadContentView.h; sourceTree = "<group>"; };
-		70BA4833238531A000634D76 /* DZThreadContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZThreadContentView.m; sourceTree = "<group>"; };
+		70BA4832238531A000634D76 /* DZHomeThreadContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeThreadContentView.h; sourceTree = "<group>"; };
+		70BA4833238531A000634D76 /* DZHomeThreadContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZHomeThreadContentView.m; sourceTree = "<group>"; };
 		70CA22E22386DF490053B31B /* DZGlobalTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZGlobalTool.h; sourceTree = "<group>"; };
 		70CA22E32386DF490053B31B /* DZGlobalTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZGlobalTool.m; sourceTree = "<group>"; };
 		70CA22E62386E91A0053B31B /* DZGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZGroupModel.h; sourceTree = "<group>"; };
@@ -1041,8 +1041,8 @@
 		70DE5D122384029300686F2D /* DZNewListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNewListController.h; sourceTree = "<group>"; };
 		70DE5D14238402FF00686F2D /* DZThreadListBaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListBaseCtrl.h; sourceTree = "<group>"; };
 		70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListBaseCtrl.m; sourceTree = "<group>"; };
-		70DE5D172384035500686F2D /* DZThreadContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadContentController.h; sourceTree = "<group>"; };
-		70DE5D182384035500686F2D /* DZThreadContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadContentController.m; sourceTree = "<group>"; };
+		70DE5D172384035500686F2D /* DZHomeThreadContentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeThreadContentCtrl.h; sourceTree = "<group>"; };
+		70DE5D182384035500686F2D /* DZHomeThreadContentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeThreadContentCtrl.m; sourceTree = "<group>"; };
 		70DFD76B237A95DD00A13F0F /* DZBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseNavigationController.m; sourceTree = "<group>"; };
 		70DFD76C237A95DD00A13F0F /* DZBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseViewController.h; sourceTree = "<group>"; };
 		70DFD76D237A95DD00A13F0F /* DZRootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRootTabBarController.m; sourceTree = "<group>"; };
@@ -1084,8 +1084,8 @@
 		70E69D3523742C3D00760DC4 /* DiscuzMobile copy-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DiscuzMobile copy-Info.plist"; sourceTree = "<group>"; };
 		70EBEB7B2387C408005333D4 /* DZForumIndexModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DZForumIndexModel.h; path = DiscuzMobile/Classes/Module/DZ_Forum/DZForumIndexModel.h; sourceTree = SOURCE_ROOT; };
 		70EBEB7C2387C408005333D4 /* DZForumIndexModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DZForumIndexModel.m; path = DiscuzMobile/Classes/Module/DZ_Forum/DZForumIndexModel.m; sourceTree = SOURCE_ROOT; };
-		70EBEB7E2387C432005333D4 /* DZCateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZCateListModel.h; sourceTree = "<group>"; };
-		70EBEB7F2387C432005333D4 /* DZCateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZCateListModel.m; sourceTree = "<group>"; };
+		70EBEB7E2387C432005333D4 /* DZForumCateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZForumCateListModel.h; sourceTree = "<group>"; };
+		70EBEB7F2387C432005333D4 /* DZForumCateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZForumCateListModel.m; sourceTree = "<group>"; };
 		70EBEB812387C4C1005333D4 /* DZBaseForumModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DZBaseForumModel.h; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.h; sourceTree = SOURCE_ROOT; };
 		70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DZBaseForumModel.m; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.m; sourceTree = SOURCE_ROOT; };
 		70F19E54237A8E9900499BED /* DZNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavigationBar.h; sourceTree = "<group>"; };
@@ -1161,18 +1161,18 @@
 		70F9F8EE237AA7580067B308 /* DZMobileCtrl+Navi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Navi.h"; sourceTree = "<group>"; };
 		70F9F8EF237AA7580067B308 /* DZMobileHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMobileHeader.h; sourceTree = "<group>"; };
 		70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Navi.m"; sourceTree = "<group>"; };
-		70FBDC4C2383FC1B00FC296E /* DZHomeManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeManagerController.h; sourceTree = "<group>"; };
-		70FBDC4D2383FC1B00FC296E /* DZHomeManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeManagerController.m; sourceTree = "<group>"; };
-		70FBDC4F2383FC1B00FC296E /* DZHomeBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeBannerModel.h; sourceTree = "<group>"; };
-		70FBDC502383FC1B00FC296E /* DZHomeBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeBannerModel.m; sourceTree = "<group>"; };
-		70FBDC522383FC1B00FC296E /* DZHomeIconTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeIconTextView.h; sourceTree = "<group>"; };
-		70FBDC532383FC1B00FC296E /* DZHomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeListCell.m; sourceTree = "<group>"; };
-		70FBDC552383FC1B00FC296E /* DZSlideShowScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSlideShowScrollView.h; sourceTree = "<group>"; };
-		70FBDC562383FC1B00FC296E /* DZBannerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBannerImageView.m; sourceTree = "<group>"; };
-		70FBDC572383FC1B00FC296E /* DZSlideShowScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSlideShowScrollView.m; sourceTree = "<group>"; };
-		70FBDC582383FC1B00FC296E /* DZBannerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBannerImageView.h; sourceTree = "<group>"; };
-		70FBDC592383FC1B00FC296E /* DZHomeIconTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeIconTextView.m; sourceTree = "<group>"; };
-		70FBDC5A2383FC1B00FC296E /* DZHomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeListCell.h; sourceTree = "<group>"; };
+		70FBDC4C2383FC1B00FC296E /* HomeManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeManagerController.h; sourceTree = "<group>"; };
+		70FBDC4D2383FC1B00FC296E /* HomeManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeManagerController.m; sourceTree = "<group>"; };
+		70FBDC4F2383FC1B00FC296E /* HomeBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeBannerModel.h; sourceTree = "<group>"; };
+		70FBDC502383FC1B00FC296E /* HomeBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeBannerModel.m; sourceTree = "<group>"; };
+		70FBDC522383FC1B00FC296E /* HomeIconTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeIconTextView.h; sourceTree = "<group>"; };
+		70FBDC532383FC1B00FC296E /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
+		70FBDC552383FC1B00FC296E /* SlideShowScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideShowScrollView.h; sourceTree = "<group>"; };
+		70FBDC562383FC1B00FC296E /* BannerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerImageView.m; sourceTree = "<group>"; };
+		70FBDC572383FC1B00FC296E /* SlideShowScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideShowScrollView.m; sourceTree = "<group>"; };
+		70FBDC582383FC1B00FC296E /* BannerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerImageView.h; sourceTree = "<group>"; };
+		70FBDC592383FC1B00FC296E /* HomeIconTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeIconTextView.m; sourceTree = "<group>"; };
+		70FBDC5A2383FC1B00FC296E /* HomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListCell.h; sourceTree = "<group>"; };
 		70FBDC5E2383FC1B00FC296E /* DZOtherUserThreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZOtherUserThreadController.m; sourceTree = "<group>"; };
 		70FBDC5F2383FC1B00FC296E /* DZOtherUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZOtherUserController.m; sourceTree = "<group>"; };
 		70FBDC602383FC1B00FC296E /* DZOtherUserPostReplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZOtherUserPostReplyController.h; sourceTree = "<group>"; };
@@ -1944,6 +1944,39 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		705BB911238A6BA2002C505A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7002A3602383D8CD00BC0C61 /* RecommendModel.h */,
+				7002A35F2383D8CD00BC0C61 /* RecommendModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		705BB912238A6C2C002C505A /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				701F3789238520A1000F7953 /* DZHomeCollectionCell.h */,
+				701F378A238520A1000F7953 /* DZHomeCollectionCell.m */,
+				70FBDD292383FDC400FC296E /* DZHomeCollectionView.h */,
+				70FBDD2A2383FDC400FC296E /* DZHomeCollectionView.m */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		705BB913238A6E73002C505A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				7065C99F237D61CA0056737C /* DZPostSiriViewController.h */,
+				7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */,
+				703C4247237D27AF0046C398 /* DZPostEditViewController.h */,
+				703C4248237D27AF0046C398 /* DZPostEditViewController.m */,
+				703C4250237D32180046C398 /* DZPostUIEditViewController.h */,
+				703C4251237D32180046C398 /* DZPostUIEditViewController.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		7062104C237935ED00130B9D /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -2017,7 +2050,6 @@
 			isa = PBXGroup;
 			children = (
 				70FBDCB62383FC1B00FC296E /* Forum */,
-				70FBDC4A2383FC1B00FC296E /* Home */,
 				70FBDC5B2383FC1B00FC296E /* UserCenter */,
 				7062119C237936C800130B9D /* Login */,
 				703C4253237D50570046C398 /* Speech */,
@@ -2589,10 +2621,10 @@
 		7065AE5A238684C5009B6DA7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				70EBEB7E2387C432005333D4 /* DZCateListModel.h */,
-				70EBEB7F2387C432005333D4 /* DZCateListModel.m */,
 				70EBEB7B2387C408005333D4 /* DZForumIndexModel.h */,
 				70EBEB7C2387C408005333D4 /* DZForumIndexModel.m */,
+				70EBEB7E2387C432005333D4 /* DZForumCateListModel.h */,
+				70EBEB7F2387C432005333D4 /* DZForumCateListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2678,14 +2710,11 @@
 		706AB8CE237BF55E00BE649F /* DemoVC */ = {
 			isa = PBXGroup;
 			children = (
+				70FBDC4A2383FC1B00FC296E /* Home */,
+				705BB913238A6E73002C505A /* Demo */,
+				705BB911238A6BA2002C505A /* Model */,
 				706AB8D0237BF63600BE649F /* RecommendController.h */,
 				706AB8CF237BF63600BE649F /* RecommendController.m */,
-				7065C99F237D61CA0056737C /* DZPostSiriViewController.h */,
-				7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */,
-				703C4247237D27AF0046C398 /* DZPostEditViewController.h */,
-				703C4248237D27AF0046C398 /* DZPostEditViewController.m */,
-				703C4250237D32180046C398 /* DZPostUIEditViewController.h */,
-				703C4251237D32180046C398 /* DZPostUIEditViewController.m */,
 			);
 			path = DemoVC;
 			sourceTree = "<group>";
@@ -3230,8 +3259,8 @@
 		70FBDC4B2383FC1B00FC296E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC4C2383FC1B00FC296E /* DZHomeManagerController.h */,
-				70FBDC4D2383FC1B00FC296E /* DZHomeManagerController.m */,
+				70FBDC4C2383FC1B00FC296E /* HomeManagerController.h */,
+				70FBDC4D2383FC1B00FC296E /* HomeManagerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3239,8 +3268,8 @@
 		70FBDC4E2383FC1B00FC296E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC4F2383FC1B00FC296E /* DZHomeBannerModel.h */,
-				70FBDC502383FC1B00FC296E /* DZHomeBannerModel.m */,
+				70FBDC4F2383FC1B00FC296E /* HomeBannerModel.h */,
+				70FBDC502383FC1B00FC296E /* HomeBannerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3248,24 +3277,24 @@
 		70FBDC512383FC1B00FC296E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC522383FC1B00FC296E /* DZHomeIconTextView.h */,
-				70FBDC532383FC1B00FC296E /* DZHomeListCell.m */,
-				70FBDC542383FC1B00FC296E /* DZBanner */,
-				70FBDC592383FC1B00FC296E /* DZHomeIconTextView.m */,
-				70FBDC5A2383FC1B00FC296E /* DZHomeListCell.h */,
+				70FBDC542383FC1B00FC296E /* Banner */,
+				70FBDC5A2383FC1B00FC296E /* HomeListCell.h */,
+				70FBDC532383FC1B00FC296E /* HomeListCell.m */,
+				70FBDC522383FC1B00FC296E /* HomeIconTextView.h */,
+				70FBDC592383FC1B00FC296E /* HomeIconTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		70FBDC542383FC1B00FC296E /* DZBanner */ = {
+		70FBDC542383FC1B00FC296E /* Banner */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC552383FC1B00FC296E /* DZSlideShowScrollView.h */,
-				70FBDC562383FC1B00FC296E /* DZBannerImageView.m */,
-				70FBDC572383FC1B00FC296E /* DZSlideShowScrollView.m */,
-				70FBDC582383FC1B00FC296E /* DZBannerImageView.h */,
+				70FBDC582383FC1B00FC296E /* BannerImageView.h */,
+				70FBDC562383FC1B00FC296E /* BannerImageView.m */,
+				70FBDC552383FC1B00FC296E /* SlideShowScrollView.h */,
+				70FBDC572383FC1B00FC296E /* SlideShowScrollView.m */,
 			);
-			path = DZBanner;
+			path = Banner;
 			sourceTree = "<group>";
 		};
 		70FBDC5B2383FC1B00FC296E /* UserCenter */ = {
@@ -3561,12 +3590,10 @@
 		70FBDD172383FC4A00FC296E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7002A3602383D8CD00BC0C61 /* RecommendModel.h */,
-				7002A35F2383D8CD00BC0C61 /* RecommendModel.m */,
-				7002A3612383D8CD00BC0C61 /* DiscoverModel.h */,
-				7002A35E2383D8CD00BC0C61 /* DiscoverModel.m */,
 				70FBDCC02383FC1B00FC296E /* DZForumModel.h */,
 				70FBDCC32383FC1B00FC296E /* DZForumModel.m */,
+				7002A3612383D8CD00BC0C61 /* DZDiscoverModel.h */,
+				7002A35E2383D8CD00BC0C61 /* DZDiscoverModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3574,14 +3601,11 @@
 		70FBDD182383FC4A00FC296E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				705BB912238A6C2C002C505A /* Header */,
 				70FBDD262383FDA500FC296E /* DZHomeScrollView.h */,
 				70FBDD272383FDA500FC296E /* DZHomeScrollView.m */,
-				70FBDD292383FDC400FC296E /* DZHomeCollectionView.h */,
-				70FBDD2A2383FDC400FC296E /* DZHomeCollectionView.m */,
-				70BA4832238531A000634D76 /* DZThreadContentView.h */,
-				70BA4833238531A000634D76 /* DZThreadContentView.m */,
-				701F3789238520A1000F7953 /* DZHomeCollectionCell.h */,
-				701F378A238520A1000F7953 /* DZHomeCollectionCell.m */,
+				70BA4832238531A000634D76 /* DZHomeThreadContentView.h */,
+				70BA4833238531A000634D76 /* DZHomeThreadContentView.m */,
 				70FBDD2C2384018E00FC296E /* Content */,
 			);
 			path = View;
@@ -3638,8 +3662,8 @@
 				70DE5D112384029300686F2D /* DZNewListController.m */,
 				70DE5D14238402FF00686F2D /* DZThreadListBaseCtrl.h */,
 				70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */,
-				70DE5D172384035500686F2D /* DZThreadContentController.h */,
-				70DE5D182384035500686F2D /* DZThreadContentController.m */,
+				70DE5D172384035500686F2D /* DZHomeThreadContentCtrl.h */,
+				70DE5D182384035500686F2D /* DZHomeThreadContentCtrl.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -4273,13 +4297,13 @@
 				70621273237936C800130B9D /* ThreadListModel.m in Sources */,
 				70FBDCDB2383FC1B00FC296E /* DZOtherUserController.m in Sources */,
 				273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */,
-				70FBDCD52383FC1B00FC296E /* DZHomeBannerModel.m in Sources */,
+				70FBDCD52383FC1B00FC296E /* HomeBannerModel.m in Sources */,
 				70F9F8E5237AA72C0067B308 /* NSMutableAttributedString+JsEmotion.m in Sources */,
 				277EDC6A1E6D5B8D00E8F0E1 /* DZInstroductionView.m in Sources */,
 				70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */,
 				70621298237936C900130B9D /* DZAudioListCell.m in Sources */,
 				7065AE962386A97A009B6DA7 /* AppDelegate+Update.m in Sources */,
-				70FBDCD82383FC1B00FC296E /* DZSlideShowScrollView.m in Sources */,
+				70FBDCD82383FC1B00FC296E /* SlideShowScrollView.m in Sources */,
 				70621277237936C800130B9D /* DZForumInfoView.m in Sources */,
 				70FBDD242383FC4B00FC296E /* DZHomeNetTool.m in Sources */,
 				70621284237936C900130B9D /* DZPostNormalViewController.m in Sources */,
@@ -4288,7 +4312,7 @@
 				70FBDD252383FC4B00FC296E /* DZUserController.m in Sources */,
 				94A3E64E20E611740039C560 /* WBStatusHelper.m in Sources */,
 				7062127C237936C900130B9D /* TopLabel.m in Sources */,
-				70FBDCD42383FC1B00FC296E /* DZHomeManagerController.m in Sources */,
+				70FBDCD42383FC1B00FC296E /* HomeManagerController.m in Sources */,
 				70FBDCE62383FC1B00FC296E /* MyFriendViewController.m in Sources */,
 				7002A36B2383D8CD00BC0C61 /* PmTypeModel.m in Sources */,
 				9494508B21196F8B0074C79E /* AudioTool.m in Sources */,
@@ -4324,7 +4348,7 @@
 				70621074237935ED00130B9D /* UIImage+TYLaunchImage.m in Sources */,
 				706212C2237936C900130B9D /* DZRegisterController.m in Sources */,
 				7062129E237936C900130B9D /* ActiveUserFieldCell.m in Sources */,
-				70BA4834238531A000634D76 /* DZThreadContentView.m in Sources */,
+				70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */,
 				94B1066E22F165D800D40827 /* DZVersionUpdate.m in Sources */,
 				706212C3237936C900130B9D /* UsertermsController.m in Sources */,
 				7002A3722383D8CD00BC0C61 /* PmlistCell.m in Sources */,
@@ -4344,7 +4368,7 @@
 				70FBDCF42383FC1B00FC296E /* VerticalImageTextView.m in Sources */,
 				70F9F8F2237AA7580067B308 /* DZMobileCtrl+Navi.m in Sources */,
 				70F9F8E6237AA72C0067B308 /* NSString+MoreMethod.m in Sources */,
-				70FBDCD72383FC1B00FC296E /* DZBannerImageView.m in Sources */,
+				70FBDCD72383FC1B00FC296E /* BannerImageView.m in Sources */,
 				274F387D1EEA44F6009F4E10 /* ImagePickerView.m in Sources */,
 				70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */,
 				94A3E65B20E611B10039C560 /* TextbarView.m in Sources */,
@@ -4423,7 +4447,7 @@
 				706212C6237936C900130B9D /* DZUserBoundController.m in Sources */,
 				94A3E64820E611740039C560 /* WBStatusComposeTextParser.m in Sources */,
 				273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */,
-				70FBDCD92383FC1B00FC296E /* DZHomeIconTextView.m in Sources */,
+				70FBDCD92383FC1B00FC296E /* HomeIconTextView.m in Sources */,
 				70DFD7AD237A95DE00A13F0F /* TPBaseViewController.m in Sources */,
 				7062127A237936C900130B9D /* PostTypeModel.m in Sources */,
 				70FBDCED2383FC1B00FC296E /* ReplyModel.m in Sources */,
@@ -4470,7 +4494,7 @@
 				2732E7A71DDD623600B2A57D /* DZFileManager.m in Sources */,
 				706212CE237936C900130B9D /* DZActivityEditController.m in Sources */,
 				70DFD79E237A95DE00A13F0F /* DZBaseFloatingView.m in Sources */,
-				70DE5D192384035500686F2D /* DZThreadContentController.m in Sources */,
+				70DE5D192384035500686F2D /* DZHomeThreadContentCtrl.m in Sources */,
 				70621281237936C900130B9D /* DZPostBaseController.m in Sources */,
 				2700AF161DEBE25300C50D0C /* DZShareCenter.m in Sources */,
 				706212BD237936C900130B9D /* DZSearchModel.m in Sources */,
@@ -4485,7 +4509,7 @@
 				70F9F8D9237AA72B0067B308 /* UIImage+Palette.m in Sources */,
 				703C4249237D27AF0046C398 /* DZPostEditViewController.m in Sources */,
 				70FBDD0A2383FC1B00FC296E /* ForumLeftCell.m in Sources */,
-				70FBDCD62383FC1B00FC296E /* DZHomeListCell.m in Sources */,
+				70FBDCD62383FC1B00FC296E /* HomeListCell.m in Sources */,
 				706212A5237936C900130B9D /* DZLoginModule.m in Sources */,
 				70FBDCFC2383FC1B00FC296E /* UserInfoCell.m in Sources */,
 				70FBDCEB2383FC1B00FC296E /* BoundInfoModel.m in Sources */,
@@ -4545,7 +4569,7 @@
 				7002A3752383D8CD00BC0C61 /* DZFastPlaceController.m in Sources */,
 				70621275237936C800130B9D /* ThreadListModel+Display.m in Sources */,
 				70F9F8D7237AA72B0067B308 /* Palette.m in Sources */,
-				7002A37B2383D8CD00BC0C61 /* DiscoverModel.m in Sources */,
+				7002A37B2383D8CD00BC0C61 /* DZDiscoverModel.m in Sources */,
 				7065AE62238684C5009B6DA7 /* DZForumOldController.m in Sources */,
 				70EBEB832387C4C1005333D4 /* DZBaseForumModel.m in Sources */,
 				947ECB172064D403002D3536 /* WSImageModel.m in Sources */,
@@ -4581,7 +4605,7 @@
 				94A3E64A20E611740039C560 /* WBEmoticonInputView.m in Sources */,
 				2716AF701DDD932600F580AC /* ZHPickView.m in Sources */,
 				7065AE862386978D009B6DA7 /* DZMobileCtrl+Alert.m in Sources */,
-				70EBEB802387C432005333D4 /* DZCateListModel.m in Sources */,
+				70EBEB802387C432005333D4 /* DZForumCateListModel.m in Sources */,
 				706212D9237936C900130B9D /* ActivityApplyReplyCell.m in Sources */,
 				70621299237936C900130B9D /* ActiveExtendCell.m in Sources */,
 				70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */,

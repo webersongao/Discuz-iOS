@@ -1,5 +1,5 @@
 //
-//  DZSlideShowScrollView.h
+//  SlideShowScrollView.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/13.
@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DZHomeBannerModel;
+@class HomeBannerModel;
 
 
 typedef void(^TouchBlock)(NSInteger currentPage);
 
-@interface DZSlideShowScrollView : UIScrollView <UIScrollViewDelegate>
+@interface SlideShowScrollView : UIScrollView <UIScrollViewDelegate>
 
 @property (nonatomic, assign) BOOL isPlaceholder;
 
@@ -21,7 +21,7 @@ typedef void(^TouchBlock)(NSInteger currentPage);
 // 定时器
 @property (nonatomic,strong) NSTimer *timer;
 // 图片的URL字符串
-@property (nonatomic,strong) NSMutableArray<DZHomeBannerModel *> *bannerArray;
+@property (nonatomic,strong) NSMutableArray<HomeBannerModel *> *bannerArray;
 // 是否定时
 @property (nonatomic,assign) BOOL isTimer;
 

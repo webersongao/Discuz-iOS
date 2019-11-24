@@ -7,15 +7,15 @@
 //
 
 #import "RecommendController.h"
-#import "DZSlideShowScrollView.h"
-#import "DZHomeBannerModel.h"
+#import "SlideShowScrollView.h"
+#import "HomeBannerModel.h"
 #import "RecommendModel.h"
 #import "BaseStyleCell.h"
 #import "AsyncAppendency.h"
 
 @interface RecommendController ()
 
-@property (nonatomic, strong) DZSlideShowScrollView *scrollView;
+@property (nonatomic, strong) SlideShowScrollView *scrollView;
 
 @end
 
@@ -30,7 +30,7 @@
 }
 
 -(void)initTableView {
-    _scrollView = [[DZSlideShowScrollView alloc] init];
+    _scrollView = [[SlideShowScrollView alloc] init];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.tableView.mj_header endRefreshing];
@@ -73,7 +73,7 @@
         request.loadType = type;
     } success:^(id responseObject, JTLoadType type) {
         
-        self.scrollView.bannerArray = [NSMutableArray arrayWithArray:[DZHomeBannerModel setBannerData:responseObject]];
+        self.scrollView.bannerArray = [NSMutableArray arrayWithArray:[HomeBannerModel setBannerData:responseObject]];
         [self setBanner];
         dispatch_group_leave(asyGroup);
     } failed:^(NSError *error) {
@@ -119,7 +119,7 @@
     KWEAKSELF;
     [self.scrollView touchInSlideShow:^(NSInteger currentPage) {
         if ([DataCheck isValidString:weakSelf.scrollView.bannerArray[currentPage].link]) {
-            DZHomeBannerModel *banner = weakSelf.scrollView.bannerArray[currentPage];
+            HomeBannerModel *banner = weakSelf.scrollView.bannerArray[currentPage];
             if ([banner.link_type isEqualToString:@"1"]) {
                 [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:banner.link];
                 return;
