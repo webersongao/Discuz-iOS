@@ -84,34 +84,34 @@
 // 下载数据
 - (void)loadDataWithType:(JTLoadType)loadType {
     
-            NSString *path = [[NSBundle mainBundle] pathForResource:@"fourm" ofType:@"json"];
-            // 将文件数据化
-            NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-            // 对数据进行JSON格式化并返回字典形式
-            NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            [self setForumList:resp];
-             [self.HUD hideAnimated:YES];
-            return;
+//            NSString *path = [[NSBundle mainBundle] pathForResource:@"fourm" ofType:@"json"];
+//            // 将文件数据化
+//            NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+//            // 对数据进行JSON格式化并返回字典形式
+//            NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+//            [self setForumList:resp];
+//             [self.HUD hideAnimated:YES];
+//            return;
     
-//    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//        request.urlString = DZ_Url_Forumindex;
-//        request.loadType = loadType;
-//        request.isCache = YES;
-//    } success:^(id responseObject, JTLoadType type) {
-//        [self.HUD hide];
-//
-//        [self.tableView.mj_header endRefreshing];
-//        if ([DataCheck isValidArray:self.dataSourceArr]) {
-//            [self.dataSourceArr removeAllObjects];
-//        }
-//        [self setForumList:responseObject];
-//        [self.tableView reloadData];
-//        [self.leftTable reloadData];
-//
-//    } failed:^(NSError *error) {
-//        [self.HUD hide];
-//        [self showServerError:error];
-//    }];
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_Forumindex;
+        request.loadType = loadType;
+        request.isCache = YES;
+    } success:^(id responseObject, JTLoadType type) {
+        [self.HUD hide];
+
+        [self.tableView.mj_header endRefreshing];
+        if ([DataCheck isValidArray:self.dataSourceArr]) {
+            [self.dataSourceArr removeAllObjects];
+        }
+        [self setForumList:responseObject];
+        [self.tableView reloadData];
+        [self.leftTable reloadData];
+
+    } failed:^(NSError *error) {
+        [self.HUD hide];
+        [self showServerError:error];
+    }];
 }
 
 // 处理全部版块数据

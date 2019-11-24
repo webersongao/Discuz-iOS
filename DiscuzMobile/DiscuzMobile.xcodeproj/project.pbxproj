@@ -308,7 +308,7 @@
 		70CA22E82386E91A0053B31B /* DZGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA22E72386E91A0053B31B /* DZGroupModel.m */; };
 		70DE5D0F2384026300686F2D /* DZBestListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D0E2384026300686F2D /* DZBestListController.m */; };
 		70DE5D132384029300686F2D /* DZNewListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D112384029300686F2D /* DZNewListController.m */; };
-		70DE5D16238402FF00686F2D /* DZThreadListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D15238402FF00686F2D /* DZThreadListBaseController.m */; };
+		70DE5D16238402FF00686F2D /* DZThreadListBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */; };
 		70DE5D192384035500686F2D /* DZThreadContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DE5D182384035500686F2D /* DZThreadContentController.m */; };
 		70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD76B237A95DD00A13F0F /* DZBaseNavigationController.m */; };
 		70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD76D237A95DD00A13F0F /* DZRootTabBarController.m */; };
@@ -1051,8 +1051,8 @@
 		70DE5D0E2384026300686F2D /* DZBestListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBestListController.m; sourceTree = "<group>"; };
 		70DE5D112384029300686F2D /* DZNewListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNewListController.m; sourceTree = "<group>"; };
 		70DE5D122384029300686F2D /* DZNewListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNewListController.h; sourceTree = "<group>"; };
-		70DE5D14238402FF00686F2D /* DZThreadListBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListBaseController.h; sourceTree = "<group>"; };
-		70DE5D15238402FF00686F2D /* DZThreadListBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListBaseController.m; sourceTree = "<group>"; };
+		70DE5D14238402FF00686F2D /* DZThreadListBaseCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListBaseCtrl.h; sourceTree = "<group>"; };
+		70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListBaseCtrl.m; sourceTree = "<group>"; };
 		70DE5D172384035500686F2D /* DZThreadContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadContentController.h; sourceTree = "<group>"; };
 		70DE5D182384035500686F2D /* DZThreadContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadContentController.m; sourceTree = "<group>"; };
 		70DFD76B237A95DD00A13F0F /* DZBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseNavigationController.m; sourceTree = "<group>"; };
@@ -3680,8 +3680,8 @@
 				70DE5D0E2384026300686F2D /* DZBestListController.m */,
 				70DE5D122384029300686F2D /* DZNewListController.h */,
 				70DE5D112384029300686F2D /* DZNewListController.m */,
-				70DE5D14238402FF00686F2D /* DZThreadListBaseController.h */,
-				70DE5D15238402FF00686F2D /* DZThreadListBaseController.m */,
+				70DE5D14238402FF00686F2D /* DZThreadListBaseCtrl.h */,
+				70DE5D15238402FF00686F2D /* DZThreadListBaseCtrl.m */,
 				70DE5D172384035500686F2D /* DZThreadContentController.h */,
 				70DE5D182384035500686F2D /* DZThreadContentController.m */,
 			);
@@ -4648,7 +4648,7 @@
 				70F9F8E4237AA72C0067B308 /* UITableViewCell+GetReuseID.m in Sources */,
 				70FBDD052383FC1B00FC296E /* DZForumModel.m in Sources */,
 				706212DF237936C900130B9D /* PartInPayCell.m in Sources */,
-				70DE5D16238402FF00686F2D /* DZThreadListBaseController.m in Sources */,
+				70DE5D16238402FF00686F2D /* DZThreadListBaseCtrl.m in Sources */,
 				70DFD7AC237A95DE00A13F0F /* TPBaseNavigationController.m in Sources */,
 				7062106E237935ED00130B9D /* UUDatePicker_DateModel.m in Sources */,
 				703C4245237CFAAB0046C398 /* AppDelegate+SDK.m in Sources */,

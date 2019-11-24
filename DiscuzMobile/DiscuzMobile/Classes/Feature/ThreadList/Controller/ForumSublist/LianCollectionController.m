@@ -63,7 +63,6 @@
     [self.segmentedControl  setSelectedSegmentIndex:index];
     
     [(LianMixAllViewController *)self.parentController setSelectIndex:index];
-    DLog(@"===================%ld=====================",index);
     if (self.selectIndex != index) {
         self.selectIndex = index;
         // 延迟0.03秒执行 为了界面滑动流畅啊！！！！

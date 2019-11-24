@@ -69,7 +69,7 @@
 
 
 - (void)addItemClass:(Class)class andTitle:(NSString *)title {
-    DZThreadListBaseController *vc = [class new];
+    DZThreadListBaseCtrl *vc = [class new];
     vc.title = title;
     KWEAKSELF
     vc.didScrollAction = ^(UIScrollView *scrollView) {

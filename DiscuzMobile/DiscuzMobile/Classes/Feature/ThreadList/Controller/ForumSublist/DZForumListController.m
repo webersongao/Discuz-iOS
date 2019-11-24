@@ -19,7 +19,6 @@
 #import "AsyncAppendency.h"
 
 #import "ThreadListCell.h"
-//#import "TopNewCell.h"
 #import "TopMlCell.h"
 #import "VerifyThreadRemindView.h"
 
@@ -135,7 +134,7 @@
 //        [dic setValue:@"lastpost" forKey:@"orderby"];
         [dic setValue:@"author" forKey:@"filter"];
         [dic setValue:@"dateline" forKey:@"orderby"];
-        
+
     } else if ([self.title isEqualToString:@"热门"]) {
         [dic setValue:@"heat" forKey:@"filter"];
         [dic setValue:@"heats" forKey:@"orderby"];
@@ -171,9 +170,6 @@
         if (!haveAuther) {
             return;
         }
-        
-        
-        DLog(@"-------1----ForumThreadList=%@--------",responseObject);
         
         self.forumInfoDic = [[responseObject objectForKey:@"Variables"] objectForKey:@"forum"];
         

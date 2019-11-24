@@ -18,7 +18,6 @@
 
 #import "DZHomeController.h"
 #import "DZForumIndexController.h"
-#import "DZForumOldController.h"
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
@@ -140,23 +139,21 @@
     DZDiscoverManagerController *dicoverVC = [[DZDiscoverManagerController alloc] init];
     
     DZForumIndexController *for001 = [[DZForumIndexController alloc] init];
-    DZForumOldController *forVC = [[DZForumOldController alloc] init];
     DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
     
     //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
     DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
     
-    //    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
-    //    [self addChildVc:dicoverVC title:@"首页2" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:dicoverVC title:@"首页2" image:@"homem" selectedImage:@"homes"];
     
     [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forumVC title:@"分类3" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
     
     //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
     //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    //    [self addChildVc:userVC title:@"账户" image:@"my" selectedImage:@"mys"];
+    [self addChildVc:userVC title:@"账户" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {

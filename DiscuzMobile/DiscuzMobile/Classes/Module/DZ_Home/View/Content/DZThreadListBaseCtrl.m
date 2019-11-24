@@ -1,23 +1,23 @@
 //
-//  DZThreadListBaseController.m
+//  DZThreadListBaseCtrl.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/10.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZThreadListBaseController.h"
+#import "DZThreadListBaseCtrl.h"
 #import "BaseStyleCell.h"
 #import "DiscoverModel.h"
 #import "ThreadListCell.h"
 #import "ThreadListModel+Display.h"
 
-@interface DZThreadListBaseController ()
+@interface DZThreadListBaseCtrl ()
 @property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, copy) NSString *urlString;
 @end
 
-@implementation DZThreadListBaseController
+@implementation DZThreadListBaseCtrl
 
 - (SThreadListType)listType {
     return 0;
@@ -59,7 +59,7 @@
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
-        [weakSelf downLoadData:self.page andLoadType:JTRequestTypeRefresh];
+        [weakSelf downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
     }];
     self.tableView.height = KView_OutNavi_Bounds.size.height - kHomeSegmentHeight;
     self.tableView.mj_footer.hidden = YES;
@@ -86,9 +86,9 @@
 
 - (void)cacheRequest {
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-    [self downLoadData:self.page andLoadType:JTRequestTypeCache];
+    [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeCache];
     if ([DZApiRequest isCache:self.urlString andParameters:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page]}]) {
-        [self downLoadData:self.page andLoadType:JTRequestTypeRefresh];
+        [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
     }
     
 }
@@ -96,11 +96,11 @@
 - (void)refreshData {
     self.page =1;
     [self.tableView.mj_footer resetNoMoreData];
-    [self downLoadData:self.page andLoadType:JTRequestTypeRefresh];
+    [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
 }
 
 #pragma mark - 数据下载
-- (void)downLoadData:(NSInteger)page andLoadType:(JTLoadType)type {
+- (void)downLoadHomeThreadData:(NSInteger)page andLoadType:(JTLoadType)type {
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = self.urlString;

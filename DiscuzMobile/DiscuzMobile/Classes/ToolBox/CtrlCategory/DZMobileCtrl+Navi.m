@@ -47,6 +47,7 @@
 - (void)PushToForumListController:(NSString *)fid {
     [self PushToForumListController:fid block:nil];
 }
+/// 论坛版块帖子列表
 - (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block{
     LianMixAllViewController *lianMixVc = [[LianMixAllViewController alloc] init];
     lianMixVc.forumFid = fid;

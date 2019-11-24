@@ -1,5 +1,5 @@
 //
-//  DZThreadListBaseController.h
+//  DZThreadListBaseCtrl.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/10.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, SThreadListType) {
     SThreadListTypeNewest,
 };
 
-@interface DZThreadListBaseController : DZBaseTableViewController
+@interface DZThreadListBaseCtrl : DZBaseTableViewController
 
 - (SThreadListType)listType;
 

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZThreadListBaseController.h"
+#import "DZThreadListBaseCtrl.h"
 
-@interface DZBestListController : DZThreadListBaseController
+@interface DZBestListController : DZThreadListBaseCtrl
 
 @end
