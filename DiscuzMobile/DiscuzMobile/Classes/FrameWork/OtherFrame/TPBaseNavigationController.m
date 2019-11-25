@@ -46,8 +46,8 @@
     }
     
     if (self.viewControllers.count > 0) {
-        if ([viewController isKindOfClass:[TPBaseNavigationBarViewController class]]) {
-            TPBaseNavigationBarViewController *baseCtrl = (TPBaseNavigationBarViewController *)viewController;
+        if ([viewController isKindOfClass:[TPBaseNavigationBarController class]]) {
+            TPBaseNavigationBarController *baseCtrl = (TPBaseNavigationBarController *)viewController;
             if ([baseCtrl respondsToSelector:@selector(tp_BaseControllerClickBackItem)]) {
                 [baseCtrl tp_SetNavigationBackItemWithTarget:baseCtrl action:@selector(tp_BaseControllerClickBackItem)];
             }

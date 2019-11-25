@@ -1,22 +1,22 @@
 //
-//  TPBaseNavigationBarViewController.m
+//  TPBaseNavigationBarController.m
 //  PandaReader
 //
 //  Created by WebersonGao on 2019/4/4.
 //  Copyright © 2019 ZHWenXue. All rights reserved.
 //
 
-#import "TPBaseNavigationBarViewController.h"
+#import "TPBaseNavigationBarController.h"
 #import "DZNavItemButton.h"
 
 #import "UIBarButtonItem+DZBarButtonItem.h"
 
-@interface TPBaseNavigationBarViewController ()
+@interface TPBaseNavigationBarController ()
 
 
 @end
 
-@implementation TPBaseNavigationBarViewController
+@implementation TPBaseNavigationBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

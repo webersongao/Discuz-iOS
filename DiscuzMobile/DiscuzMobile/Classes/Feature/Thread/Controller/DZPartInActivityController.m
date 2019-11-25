@@ -201,9 +201,7 @@
                     [MBProgressHUD showInfo:@"请输入支付金额"];
                     return;
                 }
-                
             }
-            
         }
         else {
             if (![DataCheck isValidString:model.fieldValue]) {

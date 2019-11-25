@@ -7,27 +7,22 @@
 //
 
 #import "DZForumThreadMixCtrl.h"
-
 #import "DZCollectionTool.h"
-
-#import "DZForumThreadMixContainer.h"
 #import "DZForumListController.h"
 #import "DZForumContainListView.h"
-
+#import "DZForumThreadMixContainer.h"
 #import "DZPostNormalViewController.h"
 #import "DZPostVoteViewController.h"
 #import "DZPostDebateController.h"
 #import "DZPostActivityViewController.h"
 #import "MySubjectViewController.h"
-
-#import "DZForumListModel.h"
 #import "DZPostTypeSelectView.h"
-#import "DZForumInfoView.h"
-
-#import "DZForumModel.h"
-#import "RootForumCell.h"
-#import "SubForumCell.h"
+#import "DZForumListModel.h"
 #import "JudgeImageModel.h"
+#import "DZForumInfoView.h"
+#import "RootForumCell.h"
+#import "DZForumModel.h"
+#import "SubForumCell.h"
 #import "DropTipView.h"
 
 @interface DZForumThreadMixCtrl () <UITableViewDelegate, UITableViewDataSource>
@@ -453,12 +448,11 @@
             KWEAKSELF;
             [self.titleArr enumerateObjectsUsingBlock:^(DZForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                DZForumListController *listVc = [[DZForumListController alloc] init];
+                DZForumListController *listVc = [[DZForumListController alloc] initWithType:idx];
                 listVc.title = obj.name;
                 listVc.fid = obj.fid;
                 listVc.order = idx;
                 listVc.sendBlock = ^ (NSDictionary *dic) {
-                    
                     [weakSelf subSendVarible:dic];
                 };
                 

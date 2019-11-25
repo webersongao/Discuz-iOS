@@ -30,10 +30,19 @@
 @property (nonatomic, strong) NSMutableArray *commonThreadArray;
 @property (nonatomic, assign) NSInteger notThisFidCount;
 @property (nonatomic, assign) BOOL isRequest;
-
+@property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
 @end
 
 @implementation DZForumListController
+
+- (instancetype)initWithType:(DZ_ListType)listType
+{
+    self = [super init];
+    if (self) {
+        self.listType = listType;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,7 +112,7 @@
 
 - (void)loadCache { // 读取缓存
     
-    if ([self.title isEqualToString:@"全部"]) {
+    if (self.listType == DZ_ListAll) {
         [self downLoadListData:self.page andLoadType:JTRequestTypeCache];
         [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
         if ([DZApiRequest isCache:DZ_Url_ForumTlist andParameters:@{@"fid":[NSString stringWithFormat:@"%@",_fid],@"page":[NSString stringWithFormat:@"%ld",(long)self.page]}]) {
@@ -124,20 +133,19 @@
     NSMutableArray *dic = @{@"fid":[NSString stringWithFormat:@"%@",_fid],
                             @"page":[NSString stringWithFormat:@"%ld",(long)page],
                             }.mutableCopy;
-    if ([self.title isEqualToString:@"最新"]) {
+    if (self.listType == DZ_ListNew) {
 //        [dic setValue:@"lastpost" forKey:@"filter"];
 //        [dic setValue:@"lastpost" forKey:@"orderby"];
         [dic setValue:@"author" forKey:@"filter"];
         [dic setValue:@"dateline" forKey:@"orderby"];
 
-    } else if ([self.title isEqualToString:@"热门"]) {
+    } else if (self.listType == DZ_ListHot) {
         [dic setValue:@"heat" forKey:@"filter"];
         [dic setValue:@"heats" forKey:@"orderby"];
-        
     } else if ([self.title isEqualToString:@"热帖"]) {
         [dic setValue:@"hot" forKey:@"filter"];
-        
-    } else if ([self.title isEqualToString:@"精华"]) {
+        DLog(@"如果你看到这段代码，请告诉她。。。。。。。。特么的出bug啦");
+    } else if (self.listType == DZ_ListBest) {
         [dic setValue:@"digest" forKey:@"filter"];
         [dic setValue:@"1" forKey:@"digest"];
     }
@@ -148,7 +156,7 @@
         request.urlString = DZ_Url_ForumTlist;
         request.parameters = dic.mutableCopy;
         request.loadType = loadType;
-        if ([self.title isEqualToString:@"全部"] && self.page == 1) {
+        if (self.listType == DZ_ListAll && self.page == 1) {
             request.isCache = YES;
         }
     } success:^(id responseObject, JTLoadType type) {
@@ -278,7 +286,7 @@
 }
 
 - (void)sendVariablesToMixcontroller {
-    if ([self.title isEqualToString:@"全部"]) {
+    if (self.listType == DZ_ListAll) {
         if (self.sendBlock) {
             self.sendBlock(self.Variables);
         }
@@ -461,3 +469,6 @@
 }
 
 @end
+
+
+

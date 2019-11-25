@@ -42,9 +42,9 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)configPageView {
     if (_isList) {
-        [self pageOfController:self.indexVC andTitle:@"全部1"];
+        [self pageOfController:self.indexVC andTitle:@"全部"];
     }else {
-        [self pageOfController:self.allVC andTitle:@"全部2"];
+        [self pageOfController:self.allVC andTitle:@"全部"];
     }
     _containVc = [[DZContainerController alloc] init];
     [self updateNaviTabBar];

@@ -25,7 +25,6 @@
 }
 
 - (void)dealloc {
-    DLog(@">>>>>>>>>>>basetableVC销毁了");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

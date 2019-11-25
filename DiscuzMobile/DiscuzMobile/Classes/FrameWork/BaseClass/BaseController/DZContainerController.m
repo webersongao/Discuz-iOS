@@ -210,7 +210,6 @@
         [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
             [weakSelf setSelectedAtIndex:index];
         }];
-        
         [_segmentedControl setSelectedSegmentIndex:self.selectIndex];
     }
     return _segmentedControl;

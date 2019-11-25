@@ -6,12 +6,12 @@
 //  Copyright © 2019 ZHWenXue. All rights reserved.
 //
 
-#import "TPBaseNavigationBarViewController.h"
+#import "TPBaseNavigationBarController.h"
 
 static NSInteger TPSPECIAL_TOPBAR_TAG = 1313; //子控制器的顶部topbar不是tp_NavigationBar的话设置的tag，用来错误视图覆盖的时候寻找置顶
 
 
-@interface TPBaseViewController : TPBaseNavigationBarViewController
+@interface TPBaseViewController : TPBaseNavigationBarController
 
 {
     BOOL _isHideTabBarWhenPushed;

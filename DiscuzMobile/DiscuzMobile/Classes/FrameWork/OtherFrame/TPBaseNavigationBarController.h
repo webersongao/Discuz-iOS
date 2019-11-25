@@ -1,5 +1,5 @@
 //
-//  TPBaseNavigationBarViewController.h
+//  TPBaseNavigationBarController.h
 //  PandaReader
 //
 //  Created by WebersonGao on 2019/4/4.
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, TPNavigationItemType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TPBaseNavigationBarViewController : UIViewController
+@interface TPBaseNavigationBarController : UIViewController
 
 /** 控制共用的NavigationBar 可直接Hidden隐藏 */
 @property(nonatomic,strong) DZNavigationBar *tp_NavigationBar;

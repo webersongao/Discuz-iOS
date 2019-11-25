@@ -11,6 +11,13 @@
 typedef void(^SendValueBlock)(NSDictionary *dic);
 typedef void(^EndRefreshBlock)(void);
 
+typedef enum : NSUInteger {
+    DZ_ListAll = 0, // 全部
+    DZ_ListNew, // 最新
+    DZ_ListHot, // 热门
+    DZ_ListBest, // 精华
+} DZ_ListType;
+
 @interface DZForumListController : DZForumListBaseCtrl
 
 @property (nonatomic, copy) NSString *fid;
@@ -21,4 +28,10 @@ typedef void(^EndRefreshBlock)(void);
 
 - (void)refreshData;
 
+- (instancetype)initWithType:(DZ_ListType)listType;
+
+
 @end
+
+
+

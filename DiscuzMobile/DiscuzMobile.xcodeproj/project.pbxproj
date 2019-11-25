@@ -316,7 +316,7 @@
 		70DFD7A7237A95DE00A13F0F /* DZAttachModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD78B237A95DD00A13F0F /* DZAttachModel.m */; };
 		70DFD7A8237A95DE00A13F0F /* DZBaseVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD78C237A95DD00A13F0F /* DZBaseVarModel.m */; };
 		70DFD7AA237A95DE00A13F0F /* DZNoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD792237A95DD00A13F0F /* DZNoticeModel.m */; };
-		70DFD7AB237A95DE00A13F0F /* TPBaseNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD794237A95DE00A13F0F /* TPBaseNavigationBarViewController.m */; };
+		70DFD7AB237A95DE00A13F0F /* TPBaseNavigationBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD794237A95DE00A13F0F /* TPBaseNavigationBarController.m */; };
 		70DFD7AC237A95DE00A13F0F /* TPBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD795237A95DE00A13F0F /* TPBaseNavigationController.m */; };
 		70DFD7AD237A95DE00A13F0F /* TPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD798237A95DE00A13F0F /* TPBaseViewController.m */; };
 		70DFD7B0237A967700A13F0F /* DZRootTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DFD7AF237A967600A13F0F /* DZRootTabBar.m */; };
@@ -1053,10 +1053,10 @@
 		70DFD78F237A95DD00A13F0F /* DZBaseVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseVarModel.h; sourceTree = "<group>"; };
 		70DFD790237A95DD00A13F0F /* DZAttachModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZAttachModel.h; sourceTree = "<group>"; };
 		70DFD792237A95DD00A13F0F /* DZNoticeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNoticeModel.m; sourceTree = "<group>"; };
-		70DFD794237A95DE00A13F0F /* TPBaseNavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseNavigationBarViewController.m; sourceTree = "<group>"; };
+		70DFD794237A95DE00A13F0F /* TPBaseNavigationBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseNavigationBarController.m; sourceTree = "<group>"; };
 		70DFD795237A95DE00A13F0F /* TPBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseNavigationController.m; sourceTree = "<group>"; };
 		70DFD796237A95DE00A13F0F /* TPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseViewController.h; sourceTree = "<group>"; };
-		70DFD797237A95DE00A13F0F /* TPBaseNavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseNavigationBarViewController.h; sourceTree = "<group>"; };
+		70DFD797237A95DE00A13F0F /* TPBaseNavigationBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseNavigationBarController.h; sourceTree = "<group>"; };
 		70DFD798237A95DE00A13F0F /* TPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseViewController.m; sourceTree = "<group>"; };
 		70DFD799237A95DE00A13F0F /* TPBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseNavigationController.h; sourceTree = "<group>"; };
 		70DFD7AE237A967600A13F0F /* DZRootTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRootTabBar.h; sourceTree = "<group>"; };
@@ -2902,8 +2902,8 @@
 				70DFD798237A95DE00A13F0F /* TPBaseViewController.m */,
 				70DFD799237A95DE00A13F0F /* TPBaseNavigationController.h */,
 				70DFD795237A95DE00A13F0F /* TPBaseNavigationController.m */,
-				70DFD797237A95DE00A13F0F /* TPBaseNavigationBarViewController.h */,
-				70DFD794237A95DE00A13F0F /* TPBaseNavigationBarViewController.m */,
+				70DFD797237A95DE00A13F0F /* TPBaseNavigationBarController.h */,
+				70DFD794237A95DE00A13F0F /* TPBaseNavigationBarController.m */,
 			);
 			path = OtherFrame;
 			sourceTree = "<group>";
@@ -4145,7 +4145,7 @@
 				70F9F8D8237AA72B0067B308 /* PaletteSwatch.m in Sources */,
 				7062129D237936C900130B9D /* DZActiveTimeCell.m in Sources */,
 				94B1067422F1678700D40827 /* DZUpdateAlertView.m in Sources */,
-				70DFD7AB237A95DE00A13F0F /* TPBaseNavigationBarViewController.m in Sources */,
+				70DFD7AB237A95DE00A13F0F /* TPBaseNavigationBarController.m in Sources */,
 				7065AE7823868783009B6DA7 /* PRNetWorkErrorView.m in Sources */,
 				7062129B237936C900130B9D /* DZActiveDetailCell.m in Sources */,
 				70FBDCEC2383FC1B00FC296E /* CenterManageModel.m in Sources */,
