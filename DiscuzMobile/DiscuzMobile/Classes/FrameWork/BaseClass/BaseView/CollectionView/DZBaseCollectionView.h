@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DZLayoutTool.h"
 
 typedef NS_ENUM(NSInteger, DZRefreshState) {
     DZRefreshStateNone = 1,
@@ -18,9 +19,6 @@ typedef NS_ENUM(NSInteger, DZRefreshState) {
 @interface DZBaseCollectionView : UICollectionView
 
 @property(nonatomic,strong,readonly) NSArray *dataArray;
-@property (nonatomic, strong) UICollectionViewFlowLayout *gridLayout;
-@property (nonatomic, strong) UICollectionViewFlowLayout *listLayout;
-
 @property(nonatomic,copy) backNoneBlock refreshAction;
 @property(nonatomic,copy) backNoneBlock loadMoreAction;
 

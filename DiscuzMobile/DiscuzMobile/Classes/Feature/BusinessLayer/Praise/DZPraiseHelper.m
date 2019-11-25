@@ -8,7 +8,7 @@
 
 #import "DZPraiseHelper.h"
 #import "DZLoginModule.h"
-#import "ThreadListModel.h"
+#import "DZThreadListModel.h"
 
 @implementation DZPraiseHelper
 

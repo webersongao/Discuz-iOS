@@ -14,15 +14,8 @@
 {
     self = [super init];
     if (self) {
-        self.backgroundColor = KRandom_Color;
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-    self = [super initWithFrame:frame style:style];
-    if (self) {
         [self loadSetting];
+        self.backgroundColor = KRandom_Color;
     }
     return self;
 }

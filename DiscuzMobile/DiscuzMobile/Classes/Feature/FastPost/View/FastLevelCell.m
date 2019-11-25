@@ -19,7 +19,6 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
         [self p_setupView];
         //        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -76,7 +75,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZTreeViewNode *)node {
+- (void)updateLevelCell:(DZTreeViewNode *)node {
     DZForumModel *infoModel = node.infoModel;
     
     if ([DataCheck isValidString:infoModel.title]) {

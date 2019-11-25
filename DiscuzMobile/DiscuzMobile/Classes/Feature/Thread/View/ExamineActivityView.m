@@ -10,6 +10,7 @@
 #import "ActivityApplyDetailCell.h"
 #import "ActivityApplyReplyCell.h"
 #import "ApplyInfoListModel.h"
+#import "DZBaseTableView.h"
 
 @interface ExamineActivityView() <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
@@ -45,7 +46,7 @@
     self.contentView.frame = CGRectMake(30, maxNavMaxY + 10, KScreenWidth - 60, allHeight + 90 + 20);
     self.closeBtn.frame = CGRectMake(CGRectGetWidth(self.contentView.frame) - close_width - 16, 16, close_width, close_width);
     
-    self.listTableView = [[UITableView alloc] initWithFrame:CGRectMake(8, close_width + 20, CGRectGetWidth(self.contentView.frame) - 20, allHeight) style:UITableViewStylePlain];
+    self.listTableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(8, close_width + 20, CGRectGetWidth(self.contentView.frame) - 20, allHeight) style:UITableViewStylePlain];
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
     self.listTableView.tableFooterView = [UIView new];
@@ -219,12 +220,6 @@
     [self endEditing:true];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+
 
 @end

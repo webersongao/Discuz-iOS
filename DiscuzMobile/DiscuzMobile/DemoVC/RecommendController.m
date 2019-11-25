@@ -156,7 +156,7 @@
         
     }
     
-    ThreadListModel *model = [self.dataSourceArr objectAtIndex:indexPath.row];
+    DZThreadListModel *model = [self.dataSourceArr objectAtIndex:indexPath.row];
     cell.info = model;
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
@@ -168,7 +168,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ThreadListModel *model = self.dataSourceArr[indexPath.row];
+    DZThreadListModel *model = self.dataSourceArr[indexPath.row];
     [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
 }
 

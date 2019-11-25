@@ -9,7 +9,7 @@
 #import "DZMobileCtrl+Navi.h"
 #import "DZOtherUserController.h"
 #import "DZForumThreadController.h"
-#import "LianMixAllViewController.h"
+#import "DZForumThreadMixCtrl.h"
 #import "DZBaseUrlController.h"
 #import "DZLoginController.h"
 #import "DZSearchController.h"
@@ -49,7 +49,7 @@
 }
 /// 论坛版块帖子列表
 - (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block{
-    LianMixAllViewController *lianMixVc = [[LianMixAllViewController alloc] init];
+    DZForumThreadMixCtrl *lianMixVc = [[DZForumThreadMixCtrl alloc] init];
     lianMixVc.forumFid = fid;
     lianMixVc.cForumBlock = block;
     [self.mainNavi pushViewController:lianMixVc animated:YES];

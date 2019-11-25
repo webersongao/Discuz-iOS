@@ -14,7 +14,7 @@
 
 -(void)Global_loadForumGlobalInfofromServer{
     
-    [DZGlobalTool requestGlobalForumCategoryData:^(DZForumIndexModel *indexModel) {
+    [DZGlobalTool requestGlobalForumCategoryData:^(DZDiscoverModel *indexModel) {
         
         [DZMobileCtrl sharedCtrl].forumInfo = indexModel;
         

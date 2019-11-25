@@ -64,7 +64,7 @@
     
 }
 
-- (void)setInfo:(ThreadListModel *)info {
+- (void)setInfo:(DZThreadListModel *)info {
     
     _info = info;
     

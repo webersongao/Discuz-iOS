@@ -13,7 +13,7 @@
 #import "DZHomeNetTool.h"
 #import "DZLoginModule.h"
 #import "HomeListCell.h"
-#import "ThreadListModel.h"
+#import "DZThreadListModel.h"
 #import "DZForumModel.h"
 #import "DZBaseUrlController.h"
 #import "SlideShowScrollView.h"
@@ -23,7 +23,7 @@
 @interface HomeManagerController ()
 
 @property (nonatomic, strong) NSMutableArray <DZForumModel *>*offenSource;
-@property (nonatomic, strong) NSMutableArray <ThreadListModel *>*hotSource;
+@property (nonatomic, strong) NSMutableArray <DZThreadListModel *>*hotSource;
 
 @end
 
@@ -185,7 +185,7 @@
             cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
         }
         
-        ThreadListModel *model = [self.hotSource objectAtIndex:indexPath.row];
+        DZThreadListModel *model = [self.hotSource objectAtIndex:indexPath.row];
         cell.info = model;
         return cell;
     }
@@ -197,7 +197,7 @@
         DZForumModel *infoModel = self.offenSource[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
     } else {
-        ThreadListModel *model = self.hotSource[indexPath.row];
+        DZThreadListModel *model = self.hotSource[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
     }
 }
@@ -210,7 +210,7 @@
     return _offenSource;
 }
 
-- (NSMutableArray <ThreadListModel *>*)hotSource {
+- (NSMutableArray <DZThreadListModel *>*)hotSource {
     if (!_hotSource) {
         _hotSource = [NSMutableArray array];
     }

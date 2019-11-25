@@ -7,10 +7,10 @@
 //
 
 #import "DZHomeThreadContentView.h"
-#import "DZHomeThreadContentCtrl.h"
+#import "DZHomeThreadContainerCtrl.h"
 
 @interface DZHomeThreadContentView ()<ThreadListContentDelegate>
-@property (nonatomic, strong) DZHomeThreadContentCtrl *contentVC;  //!< 属性注释
+@property (nonatomic, strong) DZHomeThreadContainerCtrl *contentVC;  //!< 属性注释
 @end
 
 @implementation DZHomeThreadContentView
@@ -48,9 +48,9 @@
 }
 
 
--(DZHomeThreadContentCtrl *)contentVC{
+-(DZHomeThreadContainerCtrl *)contentVC{
     if (_contentVC == nil) {
-        _contentVC = [[DZHomeThreadContentCtrl alloc] init];
+        _contentVC = [[DZHomeThreadContainerCtrl alloc] init];
         _contentVC.contentDelegate = self;
     }
     return _contentVC;

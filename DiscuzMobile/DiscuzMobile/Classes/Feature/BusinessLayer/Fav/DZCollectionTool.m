@@ -32,8 +32,7 @@
         } else if ([messageval isEqualToString:@"favorite_repeat"]) {
             [MBProgressHUD showInfo:messagestr];
             success();
-        }
-        else {
+        }else {
             [MBProgressHUD showInfo:messagestr];
         }
     } failed:^(NSError *error) {

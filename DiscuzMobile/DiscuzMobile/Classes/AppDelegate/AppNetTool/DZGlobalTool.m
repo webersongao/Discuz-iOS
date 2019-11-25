@@ -12,15 +12,15 @@
 @implementation DZGlobalTool
 
 
-+(void)requestGlobalForumCategoryData:(void(^)(DZForumIndexModel *indexModel))categoryBlock{
++(void)requestGlobalForumCategoryData:(void(^)(DZDiscoverModel *indexModel))categoryBlock{
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_Forumindex;
     } success:^(id responseObject, JTLoadType type) {
-        DZForumIndexModel *forumIndex = nil;
+        DZDiscoverModel *forumIndex = nil;
         if ([DataCheck isValidDictionary:responseObject]) {
             NSDictionary *varibles = [responseObject dictionaryForKey:@"Variables"];
-            forumIndex = [DZForumIndexModel modelWithJSON:varibles];
+            forumIndex = [DZDiscoverModel modelWithJSON:varibles];
         }
         if (categoryBlock) {
             categoryBlock(forumIndex);

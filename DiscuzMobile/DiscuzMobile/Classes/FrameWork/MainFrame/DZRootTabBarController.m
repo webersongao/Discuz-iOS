@@ -15,7 +15,7 @@
 #import "DZMessageListController.h"
 
 #import "DZHomeController.h"
-#import "DZForumIndexController.h"
+#import "DZDiscoverController.h"
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
@@ -135,7 +135,7 @@
 - (void)addChildViewControllers {
     DZHomeController *homeVC = [[DZHomeController alloc] init];
     
-    DZForumIndexController *for001 = [[DZForumIndexController alloc] init];
+    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
     DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
     
     //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];

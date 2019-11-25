@@ -10,16 +10,13 @@
 #import "DZTreeViewNode.h"
 #import "ForumLeftCell.h"
 #import "FastLevelCell.h"
-#import "LightGrayButton.h"
-#import "DZPostTypeSelectView.h"
 #import "PostTypeModel.h"
-
 #import "DZPostNormalViewController.h"
 #import "DZPostVoteViewController.h"
+#import "DZPostTypeSelectView.h"
 #import "DZPostDebateController.h"
-#import "DZPostActivityViewController.h"
-
 #import "UIImageView+FindHairline.h"
+#import "DZPostActivityViewController.h"
 
 @interface FastPostController ()
 
@@ -379,15 +376,14 @@
     if (tableView == self.leftTable) {
         DZTreeViewNode *node = self.dataArray[indexPath.row];
         textStr = node.nodeName;
-        
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
-        cell.titleLab.text = textStr;
+        [cell updateLabel:textStr];
         return cell;
     } else {
         NSArray *nodeArr = self.dataSourceArr[indexPath.section];
         DZTreeViewNode *node = nodeArr[indexPath.row];
         FastLevelCell *cell = [tableView dequeueReusableCellWithIdentifier:[FastLevelCell getReuseId]];
-        [cell setInfo:node];
+        [cell updateLevelCell:node];
         [cell.statusBtn addTarget:self action:@selector(clickLevel:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
@@ -520,18 +516,12 @@
 #pragma mark - setter getter
 - (UITableView *)leftTable {
     if (_leftTable == nil) {
-        _leftTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.22, self.view.frame.size.height) style:UITableViewStylePlain];
+        _leftTable = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.22, self.view.frame.size.height) style:UITableViewStylePlain];
         _leftTable.backgroundColor = K_Color_ForumGray;
         _leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _leftTable.delegate = self;
         _leftTable.dataSource = self;
         _leftTable.tableFooterView = [[UIView alloc] init];
-        if (@available(iOS 11.0, *)) {
-            _leftTable.estimatedRowHeight = 0;
-            _leftTable.estimatedSectionFooterHeight = 0;
-            _leftTable.estimatedSectionHeaderHeight = 0;
-            _leftTable.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
     }
     return _leftTable;
 }

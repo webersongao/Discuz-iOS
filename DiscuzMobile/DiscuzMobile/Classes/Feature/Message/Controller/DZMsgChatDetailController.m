@@ -46,7 +46,7 @@
  *  添加TableView
  */
 - (void)addChatView {
-    self.chatTableView = [[UITableView alloc] init];
+    self.chatTableView = [[DZBaseTableView alloc] init];
     self.chatTableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - kToolBarH);
     self.chatTableView.backgroundColor = [UIColor whiteColor];
     self.chatTableView.delegate = self;

@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
-#import "DZForumIndexModel.h"
+#import "DZDiscoverModel.h"
 
 @interface DZMobileCtrl : NSObject
 
@@ -18,7 +18,7 @@
 
 @property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;
 
-@property (nonatomic, strong) DZForumIndexModel *forumInfo;  //!< 论坛全局数据
+@property (nonatomic, strong) DZDiscoverModel *forumInfo;  //!< 论坛全局数据
 
 + (BOOL)IsEnableWifi;
 

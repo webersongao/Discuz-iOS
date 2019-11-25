@@ -6,9 +6,9 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ThreadListModel.h"
+#import "DZThreadListModel.h"
 
-@interface RecommendModel : ThreadListModel
+@interface RecommendModel : DZThreadListModel
 
 + (NSArray *)setRecommendData:(id)responseObject;
 

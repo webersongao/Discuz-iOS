@@ -6,10 +6,10 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseCollectionCell.h"
 #import "DZForumModel.h"
 
-@interface DZHomeCollectionCell : UICollectionViewCell
+@interface DZHomeCollectionCell : DZBaseCollectionCell
 
 @property (nonatomic, strong, readonly) DZForumModel *cellModel;  //!< <#属性注释#>
 

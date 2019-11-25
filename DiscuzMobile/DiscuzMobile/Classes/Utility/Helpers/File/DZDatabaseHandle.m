@@ -8,7 +8,7 @@
 
 #import "DZDatabaseHandle.h"
 #import "MyPerson.h"
-#import "ThreadListModel.h"
+#import "DZThreadListModel.h"
 
 #define FootThread @"footThread"
 
@@ -101,7 +101,7 @@ static FMDatabase *_db;
 /**
  * 存储足迹的帖子
  */
-- (void)footThread:(ThreadListModel *)thread {
+- (void)footThread:(DZThreadListModel *)thread {
     
     if ([self isFoot:thread.tid]) { // 如果数据库中有记录，移除旧的记录
         [self removeFootThreadWithtid:thread.tid];
@@ -111,7 +111,7 @@ static FMDatabase *_db;
 }
 
 // 存储帖子
-- (void)saveThread:(ThreadListModel *)thread {
+- (void)saveThread:(DZThreadListModel *)thread {
     NSData *data = [DZArchieverTool Archiever:thread forKey:FootThread];
     NSString *sqlStr = @"insert into t_foot (tid,uid,aData) values (?,?,?)";
     [_db executeUpdate:sqlStr,thread.tid,[Environment sharedEnvironment].member_uid,data];
@@ -121,7 +121,7 @@ static FMDatabase *_db;
 /**
  * 查询足迹的一个帖子
  */
-- (ThreadListModel *)searchFootThreadTid:(NSString *)tid {
+- (DZThreadListModel *)searchFootThreadTid:(NSString *)tid {
     
     NSString *uid = [Environment sharedEnvironment].member_uid;
     NSString *sqlStr;
@@ -135,7 +135,7 @@ static FMDatabase *_db;
         resultSet = [_db executeQuery:sqlStr,tid,uid];
     }
     
-    ThreadListModel *listModel = [[ThreadListModel alloc] init];
+    DZThreadListModel *listModel = [[DZThreadListModel alloc] init];
     
     while (resultSet.next) {
         
@@ -166,7 +166,7 @@ static FMDatabase *_db;
     
     while (resultSet.next) {
         NSData *data = [resultSet dataForColumn:@"aData"];
-        ThreadListModel *listModel = [DZArchieverTool UnArchiever:data forKey:FootThread];
+        DZThreadListModel *listModel = [DZArchieverTool UnArchiever:data forKey:FootThread];
         listModel.isRecently = YES;
         [dataArray addObject:listModel];
     }
@@ -202,7 +202,7 @@ static FMDatabase *_db;
     NSMutableArray *dataArray = [NSMutableArray array];
     while (resultSet.next) {
         NSData *data = [resultSet dataForColumn:@"aData"];
-        ThreadListModel *listModel = [DZArchieverTool UnArchiever:data forKey:FootThread];
+        DZThreadListModel *listModel = [DZArchieverTool UnArchiever:data forKey:FootThread];
         listModel.isRecently = YES;
         [dataArray addObject:listModel];
     }
@@ -233,7 +233,7 @@ static FMDatabase *_db;
  */
 - (BOOL)isFoot:(NSString *)tid {
     
-    ThreadListModel *model = [self searchFootThreadTid:tid];
+    DZThreadListModel *model = [self searchFootThreadTid:tid];
     
     if (model.tid == nil) {
         

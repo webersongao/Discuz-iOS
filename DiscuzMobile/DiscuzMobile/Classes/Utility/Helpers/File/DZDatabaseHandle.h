@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class MyPerson,ThreadListModel;
+@class MyPerson,DZThreadListModel;
 
 @interface DZDatabaseHandle : NSObject
 
@@ -32,12 +32,12 @@
 /**
  * 存储足迹的帖子
  */
-- (void)footThread:(ThreadListModel *)thread;
+- (void)footThread:(DZThreadListModel *)thread;
 
 /**
  * 查询足迹的一个帖子
  */
-- (ThreadListModel *)searchFootThreadTid:(NSString *)tid;
+- (DZThreadListModel *)searchFootThreadTid:(NSString *)tid;
 
 /**
  * 查询某用户所有足迹

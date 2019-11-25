@@ -19,6 +19,6 @@
 /**
  * 设置直接显示的cell数据
  */
-- (void)setInfo:(DZTreeViewNode *)node;
+- (void)updateLevelCell:(DZTreeViewNode *)node;
 
 @end

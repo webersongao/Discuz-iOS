@@ -7,7 +7,7 @@
 //
 
 #import "ThreadModel.h"
-#import "ThreadListModel.h"
+#import "DZThreadListModel.h"
 #import "DZLoginModule.h"
 
 @interface ThreadModel()
@@ -172,7 +172,7 @@
         }
     }
     /*
-     ThreadListModel *listModel = [[ThreadListModel alloc] init];
+     DZThreadListModel *listModel = [[DZThreadListModel alloc] init];
      [listModel setValuesForKeysWithDictionary:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
     if (self.currentPage == 1) {
         BACK(^{J

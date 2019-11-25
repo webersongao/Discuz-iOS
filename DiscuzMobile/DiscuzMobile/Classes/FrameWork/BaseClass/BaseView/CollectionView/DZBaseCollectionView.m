@@ -10,14 +10,6 @@
 #import "DZRefreshHeader.h"
 #import "DZRefreshFooter.h"
 
-#define  kLineSpacing       KWidthScale(20.f)   //    行间距 |
-#define  kItemSpacing       KWidthScale(10.f)  //    item之间的最小列间距  实际上是自动计算
-#define  kCellMargins       KWidthScale(15.f)  //    左右缩进
-#define  kRowNumber         3    //列数
-#define  kCellWidth         KWidthScale(105.f)  //    Cell宽度
-#define  kCellHeight        KWidthScale(150.f)  //    Cell高度 // kCellWidth + kCellTextSpace + kCellTextHeight
-
-
 @interface DZBaseCollectionView ()
 
 @end
@@ -26,7 +18,7 @@
 
 - (instancetype)initWithListFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame collectionViewLayout:self.listLayout];
+    self = [super initWithFrame:frame collectionViewLayout:[DZLayoutTool listLayout]];
     if (self) {
         [self layoutSubviewConfig];
         self.backgroundColor =[UIColor clearColor];
@@ -129,35 +121,6 @@
 
 #pragma mark   /********************* 初始化控件 *************************/
 
-// 列表 九宫格模式 布局
--(UICollectionViewFlowLayout *)gridLayout{
-    if (_gridLayout == nil) {
-        _gridLayout = [[UICollectionViewFlowLayout alloc] init];
-        _gridLayout.minimumLineSpacing = 10.f;
-        _gridLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        
-        _gridLayout.itemSize = CGSizeMake(kCellWidth, kCellHeight);
-        _gridLayout.minimumLineSpacing = kLineSpacing;
-        _gridLayout.minimumInteritemSpacing = kItemSpacing;
-        _gridLayout.sectionInset = UIEdgeInsetsMake(0,kCellMargins, kCellMargins, kCellMargins);
-    }
-    return _gridLayout;
-}
-
-// 列表 列表模式 布局
--(UICollectionViewFlowLayout *)listLayout{
-    if (_listLayout == nil) {
-        _listLayout = [[UICollectionViewFlowLayout alloc] init];
-        _listLayout.minimumLineSpacing = 10.f;
-        _listLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        
-        _listLayout.itemSize = CGSizeMake(KScreenWidth, kCellWidth);
-        _listLayout.minimumLineSpacing = 0;  // 行间距 (上下间隔)
-        _listLayout.minimumInteritemSpacing = 0;  // 列间距 (左右间隔)
-        _listLayout.sectionInset = UIEdgeInsetsMake(0,kCellMargins, kCellMargins, kCellMargins);
-    }
-    return _listLayout;
-}
 
 
 

@@ -7,10 +7,11 @@
 //
 
 #import "DZBaseViewController.h"
+#import "DZBaseTableView.h"
 
 @interface DZBaseTableViewController : DZBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) DZBaseTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
 @property (nonatomic, strong) NSMutableDictionary *cellHeightDict;
 
