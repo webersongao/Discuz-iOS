@@ -19,7 +19,6 @@
 		2729D8BA1F0E296F0019F9E4 /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729D8B91F0E296F0019F9E4 /* vs.png */; };
 		2732E7A71DDD623600B2A57D /* DZFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732E7A61DDD623600B2A57D /* DZFileManager.m */; };
 		2735821A1ECBEB0B005870FA /* 苹方 细体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 273582191ECBEB0B005870FA /* 苹方 细体.ttf */; };
-		27382C931EC5B6040071C3A1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		2738C84A1F03B0D30016CF05 /* SeccodeverifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738C8491F03B0D30016CF05 /* SeccodeverifyView.m */; };
 		273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CCEFE1DD98E7100116331 /* DataCheck.m */; };
 		273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F30251ECE8AB900C78A6C /* DZDatabaseHandle.m */; };
@@ -1374,7 +1373,6 @@
 				703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */,
 				27714EBA1DDC4AE3008CDC7A /* UIKit.framework in Frameworks */,
 				27714EB61DDC4AC9008CDC7A /* Foundation.framework in Frameworks */,
-				27382C931EC5B6040071C3A1 /* AVFoundation.framework in Frameworks */,
 				9458DC482192BF3200691A2C /* AudioToolbox.framework in Frameworks */,
 				940BB6F02079F7C7001BC1D1 /* MessageUI.framework in Frameworks */,
 				27714EDA1DDC4D93008CDC7A /* CoreGraphics.framework in Frameworks */,
