@@ -9,13 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const DZ_Url_BaseCheck;
-#pragma mark - 发现
-// 推荐 banner
-extern NSString * const FUCK_DZ_Url_RecommendBanner;
-// 推荐 列表
-extern NSString * const FUCK_DZ_Url_RecommendList;
-// 所有热帖
-extern NSString * const FUCK_DZ_Url_HotAll;
+#pragma mark - 首页
 
 // 精华
 extern NSString * const DZ_Url_DigestAll;

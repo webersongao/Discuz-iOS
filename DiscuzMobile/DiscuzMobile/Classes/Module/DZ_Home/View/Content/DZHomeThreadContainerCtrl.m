@@ -84,7 +84,7 @@
 }
 
 - (void)rightBarBtnClick {
-    [[DZMobileCtrl sharedCtrl]PushToSearchController];
+    [[DZMobileCtrl sharedCtrl] PushToSearchController];
 }
 
 - (NSMutableArray *)controllerArr {

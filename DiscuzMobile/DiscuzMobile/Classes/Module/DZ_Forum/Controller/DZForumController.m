@@ -1,19 +1,19 @@
 //
-//  DZForumManagerController.m
+//  DZForumController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/4.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumManagerController.h"
+#import "DZForumController.h"
 #import "DZForumCollectionController.h"
 #import "DZForumIndexListController.h"
 #import "DZContainerController.h"
 
 static NSString *isFourmList = @"isFourmList";
 
-@interface DZForumManagerController()
+@interface DZForumController()
 
 @property (nonatomic, strong) NSMutableArray *controllerArr;
 @property (nonatomic, strong) DZContainerController *containVc;
@@ -23,7 +23,7 @@ static NSString *isFourmList = @"isFourmList";
 
 @end
 
-@implementation DZForumManagerController
+@implementation DZForumController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

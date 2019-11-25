@@ -1,14 +1,14 @@
 //
-//  HomeIconTextView.m
+//  BaseIconTextView.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "HomeIconTextView.h"
+#import "BaseIconTextView.h"
 
-@implementation HomeIconTextView
+@implementation BaseIconTextView
 
 //- (instancetype)initWithFrame:(CGRect)frame
 //{

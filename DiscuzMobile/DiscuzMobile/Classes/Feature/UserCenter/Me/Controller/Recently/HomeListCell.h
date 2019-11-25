@@ -8,7 +8,7 @@
 
 #import "DZBaseTableViewCell.h"
 #import "DZThreadListModel.h"
-#import "HomeIconTextView.h"
+#import "BaseIconTextView.h"
 
 @interface HomeListCell : DZBaseTableViewCell
 
@@ -22,9 +22,9 @@
 @property (nonatomic, strong) UILabel *datelineLab; // 时间
 @property (nonatomic, assign) BOOL hasPic;
 
-@property (nonatomic, strong) HomeIconTextView *viewsLab;   // 浏览数
-@property (nonatomic, strong) HomeIconTextView *repliesLab; // 回复数
-@property (nonatomic, strong) HomeIconTextView *priceLab;   // 点赞数
+@property (nonatomic, strong) BaseIconTextView *viewsLab;   // 浏览数
+@property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数
+@property (nonatomic, strong) BaseIconTextView *priceLab;   // 点赞数
 
 @property (nonatomic, strong) DZThreadListModel *info;
 

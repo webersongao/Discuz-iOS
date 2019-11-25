@@ -10,14 +10,7 @@
 
 NSString * const DZ_Url_BaseCheck =  @"?version=5&module=check";
 
-#pragma mark - 发现
-// 推荐 banner
-NSString * const FUCK_DZ_Url_RecommendBanner = @"?module=iwechat&data=json&version=5";
-// 推荐 列表
-NSString * const FUCK_DZ_Url_RecommendList = @"?module=recommon_thread&version=5&mapifrom=ios";
-// 所有热帖
-NSString * const FUCK_DZ_Url_HotAll = @"?module=digestthread&version=5";
-
+#pragma mark - 首页
 // 精华
 NSString * const DZ_Url_DigestAll = @"?module=forumguide&view=digest&version=5";
 // 最新

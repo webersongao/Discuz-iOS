@@ -13,6 +13,7 @@
 #import "DZBaseUrlController.h"
 #import "DZLoginController.h"
 #import "DZSearchController.h"
+#import "DZForumController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -55,6 +56,13 @@
     [self.mainNavi pushViewController:lianMixVc animated:YES];
 }
 
+
+// 跳转 总版块 列表
+-(void)PushToAllForumViewController{
+    DZForumController *forumVC = [[DZForumController alloc] init];
+    [self.mainNavi pushViewController:forumVC animated:YES];
+}
+
 - (void)PushToWebViewController:(NSString *)link {
     DZBaseUrlController *urlCtrl = [[DZBaseUrlController alloc] init];
     urlCtrl.hidesBottomBarWhenPushed = YES;
@@ -69,7 +77,7 @@
 }
 
 - (void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select{
-
+    
     DZLoginController *loginVC = [[DZLoginController alloc] init];
     loginVC.isKeepTabbarSelected = select;
     

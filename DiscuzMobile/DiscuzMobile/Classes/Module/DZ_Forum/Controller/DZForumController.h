@@ -1,5 +1,5 @@
 //
-//  DZForumManagerController.h
+//  DZForumController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/4.
@@ -8,6 +8,6 @@
 
 #import "DZBaseViewController.h"
 
-@interface DZForumManagerController : DZBaseViewController
+@interface DZForumController : DZBaseViewController
 
 @end

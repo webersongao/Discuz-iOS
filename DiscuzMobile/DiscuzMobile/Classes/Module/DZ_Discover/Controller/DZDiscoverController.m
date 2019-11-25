@@ -34,7 +34,7 @@
     [self.view addSubview:self.ScrollBar];
     [self.view addSubview:self.scrollView];
     self.listViewArray = [NSMutableArray array];
-    [self configNaviBar:@"bar_message" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"版块" type:NaviItemText Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
@@ -71,13 +71,11 @@
 #pragma mark   /********************* 响应事件 *************************/
 
 - (void)leftBarBtnClick {
-    if (![self isLogin]) {
-        return;
-    }
+    [[DZMobileCtrl sharedCtrl] PushToAllForumViewController];
 }
 
 - (void)rightBarBtnClick {
-    [[DZMobileCtrl sharedCtrl]PushToSearchController];
+    [[DZMobileCtrl sharedCtrl] PushToSearchController];
 }
 
 

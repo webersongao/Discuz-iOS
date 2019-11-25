@@ -62,7 +62,7 @@
 }
 
 - (void)rightBarBtnClick {
-    [[DZMobileCtrl sharedCtrl]PushToSearchController];
+    [[DZMobileCtrl sharedCtrl] PushToSearchController];
 }
 
  /********************* 初始化 *************************/

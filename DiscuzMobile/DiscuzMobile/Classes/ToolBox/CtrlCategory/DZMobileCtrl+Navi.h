@@ -22,6 +22,10 @@
 - (void)PushToForumListController:(NSString *)fid;
 - (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block;
 
+// 跳转 总版块 列表
+-(void)PushToAllForumViewController;
+
+
 - (void)PushToWebViewController:(NSString *)link;
 - (void)PresentLoginController:(UIViewController *)selfVC;
 

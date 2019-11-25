@@ -8,14 +8,16 @@
 
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
-#import "DZForumManagerController.h"
 #import "DZUserManagerController.h"
 #import "DZFastPlaceController.h"
 #import "DZMobileCtrl.h"
 #import "DZMessageListController.h"
 
+#import "DZUserController.h"
 #import "DZHomeController.h"
+#import "DZForumController.h"
 #import "DZDiscoverController.h"
+
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
@@ -136,7 +138,7 @@
     DZHomeController *homeVC = [[DZHomeController alloc] init];
     
     DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
-    DZForumManagerController *forumVC = [[DZForumManagerController alloc] init];
+    DZForumController *forumVC = [[DZForumController alloc] init];
     
     //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
