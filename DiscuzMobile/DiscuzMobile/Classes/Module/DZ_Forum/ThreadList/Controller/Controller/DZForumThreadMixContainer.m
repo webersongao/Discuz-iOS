@@ -19,9 +19,7 @@
 @implementation DZForumThreadMixContainer
 
 - (void)setParentControl:(UIViewController *)parentController {
-    
     self.parentController = parentController;
-    
     DZForumThreadMixCtrl *bdVC = (DZForumThreadMixCtrl *)self.parentController;
     self.collectonView.bounces = NO;
     [bdVC addChildViewController:self];
@@ -91,4 +89,12 @@
     self.collectonView.contentOffset = CGPointMake(offsetX, 0);
 }
 
+
+
+
 @end
+
+
+
+
+

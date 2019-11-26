@@ -1,15 +1,15 @@
 //
-//  TopMlCell.m
+//  DZThreadTopCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/25.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "TopMlCell.h"
+#import "DZThreadTopCell.h"
 #import "DZThreadListModel.h"
 
-@implementation TopMlCell
+@implementation DZThreadTopCell
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -20,7 +20,7 @@
 }
 
 - (void)commitInit {
-    self.titleLabel = [[TopLabel alloc] init];
+    self.titleLabel = [[DZTopTitleLabel alloc] init];
     self.titleLabel.font = [DZFontSize HomecellTitleFontSize15];
     self.titleLabel.textColor = K_Color_MainTitle;
     
@@ -34,10 +34,9 @@
     }];
 }
 
-- (void)setDataWithModel:(DZThreadListModel *)model {
+- (void)updateTopCellWithModel:(DZThreadListModel *)model {
     
     if (model.subject != nil) {
-
         [self.titleLabel setText:model.subject andImageName:@"置顶" andSize:CGSizeMake(34 ,17) andPosition:P_before];
 //        self.titleLabel.text = [NSString stringWithFormat:@"#[09_09]%@",model.subject];
     } else {

@@ -1,0 +1,210 @@
+//
+//  DZBaseNaviBarController.m
+//  PandaReader
+//
+//  Created by WebersonGao on 2019/4/4.
+//  Copyright © 2019 ZHWenXue. All rights reserved.
+//
+
+#import "DZBaseNaviBarController.h"
+#import "DZNavItemButton.h"
+
+#import "UIBarButtonItem+DZBarButtonItem.h"
+
+@interface DZBaseNaviBarController ()
+
+
+@end
+
+@implementation DZBaseNaviBarController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self p_SetNavigationBar];
+}
+
+- (DZNavigationBar *)dz_NavigationBar{
+    
+    if (!_dz_NavigationBar) {
+        _dz_NavigationBar = [[DZNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
+    }
+    return _dz_NavigationBar;
+}
+
+- (UINavigationItem *)dz_NavigationItem{
+    if (!_dz_NavigationItem) {
+        _dz_NavigationItem = [[UINavigationItem alloc] init];
+    }
+    return _dz_NavigationItem;
+}
+
+//重写系统设置title的setter
+- (void)setTitle:(NSString *)title {
+    //正常创建控制器是先执行[alloc init] 后执行这句 在执行时在给予赋值
+    if (!_dz_normalTitle) {
+        self.dz_NavigationItem.title = title;
+    } else {
+        [super setTitle:title];
+    }
+}
+
+#pragma mark -设置导航栏
+- (void)p_SetNavigationBar {
+    
+    [self.view addSubview:self.dz_NavigationBar];
+
+    //将导航条目 添加到导航条
+    self.dz_NavigationBar.items = @[self.dz_NavigationItem];
+    
+    //导航条的渲染颜色
+    self.dz_NavigationBar.barTintColor = [UIColor color16WithHexString:@"#FFFFFF" alpha:1];
+    
+    UIFont *font = KExtraBoldFont(17.0f);
+    UIColor *color = [UIColor color16WithHexString:@"#2D3035" alpha:1];
+    //设置 bar 的标题字体颜色
+    self.dz_NavigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : color, NSFontAttributeName : font};
+    
+}
+
+-(void)setDz_HideNaviBar:(BOOL)dz_HideNaviBar {
+    _dz_HideNaviBar = dz_HideNaviBar;
+    self.dz_NavigationBar.hidden = dz_HideNaviBar;
+}
+
+- (void)dz_HiddenNavigationBarAndShowBackBtn:(BOOL)isShow {
+    
+    self.dz_NavigationBar.hidden = YES;
+    
+    if (isShow) {
+        //创建btn
+        DZNavItemButton *backBtn = [[DZNavItemButton alloc] initWithFrame:CGRectMake(8, KStatusBarHeight, 44, 44)];
+        backBtn.isLeft = YES;
+        [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateHighlighted];
+        [backBtn addTarget:self action:@selector(p_ClickBackBtn) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:backBtn];
+    }
+}
+
+- (void)p_ClickBackBtn {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)setdz_NavigationAlpha:(CGFloat)dz_NavigationAlpha {
+    
+    _dz_NavigationAlpha = dz_NavigationAlpha;
+    self.dz_NavigationBar.alpha = dz_NavigationAlpha;
+}
+
+- (void)setdz_BarTintColor:(UIColor *)dz_BarTintColor {
+    
+    _dz_BarTintColor = dz_BarTintColor;
+    self.dz_NavigationBar.barTintColor = dz_BarTintColor;
+}
+
+- (void)setdz_BarTitleTextColor:(UIColor *)dz_BarTitleTextColor {
+    
+    _dz_BarTitleTextColor = dz_BarTitleTextColor;
+    self.dz_NavigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : dz_BarTitleTextColor};
+}
+
+- (void)setdz_BarTitleFont:(UIFont *)dz_BarTitleFont {
+    
+    _dz_BarTitleFont = dz_BarTitleFont;
+    self.dz_NavigationBar.titleTextAttributes = @{NSFontAttributeName : dz_BarTitleFont};
+}
+
+- (void)dz_SetNavigationBackItemWithTarget:(id)target action:(SEL)action {
+    
+    [self dz_SetNavigationItemWithInfoString:@"reader_naviBack" Type:DZNaviItemType_Image Layout:YES FixSpace:YES target:target action:action];
+}
+
+- (void)dz_SetNavigationRightTextItemWithInfoString:(NSString *)infoStr target:(id)target action:(SEL)action {
+    
+    [self dz_SetNavigationItemWithInfoString:infoStr Type:DZNaviItemType_Text Layout:NO FixSpace:YES target:target action:action];
+}
+
+- (void)dz_SetNavigationItemWithInfoString:(NSString *)infoStr Type:(DZNaviItemType)type Layout:(BOOL)isLeft FixSpace:(BOOL)isFix target:(id)target action:(SEL)action {
+    
+    UIBarButtonItem *item;
+    NSMutableArray *currentItems = [NSMutableArray arrayWithArray:isLeft ? self.dz_NavigationItem.leftBarButtonItems : self.dz_NavigationItem.rightBarButtonItems];
+    
+    if (type == DZNaviItemType_Text) {
+        item = [[UIBarButtonItem alloc] initWithItemTitle:infoStr Layout:isLeft target:target action:action];
+    }
+    
+    if (type == DZNaviItemType_Image) {
+        item = [[UIBarButtonItem alloc] initWithItemImageName:infoStr Layout:isLeft target:target action:action];
+    }
+    
+    if (isFix && !currentItems.count) {
+        //为了缩进
+        UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        spaceItem.width = -5;
+        [currentItems addObject:spaceItem];
+    }
+    
+    if (!isLeft) {
+        [currentItems insertObject:item atIndex:0];
+    }else {
+        [currentItems addObject:item];
+    }
+    [self dz_SetItems:[currentItems copy] Layout:isLeft];
+}
+
+- (void)p_SetItem:(UIBarButtonItem *)item Layout:(BOOL)isLeft {
+    
+    if (isLeft) {
+        self.dz_NavigationItem.leftBarButtonItem = item;
+    }else {
+        self.dz_NavigationItem.rightBarButtonItem = item;
+    }
+}
+
+- (void)dz_SetItems:(NSArray *)items Layout:(BOOL)isLeft {
+    
+    if (isLeft) {
+        self.dz_NavigationItem.leftBarButtonItems = items;
+    }else {
+        self.dz_NavigationItem.rightBarButtonItems = items;
+    }
+}
+
+- (void)dz_SetNavigationTitleView:(UIView *)titleView
+{
+    self.dz_NavigationItem.titleView = titleView;
+}
+
+- (void)dz_CancelScrollViewInsetWithTableView:(UITableView *)tableview {
+    
+    if (@available(iOS 11.0, *)) {
+        tableview.contentInsetAdjustmentBehavior =UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
+}
+
+- (void)dz_AddSubView:(UIView *)view belowNavigationBar:(BOOL)isBelow {
+    
+    if (isBelow) {
+        [self.view insertSubview:view belowSubview:self.dz_NavigationBar];
+    }else {
+        [self.view insertSubview:view aboveSubview:self.dz_NavigationBar];
+    }
+}
+
+- (void)leftBarBtnClick {
+    
+}
+
+
+
+@end
+
+
+
+
+

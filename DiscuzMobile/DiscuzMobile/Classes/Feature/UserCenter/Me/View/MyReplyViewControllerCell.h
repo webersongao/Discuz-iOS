@@ -14,4 +14,6 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 
 -(void)setData:(NSDictionary*)dic;
+
+
 @end

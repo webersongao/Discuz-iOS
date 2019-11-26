@@ -1,5 +1,5 @@
 //
-//  TopLabel.h
+//  DZTopTitleLabel.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/8.
@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, AttchPosition) {
     P_after
 };
 
-@interface TopLabel : UILabel
+@interface DZTopTitleLabel : UILabel
 
 - (void)setText:(NSString *)text andImageName:(NSString *)imageName andSize:(CGSize)size andPosition:(AttchPosition)position;
 

@@ -23,3 +23,6 @@
 - (void)setInfo:(DZForumModel *)node;
 
 @end
+
+
+

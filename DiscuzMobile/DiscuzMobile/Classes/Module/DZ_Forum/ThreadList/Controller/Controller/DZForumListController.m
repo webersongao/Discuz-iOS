@@ -10,15 +10,13 @@
 #import "DZForumThreadController.h"
 #import "MySubjectViewController.h"
 #import "UIAlertController+Extension.h"
-
 #import "DZThreadListModel.h"
 #import "DZThreadListModel+Display.h"
 #import "DZShareCenter.h"
 #import "ResponseMessage.h"
 #import "AsyncAppendency.h"
-
 #import "ThreadListCell.h"
-#import "TopMlCell.h"
+#import "DZThreadTopCell.h"
 #import "VerifyThreadRemindView.h"
 
 
@@ -64,7 +62,7 @@
 
 - (void)showVerifyRemind {
     self.tableView.tableHeaderView = self.verifyThreadRemindView;
-//    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
+    //    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
 }
 
 - (void)hidVerifyRemind {
@@ -122,7 +120,6 @@
         [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
         [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
     }
-    
 }
 
 
@@ -132,19 +129,17 @@
     
     NSMutableArray *dic = @{@"fid":[NSString stringWithFormat:@"%@",_fid],
                             @"page":[NSString stringWithFormat:@"%ld",(long)page],
-                            }.mutableCopy;
-    if (self.listType == DZ_ListNew) {
-//        [dic setValue:@"lastpost" forKey:@"filter"];
-//        [dic setValue:@"lastpost" forKey:@"orderby"];
+    }.mutableCopy;
+    if (self.listType == DZ_ListAll) {
+        DLog(@"如果你看到这段代码，请告诉她。。。。。。。。特么的出bug啦");
+    }else if (self.listType == DZ_ListNew) {
+        //        [dic setValue:@"lastpost" forKey:@"filter"];
+        //        [dic setValue:@"lastpost" forKey:@"orderby"];
         [dic setValue:@"author" forKey:@"filter"];
         [dic setValue:@"dateline" forKey:@"orderby"];
-
     } else if (self.listType == DZ_ListHot) {
         [dic setValue:@"heat" forKey:@"filter"];
         [dic setValue:@"heats" forKey:@"orderby"];
-    } else if ([self.title isEqualToString:@"热帖"]) {
-        [dic setValue:@"hot" forKey:@"filter"];
-        DLog(@"如果你看到这段代码，请告诉她。。。。。。。。特么的出bug啦");
     } else if (self.listType == DZ_ListBest) {
         [dic setValue:@"digest" forKey:@"filter"];
         [dic setValue:@"1" forKey:@"digest"];
@@ -317,7 +312,7 @@
             if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
                 return 5;
             }
-            return [(TopMlCell *)cell cellHeight];
+            return [(DZThreadTopCell *)cell cellHeight];
         } else {
             return [(BaseStyleCell *)cell cellHeight];
         }
@@ -360,28 +355,28 @@
     if (self.topThreadArray.count > 0) {
         if (indexPath.section == 0) {
             static NSString * CellId = @"ForumTopThreadCellId";
-            TopMlCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+            DZThreadTopCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
             if (cell == nil) {
-                cell = [[TopMlCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+                cell = [[DZThreadTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
             }
             if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
-                [cell setDataWithModel:nil];
+                [cell updateTopCellWithModel:nil];
             } else {
                 DZThreadListModel *listModel = self.topThreadArray[indexPath.row - 1];
-                [cell setDataWithModel:listModel];
+                [cell updateTopCellWithModel:listModel];
             }
             return cell;
         } else {
             DZThreadListModel *listModel = self.commonThreadArray[indexPath.row];
-            return [self listCell:listModel];
+            return [self configListCell:listModel];
         }
     } else {
         DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-         return [self listCell:listModel];
+        return [self configListCell:listModel];
     }
 }
 
-- (ThreadListCell *)listCell:(DZThreadListModel *)listModel {
+- (ThreadListCell *)configListCell:(DZThreadListModel *)listModel {
     static NSString * CellId = @"ThreadListId";
     ThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
     if (cell == nil) {

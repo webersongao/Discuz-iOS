@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UITableViewCell (GetReuseID)
+
 + (NSString *)getReuseId;
+
 @end
+
+

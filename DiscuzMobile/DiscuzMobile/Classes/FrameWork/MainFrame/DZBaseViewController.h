@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DZBaseNaviBarController.h"
 #import "DZLoginModule.h"
 #import "EmptyAlertView.h"
 
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
     NaviItemText,
 };
 
-@interface DZBaseViewController : UIViewController
+@interface DZBaseViewController : DZBaseNaviBarController
 
 @property (nonatomic, assign) CGFloat navbarMaxY;
 @property (nonatomic, assign) CGFloat tabbarHeight;
@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) EmptyAlertView *emptyView;
 
+@property (nonatomic, assign) BOOL hideTabBarWhenPushed;  //!< push该控制器时是否隐藏TabBar
 
 /**
  * 创建左右 导航按钮
@@ -62,9 +63,26 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
  */
 -(void)rightBarBtnClick;
 
+
+#pragma mark - Hook
 /**
- 导航栏左按钮点击事件
+ 子控制器决定，是否根据 - (BOOL)systemNavBarHidden自动设置导航栏的隐藏属性
  */
--(void)leftBarBtnClick;
+- (BOOL)autoSettingSystemNavBarHidden;
+
+/**
+ 子控制器决定，是否隐藏系统导航条
+ */
+- (BOOL)systemNavBarHidden;
+
+/**
+ 是否开启左滑返回手势
+ 
+ 在TPBaseNavigationController启用该手势时才有效
+ */
+- (BOOL)popGestureEnabled;
+
+
+
 
 @end

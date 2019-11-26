@@ -18,8 +18,18 @@
 
 @implementation DZBaseViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.hideTabBarWhenPushed = YES;
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self updateSystemNavBarHiddenWhenViewWillAppear];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
@@ -29,26 +39,31 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:K_Color_NaviTitle,NSForegroundColorAttributeName,[DZFontSize NavTitleFontSize18],NSFontAttributeName, nil];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transToLogin) name:DZ_UserLogin_Notify object:nil];
-    // 监听UIWindow隐藏 播放视频的时候，状态栏会自动消失，处理后让状态栏重新出现
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:UIWindowDidBecomeHiddenNotification object:nil];
+    [self configBaseViewController];
     
 }
 
-- (void)endFullScreen:(NSNotification *)noti {
-    UIWindow * win = (UIWindow *)noti.object;
-    if(win){
-        UIViewController *rootVC = win.rootViewController;
-        NSArray<__kindof UIViewController *> *vcs = rootVC.childViewControllers;
-        if([vcs.firstObject isKindOfClass:NSClassFromString(@"AVPlayerViewController")]){
-            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-        }
+#pragma mark - system NavBar
+- (BOOL)autoSettingSystemNavBarHidden {
+    return YES;
+}
+
+- (BOOL)systemNavBarHidden {
+    return NO;
+}
+
+- (BOOL)popGestureEnabled {
+    return YES;
+}
+
+#pragma mark -
+- (void)updateSystemNavBarHiddenWhenViewWillAppear {
+    if (!self.autoSettingSystemNavBarHidden) {
+        return;
+    }
+    
+    if (self.dz_HideNaviBar != self.systemNavBarHidden) {
+        self.dz_HideNaviBar = self.systemNavBarHidden;
     }
 }
 
@@ -59,10 +74,6 @@
     }else{
         return YES;
     }
-}
-
-- (void)dealloc {
-    DLog(@"baseVC销毁了");
 }
 
 - (void)showServerError:(NSError *)error {
@@ -185,5 +196,33 @@
     }
     return _navbarMaxY;
 }
+
+-(void)configBaseViewController{
+    
+    [self.view setExclusiveTouch:YES];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:K_Color_NaviTitle,NSForegroundColorAttributeName,[DZFontSize NavTitleFontSize18],NSFontAttributeName, nil];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transToLogin) name:DZ_UserLogin_Notify object:nil];
+    // 监听UIWindow隐藏 播放视频的时候，状态栏会自动消失，处理后让状态栏重新出现
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:UIWindowDidBecomeHiddenNotification object:nil];
+}
+
+- (void)endFullScreen:(NSNotification *)noti {
+    UIWindow * win = (UIWindow *)noti.object;
+    if(win){
+        UIViewController *rootVC = win.rootViewController;
+        NSArray<__kindof UIViewController *> *vcs = rootVC.childViewControllers;
+        if([vcs.firstObject isKindOfClass:NSClassFromString(@"AVPlayerViewController")]){
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        }
+    }
+}
+
+
+
 
 @end

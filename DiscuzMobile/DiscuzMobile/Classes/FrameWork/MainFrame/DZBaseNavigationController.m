@@ -7,8 +7,9 @@
 //
 
 #import "DZBaseNavigationController.h"
+#import "DZBaseViewController.h"
 
-@interface DZBaseNavigationController ()
+@interface DZBaseNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,8 +17,69 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.popGestureEnabled = YES;
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.navigationBar.hidden = YES;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return [self.topViewController preferredStatusBarStyle];
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return [self.topViewController prefersStatusBarHidden];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if ([viewController isKindOfClass:[DZBaseViewController class]]) {
+        DZBaseViewController *vc = (DZBaseViewController *)viewController;
+        if (vc.hideTabBarWhenPushed) {
+            vc.hidesBottomBarWhenPushed = YES;
+        }
+        
+        if (vc.systemNavBarHidden) {
+            [super pushViewController:viewController animated:animated];
+            return;
+        }
+    }
+    
+    if (self.viewControllers.count > 0) {
+        if ([viewController isKindOfClass:[DZBaseNaviBarController class]]) {
+            DZBaseNaviBarController *baseCtrl = (DZBaseNaviBarController *)viewController;
+            if ([baseCtrl respondsToSelector:@selector(leftBarBtnClick)]) {
+                [baseCtrl dz_SetNavigationBackItemWithTarget:baseCtrl action:@selector(leftBarBtnClick)];
+            }
+        }
+    }
+    
+    [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark -
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (!self.popGestureEnabled) {
+        return NO;
+    }
+    
+    DZBaseViewController *vc = (DZBaseViewController *)self.topViewController;
+    if ([vc isKindOfClass:[DZBaseViewController class]]) {
+        return vc.popGestureEnabled;
+    }
+    
+    return self.popGestureEnabled;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return [self gestureRecognizerShouldBegin:gestureRecognizer];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+
 
 
 @end

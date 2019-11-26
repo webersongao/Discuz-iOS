@@ -1,14 +1,14 @@
 //
-//  TopLabel.m
+//  DZTopTitleLabel.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/8.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "TopLabel.h"
+#import "DZTopTitleLabel.h"
 
-@implementation TopLabel
+@implementation DZTopTitleLabel
 
 - (void)setText:(NSString *)text andImageName:(NSString *)imageName andSize:(CGSize)size andPosition:(AttchPosition)position {
     

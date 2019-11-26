@@ -1,5 +1,5 @@
 //
-//  TopMlCell.h
+//  DZThreadTopCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/25.
@@ -7,15 +7,15 @@
 //
 
 #import "DZBaseTableViewCell.h"
-#import "TopLabel.h"
+#import "DZTopTitleLabel.h"
 
 @class DZThreadListModel;
 
-@interface TopMlCell : DZBaseTableViewCell
+@interface DZThreadTopCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) TopLabel *titleLabel;
+@property (nonatomic, strong) DZTopTitleLabel *titleLabel;
 
-- (void)setDataWithModel:(DZThreadListModel *)model;
+- (void)updateTopCellWithModel:(DZThreadListModel *)model;
 
 - (CGFloat)cellHeight;
 

@@ -40,7 +40,6 @@
         [scrollView setContentOffset:CGPointZero];
     }
     CGFloat offsetY = scrollView.contentOffset.y;
-    
     if (offsetY < 0) { // 子控制器到顶部 主控制器滚动 子控制器不动
         if (!self.isTouch) {
             return;
@@ -59,4 +58,15 @@
     }
 }
 
+
+
+
+
 @end
+
+
+
+
+
+
+

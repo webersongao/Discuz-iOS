@@ -9,7 +9,15 @@
 #import "UITableViewCell+GetReuseID.h"
 
 @implementation UITableViewCell (GetReuseID)
+
+
 + (NSString *)getReuseId {
     return NSStringFromClass([self class]);
 }
+
+
 @end
+
+
+
+
