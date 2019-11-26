@@ -33,7 +33,9 @@ static NSString *isFourmList = @"isFourmList";
     
     self.navigationItem.leftBarButtonItems.lastObject.customView.hidden = YES;
 }
-
+-(BOOL)hideTabBarWhenPushed{
+    return NO;
+}
 -(void)configNaviBar {
     NSString *leftTitle = _isList ? @"forum_list" : @"forum_ranctangle";
     [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
@@ -47,10 +49,10 @@ static NSString *isFourmList = @"isFourmList";
         [self pageOfController:self.allVC andTitle:@"全部"];
     }
     _containVc = [[DZContainerController alloc] init];
-    [self updateNaviTabBar];
+    [self updateNaviSegmentBar];
 }
 
-- (void)updateNaviTabBar {
+- (void)updateNaviSegmentBar {
     //    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
     [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
@@ -73,7 +75,7 @@ static NSString *isFourmList = @"isFourmList";
         [self pageOfController:self.allVC andTitle:@"全部"];
     }
     
-    [self updateNaviTabBar];
+    [self updateNaviSegmentBar];
     [self configNaviBar];
     
     [[NSUserDefaults standardUserDefaults] setBool:_isList forKey:isFourmList];

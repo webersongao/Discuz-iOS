@@ -42,19 +42,7 @@ static DZMobileCtrl *instance = nil;
 }
 
 - (void)showServerAlertError:(NSError *)error {
-    if (error != nil) {
-        NSString *message = [NSString stringWithFormat:@"错误:%@",[error localizedDescription]];
-#ifdef DEBUG
-        DLog(@"WBS 出现错误 %s 提示：%@",__FUNCTION__,message);
-#else
-        if (error.code == NSURLErrorTimedOut) {
-            message = @"网络请求超时！";
-        } else {
-            message = @"服务器数据获取失败";
-        }
-#endif
-        [MBProgressHUD showInfo:message];
-    }
+    
 }
 
 

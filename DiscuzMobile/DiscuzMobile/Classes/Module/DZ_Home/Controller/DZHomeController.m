@@ -25,7 +25,9 @@
     [self loadHomeForumDataFromServer];
     [self configHomeScroolViewAction];
 }
-
+-(BOOL)hideTabBarWhenPushed{
+    return NO;
+}
 -(void)configHomeControllerView{
     
     [self.view addSubview:self.homeView];

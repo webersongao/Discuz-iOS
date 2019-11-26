@@ -29,7 +29,9 @@
     [self configForumController];
     [self loadViewIndexDataIfNeeded];
 }
-
+-(BOOL)hideTabBarWhenPushed{
+    return NO;
+}
 -(void)configForumController{
     [self.view addSubview:self.ScrollBar];
     [self.view addSubview:self.scrollView];
@@ -115,7 +117,7 @@
 
 -(PRNaviSegmentView *)ScrollBar{
     if (_ScrollBar == nil) {
-        _ScrollBar = [[PRNaviSegmentView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, kToolBarHeight)];
+        _ScrollBar = [[PRNaviSegmentView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, kToolBarHeight)];
         _ScrollBar.segDelegate = self;
     }
     return _ScrollBar;

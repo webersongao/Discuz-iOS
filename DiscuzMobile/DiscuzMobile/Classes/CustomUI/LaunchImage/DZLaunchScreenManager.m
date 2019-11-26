@@ -38,7 +38,7 @@
             [self anylyLaunchData:responseObject];
         } failed:^(NSError *error) {
             [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:NO];
-            DLog(@"请求超时或失败，加载缓存本地图片");
+//            DLog(@"请求超时或失败，加载缓存本地图片");
         }];
     }
 }

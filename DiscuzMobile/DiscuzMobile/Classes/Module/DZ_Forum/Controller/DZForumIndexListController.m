@@ -275,7 +275,7 @@
 #pragma mark - setter getter
 - (DZBaseTableView *)leftTable {
     if (_leftTable == nil) {
-        _leftTable = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width * 0.22, self.view.frame.size.height) style:UITableViewStylePlain];
+        _leftTable = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth * 0.22, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
         _leftTable.backgroundColor = K_Color_ForumGray;
         //    _leftTable.showsVerticalScrollIndicator = NO;
         _leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;

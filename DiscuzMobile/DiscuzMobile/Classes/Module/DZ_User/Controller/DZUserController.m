@@ -19,6 +19,9 @@
     
 }
 
+-(BOOL)hideTabBarWhenPushed{
+    return NO;
+}
 
 
 @end

@@ -67,6 +67,9 @@
     [self addNotify];
 }
 
+-(BOOL)hideTabBarWhenPushed{
+    return NO;
+}
 - (void)addNotify {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_REFRESHCENTER_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UserSignout) name:DZ_UserSigOut_Notify object:nil];

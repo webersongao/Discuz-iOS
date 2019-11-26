@@ -84,7 +84,7 @@
     
     
     CGFloat height = KScreenHeight;
-    CGFloat navMaxY = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    CGFloat navMaxY = KNavi_ContainStatusBar_Height; //CGRectGetMaxY(self.navigationController.navigationBar.frame);
     CGFloat tabbarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     if (self.navigationController) {
         height -= navMaxY;

@@ -3215,12 +3215,12 @@
 		70FBDC6A2383FC1B00FC296E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				70FBDC7C2383FC1B00FC296E /* DZUserManagerController.h */,
 				70FBDC6B2383FC1B00FC296E /* DZUserManagerController.m */,
 				70FBDC6C2383FC1B00FC296E /* MyCollection */,
 				70FBDC732383FC1B00FC296E /* BoundManageController.h */,
 				70FBDC742383FC1B00FC296E /* Recently */,
 				70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */,
-				70FBDC7C2383FC1B00FC296E /* DZUserManagerController.h */,
 				70FBDC7D2383FC1B00FC296E /* MyFriendViewController.h */,
 				70FBDC7E2383FC1B00FC296E /* BoundManageController.m */,
 				70FBDC7F2383FC1B00FC296E /* MyThread */,
