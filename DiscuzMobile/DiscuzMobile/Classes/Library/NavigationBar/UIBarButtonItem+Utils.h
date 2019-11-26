@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIBarButtonItem (DZBarButtonItem)
+@interface UIBarButtonItem (Utils)
 
 /**
  创建自定义的UIBarButtonItem

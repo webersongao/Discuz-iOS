@@ -40,6 +40,7 @@
     if (self) {
         self.bounces = NO;
         [self addSubview:self.segmentView];
+        [self addSubview:self.bottomScrollLine];
         self.showsHorizontalScrollIndicator = NO;
     }
     return self;
@@ -192,6 +193,13 @@
     return _segmentView;
 }
 
+-(UIView *)bottomScrollLine{
+    if (_bottomScrollLine == nil) {
+        _bottomScrollLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height -0.5, self.width, 0.5)];
+        _bottomScrollLine.backgroundColor = KColor(KLine_Color, 1.0);
+    }
+    return _bottomScrollLine;
+}
 
 @end
 

@@ -322,7 +322,7 @@
 		70E69D3623742C3E00760DC4 /* DiscuzMobile copy-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70E69D3523742C3D00760DC4 /* DiscuzMobile copy-Info.plist */; };
 		70EBEB802387C432005333D4 /* DZDiscoverCateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB7F2387C432005333D4 /* DZDiscoverCateModel.m */; };
 		70EBEB832387C4C1005333D4 /* DZBaseForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */; };
-		70F19E5A237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E56237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m */; };
+		70F19E5A237A8E9900499BED /* UIBarButtonItem+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E56237A8E9900499BED /* UIBarButtonItem+Utils.m */; };
 		70F19E5B237A8E9900499BED /* DZNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E57237A8E9900499BED /* DZNavItemButton.m */; };
 		70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E58237A8E9900499BED /* DZNavigationBar.m */; };
 		70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E7B237A909300499BED /* UIView+PRLayouter.m */; };
@@ -1065,10 +1065,10 @@
 		70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DZBaseForumModel.m; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.m; sourceTree = SOURCE_ROOT; };
 		70F19E54237A8E9900499BED /* DZNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavigationBar.h; sourceTree = "<group>"; };
 		70F19E55237A8E9900499BED /* DZNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavItemButton.h; sourceTree = "<group>"; };
-		70F19E56237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+DZBarButtonItem.m"; sourceTree = "<group>"; };
+		70F19E56237A8E9900499BED /* UIBarButtonItem+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Utils.m"; sourceTree = "<group>"; };
 		70F19E57237A8E9900499BED /* DZNavItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNavItemButton.m; sourceTree = "<group>"; };
 		70F19E58237A8E9900499BED /* DZNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNavigationBar.m; sourceTree = "<group>"; };
-		70F19E59237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+DZBarButtonItem.h"; sourceTree = "<group>"; };
+		70F19E59237A8E9900499BED /* UIBarButtonItem+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Utils.h"; sourceTree = "<group>"; };
 		70F19E7B237A909300499BED /* UIView+PRLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PRLayouter.m"; sourceTree = "<group>"; };
 		70F19E7C237A909300499BED /* PRLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRLayouter.m; sourceTree = "<group>"; };
 		70F19E7D237A909300499BED /* UIView+PRLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PRLayouter.h"; sourceTree = "<group>"; };
@@ -2912,8 +2912,8 @@
 				70F19E58237A8E9900499BED /* DZNavigationBar.m */,
 				70F19E55237A8E9900499BED /* DZNavItemButton.h */,
 				70F19E57237A8E9900499BED /* DZNavItemButton.m */,
-				70F19E59237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.h */,
-				70F19E56237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m */,
+				70F19E59237A8E9900499BED /* UIBarButtonItem+Utils.h */,
+				70F19E56237A8E9900499BED /* UIBarButtonItem+Utils.m */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -4318,7 +4318,7 @@
 				943430992022E56E009C0102 /* AppDelegate+XinGe.m in Sources */,
 				70621274237936C800130B9D /* DZForumListModel.m in Sources */,
 				947ECB142064D403002D3536 /* WSImagePickerView.m in Sources */,
-				70F19E5A237A8E9900499BED /* UIBarButtonItem+DZBarButtonItem.m in Sources */,
+				70F19E5A237A8E9900499BED /* UIBarButtonItem+Utils.m in Sources */,
 				709A731A2387EF6100DF04CE /* DZDiscoverListView.m in Sources */,
 				7065AE892386A1DC009B6DA7 /* DZDiscoverController.m in Sources */,
 				7002A3712383D8CD00BC0C61 /* ChatContentCell.m in Sources */,

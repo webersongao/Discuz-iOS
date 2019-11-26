@@ -26,6 +26,7 @@
 @property (nonatomic, copy) void(^WidthEqualBlock)(BOOL isEqual);  //!< 属性注释
 @property (nonatomic, strong) PRTagSegmentView *segmentView;  //!< 属性注释
 @property (nonatomic, weak) id<PRNaviSegmentViewDelegate> segDelegate;  //!< 属性注释
+@property (nonatomic, strong) UIView *bottomScrollLine;  //!< <#属性注释#>
 
 -(void)updateNaviBarWithTitle:(NSArray <NSString *>*)titleArray;
 

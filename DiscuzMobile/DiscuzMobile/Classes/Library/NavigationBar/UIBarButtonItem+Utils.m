@@ -6,10 +6,10 @@
 //  Copyright © 2019 ZHWenXue. All rights reserved.
 //
 
-#import "UIBarButtonItem+DZBarButtonItem.h"
+#import "UIBarButtonItem+Utils.h"
 #import "DZNavItemButton.h"
 
-@implementation UIBarButtonItem (DZBarButtonItem)
+@implementation UIBarButtonItem (Utils)
 
 
 - (UIBarButtonItem *)initWithItemImageName:(NSString *)itemImageName target:(id)target action:(SEL)action {
@@ -20,7 +20,6 @@
 - (UIBarButtonItem *)initWithItemImageName:(NSString *)itemImageName Layout:(BOOL)isLeft target:(id)target action:(SEL)action {
     
     return [self initWithItemImageName:itemImageName HighImageName:nil ItemTitle:nil TitleColor:nil HighTitleColor:nil TitleFont:0 Bold:NO Layout:isLeft target:target action:action];
-    
 }
 
 - (UIBarButtonItem *)initWithItemTitle:(NSString *)itemTitle Layout:(BOOL)isLeft target:(id)target action:(SEL)action {

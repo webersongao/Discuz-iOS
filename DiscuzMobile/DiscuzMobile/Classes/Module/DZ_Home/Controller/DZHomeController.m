@@ -71,8 +71,8 @@
 
 -(DZHomeScrollView *)homeView{
     if (_homeView == nil) {
-        _homeView = [[DZHomeScrollView alloc] initWithFrame:self.view.bounds];
-        _homeView.contentSize = CGSizeMake(KScreenWidth, KScreenHeight + kHomeHeaderHeight);
+        _homeView = [[DZHomeScrollView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight    - KNavi_ContainStatusBar_Height)];
+        _homeView.contentSize = CGSizeMake(KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height + kHomeHeaderHeight);
     }
     return _homeView;
 }

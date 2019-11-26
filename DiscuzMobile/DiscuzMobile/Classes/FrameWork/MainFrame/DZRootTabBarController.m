@@ -159,7 +159,7 @@
     childVc.title = title;
     
     // 设置子控制器的图片
-    //    childVc.tabBarItem.image = [UIImage imageNamed:image];
+    childVc.tabBarItem.title = title;
     childVc.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     // 设置文字的样式

@@ -16,8 +16,6 @@ typedef NS_ENUM(NSInteger, DZNaviItemType) {
     DZNaviItemType_Image//图片
 };
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface DZBaseNaviBarController : UIViewController
 
 /** 控制共用的NavigationBar 可直接Hidden隐藏 */
@@ -107,4 +105,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+

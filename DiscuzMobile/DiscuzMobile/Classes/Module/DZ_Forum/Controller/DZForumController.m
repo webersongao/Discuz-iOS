@@ -55,6 +55,7 @@ static NSString *isFourmList = @"isFourmList";
 - (void)updateNaviSegmentBar {
     //    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
+    self.view.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height);
     [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
 }
 

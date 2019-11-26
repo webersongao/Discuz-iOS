@@ -44,9 +44,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavc];
+    [self setUserNavi];
     
     // 135 + 85
+    [self updateTableViewToRemoveNaviBar];
     self.myHeader = [[MYCenterHeader alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 220)];
     self.tableView.tableHeaderView = self.myHeader;
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(modifyAvatar)];
@@ -81,11 +82,10 @@
 }
 
 #pragma mark - 设置导航栏
--(void)setNavc{
+-(void)setUserNavi{
+    self.title = @"我的";
     [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     [self configNaviBar:@"setting" type:NaviItemImage Direction:NaviDirectionRight];
-    
-    self.navigationItem.title = @"我的";
 }
 
 - (void)rightBarBtnClick {

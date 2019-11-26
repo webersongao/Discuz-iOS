@@ -49,6 +49,10 @@
 #define KFCA43B_Color  @"#FCA43B"
 #define K2A2C2F_Color  @"#2A2C2F" //tabbar 黑色
 
+#define KLine_Color  @"#f5f5f5" //分割线
+
+
+
 //#define PRFFFFFF_ViewColor  @"#FFFFFF"
 //#define PR000000_ViewColor  @"#000000"
 //#define PRF5F6F8_ViewColor  @"#F5F6F8"

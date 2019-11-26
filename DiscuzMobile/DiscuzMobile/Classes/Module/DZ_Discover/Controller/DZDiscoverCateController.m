@@ -29,8 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    self.dz_HideNaviBar = YES;
+    [self.view addSubview:self.listView];
 }
 
 

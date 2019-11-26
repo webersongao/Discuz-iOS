@@ -28,6 +28,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)updateTableViewToRemoveNaviBar{
+    self.tableView.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height);
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSourceArr.count;
@@ -110,7 +114,7 @@
 
 - (DZBaseTableView *)tableView {
     if (_tableView == nil) {
-        _tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight-KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
+        _tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];

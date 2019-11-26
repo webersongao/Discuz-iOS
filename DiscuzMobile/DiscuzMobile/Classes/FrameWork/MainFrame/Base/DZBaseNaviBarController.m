@@ -8,8 +8,7 @@
 
 #import "DZBaseNaviBarController.h"
 #import "DZNavItemButton.h"
-
-#import "UIBarButtonItem+DZBarButtonItem.h"
+#import "UIBarButtonItem+Utils.h"
 
 @interface DZBaseNaviBarController ()
 
@@ -20,12 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self p_SetNavigationBar];
+    [self dz_SetNavigationBar];
 }
 
 - (DZNavigationBar *)dz_NavigationBar{
-    
     if (!_dz_NavigationBar) {
         _dz_NavigationBar = [[DZNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
     }
@@ -42,18 +39,17 @@
 //重写系统设置title的setter
 - (void)setTitle:(NSString *)title {
     //正常创建控制器是先执行[alloc init] 后执行这句 在执行时在给予赋值
+    [super setTitle:title];
     if (!_dz_normalTitle) {
         self.dz_NavigationItem.title = title;
-    } else {
-        [super setTitle:title];
     }
 }
 
 #pragma mark -设置导航栏
-- (void)p_SetNavigationBar {
+- (void)dz_SetNavigationBar {
     
     [self.view addSubview:self.dz_NavigationBar];
-
+    
     //将导航条目 添加到导航条
     self.dz_NavigationBar.items = @[self.dz_NavigationItem];
     

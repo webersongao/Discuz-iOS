@@ -52,7 +52,7 @@
         _parentController = parentController;
         [parentController addChildViewController:self];
         [parentController.view addSubview:self.view];
-        self.view.frame = CGRectMake(0, 0, parentController.view.width, parentController.view.height);
+        self.view.frame = CGRectMake(0, KScreenHeight - parentController.view.height, parentController.view.width, parentController.view.height);
     }
 }
 
@@ -72,7 +72,6 @@
         }
         
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            
             [self addChildViewController:obj];
             [self.titleArray addObject:obj.title ? : @""];
         }];
@@ -84,7 +83,7 @@
     
     
     CGFloat height = KScreenHeight;
-    CGFloat navMaxY = KNavi_ContainStatusBar_Height; //CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    CGFloat navMaxY = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     CGFloat tabbarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
     if (self.navigationController) {
         height -= navMaxY;
