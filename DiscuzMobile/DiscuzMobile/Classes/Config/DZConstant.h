@@ -106,7 +106,7 @@
 #define SafeAreaBottomHeight ((KScreenHeight >= 812.0) && [[UIDevice currentDevice].model isEqualToString:@"iPhone"]  ? 30 : 0)
 #define DZNetError(_domain, _code, _desc)   [NSError errorWithDomain:checkNull(_domain) code:(_code) userInfo:@{NSLocalizedFailureReasonErrorKey : (checkNull(_desc).length ? checkNull(_desc) : @"网络错误，请稍后再试")}]
 
-typedef void(^backNoneBlock)();
+typedef void(^backNoneBlock)(void);
 typedef void(^backStateBlock)(id data,BOOL bSuccess);
 typedef void(^backStringBlock)(NSString * String);
 typedef void(^backArrayBlock)(NSArray * Array);

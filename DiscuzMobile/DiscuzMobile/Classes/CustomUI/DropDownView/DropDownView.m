@@ -131,6 +131,7 @@
     }
     return self;
 }
+;
 
 - (id)initWithFrame:(CGRect)frame activityType:(NSMutableArray *)arr {
     

@@ -17,6 +17,7 @@
 #import "DZShareCenter.h"
 #import "XinGeCenter.h"  // 信鸽
 #import "CheckHelper.h"
+#import <ShareSDKExtension/ShareSDK+Extension.h>
 
 #define TEXTHEIGHT 50
 
@@ -28,7 +29,7 @@ NSString * const debugPassword = @"debugPassword";
     BOOL isQCreateView;  // 是否有安全问答
 }
 
-@property (nonatomic, strong) DZLoginView *logView;
+@property (nonatomic, strong) DZLoginView *loginView;
 @property (nonatomic, copy) NSString *preSalkey;
 
 @end
@@ -38,13 +39,15 @@ NSString * const debugPassword = @"debugPassword";
 
 - (void)loadView {
     [super loadView];
-    self.logView = [[DZLoginView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view = self.logView;
+    BOOL isInstallQQ = [ShareSDK isClientInstalled:SSDKPlatformTypeQQ];
+    BOOL isInstallWechat = [ShareSDK isClientInstalled:SSDKPlatformTypeWechat];
+    self.loginView = [[DZLoginView alloc] initWithFrame:KScreenBounds isQQ:isInstallQQ isWx:isInstallWechat];
+    self.view = self.loginView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.logView thirdPlatformAuth];
+    [self.loginView thirdPlatformAuth];
 }
 
 - (void)viewDidLoad {
@@ -52,7 +55,7 @@ NSString * const debugPassword = @"debugPassword";
     [self createBarBtn];
     [[CheckHelper shareInstance] checkAPIRequest];
     KWEAKSELF;
-    self.logView.authCodeView.refreshAuthCodeBlock = ^{
+    self.loginView.authCodeView.refreshAuthCodeBlock = ^{
         [weakSelf downlodyan];
     };
     
@@ -89,36 +92,36 @@ NSString * const debugPassword = @"debugPassword";
     NSString *username = [userdefault objectForKey:debugUsername];
     NSString *password = [userdefault objectForKey:debugPassword];
     if ([DataCheck isValidString:username] && [DataCheck isValidString:password]) {
-        self.logView.countView.userNameTextField.text = username;
-        self.logView.pwordView.userNameTextField.text = password;
+        self.loginView.countView.userNameTextField.text = username;
+        self.loginView.pwordView.userNameTextField.text = password;
         return YES;
     }
     return NO;
 }
 
 - (void)setViewDelegate {
-    self.logView.delegate = self;
-    self.logView.pickView.delegate = self;
-    self.logView.countView.userNameTextField.delegate = self;
-    self.logView.pwordView.userNameTextField.delegate = self;
-    self.logView.securityView.userNameTextField.delegate = self;
-    self.logView.answerView.userNameTextField.delegate = self;
-    self.logView.authCodeView.textField.delegate = self;
+    self.loginView.delegate = self;
+    self.loginView.pickView.delegate = self;
+    self.loginView.countView.userNameTextField.delegate = self;
+    self.loginView.pwordView.userNameTextField.delegate = self;
+    self.loginView.securityView.userNameTextField.delegate = self;
+    self.loginView.answerView.userNameTextField.delegate = self;
+    self.loginView.authCodeView.textField.delegate = self;
 }
 
 - (void)setViewAction {
-    [self.logView.loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.logView.forgetBtn addTarget:self action:@selector(findPassword:) forControlEvents:UIControlEventTouchUpInside];
-    [self.logView.qqBtn addTarget:self action:@selector(loginWithQQ) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.logView.wechatBtn addTarget:self action:@selector(loginWithWeiXin) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.loginView.loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginView.forgetBtn addTarget:self action:@selector(findPassword:) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginView.qqBtn addTarget:self action:@selector(loginWithQQ) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.loginView.wechatBtn addTarget:self action:@selector(loginWithWeiXin) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 #pragma mark - 账号密码登录
 -(void)loginBtnClick {
     [self.view endEditing:YES];
     
-    NSString *username = self.logView.countView.userNameTextField.text;
-    NSString *password = self.logView.pwordView.userNameTextField.text;
+    NSString *username = self.loginView.countView.userNameTextField.text;
+    NSString *password = self.loginView.pwordView.userNameTextField.text;
     
     if (![DataCheck isValidString:username]) {
         [MBProgressHUD showInfo:@"请输入用户名"];
@@ -135,7 +138,7 @@ NSString * const debugPassword = @"debugPassword";
     [dic setValue:password forKey:@"password"];
     [dic setValue:@"yes" forKey:@"loginsubmit"];
     if (self.verifyView.isyanzhengma) {
-        [dic setValue:self.logView.authCodeView.textField.text forKey:@"seccodeverify"];
+        [dic setValue:self.loginView.authCodeView.textField.text forKey:@"seccodeverify"];
         [dic setValue:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
     }
     if (isQCreateView) {
@@ -147,8 +150,8 @@ NSString * const debugPassword = @"debugPassword";
                                     @"您最喜欢的餐馆名称":@"6",
                                     @"驾驶执照最后四位数字":@"7"};
         
-        [dic setValue:[dicvalue objectForKey:self.logView.securityView.userNameTextField.text] forKey:@"questionid"];
-        [dic setValue:self.logView.answerView.userNameTextField.text forKey:@"answer"];
+        [dic setValue:[dicvalue objectForKey:self.loginView.securityView.userNameTextField.text] forKey:@"questionid"];
+        [dic setValue:self.loginView.answerView.userNameTextField.text forKey:@"answer"];
     }
     [dic setValue:[Environment sharedEnvironment].formhash forKey:@"formhash"];
     
@@ -172,9 +175,9 @@ NSString * const debugPassword = @"debugPassword";
     } success:^(id responseObject, JTLoadType type) {
         [self.HUD hide];
         if ([[responseObject messageval] isEqualToString:@"login_question_empty"]) {
-            [self.logView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(TEXTHEIGHT);
-                self.logView.securityView.hidden = NO;
+                self.loginView.securityView.hidden = NO;
             }];
             [MBProgressHUD showInfo:[responseObject messagestr]];
         } else {
@@ -191,8 +194,8 @@ NSString * const debugPassword = @"debugPassword";
 }
 
 - (void)saveAccount {
-    NSString *username = self.logView.countView.userNameTextField.text;
-    NSString *password = self.logView.pwordView.userNameTextField.text;
+    NSString *username = self.loginView.countView.userNameTextField.text;
+    NSString *password = self.loginView.pwordView.userNameTextField.text;
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
     [userdefault setObject:username forKey:debugUsername];
     [userdefault setObject:password forKey:debugPassword];
@@ -294,10 +297,10 @@ NSString * const debugPassword = @"debugPassword";
     
     [self.verifyView downSeccode:@"login" success:^{
         if (self.verifyView.isyanzhengma) {
-            [self.logView.authCodeView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.loginView.authCodeView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(TEXTHEIGHT);
             }];
-            self.logView.authCodeView.hidden = NO;
+            self.loginView.authCodeView.hidden = NO;
             [self loadSeccodeImage];
         }
     } failure:^(NSError *error) {
@@ -313,7 +316,7 @@ NSString * const debugPassword = @"debugPassword";
 
 - (void)loadSeccodeWebView {
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.verifyView.secureData objectForKey:@"seccode"]]];
-    [self.logView.authCodeView.webview loadRequest:request];
+    [self.loginView.authCodeView.webview loadRequest:request];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -329,21 +332,21 @@ NSString * const debugPassword = @"debugPassword";
 
 -(void)toolbarDidButtonClick:(ZHPickView *)pickView resultString:(NSString *)resultString androw:(NSInteger)row{
     
-    self.logView.securityView.userNameTextField.text = resultString;
+    self.loginView.securityView.userNameTextField.text = resultString;
     
     if ([DataCheck isValidString:resultString] && ![resultString isEqualToString:@"无安全提问"]) {
         
-        [self.logView.answerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.loginView.answerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(TEXTHEIGHT);
         }];
-        self.logView.answerView.hidden = NO;
+        self.loginView.answerView.hidden = NO;
     } else {
-        [self.logView.answerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.loginView.answerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
         }];
-        self.logView.answerView.hidden = YES;
+        self.loginView.answerView.hidden = YES;
     }
-    if (![self.logView.securityView.userNameTextField.text isEqualToString:@"无安全提问"]) {
+    if (![self.loginView.securityView.userNameTextField.text isEqualToString:@"无安全提问"]) {
         // 创建view
         isQCreateView = YES;
 

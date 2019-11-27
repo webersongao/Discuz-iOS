@@ -31,4 +31,6 @@
 
 - (void)thirdPlatformAuth;
 
+-(instancetype)initWithFrame:(CGRect)frame isQQ:(BOOL)isQQ isWx:(BOOL)isWx;
+
 @end

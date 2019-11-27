@@ -53,7 +53,6 @@
     
     
     UILabel * placeLable3 = [[UILabel alloc] initWithFrame:CGRectMake(15, lineLabel2.frame.origin.y + 20, 780, 15)];
-//    placeLable3.text = @"活动类型:";
     placeLable3.attributedText = [@"活动类型:" getAttributeStr];
     placeLable3.font = [DZFontSize forumtimeFontSize14];
     [self.contentView addSubview:placeLable3];

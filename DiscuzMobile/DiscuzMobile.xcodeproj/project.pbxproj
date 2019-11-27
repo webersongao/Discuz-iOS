@@ -34,8 +34,8 @@
 		276FA2C81F2B256100F8924B /* discuss.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2C71F2B256100F8924B /* discuss.png */; };
 		276FA2CC1F2B2E7700F8924B /* praises.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2CB1F2B2E7700F8924B /* praises.png */; };
 		276FA2CE1F2B308F00F8924B /* praise.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2CD1F2B308F00F8924B /* praise.png */; };
-		27714E4F1DDC47F8008CDC7A /* 安全问答.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E491DDC47F8008CDC7A /* 安全问答.plist */; };
-		27714E501DDC47F8008CDC7A /* 活动类型.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E4A1DDC47F8008CDC7A /* 活动类型.plist */; };
+		27714E4F1DDC47F8008CDC7A /* Verify_question.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E491DDC47F8008CDC7A /* Verify_question.plist */; };
+		27714E501DDC47F8008CDC7A /* Activity_type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E4A1DDC47F8008CDC7A /* Activity_type.plist */; };
 		27714E9C1DDC4A0C008CDC7A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9B1DDC4A0C008CDC7A /* libsqlite3.0.tbd */; };
 		27714E9E1DDC4A16008CDC7A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9D1DDC4A16008CDC7A /* libc++.tbd */; };
 		27714EA01DDC4A23008CDC7A /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9F1DDC4A23008CDC7A /* libz.1.2.5.tbd */; };
@@ -534,8 +534,8 @@
 		276FA2C71F2B256100F8924B /* discuss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discuss.png; sourceTree = "<group>"; };
 		276FA2CB1F2B2E7700F8924B /* praises.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = praises.png; sourceTree = "<group>"; };
 		276FA2CD1F2B308F00F8924B /* praise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = praise.png; sourceTree = "<group>"; };
-		27714E491DDC47F8008CDC7A /* 安全问答.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "安全问答.plist"; sourceTree = "<group>"; };
-		27714E4A1DDC47F8008CDC7A /* 活动类型.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "活动类型.plist"; sourceTree = "<group>"; };
+		27714E491DDC47F8008CDC7A /* Verify_question.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Verify_question.plist; sourceTree = "<group>"; };
+		27714E4A1DDC47F8008CDC7A /* Activity_type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Activity_type.plist; sourceTree = "<group>"; };
 		27714E9B1DDC4A0C008CDC7A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		27714E9D1DDC4A16008CDC7A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		27714E9F1DDC4A23008CDC7A /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
@@ -1502,8 +1502,8 @@
 		27714E441DDC47F8008CDC7A /* SelfPlist */ = {
 			isa = PBXGroup;
 			children = (
-				27714E491DDC47F8008CDC7A /* 安全问答.plist */,
-				27714E4A1DDC47F8008CDC7A /* 活动类型.plist */,
+				27714E4A1DDC47F8008CDC7A /* Activity_type.plist */,
+				27714E491DDC47F8008CDC7A /* Verify_question.plist */,
 			);
 			path = SelfPlist;
 			sourceTree = "<group>";
@@ -4057,7 +4057,7 @@
 				27F6158F1ED42ACD0066CD4C /* button.png in Resources */,
 				27F615AB1ED42ACD0066CD4C /* ui-bg_gloss-wave_35_f6a828_500x100.png in Resources */,
 				27CD9DA71DDEB29E0075831B /* jquery-1.8.3.min.js in Resources */,
-				27714E501DDC47F8008CDC7A /* 活动类型.plist in Resources */,
+				27714E501DDC47F8008CDC7A /* Activity_type.plist in Resources */,
 				94A3E66320E617300039C560 /* EmoticonJT.bundle in Resources */,
 				27F615AA1ED42ACD0066CD4C /* triangle.png in Resources */,
 				9494508E21196F8B0074C79E /* pause.png in Resources */,
@@ -4066,7 +4066,7 @@
 				27CD9D791DDEB29E0075831B /* style.css in Resources */,
 				70F9F8E9237AA72C0067B308 /* MBProgressHUD.bundle in Resources */,
 				27D1CA0D1DD2CB4300B835B7 /* DZLocalized.strings in Resources */,
-				27714E4F1DDC47F8008CDC7A /* 安全问答.plist in Resources */,
+				27714E4F1DDC47F8008CDC7A /* Verify_question.plist in Resources */,
 				27CD9DA61DDEB29E0075831B /* ios_thread.js in Resources */,
 				94982E0E1FEB86F400058EB9 /* InfoPlist.strings in Resources */,
 				9494507C21196F8B0074C79E /* playRecord.png in Resources */,

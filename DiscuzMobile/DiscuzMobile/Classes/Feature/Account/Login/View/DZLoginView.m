@@ -7,12 +7,7 @@
 //
 
 #import "DZLoginView.h"
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-#import <ShareSDKExtension/ShareSDK+Extension.h>
 #import "DZShareCenter.h"
-
-#import "WXApi.h"
 #import "DZLoginCustomView.h"
 #import "DZWeb2AuthCodeView.h"
 #import "ZHPickView.h"
@@ -21,15 +16,15 @@
 
 @implementation DZLoginView
 
--(instancetype)initWithFrame:(CGRect)frame {
+-(instancetype)initWithFrame:(CGRect)frame isQQ:(BOOL)isQQ isWx:(BOOL)isWx {
     if (self = [super initWithFrame:frame]) {
-        [self p_setupViews];
+        [self p_setupViewWithQQ:isQQ isWx:isWx];
     }
     return self;
 }
 
 
-- (void)p_setupViews {
+- (void)p_setupViewWithQQ:(BOOL)isQQ isWx:(BOOL)isWx {
     if (@available(iOS 11.0, *)) {
         self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -220,10 +215,7 @@
     [self.qqBtn setBackgroundImage:[UIImage imageTintColorWithName:@"third_q" andImageSuperView:self.qqBtn] forState:UIControlStateNormal];
     [self.thirdView addSubview:self.qqBtn];
     
-    BOOL isInstallWechat = [ShareSDK isClientInstalled:SSDKPlatformTypeWechat];
-    BOOL isInstallQQ = [ShareSDK isClientInstalled:SSDKPlatformTypeQQ];
-    
-    if (isInstallWechat && isInstallQQ) {
+    if (isQQ && isWx) {
         
         [self.wechatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(line1.mas_right).offset(-30);
@@ -237,7 +229,7 @@
             make.top.equalTo(self.wechatBtn);
             make.size.equalTo(self.wechatBtn);
         }];
-    } else if (isInstallQQ){
+    } else if (isQQ){
         
         [self.qqBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.left.equalTo(line2.mas_left).offset(-10);
@@ -245,7 +237,7 @@
             make.top.equalTo(thirdLabel.mas_bottom).offset(20);
             make.width.height.mas_equalTo(40);
         }];
-    } else if (isInstallWechat){
+    } else if (isWx){
         [self.wechatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.thirdView);
             make.top.equalTo(thirdLabel.mas_bottom).offset(20);
@@ -292,7 +284,7 @@
 
 - (ZHPickView *)pickView {
     if (!_pickView) {
-        _pickView = [[ZHPickView alloc] initPickviewWithPlistName:@"安全问答" isHaveNavControler:NO];
+        _pickView = [[ZHPickView alloc] initPickviewWithPlistName:@"Verify_question" isHaveNavControler:NO];
         [_pickView setToolbarTintColor:K_Color_ToolBar];
     }
     return _pickView;
