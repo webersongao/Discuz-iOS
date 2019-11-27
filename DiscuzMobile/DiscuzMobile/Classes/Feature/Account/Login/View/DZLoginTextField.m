@@ -1,33 +1,32 @@
 //
-//  DZLoginCustomView.m
+//  DZLoginTextField.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 16/9/17.
 //  Copyright © 2016年 comsenz-service.com. All rights reserved.
 // 这个textfiled高度55
 
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 
-@interface DZLoginCustomView()
+@interface DZLoginTextField()
 
 @property (nonatomic,strong) UIView * leftview;
 @property (nonatomic,strong) UILabel *lineLabel;
-
+@property (nonatomic,strong) UIImageView *imgView;
 @end
 
-@implementation DZLoginCustomView
+@implementation DZLoginTextField
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithLeft:(UIImage *)leftImg
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
-        [self p_setupViews];
+        [self p_setLoginTextField:leftImg];
     }
     return self;
 }
 
-
-- (void)p_setupViews {
+- (void)p_setLoginTextField:(UIImage *)leftImg {
     
     self.backgroundColor = [UIColor whiteColor];
     //用户名
@@ -37,10 +36,11 @@
     [self addSubview:_userNameTextField];
     
     _leftview =[[UIView alloc] initWithFrame:CGRectMake(8, 0, 35, 20)];
-    _imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"new_head_dark"]];
+    _imgView = [[UIImageView alloc] initWithImage:(leftImg ? leftImg : KImageNamed(@"new_head_dark"))];
     
     [_leftview addSubview:_imgView];
     _userNameTextField.leftView = _leftview;
+    _imgView.hidden = _imgView.image ? NO : YES;
     _userNameTextField.leftViewMode = UITextFieldViewModeAlways;
     _userNameTextField.font = [DZFontSize HomecellNameFontSize16];//14
     ;

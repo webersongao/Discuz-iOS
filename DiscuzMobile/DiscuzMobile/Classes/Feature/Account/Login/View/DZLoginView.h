@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 #import "DZWeb2AuthCodeView.h"
 #import "ZHPickView.h"
-@class DZLoginCustomView, DZWeb2AuthCodeView, ZHPickView;
+@class DZLoginTextField, DZWeb2AuthCodeView, ZHPickView;
 
 @interface DZLoginView : UIScrollView
 
-@property (nonatomic, strong) DZLoginCustomView *countView;
-@property (nonatomic, strong) DZLoginCustomView *pwordView;
-@property (nonatomic, strong) DZLoginCustomView *securityView;
-@property (nonatomic, strong) DZLoginCustomView *answerView;
+@property (nonatomic, strong) DZLoginTextField *countView;
+@property (nonatomic, strong) DZLoginTextField *pwordView;
+@property (nonatomic, strong) DZLoginTextField *securityView;
+@property (nonatomic, strong) DZLoginTextField *answerView;
 @property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *forgetBtn;

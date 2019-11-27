@@ -179,7 +179,7 @@
 -(void)switchAction:(id)btn{
     UISwitch * switchButton = (UISwitch*)btn;
     BOOL usbuttonon = [switchButton isOn];
-    [[NSUserDefaults standardUserDefaults] setBool:usbuttonon forKey:boolNoImage];
+    [[NSUserDefaults standardUserDefaults] setBool:usbuttonon forKey:DZ_BoolNoImage];
     [[NSNotificationCenter defaultCenter] postNotificationName:DZ_IMAGEORNOT_Notify object:nil];
 }
 

@@ -262,7 +262,7 @@
 		706212E7237936C900130B9D /* DZLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211A8237936C800130B9D /* DZLoginModel.m */; };
 		706212E8237936C900130B9D /* DZLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211AF237936C800130B9D /* DZLoginView.m */; };
 		706212E9237936C900130B9D /* DZJudgeBoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B0237936C800130B9D /* DZJudgeBoundView.m */; };
-		706212EA237936C900130B9D /* DZLoginCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B1237936C800130B9D /* DZLoginCustomView.m */; };
+		706212EA237936C900130B9D /* DZLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B1237936C800130B9D /* DZLoginTextField.m */; };
 		706212EB237936C900130B9D /* DZResetPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B2237936C800130B9D /* DZResetPwdView.m */; };
 		706212EC237936C900130B9D /* DZWeb2AuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */; };
 		7062136623793CB300130B9D /* DZSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062136523793CB300130B9D /* DZSegmentedControl.m */; };
@@ -329,6 +329,7 @@
 		70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E7B237A909300499BED /* UIView+PRLayouter.m */; };
 		70F19E80237A909300499BED /* PRLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E7C237A909300499BED /* PRLayouter.m */; };
 		70F3CBC9238E7D7D00BFA199 /* DZMobileCtrl+Local.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */; };
+		70F3CBCC238E8EB300BFA199 /* DZBaseResModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F3CBCB238E8EB300BFA199 /* DZBaseResModel.m */; };
 		70F9F884237A9A9A0067B308 /* LocalStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F882237A9A9A0067B308 /* LocalStringUtil.m */; };
 		70F9F8CF237AA72B0067B308 /* UIImage+Limit.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F887237AA72B0067B308 /* UIImage+Limit.m */; };
 		70F9F8D0237AA72B0067B308 /* UIImage+DrawCricleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F888237AA72B0067B308 /* UIImage+DrawCricleImage.m */; };
@@ -945,13 +946,13 @@
 		706211A7237936C800130B9D /* DZLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginModel.h; sourceTree = "<group>"; };
 		706211A8237936C800130B9D /* DZLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZLoginModel.m; sourceTree = "<group>"; };
 		706211AA237936C800130B9D /* DZLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginView.h; sourceTree = "<group>"; };
-		706211AB237936C800130B9D /* DZLoginCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginCustomView.h; sourceTree = "<group>"; };
+		706211AB237936C800130B9D /* DZLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginTextField.h; sourceTree = "<group>"; };
 		706211AC237936C800130B9D /* DZJudgeBoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZJudgeBoundView.h; sourceTree = "<group>"; };
 		706211AD237936C800130B9D /* DZWeb2AuthCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZWeb2AuthCodeView.h; sourceTree = "<group>"; };
 		706211AE237936C800130B9D /* DZResetPwdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZResetPwdView.h; sourceTree = "<group>"; };
 		706211AF237936C800130B9D /* DZLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZLoginView.m; sourceTree = "<group>"; };
 		706211B0237936C800130B9D /* DZJudgeBoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZJudgeBoundView.m; sourceTree = "<group>"; };
-		706211B1237936C800130B9D /* DZLoginCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZLoginCustomView.m; sourceTree = "<group>"; };
+		706211B1237936C800130B9D /* DZLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZLoginTextField.m; sourceTree = "<group>"; };
 		706211B2237936C800130B9D /* DZResetPwdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZResetPwdView.m; sourceTree = "<group>"; };
 		706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZWeb2AuthCodeView.m; sourceTree = "<group>"; };
 		7062136423793CB300130B9D /* DZSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSegmentedControl.h; sourceTree = "<group>"; };
@@ -1079,6 +1080,8 @@
 		70F19E7E237A909300499BED /* PRLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRLayouter.h; sourceTree = "<group>"; };
 		70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Local.h"; sourceTree = "<group>"; };
 		70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Local.m"; sourceTree = "<group>"; };
+		70F3CBCA238E8EB300BFA199 /* DZBaseResModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseResModel.h; sourceTree = "<group>"; };
+		70F3CBCB238E8EB300BFA199 /* DZBaseResModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseResModel.m; sourceTree = "<group>"; };
 		70F9F882237A9A9A0067B308 /* LocalStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStringUtil.m; sourceTree = "<group>"; };
 		70F9F883237A9A9A0067B308 /* LocalStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStringUtil.h; sourceTree = "<group>"; };
 		70F9F887237AA72B0067B308 /* UIImage+Limit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Limit.m"; sourceTree = "<group>"; };
@@ -2363,8 +2366,8 @@
 			children = (
 				70621159237936C800130B9D /* UsertermsView.h */,
 				70621157237936C800130B9D /* UsertermsView.m */,
-				70621158237936C800130B9D /* DZRegisterView.m */,
 				70621156237936C800130B9D /* DZRegisterView.h */,
+				70621158237936C800130B9D /* DZRegisterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2510,12 +2513,12 @@
 			children = (
 				706211AA237936C800130B9D /* DZLoginView.h */,
 				706211AF237936C800130B9D /* DZLoginView.m */,
+				706211AB237936C800130B9D /* DZLoginTextField.h */,
+				706211B1237936C800130B9D /* DZLoginTextField.m */,
 				706211AE237936C800130B9D /* DZResetPwdView.h */,
 				706211B2237936C800130B9D /* DZResetPwdView.m */,
 				706211AC237936C800130B9D /* DZJudgeBoundView.h */,
 				706211B0237936C800130B9D /* DZJudgeBoundView.m */,
-				706211AB237936C800130B9D /* DZLoginCustomView.h */,
-				706211B1237936C800130B9D /* DZLoginCustomView.m */,
 				706211AD237936C800130B9D /* DZWeb2AuthCodeView.h */,
 				706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */,
 			);
@@ -2861,6 +2864,8 @@
 				70DFD792237A95DD00A13F0F /* DZNoticeModel.m */,
 				70DFD78F237A95DD00A13F0F /* DZBaseVarModel.h */,
 				70DFD78C237A95DD00A13F0F /* DZBaseVarModel.m */,
+				70F3CBCA238E8EB300BFA199 /* DZBaseResModel.h */,
+				70F3CBCB238E8EB300BFA199 /* DZBaseResModel.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -4151,7 +4156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */,
-				706212EA237936C900130B9D /* DZLoginCustomView.m in Sources */,
+				706212EA237936C900130B9D /* DZLoginTextField.m in Sources */,
 				7062127E237936C900130B9D /* DZThreadTopCell.m in Sources */,
 				94A3E65620E611910039C560 /* EmoticonKeyboard.m in Sources */,
 				7002A36F2383D8CD00BC0C61 /* SystemNoteCell.m in Sources */,
@@ -4331,6 +4336,7 @@
 				70621282237936C900130B9D /* DZPostVoteViewController.m in Sources */,
 				943430A32022EB2F009C0102 /* AppDelegate+Local.m in Sources */,
 				706212E0237936C900130B9D /* ApplyItemView.m in Sources */,
+				70F3CBCC238E8EB300BFA199 /* DZBaseResModel.m in Sources */,
 				70621297237936C900130B9D /* DZSelectTypeButton.m in Sources */,
 				70FBDCDE2383FC1B00FC296E /* OtherUserPostReplyCell.m in Sources */,
 				70DFD7A8237A95DE00A13F0F /* DZBaseVarModel.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "DZMobileCtrl.h"
 
-extern NSString * const boolNoImage;
+extern NSString * const DZ_BoolNoImage;
 
 @interface DZMobileCtrl (Local)
 

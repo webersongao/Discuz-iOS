@@ -7,7 +7,7 @@
 //
 
 #import "DZResetPwdView.h"
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 
 #define TEXTHEIGHT 50
 
@@ -39,12 +39,11 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.passwordView = [[DZLoginCustomView alloc] init];
+    self.passwordView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_p")];
     self.passwordView.userNameTextField.tag = 102;
     self.passwordView.userNameTextField.delegate = self;
     self.passwordView.userNameTextField.placeholder = @"旧密码";
     self.passwordView.userNameTextField.secureTextEntry = YES;
-    self.passwordView.imgView.image = [UIImage imageNamed:@"log_p"];
     [contentView addSubview:self.passwordView];
     [self.passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(contentView);
@@ -53,10 +52,9 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.newpasswordView = [[DZLoginCustomView alloc] init];
+    self.newpasswordView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_p")];
     [contentView addSubview:self.newpasswordView];
     self.newpasswordView.backgroundColor = [UIColor whiteColor];
-    self.newpasswordView.imgView.image = [UIImage imageNamed:@"log_p"];
     self.newpasswordView.userNameTextField.placeholder = @"新密码";
     self.newpasswordView.userNameTextField.delegate = self;
     self.newpasswordView.userNameTextField.secureTextEntry = YES;
@@ -67,9 +65,8 @@
         make.left.equalTo(self.passwordView.mas_left);
     }];
     
-    self.repassView = [[DZLoginCustomView alloc] init];
+    self.repassView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_r")];
     self.repassView.userNameTextField.placeholder = @"重复新密码";
-    self.repassView.imgView.image = [UIImage imageNamed:@"log_r"];
     self.repassView.userNameTextField.tag = 103;
     self.repassView.userNameTextField.secureTextEntry = YES;
     self.repassView.userNameTextField.delegate = self;
@@ -128,4 +125,7 @@
     }
     self.contentSize = CGSizeMake(KScreenWidth, contentHeight);
 }
+
+
+
 @end

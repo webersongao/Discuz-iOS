@@ -11,8 +11,7 @@
 
 #import "DZRegisterView.h"
 #import "DZAuthCodeView.h"
-#import "DZLoginCustomView.h"
-#import "DZWeb2AuthCodeView.h"
+#import "DZLoginTextField.h"
 
 #import "XinGeCenter.h"
 #import "CheckHelper.h"

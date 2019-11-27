@@ -7,8 +7,7 @@
 //
 
 #import "DZRegisterView.h"
-#import "DZLoginCustomView.h"
-#import "DZWeb2AuthCodeView.h"
+#import "DZLoginTextField.h"
 #import "DZShareCenter.h"
 
 #define TEXTHEIGHT 50
@@ -52,10 +51,9 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.usernameView = [[DZLoginCustomView alloc] init];
+    self.usernameView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_u")];
     self.usernameView.userNameTextField.tag = 101;
     self.usernameView.userNameTextField.delegate = self;
-    self.usernameView.imgView.image = [UIImage imageNamed:@"log_u"];
     self.usernameView.userNameTextField.placeholder = @"用户名为3-15位";
     [contentView addSubview:self.usernameView];
     [self.usernameView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,12 +63,11 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.passwordView = [[DZLoginCustomView alloc] init];
+    self.passwordView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_p")];
     self.passwordView.userNameTextField.tag = 102;
     self.passwordView.userNameTextField.delegate = self;
     self.passwordView.userNameTextField.placeholder = @"密码";
     self.passwordView.userNameTextField.secureTextEntry = YES;
-    self.passwordView.imgView.image = [UIImage imageNamed:@"log_p"];
     [contentView addSubview:self.passwordView];
     [self.passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.usernameView.mas_width);
@@ -79,9 +76,8 @@
         make.left.equalTo(self.usernameView.mas_left);
     }];
     
-    self.repassView = [[DZLoginCustomView alloc] init];
+    self.repassView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_r")];
     self.repassView.userNameTextField.placeholder = @"重复密码";
-    self.repassView.imgView.image = [UIImage imageNamed:@"log_r"];
     self.repassView.userNameTextField.tag = 103;
     self.repassView.userNameTextField.secureTextEntry = YES;
     self.repassView.userNameTextField.delegate = self;
@@ -93,10 +89,9 @@
         make.left.equalTo(self.passwordView.mas_left);
     }];
     
-    self.emailView = [[DZLoginCustomView alloc] init];
+    self.emailView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_e")];
     [contentView addSubview:self.emailView];
     self.emailView.backgroundColor = [UIColor whiteColor];
-    self.emailView.imgView.image = [UIImage imageNamed:@"log_e"];
     self.emailView.userNameTextField.placeholder = @"邮箱";
     self.emailView.userNameTextField.delegate = self;
     [self.emailView mas_makeConstraints:^(MASConstraintMaker *make) {

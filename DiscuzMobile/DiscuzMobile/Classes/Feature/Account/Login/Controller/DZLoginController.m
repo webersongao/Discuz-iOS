@@ -12,7 +12,7 @@
 #import "DZRegisterController.h"
 #import "DZJudgeBoundController.h"
 #import "DZLoginView.h"
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 #import "ZHPickView.h"
 #import "DZShareCenter.h"
 #import "XinGeCenter.h"  // 信鸽

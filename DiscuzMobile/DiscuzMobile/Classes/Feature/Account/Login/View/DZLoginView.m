@@ -8,7 +8,7 @@
 
 #import "DZLoginView.h"
 #import "DZShareCenter.h"
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 #import "DZWeb2AuthCodeView.h"
 #import "ZHPickView.h"
 
@@ -52,10 +52,9 @@
         make.left.equalTo(self.mas_left).offset(40);
     }];
     
-    self.countView = [[DZLoginCustomView alloc] init];
+    self.countView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_u")];
     self.countView.userNameTextField.tag = 101;
     self.countView.userNameTextField.placeholder = @"账号";
-    self.countView.imgView.image = [UIImage imageNamed:@"log_u"];
     [contentView addSubview:self.countView];
     [self.countView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(contentView);
@@ -64,11 +63,10 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.pwordView = [[DZLoginCustomView alloc] init];
+    self.pwordView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_p")];
     self.pwordView.userNameTextField.tag = 102;
     self.pwordView.userNameTextField.placeholder = @"密码";
     self.pwordView.userNameTextField.secureTextEntry = YES;
-    self.pwordView.imgView.image = [UIImage imageNamed:@"log_p"];
     [contentView addSubview:self.pwordView];
     [self.pwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.countView.mas_width);
@@ -77,9 +75,8 @@
         make.left.equalTo(contentView.mas_left);
     }];
     
-    self.securityView = [[DZLoginCustomView alloc] init];
+    self.securityView = [[DZLoginTextField alloc] initWithLeft:KImageNamed(@"log_s")];
     self.securityView.userNameTextField.placeholder = @"安全提问（未设置请忽略）";
-    self.securityView.imgView.image = [UIImage imageNamed:@"log_s"];
     self.securityView.userNameTextField.tag = 103;
     self.securityView.userNameTextField.clearButtonMode = UITextFieldViewModeNever;
     self.securityView.userNameTextField.inputView = self.pickView;
@@ -93,8 +90,7 @@
     }];
     
     
-    self.answerView = [[DZLoginCustomView alloc] init];
-    self.answerView.imgView.hidden = YES;
+    self.answerView = [[DZLoginTextField alloc] initWithLeft:nil];
     [contentView addSubview:self.answerView];
     self.answerView.backgroundColor = [UIColor whiteColor];
     self.answerView.hidden = YES;

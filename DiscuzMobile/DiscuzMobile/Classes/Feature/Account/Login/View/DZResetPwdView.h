@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DZWeb2AuthCodeView.h"
 
-@class DZLoginCustomView,DZAuthCodeView;
+@class DZLoginTextField,DZAuthCodeView;
 
 @interface DZResetPwdView : UIScrollView <UITextFieldDelegate>
 
-@property (nonatomic, strong) DZLoginCustomView *passwordView;
-@property (nonatomic, strong) DZLoginCustomView *repassView;
-@property (nonatomic, strong) DZLoginCustomView *newpasswordView;
+@property (nonatomic, strong) DZLoginTextField *passwordView;
+@property (nonatomic, strong) DZLoginTextField *repassView;
+@property (nonatomic, strong) DZLoginTextField *newpasswordView;
 @property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 
 @property (nonatomic, strong) UIButton *submitButton;

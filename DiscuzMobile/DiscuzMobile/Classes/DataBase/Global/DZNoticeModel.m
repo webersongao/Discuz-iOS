@@ -8,6 +8,18 @@
 
 #import "DZNoticeModel.h"
 
+NSString * const Msg_NoMedal        = @"nomedal";
+NSString * const Msg_NoExistence    = @"nonexistence";
+NSString * const Msg_NoPermission   = @"nopermission";
+
+    
 @implementation DZNoticeModel
 
 @end
+
+@implementation DZBackMsgModel
+
+
+@end
+
+

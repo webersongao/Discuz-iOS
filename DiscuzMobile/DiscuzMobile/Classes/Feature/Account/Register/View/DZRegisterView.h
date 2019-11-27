@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "UsertermsView.h"
+#import "DZWeb2AuthCodeView.h"
 
-@class DZLoginCustomView,DZAuthCodeView,DZWeb2AuthCodeView;
+@class DZLoginTextField,DZAuthCodeView;
 
 @interface DZRegisterView : UIScrollView <UITextFieldDelegate>
-@property (nonatomic, strong) DZLoginCustomView *usernameView;
-@property (nonatomic, strong) DZLoginCustomView *passwordView;
-@property (nonatomic, strong) DZLoginCustomView *repassView;
-@property (nonatomic, strong) DZLoginCustomView *emailView;
+@property (nonatomic, strong) DZLoginTextField *usernameView;
+@property (nonatomic, strong) DZLoginTextField *passwordView;
+@property (nonatomic, strong) DZLoginTextField *repassView;
+@property (nonatomic, strong) DZLoginTextField *emailView;
 @property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 @property (nonatomic, strong) UILabel *thridAuthTipLabl;
 

@@ -12,7 +12,7 @@
 #import "XinGeCenter.h"
 #import "DZResetPwdView.h"
 #import "DZAuthCodeView.h"
-#import "DZLoginCustomView.h"
+#import "DZLoginTextField.h"
 
 @interface DZResetPwdController ()
 @property (nonatomic,strong) DZResetPwdView *resetView;

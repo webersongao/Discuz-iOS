@@ -8,7 +8,7 @@
 
 #import "DZMobileCtrl+Local.h"
 
-NSString * const boolNoImage = @"dz_NoImage";
+NSString * const DZ_BoolNoImage = @"dz_Nosfs24Image";
 
 @implementation DZMobileCtrl (Local)
 
@@ -17,7 +17,7 @@ NSString * const boolNoImage = @"dz_NoImage";
  @return yes 无图模式  no 有图
  */
 - (BOOL)isGraphFree {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:boolNoImage];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:DZ_BoolNoImage];
 }
 
 

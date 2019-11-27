@@ -11,5 +11,11 @@
 @implementation DZBaseVarModel
 
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"group" : [DZGroupModel class],
+             @"notice" : [DZNoticeModel class]
+    };
+}
+
 
 @end
