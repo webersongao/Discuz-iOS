@@ -27,7 +27,7 @@
 		27473ACD1DD30C380024375F /* DZFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473ABD1DD30C380024375F /* DZFontSize.m */; };
 		27473ACF1DD30C380024375F /* DZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AC11DD30C380024375F /* DZDevice.m */; };
 		274C95161EE647C300163106 /* AttachmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C95151EE647C300163106 /* AttachmentBar.m */; };
-		274F387D1EEA44F6009F4E10 /* ImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F387C1EEA44F6009F4E10 /* ImagePickerView.m */; };
+		274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */; };
 		275BABC71F346EE100DB804B /* AddressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC61F346EE100DB804B /* AddressSelectView.m */; };
 		275BABCA1F346EF500DB804B /* addressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC91F346EF500DB804B /* addressModel.m */; };
 		275BABCC1F346F0100DB804B /* area.json in Resources */ = {isa = PBXBuildFile; fileRef = 275BABCB1F346F0100DB804B /* area.json */; };
@@ -328,6 +328,7 @@
 		70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E58237A8E9900499BED /* DZNavigationBar.m */; };
 		70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E7B237A909300499BED /* UIView+PRLayouter.m */; };
 		70F19E80237A909300499BED /* PRLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E7C237A909300499BED /* PRLayouter.m */; };
+		70F3CBC9238E7D7D00BFA199 /* DZMobileCtrl+Local.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */; };
 		70F9F884237A9A9A0067B308 /* LocalStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F882237A9A9A0067B308 /* LocalStringUtil.m */; };
 		70F9F8CF237AA72B0067B308 /* UIImage+Limit.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F887237AA72B0067B308 /* UIImage+Limit.m */; };
 		70F9F8D0237AA72B0067B308 /* UIImage+DrawCricleImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F9F888237AA72B0067B308 /* UIImage+DrawCricleImage.m */; };
@@ -466,7 +467,6 @@
 		94B1067422F1678700D40827 /* DZUpdateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1067122F1678700D40827 /* DZUpdateAlertView.m */; };
 		94B1067522F1678700D40827 /* DZUpdateAlertConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1067222F1678700D40827 /* DZUpdateAlertConst.m */; };
 		94B2ED361FE3A3600093851E /* bbsrule_discuz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94B2ED351FE3A3600093851E /* bbsrule_discuz.txt */; };
-		94D44F6D2079BA5D000DA603 /* JudgeImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D44F6C2079BA5D000DA603 /* JudgeImageModel.m */; };
 		94F36BD220804221002AEF9E /* JTWebImageBrowerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36BD120804221002AEF9E /* JTWebImageBrowerHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -523,8 +523,8 @@
 		27473AC31DD30C380024375F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		274C95141EE647C300163106 /* AttachmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentBar.h; sourceTree = "<group>"; };
 		274C95151EE647C300163106 /* AttachmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentBar.m; sourceTree = "<group>"; };
-		274F387B1EEA44F6009F4E10 /* ImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerView.h; sourceTree = "<group>"; };
-		274F387C1EEA44F6009F4E10 /* ImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerView.m; sourceTree = "<group>"; };
+		274F387B1EEA44F6009F4E10 /* DZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZImagePickerView.h; sourceTree = "<group>"; };
+		274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZImagePickerView.m; sourceTree = "<group>"; };
 		2750F7E41EB2F77A008E9E80 /* DZBaseConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseConfig.h; sourceTree = "<group>"; };
 		275BABC51F346EE100DB804B /* AddressSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSelectView.h; sourceTree = "<group>"; };
 		275BABC61F346EE100DB804B /* AddressSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSelectView.m; sourceTree = "<group>"; };
@@ -1077,6 +1077,8 @@
 		70F19E7C237A909300499BED /* PRLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRLayouter.m; sourceTree = "<group>"; };
 		70F19E7D237A909300499BED /* UIView+PRLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PRLayouter.h"; sourceTree = "<group>"; };
 		70F19E7E237A909300499BED /* PRLayouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRLayouter.h; sourceTree = "<group>"; };
+		70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Local.h"; sourceTree = "<group>"; };
+		70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Local.m"; sourceTree = "<group>"; };
 		70F9F882237A9A9A0067B308 /* LocalStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalStringUtil.m; sourceTree = "<group>"; };
 		70F9F883237A9A9A0067B308 /* LocalStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStringUtil.h; sourceTree = "<group>"; };
 		70F9F887237AA72B0067B308 /* UIImage+Limit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Limit.m"; sourceTree = "<group>"; };
@@ -1350,8 +1352,6 @@
 		94B1067222F1678700D40827 /* DZUpdateAlertConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUpdateAlertConst.m; sourceTree = "<group>"; };
 		94B1067322F1678700D40827 /* DZUpdateAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUpdateAlertView.h; sourceTree = "<group>"; };
 		94B2ED351FE3A3600093851E /* bbsrule_discuz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bbsrule_discuz.txt; sourceTree = "<group>"; };
-		94D44F6B2079BA5D000DA603 /* JudgeImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JudgeImageModel.h; sourceTree = "<group>"; };
-		94D44F6C2079BA5D000DA603 /* JudgeImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JudgeImageModel.m; sourceTree = "<group>"; };
 		94D44F702079C490000DA603 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		94E405952041175F0000CE02 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
 		94F36BD020804221002AEF9E /* JTWebImageBrowerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTWebImageBrowerHelper.h; sourceTree = "<group>"; };
@@ -1465,8 +1465,6 @@
 				9438F06E22F3D5AF0093EB0B /* Update */,
 				9494506C21196F8B0074C79E /* AudioTool */,
 				9438F07422F3E2F20093EB0B /* Keyboard */,
-				9438F07322F3E2C70093EB0B /* ImageMode */,
-				70CA22E02386DEA60053B31B /* DZNetWork */,
 				9438F07222F3E22A0093EB0B /* DataCheck */,
 				9438F07022F3E1FA0093EB0B /* ImagePicker */,
 				70F9F881237A9A8C0067B308 /* LocalString */,
@@ -1951,6 +1949,7 @@
 				703C4231237CF6050046C398 /* iflyMSC */,
 				70621052237935ED00130B9D /* XgSDK */,
 				70632296237C151A005943AB /* EFData */,
+				70CA22E02386DEA60053B31B /* DZNetWork */,
 				70F19E7A237A909300499BED /* PRLayouter */,
 				7062136323793CB300130B9D /* DZSegment */,
 				70F19E53237A8E9900499BED /* NavigationBar */,
@@ -3200,6 +3199,8 @@
 				70F9F8EF237AA7580067B308 /* DZMobileHeader.h */,
 				70F9F8EE237AA7580067B308 /* DZMobileCtrl+Navi.h */,
 				70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */,
+				70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */,
+				70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */,
 				7065AE842386978D009B6DA7 /* DZMobileCtrl+Alert.h */,
 				7065AE852386978D009B6DA7 /* DZMobileCtrl+Alert.m */,
 			);
@@ -3646,8 +3647,8 @@
 		9438F07022F3E1FA0093EB0B /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				274F387B1EEA44F6009F4E10 /* ImagePickerView.h */,
-				274F387C1EEA44F6009F4E10 /* ImagePickerView.m */,
+				274F387B1EEA44F6009F4E10 /* DZImagePickerView.h */,
+				274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */,
 			);
 			path = ImagePicker;
 			sourceTree = "<group>";
@@ -3668,15 +3669,6 @@
 				273CCEFE1DD98E7100116331 /* DataCheck.m */,
 			);
 			path = DataCheck;
-			sourceTree = "<group>";
-		};
-		9438F07322F3E2C70093EB0B /* ImageMode */ = {
-			isa = PBXGroup;
-			children = (
-				94D44F6B2079BA5D000DA603 /* JudgeImageModel.h */,
-				94D44F6C2079BA5D000DA603 /* JudgeImageModel.m */,
-			);
-			path = ImageMode;
 			sourceTree = "<group>";
 		};
 		9438F07422F3E2F20093EB0B /* Keyboard */ = {
@@ -4277,7 +4269,7 @@
 				70FBDCF42383FC1B00FC296E /* VerticalImageTextView.m in Sources */,
 				70F9F8F2237AA7580067B308 /* DZMobileCtrl+Navi.m in Sources */,
 				70F9F8E6237AA72C0067B308 /* NSString+MoreMethod.m in Sources */,
-				274F387D1EEA44F6009F4E10 /* ImagePickerView.m in Sources */,
+				274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */,
 				70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */,
 				94A3E65B20E611B10039C560 /* TextbarView.m in Sources */,
 				70FBDCF32383FC1B00FC296E /* BoundManageCell.m in Sources */,
@@ -4380,7 +4372,6 @@
 				709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */,
 				70621293237936C900130B9D /* DZVoteSelectCell.m in Sources */,
 				70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */,
-				94D44F6D2079BA5D000DA603 /* JudgeImageModel.m in Sources */,
 				70F9F8D4237AA72B0067B308 /* UIControl+DelayEnable.m in Sources */,
 				70621287237936C900130B9D /* PostVoteModel.m in Sources */,
 				70FBDD042383FC1B00FC296E /* DZTreeViewNode.m in Sources */,
@@ -4496,6 +4487,7 @@
 				70F9F8DD237AA72C0067B308 /* UIAlertController+Extension.m in Sources */,
 				706212E8237936C900130B9D /* DZLoginView.m in Sources */,
 				706212DD237936C900130B9D /* PartInSexCell.m in Sources */,
+				70F3CBC9238E7D7D00BFA199 /* DZMobileCtrl+Local.m in Sources */,
 				27CD9D2B1DDEA87F0075831B /* SDPhotoBrowser.m in Sources */,
 				7002A3742383D8CD00BC0C61 /* FastPostController.m in Sources */,
 				7002A36C2383D8CD00BC0C61 /* ChatContainScrollView.m in Sources */,

@@ -17,7 +17,6 @@
 #import "DZDomainListController.h"
 #import "SendEmailHelper.h"
 #import "DZShareCenter.h"
-#import "JudgeImageModel.h"
 #import "DZDevice.h"
 
 @interface DZSettingController ()
@@ -76,7 +75,7 @@
         if (indexPath.row == 0) {
             UISwitch * sw = [[UISwitch alloc] init];
             [sw addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-            [sw setOn:[JudgeImageModel graphFreeModel]];
+            [sw setOn:[[DZMobileCtrl sharedCtrl] isGraphFree]];
             cell.accessoryView = sw;
         } else if (indexPath.row == 1) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",[[DZFileManager shareInstance] filePathSize]];

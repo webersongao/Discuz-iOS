@@ -1,21 +1,21 @@
 //
-//  ImagePickerView.m
+//  DZImagePickerView.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/9.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ImagePickerView.h"
+#import "DZImagePickerView.h"
 #import "UIAlertController+Extension.h"
 
-@interface ImagePickerView() <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface DZImagePickerView() <UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *pickerCT;
 
 @end
 
-@implementation ImagePickerView
+@implementation DZImagePickerView
 
 
 -(void)openSheet {

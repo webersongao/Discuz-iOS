@@ -11,7 +11,6 @@
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "DZCollectButton.h"
-#import "JudgeImageModel.h"
 
 @interface ForumRightCell()
 
@@ -153,7 +152,7 @@
         self.postsLab.text = @"帖数:-";
     }
     
-    if ([DataCheck isValidString:infoModel.icon] && [JudgeImageModel graphFreeModel] == NO) {
+    if ([DataCheck isValidString:infoModel.icon] && ![[DZMobileCtrl sharedCtrl] isGraphFree]) {
         [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoModel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
     } else {
         if ([infoModel.todayposts integerValue] > 0) {

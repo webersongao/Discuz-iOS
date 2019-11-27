@@ -1,5 +1,5 @@
 //
-//  ImagePickerView.h
+//  DZImagePickerView.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/9.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 typedef void(^FinishPickingBlock)(UIImage *image);
 
-@interface ImagePickerView : UIView
+@interface DZImagePickerView : UIView
 
 @property (nonatomic, weak) UINavigationController *navigationController;
 @property (nonatomic, copy) FinishPickingBlock finishPickingBlock;

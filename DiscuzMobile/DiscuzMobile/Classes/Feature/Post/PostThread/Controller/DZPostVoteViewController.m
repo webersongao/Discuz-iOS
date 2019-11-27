@@ -21,7 +21,7 @@
 #import "DZActiveDetailCell.h"
 
 
-#import "ImagePickerView.h"
+#import "DZImagePickerView.h"
 #import "NewThreadTypeModel.h"
 #import "ZHPickView.h"
 #import "SeccodeverifyView.h"

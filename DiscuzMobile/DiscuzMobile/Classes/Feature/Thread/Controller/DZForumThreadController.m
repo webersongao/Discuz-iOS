@@ -22,7 +22,6 @@
 #import "SeccodeverifyView.h"
 #import "DZPraiseHelper.h"
 #import "WSImageModel.h"
-#import "JudgeImageModel.h"
 #import "DZDevice.h"
 
 #import "DZShareCenter.h"
@@ -766,7 +765,7 @@
                 activitie= YES;
             }
             if (self.threadModel.isRequest == YES) {
-                NSString *noimage = [JudgeImageModel graphFreeModel] == YES ? @"false" : @"true";
+                NSString *noimage = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
                 if (activitie) {
                     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",noimage]];
                 }else {

@@ -12,5 +12,6 @@
 #import "DZMobileCtrl.h"
 #import "DZMobileCtrl+Navi.h"
 #import "DZMobileCtrl+Alert.h"
+#import "DZMobileCtrl+Local.h"
 
 #endif /* DZMobileHeader_h */

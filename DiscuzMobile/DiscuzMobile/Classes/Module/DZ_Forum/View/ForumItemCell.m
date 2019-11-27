@@ -8,7 +8,6 @@
 
 #import "ForumItemCell.h"
 #import "DZForumModel.h"
-#import "JudgeImageModel.h"
 
 @implementation ForumItemCell
 
@@ -101,7 +100,7 @@
         self.numLab.text = @"主题:--";
     }
     
-    if ([DataCheck isValidString:infoModel.icon] && [JudgeImageModel graphFreeModel] == NO) {
+    if ([DataCheck isValidString:infoModel.icon] && ![[DZMobileCtrl sharedCtrl] isGraphFree]) {
         
         [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoModel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageRetryFailed];
         

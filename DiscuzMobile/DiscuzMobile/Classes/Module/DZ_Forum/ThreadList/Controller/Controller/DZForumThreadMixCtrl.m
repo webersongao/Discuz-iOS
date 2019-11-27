@@ -18,7 +18,6 @@
 #import "MySubjectViewController.h"
 #import "DZPostTypeSelectView.h"
 #import "DZForumListModel.h"
-#import "JudgeImageModel.h"
 #import "DZForumInfoView.h"
 #import "RootForumCell.h"
 #import "DZForumModel.h"
@@ -564,7 +563,7 @@
 
 
 - (void)setInfoViewWithIcon:(NSString *)icon andtodaypost:(NSString *)todaypost {
-    if ([DataCheck isValidString:icon] && [JudgeImageModel graphFreeModel] == NO) {
+    if ([DataCheck isValidString:icon] && ![[DZMobileCtrl sharedCtrl] isGraphFree]) {
         
         [self.infoView.IconV sd_setImageWithURL:[NSURL URLWithString:icon] placeholderImage:[UIImage imageNamed:@"forumCommon_l"] options:SDWebImageRetryFailed];
         

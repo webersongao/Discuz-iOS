@@ -11,7 +11,6 @@
 #import "DZLoginModule.h"
 #import "UIView+WebCache.h"
 #import "DZPraiseHelper.h"
-#import "JudgeImageModel.h"
 
 @interface HomeListCell()
 
@@ -133,7 +132,7 @@
     
     UITapGestureRecognizer *recommendGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recommendAction)];
     [self.priceLab addGestureRecognizer:recommendGes];
-    if ([JudgeImageModel graphFreeModel] == NO) {
+    if (![[DZMobileCtrl sharedCtrl] isGraphFree]) {
         [self.headV sd_setImageWithURL:[NSURL URLWithString:info.avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
     }
     
@@ -181,7 +180,7 @@
     
     NSInteger count = (info.imglist.count > 3)?3:info.imglist.count;
     
-    if (count > 0 && [JudgeImageModel graphFreeModel] == NO) { // 有附件图片的, 有图模式的
+    if (count > 0 && ![[DZMobileCtrl sharedCtrl] isGraphFree]) { // 有附件图片的, 有图模式的
         CGFloat picWidth = (KScreenWidth - 30 - 20) / 3;
         self.imageBgV.frame = CGRectMake(0, CGRectGetMaxY(self.datelineLab.frame), KScreenWidth, 90);
         

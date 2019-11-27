@@ -13,7 +13,7 @@
 #import "DropDownView.h"
 #import "ZHPickView.h"
 #import "NewThreadTypeModel.h"
-#import "ImagePickerView.h"
+#import "DZImagePickerView.h"
 
 #import "DZVoteTitleCell.h"
 #import "DZActiveTimeCell.h"

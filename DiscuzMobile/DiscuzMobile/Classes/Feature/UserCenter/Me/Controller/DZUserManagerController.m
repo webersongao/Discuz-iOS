@@ -27,7 +27,7 @@
 #import "CenterUserInfoView.h"
 #import "CenterManageModel.h"
 
-#import "ImagePickerView.h"
+#import "DZImagePickerView.h"
 #import "MessageNoticeCenter.h"
 #import "UIImage+Limit.h"
 
@@ -35,7 +35,7 @@
 
 @property (nonatomic, strong) MYCenterHeader *myHeader;
 @property (nonatomic, strong) CenterManageModel *centerModel;
-@property (nonatomic, strong) ImagePickerView *pickerView;    // 相机相册
+@property (nonatomic, strong) DZImagePickerView *pickerView;    // 相机相册
 
 @end
 
@@ -358,9 +358,9 @@
     [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
 }
 
-- (ImagePickerView *)pickerView {
+- (DZImagePickerView *)pickerView {
     if (_pickerView == nil) {
-        _pickerView = [[ImagePickerView alloc] init];
+        _pickerView = [[DZImagePickerView alloc] init];
         _pickerView.navigationController = self.navigationController;
     }
     return _pickerView;

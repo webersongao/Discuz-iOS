@@ -10,7 +10,7 @@
 #import "UIAlertController+Extension.h"
 #import "SeccodeverifyView.h"
 #import "ZHPickView.h"
-#import "ImagePickerView.h"
+#import "DZImagePickerView.h"
 #import "NewThreadTypeModel.h"
 
 @interface DZPostBaseController ()
@@ -156,9 +156,9 @@
     return _verifyView;
 }
 
-- (ImagePickerView *)pickerView {
+- (DZImagePickerView *)pickerView {
     if (_pickerView == nil) {
-        _pickerView = [[ImagePickerView alloc] init];
+        _pickerView = [[DZImagePickerView alloc] init];
         _pickerView.navigationController = self.navigationController;
     }
     return _pickerView;
