@@ -90,10 +90,7 @@
     self.statusView.frame = CGRectMake(CGRectGetMaxX(self.line2.frame), 0, CGRectGetWidth(self.applyLab.frame), CGRectGetHeight(self.bgView.frame));
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -18,10 +18,7 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setupViews {
     self.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -50,10 +50,6 @@
     self.titleLab.frame = CGRectMake(CGRectGetMaxX(self.iconV.frame) + 5, CGRectGetMinY(self.iconV.frame), CGRectGetWidth(self.bgView.frame) - CGRectGetMaxX(self.iconV.frame) - 40 - 10, CGRectGetHeight(self.iconV.frame));
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

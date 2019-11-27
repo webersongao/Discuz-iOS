@@ -41,10 +41,7 @@
     self.postImageBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - 90, CGRectGetMinY(self.textField.frame), 80, CGRectGetHeight(self.textField.frame));
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -427,8 +427,7 @@
         DZTreeViewNode *node = nodeArr[indexPath.row];
         self.selectFid = node.infoModel.fid;
         
-        NSDictionary * dic =@{@"fid":node.infoModel.fid
-                              };
+        NSDictionary * dic =@{@"fid":node.infoModel.fid};
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
             request.urlString = DZ_Url_CheckPostAuth;

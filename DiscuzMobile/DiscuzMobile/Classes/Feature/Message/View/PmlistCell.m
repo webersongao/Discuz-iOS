@@ -38,10 +38,7 @@
     self.titleLab.frame = CGRectMake(CGRectGetMaxX(self.iconV.frame) + 8, 10, 180, 24);
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -314,10 +314,10 @@
             }
             return [(DZThreadTopCell *)cell cellHeight];
         } else {
-            return [(BaseStyleCell *)cell cellHeight];
+            return [(ThreadListCell *)cell cellHeight];
         }
     } else {
-        return [(BaseStyleCell *)cell cellHeight];
+        return [(ThreadListCell *)cell cellHeight];
     }
 }
 
@@ -382,7 +382,7 @@
     if (cell == nil) {
         cell = [[ThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
-    cell.info = listModel;
+    cell.listInfo = listModel;
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];

@@ -60,17 +60,17 @@
                 _titleArr = [NSMutableArray arrayWithObjects:@"普通帖", nil];
                 [self initDzUI];
             }
-    
+            
             
         } else if ([type isEqualToString:@"forumMenu"]) {
             
-             self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thread_postMenuBack"]];
-             _titleArr = [NSMutableArray arrayWithObjects:@"热门板块",@"全部板块",nil];
+            self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thread_postMenuBack"]];
+            _titleArr = [NSMutableArray arrayWithObjects:@"热门板块",@"全部板块",nil];
             [self initForumMenuView];
             
         } else if([type isEqualToString:@"postMenuF"]) {
             
-             self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thread_postMenuBack"]];
+            self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"thread_postMenuBack"]];
             _imagesArr = [NSMutableArray array];
             _titleArr = [NSMutableArray array];
             
@@ -95,13 +95,13 @@
                             [_titleArr addObject:@"投票帖"];
                             break;
                         case 2:
-//                            [_imagesArr addObject:@""]; // 商品帖
-//                            [_titleArr addObject:@"商品帖"];
+                            //                            [_imagesArr addObject:@""]; // 商品帖
+                            //                            [_titleArr addObject:@"商品帖"];
                             [allowpost removeObject:@"2"];
                             break;
                         case 3:
-//                            [_imagesArr addObject:@""]; // 悬赏帖
-//                            [_titleArr addObject:@"悬赏帖"];
+                            //                            [_imagesArr addObject:@""]; // 悬赏帖
+                            //                            [_titleArr addObject:@"悬赏帖"];
                             [allowpost removeObject:@"3"];
                             break;
                         case 4:
@@ -109,8 +109,8 @@
                             [_titleArr addObject:@"活动帖"];
                             break;
                         case 5:
-//                            [_imagesArr addObject:@""]; // 辩论帖
-//                            [_titleArr addObject:@"辩论帖"];
+                            //                            [_imagesArr addObject:@""]; // 辩论帖
+                            //                            [_titleArr addObject:@"辩论帖"];
                             [allowpost removeObject:@"3"];
                             break;
                         default:
@@ -155,7 +155,7 @@
         button.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height);
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         [view addSubview:button];
-
+        
         button.tag = 1000+i;
         UIImage * img = [UIImage imageNamed:@""];
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(13, 10, img.size.width, 20)];
@@ -171,7 +171,7 @@
         CGRect frameT = self.frame;
         self.frame=CGRectMake(frameT.origin.x, frameT.origin.y+60-1, 96, 6.5+0.25+28 * _titleArr.count);
     }
-
+    
 }
 
 #pragma mark - 掌上论坛原版发帖的下拉列表：普通帖、投票帖等
@@ -218,7 +218,7 @@
     for (int i =0 ; i <_imagesArr.count; i++) {
         
         UIView * view  = [[UIView alloc] initWithFrame:CGRectMake(0, 40 * i + 8, self.frame.size.width, 39)];
- //       view.backgroundColor = i ==1 ?  [UIColor blueColor]:[UIColor yellowColor];
+        //       view.backgroundColor = i ==1 ?  [UIColor blueColor]:[UIColor yellowColor];
         [self addSubview:view];
         
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -241,9 +241,9 @@
         button.titleLabel.text = [_titleArr objectAtIndex:i];
         
         
-            CGRect frameT = self.frame;
-          self.frame=CGRectMake(frameT.origin.x, frameT.origin.y, 96, 6.5+0.25+38.25 * _titleArr.count);
-
+        CGRect frameT = self.frame;
+        self.frame=CGRectMake(frameT.origin.x, frameT.origin.y, 96, 6.5+0.25+38.25 * _titleArr.count);
+        
         if (iPhone320) {
             CGRect frameT =self.frame;
             self.frame = CGRectMake(frameT.origin.x+5, frameT.origin.y, frameT.size.width, frameT.size.height);
@@ -255,7 +255,7 @@
 -(void)buttonClick:(UIButton *)btn{
     
     if ([_delegate respondsToSelector:@selector(postBtnClick:)]) {
-         [_delegate postBtnClick:btn];
+        [_delegate postBtnClick:btn];
     }
 }
 

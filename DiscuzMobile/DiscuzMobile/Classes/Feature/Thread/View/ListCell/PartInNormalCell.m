@@ -35,10 +35,7 @@
     self.textField.frame = CGRectMake(CGRectGetMaxX(self.titleLab.frame) + 10, CGRectGetMinY(self.titleLab.frame), KScreenWidth - CGRectGetMaxX(self.titleLab.frame) - 5, CGRectGetHeight(self.titleLab.frame));
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

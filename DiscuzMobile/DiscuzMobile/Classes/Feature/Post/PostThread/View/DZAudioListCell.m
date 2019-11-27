@@ -40,10 +40,7 @@
     self.timeLabel.frame = CGRectMake(CGRectGetMaxX(self.audioIv.frame) + 20, CGRectGetMinY(self.audioIv.frame), 100, CGRectGetHeight(self.audioIv.frame));
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -12,7 +12,6 @@
 
 @interface DZBaseNaviBarController ()
 
-
 @end
 
 @implementation DZBaseNaviBarController
@@ -71,9 +70,7 @@
 - (void)dz_HiddenNavigationBarAndShowBackBtn:(BOOL)isShow {
     
     self.dz_NavigationBar.hidden = YES;
-    
     if (isShow) {
-        //创建btn
         DZNavItemButton *backBtn = [[DZNavItemButton alloc] initWithFrame:CGRectMake(8, KStatusBarHeight, 44, 44)];
         backBtn.isLeft = YES;
         [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateNormal];

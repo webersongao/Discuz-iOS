@@ -7,18 +7,13 @@
 //
 
 #import "DZLoginController.h"
-
 #import <ShareSDK/ShareSDK.h>
-
 #import "DZLoginModule.h"
-
 #import "DZRegisterController.h"
 #import "DZJudgeBoundController.h"
-
 #import "DZLoginView.h"
 #import "DZLoginCustomView.h"
 #import "ZHPickView.h"
-
 #import "DZShareCenter.h"
 #import "XinGeCenter.h"  // 信鸽
 #import "CheckHelper.h"
@@ -28,7 +23,8 @@
 NSString * const debugUsername = @"debugUsername";
 NSString * const debugPassword = @"debugPassword";
 
-@interface DZLoginController ()<UITextFieldDelegate,ZHPickViewDelegate>{
+@interface DZLoginController ()<UITextFieldDelegate,ZHPickViewDelegate>
+{
     BOOL isQCreateView;  // 是否有安全问答
 }
 
@@ -258,10 +254,9 @@ NSString * const debugPassword = @"debugPassword";
 
 
 -(void)createBarBtn{
+    self.title = @"账户登录";
     [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
     [self configNaviBar:@"注册" type:NaviItemText Direction:NaviDirectionRight];
-    
-    self.navigationItem.title = @"";
 }
 
 - (void)leftBarBtnClick {
@@ -298,7 +293,6 @@ NSString * const debugPassword = @"debugPassword";
 - (void)downlodyan {
     
     [self.verifyView downSeccode:@"login" success:^{
-        
         if (self.verifyView.isyanzhengma) {
             [self.logView.authCodeView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(TEXTHEIGHT);
@@ -306,7 +300,6 @@ NSString * const debugPassword = @"debugPassword";
             self.logView.authCodeView.hidden = NO;
             [self loadSeccodeImage];
         }
-        
     } failure:^(NSError *error) {
         [self showServerError:error];
     }];

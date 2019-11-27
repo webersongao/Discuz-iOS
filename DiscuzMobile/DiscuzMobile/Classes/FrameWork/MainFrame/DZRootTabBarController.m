@@ -107,19 +107,41 @@
 
 - (void)ttsetSelectInex:(NSNotification *)notify {
     
-    if (notify.userInfo != nil) {
-        NSDictionary *userInfo = notify.userInfo;
-        if ([[userInfo objectForKey:@"type"] isEqualToString:@"cancel"]) {
-            if (self.selectedIndex == self.viewControllers.count - 1) {
-                self.selectedIndex = 0;
-            }
-        } else if ([[userInfo objectForKey:@"type"] isEqualToString:@"loginSuccess"]) {
-            self.selectedIndex = self.viewControllers.count - 1;
-        }
-    } else {
-        self.selectedIndex = self.notitySelected;
-    }
-    self.oldSelected = self.selectedIndex;
+//    if (notify.userInfo != nil) {
+//        NSDictionary *userInfo = notify.userInfo;
+//        if ([[userInfo objectForKey:@"type"] isEqualToString:@"cancel"]) {
+//            if (self.selectedIndex == self.viewControllers.count - 1) {
+//                self.selectedIndex = 0;
+//            }
+//        } else if ([[userInfo objectForKey:@"type"] isEqualToString:@"loginSuccess"]) {
+//            self.selectedIndex = self.viewControllers.count - 1;
+//        }
+//    } else {
+//        self.selectedIndex = self.notitySelected;
+//    }
+//    self.oldSelected = self.selectedIndex;
+}
+
+- (void)addChildViewControllers {
+    DZHomeController *homeVC = [[DZHomeController alloc] init];
+    
+    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
+    DZForumController *forumVC = [[DZForumController alloc] init];
+    
+    //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
+    //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
+    DZUserController *userVC = [[DZUserController alloc] init];
+    DZUserManagerController *myVC = [[DZUserManagerController alloc] init];
+    
+    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
+    
+    [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
+//    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
+    
+    //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
+    //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:userVC title:@"账户1" image:@"my" selectedImage:@"mys"];
+    [self addChildVc:myVC title:@"账户2" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addDemoChildViewControllers {
@@ -132,26 +154,6 @@
     
     DZPostUIEditViewController *editUIVC = [[DZPostUIEditViewController alloc] init];
     [self addChildVc:editUIVC title:@"UI输入" image:@"forumm" selectedImage:@"fourms"];
-}
-
-- (void)addChildViewControllers {
-    DZHomeController *homeVC = [[DZHomeController alloc] init];
-    
-    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
-    DZForumController *forumVC = [[DZForumController alloc] init];
-    
-    //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
-    //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
-    DZUserManagerController *userVC = [[DZUserManagerController alloc] init];
-    
-    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
-    
-    [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
-    
-    //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
-    //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:userVC title:@"账户" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {

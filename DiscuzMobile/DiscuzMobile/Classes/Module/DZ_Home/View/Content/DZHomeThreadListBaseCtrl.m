@@ -7,7 +7,6 @@
 //
 
 #import "DZHomeThreadListBaseCtrl.h"
-#import "BaseStyleCell.h"
 #import "DZHomeVarModel.h"
 #import "ThreadListCell.h"
 #import "DZThreadListModel+Display.h"
@@ -156,7 +155,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
     ThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:[ThreadListCell getReuseId]];
-    cell.info = [listModel dealSpecialThread];
+    cell.listInfo = [listModel dealSpecialThread];
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];

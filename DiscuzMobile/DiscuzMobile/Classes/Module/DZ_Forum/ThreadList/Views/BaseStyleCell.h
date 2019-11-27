@@ -26,7 +26,7 @@
 @property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数
 @property (nonatomic, strong) BaseIconTextView *priceLab;   // 点赞数
 
-@property (nonatomic, strong) DZThreadListModel *info;
+@property (nonatomic, strong) DZThreadListModel *listInfo;
 
 - (CGFloat)cellHeight;
 
