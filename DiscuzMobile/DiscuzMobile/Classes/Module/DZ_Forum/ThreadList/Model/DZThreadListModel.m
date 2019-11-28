@@ -30,7 +30,9 @@
 }
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"attachlist" : [DZAttachModel class]};
+    return @{@"attachlist" : [DZAttachModel class],
+             @"reply" : [DZThreadReplyModel class]
+    };
 }
 
 - (instancetype)init {

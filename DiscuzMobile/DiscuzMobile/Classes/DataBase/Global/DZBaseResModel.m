@@ -12,8 +12,7 @@
 @implementation DZBaseResModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"Variables" : [DZBaseVarModel class],
-             @"Message" : [DZBackMsgModel class]
+    return @{@"Message" : [DZBackMsgModel class]
     };
 }
 

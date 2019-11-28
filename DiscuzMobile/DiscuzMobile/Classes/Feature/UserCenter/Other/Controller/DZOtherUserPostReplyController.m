@@ -8,7 +8,7 @@
 
 #import "DZOtherUserPostReplyController.h"
 #import "OtherUserPostReplyCell.h"
-#import "ReplyModel.h"
+#import "MsgReplyModel.h"
 #import "ReplyCell.h"
 
 @interface DZOtherUserPostReplyController()
@@ -92,7 +92,7 @@
     if (cell == nil) {
         cell = [[ReplyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
     }
-    ReplyModel *model = self.replyArr[indexPath.row];
+    MsgReplyModel *model = self.replyArr[indexPath.row];
     [cell setInfo:model];
     
     return cell;
@@ -103,7 +103,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.dataSourceArr.count > 0) {
-        ReplyModel *model = self.replyArr[indexPath.row];
+        MsgReplyModel *model = self.replyArr[indexPath.row];
         [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
     }
 }
@@ -172,7 +172,7 @@
             
             for (NSDictionary *replyDic in arr) {
                 
-                ReplyModel *reply = [ReplyModel modelWithJSON:replyDic];
+                MsgReplyModel *reply = [MsgReplyModel modelWithJSON:replyDic];
                 [self.replyArr addObject:reply];
             }
         }

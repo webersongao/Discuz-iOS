@@ -12,7 +12,6 @@
 #import "MessageCell.h"
 #import "SystemNoteCell.h"
 #import "MsglistCell.h"
-#import "DZForumThreadController.h"
 
 #import "DZMsgChatDetailController.h"
 #import "DZSendMsgViewController.h"

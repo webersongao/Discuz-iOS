@@ -7,8 +7,9 @@
 //
 
 #import "DZForumListBaseCtrl.h"
+#import "DZThreadVarModel.h"
 
-typedef void(^SendValueBlock)(NSDictionary *dic);
+typedef void(^SendValueBlock)(DZThreadVarModel *varModel);
 typedef void(^EndRefreshBlock)(void);
 
 typedef enum : NSUInteger {
@@ -25,7 +26,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, copy) NSString *fid;
 @property (nonatomic, assign) NSInteger order;
 
-@property (nonatomic, copy) SendValueBlock sendBlock;
+@property (nonatomic, copy) SendValueBlock sendListBlock;
 @property (nonatomic, copy) EndRefreshBlock endRefreshBlock;
 
 - (void)refreshData;

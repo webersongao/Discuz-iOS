@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class ReplyModel;
+@class MsgReplyModel;
 
 @interface ReplyCell : DZBaseTableViewCell
 
@@ -17,6 +17,6 @@
 @property (nonatomic, strong) UILabel *subjectLab;
 
 - (CGFloat)cellHeight;
-- (void)setInfo:(ReplyModel *)info;
+- (void)setInfo:(MsgReplyModel *)info;
 
 @end

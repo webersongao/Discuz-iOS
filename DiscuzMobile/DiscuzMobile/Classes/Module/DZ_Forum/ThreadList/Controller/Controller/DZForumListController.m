@@ -17,13 +17,14 @@
 #import "AsyncAppendency.h"
 #import "ThreadListCell.h"
 #import "DZThreadTopCell.h"
+#import "DZThreadNetTool.h"
 #import "VerifyThreadRemindView.h"
 
 
 @interface DZForumListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
-@property (nonatomic ,strong) NSDictionary *forumInfoDic;
-@property (nonatomic ,strong) NSDictionary *Variables;  //  数据
+@property (nonatomic ,strong) DZForumModel *forumModel;
+@property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
 @property (nonatomic, strong) NSMutableArray *topThreadArray;
 @property (nonatomic, strong) NSMutableArray *commonThreadArray;
 @property (nonatomic, assign) NSInteger notThisFidCount;
@@ -86,8 +87,8 @@
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
-        if (self.forumInfoDic.count > 0) {
-            NSInteger threadsCount = [[self.forumInfoDic objectForKey:@"threadcount"] integerValue] + self.notThisFidCount;
+        if (self.forumModel) {
+            NSInteger threadsCount = self.forumModel.threadcount + self.notThisFidCount;
             if (threadsCount > self.dataSourceArr.count) {
                 self.page ++;
                 [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
@@ -127,111 +128,100 @@
 - (void)downLoadListData:(NSInteger)page andLoadType:(JTLoadType)loadType {
     
     
-    NSMutableArray *dic = @{@"fid":[NSString stringWithFormat:@"%@",_fid],
-                            @"page":[NSString stringWithFormat:@"%ld",(long)page],
-    }.mutableCopy;
+    NSDictionary *tmpDic = @{@"fid":[NSString stringWithFormat:@"%@",_fid],
+                             @"page":[NSString stringWithFormat:@"%ld",(long)page]};
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:tmpDic];
+    
     if (self.listType == DZ_ListAll) {
         DLog(@"如果你看到这段代码，请告诉她。。。。。。。。特么的出bug啦");
     }else if (self.listType == DZ_ListNew) {
         //        [dic setValue:@"lastpost" forKey:@"filter"];
         //        [dic setValue:@"lastpost" forKey:@"orderby"];
-        [dic setValue:@"author" forKey:@"filter"];
-        [dic setValue:@"dateline" forKey:@"orderby"];
+        [dict setValue:@"author" forKey:@"filter"];
+        [dict setValue:@"dateline" forKey:@"orderby"];
     } else if (self.listType == DZ_ListHot) {
-        [dic setValue:@"heat" forKey:@"filter"];
-        [dic setValue:@"heats" forKey:@"orderby"];
+        [dict setValue:@"heat" forKey:@"filter"];
+        [dict setValue:@"heats" forKey:@"orderby"];
     } else if (self.listType == DZ_ListBest) {
-        [dic setValue:@"digest" forKey:@"filter"];
-        [dic setValue:@"1" forKey:@"digest"];
+        [dict setValue:@"digest" forKey:@"filter"];
+        [dict setValue:@"1" forKey:@"digest"];
     }
     
-    BOOL isCache = [DZApiRequest isCache:DZ_Url_ForumTlist andParameters:dic];
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_ForumTlist;
-        request.parameters = dic.mutableCopy;
-        request.loadType = loadType;
-        if (self.listType == DZ_ListAll && self.page == 1) {
-            request.isCache = YES;
-        }
-    } success:^(id responseObject, JTLoadType type) {
-        
-        [self.HUD hide];
-        [self.tableView.mj_header endRefreshing];
-        
-        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
-            [UIAlertController alertTitle:nil message:message controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            } cancelHandle:nil];
-            [self.HUD hideAnimated:YES];
-        }];
-        if (!haveAuther) {
-            return;
-        }
-        
-        self.forumInfoDic = [[responseObject objectForKey:@"Variables"] objectForKey:@"forum"];
-        
-        self.Variables = [responseObject objectForKey:@"Variables"];
-        
-        if (self.page == 1) {
-            [self sendVariablesToMixcontroller];
-        }
-        if (!isCache) {
-            if (page == 1) {
-                if (self.endRefreshBlock) {
-                    self.endRefreshBlock();
+    BOOL isCache = [DZApiRequest isCache:DZ_Url_ForumTlist andParameters:dict];
+    BOOL reqCache = (self.listType == DZ_ListAll && self.page == 1) ? YES : NO;
+    [DZThreadNetTool DZ_DownloadForumListWithType:loadType para:dict isCache:reqCache completion:^(DZThreadResModel *threadResModel, NSError *error) {
+        if (threadResModel) {
+            [self.HUD hide];
+            [self.tableView.mj_header endRefreshing];
+            
+            if (!threadResModel.isAuthorized) {
+                [UIAlertController alertTitle:nil message:threadResModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                } cancelHandle:nil];
+                [self.HUD hideAnimated:YES];
+                return ;
+            }
+            
+            self.VarModel = threadResModel.Variables;
+            self.forumModel = threadResModel.Variables.forum;
+            
+            if (self.page == 1) {
+                [self sendVariablesToMixcontroller];
+            }
+            if (!isCache) {
+                if (page == 1) {
+                    if (self.endRefreshBlock) {
+                        self.endRefreshBlock();
+                    }
+                }
+            } else if (loadType == JTRequestTypeRefresh) {
+                if (page == 1) {
+                    if (self.endRefreshBlock) {
+                        self.endRefreshBlock();
+                    }
                 }
             }
-        } else if (loadType == JTRequestTypeRefresh) {
-            if (page == 1) {
-                if (self.endRefreshBlock) {
-                    self.endRefreshBlock();
+            
+            NSString *threadmodcount = self.forumModel.threadmodcount;
+            if ([DataCheck isValidString:threadmodcount] && [threadmodcount integerValue] > 0) {
+                if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+                    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",threadmodcount];
+                    [self showVerifyRemind];
                 }
+            } else {
+                [self hidVerifyRemind];
             }
-        }
-        
-        NSString *threadmodcount = [self.forumInfoDic objectForKey:@"threadmodcount"];
-        if ([DataCheck isValidString:threadmodcount] && [threadmodcount integerValue] > 0) {
-            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
-                self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",threadmodcount];
-                [self showVerifyRemind];
+            
+            if (self.page == 1) { // 刷新列表
+                // 刷新的时候移除数据源
+                [self clearDatasource];
+                
+//                [self anylyeData:responseObject];
+                
+                [self emptyShow];
+                
+            } else {
+                
+                [self.tableView.mj_footer endRefreshing];
+                
+//                [self anylyeData:responseObject];
+                
             }
-        } else {
-            [self hidVerifyRemind];
-        }
-        //        _allowpostspecial1 = [self.forumInfoDic objectForKey:@"allowpostspecial"];
-        
-        if (self.page == 1) { // 刷新列表
-            // 刷新的时候移除数据源
-            [self clearDatasource];
-            
-            [self anylyeData:responseObject];
-            
+            NSInteger threadsCount = self.forumModel.threadcount + self.notThisFidCount;
+            if (threadsCount <= self.dataSourceArr.count) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            [self.tableView reloadData];
+        }else{
+            [self.HUD hide];
+            if (self.endRefreshBlock) {
+                self.endRefreshBlock();
+            }
             [self emptyShow];
-            
-        } else {
-            
+            [self showServerError:error];
+            [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
-            
-            [self anylyeData:responseObject];
-            
         }
-        NSInteger threadsCount = [[self.forumInfoDic objectForKey:@"threadcount"] integerValue] + self.notThisFidCount;
-        if (threadsCount <= self.dataSourceArr.count) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-        
-    } failed:^(NSError *error) {
-        
-        [self.HUD hide];
-        if (self.endRefreshBlock) {
-            self.endRefreshBlock();
-        }
-        [self emptyShow];
-        [self showServerError:error];
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
     }];
 }
 
@@ -250,9 +240,10 @@
     }
 }
 
-- (void)anylyeData:(id)responseObject {
+- (void)anylyeData:(DZThreadResModel *)responseObject {
     
-    self.Variables = [responseObject objectForKey:@"Variables"];
+    self.VarModel = responseObject.Variables;
+    
     [DZThreadListModel setThreadData:responseObject andFid:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
         
         if (self.page == 1) {
@@ -282,11 +273,10 @@
 
 - (void)sendVariablesToMixcontroller {
     if (self.listType == DZ_ListAll) {
-        if (self.sendBlock) {
-            self.sendBlock(self.Variables);
+        if (self.sendListBlock) {
+            self.sendListBlock(self.VarModel);
         }
     }
-    
 }
 
 #pragma mark - tableView delegate
@@ -421,7 +411,6 @@
 - (void)pushThreadDetail:(DZThreadListModel *)listModel {
     
     DZForumThreadController * tvc = [[DZForumThreadController alloc] init];
-    tvc.dataForumTherad = self.Variables;
     tvc.tid = listModel.tid;
     [self.navigationController pushViewController:tvc animated:YES];
 }
@@ -443,13 +432,6 @@
         _commonThreadArray = [NSMutableArray array];
     }
     return _commonThreadArray;
-}
-
-- (NSDictionary *)forumInfoDic {
-    if (!_forumInfoDic) {
-        _forumInfoDic = [NSDictionary dictionary];
-    }
-    return _forumInfoDic;
 }
 
 - (VerifyThreadRemindView *)verifyThreadRemindView {

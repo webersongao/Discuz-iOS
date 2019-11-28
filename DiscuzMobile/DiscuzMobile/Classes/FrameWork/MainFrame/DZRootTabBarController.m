@@ -136,7 +136,7 @@
     [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
     
     [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
-//    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
     
     //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
     //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];

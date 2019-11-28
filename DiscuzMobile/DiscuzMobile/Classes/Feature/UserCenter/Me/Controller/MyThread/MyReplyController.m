@@ -11,7 +11,7 @@
 #import "ReplyCell.h"
 #import "SubjectCell.h"
 
-#import "ReplyModel.h"
+#import "MsgReplyModel.h"
 
 @interface MyReplyController ()
 
@@ -140,7 +140,7 @@
             
             for (NSDictionary *replyDic in arr) {
                 
-                ReplyModel *reply = [ReplyModel modelWithJSON:replyDic];
+                MsgReplyModel *reply = [MsgReplyModel modelWithJSON:replyDic];
 //                reply.auther = [dic objectForKey:@"auther"];
 //                reply.subject = [dic objectForKey:@"subject"];
                 [self.replyArr addObject:reply];

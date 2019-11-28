@@ -1,5 +1,5 @@
 //
-//  ReplyModel.h
+//  MsgReplyModel.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/12.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ReplyModel : NSObject
+@interface MsgReplyModel : NSObject
 
 @property (nonatomic, copy) NSString *tid;
 @property (nonatomic, copy) NSString *message;

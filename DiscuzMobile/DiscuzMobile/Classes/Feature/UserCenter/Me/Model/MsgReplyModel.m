@@ -1,14 +1,14 @@
 //
-//  ReplyModel.m
+//  MsgReplyModel.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/12.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ReplyModel.h"
+#import "MsgReplyModel.h"
 
-@implementation ReplyModel
+@implementation MsgReplyModel
 //
 //- (void)setValue:(id)value forKey:(NSString *)key {
 //    if ([key isEqualToString:@"position"]) {

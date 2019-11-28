@@ -7,7 +7,7 @@
 //
 
 #import "ReplyCell.h"
-#import "ReplyModel.h"
+#import "MsgReplyModel.h"
 
 @implementation ReplyCell
 
@@ -44,7 +44,7 @@
     
 }
 
-- (void)setInfo:(ReplyModel *)info {
+- (void)setInfo:(MsgReplyModel *)info {
     
     self.timeLab.text = info.dateline;
     

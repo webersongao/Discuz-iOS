@@ -17,7 +17,6 @@
 @property (nonatomic, assign) BOOL isOnePage;
 
 @property (nonatomic, copy) NSString * allowPostSpecial; // 发帖 数帖子的标记
-@property (nonatomic, strong) NSDictionary * dataForumTherad;
 
 -(void)postReplay;
 @end

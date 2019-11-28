@@ -451,8 +451,8 @@
                 listVc.title = obj.name;
                 listVc.fid = obj.fid;
                 listVc.order = idx;
-                listVc.sendBlock = ^ (NSDictionary *dic) {
-                    [weakSelf subSendVarible:dic];
+                listVc.sendListBlock = ^(DZThreadVarModel *varModel) {
+                    [weakSelf subSendVarible:varModel];
                 };
                 
                 listVc.endRefreshBlock = ^{
@@ -485,12 +485,10 @@
     
 }
 
-- (void)subSendVarible:(NSDictionary *)dic {
+- (void)subSendVarible:(DZThreadVarModel *)VarModel {
     
-    if ([DataCheck isValidDictionary:[dic objectForKey:@"forum"]]) { // 版块信息设置
-        
-        self.forumInfo = [[DZForumModel alloc] init];
-        self.forumInfo = [DZForumModel modelWithJSON:[dic dictionaryForKey:@"forum"]];
+     // 版块信息设置
+        self.forumInfo = VarModel.forum;
         if ([DataCheck isValidString:self.forumInfo.favorited]) {
             if ([self.forumInfo.favorited isEqualToString:@"1"]) {
                 [self setIsCollection];
@@ -501,9 +499,9 @@
         
         [self setInfoViewInfo];
         
-    }
     
-    if ([DataCheck isValidArray:[dic objectForKey:@"sublist"]]) { // 子版块列表
+    
+    if (VarModel.sublist.count) { // 子版块列表
         self.foldTableView.frame  = CGRectMake(0, self.infoView.height, KScreenWidth, 54);
         self.headView.frame = CGRectMake(0, 0, KScreenWidth, self.infoView.height + CGRectGetHeight(self.foldTableView.frame) + 5);
         self.tableView.tableHeaderView = self.headView;
@@ -515,7 +513,8 @@
         self.tableView.tableHeaderView = self.headView;
     }
     
-    self.Variables = dic;
+#warning 该位置需要完全转换成Model赋值，此写法只是为了不报错
+    self.Variables = VarModel.modelToJSONObject;
     
     NSDictionary *group = [self.Variables objectForKey:@"group"];
     if ([DataCheck isValidDictionary:group]) { // 能发的帖子类型处理

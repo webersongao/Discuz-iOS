@@ -29,6 +29,7 @@
 @property (nonatomic, strong) DZGroupModel *group;
 @property (nonatomic, strong) DZNoticeModel *notice;
 
+
 @end
 
 
