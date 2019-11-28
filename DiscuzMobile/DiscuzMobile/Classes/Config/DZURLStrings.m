@@ -21,6 +21,10 @@ NSString * const DZ_Url_NewAll = @"?module=forumguide&view=newthread&version=5";
 NSString * const DZ_Url_Forumindex = @"?module=forumindex&version=5";
 // 热门
 NSString * const DZ_Url_Hotforum = @"?module=hotforum&version=5";
+
+// 全站热帖
+NSString * const DZ_Url_HotThread = @"?module=hotthread&version=1";
+
 // 板块下级，帖子列表  threadmodcount = 2 有2条待审核帖子  description:描述
 NSString * const DZ_Url_ForumTlist = @"?version=5&module=forumdisplay&submodule=checkpost";
 

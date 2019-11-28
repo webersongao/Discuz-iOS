@@ -23,6 +23,8 @@ extern NSString * const DZ_Url_Forumindex;
 // 热门
 extern NSString * const DZ_Url_Hotforum;
 
+// 全站热帖
+extern NSString * const DZ_Url_HotThread;
 // 板块下级，帖子列表
 extern NSString * const DZ_Url_ForumTlist;
 
