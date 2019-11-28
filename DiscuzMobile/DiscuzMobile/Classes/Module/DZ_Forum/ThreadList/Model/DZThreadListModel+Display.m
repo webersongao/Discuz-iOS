@@ -28,6 +28,7 @@
     
     NSInteger notThisFidCount = 0;
     NSArray *data = [[responseObject objectForKey:@"Variables"] objectForKey:@"forum_threadlist"];
+    
     if ([DataCheck isValidArray:data]) {
         for (NSDictionary * dic in data) {
             
@@ -52,7 +53,6 @@
                 
                 [commonArray addObject:listModel];
             }
-            
         }
     }
     handle?handle(topArray,commonArray,allArray,notThisFidCount):nil;

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setThreadData:(id)responseObject andFid:(NSString *)fid andPage:(NSInteger)page handle:(void (^)(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount))handle;
 
 - (DZThreadListModel *)dealSpecialThread;
+
 @end
 
 NS_ASSUME_NONNULL_END
