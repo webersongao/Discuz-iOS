@@ -12,7 +12,6 @@
 
 #import "DropDownView.h"
 #import "ZHPickView.h"
-#import "NewThreadTypeModel.h"
 #import "DZImagePickerView.h"
 
 #import "DZVoteTitleCell.h"
@@ -42,24 +41,12 @@
 
 @property (nonatomic ,strong) NSString  * filePath;      // 图片路径
 @property (nonatomic ,assign) BOOL dropSelect;
-
-
 @property (nonatomic, strong) ZHPickView *sexPickView;
-
 @property (nonatomic, strong) NSMutableArray *activitytypeArr;
-
-@property (nonatomic, strong) NSMutableDictionary *userFieldDic;
 
 @end
 
 @implementation DZPostActivityViewController
-
-- (NSMutableDictionary *)userFieldDic {
-    if (!_userFieldDic) {
-        _userFieldDic = [NSMutableDictionary dictionary];
-    }
-    return _userFieldDic;
-}
 
 - (NSMutableArray *)activitytypeArr {
     if (!_activitytypeArr) {
@@ -82,8 +69,8 @@
     
     _dropSelect = NO;
     
-    if ([DataCheck isValidArray:[[self.dataForumTherad objectForKey:@"activity_setting"] objectForKey:@"activitytype"]]) {
-        self.activitytypeArr = [NSMutableArray arrayWithArray:[[self.dataForumTherad objectForKey:@"activity_setting"] objectForKey:@"activitytype"]];
+    if (self.dataForumTherad.activity_setting.activitytype.count) {
+        self.activitytypeArr = [NSMutableArray arrayWithArray:self.dataForumTherad.activity_setting.activitytype];
         [self.activitytypeArr addObject:@"自定义"];
     }
     
@@ -98,10 +85,6 @@
     [self.tableView bringSubviewToFront:_dropDownView];
     
     _dropDownView.hidden = YES;
-    
-    if ([DataCheck isValidDictionary:[[self.dataForumTherad objectForKey:@"activity_setting"] objectForKey:@"activityfield"]]) {
-        self.userFieldDic = [NSMutableDictionary dictionaryWithDictionary:[[self.dataForumTherad objectForKey:@"activity_setting"] objectForKey:@"activityfield"]];
-    }
     
     if (self.typeArray.count > 0) {
         self.pickView.delegate = self;
@@ -536,7 +519,7 @@
                     ActiveUserFieldCell *userFieldCell = [tableView dequeueReusableCellWithIdentifier:userCellID];
                     if (userFieldCell == nil) {
                         userFieldCell = [[ActiveUserFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userCellID];
-                        userFieldCell.activityfield = self.userFieldDic;
+                        userFieldCell.activityfield = self.dataForumTherad.activity_setting.activityfield;
                         
                         KWEAKSELF;
                         userFieldCell.senduserBlock = ^(NSArray *userArray) {

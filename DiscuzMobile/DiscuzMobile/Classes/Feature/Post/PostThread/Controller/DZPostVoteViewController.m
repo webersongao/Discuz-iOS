@@ -22,7 +22,6 @@
 
 
 #import "DZImagePickerView.h"
-#import "NewThreadTypeModel.h"
 #import "ZHPickView.h"
 #import "SeccodeverifyView.h"
 #import "UploadTool.h"

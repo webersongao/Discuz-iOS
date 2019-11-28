@@ -11,7 +11,6 @@
 #import "SeccodeverifyView.h"
 #import "ZHPickView.h"
 #import "DZImagePickerView.h"
-#import "NewThreadTypeModel.h"
 
 @interface DZPostBaseController ()
 
@@ -29,24 +28,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([DataCheck isValidDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]]) {
-    
-        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]];
-        [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
-            model.typeId = key;
-            model.name = [obj flattenHTMLTrimWhiteSpace:NO];
-            [self.typeArray addObject:model];
-        }];
-        
-        // test++++++++++++++++++++++++++++
-//        for (NSInteger i = 0; i < 3; i++) {
+//    WBS 注释  与 self.dataForumTherad.threadtypes.types 类型不对，后面遇到再纠正
+//    if ([DataCheck isValidDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]]) {
+//
+//        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]];
+//        [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
 //            NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
-//            model.typeId = [NSString stringWithFormat:@"%ld",i];
-//            model.name = [NSString stringWithFormat:@"鹅鹅%ld",i];
+//            model.typeId = key;
+//            model.name = [obj flattenHTMLTrimWhiteSpace:NO];
 //            [self.typeArray addObject:model];
-//        }
-        // test++++++++++++++++++++++++++++
+//        }];
         
         NSMutableArray *arr = [NSMutableArray array];
         for (NewThreadTypeModel *model in self.typeArray) {
@@ -58,16 +49,10 @@
             [self.pickView setToolbarTintColor:K_Color_ToolBar];
         }
         
-    }
+//    }
     
-    self.uploadhash = @"";
-    if ([DataCheck isValidDictionary:[self.dataForumTherad objectForKey:@"allowperm"]]) {
-        self.uploadhash = [[self.dataForumTherad objectForKey:@"allowperm"] objectForKey:@"uploadhash"];
-    }
-    
-    if ([DataCheck isValidString:[[self.dataForumTherad objectForKey:@"forum"] objectForKey:@"fid"]]) {
-        self.fid = [[self.dataForumTherad objectForKey:@"forum"] objectForKey:@"fid"];
-    }
+    self.fid = self.dataForumTherad.forum.fid;
+    self.uploadhash = self.dataForumTherad.allowperm.uploadhash;
     
     [self checkPostAuth];
     [self.view addSubview:self.tableView];
@@ -76,7 +61,7 @@
 // 检查权限 : 发帖 回帖 上传权限
 -(void)checkPostAuth {
     
-    if (![DataCheck isValidDictionary:[self.dataForumTherad objectForKey:@"allowperm"]] && self.fid) { // 上页数据没有allowperm字段的时候再请求一次
+    if (!self.dataForumTherad.allowperm && self.fid) { // 上页数据没有allowperm字段的时候再请求一次
         NSDictionary * dic =@{@"fid":self.fid
                               };
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {

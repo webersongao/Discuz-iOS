@@ -222,7 +222,8 @@
 
 - (void)publicPostControllerSet:(DZPostBaseController *)controller {
     KWEAKSELF;
-    controller.dataForumTherad = self.Variables;
+    #warning 该位置需要完全转换成Model赋值，此写法只是为了不报错 临时注释
+//    controller.dataForumTherad = self.Variables;
     controller.fid = self.selectFid;
     controller.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];

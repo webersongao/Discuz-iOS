@@ -14,7 +14,6 @@
 #import "WSImageModel.h"
 
 #import "SeccodeverifyView.h"
-#import "NewThreadTypeModel.h"
 #import "DZPostSelectTypeCell.h"
 #import "DZVoteTitleCell.h"
 #import "DZNormalDetailCell.h"

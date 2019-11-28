@@ -1844,6 +1844,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7028B697238FBD110047800C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				706210C2237936C800130B9D /* DZPostBaseController.h */,
+				706210BC237936C800130B9D /* DZPostBaseController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		703C4231237CF6050046C398 /* iflyMSC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2150,8 +2159,7 @@
 		706210B9237936C800130B9D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				706210C2237936C800130B9D /* DZPostBaseController.h */,
-				706210BC237936C800130B9D /* DZPostBaseController.m */,
+				7028B697238FBD110047800C /* Base */,
 				706210BA237936C800130B9D /* DZPostDebateController.h */,
 				706210C0237936C800130B9D /* DZPostDebateController.m */,
 				706210BB237936C800130B9D /* DZPostVoteViewController.h */,

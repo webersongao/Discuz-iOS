@@ -10,8 +10,8 @@
 
 @interface DZThreadPermModel : NSObject
 
-@property (nonatomic, assign) NSInteger allowpost;  //!< 属性注释
-@property (nonatomic, assign) NSInteger allowreply;  //!< 属性注释
+@property (nonatomic, copy) NSString *allowpost;  //!< 属性注释
+@property (nonatomic, copy) NSString *allowreply;  //!< 属性注释
 @property (nonatomic, copy) NSString *uploadhash;  //!< 属性注释
 @property (nonatomic, strong) NSDictionary *allowupload;  //!< 属性注释
 @property (nonatomic, strong) NSDictionary *attachremain;  //!< 属性注释
@@ -32,7 +32,7 @@
 
 @interface DZActivitySetModel : NSObject
 
-@property (nonatomic, strong) NSArray<NSString *> *activitytype;  //!< 属性注释
+@property (nonatomic, strong) NSArray *activitytype;  //!< 属性注释
 @property (nonatomic, strong) NSDictionary *activityfield;  //!< 属性注释
 
 @end

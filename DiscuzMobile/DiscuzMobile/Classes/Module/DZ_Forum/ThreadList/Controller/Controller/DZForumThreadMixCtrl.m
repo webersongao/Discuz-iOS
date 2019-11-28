@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong) DZForumInfoView *infoView;
 
-@property (nonatomic, strong) NSDictionary *Variables;
+@property (nonatomic, strong) DZThreadVarModel *VarModel;
 
 @property (nonatomic, strong) DZForumThreadMixContainer *containVC;
 //YES代表能滑动
@@ -244,7 +244,7 @@
         return;
     }
     
-    if (![DataCheck isValidDictionary:self.Variables]) {
+    if (!self.VarModel) {
         [MBProgressHUD showInfo:@"等待网络请求"];
         return;
     }
@@ -284,7 +284,7 @@
 - (void)postNormal {
     KWEAKSELF;
     DZPostNormalViewController * tvc = [[DZPostNormalViewController alloc] init];
-    tvc.dataForumTherad = self.Variables;
+    tvc.dataForumTherad = self.VarModel;
     tvc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
@@ -294,7 +294,7 @@
 - (void)postVote {
     KWEAKSELF;
     DZPostVoteViewController * vcv = [[DZPostVoteViewController alloc] init];
-    vcv.dataForumTherad = self.Variables;
+    vcv.dataForumTherad = self.VarModel;
     vcv.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
@@ -305,7 +305,7 @@
     KWEAKSELF;
     
     DZPostActivityViewController * ivc = [[DZPostActivityViewController alloc] init];
-    ivc.dataForumTherad = self.Variables;
+    ivc.dataForumTherad = self.VarModel;
     ivc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
@@ -316,7 +316,7 @@
     
     KWEAKSELF;
     DZPostDebateController *debateVC = [[DZPostDebateController alloc] init];
-    debateVC.dataForumTherad = self.Variables;
+    debateVC.dataForumTherad = self.VarModel;
     debateVC.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
     };
@@ -342,15 +342,13 @@
 - (void)didSelectHeaderWithSection:(UITapGestureRecognizer *)sender {
     
     if (self.subForumArr.count == 0) {
-        if ([DataCheck isValidArray:[self.Variables objectForKey:@"sublist"]]) {
+        if (self.VarModel.sublist.count) {
             if (self.subForumArr.count == 0) {
-                NSArray *arr = [self.Variables objectForKey:@"sublist"];
-                for (NSDictionary *dic in arr) {
+                for (NSDictionary *dic in self.VarModel.sublist) {
                     DZForumModel *model = [DZForumModel modelWithJSON:dic];
                     [self.subForumArr addObject:model];
                 }
             }
-            
         }
     } else {
         [self.subForumArr removeAllObjects];
@@ -377,10 +375,8 @@
         [cell addGestureRecognizer:tapG];
     }
     
-    if ([DataCheck isValidArray:[self.Variables objectForKey:@"sublist"]]) {
-        
-        NSArray *arr = [self.Variables objectForKey:@"sublist"];
-        cell.textLab.text = [NSString stringWithFormat:@"子版块（%ld）",(unsigned long)arr.count];
+    if (self.VarModel.sublist.count) {
+        cell.textLab.text = [NSString stringWithFormat:@"子版块（%ld）",(unsigned long)self.VarModel.sublist.count];
     }
     
     if (self.subForumArr.count > 0) {
@@ -513,26 +509,16 @@
         self.tableView.tableHeaderView = self.headView;
     }
     
-#warning 该位置需要完全转换成Model赋值，此写法只是为了不报错
-    self.Variables = VarModel.modelToJSONObject;
+    self.VarModel = VarModel.modelToJSONObject;
     
-    NSDictionary *group = [self.Variables objectForKey:@"group"];
-    if ([DataCheck isValidDictionary:group]) { // 能发的帖子类型处理
-        NSString *allowpost = [[self.Variables objectForKey:@"allowperm"] objectForKey:@"allowpost"];
+    if (self.VarModel.group) { // 能发的帖子类型处理
         
-        NSString *allowpostpoll = @"0";
-        NSString *allowpostactivity = @"0";
-         NSString *allowpostdebate = @"0";
-        if ([DataCheck isValidString:[group objectForKey:@"allowpostpoll"]]) {
-            allowpostpoll = [group objectForKey:@"allowpostpoll"];
-        }
-        if ([DataCheck isValidString:[group objectForKey:@"allowpostactivity"]]) {
-            allowpostactivity = [group objectForKey:@"allowpostactivity"];
-        }
-        if ([DataCheck isValidString:[group objectForKey:@"allowpostdebate"]]) {
-            allowpostdebate = [group objectForKey:@"allowpostdebate"];
-        }
-        NSString *allowspecialonly = [[self.Variables objectForKey:@"forum"] objectForKey:@"allowspecialonly"];
+        NSString *allowpost = VarModel.allowperm.allowpost;
+        
+        NSString *allowpostpoll = checkInteger(VarModel.group.allowpostpoll);
+        NSString *allowpostactivity = checkInteger(VarModel.group.allowpostactivity);
+         NSString *allowpostdebate = checkInteger(VarModel.group.allowpostdebate);
+        NSString *allowspecialonly = checkNull(VarModel.forum.allowspecialonly);
         [self.selectView setPostType:allowpostpoll
                             activity:allowpostactivity
                               debate:allowpostdebate

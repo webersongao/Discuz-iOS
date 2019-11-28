@@ -8,7 +8,6 @@
 
 #import "DZPostDebateController.h"
 #import "UIAlertController+Extension.h"
-#import "NewThreadTypeModel.h"
 #import "AllOneButtonCell.h"
 #import "DZVoteTitleCell.h"
 #import "DZPostSelectTypeCell.h"

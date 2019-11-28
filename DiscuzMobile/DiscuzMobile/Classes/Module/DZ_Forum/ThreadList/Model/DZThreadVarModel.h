@@ -30,7 +30,7 @@
 @property (nonatomic, strong) DZForumModel *forum;  //!< 属性注释
 @property (nonatomic, strong) NSArray<DZThreadListModel *> *forum_threadlist;  //!< 属性注释
 @property (nonatomic, strong) NSDictionary *groupiconid;  //!< 属性注释
-@property (nonatomic, strong) NSArray *sublist;  //!< 属性注释
+@property (nonatomic, strong) NSArray <NSDictionary *>*sublist;  //!< 属性注释
 
 @property (nonatomic, copy) NSString *tpp;  //!< 属性注释
 @property (nonatomic, assign) NSInteger page;  //!< 属性注释
