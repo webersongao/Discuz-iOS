@@ -34,6 +34,30 @@
 
 - (void)PushToSearchController;
 
+/// 跳转 我的好友
+-(void)PushToMyFriendViewController;
+
+/// 跳转 我的收藏
+-(void)PushToMyCollectionViewController;
+
+
+/// 跳转 我的提醒
+-(void)PushToMyMessageViewController;
+
+
+/// 跳转 我的帖子列表
+-(void)PushToMyThreadListViewController;
+
+/// 跳转 用户设置
+-(void)PushToSettingViewController;
+
+
+// 跳转 他的话题
+-(void)PushToUserThreadController:(NSString *)Uid;
+// 跳转 他的回复
+-(void)PushToUserPostReplyController:(NSString *)Uid;
+
+
 @end
 
 

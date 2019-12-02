@@ -14,6 +14,13 @@
 #import "DZLoginController.h"
 #import "DZSearchController.h"
 #import "DZForumController.h"
+#import "CollectionRootController.h"
+#import "MyFriendViewController.h"
+#import "DZMessageListController.h"
+#import "DZThreadRootController.h"
+#import "DZSettingController.h"
+#import "DZOtherUserThreadController.h"
+#import "DZOtherUserPostReplyController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -94,12 +101,57 @@
 - (void)PushToSearchController{
     
     DZSearchController *searchVC = [[DZSearchController alloc] init];
-    searchVC.hidesBottomBarWhenPushed = YES;
     [self.mainNavi pushViewController:searchVC animated:YES];
 }
 
 
+// 跳转 我的好友
+-(void)PushToMyFriendViewController{
+    MyFriendViewController *mfvc = [[MyFriendViewController alloc] init];
+    [self.mainNavi pushViewController:mfvc animated:YES];
+}
 
+// 跳转 我的收藏
+-(void)PushToMyCollectionViewController{
+    CollectionRootController *mfvc = [[CollectionRootController alloc] init];
+    [self.mainNavi pushViewController:mfvc animated:YES];
+}
+
+
+// 跳转 我的提醒
+-(void)PushToMyMessageViewController{
+    DZMessageListController *pmVC = [[DZMessageListController alloc] init];
+    [self.mainNavi pushViewController:pmVC animated:YES];
+}
+
+
+/// 跳转 我的帖子列表
+-(void)PushToMyThreadListViewController{
+    DZThreadRootController *trVc = [[DZThreadRootController alloc] init];
+    [self.mainNavi pushViewController:trVc animated:YES];
+}
+
+// 跳转 用户设置
+-(void)PushToSettingViewController{
+    DZSettingController * setVC = [[DZSettingController alloc] init];
+    [self.mainNavi pushViewController:setVC animated:YES];
+}
+
+
+// 跳转 他的话题
+-(void)PushToUserThreadController:(NSString *)Uid{
+    DZOtherUserThreadController *otherUTVC = [[DZOtherUserThreadController alloc]init];
+    otherUTVC.uidstr= checkNull(Uid);
+    [self.mainNavi pushViewController:otherUTVC animated:YES];
+}
+
+
+// 跳转 他的回复
+-(void)PushToUserPostReplyController:(NSString *)Uid{
+    DZOtherUserPostReplyController *otherUPRVC = [[DZOtherUserPostReplyController alloc]init];
+    otherUPRVC.uidstr = checkNull(Uid);
+    [self.mainNavi pushViewController:otherUPRVC animated:YES];
+}
 
 
 

@@ -14,13 +14,8 @@
 #import "LogoutCell.h"
 #import "CenterCell.h"
 #import "DZUserNetTool.h"
-#import "CollectionRootController.h"
-#import "DZMessageListController.h"
-#import "MyFriendViewController.h"
-#import "DZThreadRootController.h"
 #import "BoundManageController.h"
 #import "DZResetPwdController.h"
-#import "DZSettingController.h"
 #import "FootRootController.h"
 
 #import "TextIconModel.h"
@@ -90,8 +85,7 @@
 
 - (void)rightBarBtnClick {
     
-    DZSettingController * svc = [[DZSettingController alloc] init];
-    [[DZMobileCtrl sharedCtrl] PushToController:svc];
+    [[DZMobileCtrl sharedCtrl] PushToSettingViewController];
 }
 
 - (void)notiReloadData {
@@ -114,28 +108,22 @@
         switch (index) {
             case 0:          //我的好友
             {
-                MyFriendViewController *mfvc = [[MyFriendViewController alloc] init];
-                [[DZMobileCtrl sharedCtrl] PushToController:mfvc];
+                [[DZMobileCtrl sharedCtrl] PushToMyFriendViewController];
             }
                 break;
             case 1:          //我的收藏
             {
-                CollectionRootController *mfvc = [[CollectionRootController alloc] init];
-                [[DZMobileCtrl sharedCtrl] PushToController:mfvc];
+                [[DZMobileCtrl sharedCtrl] PushToMyCollectionViewController];
             }
                 break;
             case 2:          //我的提醒
             {
-                
-                DZMessageListController *pmVC = [[DZMessageListController alloc] init];
-                [[DZMobileCtrl sharedCtrl] PushToController:pmVC];
+                [[DZMobileCtrl sharedCtrl] PushToMyMessageViewController];
             }
                 break;
             case 3:          //我的主题
             {
-                DZThreadRootController *trVc = [[DZThreadRootController alloc] init];
-                trVc.hidesBottomBarWhenPushed = YES;
-                [[DZMobileCtrl sharedCtrl] PushToController:trVc];
+                [[DZMobileCtrl sharedCtrl] PushToMyThreadListViewController];
             }
                 break;
                 
@@ -297,30 +285,17 @@
 - (void)uploadImage:(UIImage *)image {
     
     [self.HUD showLoadingMessag:@"上传中" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        
-        NSData *data = [image limitImageSize];
-        NSString *nowTime = [[NSDate date] stringFromDateFormat:@"yyyyMMddHHmmss"];
-        NSString *fileName = [NSString stringWithFormat:@"%@.png", nowTime];
-        [request addFormDataWithName:@"Filedata" fileName:fileName mimeType:@"image/png" fileData:data];
-        
-        request.urlString = DZ_Url_UploadHead;
-        request.methodType = JTMethodTypeUpload;
-    } progress:^(NSProgress *progress) {
-        if (100.f * progress.completedUnitCount/progress.totalUnitCount == 100) {
-            //            complete?complete():nil;
-        }
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        id resDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        if ([DataCheck isValidDictionary:resDic] && [[[resDic objectForKey:@"Variables"] objectForKey:@"uploadavatar"] containsString:@"success"] ) {
+    KWEAKSELF
+    [DZUserNetTool DZ_UserUpdateAvatarToServer:image progress:^(double Progress, NSError *error) {
+    } completion:^(BOOL boolState) {
+        if (boolState) {
+            [weakSelf.HUD hide];
             [MBProgressHUD showInfo:@"上传成功"];
-            self.myHeader.userInfoView.headView.image = image;
+            weakSelf.myHeader.userInfoView.headView.image = image;
+        }else{
+            [weakSelf.HUD hide];
+            [MBProgressHUD showInfo:@"上传失败"];
         }
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [MBProgressHUD showInfo:@"上传失败"];
     }];
 }
 

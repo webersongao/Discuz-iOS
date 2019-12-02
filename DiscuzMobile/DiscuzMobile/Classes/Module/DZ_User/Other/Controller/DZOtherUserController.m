@@ -8,18 +8,11 @@
 
 #import "DZOtherUserController.h"
 #import "UIAlertController+Extension.h"
-
 #import "CenterToolView.h"
 #import "VerticalImageTextView.h"
-#import "MyFriendViewController.h"
-#import "MySubjectViewController.h"
-#import "DZSettingController.h"
-#import "DZOtherUserThreadController.h"
-#import "DZOtherUserPostReplyController.h"
 #import "DZUserNetTool.h"
 #import "TextIconModel.h"
 #import "CenterManageModel.h"
-
 #import "CenterCell.h"
 #import "CenterUserInfoView.h"
 #import "AllOneButtonCell.h"
@@ -68,8 +61,7 @@
 }
 
 - (void)rightBarBtnClick {
-    DZSettingController * svc = [[DZSettingController alloc]init];
-    [self.navigationController pushViewController:svc animated:YES];
+      [[DZMobileCtrl sharedCtrl] PushToSettingViewController];
 }
 
 - (void)notiReloadData {
@@ -215,16 +207,12 @@
             switch (indexPath.row) {
                 case 0:           //他的话题
                 {
-                    DZOtherUserThreadController *otherUTVC=[[DZOtherUserThreadController alloc]init];
-                    otherUTVC.uidstr= _authorid;
-                    [self.navigationController pushViewController:otherUTVC animated:YES];
+                    [[DZMobileCtrl sharedCtrl] PushToUserThreadController:self.authorid];
                 }
                     break;
                 case 1:          //他的回复
                 {
-                    DZOtherUserPostReplyController *otherUPRVC=[[DZOtherUserPostReplyController alloc]init];
-                    otherUPRVC.uidstr=_authorid;
-                    [self.navigationController pushViewController:otherUPRVC animated:YES];
+                   [[DZMobileCtrl sharedCtrl] PushToUserPostReplyController:self.authorid];
                 }
                     break;
                     

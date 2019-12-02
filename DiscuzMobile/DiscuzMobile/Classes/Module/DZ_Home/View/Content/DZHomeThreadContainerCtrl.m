@@ -11,7 +11,6 @@
 #import "DZHomeBestListCtrl.h"
 #import "DZHomeNewListCtrl.h"
 #import "FootmarkController.h"
-#import "DZSettingController.h"
 
 @interface DZHomeThreadContainerCtrl ()
 
@@ -79,8 +78,7 @@
 }
 
 - (void)leftBarBtnClick {
-    DZSettingController *setVC = [[DZSettingController alloc] init];
-    [self showViewController:setVC sender:nil];
+       [[DZMobileCtrl sharedCtrl] PushToSettingViewController];
 }
 
 - (void)rightBarBtnClick {
