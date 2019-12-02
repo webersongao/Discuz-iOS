@@ -10,3 +10,6 @@
 
 # 问题反馈
 https://bbs.comsenz-service.com/forum-58-1.html
+
+# 版本问题
+以后考虑重绘UI，重新布置新功能，期待Discuz Q可以开放出新的Api
