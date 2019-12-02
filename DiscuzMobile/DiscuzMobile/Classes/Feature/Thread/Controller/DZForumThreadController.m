@@ -10,7 +10,6 @@
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
 #import "DZCollectionTool.h"
-#import "UploadTool.h"
 
 #import "DZViewPollPotionNumController.h"
 #import "DZActivityEditController.h"

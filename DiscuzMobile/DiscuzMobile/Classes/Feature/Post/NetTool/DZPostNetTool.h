@@ -8,10 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSUInteger, DZAttacheType) {
+    DZAttacheImage,
+    DZAttacheVote,
+    DZAttacheAudio,
+    DZAttacheCustom,
+};
 
 @interface DZPostNetTool : NSObject
 
-@end
++ (instancetype)sharedTool;
+@property (nonatomic, strong) NSDictionary *uploadErrorDic;
 
-NS_ASSUME_NONNULL_END
+/**
+ 上传附件，图片、录音
+ 
+ @param attachArr 附件数组
+ @param attacheType 附件类型
+ @param getDic get参数
+ @param postDic post参数
+ @param complete 完成回调
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void)DZ_UpLoadAttachmentArr:(NSArray *)attachArr attacheType:(DZAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure;
+
+
+
+
+
+@end

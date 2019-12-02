@@ -9,6 +9,7 @@
 #import "DZLoginModule.h"
 #import "XinGeCenter.h"
 #import "DZShareCenter.h"
+#import "DZUserNetTool.h"
 
 NSString * const LoginFileName = @"LoginFile";
 NSString * const CookieValue = @"COOKIEVALU";
@@ -176,14 +177,11 @@ NSString * const CookieValue = @"COOKIEVALU";
 // 检查cookie
 + (void)checkCookie {
     if ([self isLogged]) {
-        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-            request.methodType = JTMethodTypePOST;
-            request.urlString = DZ_Url_UserInfo;
-        } success:^(id responseObject, JTLoadType type) {
-            if ([[[responseObject objectForKey:@"Message"] objectForKey:@"messagestr"] isEqualToString:@"请先登录后才能继续浏览"]) {
+        [DZUserNetTool DZ_UserProfileFromServer:YES Uid:nil userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
+            if (errorStr.length) {
                 [DZLoginModule signout];
             }
-        } failed:nil];
+        }];
     }
 }
 

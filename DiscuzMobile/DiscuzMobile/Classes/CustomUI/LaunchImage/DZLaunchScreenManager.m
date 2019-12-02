@@ -26,7 +26,7 @@
 
 - (void)setLaunchView {
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"firstStart"]) {
-        // 开机启动画
+        // 开机启动画 广告页面
         self.launchImageView = [[DZLaunchImageView alloc] initWithImage:[UIImage ty_getLaunchImage]];
         [self.launchImageView addInWindow];
         // 不是第一次启动 设置开机启动动画

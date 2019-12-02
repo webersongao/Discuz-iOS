@@ -24,7 +24,7 @@
 }
 
 - (void)initData {
-//    NSArray *mgArr = @[@"账号设置",@"修改密码",@"我的足迹", @"注册时间"];
+    //    NSArray *mgArr = @[@"账号设置",@"修改密码",@"我的足迹", @"注册时间"];
     NSArray *mgArr = @[@"绑定管理",@"注册时间"];
     for (int i = 0; i < mgArr.count; i ++) {
         TextIconModel *model = [[TextIconModel alloc] init];
@@ -55,7 +55,7 @@
 
 - (void)initOtherData {
     
-//    NSArray *uArr = @[@"他的主题 ",@"他的回复"];
+    //    NSArray *uArr = @[@"他的主题 ",@"他的回复"];
     NSArray *uArr = @[];
     for (int i = 0; i < uArr.count; i ++) {
         TextIconModel *model = [[TextIconModel alloc] init];
@@ -93,38 +93,30 @@
     }
 }
 
-- (void)dealOtherData:(id)responseObject {
-    _isOther = YES;
-    [self dealData:responseObject];
-}
-
-
-- (void)dealData:(id)responseObject {
-    NSDictionary *myInfoDic = [responseObject objectForKey:@"Variables"];
-    NSDictionary *space = [myInfoDic objectForKey:@"space"];
-    self.myInfoDic = myInfoDic.mutableCopy;
+-(void)setUserVarModel:(DZUserVarModel *)userVarModel{
+    _userVarModel = userVarModel;
     for (int i = 0; i < self.manageArr.count; i ++) {
         TextIconModel *model = self.manageArr[i];
         if (_isOther) {
             switch (i) {
                 case 0:
                 {
-                    model.detail = space[@"group"][@"grouptitle"];
+                    model.detail = self.userVarModel.space.group.grouptitle;
                 }
-                break;
+                    break;
                 case 1:
                 {
-                    model.detail = space[@"admingroup"][@"grouptitle"];
+                    model.detail = self.userVarModel.space.admingroup.grouptitle;
                 }
-                break;
+                    break;
                 case 2:
                 {
-                    model.detail = space[@"regdate"];
+                    model.detail = self.userVarModel.space.regdate;
                 }
-                break;
-                
+                    break;
+                    
                 default:
-                break;
+                    break;
             }
         } else {
             switch (i) {
@@ -132,20 +124,20 @@
                 {
                     model.detail = @"";
                 }
-                break;
+                    break;
                 case 1:
                 {
-                    model.detail = space[@"regdate"];
+                    model.detail = self.userVarModel.space.regdate;
                 }
-                break;
+                    break;
                 case 2:
                 {
                     model.detail = @"";
                 }
-                break;
-                
+                    break;
+                    
                 default:
-                break;
+                    break;
             }
         }
     }
@@ -153,46 +145,47 @@
         TextIconModel *model = self.infoArr[i];
         switch (i) {
             case 0:
-                model.detail = space[@"threads"];
+                model.detail = self.userVarModel.space.threads;
                 break;
             case 1:
             {
-                NSString *poststr = space[@"posts"];
-                NSString *threads = space[@"threads"];
+                NSString *poststr = self.userVarModel.space.posts;
+                NSString *threads = self.userVarModel.space.threads;
                 NSInteger realPost = [poststr integerValue] - [threads integerValue];
-                
                 model.detail = [NSString stringWithFormat:@"%ld",realPost];
-                
             }
                 
                 break;
             case 2:
-                model.detail = space[@"credits"];
+                model.detail = self.userVarModel.space.credits;
                 break;
             default:
                 break;
         }
     }
-    
-    
-    NSDictionary * extcreditsConfig = [myInfoDic objectForKey:@"extcredits"];
-    NSMutableArray *extcreditsIndex = [NSMutableArray array];
-    
+
+    NSDictionary * extcreditsDict = self.userVarModel.extcredits;
     //从扩展积分设置中读取扩展积分的名称
-    if ([DataCheck isValidDictionary:extcreditsConfig]) {
-        int i = 0;
-        for (NSString * extcreditsId in extcreditsConfig) {
-            [extcreditsIndex addObject:extcreditsId];
-            
-            if ([DataCheck isValidString:[[extcreditsConfig objectForKey:extcreditsId] objectForKey:@"title"]]) {
-                TextIconModel *model = [[TextIconModel alloc] init];
-                model.iconName = [NSString stringWithFormat:@"ucex_%ld",self.infoArr.count];
-                model.text = [[extcreditsConfig objectForKey:extcreditsId] objectForKey:@"title"];
-                model.detail = [NSString stringWithFormat:@"%@", [space objectForKey:[NSString stringWithFormat:@"extcredits%@",extcreditsIndex[i]]]];
-                [self.infoArr addObject:model];
-                i ++;
-            }
-            
+    for (int index = 1; index <= extcreditsDict.allKeys.count; index++) {
+        NSDictionary *dict = [extcreditsDict dictionaryForKey:[NSString stringWithFormat:@"%lu",self.infoArr.count + 1]];
+        TextIconModel *itemModel = [[TextIconModel alloc] init];
+        itemModel.text = [dict stringForKey:@"title"];
+        if (index == 1){
+            itemModel.detail = userVarModel.space.extcredits1;
+        }else if (index == 2){
+            itemModel.detail = userVarModel.space.extcredits2;
+        }else if (index == 3){
+            itemModel.detail = userVarModel.space.extcredits3;
+        }else if (index == 4){
+            itemModel.detail = userVarModel.space.extcredits4;
+        }else if (index == 5){
+            itemModel.detail = userVarModel.space.extcredits5;
+        }else{
+            itemModel.detail = nil;
+        }
+        itemModel.iconName = [NSString stringWithFormat:@"ucex_%d",index];
+        if (itemModel.text.length) {
+            [self.infoArr addObject:itemModel];
         }
     }
 }

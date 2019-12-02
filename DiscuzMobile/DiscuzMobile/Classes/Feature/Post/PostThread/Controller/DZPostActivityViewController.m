@@ -7,12 +7,10 @@
 //
 
 #import "DZPostActivityViewController.h"
-
-#import "UploadTool.h"
-
+#import "DZImagePickerView.h"
+#import "DZPostNetTool.h"
 #import "DropDownView.h"
 #import "ZHPickView.h"
-#import "DZImagePickerView.h"
 
 #import "DZVoteTitleCell.h"
 #import "DZActiveTimeCell.h"
@@ -172,10 +170,10 @@
     NSDictionary *dic = @{@"hash":uploadhash,
                           @"uid":[Environment sharedEnvironment].member_uid
                           };
-    
+  
     NSDictionary * getdic = @{@"fid":self.fid};
     [self.HUD showLoadingMessag:@"上传中" toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:DZAttacheImage getDic:getdic postDic:dic complete:^{
+    [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:imagear attacheType:DZAttacheImage getDic:getdic postDic:dic complete:^{
         [self.HUD hide];
     } success:^(id response) {
         NSString *aidStr = [NSString stringWithFormat:@"%@",response];

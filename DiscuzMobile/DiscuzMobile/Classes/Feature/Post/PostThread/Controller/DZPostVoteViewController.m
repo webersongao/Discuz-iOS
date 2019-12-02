@@ -24,7 +24,7 @@
 #import "DZImagePickerView.h"
 #import "ZHPickView.h"
 #import "SeccodeverifyView.h"
-#import "UploadTool.h"
+#import "DZPostNetTool.h"
 
 
 @interface DZPostVoteViewController ()<UITextFieldDelegate, UITextViewDelegate, QRadioButtonDelegate, QCheckBoxDelegate, ZHPickViewDelegate>
@@ -557,7 +557,7 @@ static int voteIndex = 0 ;
                             @"operation":@"poll"};
     
     [self.HUD showLoadingMessag:@"上传图片" toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:imagear attacheType:DZAttacheVote getDic:getdic postDic:dic complete:^{
+    [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:imagear attacheType:DZAttacheVote getDic:getdic postDic:dic complete:^{
         [self.HUD hideAnimated:YES];
     } success:^(id response) {
         

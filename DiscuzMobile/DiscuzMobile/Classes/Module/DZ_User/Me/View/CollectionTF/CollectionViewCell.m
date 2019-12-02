@@ -43,7 +43,6 @@
     
     self.titleLabel.text = [dic objectForKey:@"title"];
     
-    DLog(@"%@",[dic objectForKey:@"fname"]);
     if ([DataCheck isValidString:[dic objectForKey:@"author"]])
     {
         self.nameLabel.text = [dic objectForKey:@"author"];

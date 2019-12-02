@@ -8,10 +8,8 @@
 
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
-#import "DZUserManagerController.h"
-#import "DZFastPlaceController.h"
-#import "DZMobileCtrl.h"
 #import "DZMessageListController.h"
+#import "DZFastPlaceController.h"
 
 #import "DZUserController.h"
 #import "DZHomeController.h"
@@ -131,7 +129,7 @@
     //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
     DZUserController *userVC = [[DZUserController alloc] init];
-    DZUserManagerController *myVC = [[DZUserManagerController alloc] init];
+    DZUserController *myVC = [[DZUserController alloc] init];
     
     [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
     

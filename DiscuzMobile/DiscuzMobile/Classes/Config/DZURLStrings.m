@@ -69,7 +69,7 @@ NSString * const DZ_Url_Login = @"?module=login&version=5";
 NSString * const DZ_Url_Oauths = @"?module=oauths&version=5";
 // 解绑
 NSString * const DZ_Url_UnBindThird =  @"?module=oauths&op=unbind&version=5";
-
+// 修改密码
 NSString * const DZ_Url_ResetPwd = @"?module=edit_password&version=5";
 
 

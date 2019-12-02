@@ -1,14 +1,13 @@
 //
-//  DZHomeController.h
+//  DZUserController.h
 //  DiscuzMobile
 //
-//  Created by WebersonGao on 2019/11/19.
-//  Copyright © 2019 comsenz-service.com. All rights reserved.
+//  Created by HB on 17/1/19.
+//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBaseViewController.h"
+#import "DZBaseTableViewController.h"
 
-@interface DZUserController : DZBaseViewController
+@interface DZUserController : DZBaseTableViewController
 
 @end
-

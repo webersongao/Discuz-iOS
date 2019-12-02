@@ -9,7 +9,7 @@
 #import "DZPostNormalViewController.h"
 #import "AudioModel.h"
 #import "AudioTool.h"
-#import "UploadTool.h"
+#import "DZPostNetTool.h"
 #import "PostNormalModel.h"
 #import "WSImageModel.h"
 
@@ -462,7 +462,7 @@
     NSDictionary * getdic=@{@"fid":self.fid};
     NSArray *arr = @[[AudioTool shareInstance].mp3Url.absoluteString];
     [self.HUD showLoadingMessag:@"正在上传语音..." toView:self.view];
-    [[UploadTool shareInstance] upLoadAttachmentArr:arr attacheType:DZAttacheAudio getDic:getdic postDic:dic complete:^{
+    [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:arr attacheType:DZAttacheAudio getDic:getdic postDic:dic complete:^{
         [self.HUD hide];
     } success:^(id response) {
         

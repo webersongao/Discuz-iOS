@@ -16,7 +16,7 @@
 #import "DZSettingController.h"
 #import "DZOtherUserThreadController.h"
 #import "DZOtherUserPostReplyController.h"
-
+#import "DZUserNetTool.h"
 #import "TextIconModel.h"
 #import "CenterManageModel.h"
 
@@ -28,10 +28,7 @@
 @interface DZOtherUserController ()
 
 @property (nonatomic, strong) CenterUserInfoView *userInfoView;
-
-@property (nonatomic, strong) CenterManageModel *centerModel;
-
-@property (nonatomic, copy) NSString *isfriend;
+@property (nonatomic, strong) CenterManageModel *otherModel;
 
 @end
 
@@ -81,34 +78,29 @@
 }
 
 - (void)initData {
-    self.centerModel = [[CenterManageModel alloc] initWithType:JTCenterTypeOther];
+    self.otherModel = [[CenterManageModel alloc] initWithType:JTCenterTypeOther];
 }
 
 -(void)downLoadData{
     [self initData];
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"获取信息" toView:self.view];
-        NSDictionary *dic= @{@"uid":self.authorid};
-        request.urlString = DZ_Url_UserInfo;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        [self.tableView.mj_header endRefreshing];
+    KWEAKSELF
+    [DZUserNetTool DZ_UserProfileFromServer:NO Uid:self.authorid userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
+        [weakSelf.HUD hide];
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.HUD showLoadingMessag:@"获取信息" toView:self.view];
         
-        [self.centerModel dealOtherData:responseObject];
-        NSString *avatar = [[self.centerModel.myInfoDic valueForKey:@"space"] valueForKey:@"avatar"];
-        [self.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
-        self.userInfoView.nameLab.text = [[self.centerModel.myInfoDic objectForKey:@"space"] objectForKey:@"username"];
-        [self.userInfoView setIdentityText:[[[self.centerModel.myInfoDic objectForKey:@"space"] objectForKey:@"group"] objectForKey:@"grouptitle"]];
-        self.isfriend = [[self.centerModel.myInfoDic objectForKey:@"space"] objectForKey:@"isfriend"];
-        
-        [self.tableView reloadData];
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self.tableView.mj_header endRefreshing];
-        [self showServerError:error];
+        if (errorStr.length) {
+            [DZMobileCtrl showAlertInfo:errorStr];
+        }else{
+            weakSelf.otherModel.isOther = YES;
+            weakSelf.otherModel.userVarModel = UserVarModel;
+            [weakSelf.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:UserVarModel.space.avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
+            weakSelf.userInfoView.nameLab.text = UserVarModel.space.username;
+            [weakSelf.userInfoView setIdentityText:UserVarModel.space.group.grouptitle];
+            
+            [weakSelf.tableView reloadData];
+        }
     }];
 }
 
@@ -130,13 +122,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return self.centerModel.useArr.count;
+        return self.otherModel.useArr.count;
     } else if (section == 1){
-        return self.centerModel.manageArr.count;
+        return self.otherModel.manageArr.count;
     } else if (section == 2) {
-        return self.centerModel.infoArr.count;
-    } else if (self.centerModel.myInfoDic.count > 0) {
-        if (![self.authorid isEqualToString:[DZLoginModule getLoggedUid]] && [self.isfriend isEqualToString:@"0"]) {
+        return self.otherModel.infoArr.count;
+    } else if (self.otherModel.userVarModel) {
+        if (![self.authorid isEqualToString:[DZLoginModule getLoggedUid]] && !self.otherModel.userVarModel.space.isfriend) {
             return 1;
         }
     }
@@ -151,7 +143,7 @@
         CenterCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
         if (cell == nil) {
             cell = [[CenterCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
-           
+            
         }
         if (indexPath.section == 0) {
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
@@ -161,13 +153,13 @@
         }
         TextIconModel *model;
         if (indexPath.section == 0) {
-            model = self.centerModel.useArr[indexPath.row];
+            model = self.otherModel.useArr[indexPath.row];
         }
         if (indexPath.section == 1) {
-            model = self.centerModel.manageArr[indexPath.row];
+            model = self.otherModel.manageArr[indexPath.row];
             
         } else if (indexPath.section == 2) {
-            model = self.centerModel.infoArr[indexPath.row];
+            model = self.otherModel.infoArr[indexPath.row];
         }
         [cell setData:model];
         return cell;
@@ -194,11 +186,10 @@
 }
 
 - (void)addFriend {
-    if ([[self.centerModel.myInfoDic objectForKey:@"space"] objectForKey:@"uid"] != nil) {
-        
+    if (self.otherModel.userVarModel.space.uid) {
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             [self.HUD showLoadingMessag:@"正在请求" toView:self.view];
-            NSDictionary *dic = @{@"uid":[[self.centerModel.myInfoDic objectForKey:@"space"] objectForKey:@"uid"],@"type":@"1"};
+            NSDictionary *dic = @{@"uid":checkNull(self.otherModel.userVarModel.space.uid),@"type":@"1"};
             request.urlString = DZ_Url_AddFriend;
             request.parameters = dic;
         } success:^(id responseObject, JTLoadType type) {

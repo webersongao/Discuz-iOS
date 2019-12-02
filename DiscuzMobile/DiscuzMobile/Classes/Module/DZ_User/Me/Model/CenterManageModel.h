@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZUserVarModel.h"
 @class TextIconModel;
 
 typedef NS_ENUM(NSUInteger, JTCenterType) {
@@ -16,19 +17,14 @@ typedef NS_ENUM(NSUInteger, JTCenterType) {
 
 @interface CenterManageModel : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary *myInfoDic;
-
 @property (nonatomic, strong) NSMutableArray<TextIconModel *> *useArr;  // 他人中心用
 @property (nonatomic, assign) BOOL isOther;
 
 // 公用
+@property (nonatomic, strong) DZUserVarModel *userVarModel;  //!< 属性注释
 @property (nonatomic, strong) NSMutableArray<TextIconModel *> *manageArr;
-
 @property (nonatomic, strong) NSMutableArray<TextIconModel *> *infoArr;
 
 - (instancetype)initWithType:(JTCenterType)type;
-
-- (void)dealOtherData:(id)responseObject;
-- (void)dealData:(id)responseObject;
 
 @end
