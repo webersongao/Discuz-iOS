@@ -1865,6 +1865,7 @@
 		700BB5D72394C0D3002A62DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				700F5924239674F700DD6DFF /* FrameModel */,
 				700BB5E42394EF63002A62DE /* DZSpaceModel.h */,
 				700BB5DF2394E85C002A62DE /* DZSpaceModel.m */,
 				700BB5E72394EF9C002A62DE /* DZPrivacyModel.h */,
@@ -1875,6 +1876,34 @@
 				700BB5D92394E744002A62DE /* DZUserVarModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		700F5922239674B800DD6DFF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				700F5923239674DA00DD6DFF /* SubView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		700F5923239674DA00DD6DFF /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				70FBDC9C2383FC1B00FC296E /* MYCenterHeader.h */,
+				70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		700F5924239674F700DD6DFF /* FrameModel */ = {
+			isa = PBXGroup;
+			children = (
+				70FBDC892383FC1B00FC296E /* TextIconModel.h */,
+				70FBDC8E2383FC1B00FC296E /* TextIconModel.m */,
+				70FBDC8D2383FC1B00FC296E /* CenterManageModel.h */,
+				70FBDC8A2383FC1B00FC296E /* CenterManageModel.m */,
+			);
+			path = FrameModel;
 			sourceTree = "<group>";
 		};
 		7028B697238FBD110047800C /* Base */ = {
@@ -3378,12 +3407,8 @@
 			children = (
 				70FBDC872383FC1B00FC296E /* MsgReplyModel.h */,
 				70FBDC8B2383FC1B00FC296E /* MsgReplyModel.m */,
-				70FBDC892383FC1B00FC296E /* TextIconModel.h */,
-				70FBDC8E2383FC1B00FC296E /* TextIconModel.m */,
 				70FBDC8C2383FC1B00FC296E /* BoundInfoModel.h */,
 				70FBDC882383FC1B00FC296E /* BoundInfoModel.m */,
-				70FBDC8D2383FC1B00FC296E /* CenterManageModel.h */,
-				70FBDC8A2383FC1B00FC296E /* CenterManageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3427,8 +3452,6 @@
 				70FBDCA92383FC1B00FC296E /* CenterCell.m */,
 				70FBDCA02383FC1B00FC296E /* CenterToolView.h */,
 				70FBDCA82383FC1B00FC296E /* CenterToolView.m */,
-				70FBDC9C2383FC1B00FC296E /* MYCenterHeader.h */,
-				70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */,
 				70FBDC9A2383FC1B00FC296E /* AllOneButtonCell.h */,
 				70FBDCA42383FC1B00FC296E /* AllOneButtonCell.m */,
 				70FBDCA62383FC1B00FC296E /* BoundManageCell.h */,
@@ -3594,6 +3617,7 @@
 		70FBDD1C2383FC4B00FC296E /* DZ_User */ = {
 			isa = PBXGroup;
 			children = (
+				700F5922239674B800DD6DFF /* View */,
 				700BB5D72394C0D3002A62DE /* Model */,
 				700BB5D62394C088002A62DE /* Controller */,
 				70471C602394BFEC00CCF5AC /* NetTool */,
