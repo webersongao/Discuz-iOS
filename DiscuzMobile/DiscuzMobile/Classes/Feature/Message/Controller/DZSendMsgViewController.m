@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"发送消息";
+    self.dz_NavigationItem.title = @"发送消息";
     [self initUI];
     if ([DataCheck isValidString:self.uid]) {
         [self configNaviBar:@"取消" type:NaviItemText Direction:NaviDirectionLeft];

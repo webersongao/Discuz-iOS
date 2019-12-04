@@ -57,11 +57,11 @@
 - (void)setupViews {
 
     [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
-    [self.navigationItem setHidesBackButton:YES];
+    [self.dz_NavigationItem setHidesBackButton:YES];
     
     self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 30)];
     self.searchView.searchBar.delegate = self;
-    self.navigationItem.titleView = self.searchView;
+    self.dz_NavigationItem.titleView = self.searchView;
     [self.searchView.cancelBtn addTarget:self action:@selector(rightBarBtnClick) forControlEvents:UIControlEventTouchUpInside];
     if (self.type == searchPostionTypeTabbar) {
         self.searchView.searchBar.frame = CGRectMake(5, 1, KScreenWidth - 30, 28);

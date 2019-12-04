@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"选择发帖版块";
+    self.dz_NavigationItem.title = @"选择发帖版块";
     _navBarHairlineImageView = [UIImageView findHairlineImageViewUnder:self.navigationController.navigationBar];
     [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     

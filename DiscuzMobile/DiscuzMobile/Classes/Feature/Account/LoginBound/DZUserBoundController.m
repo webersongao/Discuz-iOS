@@ -31,7 +31,7 @@
     
     _boundView.delegate = self;
     _boundView.contentSize = CGSizeMake(KScreenWidth, KScreenHeight + 1);
-    self.navigationItem.title = @"登录绑定";
+    self.dz_NavigationItem.title = @"登录绑定";
     self.view.backgroundColor = mRGBColor(246, 246, 246);
     
     [self setAction];

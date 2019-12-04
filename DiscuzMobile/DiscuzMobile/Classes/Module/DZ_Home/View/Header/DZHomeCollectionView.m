@@ -12,7 +12,7 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 
 @interface DZHomeCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic, strong) UIPageControl *PageControl;  //!< <#属性注释#>
+@property (nonatomic, strong) UIPageControl *PageControl;  //!< 属性注释
 
 @end
 

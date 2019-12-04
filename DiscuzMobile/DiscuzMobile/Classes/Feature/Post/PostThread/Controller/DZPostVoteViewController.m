@@ -50,7 +50,7 @@ static int voteIndex = 0 ;
 
     [super viewDidLoad];
     self.imgBtnTag = 0;
-    self.navigationItem.title = @"发起投票";
+    self.dz_NavigationItem.title = @"发起投票";
     
     self.tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - self.navbarMaxY) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;

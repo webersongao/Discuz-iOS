@@ -37,7 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"通用设置";
+    self.dz_NavigationItem.title = @"通用设置";
     self.dataSourceArr = self.listArray.copy;
     
     self.tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStyleGrouped];

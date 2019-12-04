@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"关联登录";
+    self.dz_NavigationItem.title = @"关联登录";
     self.view.backgroundColor = mRGBColor(246, 246, 246);
     [self setAction];
 }

@@ -171,7 +171,6 @@
     [childVc.tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];
     
     DZBaseNavigationController *nav = [[DZBaseNavigationController alloc] initWithRootViewController:childVc];
-    nav.navigationBar.barTintColor = [UIColor whiteColor];
     childVc.tabBarItem.tag = self.viewControllers.count;
     // 添加为子控制器
     [self addChildViewController:nav];

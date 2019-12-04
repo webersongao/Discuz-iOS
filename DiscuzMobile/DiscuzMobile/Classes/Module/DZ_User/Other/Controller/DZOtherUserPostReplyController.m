@@ -26,7 +26,7 @@
 -(void)viewDidLoad{
     
     [super viewDidLoad];
-    self.navigationItem.title=@"他的回复";
+    self.dz_NavigationItem.title=@"他的回复";
     
     _listcount = 0;
     _tpp = 0;

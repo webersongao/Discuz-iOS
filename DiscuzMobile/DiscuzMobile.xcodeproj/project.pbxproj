@@ -2908,6 +2908,47 @@
 			path = UILabel;
 			sourceTree = "<group>";
 		};
+		70BCCE0923975D11004596DE /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				70FBDCC42383FC1B00FC296E /* View */,
+				70BCCE0C23975D2F004596DE /* Model */,
+				70BCCE0A23975D1D004596DE /* Controller */,
+			);
+			path = Forum;
+			sourceTree = "<group>";
+		};
+		70BCCE0A23975D1D004596DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				70FBDCB82383FC1B00FC296E /* DZForumController.h */,
+				70FBDCBD2383FC1B00FC296E /* DZForumController.m */,
+				70FBDCB92383FC1B00FC296E /* DZForumIndexListController.h */,
+				70FBDCBC2383FC1B00FC296E /* DZForumIndexListController.m */,
+				70FBDCBE2383FC1B00FC296E /* DZForumCollectionController.h */,
+				70FBDCBB2383FC1B00FC296E /* DZForumCollectionController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		70BCCE0C23975D2F004596DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				70FBDCC12383FC1B00FC296E /* DZTreeViewNode.h */,
+				70FBDCC22383FC1B00FC296E /* DZTreeViewNode.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		70BCCE0D23975D9D004596DE /* NetTool */ = {
+			isa = PBXGroup;
+			children = (
+				70D1D91B238F6EF0003730CD /* DZThreadNetTool.h */,
+				70D1D91C238F6EF0003730CD /* DZThreadNetTool.m */,
+			);
+			path = NetTool;
+			sourceTree = "<group>";
+		};
 		70CA22E02386DEA60053B31B /* DZNetWork */ = {
 			isa = PBXGroup;
 			children = (
@@ -3487,37 +3528,12 @@
 		70FBDCB62383FC1B00FC296E /* DZ_Forum */ = {
 			isa = PBXGroup;
 			children = (
+				70FBDCBA2383FC1B00FC296E /* fourm.json */,
+				70BCCE0D23975D9D004596DE /* NetTool */,
+				70BCCE0923975D11004596DE /* Forum */,
 				7062108C237936C800130B9D /* ThreadList */,
-				70FBDCB72383FC1B00FC296E /* Controller */,
-				70FBDCBF2383FC1B00FC296E /* Model */,
-				70FBDCC42383FC1B00FC296E /* View */,
-				70D1D91B238F6EF0003730CD /* DZThreadNetTool.h */,
-				70D1D91C238F6EF0003730CD /* DZThreadNetTool.m */,
 			);
 			path = DZ_Forum;
-			sourceTree = "<group>";
-		};
-		70FBDCB72383FC1B00FC296E /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				70FBDCBA2383FC1B00FC296E /* fourm.json */,
-				70FBDCB82383FC1B00FC296E /* DZForumController.h */,
-				70FBDCBD2383FC1B00FC296E /* DZForumController.m */,
-				70FBDCB92383FC1B00FC296E /* DZForumIndexListController.h */,
-				70FBDCBC2383FC1B00FC296E /* DZForumIndexListController.m */,
-				70FBDCBE2383FC1B00FC296E /* DZForumCollectionController.h */,
-				70FBDCBB2383FC1B00FC296E /* DZForumCollectionController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		70FBDCBF2383FC1B00FC296E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				70FBDCC12383FC1B00FC296E /* DZTreeViewNode.h */,
-				70FBDCC22383FC1B00FC296E /* DZTreeViewNode.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		70FBDCC42383FC1B00FC296E /* View */ = {
@@ -3596,11 +3612,11 @@
 			isa = PBXGroup;
 			children = (
 				705BB912238A6C2C002C505A /* Header */,
+				70FBDD2C2384018E00FC296E /* Content */,
 				70FBDD262383FDA500FC296E /* DZHomeScrollView.h */,
 				70FBDD272383FDA500FC296E /* DZHomeScrollView.m */,
 				70BA4832238531A000634D76 /* DZHomeThreadContentView.h */,
 				70BA4833238531A000634D76 /* DZHomeThreadContentView.m */,
-				70FBDD2C2384018E00FC296E /* Content */,
 			);
 			path = View;
 			sourceTree = "<group>";

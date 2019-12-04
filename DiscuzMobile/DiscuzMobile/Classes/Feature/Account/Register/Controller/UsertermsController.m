@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = [NSString stringWithFormat:@"%@ 服务条款",DZ_APPNAME];
+    self.dz_NavigationItem.title = [NSString stringWithFormat:@"%@ 服务条款",DZ_APPNAME];
     
     self.contentLabel = [[UILabel alloc] init];
     self.contentLabel.numberOfLines = 0;

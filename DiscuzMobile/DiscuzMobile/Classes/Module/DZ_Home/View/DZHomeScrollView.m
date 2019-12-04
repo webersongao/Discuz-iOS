@@ -45,7 +45,7 @@
 #pragma mark   /********************* HeaderCollectionDelegate *************************/
 
 - (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell indexPath:(NSIndexPath *)indexPath{
-    
+    DLog(@"WBS 点击了 板块：%@",itemCell.cellModel.name);
 }
 
 - (void)collectionView:(DZHomeCollectionView *)collectionView longPressItemCell:(DZHomeCollectionCell *)itemCell{

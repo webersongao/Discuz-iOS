@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.navigationItem.title = @"查看投票参与人";
+    self.dz_NavigationItem.title = @"查看投票参与人";
     [self downLoadData];
     [self.view addSubview:self.tableView];
 }

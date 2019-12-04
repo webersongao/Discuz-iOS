@@ -123,8 +123,8 @@
         } else {
             leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleORImageUrl] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
         }
-        self.navigationItem.leftBarButtonItem = leftBtn;
-        self.navigationItem.leftBarButtonItem.tintColor = K_Color_MainTitle;
+        self.dz_NavigationItem.leftBarButtonItem = leftBtn;
+        self.dz_NavigationItem.leftBarButtonItem.tintColor = K_Color_MainTitle;
     } else {
         UIBarButtonItem *rightBtn;
         if (type == NaviItemText) {
@@ -135,8 +135,8 @@
         } else {
             rightBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleORImageUrl] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
         }
-        self.navigationItem.rightBarButtonItem = rightBtn;
-        self.navigationItem.rightBarButtonItem.tintColor = K_Color_MainTitle;
+        self.dz_NavigationItem.rightBarButtonItem = rightBtn;
+        self.dz_NavigationItem.rightBarButtonItem.tintColor = K_Color_MainTitle;
     }
     
 }
@@ -201,10 +201,6 @@
     
     [self.view setExclusiveTouch:YES];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:K_Color_NaviTitle,NSForegroundColorAttributeName,[DZFontSize NavTitleFontSize18],NSFontAttributeName, nil];
-    self.navigationController.navigationBar.titleTextAttributes = dict;
-    [self configNaviBar:@"back" type:NaviItemImage Direction:NaviDirectionLeft];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transToLogin) name:DZ_UserLogin_Notify object:nil];
     // 监听UIWindow隐藏 播放视频的时候，状态栏会自动消失，处理后让状态栏重新出现

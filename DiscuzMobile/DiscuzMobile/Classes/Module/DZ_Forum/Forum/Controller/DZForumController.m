@@ -31,7 +31,7 @@ static NSString *isFourmList = @"isFourmList";
     [self configNaviBar];
     [self configPageView];
     
-    self.navigationItem.leftBarButtonItems.lastObject.customView.hidden = YES;
+    self.dz_NavigationItem.leftBarButtonItems.lastObject.customView.hidden = YES;
 }
 -(BOOL)hideTabBarWhenPushed{
     return NO;
@@ -44,16 +44,16 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)configPageView {
     if (_isList) {
-        [self pageOfController:self.indexVC andTitle:@"全部"];
+        [self pageOfController:self.indexVC andTitle:nil];
     }else {
-        [self pageOfController:self.allVC andTitle:@"全部"];
+        [self pageOfController:self.allVC andTitle:nil];
     }
     _containVc = [[DZContainerController alloc] init];
     [self updateNaviSegmentBar];
 }
 
 - (void)updateNaviSegmentBar {
-    //    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
+//        CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
     self.view.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height);
     [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];

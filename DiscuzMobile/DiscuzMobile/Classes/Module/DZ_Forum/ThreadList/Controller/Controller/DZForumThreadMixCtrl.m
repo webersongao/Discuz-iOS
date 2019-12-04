@@ -335,7 +335,7 @@
 
 //设置 nav
 - (void)setNavc {
-    self.navigationItem.title = @"帖子列表";
+    self.dz_NavigationItem.title = @"帖子列表";
 }
 
 

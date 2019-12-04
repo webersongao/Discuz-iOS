@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的主题";
+    self.dz_NavigationItem.title = @"我的主题";
 
     [self downLoadData];
     [self.view addSubview:self.tableView];

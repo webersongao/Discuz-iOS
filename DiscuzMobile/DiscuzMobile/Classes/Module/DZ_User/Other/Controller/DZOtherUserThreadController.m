@@ -22,7 +22,7 @@
 -(void)viewDidLoad{
 
     [super viewDidLoad];
-    self.navigationItem.title=@"他的主题";
+    self.dz_NavigationItem.title=@"他的主题";
     
     _listcount = 0;
     _tpp = 0;

@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"绑定管理";
+    self.dz_NavigationItem.title = @"绑定管理";
     self.userInfoView = [[CenterUserInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 120)];
     [self.view addSubview:self.tableView];
     [self.userInfoView.identityLab setHidden:YES];

@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"发帖";
+    self.dz_NavigationItem.title = @"发帖";
     
     [self configNaviBar:@"发布" type:NaviItemText Direction:NaviDirectionRight];
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -72,7 +72,7 @@
         return;
     }
     
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.dz_NavigationItem.rightBarButtonItem.enabled = NO;
     [self downlodyan];
     
 }
@@ -324,9 +324,9 @@
         request.getParam = getdic;
     } success:^(id responseObject, JTLoadType type) {
         [self requestPostSucceed:responseObject];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
     } failed:^(NSError *error) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
         [self requestPostFailure:error];
     }];
 }
@@ -393,7 +393,7 @@
         }
     } failure:^(NSError *error) {
         [self showServerError:error];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
         
     }];
     

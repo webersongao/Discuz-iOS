@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的回复";
+    self.dz_NavigationItem.title = @"我的回复";
     
     _listcount = 0;
     _tpp = 0;
