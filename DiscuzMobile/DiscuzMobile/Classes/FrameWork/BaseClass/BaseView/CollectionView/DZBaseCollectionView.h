@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, DZRefreshState) {
 @property(nonatomic,strong,readonly) NSArray *dataArray;
 @property(nonatomic,copy) backNoneBlock refreshAction;
 @property(nonatomic,copy) backNoneBlock loadMoreAction;
+@property (nonatomic, assign) BOOL isFooter;  //!< 是否使用footer
 
 - (instancetype)initWithListFrame:(CGRect)frame;
 

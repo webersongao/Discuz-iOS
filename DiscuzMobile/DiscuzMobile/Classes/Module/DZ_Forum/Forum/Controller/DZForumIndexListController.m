@@ -18,7 +18,7 @@
 @interface DZForumIndexListController ()
 
 @property (nonatomic,assign) BOOL isSelected;
-@property (nonatomic, strong) DZBaseTableView *leftTable;
+@property (nonatomic, strong) DZBaseTableView *leftMenuList;
 
 @end
 
@@ -26,38 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 判断左边菜单是否点击选中
-    self.isSelected = NO;
-
-    // 分割线
-    UIView *line = [[UIView alloc] init];
-    line.backgroundColor = K_Color_NaviBack;
-    [self.view addSubview:line];
     [self.view addSubview:self.tableView];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.width.equalTo(self.view);
-        make.height.equalTo(@0.5);
-    }];
-    
-    // 做菜单
-    [self.view addSubview:self.leftTable];
-    [self.leftTable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.left.equalTo(self.view);
-        make.top.equalTo(@0.5);
-        make.width.equalTo(self.view).multipliedBy(0.22);
-    }];
-    
-    // 右内容
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.leftTable.mas_right);
-        make.top.equalTo(self.leftTable);
-        make.right.equalTo(self.view);
-        make.height.equalTo(self.view);
-    }];
+    [self.view addSubview:self.leftMenuList];
     self.tableView.backgroundColor = K_Color_ForumGray;
-    [self.leftTable registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
+    [self.leftMenuList registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
     [self.tableView registerClass:[ForumRightCell class] forCellReuseIdentifier:[ForumRightCell getReuseId]];
+    self.tableView.frame = CGRectMake(self.leftMenuList.right, self.leftMenuList.top, KScreenWidth*0.78, self.leftMenuList.height);
     
     // 下载数据
     [self cacheAndRequest];
@@ -107,7 +81,7 @@
         }
         [self setForumList:responseObject];
         [self.tableView reloadData];
-        [self.leftTable reloadData];
+        [self.leftMenuList reloadData];
 
     } failed:^(NSError *error) {
         [self.HUD hide];
@@ -122,7 +96,7 @@
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (tableView == self.leftTable) {
+    if (tableView == self.leftMenuList) {
         return 1;
     }
     return self.dataSourceArr.count;
@@ -130,7 +104,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.leftTable) {
+    if (tableView == self.leftMenuList) {
         return self.dataSourceArr.count;
     }
     DZTreeViewNode *node = self.dataSourceArr[section];
@@ -140,7 +114,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     DZTreeViewNode *node = self.dataSourceArr[indexPath.section];
-    if (tableView == self.leftTable) {
+    if (tableView == self.leftMenuList) {
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
         node = self.dataSourceArr[indexPath.row];
         [cell updateLabel:node.nodeName];
@@ -159,10 +133,10 @@
 
 #pragma mark UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.leftTable) {
-        return 44;
+    if (tableView == self.leftMenuList) {
+        return kToolBarHeight;
     }
-    return 65;
+    return kCellDefaultHeight;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -174,7 +148,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.leftTable) {
+    if (tableView == self.leftMenuList) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         self.isSelected = YES;
     } else {
@@ -214,18 +188,18 @@
     [header addSubview:line];
     
     if (tableView == self.tableView) {
-        [self leftTableSet];
+        [self leftMenuConfigration];
     }
 }
 // 向上滑（滑动到上面的时候要算一下）包括刚出现
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section {
     if (tableView == self.tableView) {
-        [self leftTableSet];
+        [self leftMenuConfigration];
     }
 }
 
 // 右边滑动的时候，左边设置下点击状态
-- (void)leftTableSet {
+- (void)leftMenuConfigration {
     // 判断，如果是左边点击触发的滚动，这不执行下面代码
     if (self.isSelected) {
         return;
@@ -234,7 +208,7 @@
     NSInteger currentSection = [[[self.tableView indexPathsForVisibleRows] firstObject] section];
     NSIndexPath *index = [NSIndexPath indexPathForRow:currentSection inSection:0];
     // 点击左边对应区块
-    [self.leftTable selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self.leftMenuList selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionTop];
 }
 
 // 开始拖动赋值没有点击
@@ -273,17 +247,16 @@
 }
 
 #pragma mark - setter getter
-- (DZBaseTableView *)leftTable {
-    if (_leftTable == nil) {
-        _leftTable = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth * 0.22, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
-        _leftTable.backgroundColor = K_Color_ForumGray;
-        //    _leftTable.showsVerticalScrollIndicator = NO;
-        _leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _leftTable.delegate = self;
-        _leftTable.dataSource = self;
-        _leftTable.tableFooterView = [[UIView alloc] init];
+- (DZBaseTableView *)leftMenuList {
+    if (_leftMenuList == nil) {
+        _leftMenuList = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth * 0.22, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
+        _leftMenuList.delegate = self;
+        _leftMenuList.dataSource = self;
+        _leftMenuList.backgroundColor = K_Color_ForumGray;
+        _leftMenuList.tableFooterView = [[UIView alloc] init];
+        _leftMenuList.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
-    return _leftTable;
+    return _leftMenuList;
 }
 
 @end

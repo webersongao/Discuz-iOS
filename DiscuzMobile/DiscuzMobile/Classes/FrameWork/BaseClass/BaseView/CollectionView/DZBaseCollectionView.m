@@ -34,7 +34,7 @@
 -(void)layoutSubviewConfig{
 
     [self addRefreshHeaderView];
-//    [self addRefreshFooterView];
+    [self addRefreshFooterView];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(lonePressRecognizerAction:)];
     [self addGestureRecognizer:longPress];
@@ -71,6 +71,14 @@
     [self reloadCollectionListData];
 }
 
+-(void)setIsFooter:(BOOL)isFooter{
+    _isFooter = isFooter;
+    if (isFooter) {
+        [self addRefreshFooterView];
+    }else{
+        self.mj_footer = nil;
+    }
+}
 
 // 列表刷新
 -(void)reloadCollectionListData{

@@ -113,8 +113,6 @@
     }
 }
 
-
-
 // 下载数据
 - (void)loadDataWithType:(JTLoadType)loadType {
 //        NSString *path = [[NSBundle mainBundle] pathForResource:@"fourm" ofType:@"json"];

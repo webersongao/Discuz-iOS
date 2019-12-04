@@ -142,7 +142,6 @@
 }
 
 -(void)leftBarBtnClick{
-    DLog(@"左按钮");
     if (self.navigationController.viewControllers.count > 1) {
         [WBEmoticonInputView sharedView].hidden = YES;
         [self.navigationController popViewControllerAnimated:YES];

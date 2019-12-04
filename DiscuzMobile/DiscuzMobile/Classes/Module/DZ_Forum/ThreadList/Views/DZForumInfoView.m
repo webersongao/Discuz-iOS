@@ -95,7 +95,7 @@
     [self.todayPostLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLab);
         make.top.equalTo(self.titleLab.mas_bottom).offset(10);
-        make.width.equalTo(@65);
+        make.width.equalTo(@(kCellDefaultHeight));
         make.height.equalTo(self.IconV).multipliedBy(0.5).offset(-10);
     }];
 

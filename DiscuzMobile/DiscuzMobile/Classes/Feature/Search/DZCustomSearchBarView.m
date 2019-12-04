@@ -21,7 +21,7 @@
 
 - (void)setupViews {
     [self addSubview:self.cancelBtn];
-    self.searchBar = [[DZSearchBar alloc] initWithFrame:CGRectMake(5, 1, CGRectGetWidth(self.frame) - 65, CGRectGetHeight(self.frame) - 2)];
+    self.searchBar = [[DZSearchBar alloc] initWithFrame:CGRectMake(5, 1, CGRectGetWidth(self.frame) - kCellDefaultHeight, CGRectGetHeight(self.frame) - 2)];
     [self addSubview:self.searchBar];
     
     self.cancelBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - 60, 0, 60, CGRectGetHeight(self.frame));

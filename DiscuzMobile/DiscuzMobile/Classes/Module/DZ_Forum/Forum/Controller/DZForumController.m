@@ -14,11 +14,14 @@
 static NSString *isFourmList = @"isFourmList";
 
 @interface DZForumController()
-
+{
+    BOOL m_isList;
+}
 @property (nonatomic, strong) NSMutableArray *controllerArr;
 @property (nonatomic, strong) DZContainerController *containVc;
-@property (nonatomic, strong) DZForumIndexListController *indexVC;
-@property (nonatomic, strong) DZForumCollectionController *allVC;
+@property (nonatomic, strong) DZForumIndexListController *indexListVC;
+@property (nonatomic, strong) DZForumCollectionController *collectVC;
+@property (nonatomic, strong) DZBaseViewController *currentVC;
 @property (nonatomic, assign) BOOL isList;
 
 @end
@@ -27,86 +30,72 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _isList = [[NSUserDefaults standardUserDefaults] boolForKey:isFourmList];
     [self configNaviBar];
-    [self configPageView];
-    
-    self.dz_NavigationItem.leftBarButtonItems.lastObject.customView.hidden = YES;
+    [self configForumView];
 }
+
 -(BOOL)hideTabBarWhenPushed{
     return NO;
 }
+
 -(void)configNaviBar {
-    NSString *leftTitle = _isList ? @"forum_list" : @"forum_ranctangle";
+    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
     [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
-- (void)configPageView {
-    if (_isList) {
-        [self pageOfController:self.indexVC andTitle:nil];
-    }else {
-        [self pageOfController:self.allVC andTitle:nil];
-    }
-    _containVc = [[DZContainerController alloc] init];
-    [self updateNaviSegmentBar];
-}
-
-- (void)updateNaviSegmentBar {
-//        CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
-    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 0);
-    self.view.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height);
-    [_containVc setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
-}
-
-- (void)pageOfController:(UIViewController *)controller andTitle:(NSString *)title {
-    controller.title = title;
-    [self.controllerArr addObject:controller];
+-(void)configForumView{
+    self.currentVC = self.collectVC;
+    [self addChildViewController:self.collectVC];
+    [self dz_AddSubView:self.collectVC.view belowNavigationBar:YES];
 }
 
 - (void)leftBarBtnClick {
-    
-    while (self.controllerArr.count >= 1) {
-        [self.controllerArr removeLastObject];
+    m_isList = !m_isList;
+    if (m_isList) {
+        [self presentFormOldController:self.collectVC toNewController:self.indexListVC];
+    }else{
+        [self presentFormOldController:self.indexListVC toNewController:self.collectVC];
     }
-    _isList = !_isList;
-    if (_isList) {
-        [self pageOfController:self.indexVC andTitle:@"全部"];
-    } else {
-        [self pageOfController:self.allVC andTitle:@"全部"];
-    }
-    
-    [self updateNaviSegmentBar];
-    [self configNaviBar];
-    
-    [[NSUserDefaults standardUserDefaults] setBool:_isList forKey:isFourmList];
-    [_containVc.collectonView reloadData];
+    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
+    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
 }
+
+
+- (void)presentFormOldController:(DZBaseViewController *)oldController toNewController:(DZBaseViewController *)newController{
+    [self addChildViewController:newController];
+    [self transitionFromViewController:oldController toViewController:newController duration:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    } completion:^(BOOL finished) {
+        if(finished){
+            self.currentVC = newController;
+            [oldController removeFromParentViewController];
+            [self dz_AddSubView:newController.view belowNavigationBar:YES];
+        }else{
+            self.currentVC = oldController;
+        }
+    }];
+    
+}
+
+
+
 
 - (void)rightBarBtnClick {
     [[DZMobileCtrl sharedCtrl] PushToSearchController];
 }
 
-#pragma mark - getter
-- (NSMutableArray *)controllerArr {
-    if (!_controllerArr) {
-        _controllerArr = [NSMutableArray array];
+- (DZForumIndexListController *)indexListVC {
+    if (_indexListVC == nil) {
+        _indexListVC = [[DZForumIndexListController alloc] init];
     }
-    return _controllerArr;
+    return _indexListVC;
 }
 
-- (DZForumIndexListController *)indexVC {
-    if (_indexVC == nil) {
-        _indexVC = [[DZForumIndexListController alloc] init];
+- (DZForumCollectionController *)collectVC {
+    if (_collectVC == nil) {
+        _collectVC = [[DZForumCollectionController alloc] init];
     }
-    return _indexVC;
-}
-
-- (DZForumCollectionController *)allVC {
-    if (_allVC == nil) {
-        _allVC = [[DZForumCollectionController alloc] init];
-    }
-    return _allVC;
+    return _collectVC;
 }
 
 @end

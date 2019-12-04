@@ -27,8 +27,8 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initCollectionView];
     [self cacheRequest];
+    [self configCollectionController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TABBARREFRESH_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_IMAGEORNOT_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
@@ -67,25 +67,8 @@ static NSString * headerSection = @"CellHeader";
     return YES;
 }
 
-- (void)initCollectionView {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.minimumInteritemSpacing = 4;
-    flowLayout.itemSize = CGSizeMake((KScreenWidth - 20 - 20) / 3, KScreenWidth / 3 + 40);
-    
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) collectionViewLayout:flowLayout];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    
-    [self.collectionView registerClass:[ForumItemCell class] forCellWithReuseIdentifier:CellID];
-    [self.collectionView registerClass:[ForumReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
-    
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
+- (void)configCollectionController {
     [self.view addSubview:self.collectionView];
-    
     KWEAKSELF;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadForumIndexDataWitLoadType:JTRequestTypeRefresh];
@@ -228,6 +211,26 @@ static NSString * headerSection = @"CellHeader";
         _dataSourceArr = [NSMutableArray array];
     }
     return _dataSourceArr;
+}
+
+-(UICollectionView *)collectionView{
+    if (_collectionView == nil) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        flowLayout.minimumLineSpacing = 10;
+        flowLayout.minimumInteritemSpacing = 4;
+        flowLayout.itemSize = CGSizeMake((KScreenWidth - 20 - 20) / 3, KScreenWidth / 3 + 40);
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) collectionViewLayout:flowLayout];
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [_collectionView registerClass:[ForumItemCell class] forCellWithReuseIdentifier:CellID];
+        [_collectionView registerClass:[ForumReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
+        
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+    }
+    return _collectionView;
 }
 
 @end
