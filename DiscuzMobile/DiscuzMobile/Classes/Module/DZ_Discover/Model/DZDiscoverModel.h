@@ -19,6 +19,9 @@
 // 论坛板块分类
 @property (nonatomic, strong) NSArray<DZDiscoverCateModel *> *catlist;
 
+// 论坛板块 访问足迹
+@property (nonatomic, strong) NSArray<DZDiscoverCateModel *> *visitedforums;
+
 
 @end
 

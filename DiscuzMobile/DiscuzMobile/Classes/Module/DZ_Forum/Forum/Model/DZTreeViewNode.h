@@ -14,8 +14,8 @@
 @property (nonatomic) BOOL isExpanded;  // 展开状态 NO 开始的时候全部收起， YES 开始的时候全部展开；
 @property (nonatomic) NSUInteger nodeLevel; // 级别
 
-@property (nonatomic, copy) NSString * nodeName;
-@property (nonatomic, strong) NSMutableArray *fids;
+@property (nonatomic, copy) NSString * nodeName;  //name
+@property (nonatomic, strong) NSMutableArray *fids;  // forums
 @property (nonatomic, strong) DZForumModel *infoModel;
 
 @property (nonatomic, strong) NSMutableArray *forumListArr;

@@ -76,15 +76,15 @@
  * 设置数据
  */
 - (void)updateLevelCell:(DZTreeViewNode *)node {
-    DZForumModel *infoModel = node.infoModel;
+    DZForumModel *infoMdel = node.infoModel;
     
-    if ([DataCheck isValidString:infoModel.title]) {
-        self.titleLab.text = infoModel.title;
+    if ([DataCheck isValidString:infoMdel.title]) {
+        self.titleLab.text = infoMdel.title;
     } else {
-        self.titleLab.text = infoModel.name;
+        self.titleLab.text = infoMdel.name;
     }
     
-    [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoModel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
+    [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoMdel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
     
     CGFloat mleft = 10;
     for (int i = 1; i < node.nodeLevel; i++) {

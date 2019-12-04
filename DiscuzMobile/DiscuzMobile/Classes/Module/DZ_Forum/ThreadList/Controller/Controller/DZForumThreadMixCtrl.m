@@ -569,8 +569,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.foldTableView) {
         
-        DZForumModel *infoModel = self.subForumArr[indexPath.row];
-        [[DZMobileCtrl sharedCtrl] PushToForumListController:infoModel.fid];
+        DZForumModel *forumModel = self.subForumArr[indexPath.row];
+        [[DZMobileCtrl sharedCtrl] PushToForumListController:forumModel.fid];
     }
 }
 

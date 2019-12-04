@@ -74,11 +74,7 @@ static NSString *isFourmList = @"isFourmList";
             self.currentVC = oldController;
         }
     }];
-    
 }
-
-
-
 
 - (void)rightBarBtnClick {
     [[DZMobileCtrl sharedCtrl] PushToSearchController];
