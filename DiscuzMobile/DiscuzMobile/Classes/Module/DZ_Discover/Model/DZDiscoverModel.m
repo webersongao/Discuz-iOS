@@ -11,9 +11,18 @@
 @implementation DZDiscoverModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"catlist" : [DZDiscoverCateModel class],
+    return @{@"catlist" : [DZForumNodeModel class],
              @"forumlist" : [DZBaseForumModel class]
     };
+}
+
+-(instancetype)formartForumNodeData{
+   
+    
+    
+    
+    
+    return self;
 }
 
 @end

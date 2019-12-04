@@ -1,13 +1,13 @@
 //
-//  DZDiscoverCateModel.m
+//  DZForumNodeModel.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/22.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZDiscoverCateModel.h"
+#import "DZForumNodeModel.h"
 
-@implementation DZDiscoverCateModel
+@implementation DZForumNodeModel
 
 @end

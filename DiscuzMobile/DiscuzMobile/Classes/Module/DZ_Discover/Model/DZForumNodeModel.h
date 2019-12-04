@@ -1,5 +1,5 @@
 //
-//  DZDiscoverCateModel.h
+//  DZForumNodeModel.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/22.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DZDiscoverCateModel : NSObject
+@interface DZForumNodeModel : NSObject
 
 @property (nonatomic, copy) NSString *fid;  //!< 属性注释
 @property (nonatomic, copy) NSString *name;  //!< 属性注释

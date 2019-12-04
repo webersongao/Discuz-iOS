@@ -44,12 +44,12 @@
 
 -(void)loadViewIndexDataIfNeeded{
     KWEAKSELF
-    [DZDiscoverNetTool getForumCategoryInfo:YES forum:^(NSArray <DZDiscoverCateModel *> * cateList, NSArray <DZBaseForumModel *> * forumList) {
+    [DZDiscoverNetTool getForumCategoryInfo:YES forum:^(NSArray <DZForumNodeModel *> * cateList, NSArray <DZBaseForumModel *> * forumList) {
         [weakSelf layoutForumList:cateList forumList:forumList];
     }];
 }
 
--(void)layoutForumList:(NSArray <DZDiscoverCateModel *>*)cateList forumList:(NSArray <DZBaseForumModel *>*)forumList{
+-(void)layoutForumList:(NSArray <DZForumNodeModel *>*)cateList forumList:(NSArray <DZBaseForumModel *>*)forumList{
     
     //1、 处理分类导航条
     

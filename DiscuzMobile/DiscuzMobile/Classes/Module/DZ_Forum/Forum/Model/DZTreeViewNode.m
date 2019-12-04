@@ -36,10 +36,10 @@
         self.nodeLevel = 1;
     }
 
-    self.fids = [dic objectForKey:@"forums"];
+    self.forums = [dic objectForKey:@"forums"];
     self.forumListArr = [dic objectForKey:@"forumlist"];
     NSMutableArray *childArr = [NSMutableArray array];
-    for (NSString *fid in self.fids) {
+    for (NSString *fid in self.forums) {
         NSDictionary *fourmInfo = [self getForumInfoWithFid:fid];
         DZTreeViewNode *treeNode1 = [[DZTreeViewNode alloc] init];
         treeNode1.nodeLevel = 1;
@@ -116,12 +116,6 @@
     _nodeName = nodeName;
 }
 
-- (NSMutableArray *)fids {
-    if (!_fids) {
-        _fids = [NSMutableArray array];
-    }
-    return _fids;
-}
 - (NSMutableArray *)nodeChildren {
     if (!_nodeChildren) {
         _nodeChildren = [NSMutableArray array];

@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseVarModel.h"
-#import "DZDiscoverCateModel.h"
+#import "DZForumNodeModel.h"
 #import "DZBaseForumModel.h"
 
 
@@ -15,13 +15,12 @@
 
 // 板块数组
 @property (nonatomic, strong) NSArray<DZBaseForumModel *> *forumlist;
-
 // 论坛板块分类
-@property (nonatomic, strong) NSArray<DZDiscoverCateModel *> *catlist;
-
+@property (nonatomic, strong) NSArray<DZForumNodeModel *> *catlist;
 // 论坛板块 访问足迹
-@property (nonatomic, strong) NSArray<DZDiscoverCateModel *> *visitedforums;
+@property (nonatomic, strong) NSArray<DZForumNodeModel *> *visitedforums;
 
+-(instancetype)formartForumNodeData;
 
 @end
 

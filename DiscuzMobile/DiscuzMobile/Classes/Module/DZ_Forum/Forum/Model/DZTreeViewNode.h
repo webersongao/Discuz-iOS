@@ -15,7 +15,7 @@
 @property (nonatomic) NSUInteger nodeLevel; // 级别
 
 @property (nonatomic, copy) NSString * nodeName;  //name
-@property (nonatomic, strong) NSMutableArray *fids;  // forums
+@property (nonatomic, strong) NSArray<NSString *> *forums;  // forums
 @property (nonatomic, strong) DZForumModel *infoModel;
 
 @property (nonatomic, strong) NSMutableArray *forumListArr;

@@ -17,13 +17,14 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_Forumindex;
     } success:^(id responseObject, JTLoadType type) {
-        DZDiscoverModel *forumIndex = nil;
+        DZDiscoverModel *forumDataModel = nil;
         if ([DataCheck isValidDictionary:responseObject]) {
             NSDictionary *varibles = [responseObject dictionaryForKey:@"Variables"];
-            forumIndex = [DZDiscoverModel modelWithJSON:varibles];
+            DZDiscoverModel *dataModel = [DZDiscoverModel modelWithJSON:varibles];
+            forumDataModel = [dataModel formartForumNodeData];
         }
         if (categoryBlock) {
-            categoryBlock(forumIndex);
+            categoryBlock(forumDataModel);
         }
     } failed:^(NSError *error) {
         if (categoryBlock) {
