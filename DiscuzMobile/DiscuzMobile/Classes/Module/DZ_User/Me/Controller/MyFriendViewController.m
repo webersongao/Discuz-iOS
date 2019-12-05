@@ -7,9 +7,7 @@
 //
 
 #import "MyFriendViewController.h"
-#import "DZSendMsgViewController.h"
 #import "DZOtherUserController.h"
-#import "DZMsgChatDetailController.h"
 #import "FriendCell.h"
 
 @implementation MyFriendViewController
@@ -72,13 +70,8 @@
     if ([DataCheck isValidArray:self.dataSourceArr]) {
         dic = [self.dataSourceArr objectAtIndex:btn.tag];
     }
-    
-    DZMsgChatDetailController *mvc = [[DZMsgChatDetailController alloc] init];
-    mvc.touid = [dic objectForKey:@"uid"];
-    mvc.nametitle = [dic objectForKey:@"username"];
-    mvc.username = [dic objectForKey:@"username"];
-    
-    [self.navigationController pushViewController:mvc animated:YES];
+     
+    [[DZMobileCtrl sharedCtrl] PushToMsgChatController:[dic stringForKey:@"uid"] name:[dic stringForKey:@"username"]];
 }
 
 

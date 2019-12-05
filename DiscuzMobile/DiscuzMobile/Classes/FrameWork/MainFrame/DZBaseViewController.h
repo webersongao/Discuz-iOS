@@ -21,8 +21,6 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
 };
 
 @interface DZBaseViewController : DZBaseNaviBarController
-
-@property (nonatomic, assign) CGFloat navbarMaxY;
 @property (nonatomic, assign) CGFloat tabbarHeight;
 @property (nonatomic, assign) CGFloat statusbarHeight;
 

@@ -1,5 +1,5 @@
 //
-//  DZForumListController.h
+//  DZThreadListController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
@@ -13,7 +13,7 @@
 typedef void(^SendValueBlock)(DZThreadVarModel *varModel);
 typedef void(^EndRefreshBlock)(void);
 
-@interface DZForumListController : DZForumListBaseCtrl
+@interface DZThreadListController : DZForumListBaseCtrl
 
 @property (nonatomic, copy) NSString *fid;
 @property (nonatomic, assign) NSInteger order;

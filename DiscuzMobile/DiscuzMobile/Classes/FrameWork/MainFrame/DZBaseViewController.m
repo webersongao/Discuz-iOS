@@ -188,14 +188,6 @@
     return _statusbarHeight;
 }
 
-- (CGFloat)navbarMaxY {
-    if (!_navbarMaxY) {
-        CGRect rectOfNavigationbar = self.navigationController.navigationBar.frame;
-        _navbarMaxY = CGRectGetMaxY(rectOfNavigationbar);
-    }
-    return _navbarMaxY;
-}
-
 -(void)configBaseViewController{
     
     [self.view setExclusiveTouch:YES];

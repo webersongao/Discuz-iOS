@@ -66,6 +66,16 @@
 /// 浏览记录
 - (void)ShowFootMarkControllerFromVC:(UIViewController *)selfVC;
 
+/// 发送消息
+-(void)PushToMsgSendController:(NSString *)Uid;
+
+/// 消息聊天界面
+-(void)PushToMsgChatController:(NSString *)touid name:(NSString *)userName;
+
+
+
+
+
 
 @end
 

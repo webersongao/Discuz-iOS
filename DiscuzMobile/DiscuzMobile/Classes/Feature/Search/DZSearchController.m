@@ -10,7 +10,6 @@
 #import "DZSearchHistoryController.h"
 
 #import "DZSearchModel.h"
-#import "DZForumThreadController.h"
 #import "DZSearchListCell.h"
 #import "DZCustomSearchBarView.h"
 #import "UIAlertController+Extension.h"
@@ -55,7 +54,7 @@
 
 #pragma mark - 布局
 - (void)setupViews {
-
+    
     [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     [self.dz_NavigationItem setHidesBackButton:YES];
     
@@ -105,13 +104,11 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (self.dataSourceArr.count > 0) {
-        DZSearchModel *model = self.dataSourceArr[indexPath.row];
-        DZForumThreadController * tvc = [[DZForumThreadController alloc] init];
-        tvc.tid = model.tid;
-        tvc.threadtitle = model.subject;
-        [self.navigationController pushViewController:tvc animated:YES];
+    if (self.dataSourceArr.count <= indexPath.row) {
+        return;
     }
+    DZSearchModel *model = self.dataSourceArr[indexPath.row];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.tid];
     
 }
 
@@ -124,7 +121,7 @@
     lab.font = [UIFont systemFontOfSize:14.0];
     lab.textAlignment = NSTextAlignmentLeft;
     UIView *lineView  = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(lab.frame), KScreenWidth - 15, 0.5)];
-    lineView.backgroundColor = [UIColor lightGrayColor]; 
+    lineView.backgroundColor = [UIColor lightGrayColor];
     if (section == 0) {
         lab.text = @"相关帖子";
     } else {
@@ -136,7 +133,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-
+    
     return 40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

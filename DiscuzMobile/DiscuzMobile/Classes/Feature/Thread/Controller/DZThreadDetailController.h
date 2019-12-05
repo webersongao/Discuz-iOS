@@ -1,5 +1,5 @@
 //
-//  DZForumThreadController.h
+//  DZThreadDetailController.h
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/5/14.
@@ -8,11 +8,11 @@
 
 #import "DZBaseViewController.h"
 
-@interface DZForumThreadController : DZBaseViewController
+@interface DZThreadDetailController : DZBaseViewController
 
 @property (nonatomic, copy) NSString * tid;
 @property (nonatomic, copy) NSString * forumtitle;
-@property (nonatomic, copy) NSString * threadtitle;
+//@property (nonatomic, copy) NSString * threadtitle;
 @property (nonatomic)         int currentPageId;
 @property (nonatomic, assign) BOOL isOnePage;
 

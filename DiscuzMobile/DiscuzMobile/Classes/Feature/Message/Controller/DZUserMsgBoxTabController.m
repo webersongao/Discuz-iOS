@@ -8,7 +8,6 @@
 
 #import "DZUserMsgBoxTabController.h"
 #import "DZContainerController.h"
-#import "DZSendMsgViewController.h"
 #import "DZMsgSubListController.h"
 
 #import "PmTypeModel.h"
@@ -70,8 +69,7 @@
 }
 
 - (void)rightBarBtnClick {
-    DZSendMsgViewController *sendVC = [[DZSendMsgViewController alloc] init];
-    [self.navigationController pushViewController:sendVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToMsgSendController:nil];
 }
 
 - (NSMutableArray *)dataArray {

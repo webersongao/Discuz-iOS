@@ -84,7 +84,7 @@
 
 - (UIWebView *)webView {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - self.navbarMaxY)];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height)];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.userInteractionEnabled = YES;
         [_webView setOpaque:NO];

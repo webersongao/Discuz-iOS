@@ -12,9 +12,6 @@
 #import "MessageCell.h"
 #import "SystemNoteCell.h"
 #import "MsglistCell.h"
-
-#import "DZMsgChatDetailController.h"
-#import "DZSendMsgViewController.h"
 #import "MessageNoticeCenter.h"
 
 @interface DZMsgSubListController ()
@@ -45,8 +42,7 @@
 }
 
 -(void)rightBarBtnClick{
-    DZSendMsgViewController *sendVC = [[DZSendMsgViewController alloc] init];
-    [self.navigationController pushViewController:sendVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToMsgSendController:nil];
 }
 
 - (void)loadData {
@@ -182,13 +178,7 @@
     MessageListModel *model = self.dataSourceArr[indexPath.row];
     
     if ([DataCheck isValidString:self.typeModel.filter] && [self.typeModel.filter isEqualToString:@"privatepm"]) {
-        
-        DZMsgChatDetailController *mvc = [[DZMsgChatDetailController alloc] init];
-        mvc.touid = model.touid;
-        mvc.nametitle = model.tousername;
-        mvc.username = model.tousername;
-        
-        [self.navigationController pushViewController:mvc animated:YES];
+        [[DZMobileCtrl sharedCtrl] PushToMsgChatController:model.touid name:model.tousername];
     }
     
     if ([DataCheck isValidString:self.typeModel.view] && [self.typeModel.view isEqualToString:@"mypost"]) {

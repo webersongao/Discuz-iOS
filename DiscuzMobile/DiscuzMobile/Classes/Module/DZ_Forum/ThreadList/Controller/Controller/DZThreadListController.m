@@ -1,13 +1,12 @@
 //
-//  DZForumListController.m
+//  DZThreadListController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumListController.h"
-#import "DZForumThreadController.h"
+#import "DZThreadListController.h"
 #import "DZMySubjectController.h"
 #import "UIAlertController+Extension.h"
 #import "DZThreadListModel.h"
@@ -20,7 +19,7 @@
 #import "VerifyThreadRemindView.h"
 
 
-@interface DZForumListController ()
+@interface DZThreadListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
 @property (nonatomic ,strong) DZForumModel *forumModel;
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
@@ -31,7 +30,7 @@
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
 @end
 
-@implementation DZForumListController
+@implementation DZThreadListController
 
 - (instancetype)initWithType:(DZ_ListType)listType
 {
@@ -385,9 +384,7 @@
 
 - (void)pushThreadDetail:(DZThreadListModel *)listModel {
     
-    DZForumThreadController * tvc = [[DZForumThreadController alloc] init];
-    tvc.tid = listModel.tid;
-    [self.navigationController pushViewController:tvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:listModel.tid];
 }
 
 - (void)ToDZMySubjectController {

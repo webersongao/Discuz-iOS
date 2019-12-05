@@ -1,14 +1,14 @@
 //
-//  DZForumThreadListCtrl.m
+//  DZForumThreadController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumThreadListCtrl.h"
+#import "DZForumThreadController.h"
 #import "DZCollectionTool.h"
-#import "DZForumListController.h"
+#import "DZThreadListController.h"
 #import "DZForumContainListView.h"
 #import "DZForumThreadMixContainer.h"
 #import "DZPostNormalController.h"
@@ -24,7 +24,7 @@
 #import "SubForumCell.h"
 #import "DropTipView.h"
 
-@interface DZForumThreadListCtrl () <UITableViewDelegate, UITableViewDataSource>
+@interface DZForumThreadController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) DZForumInfoView *infoView;
 
@@ -36,7 +36,7 @@
 
 @property (nonatomic, strong) DZForumContainListView *tableView;
 
-@property (nonatomic, strong) NSMutableArray<DZForumListController *> *ctvArr;
+@property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
 
 @property (nonatomic, strong) UITableViewCell *contentCell;
 
@@ -54,7 +54,7 @@
 
 @end
 
-@implementation DZForumThreadListCtrl
+@implementation DZForumThreadController
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -69,7 +69,7 @@
     
     self.canScroll = YES;
     
-    self.tableView = [[DZForumContainListView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - self.navbarMaxY) style:UITableViewStylePlain];
+    self.tableView = [[DZForumContainListView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -102,7 +102,7 @@
     self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         if (weakSelf.ctvArr.count > 0) {
-            DZForumListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
+            DZThreadListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
             [fVc refreshData];
         } else {
             [weakSelf.tableView.mj_header endRefreshing];
@@ -112,7 +112,7 @@
     
     UIImageView *postBtn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"writePost"]];
     CGFloat btn_width = 50.0;
-    postBtn.frame = CGRectMake(KScreenWidth - btn_width - 15, KScreenHeight - btn_width - 15 - self.navbarMaxY - 10, btn_width, btn_width);
+    postBtn.frame = CGRectMake(KScreenWidth - btn_width - 15, KScreenHeight - btn_width - 15 - KNavi_ContainStatusBar_Height - 10, btn_width, btn_width);
     postBtn.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTypeView)];
     [postBtn addGestureRecognizer:tap];
@@ -152,7 +152,7 @@
 }
 
 - (void)hideTipView {
-    CGRect orrect = CGRectMake(0, -self.navbarMaxY, KScreenWidth, 44);
+    CGRect orrect = CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, 44);
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
         self.tipView.frame = orrect;
     } completion:^(BOOL finished){
@@ -161,7 +161,7 @@
 }
 
 - (void)closeTipView {
-    self.tipView.frame = CGRectMake(0, -self.navbarMaxY, KScreenWidth, 44);
+    self.tipView.frame = CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, 44);
     self.tipView.tipAnimatefinsh = YES;
 }
 
@@ -309,7 +309,7 @@
 
 - (void)loginedRefresh {
     if (self.ctvArr.count > 0) {
-        DZForumListController *fVc = self.ctvArr[self.selectIndex];
+        DZThreadListController *fVc = self.ctvArr[self.selectIndex];
         [fVc refreshData];
     } else {
         [self.tableView.mj_header endRefreshing];
@@ -420,7 +420,7 @@
             KWEAKSELF;
             [self.titleArr enumerateObjectsUsingBlock:^(DZForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                DZForumListController *listVc = [[DZForumListController alloc] initWithType:idx];
+                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:idx];
                 listVc.title = obj.name;
                 listVc.fid = obj.fid;
                 listVc.order = idx;
@@ -437,9 +437,7 @@
                     [weakSelf.tableView.mj_header endRefreshing];
                 };
                 [vcArr addObject:listVc];
-                
             }];
-            
             
             if ([DataCheck isValidArray:vcArr]) {
                 self.ctvArr = vcArr;
@@ -600,7 +598,7 @@
 
 - (DropTipView *)tipView {
     if (!_tipView) {
-        _tipView = [[DropTipView alloc] initWithFrame:CGRectMake(0, -self.navbarMaxY, KScreenWidth, 44)];
+        _tipView = [[DropTipView alloc] initWithFrame:CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, 44)];
         _tipView.tipAnimatefinsh = YES;
     }
     return _tipView;

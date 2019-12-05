@@ -1,12 +1,12 @@
  //
-//  DZForumThreadController.m
+//  DZThreadDetailController.m
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/5/14.
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "DZForumThreadController.h"
+#import "DZThreadDetailController.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
 #import "DZCollectionTool.h"
@@ -26,7 +26,7 @@
 #import "DZShareCenter.h"
 #import "JTWebImageBrowerHelper.h"
 
-@interface DZForumThreadController ()<UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
+@interface DZThreadDetailController ()<UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) ThreadDetailView *detailView; // 详细页view 替换原来的view
 @property (nonatomic, unsafe_unretained)CGFloat currentScale;
@@ -46,7 +46,7 @@
 
 @end
 
-@implementation DZForumThreadController
+@implementation DZThreadDetailController
 @synthesize javascriptBridge = _bridge;
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
@@ -872,7 +872,7 @@
 
 #pragma mark 点击状态栏到顶部
 - (void)statusBarTappedAction:(NSNotification*)notification {
-    [self.detailView.webView.scrollView setContentOffset:CGPointMake(0, -self.navbarMaxY) animated:YES];
+    [self.detailView.webView.scrollView setContentOffset:CGPointMake(0, -KNavi_ContainStatusBar_Height) animated:YES];
 }
 
 #pragma mark - 滚动webView的时候收起键盘

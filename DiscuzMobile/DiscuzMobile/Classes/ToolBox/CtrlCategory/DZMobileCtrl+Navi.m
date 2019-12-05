@@ -9,7 +9,7 @@
 #import "DZMobileCtrl+Navi.h"
 #import "DZOtherUserController.h"
 #import "DZForumThreadController.h"
-#import "DZForumThreadListCtrl.h"
+#import "DZThreadDetailController.h"
 #import "DZBaseUrlController.h"
 #import "DZLoginController.h"
 #import "DZSearchController.h"
@@ -19,11 +19,13 @@
 #import "DZMessageListController.h"
 #import "DZThreadRootController.h"
 #import "DZSettingController.h"
+#import "DZMsgChatDetailController.h"
 #import "DZOtherUserThreadController.h"
 #import "DZOtherUserPostReplyController.h"
 #import "BoundManageController.h"
 #import "DZFootMarkRootController.h"
 #import "DZResetPwdController.h"
+#import "DZSendMsgViewController.h"
 
 
 @implementation DZMobileCtrl (Navi)
@@ -43,14 +45,14 @@
 
 /// 帖子详情页
 - (void)PushToThreadDetailController:(NSString *)tid {
-    DZForumThreadController * threadVC = [[DZForumThreadController alloc] init];
+    DZThreadDetailController * threadVC = [[DZThreadDetailController alloc] init];
     threadVC.tid = tid;
     [self.mainNavi pushViewController:threadVC animated:YES];
 }
 
 /// 帖子详情页
 - (void)ShowThreadDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid{
-    DZForumThreadController *threadVC = [[DZForumThreadController alloc] init];
+    DZThreadDetailController *threadVC = [[DZThreadDetailController alloc] init];
     threadVC.tid = checkNull(tid);
     [selfVC showViewController:threadVC sender:nil];
 }
@@ -61,7 +63,7 @@
 }
 /// 论坛版块帖子列表
 - (void)PushToForumListController:(NSString *)fid block:(backBoolBlock)block{
-    DZForumThreadListCtrl *lianMixVc = [[DZForumThreadListCtrl alloc] init];
+    DZForumThreadController *lianMixVc = [[DZForumThreadController alloc] init];
     lianMixVc.forumFid = fid;
     lianMixVc.cForumBlock = block;
     [self.mainNavi pushViewController:lianMixVc animated:YES];
@@ -175,4 +177,68 @@
     [selfVC showViewController:footRvc sender:nil];
 }
 
+
+// 发送消息
+-(void)PushToMsgSendController:(NSString *)Uid{
+    DZSendMsgViewController *sendVC = [[DZSendMsgViewController alloc] init];
+    sendVC.uid = checkNull(Uid);
+    [self.mainNavi pushViewController:sendVC animated:YES];
+}
+
+
+// 消息聊天界面
+-(void)PushToMsgChatController:(NSString *)touid name:(NSString *)userName{
+    DZMsgChatDetailController *mvc = [[DZMsgChatDetailController alloc] init];
+    mvc.touid = touid;
+    mvc.nametitle = userName;
+    mvc.username = userName;
+    
+    [self.mainNavi pushViewController:mvc animated:YES];
+}
+
+
+- (void)setDomain {
+    DZDomainListController *domainVC = [[DZDomainListController alloc] init];
+    [self.navigationController pushViewController:domainVC animated:YES];
+}
+
+- (void)aboutAPP {
+    DZAboutController *abVC = [[DZAboutController alloc] init];
+    [self.navigationController pushViewController:abVC animated:YES];
+}
+
+- (void)userTerms {
+    UsertermsController *termVC = [[UsertermsController alloc] init];
+    [self.navigationController pushViewController:termVC animated:YES];
+}
+
+
+- (void)evaluateAPP {
+    NSString *urlStr = AppStorePath;
+    if (@available(iOS 10.0, *)) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
+    }
+}
+
+- (void)shareAPP {
+    NSString *urlStr = AppStorePath;
+    NSString *appName = DZ_APPNAME;
+    [[DZShareCenter shareInstance] createShare:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:urlStr andTitle:appName andView:self.view andHUD:nil];
+}
+
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
