@@ -164,7 +164,7 @@
 		70621079237935ED00130B9D /* WebImageCacheUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062106C237935ED00130B9D /* WebImageCacheUrlProtocol.m */; };
 		7062126E237936C800130B9D /* DZForumThreadMixContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621091237936C800130B9D /* DZForumThreadMixContainer.m */; };
 		7062126F237936C800130B9D /* DZForumListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621092237936C800130B9D /* DZForumListController.m */; };
-		70621270237936C800130B9D /* DZForumThreadMixCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621093237936C800130B9D /* DZForumThreadMixCtrl.m */; };
+		70621270237936C800130B9D /* DZForumDescInfoCtroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621093237936C800130B9D /* DZForumDescInfoCtroller.m */; };
 		70621271237936C800130B9D /* DZForumListBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621094237936C800130B9D /* DZForumListBaseCtrl.m */; };
 		70621272237936C800130B9D /* DZForumContainListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621096237936C800130B9D /* DZForumContainListView.m */; };
 		70621273237936C800130B9D /* DZThreadListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109A237936C800130B9D /* DZThreadListModel.m */; };
@@ -759,12 +759,12 @@
 		70621090237936C800130B9D /* DZForumContainListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumContainListView.h; sourceTree = "<group>"; };
 		70621091237936C800130B9D /* DZForumThreadMixContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumThreadMixContainer.m; sourceTree = "<group>"; };
 		70621092237936C800130B9D /* DZForumListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListController.m; sourceTree = "<group>"; };
-		70621093237936C800130B9D /* DZForumThreadMixCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumThreadMixCtrl.m; sourceTree = "<group>"; };
+		70621093237936C800130B9D /* DZForumDescInfoCtroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumDescInfoCtroller.m; sourceTree = "<group>"; };
 		70621094237936C800130B9D /* DZForumListBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListBaseCtrl.m; sourceTree = "<group>"; };
 		70621095237936C800130B9D /* DZForumThreadMixContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumThreadMixContainer.h; sourceTree = "<group>"; };
 		70621096237936C800130B9D /* DZForumContainListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumContainListView.m; sourceTree = "<group>"; };
 		70621097237936C800130B9D /* DZForumListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumListController.h; sourceTree = "<group>"; };
-		70621098237936C800130B9D /* DZForumThreadMixCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumThreadMixCtrl.h; sourceTree = "<group>"; };
+		70621098237936C800130B9D /* DZForumDescInfoCtroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumDescInfoCtroller.h; sourceTree = "<group>"; };
 		7062109A237936C800130B9D /* DZThreadListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListModel.m; sourceTree = "<group>"; };
 		7062109B237936C800130B9D /* DZForumListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListModel.m; sourceTree = "<group>"; };
 		7062109C237936C800130B9D /* DZThreadListModel+Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZThreadListModel+Display.h"; sourceTree = "<group>"; };
@@ -1998,8 +1998,8 @@
 		704DDA66238BC0BC009C9CE2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				70621098237936C800130B9D /* DZForumThreadMixCtrl.h */,
-				70621093237936C800130B9D /* DZForumThreadMixCtrl.m */,
+				70621098237936C800130B9D /* DZForumDescInfoCtroller.h */,
+				70621093237936C800130B9D /* DZForumDescInfoCtroller.m */,
 				70621097237936C800130B9D /* DZForumListController.h */,
 				70621092237936C800130B9D /* DZForumListController.m */,
 				70621095237936C800130B9D /* DZForumThreadMixContainer.h */,
@@ -4271,7 +4271,7 @@
 				709622D1238BC97600AF657F /* BaseIconTextView.m in Sources */,
 				706212A6237936C900130B9D /* Environment.m in Sources */,
 				70621076237935ED00130B9D /* Reachability.m in Sources */,
-				70621270237936C800130B9D /* DZForumThreadMixCtrl.m in Sources */,
+				70621270237936C800130B9D /* DZForumDescInfoCtroller.m in Sources */,
 				70621273237936C800130B9D /* DZThreadListModel.m in Sources */,
 				70FBDCDB2383FC1B00FC296E /* DZOtherUserController.m in Sources */,
 				273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */,

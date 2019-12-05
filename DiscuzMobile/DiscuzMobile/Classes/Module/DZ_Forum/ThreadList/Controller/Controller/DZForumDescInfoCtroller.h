@@ -1,5 +1,5 @@
 //
-//  DZForumThreadMixCtrl.h
+//  DZForumDescInfoCtroller.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
@@ -11,7 +11,7 @@
 
 typedef void(^CForumBlock)(BOOL isCollection);
 
-@interface DZForumThreadMixCtrl : DZBaseViewController
+@interface DZForumDescInfoCtroller : DZBaseViewController
 
 @property (nonatomic, strong) UIView *contentView;
 

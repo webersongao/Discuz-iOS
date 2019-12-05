@@ -1,12 +1,12 @@
 //
-//  DZForumThreadMixCtrl.m
+//  DZForumDescInfoCtroller.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumThreadMixCtrl.h"
+#import "DZForumDescInfoCtroller.h"
 #import "DZCollectionTool.h"
 #import "DZForumListController.h"
 #import "DZForumContainListView.h"
@@ -24,7 +24,7 @@
 #import "SubForumCell.h"
 #import "DropTipView.h"
 
-@interface DZForumThreadMixCtrl () <UITableViewDelegate, UITableViewDataSource>
+@interface DZForumDescInfoCtroller () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) DZForumInfoView *infoView;
 
@@ -54,7 +54,7 @@
 
 @end
 
-@implementation DZForumThreadMixCtrl
+@implementation DZForumDescInfoCtroller
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

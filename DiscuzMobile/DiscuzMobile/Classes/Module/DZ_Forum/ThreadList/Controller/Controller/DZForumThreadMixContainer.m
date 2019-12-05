@@ -7,7 +7,7 @@
 //
 
 #import "DZForumThreadMixContainer.h"
-#import "DZForumThreadMixCtrl.h"
+#import "DZForumDescInfoCtroller.h"
 #import "DZForumListBaseCtrl.h"
 
 @interface DZForumThreadMixContainer () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -20,7 +20,7 @@
 
 - (void)setParentControl:(UIViewController *)parentController {
     self.parentController = parentController;
-    DZForumThreadMixCtrl *bdVC = (DZForumThreadMixCtrl *)self.parentController;
+    DZForumDescInfoCtroller *bdVC = (DZForumDescInfoCtroller *)self.parentController;
     self.collectonView.bounces = NO;
     [bdVC addChildViewController:self];
     [bdVC.contentView addSubview:self.view];
@@ -60,7 +60,7 @@
     NSInteger index = scrollView.contentOffset.x / self.collectonView.frame.size.width;
     [self.segmentedControl  setSelectedSegmentIndex:index];
     
-    [(DZForumThreadMixCtrl *)self.parentController setSelectIndex:index];
+    [(DZForumDescInfoCtroller *)self.parentController setSelectIndex:index];
     if (self.selectIndex != index) {
         self.selectIndex = index;
         // 延迟0.03秒执行 为了界面滑动流畅啊！！！！
@@ -75,12 +75,12 @@
 
 // 防止拖动collection的时候，tableview乱动
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [(DZForumThreadMixCtrl *)self.parentController setScrollEnable:NO];
+    [(DZForumDescInfoCtroller *)self.parentController setScrollEnable:NO];
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     
-    [(DZForumThreadMixCtrl *)self.parentController setScrollEnable:YES];
+    [(DZForumDescInfoCtroller *)self.parentController setScrollEnable:YES];
 }
 
 // 这里不能少， 不能用super方法，不让页面布局错乱
