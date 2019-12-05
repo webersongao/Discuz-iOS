@@ -99,7 +99,7 @@
         [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"All_downState"] forState:UIControlStateNormal];
     }else{
         
-        if ([DataCheck isValidArray:node.nodeChildren]) {
+        if ([DataCheck isValidArray:node.childNode]) {
             [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"All_rightState"] forState:UIControlStateNormal];
             
         }else{

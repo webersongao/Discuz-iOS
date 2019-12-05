@@ -157,9 +157,9 @@
     for (int i = 0; i < self.dataArray.count; i ++) {
         NSMutableArray *array = [NSMutableArray array];
         DZTreeViewNode *node = self.dataArray[i];
-        for (DZTreeViewNode *listNode in node.nodeChildren) {
+        for (DZTreeViewNode *listNode in node.childNode) {
             [array addObject:listNode];
-            //            if ([DataCheck isValidArray:listNode.nodeChildren]) { // node全展开
+            //            if ([DataCheck isValidArray:listNode.childNode]) { // node全展开
             //                [self addAllSubForum:listNode array:array];
             //            }
         }
@@ -169,9 +169,9 @@
 
 - (void)addAllSubForum:(DZTreeViewNode *)node array:(NSMutableArray *)array {
     
-    for (DZTreeViewNode *child in node.nodeChildren) {
+    for (DZTreeViewNode *child in node.childNode) {
         [array addObject:child];
-        if ([DataCheck isValidArray:child.nodeChildren]) {
+        if ([DataCheck isValidArray:child.childNode]) {
             [self addAllSubForum:child array:array];
         }
     }
@@ -276,7 +276,7 @@
 
         // 需要滚动的下标
         NSInteger mustvisableRow = currentRow + 1;
-        if (model.nodeChildren.count >= 2) {
+        if (model.childNode.count >= 2) {
             mustvisableRow = currentRow + 2;
         }
         scrollIndexPath = [NSIndexPath indexPathForRow:mustvisableRow inSection:section];
@@ -302,17 +302,17 @@
 - (void)expandInsertRow:(NSIndexPath *)indexPath nodeModel:(DZTreeViewNode *)model {
     NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:indexPath.section];
     // 这一步是防止在二级展开的情况下,关闭一级展开, 则二级展开的状态还是展开,需要手动置回 NO
-    for (int i =0; i<model.nodeChildren.count; i++) {
-        DZTreeViewNode *mod = [model.nodeChildren objectAtIndex:i];
+    for (int i =0; i<model.childNode.count; i++) {
+        DZTreeViewNode *mod = [model.childNode objectAtIndex:i];
         mod.isExpanded = NO;
     }
     // 插入数据源
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.row+1, model.nodeChildren.count)];
-    [sectionDataArry insertObjects:model.nodeChildren atIndexes:indexSet];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexPath.row+1, model.childNode.count)];
+    [sectionDataArry insertObjects:model.childNode atIndexes:indexSet];
     
     // 插入行下标数组
     NSMutableArray *reloadIndexPaths = [NSMutableArray array];
-    for (int i = 0; i < model.nodeChildren.count; i ++) {
+    for (int i = 0; i < model.childNode.count; i ++) {
         NSIndexPath *idxPath = [NSIndexPath indexPathForRow:i + indexPath.row + 1 inSection:indexPath.section];
         [reloadIndexPaths addObject:idxPath];
     }
@@ -374,7 +374,7 @@
     
     if (tableView == self.leftTable) {
         DZTreeViewNode *node = self.dataArray[indexPath.row];
-        textStr = node.nodeName;
+        textStr = node.name;
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
         [cell updateLabel:textStr];
         return cell;
@@ -393,7 +393,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSArray *nodeArray = self.dataSourceArr[indexPath.section];
     DZTreeViewNode *node = nodeArray[indexPath.row];
-    if ([DataCheck isValidArray:node.nodeChildren]) {
+    if ([DataCheck isValidArray:node.childNode]) {
         node.isExpanded = !node.isExpanded;
         [self reloadSection:indexPath.section withNodeModel:node withExpand:node.isExpanded];
     }
@@ -410,7 +410,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (tableView == self.tableView) {
         DZTreeViewNode *node = self.dataArray[section];
-        return node.nodeName;
+        return node.name;
     }
     return nil;
 }

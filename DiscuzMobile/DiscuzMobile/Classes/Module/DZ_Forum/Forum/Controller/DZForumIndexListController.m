@@ -108,7 +108,7 @@
         return self.dataSourceArr.count;
     }
     DZTreeViewNode *node = self.dataSourceArr[section];
-    return node.nodeChildren.count;
+    return node.childNode.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,7 +117,7 @@
     if (tableView == self.leftMenuList) {
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
         node = self.dataSourceArr[indexPath.row];
-        [cell updateLabel:node.nodeName];
+        [cell updateLabel:node.name];
         return cell;
     } else {
         ForumRightCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumRightCell getReuseId]];
@@ -126,7 +126,7 @@
             [weakSelf collectAction:sender andModel:infoModel];
         };
         
-        [cell setInfo:node.nodeChildren[indexPath.row].infoModel];
+        [cell setInfo:node.childNode[indexPath.row].infoModel];
         return cell;
     }
 }
@@ -142,7 +142,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (tableView == self.tableView) {
         DZTreeViewNode *node = self.dataSourceArr[section];
-        return node.nodeName;
+        return node.name;
     }
     return nil;
 }
@@ -154,7 +154,7 @@
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         DZTreeViewNode * node = self.dataSourceArr[indexPath.section];
-        node = node.nodeChildren[indexPath.row];
+        node = node.childNode[indexPath.row];
         [self pushThreadList:node];
     }
 }

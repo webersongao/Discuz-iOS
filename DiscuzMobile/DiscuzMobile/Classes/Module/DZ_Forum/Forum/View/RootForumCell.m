@@ -82,7 +82,7 @@
     self.textLab.frame = CGRectMake(15, 15,KScreenWidth - 85, 30);
     _node = node;
     self.button.frame = CGRectMake(KScreenWidth - 30 - 10, 15, 30, 30);
-    self.textLab.text = node.nodeName;
+    self.textLab.text = node.name;
     self.sepLine.frame = CGRectMake(15, 59.5, KScreenWidth - 15, 0.5);
     
 }

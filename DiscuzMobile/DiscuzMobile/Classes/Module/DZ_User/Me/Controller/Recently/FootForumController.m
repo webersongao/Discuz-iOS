@@ -184,7 +184,6 @@ static NSString * headerSection = @"CellHeader";
     
     DZTreeViewNode * node = self.hotSource[indexPath.row];
     [self pushThreadList:node];
-    
 }
 
 - (void)pushThreadList:(DZTreeViewNode *)node {

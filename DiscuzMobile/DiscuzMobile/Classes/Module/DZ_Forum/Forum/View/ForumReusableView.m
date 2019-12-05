@@ -72,7 +72,7 @@
     
     [self.button setImage:[UIImage imageTintColorWithName:openStr andImageSuperView:self.button] forState:UIControlStateNormal];
     _node = node;
-    self.textLab.text = node.nodeName;
+    self.textLab.text = node.name;
     
     [self layoutIfNeeded];
 }

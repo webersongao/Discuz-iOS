@@ -14,9 +14,9 @@
 @interface DZDiscoverModel : DZBaseVarModel
 
 // 板块数组
-@property (nonatomic, strong) NSArray<DZBaseForumModel *> *forumlist;
+@property (nonatomic, strong) NSArray<DZBaseForumModel *> *forumlist;  // 所有的板块
 // 论坛板块分类
-@property (nonatomic, strong) NSArray<DZForumNodeModel *> *catlist;
+@property (nonatomic, strong) NSArray<DZForumNodeModel *> *catlist;  // 板块分类节点
 // 论坛板块 访问足迹
 @property (nonatomic, strong) NSArray<DZForumNodeModel *> *visitedforums;
 

@@ -10,7 +10,7 @@
 #import "DZForumModel.h"
 
 @interface DZTreeViewNode()
-
+@property (nonatomic, strong) NSArray *forumListArr;
 @end
 
 @implementation DZTreeViewNode
@@ -18,7 +18,7 @@
 #pragma mark - 设置单一节点section
 - (void)setTreeNode:(NSDictionary *)dic {
     
-    self.nodeName = [dic objectForKey:@"name"];
+    self.name = [dic objectForKey:@"name"];
     self.infoModel.name = [dic objectForKey:@"name"];
     if ([dic objectForKey:@"isExpanded"]) {
         self.isExpanded = NO;
@@ -35,7 +35,7 @@
         self.infoModel = [DZForumModel modelWithJSON:dic];
         self.nodeLevel = 1;
     }
-
+    
     self.forums = [dic objectForKey:@"forums"];
     self.forumListArr = [dic objectForKey:@"forumlist"];
     NSMutableArray *childArr = [NSMutableArray array];
@@ -44,14 +44,12 @@
         DZTreeViewNode *treeNode1 = [[DZTreeViewNode alloc] init];
         treeNode1.nodeLevel = 1;
         treeNode1.isExpanded = NO;
-        treeNode1.nodeName = [fourmInfo objectForKey:@"name"];
+        treeNode1.name = [fourmInfo objectForKey:@"name"];
         treeNode1.infoModel = [DZForumModel modelWithJSON:fourmInfo];
-        
         [treeNode1 sublistNode:fourmInfo];
-        
         [childArr addObject:treeNode1];
     }
-    self.nodeChildren = childArr;
+    self.childNode = childArr;
 }
 
 
@@ -60,24 +58,24 @@
     if ([DataCheck isValidDictionary:fourmInfo]) {
         if ([DataCheck isValidArray:[fourmInfo objectForKey:@"sublist"]]) {
             NSArray *subArr = [fourmInfo objectForKey:@"sublist"];
-            
+            NSMutableArray *childArr = [NSMutableArray array];
             for (NSDictionary *info in subArr) {
                 DZTreeViewNode *treeNode = [[DZTreeViewNode alloc] init];
                 treeNode.nodeLevel = self.nodeLevel + 1;
                 treeNode.isExpanded = NO;
-                treeNode.nodeName = [info objectForKey:@"name"];
+                treeNode.name = [info objectForKey:@"name"];
                 treeNode.infoModel = [DZForumModel modelWithJSON:info];
-                [self.nodeChildren addObject:treeNode];
+                [childArr addObject:treeNode];
                 if ([DataCheck isValidArray:[info objectForKey:@"sublist"]]) { // 递归判断
                     [treeNode sublistNode:info];
                 }
             }
+            self.childNode = childArr;
         }
     }
 }
 
 - (NSDictionary *)getForumInfoWithFid:(NSString *)fid {
-    
     for (NSDictionary *info in self.forumListArr) {
         if ([fid isEqualToString:[info objectForKey:@"fid"]]) {
             return info;
@@ -90,51 +88,39 @@
     NSMutableArray *forumArray = [NSMutableArray array];
     NSArray *catlist = [[responseObject objectForKey:@"Variables"] objectForKey:@"catlist"];
     NSArray *forumlist = [[responseObject objectForKey:@"Variables"] objectForKey:@"forumlist"];
-    if ([DataCheck isValidArray:forumlist]) {
-        for (int i = 0; i < catlist.count; i++) {
-            DZTreeViewNode * treeNode = [[DZTreeViewNode alloc] init];
-            NSMutableDictionary *nodeDic = [NSMutableDictionary dictionary];
-            nodeDic = [catlist[i] mutableCopy];
-            [nodeDic setValue:forumlist forKey:@"forumlist"];
-            [nodeDic setValue:@"0" forKey:@"level"];
-            if (catlist.count >= 10) {
-                [nodeDic setValue:@"NO" forKey:@"isExpanded"];
-            }
-            [treeNode setTreeNode:nodeDic];
-            [forumArray addObject:treeNode];
-        } 
-    }
-    return forumArray;
     
+    for (int i = 0; i < catlist.count; i++) {
+        DZTreeViewNode * treeNode = [[DZTreeViewNode alloc] init];
+        NSMutableDictionary *nodeDic = [NSMutableDictionary dictionary];
+        nodeDic = [catlist[i] mutableCopy];
+        [nodeDic setValue:forumlist forKey:@"forumlist"];
+        [nodeDic setValue:@"0" forKey:@"level"];
+        if (catlist.count >= 10) {
+            [nodeDic setValue:@"NO" forKey:@"isExpanded"];
+        }
+        [treeNode setTreeNode:nodeDic];
+        [forumArray addObject:treeNode];
+    }
+    
+    return forumArray;
 }
+
+
+
 
 #pragma mark - setter、getter
-- (void)setNodeName:(NSString *)nodeName {
-    if ([DataCheck isValidString:nodeName]) {
-        nodeName = [[nodeName transformationStr] flattenHTMLTrimWhiteSpace:YES];
+-(void)setName:(NSString *)name{
+    if ([DataCheck isValidString:name]) {
+        name = [[name transformationStr] flattenHTMLTrimWhiteSpace:YES];
     }
-    _nodeName = nodeName;
+    _name = name;
 }
 
-- (NSMutableArray *)nodeChildren {
-    if (!_nodeChildren) {
-        _nodeChildren = [NSMutableArray array];
-    }
-    return _nodeChildren;
-}
-
-- (NSMutableArray *)forumListArr {
-    if (!_forumListArr) {
-        _forumListArr = [NSMutableArray array];
-    }
-    return _forumListArr;
-}
-
-- (DZForumModel *)infoModel {
-    if (!_infoModel) {
-        self.infoModel = [[DZForumModel alloc] init];
-    }
-    return _infoModel;
-}
 
 @end
+
+
+
+
+
+

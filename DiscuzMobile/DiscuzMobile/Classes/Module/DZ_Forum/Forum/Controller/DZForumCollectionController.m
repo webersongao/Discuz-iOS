@@ -151,7 +151,7 @@ static NSString * headerSection = @"CellHeader";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     if (self.dataSourceArr[section].isExpanded) {
-        return self.dataSourceArr[section].nodeChildren.count;
+        return self.dataSourceArr[section].childNode.count;
     }
     return 0;
     
@@ -174,7 +174,7 @@ static NSString * headerSection = @"CellHeader";
     
     DZTreeViewNode * node;
     
-    node = self.dataSourceArr[indexPath.section].nodeChildren[indexPath.row];
+    node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
     if (node != nil) {
         [cell setInfo:node.infoModel];
@@ -188,7 +188,7 @@ static NSString * headerSection = @"CellHeader";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     DZTreeViewNode * node;
     
-    node = self.dataSourceArr[indexPath.section].nodeChildren[indexPath.row];
+    node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
     
     [self pushThreadList:node];
