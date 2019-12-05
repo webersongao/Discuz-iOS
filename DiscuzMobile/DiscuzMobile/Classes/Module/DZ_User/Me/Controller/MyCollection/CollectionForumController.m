@@ -123,15 +123,9 @@
 
 - (void)deleteCollection:(NSInteger)index {
     
-    NSString *fid = [[self.dataSourceArr objectAtIndex:index] objectForKey:@"id"];
+    NSString *fidStr = [[self.dataSourceArr objectAtIndex:index] objectForKey:@"id"];
     
-    NSDictionary *getDic = @{@"id":fid,
-                             @"type":@"forum"
-                             };
-    NSDictionary *postDic = @{@"deletesubmit":@"true",
-                              @"formhash":[Environment sharedEnvironment].formhash
-                              };
-    [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+    [DZCollectionTool DZ_DeleCollection:fidStr type:collectForum success:^{
         [self.dataSourceArr removeObjectAtIndex:index];
         [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
         [self.tableView reloadData];

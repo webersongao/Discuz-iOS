@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    collectForum,
+    collectThread,
+} collectType;
+
 @interface DZCollectionTool : NSObject
 
-+ (instancetype)shareInstance;
 // 收藏板块
-- (void)collectionForum:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
-// 取消收藏（帖子、板块）
-- (void)collectionThread:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
++ (void)DZ_CollectionForum:(NSString *)fId success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+
 // 收藏帖子
-- (void)deleCollection:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
++ (void)DZ_CollectionThread:(NSString *)tid success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+
+// 取消收藏（帖子、板块）
++ (void)DZ_DeleCollection:(NSString *)fid type:(collectType)type success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
 
 @end

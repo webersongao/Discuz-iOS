@@ -7,7 +7,17 @@
 //
 
 #import "DZForumItemCell.h"
-#import "DZForumModel.h"
+#import "DZBaseForumModel.h"
+
+@interface DZForumItemCell ()
+
+@property (nonatomic, strong) UIImageView *iconV;
+@property (nonatomic, strong) UILabel *titleLab;
+
+@property (nonatomic, strong) UILabel *numLab;
+@property (nonatomic, strong) UILabel *postsLab;
+
+@end
 
 @implementation DZForumItemCell
 
@@ -69,7 +79,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZForumModel *)infoModel {
+- (void)updateItemCell:(DZBaseForumModel *)infoModel {
     
     if ([DataCheck isValidString:infoModel.name]) {
         self.titleLab.text = infoModel.name;

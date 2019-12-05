@@ -9,21 +9,22 @@
 #import "DZCollectionTool.h"
 
 @implementation DZCollectionTool
-+ (instancetype)shareInstance {
-    static DZCollectionTool *instanceTool = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instanceTool = [[DZCollectionTool alloc] init];
-    });
-    return instanceTool;
-}
 
-- (void)collectionForum:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+
+// 收藏板块
++ (void)DZ_CollectionForum:(NSString *)fid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+    
+    NSString *forumId = checkNull(fid);
+    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    if (!forumId.length) {
+        return;
+    }
+    
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_CollectionForum;
         request.methodType = JTMethodTypePOST;
-        request.getParam = getDic;
-        request.parameters = postDic;
+        request.getParam = @{@"id":checkNull(forumId)};
+        request.parameters = @{@"formhash":formhash};
     } success:^(id responseObject, JTLoadType type) {
         NSString *messageval = [responseObject messageval];
         NSString *messagestr = [responseObject messagestr];
@@ -43,8 +44,49 @@
     }];
 }
 
-// 新的取消收藏
-- (void)deleCollection:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+// 收藏帖子
++ (void)DZ_CollectionThread:(NSString *)tid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+    
+    NSString *threadId = checkNull(tid);
+    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    if (!threadId.length) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_CollectionThread;
+        request.methodType = JTMethodTypePOST;
+        request.getParam = @{@"id":threadId};;
+        request.parameters =  @{@"formhash":formhash};
+    } success:^(id responseObject, JTLoadType type) {
+        NSString *messageval = [responseObject messageval];
+        NSString *messagestr = [responseObject messagestr];
+        if ([messageval isEqualToString:@"favorite_do_success"]) {
+            success?success():nil;
+        } else {
+            [MBProgressHUD showInfo:messagestr];
+        }
+    } failed:^(NSError *error) {
+        [MBProgressHUD showInfo:@"收藏失败"];
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
+// 取消收藏（帖子、板块）
++ (void)DZ_DeleCollection:(NSString *)fid type:(collectType)type success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+    
+    NSString *forumId = checkNull(fid);
+    NSString *typeId = (type == collectForum) ? @"forum" : @"thread";
+    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    if (!forumId.length) {
+        return;
+    }
+    
+    NSDictionary *getDic = @{@"id":forumId,@"type":typeId};
+    NSDictionary *postDic = @{@"deletesubmit":@"true",@"formhash":formhash};
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_unCollection;
@@ -63,28 +105,6 @@
         }
     } failed:^(NSError *error) {
         [MBProgressHUD showInfo:@"取消收藏失败"];
-        if (failure) {
-            failure(error);
-        }
-    }];
-}
-
-- (void)collectionThread:(id)getDic andPostdic:(id)postDic success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_CollectionThread;
-        request.methodType = JTMethodTypePOST;
-        request.getParam = getDic;
-        request.parameters = postDic;
-    } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        NSString *messagestr = [responseObject messagestr];
-        if ([messageval isEqualToString:@"favorite_do_success"]) {
-            success?success():nil;
-        } else {
-            [MBProgressHUD showInfo:messagestr];
-        }
-    } failed:^(NSError *error) {
-        [MBProgressHUD showInfo:@"收藏失败"];
         if (failure) {
             failure(error);
         }

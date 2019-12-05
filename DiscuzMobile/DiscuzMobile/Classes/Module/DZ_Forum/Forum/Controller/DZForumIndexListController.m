@@ -143,7 +143,7 @@
 - (void)pushThreadList:(DZForumNodeModel *)node {
     KWEAKSELF;
     [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid block:^(BOOL boolState) {
-       if (boolState) {
+        if (boolState) {
             node.infoModel.favorited = @"1";
         } else {
             node.infoModel.favorited = @"0";
@@ -204,22 +204,13 @@
         return;
     }
     
-    if (btn.lighted==YES) {// 收藏
-        NSDictionary *getdic =@{@"id":model.fid};
-        NSDictionary *dic = @{@"formhash":[Environment sharedEnvironment].formhash};
-        [[DZCollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
+    if (btn.lighted) {// 收藏
+        [DZCollectionTool DZ_CollectionForum:model.fid success:^{
             btn.lighted = NO;
             model.favorited = @"1";
         } failure:nil];
-        
-    } else if (btn.lighted==NO) {//取消
-        NSDictionary *getDic = @{@"id":model.fid,
-                                 @"type":@"forum"
-                                 };
-        NSDictionary *postDic = @{@"deletesubmit":@"true",
-                                  @"formhash":[Environment sharedEnvironment].formhash
-                                  };
-        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+    } else {//取消
+        [DZCollectionTool DZ_DeleCollection:model.fid type:collectForum success:^{
             btn.lighted = YES;
             model.favorited = @"0";
         } failure:nil];

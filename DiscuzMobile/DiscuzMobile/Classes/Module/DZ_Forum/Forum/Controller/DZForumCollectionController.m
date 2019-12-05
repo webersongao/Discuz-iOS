@@ -156,7 +156,7 @@ static NSString * headerSection = @"CellHeader";
     cell.tag = indexPath.section;
     UITapGestureRecognizer *tapG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectHeaderWithSection:)];
     [cell addGestureRecognizer:tapG];
-    cell.node = self.dataSourceArr[indexPath.section];
+    cell.cellNode = self.dataSourceArr[indexPath.section];
     
     return cell;
 }
@@ -169,7 +169,7 @@ static NSString * headerSection = @"CellHeader";
     node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
     if (node != nil) {
-        [cell setInfo:node.infoModel];
+        [cell updateItemCell:node.infoModel];
     }
     
     return cell;

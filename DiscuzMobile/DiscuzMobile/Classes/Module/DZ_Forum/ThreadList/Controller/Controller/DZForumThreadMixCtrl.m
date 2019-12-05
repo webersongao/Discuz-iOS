@@ -217,23 +217,14 @@
     
     if (btn.tag==1000) {// 收藏
         
-        NSDictionary *getdic =@{@"id":self.forumFid};
-        NSDictionary *dic = @{@"formhash":[Environment sharedEnvironment].formhash};
-        [[DZCollectionTool shareInstance] collectionForum:getdic andPostdic:dic success:^{
+        [DZCollectionTool DZ_CollectionForum:self.forumFid success:^{
             [self setIsCollection];
         } failure:nil];
         
     } else if (btn.tag==1002) {//取消
-        NSDictionary *getDic = @{@"id":self.forumFid,
-                                 @"type":@"forum"
-        };
-        NSDictionary *postDic = @{@"deletesubmit":@"true",
-                                  @"formhash":[Environment sharedEnvironment].formhash
-        };
-        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+        [DZCollectionTool DZ_DeleCollection:self.forumFid type:collectForum success:^{
             [self setNotCollection];
         } failure:nil];
-        
     }
     
 }

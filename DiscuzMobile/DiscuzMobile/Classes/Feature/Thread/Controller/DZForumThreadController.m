@@ -595,23 +595,13 @@
     if (![self isLogin]) {
         return;
     }
-    NSDictionary * getdic=@{@"id":self.tid};
-    NSDictionary * dic=@{@"formhash":[Environment sharedEnvironment].formhash};
     if (btn.tag == 100001) {
-        [[DZCollectionTool shareInstance] collectionThread:getdic andPostdic:dic success:^{
+        [DZCollectionTool DZ_CollectionThread:self.tid success:^{
             [self.HUD hide];
             [self setIsCollection:btn];
         } failure:nil];
-        
     } else if (btn.tag==100002) {
-        
-        NSDictionary *getDic = @{@"id":self.tid,
-                                 @"type":@"thread"
-                                 };
-        NSDictionary *postDic = @{@"deletesubmit":@"true",
-                                  @"formhash":[Environment sharedEnvironment].formhash
-                                  };
-        [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
+        [DZCollectionTool DZ_DeleCollection:self.tid type:collectThread success:^{
             [self setNotCollection:btn];
         } failure:nil];
     }

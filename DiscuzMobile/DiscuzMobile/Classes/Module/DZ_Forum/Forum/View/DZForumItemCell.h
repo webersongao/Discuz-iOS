@@ -7,19 +7,13 @@
 //
 
 #import "DZBaseCollectionCell.h"
-@class DZForumModel;
+@class DZBaseForumModel;
 
 @interface DZForumItemCell : DZBaseCollectionCell
-
-@property (nonatomic, strong) UIImageView *iconV;
-@property (nonatomic, strong) UILabel *titleLab;
-
-@property (nonatomic, strong) UILabel *numLab;
-@property (nonatomic, strong) UILabel *postsLab;
 
 /**
  * 设置直接显示的cell数据
  */
-- (void)setInfo:(DZForumModel *)node;
+- (void)updateItemCell:(DZBaseForumModel *)node;
 
 @end

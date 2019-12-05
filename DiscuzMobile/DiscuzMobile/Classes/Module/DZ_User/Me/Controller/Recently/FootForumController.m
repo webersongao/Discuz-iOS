@@ -159,7 +159,7 @@ static NSString * headerSection = @"CellHeader";
     node = self.dataSourceArr[indexPath.row];
     
     if (node != nil) {
-        [cell setInfo:node.infoModel];
+        [cell updateItemCell:node.infoModel];
     }
     
     return cell;

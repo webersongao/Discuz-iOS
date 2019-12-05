@@ -10,7 +10,7 @@
 @class DZForumNodeModel;
 
 @interface DZCollectSectionView : UICollectionReusableView
-@property (nonatomic, strong) DZForumNodeModel * node;
-@property (nonatomic, strong) UILabel *textLab;
-@property (nonatomic, strong) UIButton * button;
+
+@property (nonatomic, strong) DZForumNodeModel * cellNode;
+
 @end

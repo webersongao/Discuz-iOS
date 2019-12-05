@@ -12,7 +12,8 @@
 @interface DZCollectSectionView()
 
 @property (nonatomic, strong) UIView *sepLine;
-
+@property (nonatomic, strong) UILabel *textLab;
+@property (nonatomic, strong) UIButton * button;
 @end
 
 @implementation DZCollectSectionView
@@ -28,7 +29,7 @@
 }
 
 - (void)setupViews {
-//    self.backgroundColor = [UIColor whiteColor];
+    //    self.backgroundColor = [UIColor whiteColor];
     //    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [self addSubview:self.button];
     [self addSubview:self.textLab];
@@ -52,18 +53,18 @@
         make.width.mas_equalTo(KScreenWidth);
         make.height.equalTo(@0.5);
     }];
-
+    
 }
 
 
 /**
  * 设置可折叠的cell数据
  */
-- (void)setNode:(DZForumNodeModel *)node {
+-(void)setCellNode:(DZForumNodeModel *)cellNode{
     
     NSString *openStr;
-    if (node.nodeLevel == 0) {
-        if (node.isExpanded) {
+    if (cellNode.nodeLevel == 0) {
+        if (cellNode.isExpanded) {
             openStr = @"open";
         } else {
             openStr = @"close";
@@ -71,8 +72,8 @@
     }
     
     [self.button setImage:[UIImage imageTintColorWithName:openStr andImageSuperView:self.button] forState:UIControlStateNormal];
-    _node = node;
-    self.textLab.text = node.name;
+    _cellNode = cellNode;
+    self.textLab.text = cellNode.name;
     
     [self layoutIfNeeded];
 }

@@ -64,7 +64,7 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)presentFormOldController:(DZBaseViewController *)oldController toNewController:(DZBaseViewController *)newController{
     [self addChildViewController:newController];
-    [self transitionFromViewController:oldController toViewController:newController duration:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [self transitionFromViewController:oldController toViewController:newController duration:0.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
     } completion:^(BOOL finished) {
         if(finished){
             self.currentVC = newController;

@@ -14,12 +14,6 @@ typedef void(^CollectionForumBlock)(DZCollectButton *sender, DZBaseForumModel *i
 
 @interface DZForumRightCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) UIImageView *iconV;
-@property (nonatomic, strong) UILabel *titleLab;
-@property (nonatomic, strong) UILabel *numLab;
-@property (nonatomic, strong) UILabel *postsLab;
-@property (nonatomic, strong) DZCollectButton *collectionBtn;
-
 /**
  * 设置直接显示的cell数据
  */
