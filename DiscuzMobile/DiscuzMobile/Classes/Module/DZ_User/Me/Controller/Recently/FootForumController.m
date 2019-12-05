@@ -7,8 +7,8 @@
 //
 
 #import "FootForumController.h"
-#import "DZTreeViewNode.h"
-
+#import "DZForumNodeModel.h"
+#import "DZThreadNetTool.h"
 #import "ForumItemCell.h"
 #import "ForumReusableView.h"
 
@@ -17,9 +17,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
-
-@property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *dataSource;
-@property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *hotSource;
+@property (nonatomic, strong) NSMutableArray<DZForumNodeModel *> *dataSource;
 
 @end
 
@@ -83,22 +81,26 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)loadData {
     
+    [DZThreadNetTool DZ_DownloadForumCategoryData:0 isCache:YES completion:^(DZDiscoverModel *indexModel) {
+        [self.HUD hide];
+        if (indexModel) {
+            [self.collectionView.mj_header endRefreshing];
+            self.dataSourceArr = [NSMutableArray arrayWithArray:indexModel.visitedforums];
+            [self emptyShow];
+            [self.collectionView reloadData];
+        }else{
+            [self.collectionView.mj_header endRefreshing];
+        }
+    }];
+    
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.isCache = YES;
         request.urlString = DZ_Url_Forumindex;
     } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        [self.collectionView.mj_header endRefreshing];
         
-        self.hotSource = [NSMutableArray array];
-        [self setHotData:[[responseObject objectForKey:@"Variables"] objectForKey:@"visitedforums"]];
-        [self emptyShow];
-        [self.collectionView reloadData];
         
     } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
-        [self.collectionView.mj_header endRefreshing];
+        
     }];
 }
 
@@ -116,21 +118,6 @@ static NSString * headerSection = @"CellHeader";
             self.emptyView.isOnView = YES;
         }
     }
-}
-
-//  处理热门版块数据
-- (void)setHotData:(NSArray *)dataArr {
-    
-    self.hotSource = [NSMutableArray array];
-    self.dataSourceArr = [NSMutableArray array];
-    for (int i = 0; i < dataArr.count; i++)  {
-        DZTreeViewNode * treeNode = [[DZTreeViewNode alloc] init];
-        NSMutableDictionary *nodeDic = [NSMutableDictionary dictionary];
-        nodeDic = [dataArr[i] mutableCopy];
-        [treeNode setTreeNode:nodeDic];
-        [self.hotSource addObject:treeNode];
-    }
-    self.dataSourceArr = self.hotSource;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -154,7 +141,7 @@ static NSString * headerSection = @"CellHeader";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.hotSource.count;
+    return self.dataSourceArr.count;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -167,9 +154,9 @@ static NSString * headerSection = @"CellHeader";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
     
-    DZTreeViewNode * node;
+    DZForumNodeModel * node;
     
-    node = self.hotSource[indexPath.row];
+    node = self.dataSourceArr[indexPath.row];
     
     if (node != nil) {
         [cell setInfo:node.infoModel];
@@ -182,27 +169,20 @@ static NSString * headerSection = @"CellHeader";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     
-    DZTreeViewNode * node = self.hotSource[indexPath.row];
+    DZForumNodeModel * node = self.dataSourceArr[indexPath.row];
     [self pushThreadList:node];
 }
 
-- (void)pushThreadList:(DZTreeViewNode *)node {
+- (void)pushThreadList:(DZForumNodeModel *)node {
 
     [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid];
 }
 
-- (NSMutableArray<DZTreeViewNode *> *)dataSource {
+- (NSMutableArray<DZForumNodeModel *> *)dataSource {
     if (!_dataSource) {
         _dataSource = [NSMutableArray array];
     }
     return _dataSource;
-}
-
-- (NSMutableArray<DZTreeViewNode *> *)hotSource {
-    if (!_hotSource) {
-        _hotSource = [NSMutableArray array];
-    }
-    return _hotSource;
 }
 
 - (NSMutableArray *)dataSourceArr {

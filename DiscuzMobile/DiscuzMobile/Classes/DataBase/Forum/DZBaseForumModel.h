@@ -20,6 +20,9 @@
 @property (nonatomic, copy) NSString *forum_desc;  //!< 板块描述
 @property (nonatomic, strong) NSArray<DZBaseForumModel *> *sublist;  //!< 属性注释
 
+@property (nonatomic, copy) NSString *favorited; // 是否收藏 不稳定字段
+
+
 @end
 
 

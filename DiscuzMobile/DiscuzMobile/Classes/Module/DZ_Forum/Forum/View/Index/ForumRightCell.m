@@ -7,7 +7,7 @@
 //
 
 #import "ForumRightCell.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "DZCollectButton.h"
@@ -123,8 +123,8 @@
  */
 - (void)setInfo:(DZForumModel *)infoModel {
     //    self.textLabel.text = node.infoModel.name;
-    if ([DataCheck isValidString:infoModel.title]) {
-        self.titleLab.text = infoModel.title;
+    if ([DataCheck isValidString:infoModel.name]) {
+        self.titleLab.text = infoModel.name;
     } else {
         if ([DataCheck isValidString:infoModel.todayposts] && [infoModel.todayposts integerValue] > 0) {
             NSString *todayposts = [NSString stringWithFormat:@"(%@)",infoModel.todayposts];

@@ -12,7 +12,7 @@
 @implementation DZGlobalTool
 
 
-+(void)requestGlobalForumCategoryData:(void(^)(DZDiscoverModel *indexModel))categoryBlock{
++(void)DZ_RequestGlobalForumCategory:(void(^)(DZDiscoverModel *indexModel))categoryBlock{
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_Forumindex;

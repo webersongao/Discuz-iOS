@@ -7,10 +7,11 @@
 //
 
 #import "FastPostController.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "ForumLeftCell.h"
 #import "FastLevelCell.h"
 #import "PostTypeModel.h"
+#import "DZThreadNetTool.h"
 #import "DZPostNormalViewController.h"
 #import "DZPostVoteViewController.h"
 #import "DZPostTypeSelectView.h"
@@ -21,7 +22,7 @@
 @interface FastPostController ()
 
 @property (nonatomic,assign) BOOL isSelected;
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *leftDataArray;
 @property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, copy) NSString *selectFid;
@@ -115,65 +116,34 @@
 
 // 下载数据
 - (void)loadDataWithType:(JTLoadType)loadType {
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"fourm" ofType:@"json"];
-//        // 将文件数据化
-//        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-//        // 对数据进行JSON格式化并返回字典形式
-//        NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//        [self setForumList:resp];
-//         [self.HUD hideAnimated:YES];
-//        return;
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Forumindex;
-        request.loadType = loadType;
-        request.isCache = YES;
-    } success:^(id responseObject, JTLoadType type) {
-        self.refreshBtn.hidden = YES;
-        [self.HUD hideAnimated:YES];
-        [self.tableView.mj_header endRefreshing];
-        DLog(@"%@",responseObject);
-        if ([DataCheck isValidArray:self.dataArray]) {
-            [self.dataArray removeAllObjects];
+    
+    [DZThreadNetTool DZ_DownloadForumCategoryData:loadType isCache:YES completion:^(DZDiscoverModel *indexModel) {
+        
+        if (indexModel) {
+            self.refreshBtn.hidden = YES;
+            [self.HUD hideAnimated:YES];
+            [self.tableView.mj_header endRefreshing];
+            if ([DataCheck isValidArray:self.leftDataArray]) {
+                [self.leftDataArray removeAllObjects];
+            }
+            [self configForumList:indexModel];
+            [self.tableView reloadData];
+            [self.leftTable reloadData];
+        }else{
+            self.refreshBtn.hidden = NO;
+            [self.HUD hideAnimated:YES];
         }
-        [self setForumList:responseObject];
-        [self.tableView reloadData];
-        [self.leftTable reloadData];
-        
-    } failed:^(NSError *error) {
-        self.refreshBtn.hidden = NO;
-        [self.HUD hideAnimated:YES];
-        [self showServerError:error];
-        DLog(@"%@",error);
-        
     }];
+    
 }
 
 // 处理全部版块数据
-- (void)setForumList:(id)responseObject {
-    self.dataArray = [NSMutableArray arrayWithArray:[DZTreeViewNode setAllforumData:responseObject]];
-    if (self.dataSourceArr.count > 0) {
-        [self.dataSourceArr removeAllObjects];
-    }
-    for (int i = 0; i < self.dataArray.count; i ++) {
-        NSMutableArray *array = [NSMutableArray array];
-        DZTreeViewNode *node = self.dataArray[i];
-        for (DZTreeViewNode *listNode in node.childNode) {
-            [array addObject:listNode];
-            //            if ([DataCheck isValidArray:listNode.childNode]) { // node全展开
-            //                [self addAllSubForum:listNode array:array];
-            //            }
-        }
-        [self.dataSourceArr addObject:array];
-    }
-}
-
-- (void)addAllSubForum:(DZTreeViewNode *)node array:(NSMutableArray *)array {
+- (void)configForumList:(DZDiscoverModel *)indexModel {
     
-    for (DZTreeViewNode *child in node.childNode) {
-        [array addObject:child];
-        if ([DataCheck isValidArray:child.childNode]) {
-            [self addAllSubForum:child array:array];
-        }
+    [self.dataSourceArr removeAllObjects];
+    self.leftDataArray = [NSMutableArray arrayWithArray:indexModel.catlist];
+    for (DZForumNodeModel *nodeModel in self.leftDataArray) {
+        [self.dataSourceArr addObjectsFromArray:nodeModel.childNode];
     }
 }
 
@@ -220,8 +190,8 @@
 
 - (void)publicPostControllerSet:(DZPostBaseController *)controller {
     KWEAKSELF;
-    #warning 该位置需要完全转换成Model赋值，此写法只是为了不报错 临时注释
-//    controller.dataForumTherad = self.Variables;
+#warning 该位置需要完全转换成Model赋值，此写法只是为了不报错 临时注释
+    //    controller.dataForumTherad = self.Variables;
     controller.fid = self.selectFid;
     controller.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
@@ -258,7 +228,7 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-- (void)reloadSection:(NSInteger)section withNodeModel:(DZTreeViewNode *)model withExpand:(BOOL)isExpand {
+- (void)reloadSection:(NSInteger)section withNodeModel:(DZForumNodeModel *)model withExpand:(BOOL)isExpand {
     
     NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:section];
     
@@ -273,7 +243,7 @@
     if (isExpand){
         
         [self expandInsertRow:currentIndexPath nodeModel:model];
-
+        
         // 需要滚动的下标
         NSInteger mustvisableRow = currentRow + 1;
         if (model.childNode.count >= 2) {
@@ -284,7 +254,7 @@
     } else {
         
         [self expandDeleteRow:currentIndexPath nodeModel:model];
-
+        
         scrollIndexPath = [NSIndexPath indexPathForRow:currentRow inSection:section];
     }
     
@@ -299,11 +269,11 @@
 }
 
 // 插入行
-- (void)expandInsertRow:(NSIndexPath *)indexPath nodeModel:(DZTreeViewNode *)model {
+- (void)expandInsertRow:(NSIndexPath *)indexPath nodeModel:(DZForumNodeModel *)model {
     NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:indexPath.section];
     // 这一步是防止在二级展开的情况下,关闭一级展开, 则二级展开的状态还是展开,需要手动置回 NO
     for (int i =0; i<model.childNode.count; i++) {
-        DZTreeViewNode *mod = [model.childNode objectAtIndex:i];
+        DZForumNodeModel *mod = [model.childNode objectAtIndex:i];
         mod.isExpanded = NO;
     }
     // 插入数据源
@@ -324,12 +294,12 @@
 }
 
 // 删除行
-- (void)expandDeleteRow:(NSIndexPath *)indexPath nodeModel:(DZTreeViewNode *)model {
+- (void)expandDeleteRow:(NSIndexPath *)indexPath nodeModel:(DZForumNodeModel *)model {
     NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:indexPath.section];
     // 获取当前行下的所有子节点的数目
     int count = 0;
     for (int i = indexPath.row; i < sectionDataArry.count; i ++) {
-        DZTreeViewNode *mod = [sectionDataArry objectAtIndex:i];
+        DZForumNodeModel *mod = [sectionDataArry objectAtIndex:i];
         if (mod.nodeLevel > model.nodeLevel) {
             count ++;
         }
@@ -362,7 +332,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.leftTable) {
-        return self.dataArray.count;
+        return self.leftDataArray.count;
     }
     NSArray *array = self.dataSourceArr[section];
     return array.count;
@@ -373,14 +343,14 @@
     NSString *textStr = @"";
     
     if (tableView == self.leftTable) {
-        DZTreeViewNode *node = self.dataArray[indexPath.row];
+        DZForumNodeModel *node = self.leftDataArray[indexPath.row];
         textStr = node.name;
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
         [cell updateLabel:textStr];
         return cell;
     } else {
         NSArray *nodeArr = self.dataSourceArr[indexPath.section];
-        DZTreeViewNode *node = nodeArr[indexPath.row];
+        DZForumNodeModel *node = nodeArr[indexPath.row];
         FastLevelCell *cell = [tableView dequeueReusableCellWithIdentifier:[FastLevelCell getReuseId]];
         [cell updateLevelCell:node];
         [cell.statusBtn addTarget:self action:@selector(clickLevel:) forControlEvents:UIControlEventTouchUpInside];
@@ -392,7 +362,7 @@
     FastLevelCell *cell = (FastLevelCell *)sender.superview;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSArray *nodeArray = self.dataSourceArr[indexPath.section];
-    DZTreeViewNode *node = nodeArray[indexPath.row];
+    DZForumNodeModel *node = nodeArray[indexPath.row];
     if ([DataCheck isValidArray:node.childNode]) {
         node.isExpanded = !node.isExpanded;
         [self reloadSection:indexPath.section withNodeModel:node withExpand:node.isExpanded];
@@ -409,7 +379,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (tableView == self.tableView) {
-        DZTreeViewNode *node = self.dataArray[section];
+        DZForumNodeModel *node = self.leftDataArray[section];
         return node.name;
     }
     return nil;
@@ -423,7 +393,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         NSArray *nodeArr = self.dataSourceArr[indexPath.section];
-        DZTreeViewNode *node = nodeArr[indexPath.row];
+        DZForumNodeModel *node = nodeArr[indexPath.row];
         self.selectFid = node.infoModel.fid;
         
         NSDictionary * dic =@{@"fid":node.infoModel.fid};
@@ -524,11 +494,11 @@
     return _leftTable;
 }
 
-- (NSMutableArray *)dataArray {
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
+- (NSMutableArray *)leftDataArray {
+    if (!_leftDataArray) {
+        _leftDataArray = [NSMutableArray array];
     }
-    return _dataArray;
+    return _leftDataArray;
 }
 
 - (UIButton *)closeBtn {

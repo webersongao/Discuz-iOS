@@ -23,7 +23,7 @@
  */
 typedef NS_ENUM(NSInteger, JTLoadType) {
     /** 重新请求,   不读取缓存，重新请求*/
-    JTRequestTypeRefresh,
+    JTRequestTypeRefresh = 0,
     /** 读取缓存,   有缓存,读取缓存--无缓存，重新请求*/
     JTRequestTypeCache,
     /** 加载更多,   不读取缓存，重新请求*/

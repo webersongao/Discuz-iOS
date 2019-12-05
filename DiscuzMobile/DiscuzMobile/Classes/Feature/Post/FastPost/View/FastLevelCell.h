@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class DZTreeViewNode;
+@class DZForumNodeModel;
 
 @interface FastLevelCell : DZBaseTableViewCell
 
@@ -19,6 +19,6 @@
 /**
  * 设置直接显示的cell数据
  */
-- (void)updateLevelCell:(DZTreeViewNode *)node;
+- (void)updateLevelCell:(DZForumNodeModel *)node;
 
 @end

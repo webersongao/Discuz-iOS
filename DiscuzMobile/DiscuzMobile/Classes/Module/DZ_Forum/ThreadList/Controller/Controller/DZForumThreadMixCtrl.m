@@ -162,10 +162,10 @@
 - (void)hideTipView {
     CGRect orrect = CGRectMake(0, -self.navbarMaxY, KScreenWidth, 44);
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-                    self.tipView.frame = orrect;
-                } completion:^(BOOL finished){
-                    self.tipView.tipAnimatefinsh = YES;
-                }];
+        self.tipView.frame = orrect;
+    } completion:^(BOOL finished){
+        self.tipView.tipAnimatefinsh = YES;
+    }];
 }
 
 - (void)closeTipView {
@@ -194,7 +194,7 @@
     if (self.cForumBlock) {
         self.cForumBlock(YES);
     } else {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
     }
 }
 
@@ -204,7 +204,7 @@
     if (self.cForumBlock) {
         self.cForumBlock(NO);
     } else {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
     }
 }
 
@@ -226,10 +226,10 @@
     } else if (btn.tag==1002) {//取消
         NSDictionary *getDic = @{@"id":self.forumFid,
                                  @"type":@"forum"
-                                 };
+        };
         NSDictionary *postDic = @{@"deletesubmit":@"true",
                                   @"formhash":[Environment sharedEnvironment].formhash
-                                  };
+        };
         [[DZCollectionTool shareInstance] deleCollection:getDic andPostdic:postDic success:^{
             [self setNotCollection];
         } failure:nil];
@@ -454,7 +454,7 @@
                 listVc.endRefreshBlock = ^{
                     if ([DataCheck isValidString:weakSelf.forumInfo.threadmodcount]) {
                         if ([weakSelf.forumInfo.threadmodcount integerValue] > 0) {
-//                            [weakSelf showTipView];
+                            //                            [weakSelf showTipView];
                         }
                     }
                     [weakSelf.tableView.mj_header endRefreshing];
@@ -483,19 +483,17 @@
 
 - (void)subSendVarible:(DZThreadVarModel *)VarModel {
     
-     // 版块信息设置
-        self.forumInfo = VarModel.forum;
-        if ([DataCheck isValidString:self.forumInfo.favorited]) {
-            if ([self.forumInfo.favorited isEqualToString:@"1"]) {
-                [self setIsCollection];
-            } else {
-                [self setNotCollection];
-            }
+    // 版块信息设置
+    self.forumInfo = VarModel.forum;
+    if ([DataCheck isValidString:self.forumInfo.favorited]) {
+        if ([self.forumInfo.favorited isEqualToString:@"1"]) {
+            [self setIsCollection];
+        } else {
+            [self setNotCollection];
         }
-        
-        [self setInfoViewInfo];
-        
+    }
     
+    [self setInfoViewInfo];
     
     if (VarModel.sublist.count) { // 子版块列表
         self.foldTableView.frame  = CGRectMake(0, self.infoView.height, KScreenWidth, 54);
@@ -509,15 +507,13 @@
         self.tableView.tableHeaderView = self.headView;
     }
     
-    self.VarModel = VarModel.modelToJSONObject;
-    
     if (self.VarModel.group) { // 能发的帖子类型处理
         
         NSString *allowpost = VarModel.allowperm.allowpost;
         
         NSString *allowpostpoll = checkInteger(VarModel.group.allowpostpoll);
         NSString *allowpostactivity = checkInteger(VarModel.group.allowpostactivity);
-         NSString *allowpostdebate = checkInteger(VarModel.group.allowpostdebate);
+        NSString *allowpostdebate = checkInteger(VarModel.group.allowpostdebate);
         NSString *allowspecialonly = checkNull(VarModel.forum.allowspecialonly);
         [self.selectView setPostType:allowpostpoll
                             activity:allowpostactivity

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DZTreeViewNode;
+@class DZForumNodeModel;
 
 @interface ForumReusableView : UICollectionReusableView
-@property (nonatomic, strong) DZTreeViewNode * node;
+@property (nonatomic, strong) DZForumNodeModel * node;
 @property (nonatomic, strong) UILabel *textLab;
 @property (nonatomic, strong) UIButton * button;
 @end

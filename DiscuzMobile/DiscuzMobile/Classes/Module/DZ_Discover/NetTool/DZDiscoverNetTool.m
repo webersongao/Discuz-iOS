@@ -18,7 +18,7 @@
            return;
        }
     
-    [DZGlobalTool requestGlobalForumCategoryData:^(DZDiscoverModel *indexModel) {
+    [DZGlobalTool DZ_RequestGlobalForumCategory:^(DZDiscoverModel *indexModel) {
         [DZMobileCtrl sharedCtrl].forumInfo = indexModel;
         if (forumBlock) {
             forumBlock(indexModel.catlist,indexModel.forumlist);

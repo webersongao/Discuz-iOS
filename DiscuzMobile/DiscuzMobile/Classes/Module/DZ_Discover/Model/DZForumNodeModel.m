@@ -22,7 +22,7 @@
 - (NSArray *)childTreeNode:(NSArray *)forumlist {
     
     NSMutableArray *childNodeArr = [NSMutableArray array];
-    for (DZBaseForumModel *forum in forumlist) {
+    for (DZForumModel *forum in forumlist) {
         if ([self.fid isEqualToString:forum.fid]) {
             self.infoModel = forum;
         }
@@ -47,7 +47,7 @@
                     childNode.childNode = nil;
                     childNode.forums = nil;
                 }
-                [childNodeArr addObject:forumModel];
+                [childNodeArr addObject:childNode];
             }
         }
     }

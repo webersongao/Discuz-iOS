@@ -412,7 +412,6 @@
 		70FBDD012383FC1B00FC296E /* DZForumCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCBB2383FC1B00FC296E /* DZForumCollectionController.m */; };
 		70FBDD022383FC1B00FC296E /* DZForumIndexListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCBC2383FC1B00FC296E /* DZForumIndexListController.m */; };
 		70FBDD032383FC1B00FC296E /* DZForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCBD2383FC1B00FC296E /* DZForumController.m */; };
-		70FBDD042383FC1B00FC296E /* DZTreeViewNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC22383FC1B00FC296E /* DZTreeViewNode.m */; };
 		70FBDD052383FC1B00FC296E /* DZForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC32383FC1B00FC296E /* DZForumModel.m */; };
 		70FBDD062383FC1B00FC296E /* ForumItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC62383FC1B00FC296E /* ForumItemCell.m */; };
 		70FBDD072383FC1B00FC296E /* RootForumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC72383FC1B00FC296E /* RootForumCell.m */; };
@@ -1255,8 +1254,6 @@
 		70FBDCBD2383FC1B00FC296E /* DZForumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumController.m; sourceTree = "<group>"; };
 		70FBDCBE2383FC1B00FC296E /* DZForumCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumCollectionController.h; sourceTree = "<group>"; };
 		70FBDCC02383FC1B00FC296E /* DZForumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumModel.h; sourceTree = "<group>"; };
-		70FBDCC12383FC1B00FC296E /* DZTreeViewNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTreeViewNode.h; sourceTree = "<group>"; };
-		70FBDCC22383FC1B00FC296E /* DZTreeViewNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTreeViewNode.m; sourceTree = "<group>"; };
 		70FBDCC32383FC1B00FC296E /* DZForumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumModel.m; sourceTree = "<group>"; };
 		70FBDCC52383FC1B00FC296E /* ForumReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumReusableView.h; sourceTree = "<group>"; };
 		70FBDCC62383FC1B00FC296E /* ForumItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumItemCell.m; sourceTree = "<group>"; };
@@ -2912,7 +2909,6 @@
 			isa = PBXGroup;
 			children = (
 				70FBDCC42383FC1B00FC296E /* View */,
-				70BCCE0C23975D2F004596DE /* Model */,
 				70BCCE0A23975D1D004596DE /* Controller */,
 			);
 			path = Forum;
@@ -2929,15 +2925,6 @@
 				70FBDCBB2383FC1B00FC296E /* DZForumCollectionController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		70BCCE0C23975D2F004596DE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				70FBDCC12383FC1B00FC296E /* DZTreeViewNode.h */,
-				70FBDCC22383FC1B00FC296E /* DZTreeViewNode.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		70BCCE0D23975D9D004596DE /* NetTool */ = {
@@ -4456,7 +4443,6 @@
 				70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */,
 				70F9F8D4237AA72B0067B308 /* UIControl+DelayEnable.m in Sources */,
 				70621287237936C900130B9D /* PostVoteModel.m in Sources */,
-				70FBDD042383FC1B00FC296E /* DZTreeViewNode.m in Sources */,
 				70621283237936C900130B9D /* DZPostDebateController.m in Sources */,
 				709622CB238BC6E900AF657F /* PRNaviSegmentView.m in Sources */,
 				277EDC6B1E6D5B8D00E8F0E1 /* JTSegmentedCell.m in Sources */,

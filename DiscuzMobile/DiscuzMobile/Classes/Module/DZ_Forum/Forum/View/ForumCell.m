@@ -7,7 +7,7 @@
 //
 
 #import "ForumCell.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 
@@ -72,12 +72,9 @@
  * 设置数据
  */
 - (void)setInfo:(DZForumModel *)infoModel {
-//    self.textLabel.text = node.infoModel.name;
-    if ([DataCheck isValidString:infoModel.title]) {
-        self.titleLab.text = infoModel.title;
-    } else {
-        self.titleLab.text = infoModel.name;
-    }
+    //    self.textLabel.text = infoModel.name;
+    
+    self.titleLab.text = infoModel.name;
     
     if ([DataCheck isValidString:infoModel.threads]) {
         self.numLab.text = [NSString stringWithFormat:@"主题：%@",infoModel.threads];

@@ -7,7 +7,7 @@
 //
 
 #import "FastLevelCell.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "UIButton+EnlargeEdge.h"
@@ -75,7 +75,7 @@
 /**
  * 设置数据
  */
-- (void)updateLevelCell:(DZTreeViewNode *)node {
+- (void)updateLevelCell:(DZForumNodeModel *)node {
     DZForumModel *infoMdel = node.infoModel;
     
     if ([DataCheck isValidString:infoMdel.title]) {

@@ -7,14 +7,15 @@
 //
 
 #import "DZForumCollectionController.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "ForumItemCell.h"
 #import "ForumReusableView.h"
 #import "AsyncAppendency.h"
+#import "DZThreadNetTool.h"
 
 @interface DZForumCollectionController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray<DZTreeViewNode *> *dataSourceArr;
+@property (nonatomic, strong) NSMutableArray<DZForumNodeModel *> *dataSourceArr;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSString * urlString;  //!< 属性注释
 
@@ -85,31 +86,22 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)loadForumIndexDataWitLoadType:(JTLoadType)type {
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+    [DZThreadNetTool DZ_DownloadForumCategoryData:type isCache:YES completion:^(DZDiscoverModel *indexModel) {
         
-        request.urlString = DZ_Url_Forumindex;
-        request.isCache = YES;
-        request.loadType = type;
-        
-    } success:^(id responseObject, JTLoadType type) {
         [self.HUD hide];
-        [self.collectionView.mj_header endRefreshing];
+        if (indexModel) {
+            [self.collectionView.mj_header endRefreshing];
+            [self.dataSourceArr removeAllObjects];
+            self.dataSourceArr = [NSMutableArray arrayWithArray:indexModel.catlist];
+            [self.collectionView reloadData];
+            [self emptyShow];
+        }else{
+            [self.collectionView.mj_header endRefreshing];
+            [self emptyShow];
+        }
         
-        [self setForumList:responseObject];
         
-        [self.collectionView reloadData];
-        [self emptyShow];
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
-        [self.collectionView.mj_header endRefreshing];
-        [self emptyShow];
     }];
-}
-// 处理全部版块数据
-- (void)setForumList:(id)responseObject {
-    self.dataSourceArr = [NSMutableArray arrayWithArray:[DZTreeViewNode setAllforumData:responseObject]];
 }
 
 - (void)emptyShow {
@@ -172,7 +164,7 @@ static NSString * headerSection = @"CellHeader";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
     
-    DZTreeViewNode * node;
+    DZForumNodeModel * node;
     
     node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
@@ -186,7 +178,7 @@ static NSString * headerSection = @"CellHeader";
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    DZTreeViewNode * node;
+    DZForumNodeModel * node;
     
     node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
@@ -194,13 +186,13 @@ static NSString * headerSection = @"CellHeader";
     [self pushThreadList:node];
 }
 
-- (void)pushThreadList:(DZTreeViewNode *)node {
+- (void)pushThreadList:(DZForumNodeModel *)node {
     [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid];
 }
 
 - (void)didSelectHeaderWithSection:(UITapGestureRecognizer *)sender {
     
-    DZTreeViewNode *node = self.dataSourceArr[sender.view.tag];
+    DZForumNodeModel *node = self.dataSourceArr[sender.view.tag];
     node.isExpanded = !node.isExpanded;
     [self.collectionView reloadData];
     

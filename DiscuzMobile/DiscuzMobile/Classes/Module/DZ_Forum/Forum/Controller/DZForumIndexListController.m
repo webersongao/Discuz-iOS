@@ -7,13 +7,14 @@
 //
 
 #import "DZForumIndexListController.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "ForumLeftCell.h"
 #import "ForumRightCell.h"
 #import "DZBaseTableView.h"
 #import "DZCollectionTool.h"
 #import "DZCollectButton.h"
 #import "AsyncAppendency.h"
+#import "DZThreadNetTool.h"
 
 @interface DZForumIndexListController ()
 
@@ -59,39 +60,18 @@
 // 下载数据
 - (void)loadDataWithType:(JTLoadType)loadType {
     
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"fourm" ofType:@"json"];
-//            // 将文件数据化
-//            NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-//            // 对数据进行JSON格式化并返回字典形式
-//            NSDictionary *resp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//            [self setForumList:resp];
-//             [self.HUD hideAnimated:YES];
-//            return;
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Forumindex;
-        request.loadType = loadType;
-        request.isCache = YES;
-    } success:^(id responseObject, JTLoadType type) {
+    [DZThreadNetTool DZ_DownloadForumCategoryData:loadType isCache:YES completion:^(DZDiscoverModel *indexModel) {
         [self.HUD hide];
-
-        [self.tableView.mj_header endRefreshing];
-        if ([DataCheck isValidArray:self.dataSourceArr]) {
+        if (indexModel) {
+            [self.tableView.mj_header endRefreshing];
             [self.dataSourceArr removeAllObjects];
+            self.dataSourceArr = [NSMutableArray arrayWithArray:indexModel.catlist];
+            [self.tableView reloadData];
+            [self.leftMenuList reloadData];
+        }else{
+            [DZMobileCtrl showAlertWarn:@"数据异常，稍后重试"];
         }
-        [self setForumList:responseObject];
-        [self.tableView reloadData];
-        [self.leftMenuList reloadData];
-
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
-}
-
-// 处理全部版块数据
-- (void)setForumList:(id)responseObject {
-    self.dataSourceArr = [NSMutableArray arrayWithArray:[DZTreeViewNode setAllforumData:responseObject]];
 }
 
 #pragma mark UITableViewDataSource
@@ -107,13 +87,13 @@
     if (tableView == self.leftMenuList) {
         return self.dataSourceArr.count;
     }
-    DZTreeViewNode *node = self.dataSourceArr[section];
+    DZForumNodeModel *node = self.dataSourceArr[section];
     return node.childNode.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    DZTreeViewNode *node = self.dataSourceArr[indexPath.section];
+    DZForumNodeModel *node = self.dataSourceArr[indexPath.section];
     if (tableView == self.leftMenuList) {
         ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
         node = self.dataSourceArr[indexPath.row];
@@ -141,7 +121,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (tableView == self.tableView) {
-        DZTreeViewNode *node = self.dataSourceArr[section];
+        DZForumNodeModel *node = self.dataSourceArr[section];
         return node.name;
     }
     return nil;
@@ -153,14 +133,14 @@
         self.isSelected = YES;
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        DZTreeViewNode * node = self.dataSourceArr[indexPath.section];
+        DZForumNodeModel * node = self.dataSourceArr[indexPath.section];
         node = node.childNode[indexPath.row];
         [self pushThreadList:node];
     }
 }
 
 // 跳转列表页
-- (void)pushThreadList:(DZTreeViewNode *)node {
+- (void)pushThreadList:(DZForumNodeModel *)node {
     KWEAKSELF;
     [[DZMobileCtrl sharedCtrl] PushToForumListController:node.infoModel.fid block:^(BOOL boolState) {
        if (boolState) {

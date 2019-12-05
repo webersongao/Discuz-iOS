@@ -7,7 +7,7 @@
 //
 
 #import "RootForumCell.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 
 @interface RootForumCell()
 
@@ -66,7 +66,7 @@
 /**
  * 设置可折叠的cell数据
  */
-- (void)setNode:(DZTreeViewNode *)node {
+- (void)setNode:(DZForumNodeModel *)node {
     
     NSString *openStr;
     if (node.nodeLevel == 0) {

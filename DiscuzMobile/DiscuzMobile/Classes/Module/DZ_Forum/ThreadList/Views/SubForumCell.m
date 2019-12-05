@@ -7,7 +7,7 @@
 //
 
 #import "SubForumCell.h"
-#import "DZTreeViewNode.h"
+#import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 
@@ -61,7 +61,7 @@
         make.right.equalTo(self.AccessoryV.mas_left).offset(-5);
         make.height.mas_equalTo(self.iconV.mas_height).multipliedBy(0.5);
     }];
-
+    
     [self.AccessoryV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-15);
         make.top.equalTo(self.titleLab);
@@ -74,7 +74,7 @@
         make.top.equalTo(self.titleLab.mas_bottom);
         make.width.equalTo(self.titleLab).multipliedBy(0.4);
     }];
-
+    
     [self.postsLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.numLab.mas_right).offset(5);
         make.top.equalTo(self.numLab);
@@ -88,11 +88,8 @@
  */
 - (void)setInfo:(DZForumModel *)infoModel {
     //    self.textLabel.text = node.infoModel.name;
-    if ([DataCheck isValidString:infoModel.title]) {
-        self.titleLab.text = infoModel.title;
-    } else {
-        self.titleLab.text = infoModel.name;
-    }
+    
+    self.titleLab.text = infoModel.name;
     
     if ([DataCheck isValidString:infoModel.threads]) {
         self.numLab.text = [NSString stringWithFormat:@"主题：%@",infoModel.threads];
@@ -123,7 +120,7 @@
     [super layoutSubviews];
     self.iconV.layer.masksToBounds = YES;
     self.iconV.layer.cornerRadius = 8;
-   
+    
 }
 
 

@@ -11,7 +11,7 @@
 
 @interface DZGlobalTool : NSObject
 
-+(void)requestGlobalForumCategoryData:(void(^)(DZDiscoverModel *indexModel))categoryBlock;
++(void)DZ_RequestGlobalForumCategory:(void(^)(DZDiscoverModel *indexModel))categoryBlock;
 
 @end
 

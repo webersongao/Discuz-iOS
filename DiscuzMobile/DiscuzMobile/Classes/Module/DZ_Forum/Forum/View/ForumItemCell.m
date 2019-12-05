@@ -71,8 +71,8 @@
  */
 - (void)setInfo:(DZForumModel *)infoModel {
     
-    if ([DataCheck isValidString:infoModel.title]) {
-        self.titleLab.text = infoModel.title;
+    if ([DataCheck isValidString:infoModel.name]) {
+        self.titleLab.text = infoModel.name;
     } else if ([DataCheck isValidString:infoModel.name]) {
         
         self.titleLab.text = infoModel.name;
