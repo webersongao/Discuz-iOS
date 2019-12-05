@@ -301,6 +301,7 @@
 		709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */; };
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
+		70B6B8E5239905AD003ED8F1 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9494507021196F8B0074C79E /* libmp3lame.a */; };
 		70BA483123852BA200634D76 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA483023852BA200634D76 /* UILabel+Common.m */; };
 		70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZHomeThreadContentView.m */; };
 		70CA22E42386DF490053B31B /* DZGlobalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA22E32386DF490053B31B /* DZGlobalTool.m */; };
@@ -453,7 +454,6 @@
 		949208832024413B00543C09 /* JTRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 949208822024413B00543C09 /* JTRequestOperation.m */; };
 		9492088820244D8700543C09 /* JTRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492088720244D8700543C09 /* JTRequestManager.m */; };
 		9494507C21196F8B0074C79E /* playRecord.png in Resources */ = {isa = PBXBuildFile; fileRef = 9494506D21196F8B0074C79E /* playRecord.png */; };
-		9494507F21196F8B0074C79E /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9494507021196F8B0074C79E /* libmp3lame.a */; };
 		9494508221196F8B0074C79E /* Recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 9494507621196F8B0074C79E /* Recording.png */; };
 		9494508521196F8B0074C79E /* AudioRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9494507721196F8B0074C79E /* AudioRecordView.m */; };
 		9494508821196F8B0074C79E /* AudioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9494507821196F8B0074C79E /* AudioModel.m */; };
@@ -1388,6 +1388,7 @@
 				27714EAE1DDC4A77008CDC7A /* QuartzCore.framework in Frameworks */,
 				703C423B237CF7B40046C398 /* CoreLocation.framework in Frameworks */,
 				27714EA21DDC4A2A008CDC7A /* libz.tbd in Frameworks */,
+				70B6B8E5239905AD003ED8F1 /* libmp3lame.a in Frameworks */,
 				7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */,
 				703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */,
 				27714EBA1DDC4AE3008CDC7A /* UIKit.framework in Frameworks */,
@@ -1396,7 +1397,6 @@
 				940BB6F02079F7C7001BC1D1 /* MessageUI.framework in Frameworks */,
 				27714EDA1DDC4D93008CDC7A /* CoreGraphics.framework in Frameworks */,
 				27714EB81DDC4AD6008CDC7A /* MobileCoreServices.framework in Frameworks */,
-				9494507F21196F8B0074C79E /* libmp3lame.a in Frameworks */,
 				70621070237935ED00130B9D /* libXG-SDK.a in Frameworks */,
 				27714EBC1DDC4AEF008CDC7A /* SystemConfiguration.framework in Frameworks */,
 				27714ED81DDC4C86008CDC7A /* Security.framework in Frameworks */,
@@ -4811,6 +4811,7 @@
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/3rdparty/XgSDK",
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/Utility/Helpers/AudioTool/lame",
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/Library/XgSDK",
+					"$(PROJECT_DIR)/DiscuzMobile/Classes/Library/AudioTool/lame",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -4883,6 +4884,7 @@
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/3rdparty/XgSDK",
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/Utility/Helpers/AudioTool/lame",
 					"$(PROJECT_DIR)/DiscuzMobile/Classes/Library/XgSDK",
+					"$(PROJECT_DIR)/DiscuzMobile/Classes/Library/AudioTool/lame",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
