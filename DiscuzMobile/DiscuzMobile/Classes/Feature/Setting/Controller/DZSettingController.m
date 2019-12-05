@@ -26,15 +26,6 @@
 
 @implementation DZSettingController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.hidesBottomBarWhenPushed  = YES;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dz_NavigationItem.title = @"通用设置";

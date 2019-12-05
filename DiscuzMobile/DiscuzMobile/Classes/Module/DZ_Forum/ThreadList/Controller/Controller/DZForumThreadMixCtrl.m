@@ -56,14 +56,6 @@
 
 @implementation DZForumThreadMixCtrl
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.hidesBottomBarWhenPushed = YES;
-    }
-    return self;
-}
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -71,7 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavc];
+    self.dz_NavigationItem.title = @"帖子列表";
     
     [self dl_addNotification];
     
@@ -324,12 +316,6 @@
     }
 }
 
-//设置 nav
-- (void)setNavc {
-    self.dz_NavigationItem.title = @"帖子列表";
-}
-
-
 - (void)didSelectHeaderWithSection:(UITapGestureRecognizer *)sender {
     
     if (self.subForumArr.count == 0) {
@@ -513,7 +499,7 @@
                            allowpost:allowpost];
         
     } else {
-//        [self.selectView setPostType:@"0" andActivity:@"0" andDebate:@"0" andAllowspecialonly:@"0" andAllowpost:@"0"];
+        //        [self.selectView setPostType:@"0" andActivity:@"0" andDebate:@"0" andAllowspecialonly:@"0" andAllowpost:@"0"];
     }
     
     

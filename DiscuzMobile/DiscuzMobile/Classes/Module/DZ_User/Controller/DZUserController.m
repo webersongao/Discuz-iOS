@@ -14,9 +14,6 @@
 #import "LogoutCell.h"
 #import "CenterCell.h"
 #import "DZUserNetTool.h"
-#import "BoundManageController.h"
-#import "DZResetPwdController.h"
-#import "FootRootController.h"
 
 #import "TextIconModel.h"
 #import "CenterUserInfoView.h"
@@ -235,22 +232,16 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            BoundManageController *boundVc = [[BoundManageController alloc] init];
-            boundVc.hidesBottomBarWhenPushed = YES;
-            [self showViewController:boundVc sender:nil];
+            [[DZMobileCtrl sharedCtrl] ShowBindControllerFromVC:self];
         }
         
         if (indexPath.row == 1) {
             return;
-            DZResetPwdController *restVc = [[DZResetPwdController alloc] init];
-            restVc.hidesBottomBarWhenPushed = YES;
-            [self showViewController:restVc sender:nil];
+            [[DZMobileCtrl sharedCtrl] ShowResetPwdControllerFromVC:self];
         }
         
         if (indexPath.row == 2) {
-            FootRootController *footRvc = [[FootRootController alloc] init];
-            footRvc.hidesBottomBarWhenPushed = YES;
-            [self showViewController:footRvc sender:nil];
+            [[DZMobileCtrl sharedCtrl] ShowFootMarkControllerFromVC:self];
         }
     }
     

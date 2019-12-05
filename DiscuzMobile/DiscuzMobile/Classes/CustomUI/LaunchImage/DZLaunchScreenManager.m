@@ -31,14 +31,14 @@
         [self.launchImageView addInWindow];
         // 不是第一次启动 设置开机启动动画
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//            request.urlString = url_LaunchImage;
+            //            request.urlString = url_LaunchImage;
             request.timeoutInterval = 2;
         } success:^(id responseObject, JTLoadType type) {
             DLog(@"responseObject:%@",responseObject);
             [self anylyLaunchData:responseObject];
         } failed:^(NSError *error) {
             [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication].delegate window] animated:NO];
-//            DLog(@"请求超时或失败，加载缓存本地图片");
+            //            DLog(@"请求超时或失败，加载缓存本地图片");
         }];
     }
 }
@@ -46,8 +46,8 @@
 - (void)anylyLaunchData:(id)resp {
     
     
-//    [self test];
-//    return;
+    //    [self test];
+    //    return;
     KWEAKSELF;
     [self.launchImageView showInWindowWithAnimation:[TYLaunchFadeScaleAnimation fadeAnimationWithDelay:5.0] completion:^(BOOL finished) {
         DLog(@"finished");
@@ -72,7 +72,7 @@
     [self.launchImageView showInWindowWithAnimation:[TYLaunchFadeScaleAnimation fadeAnimationWithDelay:5.0] completion:^(BOOL finished) {
         DLog(@"finished");
     }];
-    NSString *openimageStr = @"http://img1.126.net/channel6/2015/020002/2.jpg?dpi=6401136";
+    NSString *openimageStr = @"http://5b0988e595225.cdn.sohucs.com/images/20190614/050fa6c11ad14234a901f9f633f33126.jpeg";
     self.launchImageView.URLString = openimageStr;
     // 点击广告block
     [self.launchImageView setClickedImageURLHandle:^(NSString *URLString) {
@@ -83,16 +83,16 @@
 // 点击启动页跳转的控制器，webview
 - (void)pushAdViewCntroller:(NSString *)Url {
     
-        if (![Url isEqualToString:@""]) {
-            UIWindow *window = [[UIApplication sharedApplication].delegate window];
-            UITabBarController *tabbBarVC = (UITabBarController *)window.rootViewController;
-            UINavigationController *navVC = tabbBarVC.selectedViewController;
-            // 你要推出的VC
-            DZBaseUrlController *urlVC = [[DZBaseUrlController alloc]init];
-            urlVC.hidesBottomBarWhenPushed = YES;
-            urlVC.urlString = Url;
-            [navVC pushViewController:urlVC animated:YES];
-        }
+    if (![Url isEqualToString:@""]) {
+        UIWindow *window = [[UIApplication sharedApplication].delegate window];
+        UITabBarController *tabbBarVC = (UITabBarController *)window.rootViewController;
+        UINavigationController *navVC = tabbBarVC.selectedViewController;
+        // 你要推出的VC
+        DZBaseUrlController *urlVC = [[DZBaseUrlController alloc]init];
+        urlVC.hidesBottomBarWhenPushed = YES;
+        urlVC.urlString = Url;
+        [navVC pushViewController:urlVC animated:YES];
+    }
 }
 
 

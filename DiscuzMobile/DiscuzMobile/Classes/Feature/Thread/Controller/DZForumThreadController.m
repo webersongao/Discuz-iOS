@@ -49,17 +49,6 @@
 @implementation DZForumThreadController
 @synthesize javascriptBridge = _bridge;
 
-#pragma mark - life cycle
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.hidesBottomBarWhenPushed = YES;
-    }
-    return self;
-}
-
-
 - (void)willMoveToParentViewController:(UIViewController *)parent {
     if (parent == nil) {
         [self.detailView.emoKeyboard hideCustomerKeyBoard];

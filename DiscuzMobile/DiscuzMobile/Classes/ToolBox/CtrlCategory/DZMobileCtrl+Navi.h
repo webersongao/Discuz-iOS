@@ -57,6 +57,15 @@
 // 跳转 他的回复
 -(void)PushToUserPostReplyController:(NSString *)Uid;
 
+/// 账号绑定
+- (void)ShowBindControllerFromVC:(UIViewController *)selfVC;
+
+/// 重置密码
+- (void)ShowResetPwdControllerFromVC:(UIViewController *)selfVC;
+
+/// 浏览记录
+- (void)ShowFootMarkControllerFromVC:(UIViewController *)selfVC;
+
 
 @end
 

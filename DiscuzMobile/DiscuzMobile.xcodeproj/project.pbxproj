@@ -381,7 +381,7 @@
 		70FBDCE12383FC1B00FC296E /* CollectionForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC6F2383FC1B00FC296E /* CollectionForumController.m */; };
 		70FBDCE22383FC1B00FC296E /* CollectionThreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC712383FC1B00FC296E /* CollectionThreadController.m */; };
 		70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC762383FC1B00FC296E /* FootForumController.m */; };
-		70FBDCE42383FC1B00FC296E /* FootRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC782383FC1B00FC296E /* FootRootController.m */; };
+		70FBDCE42383FC1B00FC296E /* DZFootMarkRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */; };
 		70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC792383FC1B00FC296E /* FootmarkController.m */; };
 		70FBDCE62383FC1B00FC296E /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */; };
 		70FBDCE72383FC1B00FC296E /* BoundManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7E2383FC1B00FC296E /* BoundManageController.m */; };
@@ -1187,10 +1187,10 @@
 		70FBDC712383FC1B00FC296E /* CollectionThreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionThreadController.m; sourceTree = "<group>"; };
 		70FBDC722383FC1B00FC296E /* CollectionRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRootController.h; sourceTree = "<group>"; };
 		70FBDC732383FC1B00FC296E /* BoundManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundManageController.h; sourceTree = "<group>"; };
-		70FBDC752383FC1B00FC296E /* FootRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootRootController.h; sourceTree = "<group>"; };
+		70FBDC752383FC1B00FC296E /* DZFootMarkRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootMarkRootController.h; sourceTree = "<group>"; };
 		70FBDC762383FC1B00FC296E /* FootForumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootForumController.m; sourceTree = "<group>"; };
 		70FBDC772383FC1B00FC296E /* FootmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootmarkController.h; sourceTree = "<group>"; };
-		70FBDC782383FC1B00FC296E /* FootRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootRootController.m; sourceTree = "<group>"; };
+		70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFootMarkRootController.m; sourceTree = "<group>"; };
 		70FBDC792383FC1B00FC296E /* FootmarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootmarkController.m; sourceTree = "<group>"; };
 		70FBDC7A2383FC1B00FC296E /* FootForumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootForumController.h; sourceTree = "<group>"; };
 		70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriendViewController.m; sourceTree = "<group>"; };
@@ -3422,8 +3422,8 @@
 			children = (
 				709622D2238BC9F900AF657F /* HomeListCell.h */,
 				709622D3238BC9F900AF657F /* HomeListCell.m */,
-				70FBDC752383FC1B00FC296E /* FootRootController.h */,
-				70FBDC782383FC1B00FC296E /* FootRootController.m */,
+				70FBDC752383FC1B00FC296E /* DZFootMarkRootController.h */,
+				70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */,
 				70FBDC772383FC1B00FC296E /* FootmarkController.h */,
 				70FBDC792383FC1B00FC296E /* FootmarkController.m */,
 				70FBDC7A2383FC1B00FC296E /* FootForumController.h */,
@@ -4507,7 +4507,7 @@
 				706212C1237936C900130B9D /* DZCustomSearchBarView.m in Sources */,
 				70FBDCF72383FC1B00FC296E /* MYCenterHeader.m in Sources */,
 				703C4242237CF9510046C398 /* AppDelegate+iflyMSC.m in Sources */,
-				70FBDCE42383FC1B00FC296E /* FootRootController.m in Sources */,
+				70FBDCE42383FC1B00FC296E /* DZFootMarkRootController.m in Sources */,
 				70621271237936C800130B9D /* DZForumListBaseCtrl.m in Sources */,
 				70F9F8D3237AA72B0067B308 /* UIButton+EnlargeEdge.m in Sources */,
 				70F9F8DB237AA72B0067B308 /* PriorityBoxArray.m in Sources */,

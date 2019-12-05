@@ -1,22 +1,22 @@
 //
-//  FootRootController.m
+//  DZFootMarkRootController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/12.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "FootRootController.h"
+#import "DZFootMarkRootController.h"
 #import "DZContainerController.h"
 #import "FootForumController.h"
 #import "FootmarkController.h"
 
 
-@interface FootRootController ()
+@interface DZFootMarkRootController ()
 
 @end
 
-@implementation FootRootController
+@implementation DZFootMarkRootController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,5 +1,5 @@
 //
-//  FootRootController.h
+//  DZFootMarkRootController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/12.
@@ -8,6 +8,6 @@
 
 #import "DZBaseViewController.h"
 
-@interface FootRootController : DZBaseViewController
+@interface DZFootMarkRootController : DZBaseViewController
 
 @end

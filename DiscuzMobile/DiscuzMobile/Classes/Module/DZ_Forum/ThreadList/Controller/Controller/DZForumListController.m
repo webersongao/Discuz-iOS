@@ -127,10 +127,9 @@
 - (void)downLoadListData:(NSInteger)page andLoadType:(JTLoadType)loadType {
     
     [DZThreadNetTool DZ_DownloadForumListWithType:loadType fid:self.fid page:page listType:self.listType completion:^(DZThreadResModel *threadResModel, BOOL isCache, NSError *error) {
+        [self.HUD hide];
         if (threadResModel) {
-            [self.HUD hide];
             [self.tableView.mj_header endRefreshing];
-            
             if (!threadResModel.isAuthorized) {
                 [UIAlertController alertTitle:nil message:threadResModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                     [self.navigationController popViewControllerAnimated:YES];
@@ -190,7 +189,6 @@
             }
             [self.tableView reloadData];
         }else{
-            [self.HUD hide];
             if (self.endRefreshBlock) {
                 self.endRefreshBlock();
             }
