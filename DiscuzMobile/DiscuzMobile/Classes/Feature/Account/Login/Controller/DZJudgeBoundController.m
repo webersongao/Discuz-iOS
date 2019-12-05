@@ -7,7 +7,6 @@
 //
 
 #import "DZJudgeBoundController.h"
-#import "DZRegisterController.h"
 #import "DZJudgeBoundView.h"
 
 @interface DZJudgeBoundController ()
@@ -56,8 +55,7 @@
 }
 
 - (void)registerBtnClick {
-    DZRegisterController * rvc =[[DZRegisterController alloc] init];
-    [self.navigationController pushViewController:rvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
 }
 
 - (void)boundBtnClick {

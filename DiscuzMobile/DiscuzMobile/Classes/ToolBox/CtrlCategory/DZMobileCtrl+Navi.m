@@ -26,7 +26,11 @@
 #import "DZFootMarkRootController.h"
 #import "DZResetPwdController.h"
 #import "DZSendMsgViewController.h"
-
+#import "DZDomainListController.h"
+#import "DZAboutController.h"
+#import "UsertermsController.h"
+#import "DZRegisterController.h"
+#import "DZJudgeBoundController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -197,39 +201,49 @@
 }
 
 
-- (void)setDomain {
+/// 域名选择
+-(void)PushToDomainSettingController {
     DZDomainListController *domainVC = [[DZDomainListController alloc] init];
-    [self.navigationController pushViewController:domainVC animated:YES];
+    [self.mainNavi pushViewController:domainVC animated:YES];
 }
 
-- (void)aboutAPP {
+/// app 介绍
+-(void)PushToAppAboutViewController {
     DZAboutController *abVC = [[DZAboutController alloc] init];
-    [self.navigationController pushViewController:abVC animated:YES];
+    [self.mainNavi pushViewController:abVC animated:YES];
 }
 
-- (void)userTerms {
+/// 用户 协议
+-(void)PushToUsertermsController {
     UsertermsController *termVC = [[UsertermsController alloc] init];
-    [self.navigationController pushViewController:termVC animated:YES];
+    [self.mainNavi pushViewController:termVC animated:YES];
 }
 
-
-- (void)evaluateAPP {
-    NSString *urlStr = AppStorePath;
+/// appstore 评价APP
+-(void)PushToAppStoreWebview {
     if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:AppStorePath] options:@{} completionHandler:nil];
     } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
+        
     }
 }
 
-- (void)shareAPP {
-    NSString *urlStr = AppStorePath;
-    NSString *appName = DZ_APPNAME;
-    [[DZShareCenter shareInstance] createShare:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:urlStr andTitle:appName andView:self.view andHUD:nil];
+/// 分享 app
+- (void)shareMyMobileAPPWithView:(UIView *)view {
+    [[DZShareCenter shareInstance] createShare:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:AppStorePath andTitle:DZ_APPNAME andView:view andHUD:nil];
 }
 
+/// 账号绑定状态
+-(void)PushToJudgeBindController {
+    DZJudgeBoundController * judegVC =[[DZJudgeBoundController alloc]init];
+    [self.mainNavi pushViewController:judegVC animated:YES];
+}
 
-
+/// 用户注册
+-(void)PushToAccountRegisterController {
+     DZRegisterController * regVC = [[DZRegisterController alloc] init];
+    [self.mainNavi pushViewController:regVC animated:YES];
+}
 
 
 

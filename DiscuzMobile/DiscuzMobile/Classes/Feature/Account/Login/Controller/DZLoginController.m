@@ -9,8 +9,6 @@
 #import "DZLoginController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "DZLoginModule.h"
-#import "DZRegisterController.h"
-#import "DZJudgeBoundController.h"
 #import "DZLoginView.h"
 #import "DZLoginTextField.h"
 #import "ZHPickView.h"
@@ -276,15 +274,12 @@ NSString * const debugPassword = @"debugPassword";
 - (void)registerNavview {
     // 重置一下
 //    [DZShareCenter shareInstance].bloginModel = nil;
-    DZRegisterController * rvc =[[DZRegisterController alloc] init];
-    [self.navigationController pushViewController:rvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
 }
 
 
 - (void)boundThirdview {
-    
-    DZJudgeBoundController * rvc =[[DZJudgeBoundController alloc]init];
-    [self.navigationController pushViewController:rvc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToJudgeBindController];
 }
 
 - (void)findPassword:(UIButton *)sender {

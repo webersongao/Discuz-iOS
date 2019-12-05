@@ -12,6 +12,7 @@
 #ifdef __OBJC__
 
 #import "DZColor.h"
+#import "DZDevice.h"
 #import "DZConstant.h"
 #import "DZBaseConfig.h"
 

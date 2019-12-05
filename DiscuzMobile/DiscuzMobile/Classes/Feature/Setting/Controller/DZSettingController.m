@@ -10,14 +10,8 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
-
-#import "DZAboutController.h"
 #import "XinGeCenter.h"
-#import "UsertermsController.h"
-#import "DZDomainListController.h"
 #import "SendEmailHelper.h"
-#import "DZShareCenter.h"
-#import "DZDevice.h"
 
 @interface DZSettingController ()
 @property (nonatomic,copy) NSString * strcache;
@@ -137,33 +131,23 @@
 }
 
 - (void)setDomain {
-    DZDomainListController *domainVC = [[DZDomainListController alloc] init];
-    [self.navigationController pushViewController:domainVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToDomainSettingController];
 }
 
 - (void)evaluateAPP {
-    NSString *urlStr = AppStorePath;
-    if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
-    } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr] options:@{} completionHandler:nil];
-    }
+    [[DZMobileCtrl sharedCtrl] PushToAppStoreWebview];
 }
 
 - (void)shareAPP {
-    NSString *urlStr = AppStorePath;
-    NSString *appName = DZ_APPNAME;
-    [[DZShareCenter shareInstance] createShare:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:urlStr andTitle:appName andView:self.view andHUD:nil];
+    [[DZMobileCtrl sharedCtrl] shareMyMobileAPPWithView:self.view];
 }
 
 - (void)aboutAPP {
-    DZAboutController *abVC = [[DZAboutController alloc] init];
-    [self.navigationController pushViewController:abVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToAppAboutViewController];
 }
 
 - (void)userTerms {
-    UsertermsController *termVC = [[UsertermsController alloc] init];
-    [self.navigationController pushViewController:termVC animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController];
 }
 
 #pragma mark - 无图浏览设置
@@ -205,22 +189,17 @@
     [XGPush unRegisterDevice];
     [XGPush setAccount:@"**"];
     if ([XGPush isUnRegisterStatus]) {
-        
         [MBProgressHUD showInfo:@"注销设备"];
-    }
-    else {
+    }else {
         [MBProgressHUD showInfo:@"注销设备失败"];
     }
-    
 }
 #pragma mark - 清除缓存
 -(void)clearAPP {
     [self.HUD showLoadingMessag:@"正在清理" toView:self.view];
     BACK(^{
-        
         NSString *cachPath = [JTCacheManager sharedInstance].JTKitPath;
         NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
-        
         for (NSString *p in files) {
             NSError * error;
             NSString * path = [cachPath stringByAppendingPathComponent:p];
@@ -229,11 +208,9 @@
             }
         }
         [self cleanSaveImages];
-        
         // 清除完，重新创建文件夹、重新创建数据库
         [[JTCacheManager sharedInstance] createDirectoryAtPath:[JTCacheManager sharedInstance].JTAppCachePath];
         [[DZDatabaseHandle defaultDataHelper] openDB];
-        
         MAIN(^{
             UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -241,7 +218,6 @@
             self.HUD.mode = MBProgressHUDModeCustomView;
             self.HUD.label.text = @"清理成功！";
         });
-        
         sleep(2);
         [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
     });
