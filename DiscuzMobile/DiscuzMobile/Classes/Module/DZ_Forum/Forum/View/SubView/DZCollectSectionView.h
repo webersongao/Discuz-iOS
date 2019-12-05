@@ -1,5 +1,5 @@
 //
-//  ForumReusableView.h
+//  DZCollectSectionView.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class DZForumNodeModel;
 
-@interface ForumReusableView : UICollectionReusableView
+@interface DZCollectSectionView : UICollectionReusableView
 @property (nonatomic, strong) DZForumNodeModel * node;
 @property (nonatomic, strong) UILabel *textLab;
 @property (nonatomic, strong) UIButton * button;

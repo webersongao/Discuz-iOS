@@ -8,8 +8,8 @@
 
 #import "DZForumCollectionController.h"
 #import "DZForumNodeModel.h"
-#import "ForumItemCell.h"
-#import "ForumReusableView.h"
+#import "DZForumItemCell.h"
+#import "DZCollectSectionView.h"
 #import "AsyncAppendency.h"
 #import "DZThreadNetTool.h"
 
@@ -151,7 +151,7 @@ static NSString * headerSection = @"CellHeader";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    ForumReusableView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection forIndexPath:indexPath];
+    DZCollectSectionView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection forIndexPath:indexPath];
     
     cell.tag = indexPath.section;
     UITapGestureRecognizer *tapG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectHeaderWithSection:)];
@@ -162,7 +162,7 @@ static NSString * headerSection = @"CellHeader";
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
+    DZForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
     
     DZForumNodeModel * node;
     
@@ -216,8 +216,8 @@ static NSString * headerSection = @"CellHeader";
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        [_collectionView registerClass:[ForumItemCell class] forCellWithReuseIdentifier:CellID];
-        [_collectionView registerClass:[ForumReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
+        [_collectionView registerClass:[DZForumItemCell class] forCellWithReuseIdentifier:CellID];
+        [_collectionView registerClass:[DZCollectSectionView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
         
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

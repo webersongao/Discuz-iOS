@@ -8,8 +8,8 @@
 
 #import "DZForumIndexListController.h"
 #import "DZForumNodeModel.h"
-#import "ForumLeftCell.h"
-#import "ForumRightCell.h"
+#import "DZForumLeftCell.h"
+#import "DZForumRightCell.h"
 #import "DZBaseTableView.h"
 #import "DZCollectionTool.h"
 #import "DZCollectButton.h"
@@ -30,8 +30,8 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.leftMenuList];
     self.tableView.backgroundColor = K_Color_ForumGray;
-    [self.leftMenuList registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
-    [self.tableView registerClass:[ForumRightCell class] forCellReuseIdentifier:[ForumRightCell getReuseId]];
+    [self.leftMenuList registerClass:[DZForumLeftCell class] forCellReuseIdentifier:[DZForumLeftCell getReuseId]];
+    [self.tableView registerClass:[DZForumRightCell class] forCellReuseIdentifier:[DZForumRightCell getReuseId]];
     self.tableView.frame = CGRectMake(self.leftMenuList.right, self.leftMenuList.top, KScreenWidth*0.78, self.leftMenuList.height);
     
     // 下载数据
@@ -95,12 +95,12 @@
     
     DZForumNodeModel *node = self.dataSourceArr[indexPath.section];
     if (tableView == self.leftMenuList) {
-        ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
+        DZForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumLeftCell getReuseId]];
         node = self.dataSourceArr[indexPath.row];
         [cell updateLabel:node.name];
         return cell;
     } else {
-        ForumRightCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumRightCell getReuseId]];
+        DZForumRightCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumRightCell getReuseId]];
         KWEAKSELF;
         cell.collectionBlock = ^(DZCollectButton *sender,DZForumModel *infoModel) {
             [weakSelf collectAction:sender andModel:infoModel];

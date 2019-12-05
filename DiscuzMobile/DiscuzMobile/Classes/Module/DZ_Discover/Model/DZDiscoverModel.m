@@ -16,7 +16,8 @@
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"catlist" : [DZForumNodeModel class],
-             @"forumlist" : [DZBaseForumModel class]
+             @"forumlist" : [DZBaseForumModel class],
+             @"visitedforums" : [DZForumNodeModel class]
     };
 }
 

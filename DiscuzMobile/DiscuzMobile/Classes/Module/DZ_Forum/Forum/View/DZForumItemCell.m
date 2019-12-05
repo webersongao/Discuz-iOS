@@ -1,15 +1,15 @@
 //
-//  ForumItemCell.m
+//  DZForumItemCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ForumItemCell.h"
+#import "DZForumItemCell.h"
 #import "DZForumModel.h"
 
-@implementation ForumItemCell
+@implementation DZForumItemCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

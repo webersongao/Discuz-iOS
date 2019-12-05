@@ -1,5 +1,5 @@
 //
-//  ForumRightCell.h
+//  DZForumRightCell.h
 //  DiscuzMobile
 //
 //  Created by piter on 2018/1/30.
@@ -11,7 +11,7 @@
 
 typedef void(^CollectionForumBlock)(DZCollectButton *sender, DZForumModel *infoModel);
 
-@interface ForumRightCell : DZBaseTableViewCell
+@interface DZForumRightCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;

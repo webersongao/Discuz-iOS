@@ -9,8 +9,8 @@
 #import "FootForumController.h"
 #import "DZForumNodeModel.h"
 #import "DZThreadNetTool.h"
-#import "ForumItemCell.h"
-#import "ForumReusableView.h"
+#import "DZForumItemCell.h"
+#import "DZCollectSectionView.h"
 
 @interface FootForumController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -70,8 +70,8 @@ static NSString * headerSection = @"CellHeader";
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
-    [self.collectionView registerClass:[ForumItemCell class] forCellWithReuseIdentifier:CellID];
-    [self.collectionView registerClass:[ForumReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
+    [self.collectionView registerClass:[DZForumItemCell class] forCellWithReuseIdentifier:CellID];
+    [self.collectionView registerClass:[DZCollectSectionView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection];
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -146,13 +146,13 @@ static NSString * headerSection = @"CellHeader";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
-    ForumReusableView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection forIndexPath:indexPath];
+    DZCollectSectionView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerSection forIndexPath:indexPath];
     return cell;
    
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
+    DZForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
     
     DZForumNodeModel * node;
     

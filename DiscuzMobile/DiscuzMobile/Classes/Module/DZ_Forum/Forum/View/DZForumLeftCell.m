@@ -1,21 +1,21 @@
 //
-//  ForumLeftCell.m
+//  DZForumLeftCell.m
 //  DiscuzMobile
 //
 //  Created by piter on 2018/1/30.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ForumLeftCell.h"
+#import "DZForumLeftCell.h"
 
-@interface ForumLeftCell()
+@interface DZForumLeftCell()
 
 @property (nonatomic, strong) UIView *line2;
 @property (nonatomic, strong) UILabel *titleLab;
 
 @end
 
-@implementation ForumLeftCell
+@implementation DZForumLeftCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

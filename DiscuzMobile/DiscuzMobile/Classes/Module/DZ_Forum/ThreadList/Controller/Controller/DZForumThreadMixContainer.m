@@ -7,8 +7,8 @@
 //
 
 #import "DZForumThreadMixContainer.h"
-#import "DZForumListController.h"
 #import "DZForumThreadMixCtrl.h"
+#import "DZForumListBaseCtrl.h"
 
 @interface DZForumThreadMixContainer () <UICollectionViewDataSource, UICollectionViewDelegate>
 

@@ -1,5 +1,5 @@
 //
-//  ForumLeftCell.h
+//  DZForumLeftCell.h
 //  DiscuzMobile
 //
 //  Created by piter on 2018/1/30.
@@ -8,7 +8,7 @@
 
 #import "DZBaseTableViewCell.h"
 
-@interface ForumLeftCell : DZBaseTableViewCell
+@interface DZForumLeftCell : DZBaseTableViewCell
 
 -(void)updateLabel:(NSString *)labelStr;
 

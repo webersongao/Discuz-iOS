@@ -8,7 +8,7 @@
 
 #import "FastPostController.h"
 #import "DZForumNodeModel.h"
-#import "ForumLeftCell.h"
+#import "DZForumLeftCell.h"
 #import "FastLevelCell.h"
 #import "PostTypeModel.h"
 #import "DZThreadNetTool.h"
@@ -73,7 +73,7 @@
         make.height.equalTo(self.view).offset(-self.tabbarHeight);
     }];
     self.tableView.backgroundColor = K_Color_ForumGray;
-    [self.leftTable registerClass:[ForumLeftCell class] forCellReuseIdentifier:[ForumLeftCell getReuseId]];
+    [self.leftTable registerClass:[DZForumLeftCell class] forCellReuseIdentifier:[DZForumLeftCell getReuseId]];
     [self.tableView registerClass:[FastLevelCell class] forCellReuseIdentifier:[FastLevelCell getReuseId]];
     
     [self.view addSubview:self.closeBtn];
@@ -345,7 +345,7 @@
     if (tableView == self.leftTable) {
         DZForumNodeModel *node = self.leftDataArray[indexPath.row];
         textStr = node.name;
-        ForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[ForumLeftCell getReuseId]];
+        DZForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumLeftCell getReuseId]];
         [cell updateLabel:textStr];
         return cell;
     } else {

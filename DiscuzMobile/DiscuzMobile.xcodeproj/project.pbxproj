@@ -413,13 +413,12 @@
 		70FBDD022383FC1B00FC296E /* DZForumIndexListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCBC2383FC1B00FC296E /* DZForumIndexListController.m */; };
 		70FBDD032383FC1B00FC296E /* DZForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCBD2383FC1B00FC296E /* DZForumController.m */; };
 		70FBDD052383FC1B00FC296E /* DZForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC32383FC1B00FC296E /* DZForumModel.m */; };
-		70FBDD062383FC1B00FC296E /* ForumItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC62383FC1B00FC296E /* ForumItemCell.m */; };
+		70FBDD062383FC1B00FC296E /* DZForumItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC62383FC1B00FC296E /* DZForumItemCell.m */; };
 		70FBDD072383FC1B00FC296E /* RootForumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC72383FC1B00FC296E /* RootForumCell.m */; };
-		70FBDD082383FC1B00FC296E /* ForumReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC92383FC1B00FC296E /* ForumReusableView.m */; };
+		70FBDD082383FC1B00FC296E /* DZCollectSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCC92383FC1B00FC296E /* DZCollectSectionView.m */; };
 		70FBDD092383FC1B00FC296E /* DZCollectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCCF2383FC1B00FC296E /* DZCollectButton.m */; };
-		70FBDD0A2383FC1B00FC296E /* ForumLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCD02383FC1B00FC296E /* ForumLeftCell.m */; };
-		70FBDD0B2383FC1B00FC296E /* ForumRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCD12383FC1B00FC296E /* ForumRightCell.m */; };
-		70FBDD0C2383FC1B00FC296E /* ForumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCD32383FC1B00FC296E /* ForumCell.m */; };
+		70FBDD0A2383FC1B00FC296E /* DZForumLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCD02383FC1B00FC296E /* DZForumLeftCell.m */; };
+		70FBDD0B2383FC1B00FC296E /* DZForumRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCD12383FC1B00FC296E /* DZForumRightCell.m */; };
 		70FBDD232383FC4B00FC296E /* DZHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD162383FC4A00FC296E /* DZHomeController.m */; };
 		70FBDD242383FC4B00FC296E /* DZHomeNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD1A2383FC4A00FC296E /* DZHomeNetTool.m */; };
 		70FBDD282383FDA500FC296E /* DZHomeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD272383FDA500FC296E /* DZHomeScrollView.m */; };
@@ -1255,20 +1254,18 @@
 		70FBDCBE2383FC1B00FC296E /* DZForumCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumCollectionController.h; sourceTree = "<group>"; };
 		70FBDCC02383FC1B00FC296E /* DZForumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumModel.h; sourceTree = "<group>"; };
 		70FBDCC32383FC1B00FC296E /* DZForumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumModel.m; sourceTree = "<group>"; };
-		70FBDCC52383FC1B00FC296E /* ForumReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumReusableView.h; sourceTree = "<group>"; };
-		70FBDCC62383FC1B00FC296E /* ForumItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumItemCell.m; sourceTree = "<group>"; };
+		70FBDCC52383FC1B00FC296E /* DZCollectSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCollectSectionView.h; sourceTree = "<group>"; };
+		70FBDCC62383FC1B00FC296E /* DZForumItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumItemCell.m; sourceTree = "<group>"; };
 		70FBDCC72383FC1B00FC296E /* RootForumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootForumCell.m; sourceTree = "<group>"; };
-		70FBDCC82383FC1B00FC296E /* ForumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumCell.h; sourceTree = "<group>"; };
-		70FBDCC92383FC1B00FC296E /* ForumReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumReusableView.m; sourceTree = "<group>"; };
+		70FBDCC92383FC1B00FC296E /* DZCollectSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCollectSectionView.m; sourceTree = "<group>"; };
 		70FBDCCA2383FC1B00FC296E /* RootForumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootForumCell.h; sourceTree = "<group>"; };
-		70FBDCCC2383FC1B00FC296E /* ForumRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumRightCell.h; sourceTree = "<group>"; };
-		70FBDCCD2383FC1B00FC296E /* ForumLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumLeftCell.h; sourceTree = "<group>"; };
+		70FBDCCC2383FC1B00FC296E /* DZForumRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumRightCell.h; sourceTree = "<group>"; };
+		70FBDCCD2383FC1B00FC296E /* DZForumLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumLeftCell.h; sourceTree = "<group>"; };
 		70FBDCCE2383FC1B00FC296E /* DZCollectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCollectButton.h; sourceTree = "<group>"; };
 		70FBDCCF2383FC1B00FC296E /* DZCollectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCollectButton.m; sourceTree = "<group>"; };
-		70FBDCD02383FC1B00FC296E /* ForumLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumLeftCell.m; sourceTree = "<group>"; };
-		70FBDCD12383FC1B00FC296E /* ForumRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumRightCell.m; sourceTree = "<group>"; };
-		70FBDCD22383FC1B00FC296E /* ForumItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForumItemCell.h; sourceTree = "<group>"; };
-		70FBDCD32383FC1B00FC296E /* ForumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForumCell.m; sourceTree = "<group>"; };
+		70FBDCD02383FC1B00FC296E /* DZForumLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumLeftCell.m; sourceTree = "<group>"; };
+		70FBDCD12383FC1B00FC296E /* DZForumRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumRightCell.m; sourceTree = "<group>"; };
+		70FBDCD22383FC1B00FC296E /* DZForumItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumItemCell.h; sourceTree = "<group>"; };
 		70FBDD152383FC4A00FC296E /* DZHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHomeController.h; sourceTree = "<group>"; };
 		70FBDD162383FC4A00FC296E /* DZHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeController.m; sourceTree = "<group>"; };
 		70FBDD1A2383FC4A00FC296E /* DZHomeNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHomeNetTool.m; sourceTree = "<group>"; };
@@ -1835,8 +1832,9 @@
 		7002A34B2383D8CD00BC0C61 /* FastPost */ = {
 			isa = PBXGroup;
 			children = (
-				708AED67238E58A6000A4397 /* Controller */,
 				7002A34E2383D8CD00BC0C61 /* View */,
+				708AED67238E58A6000A4397 /* Controller */,
+				706210A7237936C800130B9D /* PostSelect */,
 			);
 			path = FastPost;
 			sourceTree = "<group>";
@@ -2006,8 +2004,6 @@
 				70621093237936C800130B9D /* DZForumThreadMixCtrl.m */,
 				70621097237936C800130B9D /* DZForumListController.h */,
 				70621092237936C800130B9D /* DZForumListController.m */,
-				7062108F237936C800130B9D /* DZForumListBaseCtrl.h */,
-				70621094237936C800130B9D /* DZForumListBaseCtrl.m */,
 				70621095237936C800130B9D /* DZForumThreadMixContainer.h */,
 				70621091237936C800130B9D /* DZForumThreadMixContainer.m */,
 			);
@@ -2137,18 +2133,20 @@
 			isa = PBXGroup;
 			children = (
 				704DDA66238BC0BC009C9CE2 /* Controller */,
-				7062108E237936C800130B9D /* ContainList */,
+				7062108E237936C800130B9D /* BaseListView */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		7062108E237936C800130B9D /* ContainList */ = {
+		7062108E237936C800130B9D /* BaseListView */ = {
 			isa = PBXGroup;
 			children = (
+				7062108F237936C800130B9D /* DZForumListBaseCtrl.h */,
+				70621094237936C800130B9D /* DZForumListBaseCtrl.m */,
 				70621090237936C800130B9D /* DZForumContainListView.h */,
 				70621096237936C800130B9D /* DZForumContainListView.m */,
 			);
-			path = ContainList;
+			path = BaseListView;
 			sourceTree = "<group>";
 		};
 		70621099237936C800130B9D /* Model */ = {
@@ -2177,30 +2175,13 @@
 		706210A0237936C800130B9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				706210A3237936C800130B9D /* DZThreadTopCell.h */,
-				706210B2237936C800130B9D /* DZThreadTopCell.m */,
-				706210B7237936C800130B9D /* DZTopTitleLabel.h */,
-				706210AF237936C800130B9D /* DZTopTitleLabel.m */,
-				706210A1237936C800130B9D /* DropTipView.h */,
-				706210B3237936C800130B9D /* DropTipView.m */,
-				706210B6237936C800130B9D /* SubForumCell.h */,
-				706210AE237936C800130B9D /* SubForumCell.m */,
-				706210A5237936C800130B9D /* BaseStyleCell.h */,
-				706210B0237936C800130B9D /* BaseStyleCell.m */,
-				706210A6237936C800130B9D /* ThreadListCell.h */,
-				706210B5237936C800130B9D /* ThreadListCell.m */,
-				706210B1237936C800130B9D /* DZForumInfoView.h */,
-				706210A4237936C800130B9D /* DZForumInfoView.m */,
-				709622CF238BC97600AF657F /* BaseIconTextView.h */,
-				709622D0238BC97600AF657F /* BaseIconTextView.m */,
-				706210B4237936C800130B9D /* VerifyThreadRemindView.h */,
-				706210A2237936C800130B9D /* VerifyThreadRemindView.m */,
-				706210A7237936C800130B9D /* PostTypeSelect */,
+				70B6B8E32398FFC4003ED8F1 /* ListCell */,
+				70B6B8E42398FFE9003ED8F1 /* SubView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		706210A7237936C800130B9D /* PostTypeSelect */ = {
+		706210A7237936C800130B9D /* PostSelect */ = {
 			isa = PBXGroup;
 			children = (
 				706210AB237936C800130B9D /* PostTypeCell.h */,
@@ -2210,7 +2191,7 @@
 				706210AD237936C800130B9D /* DZPostTypeSelectView.h */,
 				706210A9237936C800130B9D /* DZPostTypeSelectView.m */,
 			);
-			path = PostTypeSelect;
+			path = PostSelect;
 			sourceTree = "<group>";
 		};
 		706210B8237936C800130B9D /* PostThread */ = {
@@ -2896,6 +2877,40 @@
 			path = OtherView;
 			sourceTree = "<group>";
 		};
+		70B6B8E32398FFC4003ED8F1 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				706210B6237936C800130B9D /* SubForumCell.h */,
+				706210AE237936C800130B9D /* SubForumCell.m */,
+				706210A5237936C800130B9D /* BaseStyleCell.h */,
+				706210B0237936C800130B9D /* BaseStyleCell.m */,
+				706210A6237936C800130B9D /* ThreadListCell.h */,
+				706210B5237936C800130B9D /* ThreadListCell.m */,
+				70FBDCCA2383FC1B00FC296E /* RootForumCell.h */,
+				70FBDCC72383FC1B00FC296E /* RootForumCell.m */,
+				706210A3237936C800130B9D /* DZThreadTopCell.h */,
+				706210B2237936C800130B9D /* DZThreadTopCell.m */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
+		70B6B8E42398FFE9003ED8F1 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				706210A1237936C800130B9D /* DropTipView.h */,
+				706210B3237936C800130B9D /* DropTipView.m */,
+				706210B7237936C800130B9D /* DZTopTitleLabel.h */,
+				706210AF237936C800130B9D /* DZTopTitleLabel.m */,
+				706210B1237936C800130B9D /* DZForumInfoView.h */,
+				706210A4237936C800130B9D /* DZForumInfoView.m */,
+				709622CF238BC97600AF657F /* BaseIconTextView.h */,
+				709622D0238BC97600AF657F /* BaseIconTextView.m */,
+				706210B4237936C800130B9D /* VerifyThreadRemindView.h */,
+				706210A2237936C800130B9D /* VerifyThreadRemindView.m */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		70BA482E23852BA200634D76 /* UILabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3526,30 +3541,26 @@
 		70FBDCC42383FC1B00FC296E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDCC82383FC1B00FC296E /* ForumCell.h */,
-				70FBDCD32383FC1B00FC296E /* ForumCell.m */,
-				70FBDCCA2383FC1B00FC296E /* RootForumCell.h */,
-				70FBDCC72383FC1B00FC296E /* RootForumCell.m */,
-				70FBDCD22383FC1B00FC296E /* ForumItemCell.h */,
-				70FBDCC62383FC1B00FC296E /* ForumItemCell.m */,
-				70FBDCC52383FC1B00FC296E /* ForumReusableView.h */,
-				70FBDCC92383FC1B00FC296E /* ForumReusableView.m */,
-				70FBDCCB2383FC1B00FC296E /* Index */,
+				70FBDCD22383FC1B00FC296E /* DZForumItemCell.h */,
+				70FBDCC62383FC1B00FC296E /* DZForumItemCell.m */,
+				70FBDCCD2383FC1B00FC296E /* DZForumLeftCell.h */,
+				70FBDCD02383FC1B00FC296E /* DZForumLeftCell.m */,
+				70FBDCCC2383FC1B00FC296E /* DZForumRightCell.h */,
+				70FBDCD12383FC1B00FC296E /* DZForumRightCell.m */,
+				70FBDCCB2383FC1B00FC296E /* SubView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		70FBDCCB2383FC1B00FC296E /* Index */ = {
+		70FBDCCB2383FC1B00FC296E /* SubView */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDCCD2383FC1B00FC296E /* ForumLeftCell.h */,
-				70FBDCD02383FC1B00FC296E /* ForumLeftCell.m */,
-				70FBDCCC2383FC1B00FC296E /* ForumRightCell.h */,
-				70FBDCD12383FC1B00FC296E /* ForumRightCell.m */,
 				70FBDCCE2383FC1B00FC296E /* DZCollectButton.h */,
 				70FBDCCF2383FC1B00FC296E /* DZCollectButton.m */,
+				70FBDCC52383FC1B00FC296E /* DZCollectSectionView.h */,
+				70FBDCC92383FC1B00FC296E /* DZCollectSectionView.m */,
 			);
-			path = Index;
+			path = SubView;
 			sourceTree = "<group>";
 		};
 		70FBDD0D2383FC4A00FC296E /* DZ_Discover */ = {
@@ -4352,13 +4363,13 @@
 				70621291237936C900130B9D /* DZRefereeCell.m in Sources */,
 				70621288237936C900130B9D /* PostNormalModel.m in Sources */,
 				70621294237936C900130B9D /* DZVoteDayVisableCell.m in Sources */,
-				70FBDD062383FC1B00FC296E /* ForumItemCell.m in Sources */,
+				70FBDD062383FC1B00FC296E /* DZForumItemCell.m in Sources */,
 				7065AE64238684C5009B6DA7 /* DZDiscoverNetTool.m in Sources */,
 				70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */,
 				70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */,
 				70621285237936C900130B9D /* DZPostActivityViewController.m in Sources */,
 				70FBDCFF2383FC1B00FC296E /* ReplyCell.m in Sources */,
-				70FBDD082383FC1B00FC296E /* ForumReusableView.m in Sources */,
+				70FBDD082383FC1B00FC296E /* DZCollectSectionView.m in Sources */,
 				27473ACD1DD30C380024375F /* DZFontSize.m in Sources */,
 				947ECB202064D403002D3536 /* WSPhotosBroseVC.m in Sources */,
 				7002A3642383D8CD00BC0C61 /* DZMessageListController.m in Sources */,
@@ -4472,7 +4483,7 @@
 				70DFD7B3237A96AA00A13F0F /* DZBaseTableView.m in Sources */,
 				70F9F8D9237AA72B0067B308 /* UIImage+Palette.m in Sources */,
 				703C4249237D27AF0046C398 /* DZPostEditViewController.m in Sources */,
-				70FBDD0A2383FC1B00FC296E /* ForumLeftCell.m in Sources */,
+				70FBDD0A2383FC1B00FC296E /* DZForumLeftCell.m in Sources */,
 				706212A5237936C900130B9D /* DZLoginModule.m in Sources */,
 				70FBDCFC2383FC1B00FC296E /* UserInfoCell.m in Sources */,
 				70FBDCEB2383FC1B00FC296E /* BoundInfoModel.m in Sources */,
@@ -4486,7 +4497,7 @@
 				9494509121196F8B0074C79E /* AudioManager.m in Sources */,
 				9445AA1C20649D0C0008F641 /* DZApiRequest.m in Sources */,
 				7062128D237936C900130B9D /* DZUploadImageContainView.m in Sources */,
-				70FBDD0B2383FC1B00FC296E /* ForumRightCell.m in Sources */,
+				70FBDD0B2383FC1B00FC296E /* DZForumRightCell.m in Sources */,
 				706212A7237936C900130B9D /* UploadAttachModel.m in Sources */,
 				70FBDCFE2383FC1B00FC296E /* DZPublicPMCell.m in Sources */,
 				70FBDCF82383FC1B00FC296E /* CenterToolView.m in Sources */,
@@ -4552,7 +4563,6 @@
 				70F9F8E8237AA72C0067B308 /* MBProgressHUD+Add.m in Sources */,
 				706212DB237936C900130B9D /* PartInNormalCell.m in Sources */,
 				704DDA6C238BC5AE009C9CE2 /* DZDiscoverModel.m in Sources */,
-				70FBDD0C2383FC1B00FC296E /* ForumCell.m in Sources */,
 				704B8526237EA5780098C48D /* DZLocalContext.m in Sources */,
 				70F9F8DD237AA72C0067B308 /* UIAlertController+Extension.m in Sources */,
 				706212E8237936C900130B9D /* DZLoginView.m in Sources */,

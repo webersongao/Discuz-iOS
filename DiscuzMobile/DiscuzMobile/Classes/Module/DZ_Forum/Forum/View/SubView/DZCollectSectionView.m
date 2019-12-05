@@ -1,21 +1,21 @@
 //
-//  ForumReusableView.m
+//  DZCollectSectionView.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ForumReusableView.h"
+#import "DZCollectSectionView.h"
 #import "DZForumNodeModel.h"
 
-@interface ForumReusableView()
+@interface DZCollectSectionView()
 
 @property (nonatomic, strong) UIView *sepLine;
 
 @end
 
-@implementation ForumReusableView
+@implementation DZCollectSectionView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

@@ -1,30 +1,28 @@
 //
-//  ForumRightCell.m
+//  DZForumRightCell.m
 //  DiscuzMobile
 //
 //  Created by piter on 2018/1/30.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ForumRightCell.h"
+#import "DZForumRightCell.h"
 #import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "DZCollectButton.h"
 
-@interface ForumRightCell()
+@interface DZForumRightCell()
 
 @property (nonatomic, strong) DZForumModel *info;
 
 @end
 
-@implementation ForumRightCell
+@implementation DZForumRightCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
         [self p_setupRightCellView];
-        //        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return self;
 }
@@ -122,7 +120,6 @@
  * 设置数据
  */
 - (void)setInfo:(DZForumModel *)infoModel {
-    //    self.textLabel.text = node.infoModel.name;
     if ([DataCheck isValidString:infoModel.name]) {
         self.titleLab.text = infoModel.name;
     } else {

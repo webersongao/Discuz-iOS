@@ -1,5 +1,5 @@
 //
-//  ForumItemCell.h
+//  DZForumItemCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
@@ -9,7 +9,7 @@
 #import "DZBaseCollectionCell.h"
 @class DZForumModel;
 
-@interface ForumItemCell : DZBaseCollectionCell
+@interface DZForumItemCell : DZBaseCollectionCell
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;
