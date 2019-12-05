@@ -7,9 +7,10 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class DZForumModel, DZCollectButton;
 
-typedef void(^CollectionForumBlock)(DZCollectButton *sender, DZForumModel *infoModel);
+@class DZBaseForumModel, DZCollectButton;
+
+typedef void(^CollectionForumBlock)(DZCollectButton *sender, DZBaseForumModel *infoModel);
 
 @interface DZForumRightCell : DZBaseTableViewCell
 
@@ -22,7 +23,7 @@ typedef void(^CollectionForumBlock)(DZCollectButton *sender, DZForumModel *infoM
 /**
  * 设置直接显示的cell数据
  */
-- (void)setInfo:(DZForumModel *)node;
+- (void)updateRightCellInfo:(DZBaseForumModel *)node;
 
 @property (nonatomic, copy) CollectionForumBlock collectionBlock;
 

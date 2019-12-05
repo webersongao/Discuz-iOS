@@ -25,7 +25,7 @@
 }
 
 
--(void)updateLabel:(NSString *)labelStr{
+-(void)updateCellLabel:(NSString *)labelStr{
     self.titleLab.text = labelStr;
 }
 

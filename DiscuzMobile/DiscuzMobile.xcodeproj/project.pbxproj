@@ -1484,13 +1484,10 @@
 				9438F07122F3E20B0093EB0B /* Async */,
 				9438F07622F3E37F0093EB0B /* Device */,
 				9438F06E22F3D5AF0093EB0B /* Update */,
-				9494506C21196F8B0074C79E /* AudioTool */,
 				9438F07422F3E2F20093EB0B /* Keyboard */,
+				70621104237936C800130B9D /* DZNetTool */,
 				9438F07222F3E22A0093EB0B /* DataCheck */,
-				9438F07022F3E1FA0093EB0B /* ImagePicker */,
 				70F9F881237A9A8C0067B308 /* LocalString */,
-				947ECAD92064D403002D3536 /* JTImagePicker */,
-				94F36BCF2080418A002AEF9E /* WebImageBrower */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1534,6 +1531,7 @@
 			children = (
 				709A730C2387E7FB00DF04CE /* DZRefresh */,
 				709622C1238BC6E900AF657F /* NaviSegment */,
+				9438F07022F3E1FA0093EB0B /* ImagePicker */,
 				7065AE7523868782009B6DA7 /* PRNetWorkErrorView */,
 				7066D8CF238274A000017168 /* EmptyAlertView */,
 				7066D8CE2382748700017168 /* DropDownView */,
@@ -1701,7 +1699,6 @@
 				706AB8CE237BF55E00BE649F /* DemoVC */,
 				27D1C8F71DD2BE8E00B835B7 /* Info.plist */,
 				27D1C8F21DD2BE8E00B835B7 /* Assets.xcassets */,
-				7066D8CA2382739F00017168 /* Launch.storyboard */,
 				27D1C8E61DD2BE8E00B835B7 /* Supporting Files */,
 			);
 			path = DiscuzMobile;
@@ -1711,6 +1708,7 @@
 			isa = PBXGroup;
 			children = (
 				27D1C8E71DD2BE8E00B835B7 /* main.m */,
+				7066D8CA2382739F00017168 /* Launch.storyboard */,
 				94982E101FEB86F400058EB9 /* InfoPlist.strings */,
 				27D1CA0F1DD2CB4300B835B7 /* DZLocalized.strings */,
 			);
@@ -2040,11 +2038,14 @@
 				703C4231237CF6050046C398 /* iflyMSC */,
 				70621052237935ED00130B9D /* XgSDK */,
 				70632296237C151A005943AB /* EFData */,
+				9494506C21196F8B0074C79E /* AudioTool */,
 				70CA22E02386DEA60053B31B /* DZNetWork */,
 				70F19E7A237A909300499BED /* PRLayouter */,
 				7062136323793CB300130B9D /* DZSegment */,
 				70F19E53237A8E9900499BED /* NavigationBar */,
+				947ECAD92064D403002D3536 /* JTImagePicker */,
 				70621064237935ED00130B9D /* CacheWebview */,
+				94F36BCF2080418A002AEF9E /* WebImageBrower */,
 				7062104D237935ED00130B9D /* UUDatePicker_Block */,
 				7062105A237935ED00130B9D /* TYLaunchAnimation */,
 			);
@@ -2311,7 +2312,6 @@
 		706210FB237936C800130B9D /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				70621104237936C800130B9D /* Fav */,
 				7062110A237936C800130B9D /* Login */,
 				70621101237936C800130B9D /* Praise */,
 				70621107237936C800130B9D /* Register */,
@@ -2340,13 +2340,13 @@
 			path = Praise;
 			sourceTree = "<group>";
 		};
-		70621104237936C800130B9D /* Fav */ = {
+		70621104237936C800130B9D /* DZNetTool */ = {
 			isa = PBXGroup;
 			children = (
 				70621106237936C800130B9D /* DZCollectionTool.h */,
 				70621105237936C800130B9D /* DZCollectionTool.m */,
 			);
-			path = Fav;
+			path = DZNetTool;
 			sourceTree = "<group>";
 		};
 		70621107237936C800130B9D /* Register */ = {
@@ -4933,7 +4933,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.comzenz.DiscuzMobileTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscuzMobile.app/DiscuzMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/你说啥子.app/你说啥子";
 			};
 			name = Debug;
 		};
@@ -4951,7 +4951,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.comzenz.DiscuzMobileTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscuzMobile.app/DiscuzMobile";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/你说啥子.app/你说啥子";
 			};
 			name = Release;
 		};

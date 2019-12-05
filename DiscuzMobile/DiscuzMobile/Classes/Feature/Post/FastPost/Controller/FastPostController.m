@@ -346,7 +346,7 @@
         DZForumNodeModel *node = self.leftDataArray[indexPath.row];
         textStr = node.name;
         DZForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumLeftCell getReuseId]];
-        [cell updateLabel:textStr];
+        [cell updateCellLabel:textStr];
         return cell;
     } else {
         NSArray *nodeArr = self.dataSourceArr[indexPath.section];

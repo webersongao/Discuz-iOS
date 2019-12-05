@@ -10,6 +10,6 @@
 
 @interface DZForumLeftCell : DZBaseTableViewCell
 
--(void)updateLabel:(NSString *)labelStr;
+-(void)updateCellLabel:(NSString *)labelStr;
 
 @end

@@ -8,13 +8,13 @@
 
 #import "DZForumRightCell.h"
 #import "DZForumNodeModel.h"
-#import "DZForumModel.h"
+#import "DZBaseForumModel.h"
 #import "NSString+MoreMethod.h"
 #import "DZCollectButton.h"
 
 @interface DZForumRightCell()
 
-@property (nonatomic, strong) DZForumModel *info;
+@property (nonatomic, strong) DZBaseForumModel *info;
 
 @end
 
@@ -119,7 +119,7 @@
 /**
  * 设置数据
  */
-- (void)setInfo:(DZForumModel *)infoModel {
+- (void)updateRightCellInfo:(DZBaseForumModel *)infoModel {
     if ([DataCheck isValidString:infoModel.name]) {
         self.titleLab.text = infoModel.name;
     } else {

@@ -97,16 +97,16 @@
     if (tableView == self.leftMenuList) {
         DZForumLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumLeftCell getReuseId]];
         node = self.dataSourceArr[indexPath.row];
-        [cell updateLabel:node.name];
+        [cell updateCellLabel:node.name];
         return cell;
     } else {
         DZForumRightCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZForumRightCell getReuseId]];
         KWEAKSELF;
-        cell.collectionBlock = ^(DZCollectButton *sender,DZForumModel *infoModel) {
+        cell.collectionBlock = ^(DZCollectButton *sender,DZBaseForumModel *infoModel) {
             [weakSelf collectAction:sender andModel:infoModel];
         };
         
-        [cell setInfo:node.childNode[indexPath.row].infoModel];
+        [cell updateRightCellInfo:node.childNode[indexPath.row].infoModel];
         return cell;
     }
 }
@@ -198,7 +198,7 @@
 }
 
 #pragma matk - 按钮点击事件收藏板块
-- (void)collectAction:(DZCollectButton *)btn andModel:(DZForumModel *)model {
+- (void)collectAction:(DZCollectButton *)btn andModel:(DZBaseForumModel *)model {
     
     if(![self isLogin]) {
         return;
