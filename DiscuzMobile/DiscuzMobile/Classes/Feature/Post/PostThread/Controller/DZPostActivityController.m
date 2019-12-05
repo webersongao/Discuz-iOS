@@ -1,12 +1,12 @@
 //
-//  DZPostActivityViewController.m
+//  DZPostActivityController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/7/27.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZPostActivityViewController.h"
+#import "DZPostActivityController.h"
 #import "DZImagePickerView.h"
 #import "DZPostNetTool.h"
 #import "DropDownView.h"
@@ -28,7 +28,7 @@
 @class DZPlaceholderTextView;
 
 //启动活动MVC
-@interface DZPostActivityViewController ()<UITextFieldDelegate,UITextViewDelegate,DropDownViewDelegate,ZHPickViewDelegate>
+@interface DZPostActivityController ()<UITextFieldDelegate,UITextViewDelegate,DropDownViewDelegate,ZHPickViewDelegate>
 {
     DropDownView *_dropDownView;
     
@@ -44,7 +44,7 @@
 
 @end
 
-@implementation DZPostActivityViewController
+@implementation DZPostActivityController
 
 - (NSMutableArray *)activitytypeArr {
     if (!_activitytypeArr) {

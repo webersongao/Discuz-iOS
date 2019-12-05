@@ -8,7 +8,7 @@
 
 #import "DZForumListController.h"
 #import "DZForumThreadController.h"
-#import "MySubjectViewController.h"
+#import "DZMySubjectController.h"
 #import "UIAlertController+Extension.h"
 #import "DZThreadListModel.h"
 #import "DZThreadListModel+Display.h"
@@ -390,8 +390,8 @@
     [self.navigationController pushViewController:tvc animated:YES];
 }
 
-- (void)ToMySubjectViewController {
-    MySubjectViewController *mysubjectVc = [[MySubjectViewController alloc] init];
+- (void)ToDZMySubjectController {
+    DZMySubjectController *mysubjectVc = [[DZMySubjectController alloc] init];
     [self showViewController:mysubjectVc sender:nil];
 }
 
@@ -414,7 +414,7 @@
         _verifyThreadRemindView = [[VerifyThreadRemindView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 44)];
         KWEAKSELF;
         _verifyThreadRemindView.clickRemindBlock = ^{
-            [weakSelf ToMySubjectViewController];
+            [weakSelf ToDZMySubjectController];
         };
     }
     return _verifyThreadRemindView;

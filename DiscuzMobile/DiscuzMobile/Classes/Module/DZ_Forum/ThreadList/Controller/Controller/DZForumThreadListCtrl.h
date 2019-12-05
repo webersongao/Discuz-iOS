@@ -1,5 +1,5 @@
 //
-//  DZForumDescInfoCtroller.h
+//  DZForumThreadListCtrl.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
@@ -11,7 +11,7 @@
 
 typedef void(^CForumBlock)(BOOL isCollection);
 
-@interface DZForumDescInfoCtroller : DZBaseViewController
+@interface DZForumThreadListCtrl : DZBaseViewController
 
 @property (nonatomic, strong) UIView *contentView;
 

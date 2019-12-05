@@ -12,12 +12,12 @@
 #import "FastLevelCell.h"
 #import "PostTypeModel.h"
 #import "DZThreadNetTool.h"
-#import "DZPostNormalViewController.h"
-#import "DZPostVoteViewController.h"
+#import "DZPostNormalController.h"
+#import "DZPostVoteController.h"
 #import "DZPostTypeSelectView.h"
 #import "DZPostDebateController.h"
 #import "UIImageView+FindHairline.h"
-#import "DZPostActivityViewController.h"
+#import "DZPostActivityController.h"
 
 @interface FastPostController ()
 
@@ -200,17 +200,17 @@
 }
 
 - (void)postNormal {
-    DZPostNormalViewController * tvc = [[DZPostNormalViewController alloc] init];
+    DZPostNormalController * tvc = [[DZPostNormalController alloc] init];
     [self publicPostControllerSet:tvc];
 }
 
 - (void)postVote {
-    DZPostVoteViewController * vcv = [[DZPostVoteViewController alloc] init];
+    DZPostVoteController * vcv = [[DZPostVoteController alloc] init];
     [self publicPostControllerSet:vcv];
 }
 
 - (void)postActivity {
-    DZPostActivityViewController * ivc = [[DZPostActivityViewController alloc] init];
+    DZPostActivityController * ivc = [[DZPostActivityController alloc] init];
     [self publicPostControllerSet:ivc];
 }
 

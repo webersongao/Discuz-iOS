@@ -1,12 +1,12 @@
 //
-//  DZPostNormalViewController.m
+//  DZPostNormalController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/7.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZPostNormalViewController.h"
+#import "DZPostNormalController.h"
 #import "AudioModel.h"
 #import "AudioTool.h"
 #import "DZPostNetTool.h"
@@ -22,7 +22,7 @@
 
 #import "ZHPickView.h"
 
-@interface DZPostNormalViewController () <ZHPickViewDelegate, UITextFieldDelegate, UITextViewDelegate,WBStatusComposeEmoticonViewDelegate,YYTextViewDelegate>
+@interface DZPostNormalController () <ZHPickViewDelegate, UITextFieldDelegate, UITextViewDelegate,WBStatusComposeEmoticonViewDelegate,YYTextViewDelegate>
 
 @property (nonatomic, strong) PostNormalModel *normalModel;
 
@@ -37,7 +37,7 @@
 
 @end
 
-@implementation DZPostNormalViewController
+@implementation DZPostNormalController
 
 
 - (void)viewDidDisappear:(BOOL)animated {

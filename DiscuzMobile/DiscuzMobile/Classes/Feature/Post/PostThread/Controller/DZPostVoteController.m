@@ -1,12 +1,12 @@
 //
-//  DZPostVoteViewController.m
+//  DZPostVoteController.m
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/5/13.
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "DZPostVoteViewController.h"
+#import "DZPostVoteController.h"
 #import "QRadioButton.h"
 #import "QCheckBox.h"
 
@@ -27,7 +27,7 @@
 #import "DZPostNetTool.h"
 
 
-@interface DZPostVoteViewController ()<UITextFieldDelegate, UITextViewDelegate, QRadioButtonDelegate, QCheckBoxDelegate, ZHPickViewDelegate>
+@interface DZPostVoteController ()<UITextFieldDelegate, UITextViewDelegate, QRadioButtonDelegate, QCheckBoxDelegate, ZHPickViewDelegate>
 
 @property (nonatomic, strong) PostVoteModel *voteModel;
 @property (nonatomic, assign) NSInteger imgBtnTag;
@@ -37,7 +37,7 @@
 
 static int voteIndex = 0 ;
 
-@implementation DZPostVoteViewController
+@implementation DZPostVoteController
 
 - (NSMutableDictionary *)pollImageDic {
     if (!_pollImageDic) {

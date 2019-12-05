@@ -1,5 +1,5 @@
 //
-//  DZPostActivityViewController.h
+//  DZPostActivityController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/7/27.
@@ -8,6 +8,6 @@
 
 #import "DZPostBaseController.h"
 
-@interface DZPostActivityViewController : DZPostBaseController
+@interface DZPostActivityController : DZPostBaseController
 
 @end

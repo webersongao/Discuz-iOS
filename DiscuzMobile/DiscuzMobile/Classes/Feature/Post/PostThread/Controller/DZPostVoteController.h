@@ -1,5 +1,5 @@
 //
-//  DZPostVoteViewController.h
+//  DZPostVoteController.h
 //  DiscuzMobile
 //
 //  Created by gensinimac1 on 15/5/13.
@@ -8,6 +8,6 @@
 
 #import "DZPostBaseController.h"
 
-@interface DZPostVoteViewController : DZPostBaseController
+@interface DZPostVoteController : DZPostBaseController
 
 @end

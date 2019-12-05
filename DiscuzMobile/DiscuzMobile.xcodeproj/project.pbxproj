@@ -164,7 +164,7 @@
 		70621079237935ED00130B9D /* WebImageCacheUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062106C237935ED00130B9D /* WebImageCacheUrlProtocol.m */; };
 		7062126E237936C800130B9D /* DZForumThreadMixContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621091237936C800130B9D /* DZForumThreadMixContainer.m */; };
 		7062126F237936C800130B9D /* DZForumListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621092237936C800130B9D /* DZForumListController.m */; };
-		70621270237936C800130B9D /* DZForumDescInfoCtroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621093237936C800130B9D /* DZForumDescInfoCtroller.m */; };
+		70621270237936C800130B9D /* DZForumThreadListCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621093237936C800130B9D /* DZForumThreadListCtrl.m */; };
 		70621271237936C800130B9D /* DZForumListBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621094237936C800130B9D /* DZForumListBaseCtrl.m */; };
 		70621272237936C800130B9D /* DZForumContainListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621096237936C800130B9D /* DZForumContainListView.m */; };
 		70621273237936C800130B9D /* DZThreadListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109A237936C800130B9D /* DZThreadListModel.m */; };
@@ -182,10 +182,10 @@
 		7062127F237936C900130B9D /* DropTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B3237936C800130B9D /* DropTipView.m */; };
 		70621280237936C900130B9D /* ThreadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B5237936C800130B9D /* ThreadListCell.m */; };
 		70621281237936C900130B9D /* DZPostBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210BC237936C800130B9D /* DZPostBaseController.m */; };
-		70621282237936C900130B9D /* DZPostVoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210BF237936C800130B9D /* DZPostVoteViewController.m */; };
+		70621282237936C900130B9D /* DZPostVoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210BF237936C800130B9D /* DZPostVoteController.m */; };
 		70621283237936C900130B9D /* DZPostDebateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C0237936C800130B9D /* DZPostDebateController.m */; };
-		70621284237936C900130B9D /* DZPostNormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C1237936C800130B9D /* DZPostNormalViewController.m */; };
-		70621285237936C900130B9D /* DZPostActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C3237936C800130B9D /* DZPostActivityViewController.m */; };
+		70621284237936C900130B9D /* DZPostNormalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C1237936C800130B9D /* DZPostNormalController.m */; };
+		70621285237936C900130B9D /* DZPostActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C3237936C800130B9D /* DZPostActivityController.m */; };
 		70621286237936C900130B9D /* NewThreadTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C5237936C800130B9D /* NewThreadTypeModel.m */; };
 		70621287237936C900130B9D /* PostVoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C6237936C800130B9D /* PostVoteModel.m */; };
 		70621288237936C900130B9D /* PostNormalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C7237936C800130B9D /* PostNormalModel.m */; };
@@ -386,7 +386,7 @@
 		70FBDCE62383FC1B00FC296E /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */; };
 		70FBDCE72383FC1B00FC296E /* BoundManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7E2383FC1B00FC296E /* BoundManageController.m */; };
 		70FBDCE82383FC1B00FC296E /* DZThreadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC802383FC1B00FC296E /* DZThreadRootController.m */; };
-		70FBDCE92383FC1B00FC296E /* MySubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC812383FC1B00FC296E /* MySubjectViewController.m */; };
+		70FBDCE92383FC1B00FC296E /* DZMySubjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC812383FC1B00FC296E /* DZMySubjectController.m */; };
 		70FBDCEA2383FC1B00FC296E /* MyReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC822383FC1B00FC296E /* MyReplyController.m */; };
 		70FBDCEB2383FC1B00FC296E /* BoundInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC882383FC1B00FC296E /* BoundInfoModel.m */; };
 		70FBDCEC2383FC1B00FC296E /* CenterManageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC8A2383FC1B00FC296E /* CenterManageModel.m */; };
@@ -759,12 +759,12 @@
 		70621090237936C800130B9D /* DZForumContainListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumContainListView.h; sourceTree = "<group>"; };
 		70621091237936C800130B9D /* DZForumThreadMixContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumThreadMixContainer.m; sourceTree = "<group>"; };
 		70621092237936C800130B9D /* DZForumListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListController.m; sourceTree = "<group>"; };
-		70621093237936C800130B9D /* DZForumDescInfoCtroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumDescInfoCtroller.m; sourceTree = "<group>"; };
+		70621093237936C800130B9D /* DZForumThreadListCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumThreadListCtrl.m; sourceTree = "<group>"; };
 		70621094237936C800130B9D /* DZForumListBaseCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListBaseCtrl.m; sourceTree = "<group>"; };
 		70621095237936C800130B9D /* DZForumThreadMixContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumThreadMixContainer.h; sourceTree = "<group>"; };
 		70621096237936C800130B9D /* DZForumContainListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumContainListView.m; sourceTree = "<group>"; };
 		70621097237936C800130B9D /* DZForumListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumListController.h; sourceTree = "<group>"; };
-		70621098237936C800130B9D /* DZForumDescInfoCtroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumDescInfoCtroller.h; sourceTree = "<group>"; };
+		70621098237936C800130B9D /* DZForumThreadListCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumThreadListCtrl.h; sourceTree = "<group>"; };
 		7062109A237936C800130B9D /* DZThreadListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListModel.m; sourceTree = "<group>"; };
 		7062109B237936C800130B9D /* DZForumListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListModel.m; sourceTree = "<group>"; };
 		7062109C237936C800130B9D /* DZThreadListModel+Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZThreadListModel+Display.h"; sourceTree = "<group>"; };
@@ -794,15 +794,15 @@
 		706210B6237936C800130B9D /* SubForumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubForumCell.h; sourceTree = "<group>"; };
 		706210B7237936C800130B9D /* DZTopTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTopTitleLabel.h; sourceTree = "<group>"; };
 		706210BA237936C800130B9D /* DZPostDebateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostDebateController.h; sourceTree = "<group>"; };
-		706210BB237936C800130B9D /* DZPostVoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostVoteViewController.h; sourceTree = "<group>"; };
+		706210BB237936C800130B9D /* DZPostVoteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostVoteController.h; sourceTree = "<group>"; };
 		706210BC237936C800130B9D /* DZPostBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostBaseController.m; sourceTree = "<group>"; };
-		706210BD237936C800130B9D /* DZPostNormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostNormalViewController.h; sourceTree = "<group>"; };
-		706210BE237936C800130B9D /* DZPostActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostActivityViewController.h; sourceTree = "<group>"; };
-		706210BF237936C800130B9D /* DZPostVoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostVoteViewController.m; sourceTree = "<group>"; };
+		706210BD237936C800130B9D /* DZPostNormalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostNormalController.h; sourceTree = "<group>"; };
+		706210BE237936C800130B9D /* DZPostActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostActivityController.h; sourceTree = "<group>"; };
+		706210BF237936C800130B9D /* DZPostVoteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostVoteController.m; sourceTree = "<group>"; };
 		706210C0237936C800130B9D /* DZPostDebateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostDebateController.m; sourceTree = "<group>"; };
-		706210C1237936C800130B9D /* DZPostNormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostNormalViewController.m; sourceTree = "<group>"; };
+		706210C1237936C800130B9D /* DZPostNormalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostNormalController.m; sourceTree = "<group>"; };
 		706210C2237936C800130B9D /* DZPostBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostBaseController.h; sourceTree = "<group>"; };
-		706210C3237936C800130B9D /* DZPostActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostActivityViewController.m; sourceTree = "<group>"; };
+		706210C3237936C800130B9D /* DZPostActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostActivityController.m; sourceTree = "<group>"; };
 		706210C5237936C800130B9D /* NewThreadTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewThreadTypeModel.m; sourceTree = "<group>"; };
 		706210C6237936C800130B9D /* PostVoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostVoteModel.m; sourceTree = "<group>"; };
 		706210C7237936C800130B9D /* PostNormalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostNormalModel.m; sourceTree = "<group>"; };
@@ -1198,10 +1198,10 @@
 		70FBDC7D2383FC1B00FC296E /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
 		70FBDC7E2383FC1B00FC296E /* BoundManageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundManageController.m; sourceTree = "<group>"; };
 		70FBDC802383FC1B00FC296E /* DZThreadRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadRootController.m; sourceTree = "<group>"; };
-		70FBDC812383FC1B00FC296E /* MySubjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySubjectViewController.m; sourceTree = "<group>"; };
+		70FBDC812383FC1B00FC296E /* DZMySubjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMySubjectController.m; sourceTree = "<group>"; };
 		70FBDC822383FC1B00FC296E /* MyReplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReplyController.m; sourceTree = "<group>"; };
 		70FBDC832383FC1B00FC296E /* DZThreadRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadRootController.h; sourceTree = "<group>"; };
-		70FBDC842383FC1B00FC296E /* MySubjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySubjectViewController.h; sourceTree = "<group>"; };
+		70FBDC842383FC1B00FC296E /* DZMySubjectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMySubjectController.h; sourceTree = "<group>"; };
 		70FBDC852383FC1B00FC296E /* MyReplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyReplyController.h; sourceTree = "<group>"; };
 		70FBDC872383FC1B00FC296E /* MsgReplyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgReplyModel.h; sourceTree = "<group>"; };
 		70FBDC882383FC1B00FC296E /* BoundInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundInfoModel.m; sourceTree = "<group>"; };
@@ -1998,8 +1998,8 @@
 		704DDA66238BC0BC009C9CE2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				70621098237936C800130B9D /* DZForumDescInfoCtroller.h */,
-				70621093237936C800130B9D /* DZForumDescInfoCtroller.m */,
+				70621098237936C800130B9D /* DZForumThreadListCtrl.h */,
+				70621093237936C800130B9D /* DZForumThreadListCtrl.m */,
 				70621097237936C800130B9D /* DZForumListController.h */,
 				70621092237936C800130B9D /* DZForumListController.m */,
 				70621095237936C800130B9D /* DZForumThreadMixContainer.h */,
@@ -2211,12 +2211,12 @@
 				7028B697238FBD110047800C /* Base */,
 				706210BA237936C800130B9D /* DZPostDebateController.h */,
 				706210C0237936C800130B9D /* DZPostDebateController.m */,
-				706210BB237936C800130B9D /* DZPostVoteViewController.h */,
-				706210BF237936C800130B9D /* DZPostVoteViewController.m */,
-				706210BD237936C800130B9D /* DZPostNormalViewController.h */,
-				706210C1237936C800130B9D /* DZPostNormalViewController.m */,
-				706210BE237936C800130B9D /* DZPostActivityViewController.h */,
-				706210C3237936C800130B9D /* DZPostActivityViewController.m */,
+				706210BB237936C800130B9D /* DZPostVoteController.h */,
+				706210BF237936C800130B9D /* DZPostVoteController.m */,
+				706210BD237936C800130B9D /* DZPostNormalController.h */,
+				706210C1237936C800130B9D /* DZPostNormalController.m */,
+				706210BE237936C800130B9D /* DZPostActivityController.h */,
+				706210C3237936C800130B9D /* DZPostActivityController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3439,8 +3439,8 @@
 				70FBDC822383FC1B00FC296E /* MyReplyController.m */,
 				70FBDC832383FC1B00FC296E /* DZThreadRootController.h */,
 				70FBDC802383FC1B00FC296E /* DZThreadRootController.m */,
-				70FBDC842383FC1B00FC296E /* MySubjectViewController.h */,
-				70FBDC812383FC1B00FC296E /* MySubjectViewController.m */,
+				70FBDC842383FC1B00FC296E /* DZMySubjectController.h */,
+				70FBDC812383FC1B00FC296E /* DZMySubjectController.m */,
 			);
 			path = MyThread;
 			sourceTree = "<group>";
@@ -4271,7 +4271,7 @@
 				709622D1238BC97600AF657F /* BaseIconTextView.m in Sources */,
 				706212A6237936C900130B9D /* Environment.m in Sources */,
 				70621076237935ED00130B9D /* Reachability.m in Sources */,
-				70621270237936C800130B9D /* DZForumDescInfoCtroller.m in Sources */,
+				70621270237936C800130B9D /* DZForumThreadListCtrl.m in Sources */,
 				70621273237936C800130B9D /* DZThreadListModel.m in Sources */,
 				70FBDCDB2383FC1B00FC296E /* DZOtherUserController.m in Sources */,
 				273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */,
@@ -4282,7 +4282,7 @@
 				7065AE962386A97A009B6DA7 /* AppDelegate+Update.m in Sources */,
 				70621277237936C800130B9D /* DZForumInfoView.m in Sources */,
 				70FBDD242383FC4B00FC296E /* DZHomeNetTool.m in Sources */,
-				70621284237936C900130B9D /* DZPostNormalViewController.m in Sources */,
+				70621284237936C900130B9D /* DZPostNormalController.m in Sources */,
 				947ECB022064D403002D3536 /* JFImageManager.m in Sources */,
 				94A3E64E20E611740039C560 /* WBStatusHelper.m in Sources */,
 				7062127C237936C900130B9D /* DZTopTitleLabel.m in Sources */,
@@ -4367,7 +4367,7 @@
 				7065AE64238684C5009B6DA7 /* DZDiscoverNetTool.m in Sources */,
 				70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */,
 				70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */,
-				70621285237936C900130B9D /* DZPostActivityViewController.m in Sources */,
+				70621285237936C900130B9D /* DZPostActivityController.m in Sources */,
 				70FBDCFF2383FC1B00FC296E /* ReplyCell.m in Sources */,
 				70FBDD082383FC1B00FC296E /* DZCollectSectionView.m in Sources */,
 				27473ACD1DD30C380024375F /* DZFontSize.m in Sources */,
@@ -4407,7 +4407,7 @@
 				706212D5237936C900130B9D /* ActivityApplyCell.m in Sources */,
 				70FBDCFA2383FC1B00FC296E /* HorizontalImageTextView.m in Sources */,
 				9492087E20243A8B00543C09 /* JTURLRequest.m in Sources */,
-				70621282237936C900130B9D /* DZPostVoteViewController.m in Sources */,
+				70621282237936C900130B9D /* DZPostVoteController.m in Sources */,
 				943430A32022EB2F009C0102 /* AppDelegate+Local.m in Sources */,
 				706212E0237936C900130B9D /* ApplyItemView.m in Sources */,
 				70F3CBCC238E8EB300BFA199 /* DZBaseResModel.m in Sources */,
@@ -4445,7 +4445,7 @@
 				70FBDD282383FDA500FC296E /* DZHomeScrollView.m in Sources */,
 				70621077237935ED00130B9D /* NSString+Sha1.m in Sources */,
 				270FF4071E8E27A000FC8613 /* JTSegmentView.m in Sources */,
-				70FBDCE92383FC1B00FC296E /* MySubjectViewController.m in Sources */,
+				70FBDCE92383FC1B00FC296E /* DZMySubjectController.m in Sources */,
 				7065AE902386A815009B6DA7 /* AppDelegate+Global.m in Sources */,
 				70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */,
 				706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */,

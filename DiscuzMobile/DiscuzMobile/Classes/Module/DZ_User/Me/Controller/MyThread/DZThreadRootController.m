@@ -8,7 +8,7 @@
 
 #import "DZThreadRootController.h"
 #import "DZContainerController.h"
-#import "MySubjectViewController.h"
+#import "DZMySubjectController.h"
 #import "MyReplyController.h"
 
 @interface DZThreadRootController ()
@@ -22,7 +22,7 @@
     
     self.title = @"帖子";
     
-    MySubjectViewController *subVC = [[MySubjectViewController alloc] init];
+    DZMySubjectController *subVC = [[DZMySubjectController alloc] init];
     subVC.title =@"主题";
     
     MyReplyController *repVC = [[MyReplyController alloc] init];

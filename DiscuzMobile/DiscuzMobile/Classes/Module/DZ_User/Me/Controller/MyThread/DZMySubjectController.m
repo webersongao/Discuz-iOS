@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "MySubjectViewController.h"
+#import "DZMySubjectController.h"
 #import "SubjectCell.h"
 
-@interface MySubjectViewController ()
+@interface DZMySubjectController ()
 
 @end
 
-@implementation MySubjectViewController
+@implementation DZMySubjectController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

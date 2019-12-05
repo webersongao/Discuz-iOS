@@ -8,6 +8,6 @@
 
 #import "DZBaseTableViewController.h"
 
-@interface MySubjectViewController : DZBaseTableViewController
+@interface DZMySubjectController : DZBaseTableViewController
 
 @end

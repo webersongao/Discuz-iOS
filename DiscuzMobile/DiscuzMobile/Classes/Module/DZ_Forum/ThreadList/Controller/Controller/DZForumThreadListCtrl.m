@@ -1,21 +1,21 @@
 //
-//  DZForumDescInfoCtroller.m
+//  DZForumThreadListCtrl.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZForumDescInfoCtroller.h"
+#import "DZForumThreadListCtrl.h"
 #import "DZCollectionTool.h"
 #import "DZForumListController.h"
 #import "DZForumContainListView.h"
 #import "DZForumThreadMixContainer.h"
-#import "DZPostNormalViewController.h"
-#import "DZPostVoteViewController.h"
+#import "DZPostNormalController.h"
+#import "DZPostVoteController.h"
 #import "DZPostDebateController.h"
-#import "DZPostActivityViewController.h"
-#import "MySubjectViewController.h"
+#import "DZPostActivityController.h"
+#import "DZMySubjectController.h"
 #import "DZPostTypeSelectView.h"
 #import "DZForumListModel.h"
 #import "DZForumInfoView.h"
@@ -24,7 +24,7 @@
 #import "SubForumCell.h"
 #import "DropTipView.h"
 
-@interface DZForumDescInfoCtroller () <UITableViewDelegate, UITableViewDataSource>
+@interface DZForumThreadListCtrl () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) DZForumInfoView *infoView;
 
@@ -54,7 +54,7 @@
 
 @end
 
-@implementation DZForumDescInfoCtroller
+@implementation DZForumThreadListCtrl
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -266,7 +266,7 @@
 
 - (void)postNormal {
     KWEAKSELF;
-    DZPostNormalViewController * tvc = [[DZPostNormalViewController alloc] init];
+    DZPostNormalController * tvc = [[DZPostNormalController alloc] init];
     tvc.dataForumTherad = self.VarModel;
     tvc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
@@ -276,7 +276,7 @@
 
 - (void)postVote {
     KWEAKSELF;
-    DZPostVoteViewController * vcv = [[DZPostVoteViewController alloc] init];
+    DZPostVoteController * vcv = [[DZPostVoteController alloc] init];
     vcv.dataForumTherad = self.VarModel;
     vcv.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
@@ -287,7 +287,7 @@
 - (void)postActivity {
     KWEAKSELF;
     
-    DZPostActivityViewController * ivc = [[DZPostActivityViewController alloc] init];
+    DZPostActivityController * ivc = [[DZPostActivityController alloc] init];
     ivc.dataForumTherad = self.VarModel;
     ivc.pushDetailBlock = ^(NSString *tid) {
         [weakSelf postSucceedToDetail:tid];
@@ -548,7 +548,7 @@
 }
 
 - (void)toMyThread {
-    MySubjectViewController *subjectVc = [[MySubjectViewController alloc] init];
+    DZMySubjectController *subjectVc = [[DZMySubjectController alloc] init];
     [self showViewController:subjectVc sender:nil];
 }
 

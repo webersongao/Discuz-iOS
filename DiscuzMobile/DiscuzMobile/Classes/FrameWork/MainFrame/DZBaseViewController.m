@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseViewController.h"
-#import "DZPostVoteViewController.h"
+#import "DZPostVoteController.h"
 #import "Environment.h"
 #import "UIImageView+FindHairline.h"
 #import "WBEmoticonInputView.h"
