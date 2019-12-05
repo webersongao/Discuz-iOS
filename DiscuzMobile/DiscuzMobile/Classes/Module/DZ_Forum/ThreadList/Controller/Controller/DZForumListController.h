@@ -8,18 +8,10 @@
 
 #import "DZForumListBaseCtrl.h"
 #import "DZThreadVarModel.h"
+#import "DZThreadNetTool.h"
 
 typedef void(^SendValueBlock)(DZThreadVarModel *varModel);
 typedef void(^EndRefreshBlock)(void);
-
-typedef enum : NSUInteger {
-    DZ_ListAll = 0, // 全部
-    DZ_ListNew, // 最新
-    DZ_ListHot, // 热门
-    DZ_ListBest, // 精华
-    DZ_ListPoll, // 投票
-    DZ_ListHotThread, // 热帖
-} DZ_ListType;
 
 @interface DZForumListController : DZForumListBaseCtrl
 

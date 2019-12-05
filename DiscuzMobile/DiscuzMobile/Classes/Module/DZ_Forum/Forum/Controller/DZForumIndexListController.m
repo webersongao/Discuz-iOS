@@ -16,6 +16,8 @@
 #import "AsyncAppendency.h"
 #import "DZThreadNetTool.h"
 
+#define lineTag  2018
+
 @interface DZForumIndexListController ()
 
 @property (nonatomic,assign) BOOL isSelected;
@@ -158,12 +160,12 @@
     header.textLabel.font = [DZFontSize HomecellTimeFontSize14];
     header.contentView.backgroundColor = [UIColor whiteColor];
     for (UIView *subview in header.subviews) {
-        if (subview.tag == 2018) {
+        if (subview.tag == lineTag) {
             [subview removeFromSuperview];
         }
     }
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, header.height - 1, header.width - 15, 0.5)];
-    line.tag = 2018;
+    line.tag = lineTag;
     line.backgroundColor = K_Color_NaviBack;
     [header addSubview:line];
     

@@ -17,7 +17,6 @@
 #import "AsyncAppendency.h"
 #import "ThreadListCell.h"
 #import "DZThreadTopCell.h"
-#import "DZThreadNetTool.h"
 #import "VerifyThreadRemindView.h"
 
 
@@ -127,29 +126,7 @@
 #pragma mark - 数据下载
 - (void)downLoadListData:(NSInteger)page andLoadType:(JTLoadType)loadType {
     
-    
-    NSDictionary *tmpDic = @{@"fid":[NSString stringWithFormat:@"%@",_fid],
-                             @"page":[NSString stringWithFormat:@"%ld",(long)page]};
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:tmpDic];
-    
-    if (self.listType == DZ_ListAll) {
-        DLog(@"如果你看到这段代码，请告诉她。。。。。。。。特么的出bug啦");
-    }else if (self.listType == DZ_ListNew) {
-        //        [dic setValue:@"lastpost" forKey:@"filter"];
-        //        [dic setValue:@"lastpost" forKey:@"orderby"];
-        [dict setValue:@"author" forKey:@"filter"];
-        [dict setValue:@"dateline" forKey:@"orderby"];
-    } else if (self.listType == DZ_ListHot) {
-        [dict setValue:@"heat" forKey:@"filter"];
-        [dict setValue:@"heats" forKey:@"orderby"];
-    } else if (self.listType == DZ_ListBest) {
-        [dict setValue:@"digest" forKey:@"filter"];
-        [dict setValue:@"1" forKey:@"digest"];
-    }
-    
-    BOOL isCache = [DZApiRequest isCache:DZ_Url_ForumTlist andParameters:dict];
-    BOOL reqCache = (self.listType == DZ_ListAll && self.page == 1) ? YES : NO;
-    [DZThreadNetTool DZ_DownloadForumListWithType:loadType para:dict isCache:reqCache completion:^(DZThreadResModel *threadResModel, NSError *error) {
+    [DZThreadNetTool DZ_DownloadForumListWithType:loadType fid:self.fid page:page listType:self.listType completion:^(DZThreadResModel *threadResModel, BOOL isCache, NSError *error) {
         if (threadResModel) {
             [self.HUD hide];
             [self.tableView.mj_header endRefreshing];

@@ -87,7 +87,6 @@ static NSString * headerSection = @"CellHeader";
 - (void)loadForumIndexDataWitLoadType:(JTLoadType)type {
     
     [DZThreadNetTool DZ_DownloadForumCategoryData:type isCache:YES completion:^(DZDiscoverModel *indexModel) {
-        
         [self.HUD hide];
         if (indexModel) {
             [self.collectionView.mj_header endRefreshing];
@@ -99,8 +98,6 @@ static NSString * headerSection = @"CellHeader";
             [self.collectionView.mj_header endRefreshing];
             [self emptyShow];
         }
-        
-        
     }];
 }
 
@@ -164,9 +161,7 @@ static NSString * headerSection = @"CellHeader";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DZForumItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"fourmCollection" forIndexPath:indexPath];
     
-    DZForumNodeModel * node;
-    
-    node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
+    DZForumNodeModel *node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
     if (node != nil) {
         [cell updateItemCell:node.infoModel];
@@ -178,10 +173,8 @@ static NSString * headerSection = @"CellHeader";
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    DZForumNodeModel * node;
     
-    node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
-    
+    DZForumNodeModel * node = self.dataSourceArr[indexPath.section].childNode[indexPath.row];
     
     [self pushThreadList:node];
 }
