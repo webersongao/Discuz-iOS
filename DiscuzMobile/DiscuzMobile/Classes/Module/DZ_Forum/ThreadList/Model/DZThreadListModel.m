@@ -11,18 +11,6 @@
 
 @implementation DZThreadListModel
 
-//+ (void)initialize
-//{
-//    if (self == [DZThreadListModel class]) {
-//        [DZThreadListModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
-//            return @{@"typeId":@"typeid"};
-//        }];
-//        [DZThreadListModel mj_setupObjectClassInArray:^NSDictionary *{
-//            return @{@"attachlist":@"DZAttachModel"};
-//        }];
-//    }
-//}
-
 + (NSDictionary*)modelCustomPropertyMapper {
     return @{
         @"typeId" : @"typeid",
@@ -35,51 +23,64 @@
     };
 }
 
-- (instancetype)init {
-    if ([super init]) {
-        self.imglist = [NSMutableArray array];
-    }
-    return self;
+#pragma mark - 重写settter方法 过滤标签
+
+-(void)setViews:(NSString *)views{
+    _views = [views onePointCountWithNumstring];
 }
 
--(void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+-(void)setReplies:(NSString *)replies{
+    _replies = [replies onePointCountWithNumstring];
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    if ([key isEqualToString:@"attachlist"]) {
-        for (DZAttachModel *attItem in value) {
-            if ([DataCheck isValidString:attItem.type]) {
-                if ([attItem.type isEqualToString:@"image"]) {
-                    [self.imglist addObject:attItem.thumb];
-                }
-            }
-        }
-        return;
-    }
-    
-    if ([@[@"views",@"replies",@"recommend_add"] containsObject:key]) {
-        value = [value onePointCountWithNumstring];
-    } else if ([key isEqualToString:@"dateline"]) {
-        NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-        if ([value rangeOfCharacterFromSet:notDigits].location == NSNotFound) { // 是数字
-            value = [NSDate timeStringFromTimestamp:value format:@"yyyy-MM-dd"];
-        }
-    } else if ([key isEqualToString:@"typeid"]) {
-        _typeId = value;
-    }
-    
-    if ([@[@"subject",@"message",@"dateline"] containsObject:key]) {
-        value = [value transformationStr];
-    }
-    
-    if ([key isEqualToString:@"subject"]) {
-        _useSubject = value;
-    }
-    
-    [super setValue:value forKey:key];
+-(void)setMessage:(NSString *)message{
+    _message = [message transformationStr];
 }
+
+-(void)setRecommend_add:(NSString *)recommend_add{
+    _recommend_add = [recommend_add onePointCountWithNumstring];
+}
+
+-(void)setDateline:(NSString *)dateline{
+    NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    if ([_dateline rangeOfCharacterFromSet:notDigits].location == NSNotFound) { // 是数字
+        _dateline = [NSDate timeStringFromTimestamp:dateline format:@"yyyy-MM-dd"];
+    }else{
+        _dateline = [dateline transformationStr];
+    }
+}
+
+-(void)setSubject:(NSString *)subject{
+    _subject = [subject transformationStr];
+    _useSubject = _subject;
+}
+
+-(void)setAttachlist:(NSMutableArray<DZAttachModel *> *)attachlist{
+    _attachlist = attachlist;
+    self.imglist = [NSMutableArray array];
+    for (DZAttachModel *attch in attachlist) {
+        if ([attch.type isEqualToString:@"image"]) {
+            [self.imglist addObject:attch.thumb];
+        }
+    }
+}
+
+-(void)setGrouptitle:(NSString *)grouptitle {
+    if ([DataCheck isValidString:grouptitle]) {
+        _grouptitle = [grouptitle flattenHTMLTrimWhiteSpace:YES];
+    }else{
+        _grouptitle = @"";
+    }
+}
+
+-(void)setTypeName:(NSString *)typeName {
+    if ([DataCheck isValidString:typeName]) {
+        _typeName = [typeName flattenHTMLTrimWhiteSpace:YES];
+    }else{
+        _typeName = @"";
+    }
+}
+
 
 // 特殊帖判断
 - (BOOL)isSpecialThread {
@@ -102,38 +103,13 @@
 }
 
 
-+ (NSDictionary *)getTypeDic:(id)responseObject {
-    NSMutableDictionary *typeDic = [NSMutableDictionary dictionary];
-    NSDictionary *threadtypes = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadtypes"];
-    if ([DataCheck isValidDictionary:threadtypes]) {
-        NSDictionary *types = [threadtypes objectForKey:@"types"];
-        if ([DataCheck isValidDictionary:types]) {
-            typeDic = [NSMutableDictionary dictionaryWithDictionary:types];
-        }
+// 是否是本版帖子
+- (BOOL)isCurrentForum:(NSString *)fid {
+   if ([@[@"3",@"2"] containsObject:self.displayorder] && ![self.fid isEqualToString:fid]) { // 非本版帖子
+       return YES;
     }
-    return typeDic;
+    return NO;
 }
 
-+ (NSDictionary *)getGroupDic:(id)responseObject {
-    NSMutableDictionary *gropDic = [NSMutableDictionary dictionary];
-    NSDictionary *groupiconid = [[responseObject objectForKey:@"Variables"] objectForKey:@"groupiconid"];
-    if ([DataCheck isValidDictionary:groupiconid]) {
-        gropDic = [NSMutableDictionary dictionaryWithDictionary:groupiconid];
-    }
-    return gropDic;
-}
-
-#pragma mark - 重写settter方法 过滤标签
-- (void)setGrouptitle:(NSString *)grouptitle {
-    if ([DataCheck isValidString:grouptitle]) {
-        _grouptitle = [grouptitle flattenHTMLTrimWhiteSpace:YES];
-    }
-}
-
-- (void)setTypeName:(NSString *)typeName {
-    if ([DataCheck isValidString:typeName]) {
-        _typeName = [typeName flattenHTMLTrimWhiteSpace:YES];
-    }
-}
 
 @end

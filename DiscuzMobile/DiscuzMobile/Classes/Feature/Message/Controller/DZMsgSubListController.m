@@ -75,13 +75,13 @@
         request.methodType = JTMethodTypePOST;
         request.parameters = parameter;
     } success:^(id responseObject, JTLoadType type) {
-        [self anylyeData:responseObject];
+        [self anylyeMsgData:responseObject];
     } failed:^(NSError *error) {
         [self errorDo:error];
     }];
 }
 
-- (void)anylyeData:(id)responseObject {
+- (void)anylyeMsgData:(id)responseObject {
     [self.HUD hideAnimated:YES];
     [self mj_endRefreshing];
     

@@ -168,7 +168,7 @@
 		70621271237936C800130B9D /* DZForumListBaseCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621094237936C800130B9D /* DZForumListBaseCtrl.m */; };
 		70621272237936C800130B9D /* DZForumContainListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621096237936C800130B9D /* DZForumContainListView.m */; };
 		70621273237936C800130B9D /* DZThreadListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109A237936C800130B9D /* DZThreadListModel.m */; };
-		70621274237936C800130B9D /* DZForumListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109B237936C800130B9D /* DZForumListModel.m */; };
+		70621274237936C800130B9D /* DZForumTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109B237936C800130B9D /* DZForumTitleModel.m */; };
 		70621275237936C800130B9D /* DZThreadListModel+Display.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062109F237936C800130B9D /* DZThreadListModel+Display.m */; };
 		70621276237936C800130B9D /* VerifyThreadRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210A2237936C800130B9D /* VerifyThreadRemindView.m */; };
 		70621277237936C800130B9D /* DZForumInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210A4237936C800130B9D /* DZForumInfoView.m */; };
@@ -765,10 +765,10 @@
 		70621097237936C800130B9D /* DZThreadListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListController.h; sourceTree = "<group>"; };
 		70621098237936C800130B9D /* DZForumThreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumThreadController.h; sourceTree = "<group>"; };
 		7062109A237936C800130B9D /* DZThreadListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListModel.m; sourceTree = "<group>"; };
-		7062109B237936C800130B9D /* DZForumListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumListModel.m; sourceTree = "<group>"; };
+		7062109B237936C800130B9D /* DZForumTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumTitleModel.m; sourceTree = "<group>"; };
 		7062109C237936C800130B9D /* DZThreadListModel+Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZThreadListModel+Display.h"; sourceTree = "<group>"; };
 		7062109D237936C800130B9D /* DZThreadListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListModel.h; sourceTree = "<group>"; };
-		7062109E237936C800130B9D /* DZForumListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumListModel.h; sourceTree = "<group>"; };
+		7062109E237936C800130B9D /* DZForumTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumTitleModel.h; sourceTree = "<group>"; };
 		7062109F237936C800130B9D /* DZThreadListModel+Display.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DZThreadListModel+Display.m"; sourceTree = "<group>"; };
 		706210A1237936C800130B9D /* DropTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropTipView.h; sourceTree = "<group>"; };
 		706210A2237936C800130B9D /* VerifyThreadRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyThreadRemindView.m; sourceTree = "<group>"; };
@@ -1802,22 +1802,22 @@
 		7002A33A2383D8CD00BC0C61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7002A33B2383D8CD00BC0C61 /* ChatContainScrollView.m */,
 				7002A33C2383D8CD00BC0C61 /* PmlistCell.h */,
-				7002A33D2383D8CD00BC0C61 /* MessageDetailCell.m */,
-				7002A33E2383D8CD00BC0C61 /* MsglistCell.m */,
-				7002A33F2383D8CD00BC0C61 /* SystemNoteCell.m */,
-				7002A3402383D8CD00BC0C61 /* ChatYYLabel.m */,
-				7002A3412383D8CD00BC0C61 /* ChatContentCell.m */,
-				7002A3422383D8CD00BC0C61 /* MessageCell.h */,
-				7002A3432383D8CD00BC0C61 /* ChatContainScrollView.h */,
 				7002A3442383D8CD00BC0C61 /* PmlistCell.m */,
-				7002A3452383D8CD00BC0C61 /* ChatYYLabel.h */,
-				7002A3462383D8CD00BC0C61 /* SystemNoteCell.h */,
 				7002A3472383D8CD00BC0C61 /* MsglistCell.h */,
-				7002A3482383D8CD00BC0C61 /* MessageDetailCell.h */,
+				7002A33E2383D8CD00BC0C61 /* MsglistCell.m */,
+				7002A3452383D8CD00BC0C61 /* ChatYYLabel.h */,
+				7002A3402383D8CD00BC0C61 /* ChatYYLabel.m */,
+				7002A3422383D8CD00BC0C61 /* MessageCell.h */,
 				7002A3492383D8CD00BC0C61 /* MessageCell.m */,
+				7002A3462383D8CD00BC0C61 /* SystemNoteCell.h */,
+				7002A33F2383D8CD00BC0C61 /* SystemNoteCell.m */,
 				7002A34A2383D8CD00BC0C61 /* ChatContentCell.h */,
+				7002A3412383D8CD00BC0C61 /* ChatContentCell.m */,
+				7002A3482383D8CD00BC0C61 /* MessageDetailCell.h */,
+				7002A33D2383D8CD00BC0C61 /* MessageDetailCell.m */,
+				7002A3432383D8CD00BC0C61 /* ChatContainScrollView.h */,
+				7002A33B2383D8CD00BC0C61 /* ChatContainScrollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2150,8 +2150,8 @@
 			children = (
 				70DFD790237A95DD00A13F0F /* DZAttachModel.h */,
 				70DFD78B237A95DD00A13F0F /* DZAttachModel.m */,
-				7062109E237936C800130B9D /* DZForumListModel.h */,
-				7062109B237936C800130B9D /* DZForumListModel.m */,
+				7062109E237936C800130B9D /* DZForumTitleModel.h */,
+				7062109B237936C800130B9D /* DZForumTitleModel.m */,
 				7062109D237936C800130B9D /* DZThreadListModel.h */,
 				7062109A237936C800130B9D /* DZThreadListModel.m */,
 				7028B694238FB1340047800C /* DZThreadReplyModel.h */,
@@ -4410,7 +4410,7 @@
 				706212C0237936C900130B9D /* DZSearchController.m in Sources */,
 				70F9F8F1237AA7580067B308 /* DZMobileCtrl.m in Sources */,
 				943430992022E56E009C0102 /* AppDelegate+XinGe.m in Sources */,
-				70621274237936C800130B9D /* DZForumListModel.m in Sources */,
+				70621274237936C800130B9D /* DZForumTitleModel.m in Sources */,
 				947ECB142064D403002D3536 /* WSImagePickerView.m in Sources */,
 				70F19E5A237A8E9900499BED /* UIBarButtonItem+Utils.m in Sources */,
 				709A731A2387EF6100DF04CE /* DZDiscoverListView.m in Sources */,

@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString *listable;  //!< 属性注释
 @property (nonatomic, copy) NSString *prefix;  //!< 属性注释
 
-@property (nonatomic, strong) NSArray *types;  //!< 属性注释
+@property (nonatomic, strong) NSDictionary *types;  //!< 属性注释
 
 
 @end

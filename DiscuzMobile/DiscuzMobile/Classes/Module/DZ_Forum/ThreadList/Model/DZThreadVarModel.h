@@ -39,7 +39,13 @@
 @property (nonatomic, strong) DZThreadTypesModel *threadtypes;  //!< 属性注释
 @property (nonatomic, strong) DZActivitySetModel *activity_setting;  //!< 属性注释
 
-
+/**
+ 处理接口传进来的responseObject
+ @param fid 本版fid
+ @param page 页数
+ @param handle block回调传参  topArr：置顶帖数组 commonArr：普通帖子数组 allArr：全部帖子  notFourmCount：非本版帖子数
+ */
+- (void)updateVarModel:(NSString *)fid andPage:(NSInteger)page handle:(void (^)(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount))handle;
 
 @end
 

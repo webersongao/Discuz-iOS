@@ -13,7 +13,7 @@
 #import "DZForumThreadMixContainer.h"
 #import "DZMySubjectController.h"
 #import "DZPostTypeSelectView.h"
-#import "DZForumListModel.h"
+#import "DZForumTitleModel.h"
 #import "DZForumInfoView.h"
 #import "RootForumCell.h"
 #import "DZForumModel.h"
@@ -36,7 +36,7 @@
 
 @property (nonatomic, strong) UITableViewCell *contentCell;
 
-@property (nonatomic, strong) NSMutableArray <DZForumListModel *> *titleArr;
+@property (nonatomic, strong) NSMutableArray <DZForumTitleModel *> *titleArr;
 
 @property (nonatomic, strong) DZForumModel *forumInfo;
 
@@ -81,10 +81,10 @@
     self.foldTableView.dataSource = self;
     [self.headView addSubview:self.foldTableView];
     
-    DZForumListModel *m1 = [DZForumListModel initWithName:@"全部" andWithFid:self.forumFid];
-    DZForumListModel *m2 = [DZForumListModel initWithName:@"最新" andWithFid:self.forumFid];
-    DZForumListModel *m3 = [DZForumListModel initWithName:@"热门" andWithFid:self.forumFid];
-    DZForumListModel *m4 = [DZForumListModel initWithName:@"精华" andWithFid:self.forumFid];
+    DZForumTitleModel *m1 = [DZForumTitleModel initWithName:@"全部" andWithFid:self.forumFid];
+    DZForumTitleModel *m2 = [DZForumTitleModel initWithName:@"最新" andWithFid:self.forumFid];
+    DZForumTitleModel *m3 = [DZForumTitleModel initWithName:@"热门" andWithFid:self.forumFid];
+    DZForumTitleModel *m4 = [DZForumTitleModel initWithName:@"精华" andWithFid:self.forumFid];
     
     [self.titleArr addObject:m1];
     [self.titleArr addObject:m2];
@@ -351,7 +351,7 @@
         if (self.ctvArr.count == 0) {
             NSMutableArray *vcArr = [NSMutableArray array];
             KWEAKSELF;
-            [self.titleArr enumerateObjectsUsingBlock:^(DZForumListModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.titleArr enumerateObjectsUsingBlock:^(DZForumTitleModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:idx];
                 listVc.title = obj.name;

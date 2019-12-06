@@ -1,5 +1,5 @@
 //
-//  DZForumListModel.h
+//  DZForumTitleModel.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/17.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DZForumListModel : NSObject
+@interface DZForumTitleModel : NSObject
 
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *fid;

@@ -170,7 +170,7 @@
                 // 刷新的时候移除数据源
                 [self clearDatasource];
                 
-//                [self anylyeData:responseObject];
+                [self anylyeThreadListData:threadResModel];
                 
                 [self emptyShow];
                 
@@ -178,7 +178,7 @@
                 
                 [self.tableView.mj_footer endRefreshing];
                 
-//                [self anylyeData:responseObject];
+                [self anylyeThreadListData:threadResModel];
                 
             }
             NSInteger threadsCount = self.forumModel.threadcount + self.notThisFidCount;
@@ -213,12 +213,11 @@
     }
 }
 
-- (void)anylyeData:(DZThreadResModel *)responseObject {
+- (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     self.VarModel = responseObject.Variables;
     
-    [DZThreadListModel setThreadData:responseObject andFid:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        
+    [self.VarModel updateVarModel:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
         if (self.page == 1) {
             self.notThisFidCount = notFourmCount;
             self.topThreadArray = [NSMutableArray arrayWithArray:topArr];

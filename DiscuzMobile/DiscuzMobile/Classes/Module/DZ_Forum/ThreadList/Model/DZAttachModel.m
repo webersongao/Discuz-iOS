@@ -10,4 +10,10 @@
 
 @implementation DZAttachModel
 
++ (NSDictionary*)modelCustomPropertyMapper {
+    return @{
+        @"attchDesc" : @"description",
+    };
+}
+
 @end

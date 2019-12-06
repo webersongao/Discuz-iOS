@@ -8,13 +8,21 @@
 
 #import "DZThreadListModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@class DZThreadVarModel;
 
 @interface DZThreadListModel (Display)
-+ (void)setThreadData:(id)responseObject andFid:(NSString *)fid andPage:(NSInteger)page handle:(void (^)(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount))handle;
+
+/**
+ 根据帖子类型设置描述
+ 
+ @param page 页数
+ @param groupDic 所在群组
+ @param typeDic 帖子类型 投票、活动等
+ @return 帖子model
+ */
+-(DZThreadListModel *)dealModelWithPage:(NSInteger)page andGroup:(NSDictionary *)groupDic andType:(NSDictionary *)typeDic;
 
 - (DZThreadListModel *)dealSpecialThread;
 
 @end
 
-NS_ASSUME_NONNULL_END
