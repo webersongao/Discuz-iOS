@@ -9,7 +9,7 @@
 #import "DZThreadDetailController.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
-#import "DZCollectionTool.h"
+#import "DZForumTool.h"
 
 #import "DZViewPollPotionNumController.h"
 #import "DZActivityEditController.h"
@@ -19,7 +19,7 @@
 #import "ThreadModel.h"
 #import "ResponseMessage.h"
 #import "SeccodeverifyView.h"
-#import "DZPraiseHelper.h"
+#import "DZForumTool.h"
 #import "WSImageModel.h"
 #import "DZDevice.h"
 
@@ -541,7 +541,7 @@
         [MBProgressHUD showInfo:@"您已赞过该主题"];
     } else {
         
-        [DZPraiseHelper praiseRequestTid:self.threadModel.tid successBlock:^{
+        [DZForumTool DZ_PraiseRequestTid:self.threadModel.tid successBlock:^{
             [self.HUD hide];
             [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
             self.threadModel.recommend = @"1";
@@ -585,12 +585,12 @@
         return;
     }
     if (btn.tag == 100001) {
-        [DZCollectionTool DZ_CollectionThread:self.tid success:^{
+        [DZForumTool DZ_CollectionThread:self.tid success:^{
             [self.HUD hide];
             [self setIsCollection:btn];
         } failure:nil];
     } else if (btn.tag==100002) {
-        [DZCollectionTool DZ_DeleCollection:self.tid type:collectThread success:^{
+        [DZForumTool DZ_DeleCollection:self.tid type:collectThread success:^{
             [self setNotCollection:btn];
         } failure:nil];
     }

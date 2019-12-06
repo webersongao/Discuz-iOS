@@ -10,7 +10,7 @@
 #import "BaseIconTextView.h"
 #import "DZLoginModule.h"
 #import "UIView+WebCache.h"
-#import "DZPraiseHelper.h"
+#import "DZForumTool.h"
 
 @interface BaseStyleCell()
 
@@ -333,7 +333,7 @@
         [self setPriceSelected];
         self.priceLab.iconV.tintColor = K_Color_Theme;
         self.priceLab.textLab.text = self.listInfo.recommend_add;
-        [DZPraiseHelper praiseRequestTid:self.listInfo.tid successBlock:^{
+        [DZForumTool DZ_PraiseRequestTid:self.listInfo.tid successBlock:^{
             if (self.listInfo.isRecently) {
                 BACK(^{
                     if ([DataCheck isValidString:self.listInfo.tid]) {

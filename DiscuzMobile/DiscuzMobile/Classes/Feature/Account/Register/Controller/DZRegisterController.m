@@ -7,14 +7,12 @@
 //
 
 #import "DZRegisterController.h"
-#import "UsertermsController.h"
-
 #import "DZRegisterView.h"
 #import "DZAuthCodeView.h"
 #import "DZLoginTextField.h"
 
 #import "XinGeCenter.h"
-#import "CheckHelper.h"
+#import "DZUserNetTool.h"
 
 @interface DZRegisterController ()
 @property (nonatomic,strong) DZRegisterView *registerView;
@@ -56,7 +54,7 @@
 
 - (void)checkAPIModuleRequest {
     [self.HUD showLoadingMessag:@"" toView:self.view];
-    [[CheckHelper shareInstance] checkRegisterRequestSuccess:^{
+    [[DZUserNetTool sharedTool] DZ_CheckRegisterRequestSuccess:^{
         [self.HUD hide];
     } failure:^{
         [self.HUD hide];
@@ -64,9 +62,7 @@
 }
 
 - (void)readTerms {
-    UsertermsController *usertermsVc = [[UsertermsController alloc] init];
-    usertermsVc.bbrulestxt = self.bbrulestxt;
-    [self.navigationController pushViewController:usertermsVc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
 }
 
 #pragma mark - 验证码
@@ -138,7 +134,7 @@
     NSString *repass = _registerView.repassView.userNameTextField.text;
     NSString *email = _registerView.emailView.userNameTextField.text;
     
-    NSDictionary *regKeyDic = [CheckHelper shareInstance].regKeyDic;
+    NSDictionary *regKeyDic = [DZUserNetTool sharedTool].regKeyDic;
     if (![DataCheck isValidDictionary:regKeyDic]) {
         [self checkAPIModuleRequest];
         [MBProgressHUD showInfo:@"正在获取注册配置，请稍候"];
@@ -151,7 +147,7 @@
                                       [regKeyDic objectForKey:@"email"]:email,
                                       @"formhash":[Environment sharedEnvironment].formhash,
                                       @"regsubmit":@"yes",
-                                      }.mutableCopy;
+    }.mutableCopy;
     NSMutableDictionary *getData = [NSMutableDictionary dictionary];
     if (self.verifyView.isyanzhengma) {
         if ([DataCheck isValidString:self.registerView.authCodeView.textField.text]) {
@@ -175,7 +171,7 @@
     }
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = [CheckHelper shareInstance].regUrl;
+        request.urlString = [DZUserNetTool sharedTool].regUrl;
         request.parameters = postData;
         request.getParam = getData;
         request.methodType = JTMethodTypePOST;

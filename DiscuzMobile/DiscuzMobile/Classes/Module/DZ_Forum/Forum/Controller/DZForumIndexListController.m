@@ -11,7 +11,7 @@
 #import "DZForumLeftCell.h"
 #import "DZForumRightCell.h"
 #import "DZBaseTableView.h"
-#import "DZCollectionTool.h"
+#import "DZForumTool.h"
 #import "DZCollectButton.h"
 #import "AsyncAppendency.h"
 #import "DZThreadNetTool.h"
@@ -207,12 +207,12 @@
     }
     
     if (btn.lighted) {// 收藏
-        [DZCollectionTool DZ_CollectionForum:model.fid success:^{
+        [DZForumTool DZ_CollectionForum:model.fid success:^{
             btn.lighted = NO;
             model.favorited = @"1";
         } failure:nil];
     } else {//取消
-        [DZCollectionTool DZ_DeleCollection:model.fid type:collectForum success:^{
+        [DZForumTool DZ_DeleCollection:model.fid type:collectForum success:^{
             btn.lighted = YES;
             model.favorited = @"0";
         } failure:nil];

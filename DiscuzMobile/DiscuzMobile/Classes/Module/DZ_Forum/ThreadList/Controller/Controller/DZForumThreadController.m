@@ -7,7 +7,7 @@
 //
 
 #import "DZForumThreadController.h"
-#import "DZCollectionTool.h"
+#import "DZForumTool.h"
 #import "DZThreadListController.h"
 #import "DZForumContainListView.h"
 #import "DZForumThreadMixContainer.h"
@@ -200,12 +200,12 @@
     
     if (btn.tag==1000) {// 收藏
         
-        [DZCollectionTool DZ_CollectionForum:self.forumFid success:^{
+        [DZForumTool DZ_CollectionForum:self.forumFid success:^{
             [self setIsCollection];
         } failure:nil];
         
     } else if (btn.tag==1002) {//取消
-        [DZCollectionTool DZ_DeleCollection:self.forumFid type:collectForum success:^{
+        [DZForumTool DZ_DeleCollection:self.forumFid type:collectForum success:^{
             [self setNotCollection];
         } failure:nil];
     }

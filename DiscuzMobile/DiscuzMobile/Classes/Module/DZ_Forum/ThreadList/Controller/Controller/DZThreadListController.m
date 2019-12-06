@@ -18,16 +18,15 @@
 #import "DZThreadTopCell.h"
 #import "VerifyThreadRemindView.h"
 
-
 @interface DZThreadListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
 @property (nonatomic ,strong) DZForumModel *forumModel;
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
-@property (nonatomic, strong) NSMutableArray *topThreadArray;
-@property (nonatomic, strong) NSMutableArray *commonThreadArray;
-@property (nonatomic, assign) NSInteger notThisFidCount;
 @property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
+@property (nonatomic, assign) NSInteger notThisFidCount;
+@property (nonatomic, strong) NSMutableArray *topThreadArray;
+@property (nonatomic, strong) NSMutableArray *commonThreadArray;
 @end
 
 @implementation DZThreadListController
@@ -226,7 +225,6 @@
             self.commonThreadArray = [NSMutableArray arrayWithArray:commonArr];
             self.dataSourceArr = [NSMutableArray arrayWithArray:allArr];
         } else {
-            
             if ([DataCheck isValidArray:commonArr]) {
                 DZThreadListModel *model1 = commonArr.firstObject;
                 DZThreadListModel *model2 = self.dataSourceArr.firstObject;
@@ -240,7 +238,6 @@
                 [self.dataSourceArr addObjectsFromArray:allArr];
             }
         }
-        
     }];
     
 }

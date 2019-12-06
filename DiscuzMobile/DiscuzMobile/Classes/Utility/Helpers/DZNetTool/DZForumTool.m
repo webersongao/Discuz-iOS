@@ -1,14 +1,15 @@
 //
-//  DZCollectionTool.m
+//  DZForumTool.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/13.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZCollectionTool.h"
+#import "DZForumTool.h"
+#import "DZLoginModule.h"
 
-@implementation DZCollectionTool
+@implementation DZForumTool
 
 
 // 收藏板块
@@ -111,4 +112,46 @@
     }];
 }
 
+// 赞主题
++ (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure {
+    if ([DZLoginModule isLogged]) {
+        NSDictionary * paramter=@{@"tid":tid,
+                                  @"hash":checkNull([Environment sharedEnvironment].formhash)
+                                  };
+        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+            request.urlString = DZ_Url_Praise;
+            request.parameters = paramter;
+        } success:^(id responseObject, JTLoadType type) {
+            NSString *messageval = [responseObject messageval];
+            NSString *messagestr = [responseObject messagestr];
+            
+            if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
+                success?success():nil;
+            } else {
+                failure?failure(nil):nil;
+                [MBProgressHUD showInfo:messagestr];
+            }
+            
+        } failed:^(NSError *error) {
+            failure?failure(error):nil;
+        }];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_UserLogin_Notify object:nil];
+    }
+}
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+

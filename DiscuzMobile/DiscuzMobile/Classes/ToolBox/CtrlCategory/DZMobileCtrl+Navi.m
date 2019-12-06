@@ -39,7 +39,7 @@
 @implementation DZMobileCtrl (Navi)
 
 - (void)PushToController:(UIViewController *)CtrlVC{
-    if (CtrlVC) {    
+    if (CtrlVC) {
         [self.mainNavi pushViewController:CtrlVC animated:YES];
     }
 }
@@ -220,8 +220,9 @@
 }
 
 /// 用户 协议
--(void)PushToUsertermsController {
+-(void)PushToUsertermsController:(NSString *)bbsRulestxt {
     UsertermsController *termVC = [[UsertermsController alloc] init];
+    termVC.bbrulestxt = bbsRulestxt;
     [self.mainNavi pushViewController:termVC animated:YES];
 }
 
@@ -247,7 +248,7 @@
 
 /// 用户注册
 -(void)PushToAccountRegisterController {
-     DZRegisterController * regVC = [[DZRegisterController alloc] init];
+    DZRegisterController * regVC = [[DZRegisterController alloc] init];
     [self.mainNavi pushViewController:regVC animated:YES];
 }
 

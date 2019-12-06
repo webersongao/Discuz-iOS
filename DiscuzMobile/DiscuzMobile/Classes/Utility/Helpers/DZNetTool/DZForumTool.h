@@ -1,5 +1,5 @@
 //
-//  DZCollectionTool.h
+//  DZForumTool.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/13.
@@ -13,7 +13,7 @@ typedef enum : NSUInteger {
     collectThread,
 } collectType;
 
-@interface DZCollectionTool : NSObject
+@interface DZForumTool : NSObject
 
 // 收藏板块
 + (void)DZ_CollectionForum:(NSString *)fId success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
@@ -23,5 +23,9 @@ typedef enum : NSUInteger {
 
 // 取消收藏（帖子、板块）
 + (void)DZ_DeleCollection:(NSString *)fid type:(collectType)type success:(void(^)(void))success failure:(void(^)(NSError *error))failure;
+
+// 赞主题
++ (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure;
+
 
 @end

@@ -14,7 +14,7 @@
 #import "ZHPickView.h"
 #import "DZShareCenter.h"
 #import "XinGeCenter.h"  // 信鸽
-#import "CheckHelper.h"
+#import "DZUserNetTool.h"
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
 #define TEXTHEIGHT 50
@@ -51,7 +51,7 @@ NSString * const debugPassword = @"debugPassword";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createBarBtn];
-    [[CheckHelper shareInstance] checkAPIRequest];
+    [[DZUserNetTool sharedTool] DZ_CheckRegisterAPIRequest];
     KWEAKSELF;
     self.loginView.authCodeView.refreshAuthCodeBlock = ^{
         [weakSelf downlodyan];

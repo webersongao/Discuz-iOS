@@ -213,9 +213,7 @@
 		7062129E237936C900130B9D /* ActiveUserFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210FA237936C800130B9D /* ActiveUserFieldCell.m */; };
 		7062129F237936C900130B9D /* NSDictionary+ResMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210FF237936C800130B9D /* NSDictionary+ResMessage.m */; };
 		706212A0237936C900130B9D /* ResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621100237936C800130B9D /* ResponseMessage.m */; };
-		706212A1237936C900130B9D /* DZPraiseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621102237936C800130B9D /* DZPraiseHelper.m */; };
-		706212A2237936C900130B9D /* DZCollectionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621105237936C800130B9D /* DZCollectionTool.m */; };
-		706212A3237936C900130B9D /* CheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621108237936C800130B9D /* CheckHelper.m */; };
+		706212A2237936C900130B9D /* DZForumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621105237936C800130B9D /* DZForumTool.m */; };
 		706212A4237936C900130B9D /* MyPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062110C237936C800130B9D /* MyPerson.m */; };
 		706212A5237936C900130B9D /* DZLoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062110E237936C800130B9D /* DZLoginModule.m */; };
 		706212A6237936C900130B9D /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621110237936C800130B9D /* Environment.m */; };
@@ -858,12 +856,8 @@
 		706210FE237936C800130B9D /* ResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseMessage.h; sourceTree = "<group>"; };
 		706210FF237936C800130B9D /* NSDictionary+ResMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ResMessage.m"; sourceTree = "<group>"; };
 		70621100237936C800130B9D /* ResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseMessage.m; sourceTree = "<group>"; };
-		70621102237936C800130B9D /* DZPraiseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPraiseHelper.m; sourceTree = "<group>"; };
-		70621103237936C800130B9D /* DZPraiseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPraiseHelper.h; sourceTree = "<group>"; };
-		70621105237936C800130B9D /* DZCollectionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCollectionTool.m; sourceTree = "<group>"; };
-		70621106237936C800130B9D /* DZCollectionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCollectionTool.h; sourceTree = "<group>"; };
-		70621108237936C800130B9D /* CheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckHelper.m; sourceTree = "<group>"; };
-		70621109237936C800130B9D /* CheckHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckHelper.h; sourceTree = "<group>"; };
+		70621105237936C800130B9D /* DZForumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumTool.m; sourceTree = "<group>"; };
+		70621106237936C800130B9D /* DZForumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumTool.h; sourceTree = "<group>"; };
 		7062110B237936C800130B9D /* DZLoginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginModule.h; sourceTree = "<group>"; };
 		7062110C237936C800130B9D /* MyPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPerson.m; sourceTree = "<group>"; };
 		7062110D237936C800130B9D /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
@@ -2314,8 +2308,6 @@
 			isa = PBXGroup;
 			children = (
 				7062110A237936C800130B9D /* Login */,
-				70621101237936C800130B9D /* Praise */,
-				70621107237936C800130B9D /* Register */,
 				706210FC237936C800130B9D /* Response */,
 			);
 			path = Widget;
@@ -2332,31 +2324,13 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		70621101237936C800130B9D /* Praise */ = {
-			isa = PBXGroup;
-			children = (
-				70621103237936C800130B9D /* DZPraiseHelper.h */,
-				70621102237936C800130B9D /* DZPraiseHelper.m */,
-			);
-			path = Praise;
-			sourceTree = "<group>";
-		};
 		70621104237936C800130B9D /* DZNetTool */ = {
 			isa = PBXGroup;
 			children = (
-				70621106237936C800130B9D /* DZCollectionTool.h */,
-				70621105237936C800130B9D /* DZCollectionTool.m */,
+				70621106237936C800130B9D /* DZForumTool.h */,
+				70621105237936C800130B9D /* DZForumTool.m */,
 			);
 			path = DZNetTool;
-			sourceTree = "<group>";
-		};
-		70621107237936C800130B9D /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				70621109237936C800130B9D /* CheckHelper.h */,
-				70621108237936C800130B9D /* CheckHelper.m */,
-			);
-			path = Register;
 			sourceTree = "<group>";
 		};
 		7062110A237936C800130B9D /* Login */ = {
@@ -4261,7 +4235,6 @@
 				70F9F8D2237AA72B0067B308 /* UIScrollView+GestureConflict.m in Sources */,
 				70CA22E42386DF490053B31B /* DZGlobalTool.m in Sources */,
 				27234C9E1EA499DB008A8B13 /* EmptyAlertView.m in Sources */,
-				706212A1237936C900130B9D /* DZPraiseHelper.m in Sources */,
 				277EDC711E6D5B8D00E8F0E1 /* TitleSelectView.m in Sources */,
 				274C95161EE647C300163106 /* AttachmentBar.m in Sources */,
 				70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */,
@@ -4398,7 +4371,6 @@
 				70621279237936C900130B9D /* DZPostTypeSelectView.m in Sources */,
 				70621292237936C900130B9D /* DZVoteTitleCell.m in Sources */,
 				70F9F8CF237AA72B0067B308 /* UIImage+Limit.m in Sources */,
-				706212A3237936C900130B9D /* CheckHelper.m in Sources */,
 				70621276237936C800130B9D /* VerifyThreadRemindView.m in Sources */,
 				947ECB112064D403002D3536 /* JTImagePickerCell.m in Sources */,
 				70621286237936C900130B9D /* NewThreadTypeModel.m in Sources */,
@@ -4609,7 +4581,7 @@
 				709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */,
 				947ECB0B2064D403002D3536 /* JFPhotoView.m in Sources */,
 				940BB6ED2079F799001BC1D1 /* SendEmailHelper.m in Sources */,
-				706212A2237936C900130B9D /* DZCollectionTool.m in Sources */,
+				706212A2237936C900130B9D /* DZForumTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

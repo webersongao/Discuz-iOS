@@ -10,7 +10,7 @@
 #import "UIAlertController+Extension.h"
 
 #import "CollectionForumCell.h"
-#import "DZCollectionTool.h"
+#import "DZForumTool.h"
 
 @interface CollectionForumController ()
 
@@ -125,7 +125,7 @@
     
     NSString *fidStr = [[self.dataSourceArr objectAtIndex:index] objectForKey:@"id"];
     
-    [DZCollectionTool DZ_DeleCollection:fidStr type:collectForum success:^{
+    [DZForumTool DZ_DeleCollection:fidStr type:collectForum success:^{
         [self.dataSourceArr removeObjectAtIndex:index];
         [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
         [self.tableView reloadData];

@@ -7,8 +7,6 @@
 //
 
 #import "DZResetPwdController.h"
-#import "UsertermsController.h"
-
 #import "XinGeCenter.h"
 #import "DZResetPwdView.h"
 #import "DZAuthCodeView.h"
@@ -44,9 +42,7 @@
 }
 
 - (void)readTerms {
-    UsertermsController *usertermsVc = [[UsertermsController alloc] init];
-    usertermsVc.bbrulestxt = self.bbrulestxt;
-    [self.navigationController pushViewController:usertermsVc animated:YES];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
 }
 
 - (void)tapAction {

@@ -10,7 +10,59 @@
 #import "DZApiRequest.h"
 #import "UIImage+Limit.h"
 
+@interface DZUserNetTool ()
+
+
+@end
+
 @implementation DZUserNetTool
+
++ (instancetype)sharedTool {
+    static DZUserNetTool *helper = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[DZUserNetTool alloc] init];
+    });
+    return helper;
+}
+
+- (void)DZ_CheckRegisterAPIRequest {
+    [self DZ_CheckRequestSuccess:nil failure:nil];
+}
+
+- (void)DZ_CheckRegisterRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure {
+    [self DZ_CheckRequestSuccess:^{
+        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+            request.urlString = self.regUrl;
+        } success:^(id responseObject, JTLoadType type) {
+            NSDictionary *reginput = [[responseObject objectForKey:@"Variables"] objectForKey:@"reginput"];
+            if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]] &&  [DataCheck isValidDictionary:reginput]) {
+                self.regKeyDic = [NSDictionary dictionaryWithDictionary:reginput];
+            }
+            success?success():nil;
+        } failed:^(NSError *error) {
+            failure?failure():nil;
+        }];
+    } failure:failure];
+}
+
+- (void)DZ_CheckRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure {
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_BaseCheck;
+    } success:^(id responseObject, JTLoadType type) {
+        NSString *regname = [responseObject objectForKey:@"regname"];
+        if ([DataCheck isValidString:regname]) {
+            NSString *regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,regname];
+            if ([DataCheck isValidString:[responseObject objectForKey:@"formhash"]]) {
+                [Environment sharedEnvironment].formhash = [responseObject objectForKey:@"formhash"];
+            }
+            self.regUrl = regUrl;
+        }
+        success?success():nil;
+    } failed:^(NSError *error) {
+        failure?failure():nil;
+    }];
+}
 
 + (void)DZ_UserUpdateAvatarToServer:(UIImage *)avatarImg  progress:(ProgressBlock)backProgress completion:(backBoolBlock)completion{
     

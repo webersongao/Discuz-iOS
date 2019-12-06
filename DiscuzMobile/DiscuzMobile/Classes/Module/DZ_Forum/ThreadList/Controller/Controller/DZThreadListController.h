@@ -17,7 +17,6 @@ typedef void(^EndRefreshBlock)(void);
 
 @property (nonatomic, copy) NSString *fid;
 @property (nonatomic, assign) NSInteger order;
-
 @property (nonatomic, copy) SendValueBlock sendListBlock;
 @property (nonatomic, copy) EndRefreshBlock endRefreshBlock;
 
