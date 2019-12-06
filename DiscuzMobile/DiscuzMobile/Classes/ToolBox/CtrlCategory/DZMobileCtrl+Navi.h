@@ -8,7 +8,7 @@
 
 #import "DZMobileCtrl.h"
 
-@class DZThreadVarModel;
+@class DZBaseAuthModel;
 @interface DZMobileCtrl (Navi)
 
 - (void)PushToController:(UIViewController *)CtrlVC;
@@ -95,7 +95,7 @@
 -(void)PushToAccountRegisterController;
 
 /// 发布帖子
--(void)PushToThreadPostController:(NSString *)fid thread:(DZThreadVarModel *)threadModel type:(PostType)type;
+-(void)PushToThreadPostController:(NSString *)fid thread:(DZBaseAuthModel *)threadModel type:(PostType)type;
 
 @end
 

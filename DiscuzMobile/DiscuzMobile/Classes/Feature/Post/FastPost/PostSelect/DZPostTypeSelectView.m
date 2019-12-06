@@ -98,14 +98,14 @@
 }
 
 // 请求网络后获取数据传入。
-- (void)setPostType:(NSString *)poll activity:(NSString *)activity debate:(NSString *)debate allowspecialonly:(NSString *)allowspecialonly allowpost:(NSString *)allowpost {
+ - (void)setPostType:(NSString *)poll activity:(NSString *)activity debate:(NSString *)debate allowspecialonly:(NSString *)allowspecialonly allowpost:(NSString *)allowpost {
     
     // 这里特殊帖子只包括
     NSDictionary *postDic = @{@"投票帖":poll,
                               @"活动帖":activity,
                               @"辩论帖":debate};
     NSMutableArray *typeArray = [NSMutableArray array];
-    if ([allowpost isEqualToString:@"1"]) {
+    if (allowpost && [allowpost isEqualToString:@"1"]) {
         for (PostTypeModel *typeModel in self.allTypeArray) {
             if ([typeModel.title isEqualToString:@"普通帖"]) {
                 if (![allowspecialonly isEqualToString:@"1"]) {
@@ -196,7 +196,7 @@
 
 
 /*
-- (void)setPostType:(NSString *)poll andActivity:(NSString *)activity andDebate:(NSString *)debate {
+- (void)setSinglePostType:(NSString *)poll andActivity:(NSString *)activity andDebate:(NSString *)debate {
     
     NSMutableArray *imagesArr = [NSMutableArray array];
     NSMutableArray *titleArr = [NSMutableArray array];

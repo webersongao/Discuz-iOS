@@ -12,12 +12,7 @@
 @implementation DZThreadVarModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"threadtypes" : [DZThreadTypesModel class],
-             @"allowperm" : [DZThreadPermModel class],
-             @"forum" : [DZForumModel class],
-             @"activity_setting" : [DZActivitySetModel class],
-             @"forum_threadlist" : [DZThreadListModel class]
-    };
+    return @{@"forum_threadlist" : [DZThreadListModel class]};
 }
 
 /**

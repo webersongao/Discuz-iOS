@@ -50,7 +50,6 @@
     } failed:^(NSError *error) {
         completion(nil,NO,error);
     }];
-    
 }
 
 /// 板块分类列表

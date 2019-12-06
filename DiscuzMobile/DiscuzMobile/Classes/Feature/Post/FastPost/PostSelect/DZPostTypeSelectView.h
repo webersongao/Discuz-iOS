@@ -30,7 +30,7 @@ typedef void(^SelectTypeBlock)(PostType type);
 
 - (void)setPostType:(NSString *)poll activity:(NSString *)activity debate:(NSString *)debate allowspecialonly:(NSString *)allowspecialonly allowpost:(NSString *)allowpost;
 
-//- (void)setPostType:(NSString *)poll andActivity:(NSString *)activity andDebate:(NSString *)debate;
+//- (void)setSinglePostType:(NSString *)poll andActivity:(NSString *)activity andDebate:(NSString *)debate;
 
 
 @end

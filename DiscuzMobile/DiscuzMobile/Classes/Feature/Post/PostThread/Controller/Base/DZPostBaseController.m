@@ -28,16 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    WBS 注释  与 self.dataForumTherad.threadtypes.types 类型不对，后面遇到再纠正
-//    if ([DataCheck isValidDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]]) {
-//
-//        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:[[self.dataForumTherad objectForKey:@"threadtypes"] objectForKey:@"types"]];
-//        [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-//            NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
-//            model.typeId = key;
-//            model.name = [obj flattenHTMLTrimWhiteSpace:NO];
-//            [self.typeArray addObject:model];
-//        }];
+    if (self.dataForumTherad.threadtypes.types.allValues.count) {
+        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:self.dataForumTherad.threadtypes.types];
+        [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
+            model.typeId = key;
+            model.name = [obj flattenHTMLTrimWhiteSpace:NO];
+            [self.typeArray addObject:model];
+        }];
         
         NSMutableArray *arr = [NSMutableArray array];
         for (NewThreadTypeModel *model in self.typeArray) {
@@ -48,8 +46,7 @@
             self.pickView = [[ZHPickView alloc] initPickviewWithArray:arr isHaveNavControler:NO];
             [self.pickView setToolbarTintColor:K_Color_ToolBar];
         }
-        
-//    }
+    }
     
     self.fid = self.dataForumTherad.forum.fid;
     self.uploadhash = self.dataForumTherad.allowperm.uploadhash;

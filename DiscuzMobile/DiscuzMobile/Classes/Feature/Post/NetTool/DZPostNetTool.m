@@ -26,11 +26,9 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         
         if (attacheType == DZAttacheImage || attacheType == DZAttacheVote) {
-//            type=image&
             if (attacheType == DZAttacheImage) {
                 [getParam setValue:@"image" forKey:@"type"];
             }
-            
             for (UIImage *image in attachArr) {
                 NSData *data = [image limitImageSize];
                 NSString *nowTime = [[NSDate date] stringFromDateFormat:@"yyyyMMddHHmmss"];
@@ -53,7 +51,7 @@
         if (100.f * progress.completedUnitCount/progress.totalUnitCount == 100) {
 //            complete?complete():nil;
         }
-        DLog(@"onProgress: %.2f", 100.f * progress.completedUnitCount/progress.totalUnitCount);
+//        DLog(@"onProgress: %.2f", 100.f * progress.completedUnitCount/progress.totalUnitCount);
     } success:^(id responseObject, JTLoadType type) {
         complete?complete():nil;
         if (attacheType == DZAttacheVote) {
@@ -61,7 +59,6 @@
             success?success(resDic):nil;
         } else {
             NSString * str =[[NSMutableString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            DLog(@"二进制转化的字符串%@",str);
             if ([DataCheck isValidString:str]) {
                 NSArray *responseArr = [str componentsSeparatedByString:@"|"];
                 if (responseArr.count == 5) {
@@ -86,11 +83,30 @@
     }];
 }
 
-- (void)newUpload:(NSArray *)attachArr {
-    
+// 判断是否有发帖权限
+- (void)DZ_CheckUserPostAuth:(NSString *)fid success:(void(^)(DZBaseAuthModel *authModel))success{
    
-    
+    NSString *fidStr = checkNull(fid);
+    NSDictionary * dic =@{@"fid":fidStr};
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+//        [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
+        request.urlString = DZ_Url_CheckPostAuth;
+        request.parameters = dic;
+        // ------------------ 这个地方，请求加个缓存 ------------
+        request.loadType = JTRequestTypeCache;
+        request.isCache = YES;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseAuthModel *model = [DZBaseAuthModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
+        if (success) {
+            success(model);
+        }
+    } failed:^(NSError *error) {
+        if (success) {
+            success(nil);
+        }
+    }];
 }
+
 
 
 - (NSDictionary *)uploadErrorDic {

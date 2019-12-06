@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZBaseAuthModel.h"
 
 typedef NS_ENUM(NSUInteger, DZAttacheType) {
     DZAttacheImage,
@@ -34,7 +35,8 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 - (void)DZ_UpLoadAttachmentArr:(NSArray *)attachArr attacheType:(DZAttacheType)attacheType getDic:(NSDictionary *)getDic postDic:(NSDictionary *)postDic complete:(void(^)(void))complete success:(void(^)(id response))success failure:(void(^)(NSError *error))failure;
 
 
-
+/// 判断是否有发帖权限
+- (void)DZ_CheckUserPostAuth:(NSString *)fid success:(void(^)(DZBaseAuthModel *authModel))success;
 
 
 @end

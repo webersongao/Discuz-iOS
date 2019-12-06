@@ -284,6 +284,7 @@
 		7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */; };
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
+		708306FA239A588A0083B015 /* DZBaseAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 708306F9239A588A0083B015 /* DZBaseAuthModel.m */; };
 		708AED5E238E5697000A4397 /* DZLoginRegNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED5D238E5697000A4397 /* DZLoginRegNetTool.m */; };
 		708AED65238E5703000A4397 /* DZPostNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED64238E5703000A4397 /* DZPostNetTool.m */; };
 		709622CB238BC6E900AF657F /* PRNaviSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622C2238BC6E900AF657F /* PRNaviSegmentView.m */; };
@@ -995,6 +996,8 @@
 		7065C99F237D61CA0056737C /* DZPostSiriViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostSiriViewController.h; sourceTree = "<group>"; };
 		7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostSiriViewController.m; sourceTree = "<group>"; };
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		708306F8239A588A0083B015 /* DZBaseAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseAuthModel.h; sourceTree = "<group>"; };
+		708306F9239A588A0083B015 /* DZBaseAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseAuthModel.m; sourceTree = "<group>"; };
 		708AED5C238E5697000A4397 /* DZLoginRegNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLoginRegNetTool.h; sourceTree = "<group>"; };
 		708AED5D238E5697000A4397 /* DZLoginRegNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLoginRegNetTool.m; sourceTree = "<group>"; };
 		708AED63238E5703000A4397 /* DZPostNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostNetTool.h; sourceTree = "<group>"; };
@@ -2973,6 +2976,8 @@
 				70DFD792237A95DD00A13F0F /* DZNoticeModel.m */,
 				70DFD78F237A95DD00A13F0F /* DZBaseVarModel.h */,
 				70DFD78C237A95DD00A13F0F /* DZBaseVarModel.m */,
+				708306F8239A588A0083B015 /* DZBaseAuthModel.h */,
+				708306F9239A588A0083B015 /* DZBaseAuthModel.m */,
 				70F3CBCA238E8EB300BFA199 /* DZBaseResModel.h */,
 				70F3CBCB238E8EB300BFA199 /* DZBaseResModel.m */,
 			);
@@ -4516,6 +4521,7 @@
 				7002A37B2383D8CD00BC0C61 /* DZHomeVarModel.m in Sources */,
 				70EBEB832387C4C1005333D4 /* DZBaseForumModel.m in Sources */,
 				947ECB172064D403002D3536 /* WSImageModel.m in Sources */,
+				708306FA239A588A0083B015 /* DZBaseAuthModel.m in Sources */,
 				700BB5E92394EF9C002A62DE /* DZPrivacyModel.m in Sources */,
 				709A730A2387E71900DF04CE /* DZBaseCollectionView.m in Sources */,
 				70F19E80237A909300499BED /* PRLayouter.m in Sources */,

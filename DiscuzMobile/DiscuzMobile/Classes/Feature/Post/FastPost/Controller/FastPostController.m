@@ -11,6 +11,7 @@
 #import "DZForumLeftCell.h"
 #import "FastLevelCell.h"
 #import "PostTypeModel.h"
+#import "DZPostNetTool.h"
 #import "DZThreadNetTool.h"
 #import "DZPostNormalController.h"
 #import "DZPostVoteController.h"
@@ -26,7 +27,7 @@
 @property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, copy) NSString *selectFid;
-@property (nonatomic, strong) NSMutableDictionary *Variables;
+@property (nonatomic, strong) DZBaseAuthModel *authModel;
 
 @property (nonatomic, strong) UIImageView *navBarHairlineImageView;
 @property (nonatomic, strong) UIButton *refreshBtn;
@@ -170,9 +171,7 @@
 
 #pragma mark - 点击去往发帖页
 - (void)switchTypeTopost:(PostType)type {
-#warning 该位置需要完全转换成Model赋值，此写法只是为了不报错 临时注释
-    DZThreadVarModel *varModel = nil;// self.Variables;
-    [[DZMobileCtrl sharedCtrl] PushToThreadPostController:self.selectFid thread:varModel type:type];
+    [[DZMobileCtrl sharedCtrl] PushToThreadPostController:self.selectFid thread:self.authModel type:type];
 }
 
 - (void)closeBtnClick {
@@ -343,59 +342,32 @@
         self.isSelected = YES;
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
         NSArray *nodeArr = self.dataSourceArr[indexPath.section];
         DZForumNodeModel *node = nodeArr[indexPath.row];
         self.selectFid = node.infoModel.fid;
-        
-        NSDictionary * dic =@{@"fid":node.infoModel.fid};
-        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-            [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
-            request.urlString = DZ_Url_CheckPostAuth;
-            request.parameters = dic;
-            
-            // ------------------ 这个地方，请求加个缓存 ------------
-            request.loadType = JTRequestTypeCache;
-            request.isCache = YES;
-            // ------------------ 这个地方，请求加个缓存 ------------
-            
-        } success:^(id responseObject, JTLoadType type) {
-            DLog(@"%@",responseObject);
-            [self.HUD hideAnimated:YES];
-            self.Variables = [responseObject objectForKey:@"Variables"];
-            NSDictionary *group = [self.Variables objectForKey:@"group"];
-            if ([DataCheck isValidDictionary:group]) { // 能发的帖子类型处理
-                NSString *allowpost = [[self.Variables objectForKey:@"allowperm"] objectForKey:@"allowpost"];
-                
-                NSString *allowpostpoll = @"0";
-                NSString *allowpostactivity = @"0";
-                NSString *allowpostdebate = @"0";
-                if ([DataCheck isValidString:[group objectForKey:@"allowpostpoll"]]) {
-                    allowpostpoll = [group objectForKey:@"allowpostpoll"];
-                }
-                if ([DataCheck isValidString:[group objectForKey:@"allowpostactivity"]]) {
-                    allowpostactivity = [group objectForKey:@"allowpostactivity"];
-                }
-                if ([DataCheck isValidString:[group objectForKey:@"allowpostdebate"]]) {
-                    allowpostdebate = [group objectForKey:@"allowpostdebate"];
-                }
-                NSString *allowspecialonly = [[self.Variables objectForKey:@"forum"] objectForKey:@"allowspecialonly"];
-                [self.selectView setPostType:allowpostpoll
-                                    activity:allowpostactivity
-                                      debate:allowpostdebate
+        [self CheckNodeUserPostAuthWithNode:node];
+    }
+}
+
+-(void)CheckNodeUserPostAuthWithNode:(DZForumNodeModel *)node{
+    [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
+    [[DZPostNetTool sharedTool] DZ_CheckUserPostAuth:node.infoModel.fid success:^(DZBaseAuthModel *authModel) {
+        if (authModel) {
+            self.authModel = authModel;
+            if (authModel.group) { // 能发的帖子类型处理
+                NSString *allowspecialonly = authModel.forum.allowspecialonly;
+                [self.selectView setPostType:checkInteger(authModel.group.allowpostpoll)
+                                    activity:checkInteger(authModel.group.allowpostactivity)
+                                      debate:checkInteger(authModel.group.allowpostdebate)
                             allowspecialonly:allowspecialonly
-                                   allowpost:allowpost];
-                
+                                   allowpost:authModel.allowperm.allowpost];
             } else {
                 [MBProgressHUD showInfo:@"暂无发帖权限"];
             }
-            
-        } failed:^(NSError *error) {
-            [self.HUD hideAnimated:YES];
-            [self showServerError:error];
-        }];
-        
-    }
+        }else{
+            [MBProgressHUD showInfo:@"暂无发帖权限"];
+        }
+    }];
 }
 
 // 向下滑（将出现的要重新计算一下）
@@ -472,13 +444,5 @@
     }
     return _refreshBtn;
 }
-
-- (NSMutableDictionary *)Variables {
-    if (!_Variables) {
-        _Variables = [NSMutableDictionary dictionary];
-    }
-    return _Variables;
-}
-
 
 @end

@@ -9,7 +9,7 @@
 #import "DZBaseTableViewController.h"
 #import "UITextView+EmojiCheck.h"
 #import "UITextField+EmojiCheck.h"
-#import "DZThreadVarModel.h"
+#import "DZBaseAuthModel.h"
 #import "NewThreadTypeModel.h"
 
 @class SeccodeverifyView,ZHPickView,DZImagePickerView,NewThreadTypeModel;
@@ -18,7 +18,7 @@ typedef void(^PushDetailBlock)(NSString *tid);
 
 @interface DZPostBaseController : DZBaseTableViewController
 
-@property (nonatomic, strong) DZThreadVarModel *dataForumTherad;
+@property (nonatomic, strong) DZBaseAuthModel *dataForumTherad;
 @property (nonatomic, copy) PushDetailBlock pushDetailBlock;
 
 @property (nonatomic ,strong) NSMutableArray<NewThreadTypeModel *> * typeArray;

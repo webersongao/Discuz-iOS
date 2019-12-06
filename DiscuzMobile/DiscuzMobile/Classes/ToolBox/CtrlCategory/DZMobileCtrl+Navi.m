@@ -253,7 +253,7 @@
 }
 
 /// 发布帖子
--(void)PushToThreadPostController:(NSString *)fid thread:(DZThreadVarModel *)threadModel type:(PostType)type{
+-(void)PushToThreadPostController:(NSString *)fid thread:(DZBaseAuthModel *)threadModel type:(PostType)type{
     DZPostBaseController * postVC = nil;
     switch (type) {
         case post_normal:
