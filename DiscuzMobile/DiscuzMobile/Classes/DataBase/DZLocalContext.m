@@ -10,4 +10,12 @@
 
 @implementation DZLocalContext
 
+-(DZUserModel *)userIfoWithUID:(NSString *)uid{
+    return nil;
+}
+
+
+
+
+
 @end
