@@ -39,7 +39,7 @@
     [self.contentView addSubview:self.selectView];
 }
 
-- (void)setActivityfield:(NSMutableDictionary *)activityfield {
+- (void)setActivityfield:(NSDictionary *)activityfield {
     
     _activityfield = activityfield;
     

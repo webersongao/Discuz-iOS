@@ -18,7 +18,7 @@ typedef void(^PushDetailBlock)(NSString *tid);
 
 @interface DZPostBaseController : DZBaseTableViewController
 
-@property (nonatomic, strong) DZBaseAuthModel *dataForumTherad;
+@property (nonatomic, strong) DZBaseAuthModel *authModel;
 @property (nonatomic, copy) PushDetailBlock pushDetailBlock;
 
 @property (nonatomic ,strong) NSMutableArray<NewThreadTypeModel *> * typeArray;

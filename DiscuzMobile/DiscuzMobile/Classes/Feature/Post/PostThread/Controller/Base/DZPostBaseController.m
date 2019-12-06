@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.dataForumTherad.threadtypes.types.allValues.count) {
-        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:self.dataForumTherad.threadtypes.types];
+    if (self.authModel.threadtypes.types.allValues.count) {
+        NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:self.authModel.threadtypes.types];
         [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
             model.typeId = key;
@@ -48,8 +48,8 @@
         }
     }
     
-    self.fid = self.dataForumTherad.forum.fid;
-    self.uploadhash = self.dataForumTherad.allowperm.uploadhash;
+    self.fid = self.authModel.forum.fid;
+    self.uploadhash = self.authModel.allowperm.uploadhash;
     
     [self checkPostAuth];
     [self.view addSubview:self.tableView];
@@ -58,7 +58,7 @@
 // 检查权限 : 发帖 回帖 上传权限
 -(void)checkPostAuth {
     
-    if (!self.dataForumTherad.allowperm && self.fid) { // 上页数据没有allowperm字段的时候再请求一次
+    if (!self.authModel.allowperm && self.fid) { // 上页数据没有allowperm字段的时候再请求一次
         NSDictionary * dic =@{@"fid":self.fid
                               };
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {

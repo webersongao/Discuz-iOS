@@ -14,7 +14,7 @@ typedef void(^SendUserArrayBlock)(NSArray *userArray);
 
 @property (nonatomic, strong) NSMutableArray *userArray;
 @property (nonatomic, strong) UILabel *titleLab;
-@property (nonatomic, strong) NSMutableDictionary *activityfield;
+@property (nonatomic, strong) NSDictionary *activityfield;
 
 @property (nonatomic, copy) SendUserArrayBlock senduserBlock;
 

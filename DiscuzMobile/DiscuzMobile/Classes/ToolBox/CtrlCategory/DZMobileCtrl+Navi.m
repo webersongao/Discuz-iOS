@@ -271,7 +271,7 @@
         default:
             break;
     }
-    postVC.dataForumTherad = threadModel;
+    postVC.authModel = threadModel;
     postVC.pushDetailBlock = ^(NSString *tid) {
         [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
     };

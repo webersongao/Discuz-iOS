@@ -67,8 +67,8 @@
     
     _dropSelect = NO;
     
-    if (self.dataForumTherad.activity_setting.activitytype.count) {
-        self.activitytypeArr = [NSMutableArray arrayWithArray:self.dataForumTherad.activity_setting.activitytype];
+    if (self.authModel.activity_setting.activitytype.count) {
+        self.activitytypeArr = [NSMutableArray arrayWithArray:self.authModel.activity_setting.activitytype];
         [self.activitytypeArr addObject:@"自定义"];
     }
     
@@ -517,7 +517,7 @@
                     ActiveUserFieldCell *userFieldCell = [tableView dequeueReusableCellWithIdentifier:userCellID];
                     if (userFieldCell == nil) {
                         userFieldCell = [[ActiveUserFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userCellID];
-                        userFieldCell.activityfield = self.dataForumTherad.activity_setting.activityfield;
+                        userFieldCell.activityfield = self.authModel.activity_setting.activityfield;
                         
                         KWEAKSELF;
                         userFieldCell.senduserBlock = ^(NSArray *userArray) {
