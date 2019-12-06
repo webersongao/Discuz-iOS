@@ -10,35 +10,14 @@
 
 @implementation DZForumModel
 
-//- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-//
-//}
-//
-//- (void)setValue:(id)value forKey:(NSString *)key {
-//    if ([key isEqualToString:@"id"]) {
-//        _fid = value;
-//    }
-//    else if ([key isEqualToString:@"lastpost"]) {
-//        if ([DataCheck isValidDictionary:value]) {
-//            _lastpost = [[value objectForKey:@"dateline"] transformationStr];
-//        } else {
-//            [super setValue:value forKey:key];
-//        }
-//    }
-//    else if ([key isEqualToString:@"favorite"]) {
-//        _favorited = value;
-//    }else {
-//        if ([@[@"todayposts",@"threads",@"posts"] containsObject:key]) {
-//            value = [value onePointCountWithNumstring];
-//        } else if ([@[@"name",@"description"] containsObject:key]) {
-//            value = [[value transformationStr] flattenHTMLTrimWhiteSpace:YES];
-//            if ([key isEqualToString:@"description"]) {
-//                _descrip = value;
-//            }
-//        }
-//        [super setValue:value forKey:key];
-//    }
-//}
+-(void)setLastpost:(id)lastpost{
+    if ([DataCheck isValidDictionary:lastpost]) {
+        _lastpost = [[lastpost stringForKey:@"dateline"] transformationStr];
+    } else {
+        _lastpost = checkNull(lastpost);
+    }
+}
+
 
 
 @end

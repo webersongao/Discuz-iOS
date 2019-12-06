@@ -312,7 +312,7 @@
 -(void)postData {
     [self.view endEditing:YES];
     
-    NSDictionary * getdic = @{@"fid":self.fid};
+    NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
     NSMutableDictionary * postdic=  [self creatDicdata];
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
@@ -405,14 +405,14 @@
 }
 
 - (void)uploadImageArr:(NSArray *)imageArr {
-    if (![DataCheck isValidString:self.uploadhash]) {
+    if (![DataCheck isValidString:self.authModel.allowperm.uploadhash]) {
         [MBProgressHUD showInfo:@"无权限上传图片"];
         return;
     }
-    NSMutableDictionary *dic=@{@"hash":self.uploadhash,
+    NSMutableDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
                         @"uid":[NSString stringWithFormat:@"%@",[Environment sharedEnvironment].member_uid],
                         }.mutableCopy;
-    NSMutableDictionary * getdic=@{@"fid":self.fid,
+    NSMutableDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                                    @"type":@"image",
                                    }.mutableCopy;
     
@@ -456,10 +456,10 @@
 
 - (void)uploadAudio {
     
-    NSDictionary *dic=@{@"hash":self.uploadhash,
+    NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
                         @"uid":[NSString stringWithFormat:@"%@",[Environment sharedEnvironment].member_uid],
                         };
-    NSDictionary * getdic=@{@"fid":self.fid};
+    NSDictionary * getdic=@{@"fid":self.authModel.forum.fid};
     NSArray *arr = @[[AudioTool shareInstance].mp3Url.absoluteString];
     [self.HUD showLoadingMessag:@"正在上传语音..." toView:self.view];
     [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:arr attacheType:DZAttacheAudio getDic:getdic postDic:dic complete:^{

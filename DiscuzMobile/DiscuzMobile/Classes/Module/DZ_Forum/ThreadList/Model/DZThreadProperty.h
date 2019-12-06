@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@interface DZThreadTypeModel : NSObject
+
+@property (nonatomic, copy) NSString *fid;
+@property (nonatomic, copy) NSString *typeId;
+@property (nonatomic, copy) NSString *name;
+
+@end
+
 @interface DZThreadPermModel : NSObject
 
 @property (nonatomic, copy) NSString *allowpost;  //!< 属性注释

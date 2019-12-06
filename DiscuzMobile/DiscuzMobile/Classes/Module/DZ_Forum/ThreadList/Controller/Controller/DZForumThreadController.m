@@ -442,8 +442,8 @@
     }
     self.infoView.titleLab.text = self.forumInfo.name;
     self.infoView.threadsLab.text = [NSString stringWithFormat:@"主题：%@",self.forumInfo.threads];
-    if ([DataCheck isValidString:self.forumInfo.descrip]) {
-        self.infoView.describLab.text = self.forumInfo.descrip;
+    if ([DataCheck isValidString:self.forumInfo.forum_desc]) {
+        self.infoView.describLab.text = self.forumInfo.forum_desc;
         [self.infoView layoutIfNeeded];
     }
     self.infoView.height = CGRectGetMaxY(self.infoView.describLab.frame) + 15;
@@ -453,11 +453,8 @@
 
 - (void)setInfoViewWithIcon:(NSString *)icon andtodaypost:(NSString *)todaypost {
     if ([DataCheck isValidString:icon] && ![[DZMobileCtrl sharedCtrl] isGraphFree]) {
-        
         [self.infoView.IconV sd_setImageWithURL:[NSURL URLWithString:icon] placeholderImage:[UIImage imageNamed:@"forumCommon_l"] options:SDWebImageRetryFailed];
-        
     } else {
-        
         if ([todaypost integerValue] > 0) {
             self.infoView.IconV.image = [UIImage imageNamed:@"forumNew_l"];
         } else {

@@ -10,9 +10,8 @@
 #import "UITextView+EmojiCheck.h"
 #import "UITextField+EmojiCheck.h"
 #import "DZBaseAuthModel.h"
-#import "NewThreadTypeModel.h"
 
-@class SeccodeverifyView,ZHPickView,DZImagePickerView,NewThreadTypeModel;
+@class SeccodeverifyView,ZHPickView,DZImagePickerView;
 
 typedef void(^PushDetailBlock)(NSString *tid);
 
@@ -21,9 +20,7 @@ typedef void(^PushDetailBlock)(NSString *tid);
 @property (nonatomic, strong) DZBaseAuthModel *authModel;
 @property (nonatomic, copy) PushDetailBlock pushDetailBlock;
 
-@property (nonatomic ,strong) NSMutableArray<NewThreadTypeModel *> * typeArray;
-@property (nonatomic, copy) NSString *uploadhash;
-@property (nonatomic, copy) NSString *fid;
+@property (nonatomic ,strong) NSMutableArray<DZThreadTypeModel *> * typeArray;
 
 @property (nonatomic, strong) ZHPickView *pickView;
 // 验证码

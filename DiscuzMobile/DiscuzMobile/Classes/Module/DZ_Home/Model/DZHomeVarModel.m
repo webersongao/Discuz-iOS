@@ -11,15 +11,6 @@
 
 @implementation DZHomeVarModel
 
-//+ (void)initialize
-//{
-//    if (self == [DZHomeVarModel class]) {
-//        [DZHomeVarModel mj_setupObjectClassInArray:^NSDictionary *{
-//            return @{@"data":@"DZThreadListModel"};
-//        }];
-//    }
-//}
-
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"data" : [DZThreadListModel class]};
 }

@@ -11,12 +11,31 @@
 @implementation DZBaseForumModel
 
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"forum_desc" : @"description"};
+    return @{@"fid" : @"id",
+             @"forum_desc" : @"description",
+             @"favorited" : @"favorite",
+    };
 }
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"sublist" : [DZBaseForumModel class]
     };
+}
+
+-(void)setName:(NSString *)name{
+    _name = [[name transformationStr] flattenHTMLTrimWhiteSpace:YES];
+}
+
+-(void)setPosts:(NSString *)posts{
+    _posts = [posts onePointCountWithNumstring];
+}
+
+-(void)setTodayposts:(NSString *)todayposts{
+    _todayposts = [todayposts onePointCountWithNumstring];
+}
+
+-(void)setThreads:(NSString *)threads{
+    _threads = [threads onePointCountWithNumstring];
 }
 
 - (NSString *)description {

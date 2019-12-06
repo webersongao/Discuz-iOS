@@ -12,12 +12,12 @@
 
 @property (nonatomic, copy) NSString *available;
 @property (nonatomic, copy) NSString *choices;
-@property (nonatomic, strong) NSArray *choicesArray;
 @property (nonatomic, copy) NSString *fieldid;
 @property (nonatomic, copy) NSString *formtype;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *payment;
 
+@property (nonatomic, strong) NSArray *choicesArray;
 @property (nonatomic, copy) NSString *fieldValue;
 
 @end

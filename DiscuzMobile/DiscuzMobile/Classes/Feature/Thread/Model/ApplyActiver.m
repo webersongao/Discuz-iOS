@@ -10,23 +10,13 @@
 
 @implementation ApplyActiver
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    
-    if ([key isEqualToString:@"dateline"]) {
-        _dateline = [value transformationStr];
-    }
-    else if ([key isEqualToString:@"dbufielddata"]) {
-        if ([DataCheck isValidDictionary:value]) {
-            _dbufielddata = value;
-        } else {
-            _dbufielddata = [NSMutableDictionary dictionary];
-        }
-    } else {
-        [super setValue:value forKey:key];
-    }
+-(void)setDateline:(NSString *)dateline{
+    _dateline = [dateline transformationStr];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-}
+
+
+
+
 
 @end

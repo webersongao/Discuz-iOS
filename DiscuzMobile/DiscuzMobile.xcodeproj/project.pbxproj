@@ -186,7 +186,6 @@
 		70621283237936C900130B9D /* DZPostDebateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C0237936C800130B9D /* DZPostDebateController.m */; };
 		70621284237936C900130B9D /* DZPostNormalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C1237936C800130B9D /* DZPostNormalController.m */; };
 		70621285237936C900130B9D /* DZPostActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C3237936C800130B9D /* DZPostActivityController.m */; };
-		70621286237936C900130B9D /* NewThreadTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C5237936C800130B9D /* NewThreadTypeModel.m */; };
 		70621287237936C900130B9D /* PostVoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C6237936C800130B9D /* PostVoteModel.m */; };
 		70621288237936C900130B9D /* PostNormalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C7237936C800130B9D /* PostNormalModel.m */; };
 		70621289237936C900130B9D /* PostDebateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C8237936C800130B9D /* PostDebateModel.m */; };
@@ -803,13 +802,11 @@
 		706210C1237936C800130B9D /* DZPostNormalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostNormalController.m; sourceTree = "<group>"; };
 		706210C2237936C800130B9D /* DZPostBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostBaseController.h; sourceTree = "<group>"; };
 		706210C3237936C800130B9D /* DZPostActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostActivityController.m; sourceTree = "<group>"; };
-		706210C5237936C800130B9D /* NewThreadTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewThreadTypeModel.m; sourceTree = "<group>"; };
 		706210C6237936C800130B9D /* PostVoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostVoteModel.m; sourceTree = "<group>"; };
 		706210C7237936C800130B9D /* PostNormalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostNormalModel.m; sourceTree = "<group>"; };
 		706210C8237936C800130B9D /* PostDebateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDebateModel.m; sourceTree = "<group>"; };
 		706210C9237936C800130B9D /* PostActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostActivityModel.m; sourceTree = "<group>"; };
 		706210CA237936C800130B9D /* PostVoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostVoteModel.h; sourceTree = "<group>"; };
-		706210CB237936C800130B9D /* NewThreadTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewThreadTypeModel.h; sourceTree = "<group>"; };
 		706210CC237936C800130B9D /* PostNormalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostNormalModel.h; sourceTree = "<group>"; };
 		706210CD237936C800130B9D /* PostDebateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDebateModel.h; sourceTree = "<group>"; };
 		706210CE237936C800130B9D /* PostActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostActivityModel.h; sourceTree = "<group>"; };
@@ -2230,8 +2227,6 @@
 				706210C8237936C800130B9D /* PostDebateModel.m */,
 				706210CE237936C800130B9D /* PostActivityModel.h */,
 				706210C9237936C800130B9D /* PostActivityModel.m */,
-				706210CB237936C800130B9D /* NewThreadTypeModel.h */,
-				706210C5237936C800130B9D /* NewThreadTypeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4378,7 +4373,6 @@
 				70F9F8CF237AA72B0067B308 /* UIImage+Limit.m in Sources */,
 				70621276237936C800130B9D /* VerifyThreadRemindView.m in Sources */,
 				947ECB112064D403002D3536 /* JTImagePickerCell.m in Sources */,
-				70621286237936C900130B9D /* NewThreadTypeModel.m in Sources */,
 				70FBDCE12383FC1B00FC296E /* CollectionForumController.m in Sources */,
 				27CD9D2C1DDEA87F0075831B /* SDWaitingView.m in Sources */,
 				704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */,

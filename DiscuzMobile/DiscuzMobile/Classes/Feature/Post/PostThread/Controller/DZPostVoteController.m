@@ -419,7 +419,7 @@ static int voteIndex = 0 ;
     
     
     // post需传值 formhash subject标题 typeid message帖子内容 没有内容就填写nil attachnew[aid][description] mobiletype allowlocal allowsound allowphoto location special maxchoices expiration
-    NSDictionary * getDic = @{@"fid":self.fid};
+    NSDictionary * getDic = @{@"fid":self.authModel.forum.fid};
     NSMutableDictionary  * postDic =[NSMutableDictionary dictionary ];
     // 设置回帖的时候提醒作者
     [postDic setValue:@"1" forKey:@"allownoticeauthor"];
@@ -545,15 +545,15 @@ static int voteIndex = 0 ;
     self.imgBtnTag = tag;
     NSArray * imagear = [NSArray arrayWithObject:image];
     
-    if (![DataCheck isValidString:self.uploadhash]) {
+    if (![DataCheck isValidString:self.authModel.allowperm.uploadhash]) {
         [MBProgressHUD showInfo:@"无权限上传图片"];
         return;
     }
     
-    NSDictionary *dic=@{@"hash":self.uploadhash,
+    NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
                         @"uid":[Environment sharedEnvironment].member_uid,
                         };
-    NSDictionary * getdic=@{@"fid":self.fid,
+    NSDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                             @"operation":@"poll"};
     
     [self.HUD showLoadingMessag:@"上传图片" toView:self.view];

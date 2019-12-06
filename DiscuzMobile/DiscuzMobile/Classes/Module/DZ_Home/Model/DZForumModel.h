@@ -25,7 +25,6 @@
 
 // 以下字段 区分接口使用 慎用！！！
 @property (nonatomic, copy) NSString *rank;
-@property (nonatomic, copy) NSString *descrip;
 @property (nonatomic, copy) NSString *threadmodcount;
 @property (nonatomic, copy) NSString *title;
 

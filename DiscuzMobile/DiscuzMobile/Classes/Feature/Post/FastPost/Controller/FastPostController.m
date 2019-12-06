@@ -352,6 +352,7 @@
 -(void)CheckNodeUserPostAuthWithNode:(DZForumNodeModel *)node{
     [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
     [[DZPostNetTool sharedTool] DZ_CheckUserPostAuth:node.infoModel.fid success:^(DZBaseAuthModel *authModel) {
+        [self.HUD hide];
         if (authModel) {
             self.authModel = authModel;
             if (authModel.group) { // 能发的帖子类型处理

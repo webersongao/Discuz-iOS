@@ -89,7 +89,6 @@
     NSString *fidStr = checkNull(fid);
     NSDictionary * dic =@{@"fid":fidStr};
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-//        [self.HUD showLoadingMessag:@"验证发帖权限" toView:self.view];
         request.urlString = DZ_Url_CheckPostAuth;
         request.parameters = dic;
         // ------------------ 这个地方，请求加个缓存 ------------

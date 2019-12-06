@@ -10,6 +10,7 @@
 #import "UIAlertController+Extension.h"
 #import "SeccodeverifyView.h"
 #import "ZHPickView.h"
+#import "DZPostNetTool.h"
 #import "DZImagePickerView.h"
 
 @interface DZPostBaseController ()
@@ -31,14 +32,16 @@
     if (self.authModel.threadtypes.types.allValues.count) {
         NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:self.authModel.threadtypes.types];
         [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            NewThreadTypeModel *model = [[NewThreadTypeModel alloc] init];
+            DZThreadTypeModel *model = [[DZThreadTypeModel alloc] init];
             model.typeId = key;
             model.name = [obj flattenHTMLTrimWhiteSpace:NO];
             [self.typeArray addObject:model];
         }];
         
+        
+        
         NSMutableArray *arr = [NSMutableArray array];
-        for (NewThreadTypeModel *model in self.typeArray) {
+        for (DZThreadTypeModel *model in self.typeArray) {
             [arr addObject:model.name];
         }
         
@@ -47,37 +50,8 @@
             [self.pickView setToolbarTintColor:K_Color_ToolBar];
         }
     }
-    
-    self.fid = self.authModel.forum.fid;
-    self.uploadhash = self.authModel.allowperm.uploadhash;
-    
-    [self checkPostAuth];
-    [self.view addSubview:self.tableView];
-}
 
-// 检查权限 : 发帖 回帖 上传权限
--(void)checkPostAuth {
-    
-    if (!self.authModel.allowperm && self.fid) { // 上页数据没有allowperm字段的时候再请求一次
-        NSDictionary * dic =@{@"fid":self.fid
-                              };
-        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-            [self.HUD showLoadingMessag:@"检查发帖权限" toView:self.view];
-            request.urlString = DZ_Url_CheckPostAuth;
-            request.parameters = dic;
-        } success:^(id responseObject, JTLoadType type) {
-            [self.HUD hide];
-            if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]]) { // 获取验证发帖权限数据
-                if ([DataCheck isValidString:self.uploadhash]) {
-                    if ([DataCheck isValidDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"allowperm"]]) {
-                        self.uploadhash = [[[responseObject objectForKey:@"Variables"] objectForKey:@"allowperm"] objectForKey:@"uploadhash"];
-                    }
-                }
-            }
-        } failed:^(NSError *error) {
-            [self.HUD hide];
-        }];
-    }
+    [self.view addSubview:self.tableView];
 }
 
 - (void)viewEndEditing {
@@ -146,7 +120,7 @@
     return _pickerView;
 }
 
-- (NSMutableArray<NewThreadTypeModel *> *)typeArray {
+- (NSMutableArray<DZThreadTypeModel *> *)typeArray {
     if (!_typeArray) {
         _typeArray = [NSMutableArray array];
     }

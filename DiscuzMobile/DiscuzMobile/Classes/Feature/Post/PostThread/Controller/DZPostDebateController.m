@@ -283,7 +283,7 @@
         return;
     }
     
-    NSDictionary * getdic = @{@"fid":self.fid};
+    NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
     NSMutableDictionary * postdic=  [self creatDicdata];
     [self.HUD showLoadingMessag:@"发送中" toView:self.view];
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {

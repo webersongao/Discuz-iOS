@@ -21,16 +21,14 @@
     }
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    [super setValue:value forKey:key];
-    if ([key isEqualToString:@"cookiepre"]) {
-        _authKey = [value stringByAppendingString:@"auth"];
-    }
++ (NSDictionary*)modelCustomPropertyMapper {
+    return @{
+        @"authKey" : @"cookiepre",
+    };
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+-(void)setAuthKey:(NSString *)authKey{
+    _authKey = [authKey stringByAppendingString:@"auth"];
 }
-
 
 @end

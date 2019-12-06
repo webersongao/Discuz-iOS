@@ -165,13 +165,13 @@
 - (void)uploadImage:(UIImage *)image {
     NSArray * imagear=[NSArray arrayWithObject:image];
     
-    NSString *uploadhash = self.uploadhash;
+    NSString *uploadhash = self.authModel.allowperm.uploadhash;
     
     NSDictionary *dic = @{@"hash":uploadhash,
                           @"uid":[Environment sharedEnvironment].member_uid
                           };
   
-    NSDictionary * getdic = @{@"fid":self.fid};
+    NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
     [self.HUD showLoadingMessag:@"上传中" toView:self.view];
     [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:imagear attacheType:DZAttacheImage getDic:getdic postDic:dic complete:^{
         [self.HUD hide];
@@ -230,7 +230,7 @@
 - (void)postActiviti {
     
     NSMutableDictionary  * dic = [NSMutableDictionary dictionaryWithDictionary:[self createPostDic]];;
-    NSDictionary * getDic= @{@"fid":self.fid};
+    NSDictionary * getDic= @{@"fid":self.authModel.forum.fid};
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         [self.HUD showLoadingMessag:@"活动发起中" toView:self.view];
         self.HUD.userInteractionEnabled = YES;

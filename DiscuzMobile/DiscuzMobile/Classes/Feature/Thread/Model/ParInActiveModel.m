@@ -10,18 +10,13 @@
 
 @implementation ParInActiveModel
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    [super setValue:value forKey:key];
-    if ([key isEqualToString:@"choices"]) {
-        if ([DataCheck isValidString:value]) {
-            _choicesArray = [value componentsSeparatedByString:@"\n"];
-        }
-        
-    }
-}
-
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
+}
+
+-(void)setChoices:(NSString *)choices{
+    _choices = choices;
+    _choicesArray = [choices componentsSeparatedByString:@"\n"];
 }
 
 @end
