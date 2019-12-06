@@ -688,6 +688,7 @@
 		700BB5E62394EF81002A62DE /* DZUserItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZUserItemModel.h; sourceTree = "<group>"; };
 		700BB5E72394EF9C002A62DE /* DZPrivacyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPrivacyModel.h; sourceTree = "<group>"; };
 		700BB5E82394EF9C002A62DE /* DZPrivacyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPrivacyModel.m; sourceTree = "<group>"; };
+		701572762399F3F300E2E710 /* DZMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMacro.h; sourceTree = "<group>"; };
 		701F378823851D0D000F7953 /* HomeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeader.h; sourceTree = "<group>"; };
 		701F3789238520A1000F7953 /* DZHomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeCollectionCell.h; sourceTree = "<group>"; };
 		701F378A238520A1000F7953 /* DZHomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZHomeCollectionCell.m; sourceTree = "<group>"; };
@@ -3660,6 +3661,7 @@
 			isa = PBXGroup;
 			children = (
 				943430A62022F551009C0102 /* DZColor.h */,
+				701572762399F3F300E2E710 /* DZMacro.h */,
 				943430A82022F870009C0102 /* DZConstant.h */,
 				2750F7E41EB2F77A008E9E80 /* DZBaseConfig.h */,
 				94195AEB20246E120024D074 /* DZURLStrings.h */,

@@ -31,11 +31,17 @@
 #import "UsertermsController.h"
 #import "DZRegisterController.h"
 #import "DZJudgeBoundController.h"
+#import "DZPostNormalController.h"
+#import "DZPostVoteController.h"
+#import "DZPostDebateController.h"
+#import "DZPostActivityController.h""
 
 @implementation DZMobileCtrl (Navi)
 
 - (void)PushToController:(UIViewController *)CtrlVC{
-    [self.mainNavi pushViewController:CtrlVC animated:YES];
+    if (CtrlVC) {    
+        [self.mainNavi pushViewController:CtrlVC animated:YES];
+    }
 }
 
 - (void)PushToOtherUserController:(NSString *)userId{
@@ -245,7 +251,31 @@
     [self.mainNavi pushViewController:regVC animated:YES];
 }
 
-
+/// 发布帖子
+-(void)PushToThreadPostController:(NSString *)fid thread:(DZThreadVarModel *)threadModel type:(PostType)type{
+    DZPostBaseController * postVC = nil;
+    switch (type) {
+        case post_normal:
+            postVC = [[DZPostNormalController alloc] init];
+            break;
+        case post_vote:
+            postVC = [[DZPostVoteController alloc] init];
+            break;
+        case post_activity:
+            postVC = [[DZPostActivityController alloc] init];
+            break;
+        case post_debate:
+            postVC = [[DZPostDebateController alloc] init];
+            break;
+        default:
+            break;
+    }
+    postVC.dataForumTherad = threadModel;
+    postVC.pushDetailBlock = ^(NSString *tid) {
+        [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
+    };
+    [[DZMobileCtrl sharedCtrl] PushToController:postVC];
+}
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DZMobileCtrl.h"
 
+@class DZThreadVarModel;
 @interface DZMobileCtrl (Navi)
 
 - (void)PushToController:(UIViewController *)CtrlVC;
@@ -72,9 +73,6 @@
 /// 消息聊天界面
 -(void)PushToMsgChatController:(NSString *)touid name:(NSString *)userName;
 
-/// 域名选择
--(void)PushToDomainSettingController;
-
 /// appstore 评价APP
 -(void)PushToAppStoreWebview;
 
@@ -96,7 +94,8 @@
 /// 用户注册
 -(void)PushToAccountRegisterController;
 
-
+/// 发布帖子
+-(void)PushToThreadPostController:(NSString *)fid thread:(DZThreadVarModel *)threadModel type:(PostType)type;
 
 @end
 

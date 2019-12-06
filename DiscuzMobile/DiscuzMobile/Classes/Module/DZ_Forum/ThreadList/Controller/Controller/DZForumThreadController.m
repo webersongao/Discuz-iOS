@@ -11,10 +11,6 @@
 #import "DZThreadListController.h"
 #import "DZForumContainListView.h"
 #import "DZForumThreadMixContainer.h"
-#import "DZPostNormalController.h"
-#import "DZPostVoteController.h"
-#import "DZPostDebateController.h"
-#import "DZPostActivityController.h"
 #import "DZMySubjectController.h"
 #import "DZPostTypeSelectView.h"
 #import "DZForumListModel.h"
@@ -165,11 +161,6 @@
     self.tipView.tipAnimatefinsh = YES;
 }
 
-- (void)postSucceedToDetail:(NSString *)tid {
-    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
-}
-
-
 - (void)setForumInfoHeader {
     
     self.infoView = [[DZForumInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 75 + 10)];
@@ -246,66 +237,8 @@
 }
 
 - (void)switchTypeTopost:(PostType)type {
-    switch (type) {
-        case post_normal:
-            [self postNormal];
-            break;
-        case post_vote:
-            [self postVote];
-            break;
-        case post_activity:
-            [self postActivity];
-            break;
-        case post_debate:
-            [self postDebate];
-            break;
-        default:
-            break;
-    }
+    [[DZMobileCtrl sharedCtrl] PushToThreadPostController:nil thread:self.VarModel type:type];
 }
-
-- (void)postNormal {
-    KWEAKSELF;
-    DZPostNormalController * tvc = [[DZPostNormalController alloc] init];
-    tvc.dataForumTherad = self.VarModel;
-    tvc.pushDetailBlock = ^(NSString *tid) {
-        [weakSelf postSucceedToDetail:tid];
-    };
-    [[DZMobileCtrl sharedCtrl] PushToController:tvc];
-}
-
-- (void)postVote {
-    KWEAKSELF;
-    DZPostVoteController * vcv = [[DZPostVoteController alloc] init];
-    vcv.dataForumTherad = self.VarModel;
-    vcv.pushDetailBlock = ^(NSString *tid) {
-        [weakSelf postSucceedToDetail:tid];
-    };
-    [[DZMobileCtrl sharedCtrl] PushToController:vcv];
-}
-
-- (void)postActivity {
-    KWEAKSELF;
-    
-    DZPostActivityController * ivc = [[DZPostActivityController alloc] init];
-    ivc.dataForumTherad = self.VarModel;
-    ivc.pushDetailBlock = ^(NSString *tid) {
-        [weakSelf postSucceedToDetail:tid];
-    };
-    [[DZMobileCtrl sharedCtrl] PushToController:ivc];
-}
-
-- (void)postDebate {
-    
-    KWEAKSELF;
-    DZPostDebateController *debateVC = [[DZPostDebateController alloc] init];
-    debateVC.dataForumTherad = self.VarModel;
-    debateVC.pushDetailBlock = ^(NSString *tid) {
-        [weakSelf postSucceedToDetail:tid];
-    };
-    [self showViewController:debateVC sender:nil];
-}
-
 
 - (void)loginedRefresh {
     if (self.ctvArr.count > 0) {

@@ -7,12 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef NS_ENUM(NSUInteger, PostType) {
-    post_normal,
-    post_vote,
-    post_activity,
-    post_debate,
-};
 
 @interface PostTypeModel : NSObject
 

@@ -13,6 +13,7 @@
 
 #import "DZColor.h"
 #import "DZDevice.h"
+#import "DZMacro.h"
 #import "DZConstant.h"
 #import "DZBaseConfig.h"
 

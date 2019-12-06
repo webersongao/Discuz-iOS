@@ -170,57 +170,9 @@
 
 #pragma mark - 点击去往发帖页
 - (void)switchTypeTopost:(PostType)type {
-    switch (type) {
-        case post_normal:
-            [self postNormal];
-            break;
-        case post_vote:
-            [self postVote];
-            break;
-        case post_activity:
-            [self postActivity];
-            break;
-        case post_debate:
-            [self postDebate];
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)publicPostControllerSet:(DZPostBaseController *)controller {
-    KWEAKSELF;
 #warning 该位置需要完全转换成Model赋值，此写法只是为了不报错 临时注释
-    //    controller.dataForumTherad = self.Variables;
-    controller.fid = self.selectFid;
-    controller.pushDetailBlock = ^(NSString *tid) {
-        [weakSelf postSucceedToDetail:tid];
-    };
-    [[DZMobileCtrl sharedCtrl] PushToController:controller];
-}
-
-- (void)postNormal {
-    DZPostNormalController * tvc = [[DZPostNormalController alloc] init];
-    [self publicPostControllerSet:tvc];
-}
-
-- (void)postVote {
-    DZPostVoteController * vcv = [[DZPostVoteController alloc] init];
-    [self publicPostControllerSet:vcv];
-}
-
-- (void)postActivity {
-    DZPostActivityController * ivc = [[DZPostActivityController alloc] init];
-    [self publicPostControllerSet:ivc];
-}
-
-- (void)postDebate {
-    DZPostDebateController *debateVC = [[DZPostDebateController alloc] init];
-    [self publicPostControllerSet:debateVC];
-}
-
-- (void)postSucceedToDetail:(NSString *)tid {
-    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
+    DZThreadVarModel *varModel = nil;// self.Variables;
+    [[DZMobileCtrl sharedCtrl] PushToThreadPostController:self.selectFid thread:varModel type:type];
 }
 
 - (void)closeBtnClick {
