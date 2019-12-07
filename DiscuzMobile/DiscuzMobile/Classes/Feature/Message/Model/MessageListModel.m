@@ -10,33 +10,19 @@
 
 @implementation MessageListModel
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.notevar = [NSMutableDictionary dictionary];
-    }
-    return self;
++ (NSDictionary*)modelCustomPropertyMapper {
+    return @{
+             @"msgid" : @"id",
+             @"mnew" : @"new"
+             };
 }
 
--(void)setValue:(id)value forKey:(NSString *)key {
-    if ([key isEqualToString:@"id"]) {
-        _msgid = value;
-    } else if ([key isEqualToString:@"new"]) {
-        _mnew = value;
-    }
-//    else if ([key isEqualToString:@"note"]) {
-//        _note = [[NSString new] flattenHTML:[NSString stringWithFormat:@"%@",value] trimWhiteSpace:NO];
-//    }
-    else if ([key isEqualToString:@"message"]) {
-        _message = [value transformationStr];
-    }else {
-        [super setValue:value forKey:key];
-    }
+-(void)setNote:(NSString *)note{
+    _note = [[checkNull(note) flattenHTMLTrimWhiteSpace:NO] transformationStr];
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
+-(void)setMessage:(NSString *)message{
+    _message = [message transformationStr];
 }
 
 @end

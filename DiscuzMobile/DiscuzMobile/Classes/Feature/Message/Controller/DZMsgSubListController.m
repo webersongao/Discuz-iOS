@@ -93,8 +93,7 @@
         }
         
         for (NSDictionary *dic in arr) {
-            MessageListModel *model = [[MessageListModel alloc] init];
-            [model setValuesForKeysWithDictionary:dic];
+            MessageListModel *model = [MessageListModel modelWithJSON:dic];
             [self.dataSourceArr addObject:model];
         }
     }
