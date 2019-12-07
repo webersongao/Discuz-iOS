@@ -27,7 +27,7 @@
 
 - (NSString *)tableName
 {
-    return @"PRDouMaoUserTable";
+    return @"DZUserTable";
 }
 
 - (void)startUpdateProperties

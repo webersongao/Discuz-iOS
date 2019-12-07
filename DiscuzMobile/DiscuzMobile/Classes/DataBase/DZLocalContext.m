@@ -9,7 +9,8 @@
 #import "DZLocalContext.h"
 #import "DZLocalDataHelper.h"
 
-#define kDZUserTable @"PRDouMao.db"
+#define kDZUserTable    @"DZUserTable"
+#define kDZThreadTable  @"DZThreadTable"
 
 static DZLocalContext *infoContext;
 
@@ -41,7 +42,11 @@ static DZLocalContext *infoContext;
 }
 
 - (BOOL)updateLocalUser:(DZUserModel *)user {
-    return [self updateObject:user];
+    BOOL ret = [self updateObject:user];
+    if (!ret) {
+      ret = [self addObject:user];
+    }
+    return ret;
 }
 
 -(DZUserModel *)GetLocalUserInfo{

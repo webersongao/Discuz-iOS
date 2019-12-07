@@ -12,7 +12,7 @@
 #import "FMDatabaseAdditions.h"
 
 #define kDZLocalDBVersion 1
-#define kDZLocalDBFileName @"PRDouMao.db" 
+#define kDZLocalDBFileName @"PRDouMao.sqlite"
 
 static DZLocalDataHelper *KInstance;
 
@@ -28,16 +28,9 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 @implementation DZLocalDataHelper
 
 + (DZLocalDataHelper *)sharedHelper {
-    
     static dispatch_once_t onceToken;
-    
     dispatch_once(&onceToken, ^{
-        NSString *path = [self getLocalPreferencePath];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        NSString *localDBPath = [path stringByAppendingPathComponent:kDZLocalDBFileName];
-        KInstance = [[DZLocalDataHelper alloc] initWithPath:localDBPath andVersion:kDZLocalDBVersion];
+        KInstance = [[DZLocalDataHelper alloc] initWithPath:[self localDBPath] andVersion:kDZLocalDBVersion];
     });
     return KInstance;
 }
@@ -57,24 +50,20 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 }
 
 -(void)inTransaction:(void (^)(FMDatabase *, BOOL *))block{
-
+    
     [self beginBueueTransaction:NO withBlock:block];
 }
 
 - (void)beginBueueTransaction:(BOOL)useDeferred withBlock:(void (^)(FMDatabase *db, BOOL *rollback))block {
     FMDBRetain(self);
     dispatch_sync(m_backQueue, ^() {
-        
         BOOL shouldRollback = NO;
-        
         if (useDeferred) {
             [[self database] beginDeferredTransaction];
         }else {
             [[self database] beginTransaction];
         }
-        
         block([self database], &shouldRollback);
-        
         if (shouldRollback) {
             [[self database] rollback];
         }else {
@@ -97,17 +86,12 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
     DZLocalDataHelper *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueSpecificKey);
     assert(currentSyncQueue != self && "inDatabase: was called reentrantly on the same queue, which would lead to a deadlock");
 #endif
-
     FMDBRetain(self);
-
     dispatch_sync(m_backQueue, ^() {
-
         FMDatabase *db = [self database];
         block(db);
-
         if ([db hasOpenResultSets]) {
             NSLog(@"Warning: there is at least one open result set around after performing [FMDatabaseQueue inDatabase:]");
-
 #if defined(DEBUG) && DEBUG
             NSSet *openSetCopy = FMDBReturnAutoreleased([[db valueForKey:@"_openResultSets"] copy]);
             for (NSValue *rsInWrappedInATastyValueMeal in openSetCopy) {
@@ -138,8 +122,8 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 - (void)onCreate:(FMDatabase *)database
 {
     // 用户数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRDouMaoUserTable\";"];
-    [database executeUpdate:@"CREATE TABLE \"PRDouMaoUserTable\" (\n"
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZUserTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZUserTable\" (\n"
      "\t \"cookiepre\" text NOT NULL,\n"
      "\t \"auth\" text NOT NULL,\n"
      "\t \"saltkey\" text NOT NULL,\n"
@@ -150,16 +134,17 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
      "\t \"formhash\" text NOT NULL,\n"
      "\t \"ismoderator\" text NOT NULL,\n"
      "\t \"readaccess\" text NOT NULL,\n"
+     "\t \"authKey\" text NOT NULL,\n"
      
-//     "\t \"return_type\" integer DEFAULT -1,\n"
-//     "\t \"isdir\" bool NOT NULL,\n"
+     //     "\t \"return_type\" integer DEFAULT -1,\n"
+     //     "\t \"isdir\" bool NOT NULL,\n"
      
      "\t \"rowID\" integer NOT NULL PRIMARY KEY AUTOINCREMENT \n"
      ");"];
     
     // 帖子数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRDouMaoThreadTable\";"];
-    [database executeUpdate:@"CREATE TABLE \"PRDouMaoThreadTable\" (\n"
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZThreadTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZThreadTable\" (\n"
      "\t \"taskId\" text NOT NULL,\n"
      "\t \"fragMD5\" text NOT NULL,\n"
      "\t \"serverPath\" text NOT NULL,\n"
@@ -185,6 +170,15 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
      ");"];
 }
 
++ (NSString *)localDBPath{
+    NSString *path = [self getLocalPreferencePath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    DLog(@"WBS 数据库地址是 %@",path);
+    NSString *localDBPath = [path stringByAppendingPathComponent:kDZLocalDBFileName];
+    return localDBPath;
+}
 
 + (NSString*)getLocalPreferencePath
 {

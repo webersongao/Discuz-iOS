@@ -21,7 +21,7 @@
 @property (nonatomic, copy) NSString *ismoderator;
 @property (nonatomic, copy) NSString *readaccess;
 // 自定义值 
-@property (nonatomic, copy,readonly) NSString *authKey;
+@property (nonatomic, copy) NSString *authKey;
 
 
 @end

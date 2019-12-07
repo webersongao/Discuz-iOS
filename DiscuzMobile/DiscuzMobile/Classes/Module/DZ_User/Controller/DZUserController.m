@@ -134,7 +134,8 @@
     
     [self initData];
     KWEAKSELF
-    [DZUserNetTool DZ_UserProfileFromServer:YES Uid:nil userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
+    NSString *userId = [DZMobileCtrl sharedCtrl].User.member_uid;
+    [DZUserNetTool DZ_UserProfileFromServer:YES Uid:userId userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
         [weakSelf.HUD hide];
         if (errorStr.length) {
             [weakSelf UserSignout];
