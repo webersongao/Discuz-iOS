@@ -210,7 +210,7 @@
         [self cleanSaveImages];
         // 清除完，重新创建文件夹、重新创建数据库
         [[JTCacheManager sharedInstance] createDirectoryAtPath:[JTCacheManager sharedInstance].JTAppCachePath];
-        [[DZDatabaseHandle defaultDataHelper] openDB];
+        [[DZDatabaseHandle Helper] openDB];
         MAIN(^{
             UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];

@@ -177,7 +177,7 @@
                               };
     
     
-    NSMutableDictionary * dic =[NSMutableDictionary dictionaryWithObject:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    NSMutableDictionary * dic =[NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [dic setObject:self.threadModel.tid forKey:@"tid"];
     [dic setObject:self.threadModel.pid forKey:@"pid"];
     [dic setObject:@"true" forKey:@"activitysubmit"];

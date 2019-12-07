@@ -15,13 +15,10 @@
 
 +(instancetype)sharedCtrl;
 
-@property(nonatomic,strong,readonly) DZRootTabBarController *rootTababar;
-
-@property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;
-
+@property (nonatomic, strong) DZUserModel *User;  //!< 用户信息
 @property (nonatomic, strong) DZDiscoverModel *forumInfo;  //!< 论坛全局数据
-
-@property (nonatomic, strong) DZUserModel *User;  //!< 论坛全局数据
+@property(nonatomic,strong,readonly) DZRootTabBarController *rootTababar;
+@property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;
 
 + (BOOL)IsEnableWifi;
 

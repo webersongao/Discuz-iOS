@@ -7,7 +7,6 @@
 //
 
 #import "DZDatabaseHandle.h"
-#import "MyPerson.h"
 #import "DZThreadListModel.h"
 
 #define FootThread @"footThread"
@@ -16,7 +15,7 @@ static FMDatabase *_db;
 
 @implementation DZDatabaseHandle
 
-+ (instancetype)defaultDataHelper {
++ (instancetype)Helper {
     
     static DZDatabaseHandle *helper = nil;
     static dispatch_once_t onceToken;
@@ -62,42 +61,6 @@ static FMDatabase *_db;
     [_db close];
 }
 
-// 获取数据库中的所有用户
-- (NSArray *)getAllPerson {
-    NSString *sqlStr = @"select * from t_person";
-    FMResultSet *resultSet = [_db executeQuery:sqlStr];
-    NSMutableArray *dataArray = [NSMutableArray array];
-    while (resultSet.next) {
-        MyPerson *person = [[MyPerson alloc] init];
-        person.uid = [resultSet stringForColumn:@"uid"];
-        person.uname = [resultSet stringForColumn:@"uname"];
-        [dataArray addObject:person];
-    }
-    return dataArray;
-}
-
-// 查询用户单个
-- (MyPerson *)searchPerson:(NSString *)uid {
-    NSString *sqlStr = @"select * from t_person where uid = ?";
-    FMResultSet *resultSet = [_db executeQuery:sqlStr,uid];
-    MyPerson *person = [[MyPerson alloc] init];
-    while (resultSet.next) {
-        person.uid = [resultSet stringForColumn:@"uid"];
-        person.uname = [resultSet stringForColumn:@"uname"];
-    }
-    return person;
-}
-
-// 删除用户
-- (void)removePerson:(NSString *)uid {
-    
-    NSString *sqlStr = @"delete from t_person where uid = ?";
-    
-    [_db executeUpdate:sqlStr,uid];
-    
-}
-
-
 /**
  * 存储足迹的帖子
  */
@@ -106,7 +69,6 @@ static FMDatabase *_db;
     if ([self isFoot:thread.tid]) { // 如果数据库中有记录，移除旧的记录
         [self removeFootThreadWithtid:thread.tid];
     }
-    
     [self saveThread:thread];
 }
 

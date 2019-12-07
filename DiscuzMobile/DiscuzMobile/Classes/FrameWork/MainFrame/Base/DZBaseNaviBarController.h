@@ -67,9 +67,16 @@ typedef NS_ENUM(NSInteger, DZNaviItemType) {
  @param action 事件
  */
 - (void)dz_SetNavigationRightTextItemWithInfoString:(NSString *)infoStr target:(id)target action:(SEL)action;
+
+/**
+ 设置item
+ @param item 单个item
+ @param isLeft 是否是左边
+ */
+- (void)dz_SetItem:(UIBarButtonItem *)item Layout:(BOOL)isLeft;
+
 /**
  设置items
- 
  @param items items
  @param isLeft 是否是左边
  */

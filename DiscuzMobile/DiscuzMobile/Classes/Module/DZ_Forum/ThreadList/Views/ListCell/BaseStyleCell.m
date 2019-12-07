@@ -337,7 +337,7 @@
             if (self.listInfo.isRecently) {
                 BACK(^{
                     if ([DataCheck isValidString:self.listInfo.tid]) {
-                        [[DZDatabaseHandle defaultDataHelper] footThread:self.listInfo];
+                        [[DZDatabaseHandle Helper] footThread:self.listInfo];
                     }
                 });
             }

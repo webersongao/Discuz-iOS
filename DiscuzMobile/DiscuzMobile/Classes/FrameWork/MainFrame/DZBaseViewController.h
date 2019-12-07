@@ -31,11 +31,11 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
 
 /**
  * 创建左右 导航按钮
- @param titleORImageUrl  标题或者图片路径
+ @param titleOrImg  标题或者图片路径
  @param type  类型 图片 或者 文字
  @param direction  方向 right or left
 */
--(void)configNaviBar:(NSString *)titleORImageUrl type:(NaviItemType)type Direction:(NaviDirection)direction;
+-(void)configNaviBar:(NSString *)titleOrImg type:(NaviItemType)type Direction:(NaviDirection)direction;
 
 /**
  服务器返回错误提示

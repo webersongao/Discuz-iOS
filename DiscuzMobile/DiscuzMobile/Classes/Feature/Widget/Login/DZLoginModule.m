@@ -48,8 +48,8 @@ NSString * const CookieValue = @"COOKIEVALU";
  * 判断是否登录
  */
 + (BOOL)isLogged {
-    NSString *uid = [Environment sharedEnvironment].member_uid;
-    NSString *auth = [Environment sharedEnvironment].auth;
+    NSString *uid = [DZMobileCtrl sharedCtrl].User.member_uid;
+    NSString *auth = [DZMobileCtrl sharedCtrl].User.auth;
     if ([DataCheck isValidString:uid] && [DataCheck isValidString:auth]) {
         return YES;
     }
@@ -61,20 +61,13 @@ NSString * const CookieValue = @"COOKIEVALU";
  * 退出登录
  */
 + (void)signout {
-    DLog(@"清除本地登录信息");
-    
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:CookieValue];
     [[XinGeCenter shareInstance] setXG];
-    
     for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-//        if ([[cookie name] isEqualToString:[NSString stringWithFormat:@"%@",[Environment sharedEnvironment].loggedAuthKey]]) {
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-//        }
     }
     //  LoginFile
     [[DZLocalContext shared] removeLocalUser];
-    
-    [Environment sharedEnvironment].authKey = nil;
     [DZShareCenter shareInstance].bloginModel = nil;
     
 }

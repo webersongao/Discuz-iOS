@@ -289,7 +289,7 @@
         return;
     }
     
-    NSDictionary * dic = @{@"formhash":[Environment sharedEnvironment].formhash,
+    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                            @"message":messagestr,
                            @"username":self.username,
                            @"touid":self.touid
@@ -400,7 +400,7 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         MessageModel *message = self.messageModelArr[self.pressIndexRow];
         NSDictionary *parameters = @{@"id":message.touid,
-                                     @"formhash":[Environment sharedEnvironment].formhash,
+                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                      @"pid":message.pmid};
         request.urlString = DZ_Url_DeleteOneMessage;
         request.methodType = JTMethodTypePOST;

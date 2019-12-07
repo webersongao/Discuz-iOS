@@ -168,7 +168,7 @@
     NSString *uploadhash = self.authModel.allowperm.uploadhash;
     
     NSDictionary *dic = @{@"hash":uploadhash,
-                          @"uid":[Environment sharedEnvironment].member_uid
+                          @"uid":[DZMobileCtrl sharedCtrl].User.member_uid
                           };
   
     NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
@@ -249,7 +249,7 @@
     
     NSMutableDictionary  * dic =[NSMutableDictionary dictionary];
     
-    [dic setValue:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [dic setValue:self.activityModel.subject forKey:@"subject"];
     [dic setValue:@"活动" forKey:@"typeid"];
     [dic setValue:self.activityModel.message forKey:@"message"];

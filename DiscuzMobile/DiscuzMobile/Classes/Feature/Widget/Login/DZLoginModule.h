@@ -7,17 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Environment.h"
+#import "DZLoginResModel.h"
 
 extern NSString * const CookieValue;
 
 @interface DZLoginModule : NSObject
-
-/*
- * 删除登录信息
- */
-
-//+ (void)removeInfoWithSiteId:(NSString *)siteId key:(NSString *)key;
 
 // 分析登录信息
 + (void)loginAnylyeData:(DZLoginResModel *)responseObject andView:(UIView *)view  andHandle:(void(^)(void))handle;

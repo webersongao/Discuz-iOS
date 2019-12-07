@@ -229,7 +229,7 @@
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         MessageListModel *model = self.dataSourceArr[indexPath.row];
-        NSDictionary *parameters = @{@"id":model.touid,@"formhash":[Environment sharedEnvironment].formhash};
+        NSDictionary *parameters = @{@"id":model.touid,@"formhash":[DZMobileCtrl sharedCtrl].User.formhash};
         request.urlString = DZ_Url_DeleteMessage;
         request.methodType = JTMethodTypePOST;
         request.parameters = parameters;

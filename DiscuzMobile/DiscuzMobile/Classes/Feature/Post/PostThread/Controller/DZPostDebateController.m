@@ -301,7 +301,7 @@
 }
 
 - (NSMutableDictionary *)creatDicdata {
-    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [dic setObject:self.debateModel.subject forKey: @"subject"];
     [dic setObject:self.debateModel.message forKey: @"message"];
     [dic setObject:self.debateModel.special forKey:@"special"];

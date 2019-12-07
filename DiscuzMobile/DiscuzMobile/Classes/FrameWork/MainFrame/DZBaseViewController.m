@@ -8,7 +8,6 @@
 
 #import "DZBaseViewController.h"
 #import "DZPostVoteController.h"
-#import "Environment.h"
 #import "UIImageView+FindHairline.h"
 #import "WBEmoticonInputView.h"
 
@@ -108,37 +107,31 @@
 
 /**
  * 创建左右 导航按钮
- @param titleORImageUrl  标题或者图片路径
+ @param titleOrImg  标题或者图片路径
  @param type  类型 图片 或者 title
  @param direction  方向 左右
  */
--(void)configNaviBar:(NSString *)titleORImageUrl type:(NaviItemType)type Direction:(NaviDirection)direction {
+-(void)configNaviBar:(NSString *)titleOrImg type:(NaviItemType)type Direction:(NaviDirection)direction {
     
     if (direction == NaviDirectionLeft) {
         UIBarButtonItem *leftBtn;
         if (type == NaviItemText) {
-            if ([DataCheck isValidString:titleORImageUrl]) {
-                leftBtn = [[UIBarButtonItem alloc] initWithTitle:titleORImageUrl style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
-            }
+            leftBtn = [[UIBarButtonItem alloc] initWithTitle:titleOrImg style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
         } else {
-            leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleORImageUrl] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
+            leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleOrImg] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnClick)];
         }
         self.dz_NavigationItem.leftBarButtonItem = leftBtn;
         self.dz_NavigationItem.leftBarButtonItem.tintColor = K_Color_MainTitle;
     } else {
         UIBarButtonItem *rightBtn;
         if (type == NaviItemText) {
-            if ([DataCheck isValidString:titleORImageUrl]) {
-                rightBtn = [[UIBarButtonItem alloc] initWithTitle:titleORImageUrl style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
-            }
-            
+            rightBtn = [[UIBarButtonItem alloc] initWithTitle:titleOrImg style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
         } else {
-            rightBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleORImageUrl] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
+            rightBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:titleOrImg] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarBtnClick)];
         }
         self.dz_NavigationItem.rightBarButtonItem = rightBtn;
         self.dz_NavigationItem.rightBarButtonItem.tintColor = K_Color_MainTitle;
     }
-    
 }
 
 -(void)leftBarBtnClick{

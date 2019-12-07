@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     self.delegate = self;
-    [DZMobileCtrl sharedCtrl];
+    [[DZMobileCtrl sharedCtrl] cofigLocalDataInfo];
     
 #ifndef MACRO_PRODUCT
     [self addDemoChildViewControllers];

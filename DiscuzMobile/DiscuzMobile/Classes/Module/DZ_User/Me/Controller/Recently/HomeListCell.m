@@ -240,7 +240,7 @@
                 if (self.info.isRecently) {
                     BACK(^{
                         if ([DataCheck isValidString:self.info.tid]) {
-                            [[DZDatabaseHandle defaultDataHelper] footThread:self.info];
+                            [[DZDatabaseHandle Helper] footThread:self.info];
                         }
                     });
                 }

@@ -42,7 +42,6 @@
 #import "UIButton+Utils.h"
 #import "UILabel+Common.h"
 #import "UIColor+More.h"
-#import "Environment.h"
 #import "DZFileManager.h"
 #import "DZAuthCodeView.h"
 #import "NSDictionary+Utils.h"

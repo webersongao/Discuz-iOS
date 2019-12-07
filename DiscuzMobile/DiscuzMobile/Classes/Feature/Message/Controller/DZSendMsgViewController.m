@@ -105,7 +105,7 @@
 
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-        NSDictionary * dic = @{@"formhash":[Environment sharedEnvironment].formhash,
+        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                @"message":self.messageTextView.text,
                                @"username":self.titleTextField.text};
         

@@ -9,7 +9,6 @@
 #import "DZBaseViewController.h"
 #import "DZShareCenter.h"
 #import "DZLoginModel.h"
-#import "Environment.h"
 #import "SeccodeverifyView.h"
 
 typedef void(^RefreshBlock)(void);

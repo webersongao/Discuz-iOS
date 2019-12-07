@@ -7,7 +7,6 @@
 //
 
 #import "DZLoginNetTool.h"
-#import "Environment.h"
 #import "DZApiRequest.h"
 #import "DZUserNetTool.h"
 #import "DZShareCenter.h"

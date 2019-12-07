@@ -56,7 +56,7 @@
         reason = self.examineView.reason;
     }
     
-    NSDictionary *postDic = @{@"formhash":[Environment sharedEnvironment].formhash,
+    NSDictionary *postDic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                               @"handlekey":@"activity",
                               @"applyidarray[]":self.examineView.dataModel.applyid,
                               @"reason":reason,

@@ -145,7 +145,7 @@
                                       [regKeyDic objectForKey:@"password"]:password,
                                       [regKeyDic objectForKey:@"password2"]:repass,
                                       [regKeyDic objectForKey:@"email"]:email,
-                                      @"formhash":[Environment sharedEnvironment].formhash,
+                                      @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                       @"regsubmit":@"yes",
     }.mutableCopy;
     NSMutableDictionary *getData = [NSMutableDictionary dictionary];

@@ -7,26 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-@class MyPerson,DZThreadListModel;
+@class DZThreadListModel;
 
 @interface DZDatabaseHandle : NSObject
 
 // 单例
-+ (instancetype)defaultDataHelper;
++ (instancetype)Helper;
 
 // 打开数据库
 - (void)openDB;
 
 - (void)closeDB;
-
-// 获取数据库中的所有用户
-- (NSArray *)getAllPerson;
-
-// 查询用户单个
-- (MyPerson *)searchPerson:(NSString *)uid;
-
-// 删除用户
-- (void)removePerson:(NSString *)uid;
 
 
 /**

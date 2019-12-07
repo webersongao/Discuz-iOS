@@ -168,7 +168,7 @@
     }
     
     NSDictionary *dic=@{@"hash":uploadhash,
-                        @"uid":[Environment sharedEnvironment].member_uid,
+                        @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
                         };
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
@@ -339,7 +339,7 @@
                                   @"fid":self.threadModel.fid,
                                   @"pid":self.threadModel.pid,
                                   @"activitycancel":@"true",
-                                  @"formhash":[Environment sharedEnvironment].formhash
+                                  @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
                                   };
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_ActivityApplies;
@@ -416,7 +416,7 @@
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         
-        NSDictionary * dic = @{@"formhash":[Environment sharedEnvironment].formhash,
+        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                @"reportsubmit":@"true",
                                @"message":str,
                                @"rtype":@"post",
@@ -472,7 +472,7 @@
         NSString * str1 = [strUrl stringByReplacingOccurrencesOfString:@"}" withString:@""];
         NSArray *pollanswers = [str1 componentsSeparatedByString:@"|"];
         
-        NSDictionary * postdic=@{@"formhash":[Environment sharedEnvironment].formhash,
+        NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                  @"pollanswers":pollanswers,
                                  };
         NSDictionary *getDic = @{@"fid":self.threadModel.fid,
@@ -790,7 +790,7 @@
 
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.detailView.emoKeyboard.textBarView.textView.text forKey:@"message"];
-    [dic setObject:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    [dic setObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [dic setObject:self.threadModel.tid  forKey:@"tid"];
     // 引用回复 post 增加 两个参数
     if (_isReferenceReply) {

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZLoginResModel.h"
 
 @interface DZLoginNetTool : NSObject
 

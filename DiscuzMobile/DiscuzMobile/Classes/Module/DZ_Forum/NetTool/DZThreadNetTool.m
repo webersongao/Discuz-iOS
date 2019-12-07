@@ -59,11 +59,9 @@
         request.urlString = DZ_Url_Forumindex;
     } success:^(id responseObject, JTLoadType type) {
         DZDiscoverModel *forumDataModel = nil;
-        if ([DataCheck isValidDictionary:responseObject]) {
-            NSDictionary *varibles = [responseObject dictionaryForKey:@"Variables"];
-            DZDiscoverModel *dataModel = [DZDiscoverModel modelWithJSON:varibles];
-            forumDataModel = [dataModel formartForumNodeData];
-        }
+        NSDictionary *varibles = [responseObject dictionaryForKey:@"Variables"];
+        DZDiscoverModel *dataModel = [DZDiscoverModel modelWithJSON:varibles];
+        forumDataModel = [dataModel formartForumNodeData];
         if (completion) {
             completion(forumDataModel);
         }

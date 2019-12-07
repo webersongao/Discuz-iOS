@@ -115,15 +115,12 @@
 }
 
 - (void)dz_SetNavigationRightTextItemWithInfoString:(NSString *)infoStr target:(id)target action:(SEL)action {
-    
     [self dz_SetNavigationItemWithInfoString:infoStr Type:DZNaviItemType_Text Layout:NO FixSpace:YES target:target action:action];
 }
 
 - (void)dz_SetNavigationItemWithInfoString:(NSString *)infoStr Type:(DZNaviItemType)type Layout:(BOOL)isLeft FixSpace:(BOOL)isFix target:(id)target action:(SEL)action {
-    
     UIBarButtonItem *item;
     NSMutableArray *currentItems = [NSMutableArray arrayWithArray:isLeft ? self.dz_NavigationItem.leftBarButtonItems : self.dz_NavigationItem.rightBarButtonItems];
-    
     if (type == DZNaviItemType_Text) {
         item = [[UIBarButtonItem alloc] initWithItemTitle:infoStr Layout:isLeft target:target action:action];
     }
@@ -144,10 +141,11 @@
     }else {
         [currentItems addObject:item];
     }
+    
     [self dz_SetItems:[currentItems copy] Layout:isLeft];
 }
 
-- (void)p_SetItem:(UIBarButtonItem *)item Layout:(BOOL)isLeft {
+- (void)dz_SetItem:(UIBarButtonItem *)item Layout:(BOOL)isLeft {
     
     if (isLeft) {
         self.dz_NavigationItem.leftBarButtonItem = item;

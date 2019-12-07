@@ -423,7 +423,7 @@ static int voteIndex = 0 ;
     NSMutableDictionary  * postDic =[NSMutableDictionary dictionary ];
     // 设置回帖的时候提醒作者
     [postDic setValue:@"1" forKey:@"allownoticeauthor"];
-    [postDic setValue:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    [postDic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [postDic setValue:self.voteModel.subject forKey:@"subject"];
     [postDic setValue:self.voteModel.message forKey:@"message"];
     [postDic setValue:self.voteModel.selectNum forKey:@"maxchoices"];                 //最大可选项数
@@ -551,7 +551,7 @@ static int voteIndex = 0 ;
     }
     
     NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
-                        @"uid":[Environment sharedEnvironment].member_uid,
+                        @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
                         };
     NSDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                             @"operation":@"poll"};
