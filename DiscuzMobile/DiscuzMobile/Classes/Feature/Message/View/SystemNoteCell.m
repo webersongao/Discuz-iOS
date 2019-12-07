@@ -91,7 +91,7 @@
     
     if ([message.type isEqualToString:@"post"]) {
         
-        NSString *subject = [message.notevar objectForKey:@"subject"];
+        NSString *subject = message.notevar.subject;
         self.contenLabel.text = [NSString stringWithFormat:@"回复了您的帖子  %@",subject];
         self.nameLabel.text = message.author;
     } else {

@@ -10,7 +10,7 @@
 #import "DZRegisterView.h"
 #import "DZAuthCodeView.h"
 #import "DZLoginTextField.h"
-
+#import "DZLoginNetTool.h"
 #import "XinGeCenter.h"
 #import "DZUserNetTool.h"
 
@@ -170,18 +170,15 @@
         [self.HUD showLoadingMessag:@"注册中" toView:self.view];
     }
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = [DZUserNetTool sharedTool].regUrl;
-        request.parameters = postData;
-        request.getParam = getData;
-        request.methodType = JTMethodTypePOST;
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        [self setUserInfo:responseObject];
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        [self.HUD hide];
+    [DZLoginNetTool DZ_UserRegisterWithName:postData getData:getData completion:^(DZLoginResModel *resModel, DZRegInputModel *regVar) {
+        if (resModel) {
+            [self.HUD hide];
+            [self updateUserResInfo:resModel];
+        }else{
+            [DZMobileCtrl showAlertError:@"注册失败"];
+        }
     }];
+    
 }
 
 @end

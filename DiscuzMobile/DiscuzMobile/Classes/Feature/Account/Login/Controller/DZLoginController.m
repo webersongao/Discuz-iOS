@@ -15,6 +15,7 @@
 #import "DZShareCenter.h"
 #import "XinGeCenter.h"  // 信鸽
 #import "DZUserNetTool.h"
+#import "DZLoginNetTool.h"
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
 #define TEXTHEIGHT 50
@@ -151,7 +152,7 @@ NSString * const debugPassword = @"debugPassword";
         [dic setValue:[dicvalue objectForKey:self.loginView.securityView.userNameTextField.text] forKey:@"questionid"];
         [dic setValue:self.loginView.answerView.userNameTextField.text forKey:@"answer"];
     }
-    [dic setValue:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     
     NSMutableDictionary *getData = [NSMutableDictionary dictionary];
     if ([DZShareCenter shareInstance].bloginModel.openid != nil) { // 三方登录过来的注册
@@ -165,29 +166,26 @@ NSString * const debugPassword = @"debugPassword";
     }
     [self.HUD showLoadingMessag:@"登录中" toView:self.view];
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_Login;
-        request.parameters = dic;
-        request.getParam = getData;
-    } success:^(id responseObject, JTLoadType type) {
+    
+    [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
-        if ([[responseObject messageval] isEqualToString:@"login_question_empty"]) {
-            [self.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(TEXTHEIGHT);
-                self.loginView.securityView.hidden = NO;
-            }];
-            [MBProgressHUD showInfo:[responseObject messagestr]];
-        } else {
-            [self setUserInfo:responseObject];
+        if (resModel) {
+            if ([resModel.Message.messageval isEqualToString:Msg_loginEmpty]) {
+                [self.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.height.mas_equalTo(TEXTHEIGHT);
+                    self.loginView.securityView.hidden = NO;
+                }];
+                [DZMobileCtrl showAlertError:resModel.Message.messagestr];
+            }else{
+                
+                [self updateUserResInfo:resModel];
 #if DEBUG
-            [self saveAccount];
+                [self saveAccount];
 #endif
+            }
+        }else{
+            [DZMobileCtrl showAlertError:@"登录失败"];
         }
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
 }
 
@@ -222,34 +220,29 @@ NSString * const debugPassword = @"debugPassword";
 
 - (void)thirdConnectWithService:(NSDictionary *)dic getData:(NSDictionary *)getData {
     [self.HUD showLoadingMessag:@"" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Login;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = dic;
-        request.getParam = getData;
-    } success:^(id responseObject, JTLoadType type) {
+    
+    [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
-        [self setUserInfo:responseObject];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
-        
-        if ([[getData objectForKey:@"type"] isEqualToString:@"weixin"]) {
-            if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
-                [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat result:nil];
+        if (resModel) {
+           [self updateUserResInfo:resModel];
+        }else{
+            if ([[getData objectForKey:@"type"] isEqualToString:@"weixin"]) {
+                if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
+                    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat result:nil];
+                }
             }
         }
     }];
 }
 
 #pragma mark - 请求成功操作
-- (void)setUserInfo:(id)responseObject {
-
-    if ([[responseObject messageval] containsString:@"no_bind"]) {
+- (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
+    
+    if (![loginResModel isBindThird]) {
         // 去第三方绑定页面
         [self boundThirdview];
     } else {
-        [super setUserInfo:responseObject];
+        [super updateUserResInfo:loginResModel];
     }
 }
 
@@ -273,7 +266,7 @@ NSString * const debugPassword = @"debugPassword";
 
 - (void)registerNavview {
     // 重置一下
-//    [DZShareCenter shareInstance].bloginModel = nil;
+    //    [DZShareCenter shareInstance].bloginModel = nil;
     [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
 }
 
@@ -343,7 +336,7 @@ NSString * const debugPassword = @"debugPassword";
     if (![self.loginView.securityView.userNameTextField.text isEqualToString:@"无安全提问"]) {
         // 创建view
         isQCreateView = YES;
-
+        
     } else {
         
         isQCreateView = NO;

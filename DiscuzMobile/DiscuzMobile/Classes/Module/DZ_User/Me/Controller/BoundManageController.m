@@ -11,7 +11,7 @@
 #import "BoundManageCell.h"
 #import "TextIconModel.h"
 #import "BoundInfoModel.h"
-
+#import "DZLoginNetTool.h"
 #import "DZShareCenter.h"
 #import "UIAlertController+Extension.h"
 
@@ -97,8 +97,8 @@
                              doneText:@"确定"
                            cancelText:@"取消"
                            doneHandle:^{
-                               [self unbound:model];
-                           } cancelHandle:nil];
+            [self unbound:model];
+        } cancelHandle:nil];
     } else {
         if ([model.type isEqualToString:@"minapp"]) {
             [UIAlertController alertTitle:@"提示"
@@ -132,11 +132,10 @@
 
 - (void)unbound:(BoundInfoModel *)model {
     NSDictionary *postData = @{
-                               @"unbind":@"yes",
-                               @"type":model.type,
-                               @"formhash":[Environment sharedEnvironment].formhash
-                               };
-    
+        @"unbind":@"yes",
+        @"type":model.type,
+        @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
+    };
     [self.HUD showLoadingMessag:@"解除绑定" toView:self.view];
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.methodType = JTMethodTypePOST;
@@ -150,7 +149,6 @@
             if ([DataCheck isValidString:messageStatus]) {
                 if ([messageStatus containsString:@"succeed"]) {
                     [MBProgressHUD showInfo:@"解绑成功"];
-                    //                        [DZLoginModule cleanLogType];
                     [self requestData];
                     return;
                 }
@@ -165,28 +163,19 @@
 }
 
 - (void)thirdConnectWithService:(NSDictionary *)dic getData:(NSDictionary *)getData {
-    [dic setValue:[Environment sharedEnvironment].formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
     [dic setValue:@"yes" forKey:@"loginsubmit"];
     [self.HUD showLoadingMessag:@"" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Login;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = dic;
-        request.getParam = getData;
-    } success:^(id responseObject, JTLoadType type) {
+    KWEAKSELF
+    [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
-        NSDictionary *messageDic = [responseObject objectForKey:@"Message"];
-        if ([DataCheck isValidDictionary:messageDic]) {
-            NSString *messageval = [messageDic objectForKey:@"messageval"];
-            if ([messageval containsString:@"succeed"]) {
-                [MBProgressHUD showInfo:@"绑定成功"];
-                [self requestData];
-            }
+        if (resModel && [resModel isBindSuccess]) {
+            [DZMobileCtrl showALertSuccess:@"绑定成功"];
+            [weakSelf requestData];
+        }else{
+            [DZMobileCtrl showAlertError:@"绑定失败"];
         }
         
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
 }
 

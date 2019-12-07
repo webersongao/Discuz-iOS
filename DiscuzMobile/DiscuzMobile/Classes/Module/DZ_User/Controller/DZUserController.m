@@ -20,7 +20,6 @@
 #import "CenterManageModel.h"
 
 #import "DZImagePickerView.h"
-#import "MessageNoticeCenter.h"
 #import "UIImage+Limit.h"
 
 @interface DZUserController ()
@@ -143,7 +142,7 @@
             [DZMobileCtrl showAlertInfo:errorStr];
         }else{
             weakSelf.centerModel.userVarModel = UserVarModel;
-            [Environment sharedEnvironment].member_avatar = UserVarModel.member_avatar;
+            [DZMobileCtrl sharedCtrl].User.member_avatar = UserVarModel.member_avatar;
             weakSelf.myHeader.userInfoView.nameLab.text = UserVarModel.space.username;
             [weakSelf.myHeader.userInfoView setIdentityText:UserVarModel.space.group.grouptitle];
             [weakSelf.myHeader.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:UserVarModel.member_avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRefreshCached];

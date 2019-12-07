@@ -11,6 +11,7 @@
 #import "DZAuthCodeView.h"
 #import "DZUserBoundView.h"
 #import "XinGeCenter.h"
+#import "DZLoginNetTool.h"
 
 @interface DZUserBoundController () <UITextFieldDelegate>
 
@@ -55,7 +56,7 @@
 - (BOOL)isCodeRight {
     // 忽略大小写
     BOOL result = [_boundView.authCodeField.text compare:_boundView.codeView.authCodeStr
-                                       options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame;
+                                                 options:NSCaseInsensitiveSearch | NSNumericSearch] == NSOrderedSame;
     if (![DataCheck isValidString:_boundView.authCodeField.text]) {
         [MBProgressHUD showInfo:@"请输入验证码"];
         //验证不匹配，验证码和输入框抖动
@@ -88,7 +89,7 @@
     
     if ([DataCheck isValidString:name]
         && [DataCheck isValidString:pass]
-//        && [DataCheck isValidString:code]
+        //        && [DataCheck isValidString:code]
         ) {
         if ([self isCodeRight]) {
             [self boundData];
@@ -99,9 +100,9 @@
         } else if (![DataCheck isValidString:pass]) {
             [MBProgressHUD showInfo:@"请输入密码"];
         }
-//        else if (![DataCheck isValidString:code]) {
-//            [MBProgressHUD showInfo:@"请输入验证码"];
-//        }
+        //        else if (![DataCheck isValidString:code]) {
+        //            [MBProgressHUD showInfo:@"请输入验证码"];
+        //        }
     }
 }
 
@@ -109,28 +110,20 @@
     NSString *name = _boundView.nameField.text;
     NSString *pass = _boundView.passwordField.text;
     
-    DLog(@"name = %@, pass = %@",name,pass);
-    if ([DZShareCenter shareInstance].bloginModel.openid != nil) {
-        
-        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-            [self.HUD showLoadingMessag:@"登录中" toView:self.view];
-            NSMutableDictionary *getDic = @{@"openid":[DZShareCenter shareInstance].bloginModel.openid,
-                                            @"type":[DZShareCenter shareInstance].bloginModel.logintype,
-                                            @"username":name,
-                                            @"password":pass}.mutableCopy;
-            if ([[DZShareCenter shareInstance].bloginModel.logintype isEqualToString:@"weixin"] && [DataCheck isValidString:[DZShareCenter shareInstance].bloginModel.unionid]) {
-                [getDic setValue:[DZShareCenter shareInstance].bloginModel.unionid forKey:@"unionid"];
-            }
-//            request.urlString = url_BindThird;
-            request.parameters = getDic;
-        } success:^(id responseObject, JTLoadType type) {
-            [self.HUD hideAnimated:YES];
-            [self setUserInfo:responseObject];
-        } failed:^(NSError *error) {
-            [self.HUD hideAnimated:YES];
-            [self showServerError:error];
-        }];
+    if (![DZShareCenter shareInstance].bloginModel.openid.length) {
+        [DZMobileCtrl showAlertError:@"openid异常，微信绑定失败"];
+        return;
     }
+    [self.HUD showLoadingMessag:@"登录中" toView:self.view];
+    [DZLoginNetTool DZ_WeixinLoginWithName:name passWord:pass completion:^(DZLoginResModel *resModel) {
+        [self.HUD hideAnimated:YES];
+        if (resModel) {
+            [self updateUserResInfo:resModel];
+        }else{
+            [DZMobileCtrl showAlertError:@"微信绑定失败"];
+        }
+    }];
+    
 }
 
 @end

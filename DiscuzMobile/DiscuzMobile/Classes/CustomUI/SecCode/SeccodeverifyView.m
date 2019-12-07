@@ -49,7 +49,7 @@
             seccode = [self.secureData objectForKey:@"seccode"];
             secqaa  = [self.secureData objectForKey:@"secqaa"];
             if ([DataCheck isValidString:[responseObject objectForKey:@"Variables"]]) {
-                [Environment sharedEnvironment].formhash=[[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"];
+                [DZMobileCtrl sharedCtrl].User.formhash=[[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"];
             }
             //  如果为空则 不需要验证码
             if ([DataCheck isValidString:secHash]&&[DataCheck isValidString:seccode]) {

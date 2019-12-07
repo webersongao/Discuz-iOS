@@ -284,7 +284,7 @@
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
 		708306FA239A588A0083B015 /* DZBaseAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 708306F9239A588A0083B015 /* DZBaseAuthModel.m */; };
-		708AED5E238E5697000A4397 /* DZLoginRegNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED5D238E5697000A4397 /* DZLoginRegNetTool.m */; };
+		708AED5E238E5697000A4397 /* DZLoginNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED5D238E5697000A4397 /* DZLoginNetTool.m */; };
 		708AED65238E5703000A4397 /* DZPostNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED64238E5703000A4397 /* DZPostNetTool.m */; };
 		709622CB238BC6E900AF657F /* PRNaviSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622C2238BC6E900AF657F /* PRNaviSegmentView.m */; };
 		709622CC238BC6E900AF657F /* PRTriangleCaptionBtn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709622C5238BC6E900AF657F /* PRTriangleCaptionBtn.mm */; };
@@ -995,8 +995,8 @@
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		708306F8239A588A0083B015 /* DZBaseAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseAuthModel.h; sourceTree = "<group>"; };
 		708306F9239A588A0083B015 /* DZBaseAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseAuthModel.m; sourceTree = "<group>"; };
-		708AED5C238E5697000A4397 /* DZLoginRegNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLoginRegNetTool.h; sourceTree = "<group>"; };
-		708AED5D238E5697000A4397 /* DZLoginRegNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLoginRegNetTool.m; sourceTree = "<group>"; };
+		708AED5C238E5697000A4397 /* DZLoginNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLoginNetTool.h; sourceTree = "<group>"; };
+		708AED5D238E5697000A4397 /* DZLoginNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLoginNetTool.m; sourceTree = "<group>"; };
 		708AED63238E5703000A4397 /* DZPostNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostNetTool.h; sourceTree = "<group>"; };
 		708AED64238E5703000A4397 /* DZPostNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostNetTool.m; sourceTree = "<group>"; };
 		709622C2238BC6E900AF657F /* PRNaviSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRNaviSegmentView.m; sourceTree = "<group>"; };
@@ -2719,8 +2719,8 @@
 		708AED5B238E5687000A4397 /* NetTool */ = {
 			isa = PBXGroup;
 			children = (
-				708AED5C238E5697000A4397 /* DZLoginRegNetTool.h */,
-				708AED5D238E5697000A4397 /* DZLoginRegNetTool.m */,
+				708AED5C238E5697000A4397 /* DZLoginNetTool.h */,
+				708AED5D238E5697000A4397 /* DZLoginNetTool.m */,
 			);
 			path = NetTool;
 			sourceTree = "<group>";
@@ -2850,6 +2850,21 @@
 			path = OtherView;
 			sourceTree = "<group>";
 		};
+		70A8F7A6239B943800696DD2 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				70CA22E62386E91A0053B31B /* DZGroupModel.h */,
+				70CA22E72386E91A0053B31B /* DZGroupModel.m */,
+				70DFD78D237A95DD00A13F0F /* DZNoticeModel.h */,
+				70DFD792237A95DD00A13F0F /* DZNoticeModel.m */,
+				70DFD78F237A95DD00A13F0F /* DZBaseVarModel.h */,
+				70DFD78C237A95DD00A13F0F /* DZBaseVarModel.m */,
+				708306F8239A588A0083B015 /* DZBaseAuthModel.h */,
+				708306F9239A588A0083B015 /* DZBaseAuthModel.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		70B6B8E32398FFC4003ED8F1 /* ListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2965,14 +2980,6 @@
 		70CA22E92386F34C0053B31B /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				70CA22E62386E91A0053B31B /* DZGroupModel.h */,
-				70CA22E72386E91A0053B31B /* DZGroupModel.m */,
-				70DFD78D237A95DD00A13F0F /* DZNoticeModel.h */,
-				70DFD792237A95DD00A13F0F /* DZNoticeModel.m */,
-				70DFD78F237A95DD00A13F0F /* DZBaseVarModel.h */,
-				70DFD78C237A95DD00A13F0F /* DZBaseVarModel.m */,
-				708306F8239A588A0083B015 /* DZBaseAuthModel.h */,
-				708306F9239A588A0083B015 /* DZBaseAuthModel.m */,
 				70F3CBCA238E8EB300BFA199 /* DZBaseResModel.h */,
 				70F3CBCB238E8EB300BFA199 /* DZBaseResModel.m */,
 			);
@@ -3052,6 +3059,7 @@
 		70DFD78A237A95DD00A13F0F /* BaseModel */ = {
 			isa = PBXGroup;
 			children = (
+				70A8F7A6239B943800696DD2 /* Response */,
 			);
 			path = BaseModel;
 			sourceTree = "<group>";
@@ -4289,7 +4297,7 @@
 				709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */,
 				7002A36A2383D8CD00BC0C61 /* MessageListModel.m in Sources */,
 				708AED65238E5703000A4397 /* DZPostNetTool.m in Sources */,
-				708AED5E238E5697000A4397 /* DZLoginRegNetTool.m in Sources */,
+				708AED5E238E5697000A4397 /* DZLoginNetTool.m in Sources */,
 				7062127B237936C900130B9D /* SubForumCell.m in Sources */,
 				7062129C237936C900130B9D /* DZNormalDetailCell.m in Sources */,
 				70F9F8E3237AA72C0067B308 /* UIImageView+FindHairline.m in Sources */,

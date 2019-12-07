@@ -15,8 +15,14 @@
 @property (nonatomic, copy) NSString *Charset;  //!< 字符编码
 @property (nonatomic, strong) DZBackMsgModel *Message;  //!< 属性注释
 
+/// 是否已授权
 -(BOOL)isAuthorized;
 
+// 是否绑定成功
+-(BOOL)isBindSuccess;
+
+// 是否绑定了第三方账号
+-(BOOL)isBindThird;
 
 
 @end

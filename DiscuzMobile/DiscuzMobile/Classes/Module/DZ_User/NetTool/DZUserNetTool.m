@@ -54,7 +54,7 @@
         if ([DataCheck isValidString:regname]) {
             NSString *regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,regname];
             if ([DataCheck isValidString:[responseObject objectForKey:@"formhash"]]) {
-                [Environment sharedEnvironment].formhash = [responseObject objectForKey:@"formhash"];
+                [DZMobileCtrl sharedCtrl].User.formhash = [responseObject objectForKey:@"formhash"];
             }
             self.regUrl = regUrl;
         }
@@ -127,6 +127,4 @@
 }
 
 
-
-
-@end
+    @end

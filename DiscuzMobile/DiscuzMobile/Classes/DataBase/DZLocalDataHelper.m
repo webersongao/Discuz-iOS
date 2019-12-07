@@ -12,7 +12,7 @@
 #import "FMDatabaseAdditions.h"
 
 #define kDZLocalDBVersion 1
-#define kDZLocalDBFileName @"PRBaiduFileUpload.db"  // 文件 和 分片 两张表
+#define kDZLocalDBFileName @"PRDouMao.db" 
 
 static DZLocalDataHelper *KInstance;
 
@@ -137,42 +137,29 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 
 - (void)onCreate:(FMDatabase *)database
 {
-    // 文件数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRBaiduFileTableName\";"];
-    [database executeUpdate:@"CREATE TABLE \"PRBaiduFileTableName\" (\n"
-     "\t \"taskId\" text NOT NULL,\n"
-     "\t \"serverPath\" text NOT NULL,\n"
-     "\t \"bookName\" text NOT NULL,\n"
-     "\t \"bookCoverUrl\" text NOT NULL,\n"
-     "\t \"bookSizeString\" text NOT NULL,\n"
-     "\t \"uploadid\" text NOT NULL,\n"
-     "\t \"relatePath\" text NOT NULL,\n"
-     "\t \"progressString\" text NOT NULL,\n"
-     "\t \"block_MD5_list\" text NOT NULL,\n"  // 需要将 block_MD5_list 转换成字符串再存进去 取出时也需要转回数组
+    // 用户数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRDouMaoUserTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"PRDouMaoUserTable\" (\n"
+     "\t \"cookiepre\" text NOT NULL,\n"
+     "\t \"auth\" text NOT NULL,\n"
+     "\t \"saltkey\" text NOT NULL,\n"
+     "\t \"member_uid\" text NOT NULL,\n"
+     "\t \"member_username\" text NOT NULL,\n"
+     "\t \"member_avatar\" text NOT NULL,\n"
+     "\t \"groupid\" text NOT NULL,\n"
+     "\t \"formhash\" text NOT NULL,\n"
+     "\t \"ismoderator\" text NOT NULL,\n"
+     "\t \"readaccess\" text NOT NULL,\n"
      
-     "\t \"return_type\" integer DEFAULT -1,\n"
-     "\t \"totalfragCount\" integer NOT NULL,\n"
-     "\t \"totalFailfragCount\" integer NOT NULL,\n"
-     "\t \"totalSuccessfragCount\" integer NOT NULL,\n"
-     
-     "\t \"isdir\" bool NOT NULL,\n"
-     "\t \"isPreFrag\" bool NOT NULL,\n"
-     "\t \"totalSize\" long long NOT NULL,\n"
-     "\t \"uploadStatus\" integer NOT NULL,\n"  /// 枚举值转成integer
-     "\t \"uploadProgress\" double NOT NULL,\n"
-     "\t \"taskUrlTag\" double NOT NULL,\n"
-     "\t \"reUpload\" bool NOT NULL,\n"
-     "\t \"isOver\" bool NOT NULL,\n"
-     "\t \"file_Md5\" text NOT NULL,\n"
-     "\t \"file_fsid\" text NOT NULL,\n"
+//     "\t \"return_type\" integer DEFAULT -1,\n"
+//     "\t \"isdir\" bool NOT NULL,\n"
      
      "\t \"rowID\" integer NOT NULL PRIMARY KEY AUTOINCREMENT \n"
-     
      ");"];
     
-    // 分片数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRBaiduFileFragTableName\";"];
-    [database executeUpdate:@"CREATE TABLE \"PRBaiduFileFragTableName\" (\n"
+    // 帖子数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"PRDouMaoThreadTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"PRDouMaoThreadTable\" (\n"
      "\t \"taskId\" text NOT NULL,\n"
      "\t \"fragMD5\" text NOT NULL,\n"
      "\t \"serverPath\" text NOT NULL,\n"

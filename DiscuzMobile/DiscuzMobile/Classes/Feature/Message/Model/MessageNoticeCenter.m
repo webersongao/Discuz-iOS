@@ -10,7 +10,7 @@
 
 @implementation MessageNoticeCenter
 
-+ (instancetype)shareInstance {
++ (instancetype)shared {
     static MessageNoticeCenter *notiCenter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

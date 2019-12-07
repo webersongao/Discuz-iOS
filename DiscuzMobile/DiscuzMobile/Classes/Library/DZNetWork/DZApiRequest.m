@@ -75,10 +75,10 @@
 // 掌上论坛公共处理
 + (void)publicDo:(id)responseObject {
     if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]]) { // 公共提醒
-        [Environment sharedEnvironment].formhash = [[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"];
+        [DZMobileCtrl sharedCtrl].User.formhash = [[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"];
         if ([DZLoginModule isLogged]) {
             if ([DataCheck isValidDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]]) { //公共提醒
-                [MessageNoticeCenter shareInstance].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]];
+                [MessageNoticeCenter shared].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]];
             }
         }
         return;

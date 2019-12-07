@@ -16,16 +16,17 @@
 
 + (instancetype)sharedTool;
 
+// 检测注册权限
 - (void)DZ_CheckRegisterAPIRequest;
-
 - (void)DZ_CheckRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure;
-
 - (void)DZ_CheckRegisterRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure;
 
-
+/// 拉取用户信息
 + (void)DZ_UserProfileFromServer:(BOOL)isMe Uid:(NSString *)uid userBlock:(void(^)(DZUserVarModel *UserVarModel, NSString *errorStr))userBlock;
 
+// 更新用户头像
 + (void)DZ_UserUpdateAvatarToServer:(UIImage *)avatarImg  progress:(ProgressBlock)progress completion:(backBoolBlock)completion;
+
 
 @end
 

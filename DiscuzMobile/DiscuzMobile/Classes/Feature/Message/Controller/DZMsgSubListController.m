@@ -12,7 +12,6 @@
 #import "MessageCell.h"
 #import "SystemNoteCell.h"
 #import "MsglistCell.h"
-#import "MessageNoticeCenter.h"
 
 @interface DZMsgSubListController ()
 @end
@@ -181,11 +180,8 @@
     }
     
     if ([DataCheck isValidString:self.typeModel.view] && [self.typeModel.view isEqualToString:@"mypost"]) {
-        if ([DataCheck isValidDictionary:model.notevar]) {
-            if ([DataCheck isValidString:[model.notevar objectForKey:@"tid"]]) {
-                [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:[model.notevar objectForKey:@"tid"]];
-            }
-            
+        if (model.notevar) {
+                [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:model.notevar.tid];
         } else {
             //                model.note
             NSArray *arr = [model.note componentsSeparatedByString:@"tid="];

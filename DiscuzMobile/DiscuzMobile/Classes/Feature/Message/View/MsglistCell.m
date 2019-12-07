@@ -75,14 +75,12 @@
 //    }];
     
 //    if ([message.type isEqualToString:@"post"]) {
-//        
-//        NSString *subject = [message.notevar objectForKey:@"subject"];
+//          NSString *subject = message.notevar.subject;
 //        [self.contenLabel setMLText:[NSString stringWithFormat:@"回复了您的帖子  %@",subject]];
 //        self.nameLabel.text = message.author;
 //    } else {
 //        [self.contenLabel setHtmlText:messagestr];
 //    }
-    
     
 }
 
@@ -98,7 +96,6 @@
 + (NSString *)getDateStringWithDate:(NSString *)dateStr
                          DateFormat:(NSString *)formatString
 {
-    
     double unixTimeStamp = [dateStr doubleValue];
     NSTimeInterval _interval=unixTimeStamp;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:_interval];

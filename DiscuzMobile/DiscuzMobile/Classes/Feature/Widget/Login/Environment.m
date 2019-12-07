@@ -21,14 +21,23 @@
     }
 }
 
-+ (NSDictionary*)modelCustomPropertyMapper {
-    return @{
-        @"authKey" : @"cookiepre",
-    };
-}
+//+ (NSDictionary*)modelCustomPropertyMapper {
+//    return @{
+//        @"authKey" : @"cookiepre",
+//    };
+//}
+//
+//-(void)setAuthKey:(NSString *)authKey{
+//    _authKey = [authKey stringByAppendingString:@"auth"];
+//}
 
--(void)setAuthKey:(NSString *)authKey{
-    _authKey = [authKey stringByAppendingString:@"auth"];
-}
+@end
+
+
+@implementation DZRegInputModel
+
+@end
+
+@implementation DZLoginResModel
 
 @end

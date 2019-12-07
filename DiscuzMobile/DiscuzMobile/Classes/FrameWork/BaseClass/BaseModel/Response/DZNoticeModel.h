@@ -11,6 +11,9 @@
 extern NSString * const Msg_NoExistence;
 extern NSString * const Msg_NoPermission;
 extern NSString * const Msg_NoMedal;
+extern NSString * const Msg_BindSucc;
+extern NSString * const Msg_No_bind; // 未绑定第三方账号
+extern NSString * const Msg_loginEmpty; /// 登录问题为空
 
 
 @interface DZNoticeModel : NSObject

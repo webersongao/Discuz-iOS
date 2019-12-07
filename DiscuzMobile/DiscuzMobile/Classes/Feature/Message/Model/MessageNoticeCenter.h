@@ -10,7 +10,7 @@
 
 @interface MessageNoticeCenter : NSObject
 
-+ (instancetype)shareInstance;
++ (instancetype)shared;
 
 @property (nonatomic, strong) NSMutableDictionary* noticeDic;
 

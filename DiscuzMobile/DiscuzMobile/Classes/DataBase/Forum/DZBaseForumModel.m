@@ -11,8 +11,7 @@
 @implementation DZBaseForumModel
 
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"fid" : @"id",
-             @"forum_desc" : @"description",
+    return @{@"forum_desc" : @"description",
              @"favorited" : @"favorite",
     };
 }

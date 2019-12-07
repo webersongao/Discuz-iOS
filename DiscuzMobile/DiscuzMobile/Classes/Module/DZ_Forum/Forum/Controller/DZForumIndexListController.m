@@ -222,7 +222,7 @@
 #pragma mark - setter getter
 - (DZBaseTableView *)leftMenuList {
     if (_leftMenuList == nil) {
-        _leftMenuList = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth * 0.22, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
+        _leftMenuList = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth * 0.22, KScreenHeight - KNavi_ContainStatusBar_Height-KTabbar_Height) style:UITableViewStylePlain];
         _leftMenuList.delegate = self;
         _leftMenuList.dataSource = self;
         _leftMenuList.backgroundColor = K_Color_ForumGray;

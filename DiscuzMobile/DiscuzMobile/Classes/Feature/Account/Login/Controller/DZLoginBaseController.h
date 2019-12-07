@@ -9,6 +9,7 @@
 #import "DZBaseViewController.h"
 #import "DZShareCenter.h"
 #import "DZLoginModel.h"
+#import "Environment.h"
 #import "SeccodeverifyView.h"
 
 typedef void(^RefreshBlock)(void);
@@ -18,6 +19,6 @@ typedef void(^RefreshBlock)(void);
 @property (nonatomic, assign) BOOL isKeepTabbarSelected;     // tabbar页面的时候跳登录页面考虑这个属性
 @property (nonatomic, strong) SeccodeverifyView *verifyView; // 验证码
 
-- (void)setUserInfo:(id)responseObject;
+- (void)updateUserResInfo:(DZLoginResModel *)loginResModel;
 
 @end

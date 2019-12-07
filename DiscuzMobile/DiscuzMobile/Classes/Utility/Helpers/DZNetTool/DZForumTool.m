@@ -16,7 +16,7 @@
 + (void)DZ_CollectionForum:(NSString *)fid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
     
     NSString *forumId = checkNull(fid);
-    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
     if (!forumId.length) {
         return;
     }
@@ -49,7 +49,7 @@
 + (void)DZ_CollectionThread:(NSString *)tid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
     
     NSString *threadId = checkNull(tid);
-    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
     if (!threadId.length) {
         return;
     }
@@ -81,7 +81,7 @@
     
     NSString *forumId = checkNull(fid);
     NSString *typeId = (type == collectForum) ? @"forum" : @"thread";
-    NSString *formhash = checkNull([Environment sharedEnvironment].formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
     if (!forumId.length) {
         return;
     }
@@ -116,7 +116,7 @@
 + (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure {
     if ([DZLoginModule isLogged]) {
         NSDictionary * paramter=@{@"tid":tid,
-                                  @"hash":checkNull([Environment sharedEnvironment].formhash)
+                                  @"hash":checkNull([DZMobileCtrl sharedCtrl].User.formhash)
                                   };
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             request.urlString = DZ_Url_Praise;

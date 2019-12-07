@@ -11,37 +11,33 @@
 #import "DZShareCenter.h"
 #import "DZUserNetTool.h"
 
-NSString * const LoginFileName = @"LoginFile";
 NSString * const CookieValue = @"COOKIEVALU";
 
 @implementation DZLoginModule
 
-+ (void)loginAnylyeData:(id)responseObject andView:(UIView *)view andHandle:(void(^)(void))handle {
-    NSDictionary *Variables = [responseObject objectForKey:@"Variables"];
-    NSString *messageval = [responseObject messageval];
-    NSString *messagestr = [responseObject messagestr];
-    if (![messageval containsString:@"succeed"]) {
-        [MBProgressHUD showInfo:messagestr];
++ (void)loginAnylyeData:(DZLoginResModel *)resModel andView:(UIView *)view  andHandle:(void(^)(void))handle {
+  
+    if (![resModel.Message.messageval containsString:@"succeed"]) {
+        [MBProgressHUD showInfo:resModel.Message.messagestr];
         return;
     }
     
-    if(![DataCheck isValidString:[Variables objectForKey:@"auth"]]) {
-        [MBProgressHUD showInfo:messagestr];
+    if(!resModel.Variables.auth.length) {
+        [MBProgressHUD showInfo:resModel.Message.messagestr];
         return;
     }
     
-    if (![DataCheck isValidString:[Variables objectForKey:@"member_uid"]]) {
+    if (!resModel.Variables.member_uid.length) {
         [MBProgressHUD showInfo:@"未能获取到您的用户id"];
         return;
     }
     
     // 普通登录或者登录成功
-    [[Environment sharedEnvironment] setValuesForKeysWithDictionary:Variables];
-    [DZLoginModule saveUserInfo:Variables];
-    
+    [DZMobileCtrl sharedCtrl].User = resModel.Variables;
+    [DZLoginModule saveLocalUserInfo:resModel.Variables];
+    NSString *cookirStr = [DZMobileCtrl sharedCtrl].User.authKey;
     for (NSHTTPCookie * cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
-        
-        if ([[cookie name] isEqualToString:[NSString stringWithFormat:@"%@",[Environment sharedEnvironment].authKey]]) {
+        if ([[cookie name] isEqualToString:checkNull(cookirStr)]) {
             [DZLoginModule saveCookie:cookie];
         }
     }
@@ -75,37 +71,12 @@ NSString * const CookieValue = @"COOKIEVALU";
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
 //        }
     }
-    NSMutableDictionary *infoDic = [DZLoginModule getUserInfokey].mutableCopy;
-    for (NSString *key in infoDic.allKeys) {
-        [infoDic setObject:@"" forKey:key];
-    }
-    [[Environment sharedEnvironment] setValuesForKeysWithDictionary:infoDic];
     //  LoginFile
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:LoginFileName];
+    [[DZLocalContext shared] removeLocalUser];
     
     [Environment sharedEnvironment].authKey = nil;
     [DZShareCenter shareInstance].bloginModel = nil;
     
-}
-
-+ (void)cleanLogType {
-    
-    [Environment sharedEnvironment].member_loginstatus = @"0";
-    [DZLoginModule saveUserInfo:@"member_loginstatus" value:@"0"];
-}
-
-/**
- 判断是否三方登录
- 
- @return YES 是三方登录
- */
-+ (BOOL)isThirdplatformLogin {
-    if ([DataCheck isValidString:[Environment sharedEnvironment].member_loginstatus]) {
-        if ([[Environment sharedEnvironment].member_loginstatus isEqualToString:@"weixin"] || [[Environment sharedEnvironment].member_loginstatus isEqualToString:@"qq"]) {
-            return YES;
-        }
-    }
-    return NO;
 }
 
 /*
@@ -113,10 +84,8 @@ NSString * const CookieValue = @"COOKIEVALU";
  */
 
 + (void)setAutoLogin {
-    Environment *emviment = [Environment sharedEnvironment];
-    if ([DataCheck isValidDictionary:[DZLoginModule getUserInfokey]]) {
-        [emviment setValuesForKeysWithDictionary:[DZLoginModule getUserInfokey]];
-        // 设置cookie 自动登录
+   DZUserModel *user = [[DZLocalContext shared] GetLocalUserInfo];
+    if (user.member_uid.length) {
         [self setHttpCookie:[self getCookie]];
     }
 }
@@ -124,49 +93,13 @@ NSString * const CookieValue = @"COOKIEVALU";
 /*
  * 保存登录信息到本地
  */
-+ (void)saveUserInfo:(NSDictionary *)info {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    for (NSString *key in info.allKeys) {
-        if (![DataCheck isValidString:[info objectForKey:key]]) { // 处理下可能出现空值
-            [info setValue:@"" forKey:key];
-        }
-    }
-    [userDefaults setObject:info forKey:LoginFileName];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-/*
- * 保存登录信息到本地 一条条
- */
-+ (void)saveUserInfo:(NSString *)key value:(NSString *)value {
-    NSDictionary *info = [DZLoginModule getUserInfokey];
-    if (![DataCheck isValidDictionary:info]) {
-        info = [NSDictionary dictionary];
-    }
-    NSMutableDictionary *mutableInfo = [info mutableCopy];
-    key = [key isKindOfClass:[NSString class]] ? key : [NSString stringWithFormat:@"%@",key];
-    if (value != nil) {
-        [mutableInfo setObject:value forKey:key];
-        [DZLoginModule saveUserInfo:mutableInfo];
-    }
-}
-
-
-/*
- * 获取登录信息
- */
-+ (NSDictionary *)getUserInfokey {
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *info = [userDefaults objectForKey:LoginFileName];
-    if (![DataCheck isValidDictionary:info]) {
-        return nil;
-    }
-    return info;
++ (void)saveLocalUserInfo:(DZUserModel *)varinfo {
+    [[DZLocalContext shared] updateLocalUser:varinfo];
 }
 
 // 获取当前登录的uid
 + (NSString *)getLoggedUid {
-    NSString *uid = [Environment sharedEnvironment].member_uid;
+    NSString *uid = [DZMobileCtrl sharedCtrl].User.member_uid;
     if (![DataCheck isValidString:uid]) {
         uid = @"0";
     }

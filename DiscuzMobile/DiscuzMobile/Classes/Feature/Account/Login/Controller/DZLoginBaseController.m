@@ -20,8 +20,8 @@
 }
 
 #pragma mark - 请求成功操作
-- (void)setUserInfo:(id)responseObject {
-    [DZLoginModule loginAnylyeData:responseObject andView:self.view andHandle:^{ // 登录成功操作
+- (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
+    [DZLoginModule loginAnylyeData:loginResModel andView:self.view andHandle:^{ // 登录成功操作
         [[XinGeCenter shareInstance] setXG]; // 设置信鸽推送
         
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_LoginedRefreshInfo_Notify object:nil];

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-extern NSString * const LoginFileName;
+#import "Environment.h"
+
 extern NSString * const CookieValue;
 
 @interface DZLoginModule : NSObject
@@ -19,7 +20,7 @@ extern NSString * const CookieValue;
 //+ (void)removeInfoWithSiteId:(NSString *)siteId key:(NSString *)key;
 
 // 分析登录信息
-+ (void)loginAnylyeData:(id)responseObject andView:(UIView *)view  andHandle:(void(^)(void))handle;
++ (void)loginAnylyeData:(DZLoginResModel *)responseObject andView:(UIView *)view  andHandle:(void(^)(void))handle;
 
 /*
  * 判断是否登录
@@ -30,16 +31,6 @@ extern NSString * const CookieValue;
  *  退出登录，清空用户信息
  */
 + (void)signout;
-
-+ (void)cleanLogType;
-
-
-/**
- 判断是否三方登录
-
- @return YES 是三方登录
- */
-+ (BOOL)isThirdplatformLogin;
 
 /*
  * 设置自动登录状态

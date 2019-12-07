@@ -8,13 +8,21 @@
 
 #import "MessageListModel.h"
 
+@implementation MessageEvarModel
+
+@end
+
 @implementation MessageListModel
 
 + (NSDictionary*)modelCustomPropertyMapper {
-    return @{
-             @"msgid" : @"id",
-             @"mnew" : @"new"
+    return @{@"msg_id" : @"id",
+             @"msg_new" : @"new"
              };
+}
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"notevar" : [MessageEvarModel class]
+    };
 }
 
 -(void)setNote:(NSString *)note{

@@ -9,6 +9,7 @@
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
 #import "DZDiscoverModel.h"
+#import "DZUserModel.h"
 
 @interface DZMobileCtrl : NSObject
 
@@ -19,6 +20,8 @@
 @property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;
 
 @property (nonatomic, strong) DZDiscoverModel *forumInfo;  //!< 论坛全局数据
+
+@property (nonatomic, strong) DZUserModel *User;  //!< 论坛全局数据
 
 + (BOOL)IsEnableWifi;
 

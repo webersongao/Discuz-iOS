@@ -16,6 +16,25 @@
     };
 }
 
+
+// 是否绑定成功
+-(BOOL)isBindSuccess{
+    if ([self.Message.messageval containsString:Msg_BindSucc]) {
+        return YES;
+    }
+    return NO;
+}
+
+// 是否绑定了第三方账号
+-(BOOL)isBindThird{
+    if ([self.Message.messageval containsString:Msg_No_bind]) {
+        return NO;
+    }
+    return YES;
+}
+
+
+// 是否已授权
 -(BOOL)isAuthorized{
     if ([self.Message.messageval containsString:Msg_NoMedal] || [self.Message.messageval containsString:Msg_NoPermission] || [self.Message.messageval containsString:Msg_NoExistence]) {
         return NO;

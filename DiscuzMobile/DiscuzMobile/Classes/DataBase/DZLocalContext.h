@@ -11,9 +11,13 @@
 
 @interface DZLocalContext : EFSQLiteContext
 
++ (DZLocalContext *)shared;
 
+- (BOOL)removeLocalUser;
 
--(DZUserModel *)userIfoWithUID:(NSString *)uid;
+- (BOOL)updateLocalUser:(DZUserModel *)user;
+
+-(DZUserModel *)GetLocalUserInfo;
 
 
 

@@ -48,10 +48,10 @@
     
     NSString *title = self.dataSourceArr[indexPath.row];
     if (indexPath.row == 0) {
-        cell.titleLab.attributedText = [self cellGetAttributeStr:title andNew:[[MessageNoticeCenter shareInstance].noticeDic objectForKey:@"newpm"]];
+        cell.titleLab.attributedText = [self cellGetAttributeStr:title andNew:[[MessageNoticeCenter shared].noticeDic objectForKey:@"newpm"]];
     } else {
         
-        cell.titleLab.attributedText = [self cellGetAttributeStr:title andNew:[[MessageNoticeCenter shareInstance].noticeDic objectForKey:@"newmypost"]];
+        cell.titleLab.attributedText = [self cellGetAttributeStr:title andNew:[[MessageNoticeCenter shared].noticeDic objectForKey:@"newmypost"]];
     }
     
     cell.iconV.image = [UIImage imageTintColorWithName:[NSString stringWithFormat:@"pm_%ld",indexPath.row] andImageSuperView:cell.iconV];

@@ -30,12 +30,12 @@
 /** 配置推送 */
 - (void)setXG {
     
-    if ([Environment sharedEnvironment].member_uid == nil) { // 退出登录
+    if ([DZMobileCtrl sharedCtrl].User.member_uid == nil) { // 退出登录
         [XGPush setAccount:@"**"];
-    } else if ([Environment sharedEnvironment].member_uid.length < 2) { // 账号长度小于2
-        [XGPush setAccount:[NSString stringWithFormat:@"0%@",[Environment sharedEnvironment].member_uid]];
+    } else if ([DZMobileCtrl sharedCtrl].User.member_uid.length < 2) { // 账号长度小于2
+        [XGPush setAccount:[NSString stringWithFormat:@"0%@",[DZMobileCtrl sharedCtrl].User.member_uid]];
     } else {
-        [XGPush setAccount:[NSString stringWithFormat:@"%@",[Environment sharedEnvironment].member_uid]];
+        [XGPush setAccount:[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid]];
     }
     NSData * datatoken =  [[NSUserDefaults standardUserDefaults] objectForKey:DZ_XGTOKEN];
     void (^successBlock)(void) = ^(void){
