@@ -34,14 +34,5 @@
 }
 
 
-// 是否已授权
--(BOOL)isAuthorized{
-    if ([self.Message.messageval containsString:Msg_NoMedal] || [self.Message.messageval containsString:Msg_NoPermission] || [self.Message.messageval containsString:Msg_NoExistence]) {
-        return NO;
-    }
-    return YES;
-}
-
-
 
 @end

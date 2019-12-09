@@ -31,4 +31,17 @@ typedef enum : NSUInteger {
 // 刷新验证码 验证问题
 + (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure;
 
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,9 +23,6 @@
 
 #import "PostActivityModel.h"
 
-
-@class DZPlaceholderTextView;
-
 //启动活动MVC
 @interface DZPostActivityController ()<UITextFieldDelegate,UITextViewDelegate,DropDownViewDelegate,ZHPickViewDelegate>
 {

@@ -64,7 +64,6 @@
 		277EDC6D1E6D5B8D00E8F0E1 /* DZLaunchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EDC5F1E6D5B8D00E8F0E1 /* DZLaunchImageView.m */; };
 		277EDC6F1E6D5B8D00E8F0E1 /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EDC631E6D5B8D00E8F0E1 /* QCheckBox.m */; };
 		277EDC701E6D5B8D00E8F0E1 /* QRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EDC651E6D5B8D00E8F0E1 /* QRadioButton.m */; };
-		277EDC711E6D5B8D00E8F0E1 /* TitleSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EDC671E6D5B8D00E8F0E1 /* TitleSelectView.m */; };
 		277EDC881E6D5BD700E8F0E1 /* DZPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277EDC811E6D5BD700E8F0E1 /* DZPlaceholderTextView.m */; };
 		2781BE001EF1380F004BF984 /* audioImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2781BDFE1EF1380F004BF984 /* audioImg.png */; };
 		2781BE011EF1380F004BF984 /* audioPlay.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2781BDFF1EF1380F004BF984 /* audioPlay.gif */; };
@@ -577,8 +576,6 @@
 		277EDC631E6D5B8D00E8F0E1 /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
 		277EDC641E6D5B8D00E8F0E1 /* QRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRadioButton.h; sourceTree = "<group>"; };
 		277EDC651E6D5B8D00E8F0E1 /* QRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRadioButton.m; sourceTree = "<group>"; };
-		277EDC661E6D5B8D00E8F0E1 /* TitleSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleSelectView.h; sourceTree = "<group>"; };
-		277EDC671E6D5B8D00E8F0E1 /* TitleSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleSelectView.m; sourceTree = "<group>"; };
 		277EDC801E6D5BD700E8F0E1 /* DZPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPlaceholderTextView.h; sourceTree = "<group>"; };
 		277EDC811E6D5BD700E8F0E1 /* DZPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPlaceholderTextView.m; sourceTree = "<group>"; };
 		2781BDFE1EF1380F004BF984 /* audioImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audioImg.png; sourceTree = "<group>"; };
@@ -1541,8 +1538,6 @@
 				277EDC5D1E6D5B8D00E8F0E1 /* LaunchImage */,
 				275BABC41F346ECA00DB804B /* AddressSelectView */,
 				277EDC581E6D5B8D00E8F0E1 /* JTSegmentedControl */,
-				277EDC661E6D5B8D00E8F0E1 /* TitleSelectView.h */,
-				277EDC671E6D5B8D00E8F0E1 /* TitleSelectView.m */,
 				277EDC801E6D5BD700E8F0E1 /* DZPlaceholderTextView.h */,
 				277EDC811E6D5BD700E8F0E1 /* DZPlaceholderTextView.m */,
 			);
@@ -4256,7 +4251,6 @@
 				70F9F8D2237AA72B0067B308 /* UIScrollView+GestureConflict.m in Sources */,
 				70CA22E42386DF490053B31B /* DZGlobalTool.m in Sources */,
 				27234C9E1EA499DB008A8B13 /* EmptyAlertView.m in Sources */,
-				277EDC711E6D5B8D00E8F0E1 /* TitleSelectView.m in Sources */,
 				274C95161EE647C300163106 /* AttachmentBar.m in Sources */,
 				70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */,
 				947ECB1D2064D403002D3536 /* WSImageBroserCell.m in Sources */,

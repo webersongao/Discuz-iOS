@@ -7,7 +7,6 @@
 //
 
 #import "DZBaseTableViewCell.h"
-#import "DZPlaceholderTextView.h"
 #import "DZBaseTextField.h"
 
 @interface DZVoteTitleCell : DZBaseTableViewCell

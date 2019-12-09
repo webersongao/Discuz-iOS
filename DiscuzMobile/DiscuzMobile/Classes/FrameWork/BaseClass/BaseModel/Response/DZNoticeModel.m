@@ -25,6 +25,15 @@ NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问�
 @implementation DZBackMsgModel
 
 
+// 是否已授权
+-(BOOL)isAuthorized{
+    if ([self.messageval containsString:Msg_NoMedal] || [self.messageval containsString:Msg_NoPermission] || [self.messageval containsString:Msg_NoExistence]) {
+        return NO;
+    }
+    return YES;
+}
+
+
 @end
 
 

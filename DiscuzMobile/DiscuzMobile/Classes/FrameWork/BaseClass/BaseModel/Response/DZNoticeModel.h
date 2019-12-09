@@ -26,13 +26,16 @@ extern NSString * const Msg_loginEmpty; /// 登录问题为空
 @end
 
 
+@interface DZBackMsgModel : NSObject
+
 // 接口操作的状态信息
 //"messageval": "login_succeed",
 //"messagestr": "欢迎您回来，管理员 webersongao，现在将转入登录前页面"
-@interface DZBackMsgModel : NSObject
 @property (nonatomic, copy) NSString *messageval;
 @property (nonatomic, copy) NSString *messagestr;
 
+// 是否已授权
+-(BOOL)isAuthorized;
 
 @end
 

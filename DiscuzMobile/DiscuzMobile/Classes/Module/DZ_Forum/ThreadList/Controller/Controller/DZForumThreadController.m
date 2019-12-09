@@ -34,8 +34,6 @@
 
 @property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
 
-@property (nonatomic, strong) UITableViewCell *contentCell;
-
 @property (nonatomic, strong) NSMutableArray <DZForumTitleModel *> *titleArr;
 
 @property (nonatomic, strong) DZForumModel *forumInfo;
@@ -81,10 +79,10 @@
     self.foldTableView.dataSource = self;
     [self.headView addSubview:self.foldTableView];
     
-    DZForumTitleModel *m1 = [DZForumTitleModel initWithName:@"全部" andWithFid:self.forumFid];
-    DZForumTitleModel *m2 = [DZForumTitleModel initWithName:@"最新" andWithFid:self.forumFid];
-    DZForumTitleModel *m3 = [DZForumTitleModel initWithName:@"热门" andWithFid:self.forumFid];
-    DZForumTitleModel *m4 = [DZForumTitleModel initWithName:@"精华" andWithFid:self.forumFid];
+    DZForumTitleModel *m1 = [DZForumTitleModel modelWithName:@"全部" fid:self.forumFid type:DZ_ListAll];
+    DZForumTitleModel *m2 = [DZForumTitleModel modelWithName:@"最新" fid:self.forumFid type:DZ_ListNew];
+    DZForumTitleModel *m3 = [DZForumTitleModel modelWithName:@"热门" fid:self.forumFid type:DZ_ListHot];
+    DZForumTitleModel *m4 = [DZForumTitleModel modelWithName:@"精华" fid:self.forumFid type:DZ_ListBest];
     
     [self.titleArr addObject:m1];
     [self.titleArr addObject:m2];
@@ -129,8 +127,8 @@
     };
 }
 
-- (void)showTipView {
-    if (self.selectIndex != 0) {
+- (void)checkForumShowTipView {
+    if (self.selectIndex != 0 && !self.forumInfo.threadmodcount.integerValue) {
         return;
     }
     if (self.tipView.tipAnimatefinsh == NO) {
@@ -331,7 +329,6 @@
         if (cell == nil) {
             cell = [[SubForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"subForum"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
         }
         
         DZForumModel *model = self.subForumArr[indexPath.row];
@@ -340,9 +337,7 @@
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonId"];
-        
         if (cell == nil) {
-            
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CommonId"];
             cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -350,27 +345,21 @@
         
         if (self.ctvArr.count == 0) {
             NSMutableArray *vcArr = [NSMutableArray array];
-            KWEAKSELF;
-            [self.titleArr enumerateObjectsUsingBlock:^(DZForumTitleModel *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                
-                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:idx];
+            for (int idx = 0; idx < self.titleArr.count; idx++) {
+                DZForumTitleModel *obj = self.titleArr[idx];
+                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType];
                 listVc.title = obj.name;
                 listVc.fid = obj.fid;
                 listVc.order = idx;
                 listVc.sendListBlock = ^(DZThreadVarModel *varModel) {
-                    [weakSelf subSendVarible:varModel];
+                    [self subSendVarible:varModel];
                 };
-                
                 listVc.endRefreshBlock = ^{
-                    if ([DataCheck isValidString:weakSelf.forumInfo.threadmodcount]) {
-                        if ([weakSelf.forumInfo.threadmodcount integerValue] > 0) {
-                            //                            [weakSelf showTipView];
-                        }
-                    }
-                    [weakSelf.tableView.mj_header endRefreshing];
+                    [self checkForumShowTipView];
+                    [self.tableView.mj_header endRefreshing];
                 };
                 [vcArr addObject:listVc];
-            }];
+            };
             
             if ([DataCheck isValidArray:vcArr]) {
                 self.ctvArr = vcArr;
@@ -390,7 +379,6 @@
 }
 
 - (void)subSendVarible:(DZThreadVarModel *)VarModel {
-    
     // 版块信息设置
     self.forumInfo = VarModel.forum;
     if ([DataCheck isValidString:self.forumInfo.favorited]) {

@@ -12,7 +12,6 @@
 #import "DZThreadListModel.h"
 #import "DZThreadListModel+Display.h"
 #import "DZShareCenter.h"
-#import "ResponseMessage.h"
 #import "AsyncAppendency.h"
 #import "ThreadListCell.h"
 #import "DZThreadTopCell.h"
@@ -128,7 +127,7 @@
         [self.HUD hide];
         if (threadResModel) {
             [self.tableView.mj_header endRefreshing];
-            if (!threadResModel.isAuthorized) {
+            if (!threadResModel.Message.isAuthorized) {
                 [UIAlertController alertTitle:nil message:threadResModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                     [self.navigationController popViewControllerAnimated:YES];
                 } cancelHandle:nil];

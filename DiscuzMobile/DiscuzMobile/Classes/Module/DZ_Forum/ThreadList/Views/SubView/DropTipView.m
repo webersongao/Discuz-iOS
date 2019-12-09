@@ -43,7 +43,9 @@
 }
 
 - (void)clickTip {
-    self.clickTipAction?self.clickTipAction():nil;
+    if (self.clickTipAction) {
+        self.clickTipAction();
+    }
 }
 
 - (UIButton *)closeBtn {
