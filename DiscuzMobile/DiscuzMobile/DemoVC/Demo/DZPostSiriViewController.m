@@ -62,8 +62,6 @@
 
 -(UITextView *)contentView{
     if (_contentView == nil) {
-        [DZMobileCtrl sharedCtrl].User.auth = @"sdgsdg";
-        [DZMobileCtrl sharedCtrl].User.member_uid = @"sdgsdg";
         _contentView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 15.f, KScreenWidth- 30, KScreenHeight-280)];
         _contentView.layer.borderColor = [UIColor orangeColor].CGColor;
         _contentView.layer.borderWidth = 1.f;

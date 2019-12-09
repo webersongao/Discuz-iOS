@@ -117,7 +117,7 @@
     if ([DZLoginModule isLogged]) {
         NSDictionary * paramter=@{@"tid":tid,
                                   @"hash":checkNull([DZMobileCtrl sharedCtrl].User.formhash)
-                                  };
+        };
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             request.urlString = DZ_Url_Praise;
             request.parameters = paramter;
@@ -140,7 +140,25 @@
     }
 }
 
-
+// 刷新验证码 验证问题
++ (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure {
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *dic = @{@"type":type};
+        request.urlString = DZ_Url_SecureCode;
+        request.parameters = dic;
+    } success:^(id responseObject, JTLoadType type) {
+        DZSecAuthModel *authModel = [DZSecAuthModel modelWithJSON:responseObject];
+        [[DZMobileCtrl sharedCtrl].User updateFormHash:authModel.formhash];
+        if (success) {
+            success(authModel);
+        }
+    } failed:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+    
+}
 
 
 @end

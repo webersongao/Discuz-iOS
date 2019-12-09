@@ -12,8 +12,6 @@
 #import "DZPostNetTool.h"
 #import "PostNormalModel.h"
 #import "WSImageModel.h"
-
-#import "SeccodeverifyView.h"
 #import "DZPostSelectTypeCell.h"
 #import "DZVoteTitleCell.h"
 #import "DZNormalDetailCell.h"
@@ -355,8 +353,8 @@
     
     if (self.verifyView.isyanzhengma) {
         [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
-        if ([DataCheck isValidString:[self.verifyView.secureData objectForKey:@"secqaa"]]) {
+        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
+        if (self.verifyView.secureData.secqaa.length) {
             [dic setObject:self.verifyView.secTextField.text forKey:@"secanswer"];;
         }
     }

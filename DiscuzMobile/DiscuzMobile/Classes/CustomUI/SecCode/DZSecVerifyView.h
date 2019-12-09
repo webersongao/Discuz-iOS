@@ -1,5 +1,5 @@
 //
-//  SeccodeverifyView.h
+//  DZSecVerifyView.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/27.
@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DZForumTool.h"
 
 typedef void(^CodeSubmitBlock)(void);
 
-@interface SeccodeverifyView : UIView
+@interface DZSecVerifyView : UIView
 
 // 验证码
-@property (nonatomic, strong) NSMutableDictionary *secureData;
+@property (nonatomic, strong) DZSecAuthModel *secureData;
 @property (nonatomic, assign) BOOL isyanzhengma;
 
 @property (nonatomic, strong) UITextField * yanTextField;

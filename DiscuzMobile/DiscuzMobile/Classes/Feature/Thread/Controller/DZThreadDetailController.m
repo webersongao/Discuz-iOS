@@ -18,7 +18,7 @@
 #import "ThreadDetailView.h"
 #import "ThreadModel.h"
 #import "ResponseMessage.h"
-#import "SeccodeverifyView.h"
+#import "DZSecVerifyView.h"
 #import "DZForumTool.h"
 #import "WSImageModel.h"
 #import "DZDevice.h"
@@ -40,7 +40,7 @@
 @property (nonatomic,strong) NSMutableArray *picurlArray; // 页面图片 （接口限制，只有一张）
 
 // 验证码
-@property (nonatomic, strong) SeccodeverifyView *verifyView;
+@property (nonatomic, strong) DZSecVerifyView *verifyView;
 @property (nonatomic, copy) NSString *preSalkey;
 @property (nonatomic, strong) ThreadModel *threadModel;
 
@@ -800,8 +800,8 @@
     
     if (self.verifyView.isyanzhengma) {
         [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
-        if ([DataCheck isValidString:[self.verifyView.secureData objectForKey:@"secqaa"]]) {
+        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
+        if (self.verifyView.secureData.secqaa.length) {
             [dic setObject:self.verifyView.secTextField.text forKey:@"secanswer"];
         }
     }
@@ -892,9 +892,9 @@
 }
 
 #pragma mark - getter
-- (SeccodeverifyView *)verifyView {
+- (DZSecVerifyView *)verifyView {
     if (!_verifyView) {
-        _verifyView = [[SeccodeverifyView alloc] init];
+        _verifyView = [[DZSecVerifyView alloc] init];
     }
     return _verifyView;
 }

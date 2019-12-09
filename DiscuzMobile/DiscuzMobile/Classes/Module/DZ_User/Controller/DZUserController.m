@@ -143,7 +143,7 @@
             [DZMobileCtrl showAlertInfo:errorStr];
         }else{
             weakSelf.centerModel.userVarModel = UserVarModel;
-            [DZMobileCtrl sharedCtrl].User.member_avatar = UserVarModel.member_avatar;
+            [[DZMobileCtrl sharedCtrl].User updateUserModel:UserVarModel];
             weakSelf.myHeader.userInfoView.nameLab.text = UserVarModel.space.username;
             [weakSelf.myHeader.userInfoView setIdentityText:UserVarModel.space.group.grouptitle];
             [weakSelf.myHeader.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:UserVarModel.member_avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRefreshCached];

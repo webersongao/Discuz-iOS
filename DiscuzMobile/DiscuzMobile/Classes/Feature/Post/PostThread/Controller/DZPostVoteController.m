@@ -23,7 +23,6 @@
 
 #import "DZImagePickerView.h"
 #import "ZHPickView.h"
-#import "SeccodeverifyView.h"
 #import "DZPostNetTool.h"
 
 
@@ -435,7 +434,7 @@ static int voteIndex = 0 ;
     if (self.verifyView.isyanzhengma)
     {
         [postDic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [postDic setObject:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
+        [postDic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
     }
     
     if ([DataCheck isValidString:self.voteModel.typeId]) {

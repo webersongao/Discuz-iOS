@@ -42,9 +42,9 @@
     [self.view endEditing:YES];
 }
 
-- (SeccodeverifyView *)verifyView {
+- (DZSecVerifyView *)verifyView {
     if (!_verifyView) {
-        _verifyView = [[SeccodeverifyView alloc] init];
+        _verifyView = [[DZSecVerifyView alloc] init];
     }
     return _verifyView;
 }

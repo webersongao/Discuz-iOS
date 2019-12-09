@@ -75,7 +75,7 @@
             self.registerView.authCodeView.hidden = NO;
         }
         
-        self.bbrulestxt = [self.verifyView.secureData objectForKey:@"bbrulestxt"];
+        self.bbrulestxt = @"WBS 用户须知丢啦，你自己找去";
         
         [self loadSeccodeImage];
     } failure:^(NSError *error) {
@@ -86,7 +86,7 @@
 
 - (void)loadSeccodeImage {
     
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.verifyView.secureData objectForKey:@"seccode"]]];
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.verifyView.secureData.seccode]];
     [self.registerView.authCodeView.webview loadRequest:request];
     
 }
@@ -134,17 +134,17 @@
     NSString *repass = _registerView.repassView.userNameTextField.text;
     NSString *email = _registerView.emailView.userNameTextField.text;
     
-    NSDictionary *regKeyDic = [DZUserNetTool sharedTool].regKeyDic;
-    if (![DataCheck isValidDictionary:regKeyDic]) {
+    DZRegInputModel *regModel = [DZUserNetTool sharedTool].regModel;
+    if (![regModel isValidate]) {
         [self checkAPIModuleRequest];
         [MBProgressHUD showInfo:@"正在获取注册配置，请稍候"];
         return;
     }
     
-    NSMutableDictionary *postData = @{[regKeyDic objectForKey:@"username"]:username,
-                                      [regKeyDic objectForKey:@"password"]:password,
-                                      [regKeyDic objectForKey:@"password2"]:repass,
-                                      [regKeyDic objectForKey:@"email"]:email,
+    NSMutableDictionary *postData = @{regModel.username:username,
+                                      regModel.password:password,
+                                      regModel.password2:repass,
+                                      regModel.email:email,
                                       @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                       @"regsubmit":@"yes",
     }.mutableCopy;
@@ -152,7 +152,7 @@
     if (self.verifyView.isyanzhengma) {
         if ([DataCheck isValidString:self.registerView.authCodeView.textField.text]) {
             [postData setValue:self.registerView.authCodeView.textField.text forKey:@"seccodeverify"];
-            [postData setValue:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
+            [postData setValue:self.verifyView.secureData.sechash forKey:@"sechash"];
         }
     }
     

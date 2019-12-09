@@ -70,7 +70,7 @@
 
 - (void)loadSeccodeImage {
     
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.verifyView.secureData objectForKey:@"seccode"]]];
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.verifyView.secureData.seccode]];
     [self.resetView.authCodeView.webview loadRequest:request];
     
 }
@@ -115,7 +115,7 @@
                                      }.mutableCopy;
     if (self.verifyView.isyanzhengma) {
         [postDic setValue:self.resetView.authCodeView.textField.text forKey:@"seccodeverify"];
-        [postDic setValue:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
+        [postDic setValue:self.verifyView.secureData.sechash forKey:@"sechash"];
     }
     [self.HUD showLoadingMessag:@"正在提交" toView:self.view];
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {

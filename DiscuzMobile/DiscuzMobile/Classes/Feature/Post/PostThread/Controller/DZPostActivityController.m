@@ -18,7 +18,6 @@
 #import "DZActiveDetailCell.h"
 #import "AllOneButtonCell.h"
 #import "DZPostSelectTypeCell.h"
-#import "SeccodeverifyView.h"
 #import "ActiveUserFieldCell.h"
 #import "ActiveExtendCell.h"
 
@@ -281,7 +280,7 @@
     
     if (self.verifyView.isyanzhengma) {
         [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
+        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
     }
     
     if ([DataCheck isValidString:self.activityModel.typeId]) {

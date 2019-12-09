@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZSecAuthModel.h"
 
 typedef enum : NSUInteger {
     collectForum,
@@ -27,5 +28,7 @@ typedef enum : NSUInteger {
 // 赞主题
 + (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure;
 
+// 刷新验证码 验证问题
++ (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure;
 
 @end

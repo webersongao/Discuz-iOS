@@ -22,6 +22,8 @@
 @property (nonatomic, copy) NSString *email;
 
 
+-(BOOL)isValidate;
+
 @end
 
 @interface DZLoginResModel : DZBaseResModel

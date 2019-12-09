@@ -19,7 +19,7 @@
 		2729D8BA1F0E296F0019F9E4 /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729D8B91F0E296F0019F9E4 /* vs.png */; };
 		2732E7A71DDD623600B2A57D /* DZFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732E7A61DDD623600B2A57D /* DZFileManager.m */; };
 		2735821A1ECBEB0B005870FA /* 苹方 细体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 273582191ECBEB0B005870FA /* 苹方 细体.ttf */; };
-		2738C84A1F03B0D30016CF05 /* SeccodeverifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738C8491F03B0D30016CF05 /* SeccodeverifyView.m */; };
+		2738C84A1F03B0D30016CF05 /* DZSecVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738C8491F03B0D30016CF05 /* DZSecVerifyView.m */; };
 		273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CCEFE1DD98E7100116331 /* DataCheck.m */; };
 		273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F30251ECE8AB900C78A6C /* DZDatabaseHandle.m */; };
 		273F302C1ECE92EA00C78A6C /* DZArchieverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F302B1ECE92EA00C78A6C /* DZArchieverTool.m */; };
@@ -142,6 +142,8 @@
 		703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4251237D32180046C398 /* DZPostUIEditViewController.m */; };
 		703C4258237D51330046C398 /* DZSiriTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4257237D51330046C398 /* DZSiriTool.m */; };
 		703C425B237D514A0046C398 /* DZiFlyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C425A237D514A0046C398 /* DZiFlyTool.m */; };
+		703F2B86239DF2A600E7882C /* DZCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 703F2B85239DF2A600E7882C /* DZCheckModel.m */; };
+		703F2B89239DF99600E7882C /* DZSecAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 703F2B88239DF99600E7882C /* DZSecAuthModel.m */; };
 		70471C632394C00700CCF5AC /* DZUserNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70471C622394C00700CCF5AC /* DZUserNetTool.m */; };
 		7048E2AC2387E47300B39006 /* DZDiscoverCateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7048E2AB2387E47300B39006 /* DZDiscoverCateController.m */; };
 		704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8520237E92ED0098C48D /* NSDate+Additions.m */; };
@@ -245,7 +247,6 @@
 		706212D5237936C900130B9D /* ActivityApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621184237936C800130B9D /* ActivityApplyCell.m */; };
 		706212D6237936C900130B9D /* PartInMultiSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621185237936C800130B9D /* PartInMultiSelectCell.m */; };
 		706212D7237936C900130B9D /* ExamineActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621186237936C800130B9D /* ExamineActivityView.m */; };
-		706212D8237936C900130B9D /* WebAuthcodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621188237936C800130B9D /* WebAuthcodeView.m */; };
 		706212D9237936C900130B9D /* ActivityApplyReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062118C237936C800130B9D /* ActivityApplyReplyCell.m */; };
 		706212DA237936C900130B9D /* PartInSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062118D237936C800130B9D /* PartInSelectCell.m */; };
 		706212DB237936C900130B9D /* PartInNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062118E237936C800130B9D /* PartInNormalCell.m */; };
@@ -511,8 +512,8 @@
 		2732E7A61DDD623600B2A57D /* DZFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFileManager.m; sourceTree = "<group>"; };
 		273582191ECBEB0B005870FA /* 苹方 细体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "苹方 细体.ttf"; sourceTree = "<group>"; };
 		27382C921EC5B6040071C3A1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2738C8481F03B0D30016CF05 /* SeccodeverifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeccodeverifyView.h; sourceTree = "<group>"; };
-		2738C8491F03B0D30016CF05 /* SeccodeverifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeccodeverifyView.m; sourceTree = "<group>"; };
+		2738C8481F03B0D30016CF05 /* DZSecVerifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSecVerifyView.h; sourceTree = "<group>"; };
+		2738C8491F03B0D30016CF05 /* DZSecVerifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSecVerifyView.m; sourceTree = "<group>"; };
 		273CCEFD1DD98E7100116331 /* DataCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCheck.h; sourceTree = "<group>"; };
 		273CCEFE1DD98E7100116331 /* DataCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCheck.m; sourceTree = "<group>"; };
 		273F30241ECE8AB900C78A6C /* DZDatabaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDatabaseHandle.h; sourceTree = "<group>"; };
@@ -713,6 +714,10 @@
 		703C4257237D51330046C398 /* DZSiriTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZSiriTool.m; sourceTree = "<group>"; };
 		703C4259237D514A0046C398 /* DZiFlyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZiFlyTool.h; sourceTree = "<group>"; };
 		703C425A237D514A0046C398 /* DZiFlyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZiFlyTool.m; sourceTree = "<group>"; };
+		703F2B84239DF2A600E7882C /* DZCheckModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZCheckModel.h; sourceTree = "<group>"; };
+		703F2B85239DF2A600E7882C /* DZCheckModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZCheckModel.m; sourceTree = "<group>"; };
+		703F2B87239DF99600E7882C /* DZSecAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZSecAuthModel.h; sourceTree = "<group>"; };
+		703F2B88239DF99600E7882C /* DZSecAuthModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZSecAuthModel.m; sourceTree = "<group>"; };
 		70471C612394C00700CCF5AC /* DZUserNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZUserNetTool.h; sourceTree = "<group>"; };
 		70471C622394C00700CCF5AC /* DZUserNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZUserNetTool.m; sourceTree = "<group>"; };
 		7048E2AA2387E47300B39006 /* DZDiscoverCateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZDiscoverCateController.h; sourceTree = "<group>"; };
@@ -922,7 +927,6 @@
 		70621185237936C800130B9D /* PartInMultiSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartInMultiSelectCell.m; sourceTree = "<group>"; };
 		70621186237936C800130B9D /* ExamineActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamineActivityView.m; sourceTree = "<group>"; };
 		70621187237936C800130B9D /* ThreadDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadDetailView.h; sourceTree = "<group>"; };
-		70621188237936C800130B9D /* WebAuthcodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebAuthcodeView.m; sourceTree = "<group>"; };
 		70621189237936C800130B9D /* ApplyItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyItemView.h; sourceTree = "<group>"; };
 		7062118A237936C800130B9D /* PartInPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartInPayCell.h; sourceTree = "<group>"; };
 		7062118B237936C800130B9D /* ApplyStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyStatusView.h; sourceTree = "<group>"; };
@@ -935,7 +939,6 @@
 		70621192237936C800130B9D /* ActivityApplyDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityApplyDetailCell.m; sourceTree = "<group>"; };
 		70621193237936C800130B9D /* PartInPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartInPayCell.m; sourceTree = "<group>"; };
 		70621194237936C800130B9D /* ApplyItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyItemView.m; sourceTree = "<group>"; };
-		70621195237936C800130B9D /* WebAuthcodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebAuthcodeView.h; sourceTree = "<group>"; };
 		70621196237936C800130B9D /* ThreadDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadDetailView.m; sourceTree = "<group>"; };
 		70621197237936C800130B9D /* ExamineActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamineActivityView.h; sourceTree = "<group>"; };
 		70621198237936C800130B9D /* PartInMultiSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartInMultiSelectCell.h; sourceTree = "<group>"; };
@@ -1958,6 +1961,17 @@
 			path = iFly;
 			sourceTree = "<group>";
 		};
+		703F2B83239DF27E00E7882C /* RegCheck */ = {
+			isa = PBXGroup;
+			children = (
+				703F2B84239DF2A600E7882C /* DZCheckModel.h */,
+				703F2B85239DF2A600E7882C /* DZCheckModel.m */,
+				703F2B87239DF99600E7882C /* DZSecAuthModel.h */,
+				703F2B88239DF99600E7882C /* DZSecAuthModel.m */,
+			);
+			path = RegCheck;
+			sourceTree = "<group>";
+		};
 		70471C602394BFEC00CCF5AC /* NetTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -2504,8 +2518,6 @@
 				7062119B237936C800130B9D /* ApplyStatusView.m */,
 				70621187237936C800130B9D /* ThreadDetailView.h */,
 				70621196237936C800130B9D /* ThreadDetailView.m */,
-				70621195237936C800130B9D /* WebAuthcodeView.h */,
-				70621188237936C800130B9D /* WebAuthcodeView.m */,
 				70621197237936C800130B9D /* ExamineActivityView.h */,
 				70621186237936C800130B9D /* ExamineActivityView.m */,
 			);
@@ -3057,6 +3069,7 @@
 		70DFD78A237A95DD00A13F0F /* BaseModel */ = {
 			isa = PBXGroup;
 			children = (
+				703F2B83239DF27E00E7882C /* RegCheck */,
 				70A8F7A6239B943800696DD2 /* Response */,
 			);
 			path = BaseModel;
@@ -3760,8 +3773,8 @@
 		94430F3122FBB69E008E3F67 /* SecCode */ = {
 			isa = PBXGroup;
 			children = (
-				2738C8481F03B0D30016CF05 /* SeccodeverifyView.h */,
-				2738C8491F03B0D30016CF05 /* SeccodeverifyView.m */,
+				2738C8481F03B0D30016CF05 /* DZSecVerifyView.h */,
+				2738C8491F03B0D30016CF05 /* DZSecVerifyView.m */,
 			);
 			path = SecCode;
 			sourceTree = "<group>";
@@ -4274,7 +4287,7 @@
 				9494508B21196F8B0074C79E /* AudioTool.m in Sources */,
 				9492088820244D8700543C09 /* JTRequestManager.m in Sources */,
 				706212D1237936C900130B9D /* ParInActiveModel.m in Sources */,
-				2738C84A1F03B0D30016CF05 /* SeccodeverifyView.m in Sources */,
+				2738C84A1F03B0D30016CF05 /* DZSecVerifyView.m in Sources */,
 				706212C8237936C900130B9D /* DZAboutController.m in Sources */,
 				70FBDCE82383FC1B00FC296E /* DZThreadRootController.m in Sources */,
 				70FBDCEA2383FC1B00FC296E /* MyReplyController.m in Sources */,
@@ -4346,6 +4359,7 @@
 				70621288237936C900130B9D /* PostNormalModel.m in Sources */,
 				70621294237936C900130B9D /* DZVoteDayVisableCell.m in Sources */,
 				70FBDD062383FC1B00FC296E /* DZForumItemCell.m in Sources */,
+				703F2B89239DF99600E7882C /* DZSecAuthModel.m in Sources */,
 				7065AE64238684C5009B6DA7 /* DZDiscoverNetTool.m in Sources */,
 				70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */,
 				70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */,
@@ -4430,6 +4444,7 @@
 				70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */,
 				70960273239BEE4A0078077D /* DZMobileCtrl+Config.m in Sources */,
 				706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */,
+				703F2B86239DF2A600E7882C /* DZCheckModel.m in Sources */,
 				709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */,
 				70621293237936C900130B9D /* DZVoteSelectCell.m in Sources */,
 				70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */,
@@ -4457,7 +4472,6 @@
 				706212EB237936C900130B9D /* DZResetPwdView.m in Sources */,
 				94B1067522F1678700D40827 /* DZUpdateAlertConst.m in Sources */,
 				27CD9D2A1DDEA87F0075831B /* SDBrowserImageView.m in Sources */,
-				706212D8237936C900130B9D /* WebAuthcodeView.m in Sources */,
 				947ECAFC2064D403002D3536 /* JFAssetHelper.m in Sources */,
 				70621278237936C900130B9D /* PostTypeCell.m in Sources */,
 				7002A3622383D8CD00BC0C61 /* DZMsgSubListController.m in Sources */,

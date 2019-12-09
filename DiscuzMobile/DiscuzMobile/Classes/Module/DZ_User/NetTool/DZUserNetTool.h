@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "DZUserVarModel.h"
-
+#import "DZLoginResModel.h"
 @interface DZUserNetTool : NSObject
 
 @property (nonatomic, copy) NSString *regUrl;
-@property (nonatomic, strong) NSDictionary *regKeyDic;
+@property (nonatomic, strong) DZRegInputModel *regModel;
 
 + (instancetype)sharedTool;
 

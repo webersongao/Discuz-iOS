@@ -8,7 +8,6 @@
 
 #import "DZPostBaseController.h"
 #import "UIAlertController+Extension.h"
-#import "SeccodeverifyView.h"
 #import "ZHPickView.h"
 #import "DZPostNetTool.h"
 #import "DZImagePickerView.h"
@@ -105,9 +104,9 @@
     return YES;
 }
 
-- (SeccodeverifyView *)verifyView {
+- (DZSecVerifyView *)verifyView {
     if (!_verifyView) {
-        _verifyView = [[SeccodeverifyView alloc] init];
+        _verifyView = [[DZSecVerifyView alloc] init];
     }
     return _verifyView;
 }

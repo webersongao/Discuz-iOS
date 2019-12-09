@@ -1,56 +1,96 @@
 //
-//  WebDZAuthCodeView.m
+//  DZSecVerifyView.m
 //  DiscuzMobile
 //
-//  Created by HB on 16/11/25.
-//  Copyright © 2016年 comsenz-service.com.  All rights reserved.
+//  Created by HB on 2017/6/27.
+//  Copyright © 2017年 comsenz-service.com. All rights reserved.
 //
 
-#import "WebAuthcodeView.h"
+#import "DZSecVerifyView.h"
+#import "MBProgressHUD.h"
+#import "MBProgressHUD+Add.h"
 
-@interface WebAuthcodeView()<UIWebViewDelegate>
+@interface DZSecVerifyView() <UIGestureRecognizerDelegate>
+
+@property (nonatomic, assign) BOOL isCreate;
+@property (nonatomic, copy) NSString *type;
 
 @end
 
-@implementation WebAuthcodeView
+@implementation DZSecVerifyView
+
+
+- (void)downSeccode:(NSString *)type success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
+    _type = type;
+    static NSInteger downYan_count = 0;
+    KWEAKSELF
+    [DZForumTool DZ_DownSeccode:type success:^(DZSecAuthModel *authModel) {
+        downYan_count = 0;
+        weakSelf.secureData = authModel;
+        if (authModel) {
+            //  如果为空则 不需要验证码
+            if (authModel.seccode.length && authModel.sechash.length) {
+                self.isyanzhengma = YES;
+                if (weakSelf.isCreate) {
+                    [weakSelf creatSecureView];
+                }
+            }else{
+                weakSelf.isyanzhengma = NO;
+            }
+        } else {
+            weakSelf.isyanzhengma = NO;
+        }
+        if (success) {
+            success();
+        }
+    } failure:^(NSError *error) {
+        if (downYan_count < 2) {
+            downYan_count ++;
+            [weakSelf downSeccode:type success:(void(^)(void))success failure:(void(^)(NSError *error))failure];
+        } else {
+            downYan_count = 0;
+            if (failure) { failure(error); }
+        }
+    }];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        [self createYtextView];
+        
+        self.backgroundColor = RGBACOLOR(83, 83, 83, 0.5);
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
+        self.frame = window.bounds;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
+        tap.delegate = self;
+        [self addGestureRecognizer:tap];
+        _isCreate = NO;
+        
     }
     return self;
 }
 
+
 -(void)createYtextView {
-    // 黑色半透明背景
-//    _loginView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
-    //    _loginView.backgroundColor = [UIColor greenColor];
+    
+    _isCreate = YES;
+    
     self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
-    self.userInteractionEnabled = YES;
-    UITapGestureRecognizer * singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(OnclikeBG:)];
-    [self addGestureRecognizer:singleTap];
-//    [self.view addSubview:_loginView];
-    
     UIView *  bgview = [[UIView alloc]initWithFrame:CGRectMake(40, 116, KScreenWidth-80, 300)];
-    
     if (iPhone320) {
         bgview.frame = CGRectMake(40, 80, KScreenWidth-80, 260);
     }
     
-    bgview.userInteractionEnabled = YES;
     bgview.backgroundColor = mRGBColor(241, 241, 241);
     [self addSubview:bgview];
     
-    _loginBtn.frame = CGRectMake(10, 212, KScreenWidth-20, 41);
     // 验证码field
     _yanTextField= [[UITextField alloc] initWithFrame:CGRectMake(10, 50, KScreenWidth-100, 57)];
-//    _yanTextField.delegate = self;
     _yanTextField.placeholder = @"请输入验证码";
     _yanTextField.tag=10010;
     _yanTextField.borderStyle= UITextBorderStyleRoundedRect;
-    _yanTextField.layer.borderWidth = 1.0f;
+    _yanTextField.layer.borderWidth = 2.0f;
     _yanTextField.layer.cornerRadius = 5;
     _yanTextField.layer.borderColor = K_Color_Theme.CGColor;
     _yanTextField.font = [DZFontSize forumtimeFontSize14];//14
@@ -58,12 +98,10 @@
     
     //验证码webview
     _identWebView=[[UIWebView alloc]initWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
-    _identWebView.delegate=self;
     _identWebView.userInteractionEnabled=YES;
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonSeccode.frame = CGRectMake(10+_yanTextField.frame.size.width/2, 120, _yanTextField.frame.size.width/2, 40);
-    
     [buttonSeccode addTarget:self action:@selector(oclcc) forControlEvents:UIControlEventTouchUpInside];
     buttonSeccode.layer.cornerRadius = 5;
     [buttonSeccode setTitle:@"看不清?" forState:UIControlStateNormal];
@@ -78,7 +116,7 @@
     _secqaaLabel.frame = CGRectMake(CGRectGetMinX(buttonSeccode.frame), CGRectGetMaxY(_identWebView.frame) + 15, CGRectGetWidth(buttonSeccode.frame), 0);
     [bgview addSubview:_secqaaLabel];
     [bgview addSubview:_secTextField];
-    if ([DataCheck isValidString:[self.secureData objectForKey:@"secqaa"]]) {
+    if (self.secureData.secqaa.length) {
         _secqaaLabel.frame = CGRectMake(CGRectGetMinX(_identWebView.frame), CGRectGetMaxY(_identWebView.frame) + 15,CGRectGetWidth(_identWebView.frame), 40);
         _secqaaLabel.font = [DZFontSize forumtimeFontSize14];
         _secqaaLabel.textAlignment = NSTextAlignmentCenter;
@@ -109,33 +147,40 @@
     
 }
 
-- (void)OnclikeBG:(UITapGestureRecognizer *)tap {
-    if ([self.delegate respondsToSelector:@selector(OnclikeBG:)]) {
-        [self.delegate performSelector:@selector(OnclikeBG:) withObject:tap];
-    }
+- (void)oclcc {
+    [self downSeccode:self.type success:nil failure:nil];
 }
 
-- (void)oclcc {
-    if ([self.delegate respondsToSelector:@selector(oclcc)]) {
-        [self.delegate performSelector:@selector(oclcc) withObject:nil];
+- (void)show {
+    DLog(@"显示");
+    if (!_isCreate) {
+        [self createYtextView];
     }
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    [window addSubview:self];
+}
+
+- (void)close {
+    DLog(@"关闭");
+    [self removeFromSuperview];
 }
 
 - (void)postClick {
-    if ([self.delegate respondsToSelector:@selector(postClick)]) {
-        [self.delegate performSelector:@selector(postClick) withObject:nil];
+    if (![DataCheck isValidString:_yanTextField.text]) {
+        [MBProgressHUD showInfo:@"请输入验证码"];
+        return;
+    }
+    [self close];
+    if (self.submitBlock) {
+        self.submitBlock();
     }
 }
 
 -(void)creatSecureView {
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:[_secureData objectForKey:@"seccode"]]];
-    DLog(@"%@",[_secureData objectForKey:@"seccode"]);
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.secureData.seccode]];
     [_identWebView loadRequest:request];
-    DLog(@"creatSecureView");
-    
-    _secqaaLabel.text = [_secureData objectForKey:@"secqaa"];
+    _secqaaLabel.text = self.secureData.secqaa;
 }
-
 
 
 @end

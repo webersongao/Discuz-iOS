@@ -138,7 +138,7 @@ NSString * const debugPassword = @"debugPassword";
     [dic setValue:@"yes" forKey:@"loginsubmit"];
     if (self.verifyView.isyanzhengma) {
         [dic setValue:self.loginView.authCodeView.textField.text forKey:@"seccodeverify"];
-        [dic setValue:[self.verifyView.secureData objectForKey:@"sechash"] forKey:@"sechash"];
+        [dic setValue:self.verifyView.secureData.sechash forKey:@"sechash"];
     }
     if (isQCreateView) {
         NSDictionary * dicvalue = @{@"母亲的名字":@"1",
@@ -302,7 +302,7 @@ NSString * const debugPassword = @"debugPassword";
 
 
 - (void)loadSeccodeWebView {
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.verifyView.secureData objectForKey:@"seccode"]]];
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.verifyView.secureData.seccode]];
     [self.loginView.authCodeView.webview loadRequest:request];
 }
 

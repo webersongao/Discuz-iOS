@@ -10,6 +10,10 @@
 
 @implementation DZRegInputModel
 
+-(BOOL)isValidate{
+    return (self.username.length && self.password.length && self.password2.length && self.email.length);
+}
+
 @end
 
 @implementation DZLoginResModel

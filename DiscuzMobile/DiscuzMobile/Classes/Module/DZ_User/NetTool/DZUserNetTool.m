@@ -9,7 +9,7 @@
 #import "DZUserNetTool.h"
 #import "DZApiRequest.h"
 #import "UIImage+Limit.h"
-
+#import "DZCheckModel.h"
 @interface DZUserNetTool ()
 
 
@@ -35,9 +35,14 @@
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             request.urlString = self.regUrl;
         } success:^(id responseObject, JTLoadType type) {
-            NSDictionary *reginput = [[responseObject objectForKey:@"Variables"] objectForKey:@"reginput"];
-            if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]] &&  [DataCheck isValidDictionary:reginput]) {
-                self.regKeyDic = [NSDictionary dictionaryWithDictionary:reginput];
+            // 放弃了 reginput 参数
+            NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
+            DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
+            if (regVar) {
+                self.regModel = regVar;
+                success?success():nil;
+            }else{
+                failure?failure():nil;
             }
             success?success():nil;
         } failed:^(NSError *error) {
@@ -50,15 +55,14 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_BaseCheck;
     } success:^(id responseObject, JTLoadType type) {
-        NSString *regname = [responseObject objectForKey:@"regname"];
-        if ([DataCheck isValidString:regname]) {
-            NSString *regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,regname];
-            if ([DataCheck isValidString:[responseObject objectForKey:@"formhash"]]) {
-                [DZMobileCtrl sharedCtrl].User.formhash = [responseObject objectForKey:@"formhash"];
-            }
-            self.regUrl = regUrl;
+        DZCheckModel *model = [DZCheckModel modelWithJSON:responseObject];
+        if (model.regname.length) {
+            self.regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,model.regname];
+            [[DZMobileCtrl sharedCtrl].User updateFormHash:model.formhash];
+            success?success():nil;
+        }else{
+            failure?failure():nil;
         }
-        success?success():nil;
     } failed:^(NSError *error) {
         failure?failure():nil;
     }];
@@ -127,4 +131,4 @@
 }
 
 
-    @end
+@end

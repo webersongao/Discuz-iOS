@@ -10,8 +10,9 @@
 #import "UITextView+EmojiCheck.h"
 #import "UITextField+EmojiCheck.h"
 #import "DZBaseAuthModel.h"
+#import "DZSecVerifyView.h"
 
-@class SeccodeverifyView,ZHPickView,DZImagePickerView;
+@class ZHPickView,DZImagePickerView;
 
 typedef void(^PushDetailBlock)(NSString *tid);
 
@@ -24,7 +25,7 @@ typedef void(^PushDetailBlock)(NSString *tid);
 
 @property (nonatomic, strong) ZHPickView *pickView;
 // 验证码
-@property (nonatomic, strong) SeccodeverifyView *verifyView;
+@property (nonatomic, strong) DZSecVerifyView *verifyView;
 // 相机相册
 @property (nonatomic, strong) DZImagePickerView *pickerView;
 
