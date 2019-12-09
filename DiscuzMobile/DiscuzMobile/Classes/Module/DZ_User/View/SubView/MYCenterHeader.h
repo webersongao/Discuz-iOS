@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class CenterUserInfoView,CenterToolView;
+#import "CenterUserInfoView.h"
+@class CenterToolView;
 
 @interface MYCenterHeader : UIView
 @property (nonatomic, strong) CenterUserInfoView *userInfoView;

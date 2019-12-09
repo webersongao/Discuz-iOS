@@ -1,21 +1,21 @@
 //
-//  VerticalImageTextView.m
+//  DZVerticalButton.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "VerticalImageTextView.h"
+#import "DZVerticalButton.h"
 
-@interface VerticalImageTextView () {
+@interface DZVerticalButton () {
     id _target;
     SEL _action;
 }
 
 @end
 
-@implementation VerticalImageTextView
+@implementation DZVerticalButton
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

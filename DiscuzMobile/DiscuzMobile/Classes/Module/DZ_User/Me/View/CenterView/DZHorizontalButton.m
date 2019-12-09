@@ -1,14 +1,14 @@
 //
-//  HorizontalImageTextView.m
+//  DZHorizontalButton.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "HorizontalImageTextView.h"
+#import "DZHorizontalButton.h"
 
-@implementation HorizontalImageTextView
+@implementation DZHorizontalButton
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

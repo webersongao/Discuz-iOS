@@ -395,13 +395,13 @@
 		70FBDCF12383FC1B00FC296E /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC952383FC1B00FC296E /* SubjectCell.m */; };
 		70FBDCF22383FC1B00FC296E /* MyReplyViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC972383FC1B00FC296E /* MyReplyViewControllerCell.m */; };
 		70FBDCF32383FC1B00FC296E /* BoundManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC9D2383FC1B00FC296E /* BoundManageCell.m */; };
-		70FBDCF42383FC1B00FC296E /* VerticalImageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC9E2383FC1B00FC296E /* VerticalImageTextView.m */; };
+		70FBDCF42383FC1B00FC296E /* DZVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC9E2383FC1B00FC296E /* DZVerticalButton.m */; };
 		70FBDCF52383FC1B00FC296E /* LogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA32383FC1B00FC296E /* LogoutCell.m */; };
 		70FBDCF62383FC1B00FC296E /* AllOneButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA42383FC1B00FC296E /* AllOneButtonCell.m */; };
 		70FBDCF72383FC1B00FC296E /* MYCenterHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */; };
 		70FBDCF82383FC1B00FC296E /* CenterToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA82383FC1B00FC296E /* CenterToolView.m */; };
 		70FBDCF92383FC1B00FC296E /* CenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA92383FC1B00FC296E /* CenterCell.m */; };
-		70FBDCFA2383FC1B00FC296E /* HorizontalImageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAA2383FC1B00FC296E /* HorizontalImageTextView.m */; };
+		70FBDCFA2383FC1B00FC296E /* DZHorizontalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAA2383FC1B00FC296E /* DZHorizontalButton.m */; };
 		70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAB2383FC1B00FC296E /* CenterUserInfoView.m */; };
 		70FBDCFC2383FC1B00FC296E /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAE2383FC1B00FC296E /* UserInfoCell.m */; };
 		70FBDCFD2383FC1B00FC296E /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCB12383FC1B00FC296E /* FriendCell.m */; };
@@ -1218,19 +1218,19 @@
 		70FBDC9B2383FC1B00FC296E /* LogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutCell.h; sourceTree = "<group>"; };
 		70FBDC9C2383FC1B00FC296E /* MYCenterHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCenterHeader.h; sourceTree = "<group>"; };
 		70FBDC9D2383FC1B00FC296E /* BoundManageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundManageCell.m; sourceTree = "<group>"; };
-		70FBDC9E2383FC1B00FC296E /* VerticalImageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalImageTextView.m; sourceTree = "<group>"; };
+		70FBDC9E2383FC1B00FC296E /* DZVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZVerticalButton.m; sourceTree = "<group>"; };
 		70FBDC9F2383FC1B00FC296E /* CenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterCell.h; sourceTree = "<group>"; };
 		70FBDCA02383FC1B00FC296E /* CenterToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterToolView.h; sourceTree = "<group>"; };
 		70FBDCA12383FC1B00FC296E /* CenterUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterUserInfoView.h; sourceTree = "<group>"; };
-		70FBDCA22383FC1B00FC296E /* HorizontalImageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalImageTextView.h; sourceTree = "<group>"; };
+		70FBDCA22383FC1B00FC296E /* DZHorizontalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHorizontalButton.h; sourceTree = "<group>"; };
 		70FBDCA32383FC1B00FC296E /* LogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutCell.m; sourceTree = "<group>"; };
 		70FBDCA42383FC1B00FC296E /* AllOneButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOneButtonCell.m; sourceTree = "<group>"; };
-		70FBDCA52383FC1B00FC296E /* VerticalImageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalImageTextView.h; sourceTree = "<group>"; };
+		70FBDCA52383FC1B00FC296E /* DZVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZVerticalButton.h; sourceTree = "<group>"; };
 		70FBDCA62383FC1B00FC296E /* BoundManageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundManageCell.h; sourceTree = "<group>"; };
 		70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCenterHeader.m; sourceTree = "<group>"; };
 		70FBDCA82383FC1B00FC296E /* CenterToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterToolView.m; sourceTree = "<group>"; };
 		70FBDCA92383FC1B00FC296E /* CenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterCell.m; sourceTree = "<group>"; };
-		70FBDCAA2383FC1B00FC296E /* HorizontalImageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalImageTextView.m; sourceTree = "<group>"; };
+		70FBDCAA2383FC1B00FC296E /* DZHorizontalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHorizontalButton.m; sourceTree = "<group>"; };
 		70FBDCAB2383FC1B00FC296E /* CenterUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterUserInfoView.m; sourceTree = "<group>"; };
 		70FBDCAD2383FC1B00FC296E /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		70FBDCAE2383FC1B00FC296E /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
@@ -3492,10 +3492,10 @@
 				70FBDC9D2383FC1B00FC296E /* BoundManageCell.m */,
 				70FBDCA12383FC1B00FC296E /* CenterUserInfoView.h */,
 				70FBDCAB2383FC1B00FC296E /* CenterUserInfoView.m */,
-				70FBDCA52383FC1B00FC296E /* VerticalImageTextView.h */,
-				70FBDC9E2383FC1B00FC296E /* VerticalImageTextView.m */,
-				70FBDCA22383FC1B00FC296E /* HorizontalImageTextView.h */,
-				70FBDCAA2383FC1B00FC296E /* HorizontalImageTextView.m */,
+				70FBDCA52383FC1B00FC296E /* DZVerticalButton.h */,
+				70FBDC9E2383FC1B00FC296E /* DZVerticalButton.m */,
+				70FBDCA22383FC1B00FC296E /* DZHorizontalButton.h */,
+				70FBDCAA2383FC1B00FC296E /* DZHorizontalButton.m */,
 			);
 			path = CenterView;
 			sourceTree = "<group>";
@@ -4333,7 +4333,7 @@
 				706212C7237936C900130B9D /* DZUserBoundView.m in Sources */,
 				706212BF237936C900130B9D /* DZSearchBar.m in Sources */,
 				706212E7237936C900130B9D /* DZLoginModel.m in Sources */,
-				70FBDCF42383FC1B00FC296E /* VerticalImageTextView.m in Sources */,
+				70FBDCF42383FC1B00FC296E /* DZVerticalButton.m in Sources */,
 				70F9F8F2237AA7580067B308 /* DZMobileCtrl+Navi.m in Sources */,
 				70F9F8E6237AA72C0067B308 /* NSString+MoreMethod.m in Sources */,
 				274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */,
@@ -4393,7 +4393,7 @@
 				704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */,
 				7002A3652383D8CD00BC0C61 /* DZUserMsgBoxTabController.m in Sources */,
 				706212D5237936C900130B9D /* ActivityApplyCell.m in Sources */,
-				70FBDCFA2383FC1B00FC296E /* HorizontalImageTextView.m in Sources */,
+				70FBDCFA2383FC1B00FC296E /* DZHorizontalButton.m in Sources */,
 				9492087E20243A8B00543C09 /* JTURLRequest.m in Sources */,
 				70621282237936C900130B9D /* DZPostVoteController.m in Sources */,
 				943430A32022EB2F009C0102 /* AppDelegate+Local.m in Sources */,

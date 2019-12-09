@@ -1,5 +1,5 @@
 //
-//  VerticalImageTextView.h
+//  DZVerticalButton.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VerticalImageTextView : UIView
+@interface DZVerticalButton : UIView
 
 @property (nonnull, strong) UIImageView *iconV;
 @property (nonnull, strong) UILabel *textLabel;

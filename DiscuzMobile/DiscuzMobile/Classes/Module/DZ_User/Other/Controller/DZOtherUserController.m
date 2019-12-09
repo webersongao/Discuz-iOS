@@ -9,7 +9,6 @@
 #import "DZOtherUserController.h"
 #import "UIAlertController+Extension.h"
 #import "CenterToolView.h"
-#import "VerticalImageTextView.h"
 #import "DZUserNetTool.h"
 #import "TextIconModel.h"
 #import "CenterManageModel.h"

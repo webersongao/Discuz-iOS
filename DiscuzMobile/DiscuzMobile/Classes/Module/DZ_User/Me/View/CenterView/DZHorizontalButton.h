@@ -1,5 +1,5 @@
 //
-//  HorizontalImageTextView.h
+//  DZHorizontalButton.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HorizontalImageTextView : UIView
+@interface DZHorizontalButton : UIView
 
 @property (nonnull, strong) UIImageView *iconV;
 @property (nonnull, strong) UILabel *textLabel;

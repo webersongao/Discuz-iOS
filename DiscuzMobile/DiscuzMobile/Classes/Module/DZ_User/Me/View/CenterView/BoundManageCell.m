@@ -7,7 +7,7 @@
 //
 
 #import "BoundManageCell.h"
-#import "HorizontalImageTextView.h"
+#import "DZHorizontalButton.h"
 #import "BoundInfoModel.h"
 
 @implementation BoundManageCell
@@ -21,7 +21,7 @@
 }
 
 - (void)p_setupView {
-    self.nameV = [[HorizontalImageTextView alloc] init];
+    self.nameV = [[DZHorizontalButton alloc] init];
     [self.contentView addSubview:self.nameV];
     
     self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class HorizontalImageTextView;
+@class DZHorizontalButton;
 
 @interface PmlistCell : DZBaseTableViewCell
 

@@ -7,7 +7,6 @@
 //
 
 #import "CenterToolView.h"
-#import "VerticalImageTextView.h"
 #import "TextIconModel.h"
 
 @implementation CenterToolView // 高85
@@ -43,7 +42,7 @@
         model.text = arr[i];
         [self.iconTextArr addObject:model];
         
-        VerticalImageTextView *item = [[VerticalImageTextView alloc] initWithFrame:CGRectMake(12 + i * item_width, 12, item_width, CGRectGetHeight(self.frame))];
+        DZVerticalButton *item = [[DZVerticalButton alloc] initWithFrame:CGRectMake(12 + i * item_width, 12, item_width, CGRectGetHeight(self.frame))];
         item.tag = i;
         item.textLabel.text = model.text;
         item.iconV.image = [UIImage imageNamed:model.iconName];
@@ -52,7 +51,7 @@
     }
 }
 
-- (void)itemAction:(VerticalImageTextView *)sender {
+- (void)itemAction:(DZVerticalButton *)sender {
     if (self.toolItemClickBlock) {
         self.toolItemClickBlock(sender, sender.tag, self.iconTextArr[sender.tag].text);
     }

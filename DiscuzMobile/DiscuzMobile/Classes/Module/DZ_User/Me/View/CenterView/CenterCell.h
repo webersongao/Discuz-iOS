@@ -7,11 +7,11 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class HorizontalImageTextView,TextIconModel;
+@class DZHorizontalButton,TextIconModel;
 
 @interface CenterCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) HorizontalImageTextView *nameV;
+@property (nonatomic, strong) DZHorizontalButton *nameV;
 @property (nonatomic, strong) UILabel *detailLab;
 
 - (void)setData:(TextIconModel *)model;

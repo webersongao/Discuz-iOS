@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class VerticalImageTextView,TextIconModel;
+#import "DZVerticalButton.h"
+@class TextIconModel;
 
-typedef void(^ToolItemClickBlock)(VerticalImageTextView *sender, NSInteger index, NSString *name);
+typedef void(^ToolItemClickBlock)(DZVerticalButton *sender, NSInteger index, NSString *name);
 
 @interface CenterToolView : UIView
 

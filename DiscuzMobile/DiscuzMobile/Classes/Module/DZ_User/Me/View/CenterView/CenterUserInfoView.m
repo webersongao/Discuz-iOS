@@ -8,6 +8,11 @@
 
 #import "CenterUserInfoView.h"
 
+@interface CenterUserInfoView ()
+
+
+@end
+
 @implementation CenterUserInfoView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -69,5 +74,9 @@
     self.identityLab.layer.masksToBounds = YES;
     self.self.identityLab.layer.cornerRadius = 2;
 }
+
+
+
+
 
 @end

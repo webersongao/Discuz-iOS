@@ -9,14 +9,13 @@
 #import "DZUserController.h"
 #import "UIAlertController+Extension.h"
 #import "CenterToolView.h"
-#import "VerticalImageTextView.h"
+#import "DZVerticalButton.h"
 #import "MYCenterHeader.h"
 #import "LogoutCell.h"
 #import "CenterCell.h"
 #import "DZUserNetTool.h"
 
 #import "TextIconModel.h"
-#import "CenterUserInfoView.h"
 #import "CenterManageModel.h"
 
 #import "DZImagePickerView.h"
@@ -96,7 +95,7 @@
 // toobar 点击事件
 - (void)tooBarAction {
     KWEAKSELF;
-    self.myHeader.tooView.toolItemClickBlock = ^(VerticalImageTextView *sender, NSInteger index, NSString *name) {
+    self.myHeader.tooView.toolItemClickBlock = ^(DZVerticalButton *sender, NSInteger index, NSString *name) {
         
         if (![weakSelf isLogin]) {
             return;

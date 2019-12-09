@@ -7,7 +7,6 @@
 //
 
 #import "MYCenterHeader.h"
-#import "CenterUserInfoView.h"
 #import "CenterToolView.h"
 
 @implementation MYCenterHeader

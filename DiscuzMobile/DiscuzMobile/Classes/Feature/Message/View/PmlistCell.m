@@ -7,7 +7,7 @@
 //
 
 #import "PmlistCell.h"
-#import "HorizontalImageTextView.h"
+#import "DZHorizontalButton.h"
 
 @implementation PmlistCell
 

@@ -7,11 +7,11 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class HorizontalImageTextView,BoundInfoModel;
+@class DZHorizontalButton,BoundInfoModel;
 
 @interface BoundManageCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) HorizontalImageTextView *nameV;
+@property (nonatomic, strong) DZHorizontalButton *nameV;
 @property (nonatomic, strong) UIButton *detailBtn;
 
 - (void)setData:(BoundInfoModel *)model;

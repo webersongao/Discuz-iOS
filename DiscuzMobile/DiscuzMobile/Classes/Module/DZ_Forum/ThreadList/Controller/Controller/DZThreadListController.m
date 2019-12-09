@@ -19,7 +19,6 @@
 
 @interface DZThreadListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
-@property (nonatomic ,strong) DZForumModel *forumModel;
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
 @property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
@@ -83,8 +82,8 @@
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
-        if (self.forumModel) {
-            NSInteger threadsCount = self.forumModel.threadcount + self.notThisFidCount;
+        if (self.VarModel.forum) {
+            NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
             if (threadsCount > self.dataSourceArr.count) {
                 self.page ++;
                 [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
@@ -136,7 +135,6 @@
             }
             
             self.VarModel = threadResModel.Variables;
-            self.forumModel = threadResModel.Variables.forum;
             
             if (self.page == 1) {
                 [self sendVariablesToMixcontroller];
@@ -155,7 +153,7 @@
                 }
             }
             
-            NSString *threadmodcount = self.forumModel.threadmodcount;
+            NSString *threadmodcount = self.VarModel.forum.threadmodcount;
             if ([DataCheck isValidString:threadmodcount] && [threadmodcount integerValue] > 0) {
                 if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
                     self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",threadmodcount];
@@ -164,23 +162,16 @@
             } else {
                 [self hidVerifyRemind];
             }
-            
             if (self.page == 1) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self clearDatasource];
-                
                 [self anylyeThreadListData:threadResModel];
-                
                 [self emptyShow];
-                
             } else {
-                
                 [self.tableView.mj_footer endRefreshing];
-                
                 [self anylyeThreadListData:threadResModel];
-                
             }
-            NSInteger threadsCount = self.forumModel.threadcount + self.notThisFidCount;
+            NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
             if (threadsCount <= self.dataSourceArr.count) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
