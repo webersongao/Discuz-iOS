@@ -27,30 +27,25 @@
     NSMutableArray *commonArray = [NSMutableArray array];
     NSMutableArray *allArray = [NSMutableArray array];
     
-    NSDictionary *gropDic =  self.groupiconid;
-    NSDictionary *typeDic = self.threadtypes.types;
-    
     NSInteger notThisFidCount = 0;
-    NSArray *data = self.forum_threadlist;
     
-    if ([DataCheck isValidArray:data]) {
-        for (DZThreadListModel * innerModel in data) {
-            DZThreadListModel *listModel = [innerModel dealModelWithPage:page andGroup:gropDic andType:typeDic];
-            [allArray addObject:listModel];
-            if (page == 1) {
-                if ([listModel isCurrentForum:fid]) { // 非本版帖子
-                    notThisFidCount ++;
-                }
-                if ([listModel isTopThread]) { // 全局置顶3  分类置顶2  本版置顶1
-                    [topArray addObject:listModel];
-                } else {
-                    [commonArray addObject:listModel];
-                }
+    for (DZThreadListModel * innerModel in self.forum_threadlist) {
+        DZThreadListModel *listModel = [innerModel dealModelWithPage:page andGroup:self.groupiconid andType:self.threadtypes.types];
+        [allArray addObject:listModel];
+        if (page == 1) {
+            if ([listModel isCurrentForum:fid]) { // 非本版帖子
+                notThisFidCount ++;
+            }
+            if ([listModel isTopThread]) { // 全局置顶3  分类置顶2  本版置顶1
+                [topArray addObject:listModel];
             } else {
                 [commonArray addObject:listModel];
             }
+        } else {
+            [commonArray addObject:listModel];
         }
     }
+    
     handle?handle(topArray,commonArray,allArray,notThisFidCount):nil;
 }
 

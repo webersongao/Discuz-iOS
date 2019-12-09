@@ -369,11 +369,9 @@
                 [self.containVC setSubControllers:self.ctvArr parentController:self andSegmentRect:segmentRect];
                 self.containVC.navigotionBarBackgroundColor = [UIColor whiteColor];
             }
-            
         }
         
         return cell;
-        
     }
     
 }

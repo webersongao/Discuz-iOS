@@ -21,17 +21,9 @@
  */
 -(DZThreadListModel *)dealModelWithPage:(NSInteger)page andGroup:(NSDictionary *)groupDic andType:(NSDictionary *)typeDic {
     
-    if ([DataCheck isValidDictionary:groupDic]) {
-        self.grouptitle = [groupDic objectForKey:self.authorid];
-    }
+    self.grouptitle = [groupDic stringForKey:self.authorid];
     
-    if ([DataCheck isValidDictionary:typeDic]) {
-        if ([DataCheck isValidString:[typeDic objectForKey:self.typeId]]) {
-            NSString *typeName = [typeDic objectForKey:self.typeId];
-            self.typeName = checkNull(typeName);
-        }
-    }
-    
+    self.typeName = [typeDic stringForKey:self.typeId];
     self.useSubject = [self dealSpecialTypeThread:page];
     
     return self;
