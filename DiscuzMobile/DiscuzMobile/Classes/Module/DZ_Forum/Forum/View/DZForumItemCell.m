@@ -37,8 +37,8 @@
     
     self.titleLab = [[UILabel alloc] init];
     self.titleLab.font = [DZFontSize HomecellTitleFontSize15];
-//    self.titleLab.numberOfLines = 0;
-//    self.titleLab.textAlignment = NSTextAlignmentLeft;
+    //    self.titleLab.numberOfLines = 0;
+    //    self.titleLab.textAlignment = NSTextAlignmentLeft;
     self.titleLab.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.titleLab];
     [self.contentView addSubview:_titleLab];
@@ -49,11 +49,11 @@
     self.numLab.textColor = K_Color_LightText;
     [self.contentView addSubview:self.numLab];
     
-//    self.postsLab = [[UILabel alloc] init];
-//    self.postsLab.font = [DZFontSize HomecellmessageNumLFontSize10];
-//    self.postsLab.textColor = K_Color_LightText;
-//    [self.contentView addSubview:self.postsLab];
-
+    //    self.postsLab = [[UILabel alloc] init];
+    //    self.postsLab.font = [DZFontSize HomecellmessageNumLFontSize10];
+    //    self.postsLab.textColor = K_Color_LightText;
+    //    [self.contentView addSubview:self.postsLab];
+    
     [self.iconV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(@8);
         make.width.height.equalTo(self.contentView.mas_width).offset(-16);
@@ -81,20 +81,11 @@
  */
 - (void)updateItemCell:(DZBaseForumModel *)infoModel {
     
-    if ([DataCheck isValidString:infoModel.name]) {
-        self.titleLab.text = infoModel.name;
-    } else if ([DataCheck isValidString:infoModel.name]) {
-        
-        self.titleLab.text = infoModel.name;
-        
-    } else {
-        self.titleLab.text = @"--";
-    }
+    self.titleLab.text = infoModel.name.length ? infoModel.name : @"--";
     
-    if ([DataCheck isValidString:infoModel.threads]) {
-        
+    
+    if (infoModel.threads.length) {
         NSString *threads = [NSString stringWithFormat:@"主题:%@",infoModel.threads];
-        
         if ([DataCheck isValidString:infoModel.todayposts] && [infoModel.todayposts integerValue] > 0) {
             
             NSString *todays = [NSString stringWithFormat:@"(%@)",infoModel.todayposts];
@@ -105,15 +96,12 @@
         } else {
             self.numLab.text = threads;
         }
-        
     } else {
         self.numLab.text = @"主题:--";
     }
     
     if ([DataCheck isValidString:infoModel.icon] && ![[DZMobileCtrl sharedCtrl] isGraphFree]) {
-        
         [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoModel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageRetryFailed];
-        
     } else {
         if ([infoModel.todayposts integerValue] > 0) {
             self.iconV.image = [UIImage imageNamed:@"forumNew"];
