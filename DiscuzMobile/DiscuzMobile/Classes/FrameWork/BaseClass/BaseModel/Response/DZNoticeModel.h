@@ -37,6 +37,23 @@ extern NSString * const Msg_loginEmpty; /// 登录问题为空
 // 是否已授权
 -(BOOL)isAuthorized;
 
+// 是否绑定成功
+-(BOOL)isBindSuccess;
+
+// 是否绑定了第三方账号
+-(BOOL)isBindThird;
+
+// 是否成功状态
+-(BOOL)isSuccessed;
+
+
+
+
 @end
+
+
+
+
+
 
 

@@ -183,7 +183,6 @@
         if (model.notevar) {
                 [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:model.notevar.tid];
         } else {
-            //                model.note
             NSArray *arr = [model.note componentsSeparatedByString:@"tid="];
             if (arr.count >= 2) {
                 NSString *containTid = arr[1];
@@ -191,7 +190,6 @@
                 if ([tid isNum:tid]) {
                     [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:tid];
                 }
-               
             }
         }
     }

@@ -10,7 +10,7 @@
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
 #import "DZForumTool.h"
-
+#import "DZPostNetTool.h"
 #import "DZViewPollPotionNumController.h"
 #import "DZActivityEditController.h"
 #import "DZPartInActivityController.h"
@@ -29,7 +29,7 @@
 @interface DZThreadDetailController ()<UITextFieldDelegate, UIWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) ThreadDetailView *detailView; // 详细页view 替换原来的view
-@property (nonatomic, unsafe_unretained)CGFloat currentScale;
+@property (nonatomic, assign)CGFloat currentScale;
 @property (nonatomic, strong) WebViewJavascriptBridge * javascriptBridge;
 
 @property (nonatomic, assign) BOOL  isReferenceReply;           // 是否是 引用回复
@@ -407,34 +407,14 @@
 
 #pragma mark - 提交举报
 -(void)createPostjb:(NSString *)str {
-    NSString * strjubao;
-    if (![DataCheck isValidString:self.jubaoPid]) {
-        strjubao = self.threadModel.pid;
-    } else {
-        strjubao = self.jubaoPid;
-    }
+    NSString * strjubao = self.jubaoPid.length ? self.jubaoPid : self.threadModel.pid;
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        
-        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                               @"reportsubmit":@"true",
-                               @"message":str,
-                               @"rtype":@"post",
-                               @"rid":strjubao,
-                               @"fid":self.threadModel.fid,
-                               @"inajax":@1,
-                               };
-        request.urlString = DZ_Url_Report;
-        request.parameters = dic;
-        request.methodType = JTMethodTypePOST;
-    } success:^(id responseObject, JTLoadType type) {
-        if ([[responseObject messageval] containsString:@"succeed"]) {
-            [MBProgressHUD showInfo:@"提交成功！"];
-        } else {
-            [MBProgressHUD showInfo:@"提交失败，请稍后再试"];
+    [[DZPostNetTool sharedTool] DZ_ThreadReport:strjubao reportMsg:str fid:self.threadModel.fid success:^(BOOL isSucc) {
+        if (isSucc) {
+            [DZMobileCtrl showAlertInfo:@"提交成功！"];
+        }else{
+            [DZMobileCtrl showAlertInfo:@"提交失败，请稍后再试"];
         }
-    } failed:^(NSError *error) {
-        [MBProgressHUD showInfo:@"提交失败，请稍后再试"];
     }];
 }
 

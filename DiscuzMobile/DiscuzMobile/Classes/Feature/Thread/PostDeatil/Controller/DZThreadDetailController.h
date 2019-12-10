@@ -12,11 +12,9 @@
 
 @property (nonatomic, copy) NSString * tid;
 @property (nonatomic, copy) NSString * forumtitle;
-//@property (nonatomic, copy) NSString * threadtitle;
 @property (nonatomic)         int currentPageId;
 @property (nonatomic, assign) BOOL isOnePage;
 
 @property (nonatomic, copy) NSString * allowPostSpecial; // 发帖 数帖子的标记
 
--(void)postReplay;
 @end

@@ -8,6 +8,7 @@
 
 #import "DZPostNetTool.h"
 #import "UIImage+Limit.h"
+#import "DZBaseResModel.h"
 
 @implementation DZPostNetTool
 
@@ -49,9 +50,9 @@
         request.methodType = JTMethodTypeUpload;
     } progress:^(NSProgress *progress) {
         if (100.f * progress.completedUnitCount/progress.totalUnitCount == 100) {
-//            complete?complete():nil;
+            //            complete?complete():nil;
         }
-//        DLog(@"onProgress: %.2f", 100.f * progress.completedUnitCount/progress.totalUnitCount);
+        //        DLog(@"onProgress: %.2f", 100.f * progress.completedUnitCount/progress.totalUnitCount);
     } success:^(id responseObject, JTLoadType type) {
         complete?complete():nil;
         if (attacheType == DZAttacheVote) {
@@ -85,7 +86,7 @@
 
 // 判断是否有发帖权限
 - (void)DZ_CheckUserPostAuth:(NSString *)fid success:(void(^)(DZBaseAuthModel *authModel))success{
-   
+    
     NSString *fidStr = checkNull(fid);
     NSDictionary * dic =@{@"fid":fidStr};
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
@@ -105,6 +106,52 @@
         }
     }];
 }
+
+
+// 帖子举报
+-(void)DZ_ThreadReport:(NSString *)threadId reportMsg:(NSString *)msg fid:(NSString *)fid success:(void(^)(BOOL isSucc))success{
+    
+    if (!msg.length || !threadId.length) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+                               @"reportsubmit":@"true",
+                               @"message":checkNull(msg),
+                               @"rtype":@"post",
+                               @"rid":checkNull(threadId),
+                               @"fid":checkNull(fid),
+                               @"inajax":@1,
+        };
+        request.urlString = DZ_Url_Report;
+        request.parameters = dic;
+        request.methodType = JTMethodTypePOST;
+    } success:^(id responseObject, JTLoadType type) {
+        
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        if (resModel.Message.isSuccessed) {
+            if (success) {
+                success(YES);
+            }
+        }else{
+            if (success) {
+                success(NO);
+            }
+        }
+    } failed:^(NSError *error) {
+        if (success) {
+            success(NO);
+        }
+    }];
+}
+
+
+
+
+
+
+
 
 
 
@@ -129,4 +176,4 @@
 
 
 @end
-      
+

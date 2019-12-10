@@ -38,5 +38,10 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 /// 判断是否有发帖权限
 - (void)DZ_CheckUserPostAuth:(NSString *)fid success:(void(^)(DZBaseAuthModel *authModel))success;
 
+// 帖子举报
+-(void)DZ_ThreadReport:(NSString *)threadId reportMsg:(NSString *)msg fid:(NSString *)fid success:(void(^)(BOOL isSucc))success;
+
+
+
 
 @end

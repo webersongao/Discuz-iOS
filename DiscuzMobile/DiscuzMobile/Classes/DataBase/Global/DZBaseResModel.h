@@ -8,18 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "DZBaseVarModel.h"
+#import "DZUserModel.h"
 
 @interface DZBaseResModel : NSObject
 
 @property (nonatomic, copy) NSString *Version;  //!< API版本
 @property (nonatomic, copy) NSString *Charset;  //!< 字符编码
+@property (nonatomic, strong) DZUserModel *Variables;  //!< 属性注释
 @property (nonatomic, strong) DZBackMsgModel *Message;  //!< 属性注释
 
-// 是否绑定成功
--(BOOL)isBindSuccess;
-
-// 是否绑定了第三方账号
--(BOOL)isBindThird;
 
 
 @end

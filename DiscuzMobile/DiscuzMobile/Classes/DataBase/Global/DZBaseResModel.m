@@ -17,21 +17,6 @@
 }
 
 
-// 是否绑定成功
--(BOOL)isBindSuccess{
-    if ([self.Message.messageval containsString:Msg_BindSucc]) {
-        return YES;
-    }
-    return NO;
-}
-
-// 是否绑定了第三方账号
--(BOOL)isBindThird{
-    if ([self.Message.messageval containsString:Msg_No_bind]) {
-        return NO;
-    }
-    return YES;
-}
 
 
 

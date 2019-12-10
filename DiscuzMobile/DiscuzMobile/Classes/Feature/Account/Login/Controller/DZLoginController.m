@@ -238,7 +238,7 @@ NSString * const debugPassword = @"debugPassword";
 #pragma mark - 请求成功操作
 - (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
     
-    if (![loginResModel isBindThird]) {
+    if (!loginResModel.Message.isBindThird) {
         // 去第三方绑定页面
         [self boundThirdview];
     } else {

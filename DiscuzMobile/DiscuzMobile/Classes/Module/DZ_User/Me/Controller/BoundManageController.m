@@ -169,7 +169,7 @@
     KWEAKSELF
     [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
-        if (resModel && [resModel isBindSuccess]) {
+        if (resModel && resModel.Message.isBindSuccess) {
             [DZMobileCtrl showALertSuccess:@"绑定成功"];
             [weakSelf requestData];
         }else{
