@@ -39,7 +39,7 @@
 @property (nonatomic, copy) NSString *lastpost;  //!< 属性注释
 @property (nonatomic, copy) NSString *lastposter;  //!< 属性注释
 @property (nonatomic, copy) NSString *views;  //!< 属性注释
-@property (nonatomic, copy) NSString *replies;  //!< 属性注释
+@property (nonatomic, assign) NSInteger replies;  //!< 属性注释
 @property (nonatomic, copy) NSString *displayorder;  //!< 属性注释
 @property (nonatomic, copy) NSString *highlight;  //!< 属性注释
 @property (nonatomic, copy) NSString *digest;  //!< 属性注释

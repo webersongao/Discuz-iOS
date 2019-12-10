@@ -8,7 +8,7 @@
 
 #import "DZViewPollPotionController.h"
 #import "ViewPollpotionCell.h"
-#import "ResponseMessage.h"
+#import "DZPostNetTool.h"
 #import "UIAlertController+Extension.h"
 
 @interface DZViewPollPotionController()<ViewPollpotionCellDelegate>
@@ -38,7 +38,7 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     static NSString * CellID= @"viewReplyCellID";
     ViewPollpotionCell * cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     if (cell == nil) {
@@ -63,34 +63,22 @@
 }
 
 - (void)downLoadData {
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *postDic = @{@"tid":self.tid,
-                                  @"polloptionid":self.pollid
-                                  };
-        request.urlString = DZ_Url_VoteOptionDetail;
-        request.parameters = postDic;
-        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-    } success:^(id responseObject, JTLoadType type) {
+    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+    [[DZPostNetTool sharedTool] DZ_DownloadVoteOptionsDetail:self.tid pollid:self.pollid success:^(DZVoteResModel *voteModel) {
         [self.HUD hide];
-        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
-            [UIAlertController alertTitle:nil message:message controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            } cancelHandle:nil];
-        }];
-        if (!haveAuther) {
-            return;
+        if (voteModel) {
+            if (!voteModel.Message.isAuthorized) {
+                [UIAlertController alertTitle:nil message:voteModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                } cancelHandle:nil];
+                return;
+            }
+            self.dataSourceArr = [NSMutableArray arrayWithArray:voteModel.Variables.viewvote.voterlist];
+            [self.tableView reloadData];
+            [self emptyShow];
+        }else{
+            [self emptyShow];
         }
-        if ([DataCheck isValidArray:[[[responseObject objectForKey:@"Variables"] objectForKey:@"viewvote"] objectForKey:@"voterlist"]]) {
-            self.dataSourceArr = [[[responseObject objectForKey:@"Variables"] objectForKey:@"viewvote"] objectForKey:@"voterlist"];
-        }
-        
-        [self.tableView reloadData];
-        [self emptyShow];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
-        [self emptyShow];
     }];
 }
 

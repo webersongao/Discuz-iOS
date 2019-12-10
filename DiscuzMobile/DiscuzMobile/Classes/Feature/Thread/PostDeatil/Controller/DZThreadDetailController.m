@@ -1,4 +1,4 @@
- //
+//
 //  DZThreadDetailController.m
 //  DiscuzMobile
 //
@@ -17,7 +17,6 @@
 
 #import "ThreadDetailView.h"
 #import "ThreadModel.h"
-#import "ResponseMessage.h"
 #import "DZSecVerifyView.h"
 #import "DZForumTool.h"
 #import "WSImageModel.h"
@@ -63,7 +62,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    NSDictionary *dic = @{@"tid":self.tid,@"page":[NSString stringWithFormat:@"%d",self.currentPageId]};
+    NSDictionary *dic = @{@"tid":self.tid,@"page":checkInteger(self.currentPageId)};
     [DZApiRequest cancelRequest:DZ_Url_ThreadDetail getParameter:dic completion:^(NSString *urlString) {
         DLog(@"取消请求：%@",urlString);
     }];
@@ -169,7 +168,7 @@
     
     NSDictionary *dic=@{@"hash":uploadhash,
                         @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
-                        };
+    };
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
     [self.detailView.emoKeyboard.uploadView uploadImageArray:imageArr.copy getDic:getdic postDic:dic];
@@ -206,12 +205,12 @@
      */
     //注册一个供UI端调用的名为testObjcCallback的处理器，并定义用于响应的处理逻辑
     [_bridge registerHandler:@"onShare" handler:^(id data, WVJBResponseCallback responseCallback) {
-      // 分享
+        // 分享
         [weakSelf shareSome];
     }];
     
     [_bridge registerHandler:@"onPraise" handler:^(id data, WVJBResponseCallback responseCallback) {
-       // 点赞
+        // 点赞
         [weakSelf createPraise:data];
     }];
     
@@ -240,12 +239,12 @@
     }];
     
     [_bridge registerHandler:@"onDiscussUser" handler:^(id data, WVJBResponseCallback responseCallback) {
-       // 引用回复
+        // 引用回复
         [weakSelf ReferenceReply:data textview:weakSelf.detailView.emoKeyboard.textBarView.textView];
     }];
     
     [_bridge registerHandler:@"onUserInfo" handler:^(id data, WVJBResponseCallback responseCallback) {
-         //查看用户信息
+        //查看用户信息
         [weakSelf creatOterUserCenterVC:data];
     }];
     
@@ -271,16 +270,16 @@
     [_bridge registerHandler:@"onLoadMore" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 加载更多
     }];
-   
+    
     [_bridge registerHandler:@"onSendPoll" handler:^(id data, WVJBResponseCallback responseCallback) {
-         // 提交投票
+        // 提交投票
         if (data) {
             [weakSelf createPostVote:data];
         }
     }];
     
     [_bridge registerHandler:@"onVisitVoters" handler:^(id data, WVJBResponseCallback responseCallback) {
-         //查看参与投票人
+        //查看参与投票人
         [weakSelf createVisitVotesrs:data];
     }];
     
@@ -303,7 +302,7 @@
 #pragma mark  - 参加活动&取消活动
 - (void)createActivitie:(BOOL)data{
     
-//    // applied = 1; ：1 活动为存在 已参加或者 审批   button = cancel;  button = join;  有button Key 说明 能参加或者取消     closed = 0;   过期的时候 为 1   "is_ex" = 0; 过期的时候为 1
+    //    // applied = 1; ：1 活动为存在 已参加或者 审批   button = cancel;  button = join;  有button Key 说明 能参加或者取消     closed = 0;   过期的时候 为 1   "is_ex" = 0; 过期的时候为 1
     
     if (self.threadModel.isActivity) {
         //参加活动
@@ -334,13 +333,13 @@
         NSDictionary * dic = @{@"tid":_tid,
                                @"fid":self.threadModel.fid,
                                @"pid":self.threadModel.pid,
-                               };
+        };
         NSDictionary *postDic = @{@"tid":_tid,
                                   @"fid":self.threadModel.fid,
                                   @"pid":self.threadModel.pid,
                                   @"activitycancel":@"true",
                                   @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
-                                  };
+        };
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_ActivityApplies;
         request.parameters = postDic;
@@ -383,26 +382,26 @@
                       doneTextArr:@[@"广告垃圾",@"违规内容",@"恶意灌水",@"重复发帖"]
                        cancelText:@"取消"
                        doneHandle:^(NSInteger index) {
-                           switch (index) {
-                               case 0:
-                                   [self createPostjb:@"广告垃圾"];
-                                   break;
-                               case 1:
-                                   [self createPostjb:@"违规内容"];
-                                   break;
-                               case 2:
-                                   [self createPostjb:@"恶意灌水"];
-                                   break;
-                               case 3:
-                                   [self createPostjb:@"重复发帖"];
-                                   break;
-                               default:
-                                   break;
-                                   
-                           }
-                       } cancelHandle:^{
-                           self.jubaoPid = nil;
-                       }];
+        switch (index) {
+            case 0:
+                [self createPostjb:@"广告垃圾"];
+                break;
+            case 1:
+                [self createPostjb:@"违规内容"];
+                break;
+            case 2:
+                [self createPostjb:@"恶意灌水"];
+                break;
+            case 3:
+                [self createPostjb:@"重复发帖"];
+                break;
+            default:
+                break;
+                
+        }
+    } cancelHandle:^{
+        self.jubaoPid = nil;
+    }];
 }
 
 #pragma mark - 提交举报
@@ -454,10 +453,10 @@
         
         NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                  @"pollanswers":pollanswers,
-                                 };
+        };
         NSDictionary *getDic = @{@"fid":self.threadModel.fid,
                                  @"tid":self.tid,
-                                 };
+        };
         
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_Pollvote;
@@ -471,8 +470,8 @@
                                  doneText:@"确定"
                                cancelText:@"取消"
                                doneHandle:^{
-                                   [self newDownLoadData];
-                               } cancelHandle:nil];
+                [self newDownLoadData];
+            } cancelHandle:nil];
         } else {
             [MBProgressHUD showInfo:[responseObject messagestr]];
         }
@@ -495,7 +494,7 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         NSDictionary * dic =@{@"tid":self.tid,
                               @"repquote":(NSString*)data
-                              };
+        };
         request.urlString = DZ_Url_ReplyContent;
         request.parameters = dic;
     } success:^(id responseObject, JTLoadType type) {
@@ -520,7 +519,6 @@
     if ([self.threadModel.recommend isEqualToString:@"1"]) {
         [MBProgressHUD showInfo:@"您已赞过该主题"];
     } else {
-        
         [DZForumTool DZ_PraiseRequestTid:self.threadModel.tid successBlock:^{
             [self.HUD hide];
             [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
@@ -551,16 +549,16 @@
     NSString *authorname = self.threadModel.author;
     NSString *shareContent = [NSString stringWithFormat:@"作者：%@ 发表于：%@",authorname,dateline];
     [[DZShareCenter shareInstance] createShare:shareContent
-                                   andImages:imageArray
-                                   andUrlstr:self.threadModel.shareUrl
-                                    andTitle:threadtitle
-                                     andView:self.view
-                                      andHUD:self.HUD];
+                                     andImages:imageArray
+                                     andUrlstr:self.threadModel.shareUrl
+                                      andTitle:threadtitle
+                                       andView:self.view
+                                        andHUD:self.HUD];
 }
 
 #pragma mark - 帖子收藏
 -(void)rightBarClick:(UIButton*)btn {
-
+    
     if (![self isLogin]) {
         return;
     }
@@ -610,107 +608,87 @@
 #pragma mark  -  下载数据
 -(void)newDownLoadData {
     static NSInteger requestCount = 0;
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *dic = @{@"tid":self.tid,
-                              @"page":[NSString stringWithFormat:@"%d",self.currentPageId]
-                              };
-        if (self.currentPageId == 1) {
-            [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-        }
-        self.threadModel.tid = self.tid;
-        request.urlString = DZ_Url_ThreadDetail;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
-        requestCount = 0;
-        BOOL haveAuther = [ResponseMessage authorizeJudgeResponse:responseObject refuseBlock:^(NSString *message) {
-            [UIAlertController alertTitle:nil message:message  controller:self doneText:@"确定" cancelText:nil doneHandle:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            } cancelHandle:nil];
-            [self.HUD hide];
-        }];
-        if (!haveAuther) {
-            return;
-        }
-        
-        [self emptyHide];
-        self.threadModel.currentPage = self.currentPageId;
-        
-        if (self.currentPageId == 1) {
-            
-            [self.detailView.webView.scrollView.mj_header endRefreshing];
-            [self.detailView.webView.scrollView.mj_footer resetNoMoreData];
-            
-            self.threadModel.threadDic = responseObject;
-            
-            NSString *forumnames = [[[responseObject objectForKey:@"Variables"] objectForKey:@"thread"] objectForKey:@"forumnames"];
-            if ([DataCheck isValidString:forumnames]) {
-                self.title = forumnames;
-            }
-            
-            if ([DZLoginModule isLogged]) {
-                if ([self.threadModel.favorited isEqualToString:@"1"]) {
-                    [self setIsCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
-                    
-                } else {
-                    [self setNotCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
-                }
-                
-                if ([self.threadModel.recommend isEqualToString:@"1"]) {
-                    [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
-                }
-            }
-            
-            self.threadModel.isRequest = YES;
-            if (self.threadModel.replies + 1 <= self.threadModel.ppp) {
-                [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
-            }
-            
-            [self.detailView.webView loadRequest:[NSURLRequest requestWithURL:self.threadModel.baseUrl]];
-            
-        } else {
-            
-            [self.detailView.webView.scrollView.mj_footer endRefreshing];
-            self.threadModel.threadDic = responseObject;
-            NSArray *postlist = [[responseObject objectForKey:@"Variables"] objectForKey:@"postlist"];
-            if (![DataCheck isValidArray:postlist])
-            {
-                self.currentPageId --;
-                [MBProgressHUD showInfo:@"没有更多的帖子了"];
-                [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
+    self.threadModel.tid = self.tid;
+    if (self.currentPageId == 1) {
+        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+    }
+    [[DZPostNetTool sharedTool] DZ_DownloadPostDetail:self.tid Page:self.currentPageId success:^(DZPosResModel *resModel, NSError *error) {
+        if (resModel) {
+            requestCount = 0;
+            if (!resModel.Message.isAuthorized) {
+                [UIAlertController alertTitle:nil message:resModel.Message.messagestr  controller:self doneText:@"确定" cancelText:nil doneHandle:^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                } cancelHandle:nil];
+                [self.HUD hide];
                 return;
             }
             
-            // 下一页json字符串
-            NSString *addJsonStr= [[NSString alloc] initWithData:self.threadModel.jsonData encoding:NSUTF8StringEncoding];
-            // 加载评论 true 是否时分页
-            [self.detailView.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr]];
+            [self emptyHide];
+            self.threadModel.VarPost = resModel.Variables;
+            self.threadModel.currentPage = self.currentPageId;
             
-            if(self.threadModel.replies  < self.threadModel.ppp * (_currentPageId)){
-                
-                if (self.currentPageId > 0) {
-                    [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
-                    self.currentPageId --;
+            if (self.currentPageId == 1) {
+                [self.detailView.webView.scrollView.mj_header endRefreshing];
+                [self.detailView.webView.scrollView.mj_footer resetNoMoreData];
+                NSString *forumnames = resModel.Variables.thread.forumnames;
+                if ([DataCheck isValidString:forumnames]) {
+                    self.title = forumnames;
                 }
+                if ([DZLoginModule isLogged]) {
+                    if ([self.threadModel.favorited isEqualToString:@"1"]) {
+                        [self setIsCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
+                        
+                    } else {
+                        [self setNotCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
+                    }
+                    
+                    if ([self.threadModel.recommend isEqualToString:@"1"]) {
+                        [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
+                    }
+                }
+                self.threadModel.isRequest = YES;
+                if (self.threadModel.replies + 1 <= self.threadModel.ppp) {
+                    [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
+                }
+                [self.detailView.webView loadRequest:[NSURLRequest requestWithURL:self.threadModel.baseUrl]];
+            } else {
+                [self.detailView.webView.scrollView.mj_footer endRefreshing];
+                if (!resModel.Variables.postlist.count){
+                    self.currentPageId --;
+                    [MBProgressHUD showInfo:@"没有更多的帖子了"];
+                    [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
+                    return;
+                }
+                
+                // 下一页json字符串
+                NSString *addJsonStr= [[NSString alloc] initWithData:self.threadModel.jsonData encoding:NSUTF8StringEncoding];
+                // 加载评论 true 是否时分页
+                [self.detailView.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr]];
+                if(self.threadModel.replies  < self.threadModel.ppp * (_currentPageId)){
+                    if (self.currentPageId > 0) {
+                        [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
+                        self.currentPageId --;
+                    }
+                }
+            }
+        } else {
+            [self.detailView.webView.scrollView.mj_header endRefreshing];
+            [self.detailView.webView.scrollView.mj_footer endRefreshing];
+            if (requestCount == 0) {
+                [self newDownLoadData];
+                requestCount ++;
+            } else {
+                if (self.currentPageId > 1) {
+                    self.currentPageId --;
+                }else {
+                    [self emptyShow];
+                }
+                self.threadModel.currentPage = self.currentPageId;
+                [self.HUD hide];
+                [self showServerError:error];
             }
         }
         
-    } failed:^(NSError *error) {
-        [self.detailView.webView.scrollView.mj_header endRefreshing];
-        [self.detailView.webView.scrollView.mj_footer endRefreshing];
-        if (requestCount == 0) {
-            [self newDownLoadData];
-            requestCount ++;
-        } else {
-            if (self.currentPageId > 1) {
-                self.currentPageId --;
-            }
-            else {
-                [self emptyShow];
-            }
-            self.threadModel.currentPage = self.currentPageId;
-            [self.HUD hide];
-            [self showServerError:error];
-        }
     }];
 }
 
@@ -756,10 +734,10 @@
     if (![self isLogin]) {
         return;
     }
-//    if ([DataCheck isValidString:self.threadModel.allowpost]&&[self.threadModel.allowpost isEqualToString:@"0"]) {
-//        [MBProgressHUD showInfo:@"暂无发帖权限"];
-//        return;
-//    }
+    //    if ([DataCheck isValidString:self.threadModel.allowpost]&&[self.threadModel.allowpost isEqualToString:@"0"]) {
+    //        [MBProgressHUD showInfo:@"暂无发帖权限"];
+    //        return;
+    //    }
     //begain回复
     
     if (![DataCheck isValidString:self.detailView.emoKeyboard.textBarView.textView.text]) {
@@ -767,7 +745,7 @@
         [self.detailView.emoKeyboard.textBarView.textView resignFirstResponder];
         return;
     }
-
+    
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.detailView.emoKeyboard.textBarView.textView.text forKey:@"message"];
     [dic setObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
@@ -797,12 +775,12 @@
             [dic setObject:description forKey:[NSString stringWithFormat:@"attachnew[%@][description]",[aidArr objectAtIndex:i]]];
         }
     }
-   
+    
     [self sendReply:dic];
 }
 
 - (void)sendReply:(NSDictionary *)dic {
-
+    
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         [self.HUD showLoadingMessag:@"发帖中..." toView:self.view];
         request.methodType = JTMethodTypePOST;

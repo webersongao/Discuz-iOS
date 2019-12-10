@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZPostVarModel.h"
 
 @interface ThreadModel : NSObject
 
@@ -14,7 +15,6 @@
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *dateline;
 @property (nonatomic, copy) NSString *author;
-@property (nonatomic, strong) NSDictionary *threadDic; // set方法处理全部数据
 @property (nonatomic, assign) NSInteger currentPage;
 
 @property (nonatomic, strong) NSURL *baseUrl;
@@ -38,5 +38,7 @@
 @property (nonatomic, copy) NSString *allowreply;            // 回复权限
 @property (nonatomic, copy) NSString *uploadhash;
 
+
+@property (nonatomic, strong) DZPostVarModel *VarPost; // set方法处理全部数据
 
 @end

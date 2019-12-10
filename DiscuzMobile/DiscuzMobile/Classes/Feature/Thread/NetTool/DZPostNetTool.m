@@ -147,13 +147,68 @@
 }
 
 
+// 查看投票详情
+-(void)DZ_DownloadVoteOptionsDetail:(NSString *)tid pollid:(NSString *)pollid success:(void(^)(DZVoteResModel *voteModel))success{
+    
+    NSString *tidStr = checkNull(tid);
+    NSString *pollidStr = checkNull(pollid);
+    if (!tidStr.length || success) {
+        return;
+    }
+    NSMutableDictionary *postDict = [NSMutableDictionary dictionaryWithDictionary:@{@"tid":tidStr}];
+    if (pollidStr.length) {
+        [postDict addEntriesFromDictionary:@{@"polloptionid":pollidStr}];
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_VoteOptionDetail;
+        request.parameters = postDict;
+    } success:^(id responseObject, JTLoadType type) {
+        DZVoteResModel *voteVarModel = [DZVoteResModel modelWithJSON:responseObject];
+        if (voteVarModel) {
+            success(voteVarModel);
+        }else{
+            success(nil);
+        }
+    } failed:^(NSError *error) {
+        success(nil);
+    }];
+    
+}
+
+
+//获取帖子详情
+-(void)DZ_DownloadPostDetail:(NSString *)tid Page:(NSInteger)page success:(void(^)(DZPosResModel *varModel,NSError *error))success{
+    
+    NSString *tidStr = checkNull(tid);
+    if (!tidStr.length || !success) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *dic = @{@"tid":tidStr,
+                              @"page":checkInteger(page)
+        };
+        request.urlString = DZ_Url_ThreadDetail;
+        request.parameters = dic;
+    } success:^(id responseObject, JTLoadType type) {
+        
+        DZPosResModel *postModel = [DZPosResModel modelWithJSON:responseObject];
+        
+        if (success) {
+            success(postModel,nil);
+        }
+        
+    } failed:^(NSError *error) {
+        if (success) {
+            success(nil,error);
+        }
+    }];
+}
 
 
 
-
-
-
-
+#pragma mark   /********************* 对象属性初始化 *************************/
 
 - (NSDictionary *)uploadErrorDic {
     if (!_uploadErrorDic) {

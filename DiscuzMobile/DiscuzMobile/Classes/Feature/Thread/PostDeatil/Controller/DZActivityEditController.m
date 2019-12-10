@@ -104,7 +104,7 @@
             for (NSDictionary *dic in arr) {
                 ApplyActiver *apply = [[ApplyActiver alloc] init];
                 [apply setValuesForKeysWithDictionary:dic];
-                NSDictionary *ufieldDic = [[[self.threadModel.threadDic objectForKey:@"Variables"] objectForKey:@"special_activity"] objectForKey:@"ufield"];
+                NSDictionary *ufieldDic = [[[self.threadModel.VarPost objectForKey:@"Variables"] objectForKey:@"special_activity"] objectForKey:@"ufield"];
                 if ([DataCheck isValidDictionary:ufieldDic]) {
                     if ([DataCheck isValidArray:[ufieldDic objectForKey:@"userfield"]]){
                         apply.userfield = [ufieldDic objectForKey:@"userfield"];

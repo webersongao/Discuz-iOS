@@ -11,9 +11,9 @@
 NSString * const Msg_NoMedal        = @"nomedal";
 NSString * const Msg_NoExistence    = @"nonexistence";
 NSString * const Msg_NoPermission   = @"nopermission";
+
 NSString * const Msg_BindSucc       = @"succeed";
 NSString * const Msg_Succeed       = @"succeed";
-
 
 NSString * const Msg_No_bind        = @"no_bind";  //未绑定第三方在账号
 NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问题为空

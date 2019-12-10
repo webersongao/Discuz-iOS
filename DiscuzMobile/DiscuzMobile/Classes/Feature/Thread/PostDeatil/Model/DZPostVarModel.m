@@ -27,9 +27,14 @@
 
 @end
 
+@implementation DZPosResModel
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"Variables" : [DZPostVarModel class]
+    };
+}
 
-
+@end
 
 
 

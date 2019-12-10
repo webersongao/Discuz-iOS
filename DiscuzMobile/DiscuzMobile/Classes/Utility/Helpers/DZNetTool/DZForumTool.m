@@ -141,7 +141,7 @@
 }
 
 // 刷新验证码 验证问题
-- (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure {
++ (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure {
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         NSDictionary *dic = @{@"type":type};
         request.urlString = DZ_Url_SecureCode;

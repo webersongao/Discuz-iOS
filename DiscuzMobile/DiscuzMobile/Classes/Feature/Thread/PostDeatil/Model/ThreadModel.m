@@ -10,88 +10,77 @@
 #import "DZThreadListModel.h"
 #import "DZLoginModule.h"
 
-@interface ThreadModel()
-
-@end
 
 @implementation ThreadModel
 
 // MARK: - 通过这个set方法获取所有的model参数
-- (void)setThreadDic:(NSDictionary *)threadDic {
-    NSDictionary *varDic = [threadDic objectForKey:@"Variables"];
-    _threadDic = threadDic;
-    NSDictionary *thread = [varDic objectForKey:@"thread"];
+-(void)setVarPost:(DZPostVarModel *)VarPost{
+    _VarPost = VarPost;
     
     self.favorited = @"0";
     self.recommend = @"0";
-    if ([DataCheck isValidString:[thread objectForKey:@"favorited"]]) {
-        self.favorited = [thread objectForKey:@"favorited"];
-    }
-    if ([DataCheck isValidString:[thread objectForKey:@"recommend"]]) {
-        self.recommend = [thread objectForKey:@"recommend"];
-    }
-    self.specialString = [thread objectForKey:@"special"];
-    self.fid = [thread objectForKey:@"fid"];
-    self.replies = [[thread objectForKey:@"replies"] integerValue];
-    self.subject = [thread objectForKey:@"subject"];
-    self.author = [thread objectForKey:@"author"];
-    if (self.currentPage == 1) {
-        if ([DataCheck isValidArray:[varDic objectForKey:@"postlist"]]) {
-            self.dateline = [[varDic objectForKey:@"postlist"][0] objectForKey:@"dateline"];
-            self.pid = [[varDic objectForKey:@"postlist"][0] objectForKey:@"pid"];
-        }
+    self.favorited = VarPost.thread.favorited;
+    self.recommend = VarPost.thread.recommend;
+    
+    self.specialString = VarPost.thread.special;
+    self.fid = VarPost.thread.fid;
+    self.replies = VarPost.thread.replies;
+    self.subject = VarPost.thread.subject;
+    self.author = VarPost.thread.author;
+    if (self.currentPage == 1 && VarPost.postlist.count) {
+        DZPostListItem *item = VarPost.postlist.firstObject;
+        self.dateline = item.dateline;
+        self.pid = item.pid;
     }
     self.shareUrl = [NSString stringWithFormat:@"%@forum.php?mod=viewthread&tid=%@",DZ_BASEURL,self.tid];
     
-    NSDictionary *jsonDic = [self manageJsonWitnAttchment:threadDic];
+    NSDictionary *jsonDic = [self manageJsonWitnAttchment:VarPost];
     self.jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
-   
-    self.ppp = [[varDic objectForKey:@"ppp"] intValue];
-    self.isActivity = [self judeActivity:varDic];
     
-    NSDictionary * allowperm =[varDic objectForKey:@"allowperm"];
-    self.allowpost = [allowperm objectForKey:@"allowpost"];
-    self.allowreply = [allowperm objectForKey:@"allowreply"];
-    self.uploadhash = [allowperm objectForKey:@"uploadhash"];
-    self.baseUrl = [self getBaseURL:varDic];
+    self.ppp = VarPost.ppp;
+    self.isActivity = [self judeActivity:VarPost];
+    
+    self.allowpost = VarPost.allowperm.allowpost;
+    self.allowreply = VarPost.allowperm.allowreply;
+    self.uploadhash = VarPost.allowperm.uploadhash;
+    self.baseUrl = [self getBaseURL:VarPost];
 }
 
 #pragma mark - 获取本地页面url
-- (NSURL *)getBaseURL:(NSDictionary *)dataDic {
+- (NSURL *)getBaseURL:(DZPostVarModel *)dataDic {
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"thread_temp_common" ofType:@"html"];
     if ([DataCheck isValidString:self.specialString]) {
         if ([self.specialString isEqualToString:@"1"]) { // 投票贴
-            if ([[[dataDic objectForKey:@"special_poll"] objectForKey:@"allowvote"] isEqualToString:@"1"] && [[[dataDic objectForKey:@"thread"] objectForKey:@"closed"] isEqualToString:@"0"]) {
+            if ([dataDic.special_poll.allowvote isEqualToString:@"1"] && [dataDic.thread.closed isEqualToString:@"0"]) {
                 path = [[NSBundle mainBundle] pathForResource:@"thread_temp_poll" ofType:@"html"];
             } else {
                 path = [[NSBundle mainBundle] pathForResource:@"thread_temp_poll_result" ofType:@"html"];
             }
-        } else if ([self.specialString isEqualToString:@"4"]) {
+        } else if ([dataDic.thread.special isEqualToString:@"4"]) {
             path = [[NSBundle mainBundle] pathForResource:@"thread_temp_activity" ofType:@"html"];
         }
-//        else if ([self.specialString isEqualToString:@"5"]) { // 辩论帖
-//            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
-//
-//        }
+        //        else if ([dataDic.thread.special isEqualToString:@"5"]) { // 辩论帖
+        //            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
+        //
+        //        }
     }
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     return baseURL;
     
 }
 
-- (BOOL)judeActivity:(NSDictionary *)dataDic {
+- (BOOL)judeActivity:(DZPostVarModel *)dataDic {
     // applied = 1 活动为存在;
     // 已参加或者 审批   button = cancel;  button = join;  有button Key 说明 能参加或者取消
     // closed = 0;   过期的时候为 1
     // "is_ex" = 0; 过期的时候为 1
     // applynumber 参加了几个
-//    NSString * strapplied=[[dataDic objectForKey:@"special_activity"] objectForKey:@"applied"];
-    NSString * strbutton=[[dataDic objectForKey:@"special_activity"] objectForKey:@"button"];
-    NSString * strclosed=[[dataDic objectForKey:@"special_activity"] objectForKey:@"closed"];
+    //        NSString * strapplied= dataDic.special_activity.applied;
+    NSString * strbutton = dataDic.special_activity.button;
+    NSString * strclosed = dataDic.special_activity.closed;
 //    if ([strapplied isEqualToString:@"0"]&&[DataCheck isValidString:strapplied]&&[strbutton isEqualToString:@"join"]&&[DataCheck isValidString:strbutton]&&[strclosed isEqualToString:@"0"]&&[DataCheck isValidString:strclosed]) {
 //        return YES;
-//        
 //    }
     if ([DataCheck isValidString:strbutton] &&
         [DataCheck isValidString:strclosed]) {
@@ -103,7 +92,7 @@
     return NO;
 }
 
-- (NSMutableDictionary *)manageJsonWitnAttchment:(NSDictionary *)dataDic {
+- (NSMutableDictionary *)manageJsonWitnAttchment:(DZPostVarModel *)dataDic {
     
     [self dealWithattachment:dataDic];
     NSMutableDictionary * Variables = [dataDic objectForKey:@"Variables"];
@@ -134,10 +123,11 @@
         }
     }
     // 活动帖数据 - end
+    
     return dataDic.mutableCopy;
 }
 
-- (void)dealWithattachment:(NSDictionary *)dataDic {
+- (void)dealWithattachment:(DZPostVarModel *)dataDic {
     
     NSMutableArray * list = [[dataDic objectForKey:@"Variables"] objectForKey:@"postlist"];
     for (int i = 0; i<list.count; i++) {
@@ -172,15 +162,15 @@
         }
     }
     
-//     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
-//     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
-//    if (self.currentPage == 1) {
-//        BACK(^{
-//            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
-//                [[DZDatabaseHandle Helper] footThread:listModel];
-//            }
-//        });
-//    }
+    //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
+    //     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
+    //    if (self.currentPage == 1) {
+    //        BACK(^{
+    //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
+    //                [[DZDatabaseHandle Helper] footThread:listModel];
+    //            }
+    //        });
+    //    }
 }
 
 @end

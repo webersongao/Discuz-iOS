@@ -8,6 +8,7 @@
 
 #import "DZViewPollPotionNumController.h"
 #import "DZViewPollPotionController.h"
+#import "DZPostNetTool.h"
 
 @interface DZViewPollPotionNumController()
 
@@ -64,17 +65,14 @@
 }
 
 - (void)downLoadData {
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *getDic = @{@"tid":self.tid};
-        request.parameters = getDic;
-        request.urlString = DZ_Url_VoteOptionDetail;
-        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        self.dataSourceArr= [[[responseObject objectForKey:@"Variables"] objectForKey:@"viewvote"] objectForKey:@"polloptions"];
-        [self.tableView reloadData];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
+    
+    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+    [[DZPostNetTool sharedTool] DZ_DownloadVoteOptionsDetail:self.tid pollid:nil success:^(DZVoteResModel *voteModel) {
+       [self.HUD hide];
+        if (voteModel) {
+            self.dataSourceArr = [NSMutableArray arrayWithArray:voteModel.Variables.viewvote.polloptions];
+            [self.tableView reloadData];
+        }
     }];
 }
 

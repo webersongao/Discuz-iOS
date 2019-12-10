@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"参加活动";
-    NSDictionary *special_activity = [[self.threadModel.threadDic objectForKey:@"Variables"]  objectForKey:@"special_activity"];
+    NSDictionary *special_activity = [[self.threadModel.VarPost objectForKey:@"Variables"]  objectForKey:@"special_activity"];
     self.cost = [special_activity objectForKey:@"cost"];
     NSString *credit = [special_activity objectForKey:@"credit"];
     NSString *creditcost = [special_activity objectForKey:@"creditcost"];

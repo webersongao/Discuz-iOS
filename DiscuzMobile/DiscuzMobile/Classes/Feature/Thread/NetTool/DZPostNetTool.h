@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "DZBaseAuthModel.h"
+#import "DZPostVarModel.h"
+#import "DZPollVarModel.h"
 
 typedef NS_ENUM(NSUInteger, DZAttacheType) {
     DZAttacheImage,
@@ -41,7 +43,11 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 // 帖子举报
 -(void)DZ_ThreadReport:(NSString *)threadId reportMsg:(NSString *)msg fid:(NSString *)fid success:(void(^)(BOOL isSucc))success;
 
+// 查看投票详情
+-(void)DZ_DownloadVoteOptionsDetail:(NSString *)tid pollid:(NSString *)pollid success:(void(^)(DZVoteResModel *voteModel))success;
 
+//获取帖子详情
+-(void)DZ_DownloadPostDetail:(NSString *)tid Page:(NSInteger)page success:(void(^)(DZPosResModel *varModel,NSError *error))success;
 
 
 @end

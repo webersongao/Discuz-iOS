@@ -14,7 +14,6 @@
 
 @property (nonatomic, copy) NSString *Version;  //!< API版本
 @property (nonatomic, copy) NSString *Charset;  //!< 字符编码
-@property (nonatomic, strong) DZUserModel *Variables;  //!< 属性注释
 @property (nonatomic, strong) DZBackMsgModel *Message;  //!< 属性注释
 
 
