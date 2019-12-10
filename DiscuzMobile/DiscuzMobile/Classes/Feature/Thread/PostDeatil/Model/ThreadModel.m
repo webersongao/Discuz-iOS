@@ -13,37 +13,43 @@
 
 @implementation ThreadModel
 
+- (instancetype)updateModelWithRes:(DZPosResModel *)response
+{
+    [self updateVarPost:response];
+    return self;
+}
+
 // MARK: - 通过这个set方法获取所有的model参数
--(void)setVarPost:(DZPostVarModel *)VarPost{
-    _VarPost = VarPost;
+-(void)updateVarPost:(DZPosResModel *)resModel{
+    _VarPost = resModel.Variables;
     
-    self.favorited = @"0";
-    self.recommend = @"0";
-    self.favorited = VarPost.thread.favorited;
-    self.recommend = VarPost.thread.recommend;
+    _favorited = @"0";
+    _recommend = @"0";
+    _favorited = _VarPost.thread.favorited;
+    _recommend = _VarPost.thread.recommend;
     
-    self.specialString = VarPost.thread.special;
-    self.fid = VarPost.thread.fid;
-    self.replies = VarPost.thread.replies;
-    self.subject = VarPost.thread.subject;
-    self.author = VarPost.thread.author;
-    if (self.currentPage == 1 && VarPost.postlist.count) {
-        DZPostListItem *item = VarPost.postlist.firstObject;
-        self.dateline = item.dateline;
-        self.pid = item.pid;
+    _specialString = _VarPost.thread.special;
+    _fid = _VarPost.thread.fid;
+    _replies = _VarPost.thread.replies;
+    _subject = _VarPost.thread.subject;
+    _author = _VarPost.thread.author;
+    if (self.currentPage == 1 && _VarPost.postlist.count) {
+        DZPostListItem *item = _VarPost.postlist.firstObject;
+        _dateline = item.dateline;
+        _pid = item.pid;
     }
-    self.shareUrl = [NSString stringWithFormat:@"%@forum.php?mod=viewthread&tid=%@",DZ_BASEURL,self.tid];
+    _shareUrl = [NSString stringWithFormat:@"%@forum.php?mod=viewthread&tid=%@",DZ_BASEURL,self.tid];
     
-    NSDictionary *jsonDic = [self manageJsonContentWitnAttchment:VarPost];
-    self.jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
+    NSDictionary *jsonDic = [self manageJsonContentWitnAttchment:resModel];
+    _jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
     
-    self.ppp = VarPost.ppp;
-    self.isActivity = [self judeActivity:VarPost];
+    _ppp = _VarPost.ppp;
+    _isActivity = [self judeActivity:_VarPost];
     
-    self.allowpost = VarPost.allowperm.allowpost;
-    self.allowreply = VarPost.allowperm.allowreply;
-    self.uploadhash = VarPost.allowperm.uploadhash;
-    self.baseUrl = [self getBaseURL:VarPost];
+    _allowpost = _VarPost.allowperm.allowpost;
+    _allowreply = _VarPost.allowperm.allowreply;
+    _uploadhash = _VarPost.allowperm.uploadhash;
+    _baseUrl = [self getBaseURL:_VarPost];
 }
 
 #pragma mark - 获取本地页面url
@@ -60,9 +66,9 @@
         } else if ([dataDic.thread.special isEqualToString:@"4"]) {
             path = [[NSBundle mainBundle] pathForResource:@"thread_temp_activity" ofType:@"html"];
         }
-//        else if ([dataDic.thread.special isEqualToString:@"5"]) { // 辩论帖
-//            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
-//        }
+        //        else if ([dataDic.thread.special isEqualToString:@"5"]) { // 辩论帖
+        //            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
+        //        }
     }
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     return baseURL;
@@ -91,7 +97,7 @@
     return NO;
 }
 
-- (NSDictionary *)manageJsonContentWitnAttchment:(DZPostVarModel *)varPost {
+- (NSDictionary *)manageJsonContentWitnAttchment:(DZPosResModel *)varPost {
     
     NSDictionary *oriDict = [varPost modelToJSONObject];
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:oriDict];
@@ -102,7 +108,7 @@
     [self dealWithattachment:dataDic];
     
     // 投票帖数据 - start
-    NSMutableDictionary *special_poll = [dataDic objectForKey:@"special_poll"];
+    NSMutableDictionary *special_poll = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"special_poll"];
     if ([DataCheck isValidDict:special_poll]) {
         NSMutableDictionary *polloptions  = [special_poll objectForKey:@"polloptions"];
         [polloptions enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -118,22 +124,25 @@
     // 投票帖数据 - end
     
     // 活动帖数据 - start
-    NSMutableDictionary * special_activity = [dataDic objectForKey:@"special_activity"];
+    NSMutableDictionary * special_activity = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"special_activity"];
     if ([DataCheck isValidDict:special_activity]) { // 取活动封面图
-        NSString * activityurl = [special_activity objectForKey:@"attachurl"];
-        if ([DataCheck isValidString:activityurl]) {
-            activityurl = [activityurl makeDomain];
-            [special_activity setValue:activityurl forKey:@"attachurl"];
+        NSString * thumburl = [special_activity stringForKey:@"thumb"];
+        NSString * activityurl = [special_activity stringForKey:@"attachurl"];
+        if (thumburl.length) {
+            [special_activity setValue:[thumburl makeDomain] forKey:@"thumb"];
+        }
+        if (activityurl.length) {
+            [special_activity setValue:[activityurl makeDomain] forKey:@"attachurl"];
         }
     }
     // 活动帖数据 - end
     
-    return dataDic;
+    return dataDic.mutableCopy;
 }
 
 - (void)dealWithattachment:(NSDictionary *)dataDic {
     
-    NSMutableArray * list = [dataDic objectForKey:@"postlist"];
+    NSMutableArray * list = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"postlist"];
     for (int i = 0; i<list.count; i++) {
         NSDictionary * item = [list objectAtIndex:i];
         
@@ -152,7 +161,7 @@
                 [attItem setObject:attachurl forKey:@"attachurl"];
                 if (![ext isEqualToString:@"mp3"]) {
                     if (![DataCheck isValidString:self.shareImageUrl]) {
-                        self.shareImageUrl = attachurl;
+                        _shareImageUrl = attachurl;
                     }
                     [attachmentArr addObject:attItem];
                     
@@ -167,7 +176,7 @@
     }
     
     //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
-    //     [DZPostThreadModel modelWithJSON:[dataDic objectForKey:@"thread"]];
+    //     [DZPostThreadModel modelWithJSON:[[dataDic dictionaryForKey:@"Variables"] objectForKey:@"thread"]];
     //    if (self.currentPage == 1) {
     //        BACK(^{
     //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {

@@ -19,6 +19,7 @@
              @"notice" : [DZNoticeModel class],
              @"forum" : [DZPostForum class],
              @"thread" : [DZPostThreadModel class],
+             @"postlist" : [DZPostListItem class],
              @"special_poll" : [DZPostPoll class],
              @"special_activity" : [DZPostActivity class]
     };

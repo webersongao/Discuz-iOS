@@ -11,34 +11,40 @@
 
 @interface ThreadModel : NSObject
 
+@property (nonatomic, copy, readonly) NSString *subject;
+@property (nonatomic, copy, readonly) NSString *dateline;
+@property (nonatomic, copy, readonly) NSString *author;
+@property (nonatomic, copy, readonly) NSString *favorited;
+@property (nonatomic, copy, readonly) NSString *shareUrl;
+@property (nonatomic, copy, readonly) NSString *shareImageUrl;
+@property (nonatomic, copy, readonly) NSString *isnoimage;
+@property (nonatomic, copy, readonly) NSString *fid;
+@property (nonatomic, copy, readonly) NSString *pid;
+@property (nonatomic, assign, readonly) NSInteger ppp;
+@property (nonatomic, assign, readonly) NSInteger replies;
+@property (nonatomic, assign, readonly) BOOL isActivity;  // yes参加或者 no 取消活动
+
+@property (nonatomic, copy, readonly) NSString *allowpost;             // 发帖权限
+@property (nonatomic, copy, readonly) NSString *allowreply;            // 回复权限
+@property (nonatomic, copy, readonly) NSString *uploadhash;
+
+
 @property (nonatomic, copy) NSString *tid;
-@property (nonatomic, copy) NSString *subject;
-@property (nonatomic, copy) NSString *dateline;
-@property (nonatomic, copy) NSString *author;
-@property (nonatomic, assign) NSInteger currentPage;
-
-@property (nonatomic, strong) NSURL *baseUrl;
-
-@property (nonatomic, copy) NSString *specialString;
-@property (nonatomic, strong) NSData *jsonData; // 注入 html JSON
-
-@property (nonatomic, copy) NSString *favorited;
-@property (nonatomic, copy) NSString *recommend;
-@property (nonatomic, copy) NSString *shareUrl;
-@property (nonatomic, copy) NSString *shareImageUrl;
-@property (nonatomic, copy) NSString *isnoimage;
-@property (nonatomic, copy) NSString *fid;
-@property (nonatomic, copy) NSString *pid;
-@property (nonatomic, assign) NSInteger ppp;
-@property (nonatomic, assign) NSInteger replies;
-@property (nonatomic, assign) BOOL isActivity;  // yes参加或者 no 取消活动
 @property (nonatomic, assign) BOOL isRequest;
+@property (nonatomic, copy) NSString *recommend;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, strong, readonly) NSURL *baseUrl;
+@property (nonatomic, copy, readonly) NSString *specialString;
+@property (nonatomic, strong, readonly) NSData *jsonData; // 注入 html JSON
+@property (nonatomic, strong, readonly) DZPostVarModel *VarPost; // set方法处理全部数据
 
-@property (nonatomic, copy) NSString *allowpost;             // 发帖权限
-@property (nonatomic, copy) NSString *allowreply;            // 回复权限
-@property (nonatomic, copy) NSString *uploadhash;
+- (instancetype)updateModelWithRes:(DZPosResModel *)response;
 
 
-@property (nonatomic, strong) DZPostVarModel *VarPost; // set方法处理全部数据
+
 
 @end
+
+
+
+

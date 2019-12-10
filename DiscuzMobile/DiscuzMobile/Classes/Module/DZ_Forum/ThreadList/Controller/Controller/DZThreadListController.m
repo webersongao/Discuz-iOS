@@ -123,7 +123,7 @@
         [self.HUD hide];
         if (threadResModel) {
             [self.tableView.mj_header endRefreshing];
-            if (!threadResModel.Message.isAuthorized) {
+            if (threadResModel.Message && !threadResModel.Message.isAuthorized) {
                 [UIAlertController alertTitle:nil message:threadResModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                     [self.navigationController popViewControllerAnimated:YES];
                 } cancelHandle:nil];

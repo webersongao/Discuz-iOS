@@ -67,7 +67,7 @@
     [[DZPostNetTool sharedTool] DZ_DownloadVoteOptionsDetail:self.tid pollid:self.pollid success:^(DZVoteResModel *voteModel) {
         [self.HUD hide];
         if (voteModel) {
-            if (!voteModel.Message.isAuthorized) {
+            if (voteModel.Message && !voteModel.Message.isAuthorized) {
                 [UIAlertController alertTitle:nil message:voteModel.Message.messagestr controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                     [self.navigationController popViewControllerAnimated:YES];
                 } cancelHandle:nil];

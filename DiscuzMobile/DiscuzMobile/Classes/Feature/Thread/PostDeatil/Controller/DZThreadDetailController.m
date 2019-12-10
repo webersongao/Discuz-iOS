@@ -168,7 +168,7 @@
     
     NSDictionary *dic=@{@"hash":uploadhash,
                         @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
-    };
+                        };
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
     [self.detailView.emoKeyboard.uploadView uploadImageArray:imageArr.copy getDic:getdic postDic:dic];
@@ -333,13 +333,13 @@
         NSDictionary * dic = @{@"tid":_tid,
                                @"fid":self.threadModel.fid,
                                @"pid":self.threadModel.pid,
-        };
+                               };
         NSDictionary *postDic = @{@"tid":_tid,
                                   @"fid":self.threadModel.fid,
                                   @"pid":self.threadModel.pid,
                                   @"activitycancel":@"true",
                                   @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
-        };
+                                  };
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_ActivityApplies;
         request.parameters = postDic;
@@ -382,26 +382,26 @@
                       doneTextArr:@[@"广告垃圾",@"违规内容",@"恶意灌水",@"重复发帖"]
                        cancelText:@"取消"
                        doneHandle:^(NSInteger index) {
-        switch (index) {
-            case 0:
-                [self createPostjb:@"广告垃圾"];
-                break;
-            case 1:
-                [self createPostjb:@"违规内容"];
-                break;
-            case 2:
-                [self createPostjb:@"恶意灌水"];
-                break;
-            case 3:
-                [self createPostjb:@"重复发帖"];
-                break;
-            default:
-                break;
-                
-        }
-    } cancelHandle:^{
-        self.jubaoPid = nil;
-    }];
+                           switch (index) {
+                               case 0:
+                                   [self createPostjb:@"广告垃圾"];
+                                   break;
+                               case 1:
+                                   [self createPostjb:@"违规内容"];
+                                   break;
+                               case 2:
+                                   [self createPostjb:@"恶意灌水"];
+                                   break;
+                               case 3:
+                                   [self createPostjb:@"重复发帖"];
+                                   break;
+                               default:
+                                   break;
+                                   
+                           }
+                       } cancelHandle:^{
+                           self.jubaoPid = nil;
+                       }];
 }
 
 #pragma mark - 提交举报
@@ -453,10 +453,10 @@
         
         NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
                                  @"pollanswers":pollanswers,
-        };
+                                 };
         NSDictionary *getDic = @{@"fid":self.threadModel.fid,
                                  @"tid":self.tid,
-        };
+                                 };
         
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_Pollvote;
@@ -470,8 +470,8 @@
                                  doneText:@"确定"
                                cancelText:@"取消"
                                doneHandle:^{
-                [self newDownLoadData];
-            } cancelHandle:nil];
+                                   [self newDownLoadData];
+                               } cancelHandle:nil];
         } else {
             [MBProgressHUD showInfo:[responseObject messagestr]];
         }
@@ -494,7 +494,7 @@
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         NSDictionary * dic =@{@"tid":self.tid,
                               @"repquote":(NSString*)data
-        };
+                              };
         request.urlString = DZ_Url_ReplyContent;
         request.parameters = dic;
     } success:^(id responseObject, JTLoadType type) {
@@ -615,8 +615,8 @@
     [[DZPostNetTool sharedTool] DZ_DownloadPostDetail:self.tid Page:self.currentPageId success:^(DZPosResModel *resModel, NSError *error) {
         if (resModel) {
             requestCount = 0;
-            if (!resModel.Message.isAuthorized) {
-                [UIAlertController alertTitle:nil message:resModel.Message.messagestr  controller:self doneText:@"确定" cancelText:nil doneHandle:^{
+            if (resModel.Message && !resModel.Message.isAuthorized) {
+                [UIAlertController alertTitle:nil message:resModel.Message.messagestr  controller:self doneText:@"知道了" cancelText:nil doneHandle:^{
                     [self.navigationController popViewControllerAnimated:YES];
                 } cancelHandle:nil];
                 [self.HUD hide];
@@ -624,8 +624,8 @@
             }
             
             [self emptyHide];
-            self.threadModel.VarPost = resModel.Variables;
             self.threadModel.currentPage = self.currentPageId;
+            self.threadModel = [self.threadModel updateModelWithRes:resModel];
             
             if (self.currentPageId == 1) {
                 [self.detailView.webView.scrollView.mj_header endRefreshing];
