@@ -13,7 +13,7 @@
 #import "DZForumThreadMixContainer.h"
 #import "DZMySubjectController.h"
 #import "DZPostTypeSelectView.h"
-#import "DZForumTitleModel.h"
+#import "DZForTitleModel.h"
 #import "DZForumInfoView.h"
 #import "RootForumCell.h"
 #import "DZForumModel.h"
@@ -34,7 +34,7 @@
 
 @property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
 
-@property (nonatomic, strong) NSMutableArray <DZForumTitleModel *> *titleArr;
+@property (nonatomic, strong) NSMutableArray <DZForTitleModel *> *titleArr;
 
 @property (nonatomic, strong) DZForumModel *forumInfo;
 
@@ -79,16 +79,10 @@
     self.foldTableView.dataSource = self;
     [self.headView addSubview:self.foldTableView];
     
-    DZForumTitleModel *m1 = [DZForumTitleModel modelWithName:@"全部" fid:self.forumFid type:DZ_ListAll];
-    DZForumTitleModel *m2 = [DZForumTitleModel modelWithName:@"最新" fid:self.forumFid type:DZ_ListNew];
-    DZForumTitleModel *m3 = [DZForumTitleModel modelWithName:@"热门" fid:self.forumFid type:DZ_ListHot];
-    DZForumTitleModel *m4 = [DZForumTitleModel modelWithName:@"精华" fid:self.forumFid type:DZ_ListBest];
-    
-    [self.titleArr addObject:m1];
-    [self.titleArr addObject:m2];
-    [self.titleArr addObject:m3];
-    [self.titleArr addObject:m4];
-    
+    [self.titleArr addObject:[DZForTitleModel modelName:@"全部" type:DZ_ListAll]];
+    [self.titleArr addObject:[DZForTitleModel modelName:@"最新" type:DZ_ListNew]];
+    [self.titleArr addObject:[DZForTitleModel modelName:@"热门" type:DZ_ListHot]];
+    [self.titleArr addObject:[DZForTitleModel modelName:@"精华" type:DZ_ListBest]];
     
     self.selectIndex = 0;
     
@@ -346,10 +340,10 @@
         if (self.ctvArr.count == 0) {
             NSMutableArray *vcArr = [NSMutableArray array];
             for (int idx = 0; idx < self.titleArr.count; idx++) {
-                DZForumTitleModel *obj = self.titleArr[idx];
+                DZForTitleModel *obj = self.titleArr[idx];
                 DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType];
                 listVc.title = obj.name;
-                listVc.fid = obj.fid;
+                listVc.fid = self.forumFid;
                 listVc.order = idx;
                 listVc.sendListBlock = ^(DZThreadVarModel *varModel) {
                     [self subSendVarible:varModel];

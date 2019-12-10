@@ -12,7 +12,6 @@
 #import "DZThreadListModel+Display.h"
 
 @interface DZHomeThreadListBaseCtrl ()
-@property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, copy) NSString *urlString;
 @end
 
@@ -76,8 +75,7 @@
     NSDictionary *userInfo = notification.userInfo;
     if ([DataCheck isValidDictionary:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
-        if (!self.isRequest && index != 0) {
-            self.isRequest = YES;
+        if (!self.dataSourceArr.count && index != 0) {
             [self cacheRequest];
         }
     }

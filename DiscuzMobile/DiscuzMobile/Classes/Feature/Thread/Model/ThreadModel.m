@@ -171,17 +171,16 @@
             [item setValue:mp3Arr forKey:@"audiolist"];
         }
     }
-    /*
-     DZThreadListModel *listModel = [[DZThreadListModel alloc] init];
-     [listModel setValuesForKeysWithDictionary:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
-    if (self.currentPage == 1) {
-        BACK(^{J
-            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
+    
+//     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
+//     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
+//    if (self.currentPage == 1) {
+//        BACK(^{
+//            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
 //                [[DZDatabaseHandle Helper] footThread:listModel];
-            }
-        });
-
-    }*/
+//            }
+//        });
+//    }
 }
 
 @end

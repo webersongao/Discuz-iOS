@@ -20,7 +20,6 @@
 @interface DZThreadListController ()
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
-@property (nonatomic, assign) BOOL isRequest;
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
 @property (nonatomic, assign) NSInteger notThisFidCount;
 @property (nonatomic, strong) NSMutableArray *topThreadArray;
@@ -50,8 +49,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_ThreadListFirstReload_Notify object:nil];
     
-    if (self.order == 0) {
-        self.isRequest = YES;
+    if (self.order == 0 && !self.dataSourceArr.count) {
         [self loadCache];
     }
 }
@@ -69,8 +67,7 @@
     NSDictionary *userInfo = notification.userInfo;
     if ([DataCheck isValidDictionary:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
-        if (index == self.order && !self.isRequest) {
-            self.isRequest = YES;
+        if (index == self.order && !self.dataSourceArr.count) {
             [self loadCache];
         }
     }
