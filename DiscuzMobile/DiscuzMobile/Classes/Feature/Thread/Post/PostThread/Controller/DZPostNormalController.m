@@ -103,7 +103,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat keyboardHeight = 265;
-    CGFloat detailH = KScreenHeight - KNavi_ContainStatusBar_Height - keyboardHeight - 55 - SafeAreaBottomHeight;
+    CGFloat detailH = KScreenHeight - KNavi_ContainStatusBar_Height - keyboardHeight - 55;
     if (self.typeArray.count > 0) {
         detailH -= 55;
     }

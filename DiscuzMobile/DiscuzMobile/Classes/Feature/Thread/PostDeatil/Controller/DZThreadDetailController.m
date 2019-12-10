@@ -70,7 +70,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.detailView = [[ThreadDetailView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight - SafeAreaBottomHeight)];
+    self.detailView = [[ThreadDetailView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height)];
     self.view = self.detailView;
 }
 
@@ -612,7 +612,7 @@
     if (self.currentPageId == 1) {
         [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     }
-    [[DZPostNetTool sharedTool] DZ_DownloadPostDetail:self.tid Page:self.currentPageId success:^(DZPosResModel *resModel, NSError *error) {
+    [[DZPostNetTool sharedTool] DZ_DownloadPostDetail:self.tid Page:self.currentPageId success:^(DZPosResModel *resModel,NSDictionary *resDict,NSError *error) {
         if (resModel) {
             requestCount = 0;
             if (resModel.Message && !resModel.Message.isAuthorized) {
@@ -625,7 +625,7 @@
             
             [self emptyHide];
             self.threadModel.currentPage = self.currentPageId;
-            self.threadModel = [self.threadModel updateModelWithRes:resModel];
+            [self.threadModel updateModel:resModel res:resDict];
             
             if (self.currentPageId == 1) {
                 [self.detailView.webView.scrollView.mj_header endRefreshing];
@@ -825,7 +825,7 @@
 
 #pragma mark 点击状态栏到顶部
 - (void)statusBarTappedAction:(NSNotification*)notification {
-    [self.detailView.webView.scrollView setContentOffset:CGPointMake(0, -KNavi_ContainStatusBar_Height) animated:YES];
+    [self.detailView.webView.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
 }
 
 #pragma mark - 滚动webView的时候收起键盘

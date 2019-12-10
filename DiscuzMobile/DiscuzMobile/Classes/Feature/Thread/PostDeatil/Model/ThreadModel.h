@@ -38,7 +38,7 @@
 @property (nonatomic, strong, readonly) NSData *jsonData; // 注入 html JSON
 @property (nonatomic, strong, readonly) DZPostVarModel *VarPost; // set方法处理全部数据
 
-- (instancetype)updateModelWithRes:(DZPosResModel *)response;
+- (void)updateModel:(DZPosResModel *)resModel res:(NSDictionary *)resDict;
 
 
 

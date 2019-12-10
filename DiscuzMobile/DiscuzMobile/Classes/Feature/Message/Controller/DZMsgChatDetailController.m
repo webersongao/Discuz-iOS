@@ -71,8 +71,6 @@
     
     kToolBarH = 50;
     
-    kToolBarH = 50 + SafeAreaBottomHeight;
-    
     // 加自定义表情键盘必须添加这行代码。
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
     {
@@ -117,7 +115,7 @@
     if (_emoKeyboard == nil) {
         //        CGRect fr = CGRectMake(0, 0, WIDTH, HEIGHT - 67);
         CGFloat tabbarH = 50;
-        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - tabbarH - SafeAreaBottomHeight, KScreenWidth, tabbarH)];
+        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - tabbarH, KScreenWidth, tabbarH)];
     }
     return _emoKeyboard;
 }

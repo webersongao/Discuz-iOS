@@ -178,7 +178,7 @@
 
 
 //获取帖子详情
--(void)DZ_DownloadPostDetail:(NSString *)tid Page:(NSInteger)page success:(void(^)(DZPosResModel *varModel,NSError *error))success{
+-(void)DZ_DownloadPostDetail:(NSString *)tid Page:(NSInteger)page success:(void(^)(DZPosResModel *varModel,NSDictionary *resDict,NSError *error))success{
     
     NSString *tidStr = checkNull(tid);
     if (!tidStr.length || !success) {
@@ -196,12 +196,12 @@
         DZPosResModel *postModel = [DZPosResModel modelWithJSON:responseObject];
         
         if (success) {
-            success(postModel,nil);
+            success(postModel,responseObject,nil);
         }
         
     } failed:^(NSError *error) {
         if (success) {
-            success(nil,error);
+            success(nil,nil,error);
         }
     }];
 }

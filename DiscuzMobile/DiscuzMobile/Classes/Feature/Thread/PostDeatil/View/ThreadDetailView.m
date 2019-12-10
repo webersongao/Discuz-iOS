@@ -68,8 +68,7 @@
 
 - (EmoticonKeyboard *)emoKeyboard {
     if (_emoKeyboard == nil) {
-        CGFloat tabbarH = 50;
-        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.frame) - tabbarH, KScreenWidth, tabbarH)];
+        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, self.height - KTabbar_Height, KScreenWidth, KTabbar_Height)];
     }
     return _emoKeyboard;
 }

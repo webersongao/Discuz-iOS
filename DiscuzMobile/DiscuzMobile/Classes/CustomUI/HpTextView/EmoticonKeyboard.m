@@ -56,7 +56,7 @@ static const NSInteger RowFaceCount = 9;
         keyboardHeight = height;
     }
     
-    SCHeight = KScreenHeight - SafeAreaBottomHeight;
+    SCHeight = KScreenHeight;
     
     emotionVHeight = keyboardHeight - toolBarHeight;
     

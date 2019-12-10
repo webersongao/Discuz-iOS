@@ -13,10 +13,10 @@
 
 @implementation ThreadModel
 
-- (instancetype)updateModelWithRes:(DZPosResModel *)response
+- (void)updateModel:(DZPosResModel *)resModel res:(NSDictionary *)resDict
 {
-    [self updateVarPost:response];
-    return self;
+    [self updateVarPost:resModel];
+    [self updateResDict:resDict];
 }
 
 // MARK: - 通过这个set方法获取所有的model参数
@@ -40,9 +40,6 @@
     }
     _shareUrl = [NSString stringWithFormat:@"%@forum.php?mod=viewthread&tid=%@",DZ_BASEURL,self.tid];
     
-    NSDictionary *jsonDic = [self manageJsonContentWitnAttchment:resModel];
-    _jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
-    
     _ppp = _VarPost.ppp;
     _isActivity = [self judeActivity:_VarPost];
     
@@ -50,6 +47,11 @@
     _allowreply = _VarPost.allowperm.allowreply;
     _uploadhash = _VarPost.allowperm.uploadhash;
     _baseUrl = [self getBaseURL:_VarPost];
+}
+
+-(void)updateResDict:(NSDictionary *)resDict{
+    NSDictionary *jsonDic = [self manageJsonContentWitnAttchment:resDict];
+    _jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
 }
 
 #pragma mark - 获取本地页面url
@@ -97,18 +99,15 @@
     return NO;
 }
 
-- (NSDictionary *)manageJsonContentWitnAttchment:(DZPosResModel *)varPost {
-    
-    NSDictionary *oriDict = [varPost modelToJSONObject];
-    NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:oriDict];
-    if (![DataCheck isValidDict:dataDic] || ![DataCheck isValidDict:oriDict]) {
-        return nil;
-    }
+
+
+- (NSDictionary *)manageJsonContentWitnAttchment:(NSDictionary *)dataDic {
     
     [self dealWithattachment:dataDic];
+    NSMutableDictionary * Variables = [dataDic objectForKey:@"Variables"];
     
     // 投票帖数据 - start
-    NSMutableDictionary *special_poll = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"special_poll"];
+    NSMutableDictionary *special_poll = [Variables objectForKey:@"special_poll"];
     if ([DataCheck isValidDict:special_poll]) {
         NSMutableDictionary *polloptions  = [special_poll objectForKey:@"polloptions"];
         [polloptions enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -124,25 +123,21 @@
     // 投票帖数据 - end
     
     // 活动帖数据 - start
-    NSMutableDictionary * special_activity = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"special_activity"];
+    NSMutableDictionary * special_activity = [Variables objectForKey:@"special_activity"];
     if ([DataCheck isValidDict:special_activity]) { // 取活动封面图
-        NSString * thumburl = [special_activity stringForKey:@"thumb"];
-        NSString * activityurl = [special_activity stringForKey:@"attachurl"];
-        if (thumburl.length) {
-            [special_activity setValue:[thumburl makeDomain] forKey:@"thumb"];
-        }
-        if (activityurl.length) {
-            [special_activity setValue:[activityurl makeDomain] forKey:@"attachurl"];
+        NSString * activityurl = [special_activity objectForKey:@"attachurl"];
+        if ([DataCheck isValidString:activityurl]) {
+            activityurl = [activityurl makeDomain];
+            [special_activity setValue:activityurl forKey:@"attachurl"];
         }
     }
     // 活动帖数据 - end
-    
     return dataDic.mutableCopy;
 }
 
 - (void)dealWithattachment:(NSDictionary *)dataDic {
     
-    NSMutableArray * list = [[dataDic dictionaryForKey:@"Variables"] objectForKey:@"postlist"];
+    NSMutableArray * list = [[dataDic objectForKey:@"Variables"] objectForKey:@"postlist"];
     for (int i = 0; i<list.count; i++) {
         NSDictionary * item = [list objectAtIndex:i];
         
@@ -176,7 +171,7 @@
     }
     
     //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
-    //     [DZPostThreadModel modelWithJSON:[[dataDic dictionaryForKey:@"Variables"] objectForKey:@"thread"]];
+    //     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
     //    if (self.currentPage == 1) {
     //        BACK(^{
     //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {

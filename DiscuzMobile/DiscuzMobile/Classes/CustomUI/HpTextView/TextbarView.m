@@ -161,7 +161,6 @@ static CGFloat btn_width = 24.0;
     if (status == bar_rise) { // 键盘升起
         if (self.style == detail_textBar) {
             self.keyboardShow = YES;
-           
             self.faceBtn.frame = CGRectMake(5, 12, btn_width, btn_width);
             self.addBtn.frame = CGRectMake(CGRectGetMaxX(_faceBtn.frame) + 10, 12, btn_width, btn_width);
             self.textView.frame = CGRectMake(btn_width * 2 + 25, 7, KScreenWidth - (btn_width * 2 + 25)  - 70, height);
