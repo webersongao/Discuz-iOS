@@ -2119,7 +2119,6 @@
 			isa = PBXGroup;
 			children = (
 				708AED69238E58F3000A4397 /* Account */,
-				708AED68238E58D1000A4397 /* Post */,
 				703C4253237D50570046C398 /* Speech */,
 				70621142237936C800130B9D /* Search */,
 				7062115F237936C800130B9D /* Setting */,
@@ -2469,9 +2468,10 @@
 		7062116A237936C800130B9D /* Thread */ = {
 			isa = PBXGroup;
 			children = (
-				7062116B237936C800130B9D /* Controller */,
-				70621176237936C800130B9D /* Model */,
-				7062117F237936C800130B9D /* View */,
+				708AED66238E578C000A4397 /* NetTool */,
+				708AED68238E58D1000A4397 /* Post */,
+				7002A34B2383D8CD00BC0C61 /* FastPost */,
+				7070A8C6239F7D830052D32E /* PostDeatil */,
 			);
 			path = Thread;
 			sourceTree = "<group>";
@@ -2714,6 +2714,16 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		7070A8C6239F7D830052D32E /* PostDeatil */ = {
+			isa = PBXGroup;
+			children = (
+				7062116B237936C800130B9D /* Controller */,
+				70621176237936C800130B9D /* Model */,
+				7062117F237936C800130B9D /* View */,
+			);
+			path = PostDeatil;
+			sourceTree = "<group>";
+		};
 		7081DB50237AC019007A2513 /* ListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2773,8 +2783,6 @@
 			children = (
 				70621113237936C800130B9D /* Model */,
 				70621116237936C800130B9D /* Views */,
-				708AED66238E578C000A4397 /* NetTool */,
-				7002A34B2383D8CD00BC0C61 /* FastPost */,
 				706210B8237936C800130B9D /* PostThread */,
 			);
 			path = Post;

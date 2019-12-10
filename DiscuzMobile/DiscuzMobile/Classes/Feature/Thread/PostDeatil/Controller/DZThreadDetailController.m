@@ -834,12 +834,9 @@
         NSString *messagestr = [messageDic objectForKey:@"messagestr"];
         NSString *messageval = [messageDic objectForKey:@"messageval"];
         if ([DataCheck isValidString:messageval]) {
-
             if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
                 _isReferenceReply = NO;
-                
                 [self.detailView.emoKeyboard clearData];
-                
                 if (![messagestr containsString:@"审核"]) {
                     [MBProgressHUD showInfo:@"回帖成功"];
                     if (_currentPageId==1) {
@@ -852,8 +849,7 @@
                 } else {
                     [MBProgressHUD showInfo:messagestr];
                 }
-            }
-            else {
+            }else {
                 [MBProgressHUD showInfo:messagestr];
                 if ([messageval isEqualToString:@"post_sm_isnull"]) {
                     self.detailView.emoKeyboard.textBarView.textView.text = nil;
@@ -863,7 +859,6 @@
             [MBProgressHUD showInfo:@"回帖失败"];
         }
         [self.HUD hide];
-
     } failed:^(NSError *error) {
         [self showServerError:error];
         [self.HUD hide];
