@@ -73,7 +73,7 @@
     }
 
     NSDictionary *userInfo = notification.userInfo;
-    if ([DataCheck isValidDictionary:userInfo]) {
+    if ([DataCheck isValidDict:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
         if (!self.dataSourceArr.count && index != 0) {
             [self cacheRequest];

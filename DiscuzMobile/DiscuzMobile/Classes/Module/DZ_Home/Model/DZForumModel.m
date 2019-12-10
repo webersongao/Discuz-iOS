@@ -11,7 +11,7 @@
 @implementation DZForumModel
 
 -(void)setLastpost:(id)lastpost{
-    if ([DataCheck isValidDictionary:lastpost]) {
+    if ([DataCheck isValidDict:lastpost]) {
         _lastpost = [[lastpost stringForKey:@"dateline"] transformationStr];
     } else {
         _lastpost = checkNull(lastpost);

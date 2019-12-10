@@ -86,7 +86,7 @@
         }
     } success:^(id responseObject, JTLoadType type) {
         id resDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        if ([DataCheck isValidDictionary:resDict] && [[[resDict dictionaryForKey:@"Variables"] stringForKey:@"uploadavatar"] containsString:@"success"] ) {
+        if ([DataCheck isValidDict:resDict] && [[[resDict dictionaryForKey:@"Variables"] stringForKey:@"uploadavatar"] containsString:@"success"] ) {
             completion(YES);
         }
     } failed:^(NSError *error) {

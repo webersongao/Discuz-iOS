@@ -13,7 +13,7 @@
 
 - (NSString *)messageval {
     NSString *messageval = @"";
-    if ([DataCheck isValidDictionary:self] && [DataCheck isValidDictionary:[self objectForKey:@"Message"]]
+    if ([DataCheck isValidDict:self] && [DataCheck isValidDict:[self objectForKey:@"Message"]]
         && [DataCheck isValidString:[[self objectForKey:@"Message"] objectForKey:@"messageval"]]) {
         messageval = [[self objectForKey:@"Message"] objectForKey:@"messageval"];
     }
@@ -22,7 +22,7 @@
 
 - (NSString *)messagestr {
     NSString *messagestr = @"";
-    if ([DataCheck isValidDictionary:self] && [DataCheck isValidDictionary:[self objectForKey:@"Message"]]
+    if ([DataCheck isValidDict:self] && [DataCheck isValidDict:[self objectForKey:@"Message"]]
         && [DataCheck isValidString:[[self objectForKey:@"Message"] objectForKey:@"messagestr"]]) {
         messagestr = [[self objectForKey:@"Message"] objectForKey:@"messagestr"];
     }

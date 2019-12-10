@@ -33,7 +33,7 @@
     return YES;
 }
 
-+ (BOOL) isValidDictionary:(id)input
++ (BOOL) isValidDict:(id)input
 {
     if (!input) {
         return NO;

@@ -65,7 +65,7 @@
 
 - (void)firstRequest:(NSNotification *)notification {
     NSDictionary *userInfo = notification.userInfo;
-    if ([DataCheck isValidDictionary:userInfo]) {
+    if ([DataCheck isValidDict:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
         if (index == self.order && !self.dataSourceArr.count) {
             [self loadCache];

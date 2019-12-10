@@ -43,7 +43,7 @@
     
     _activityfield = activityfield;
     
-    if ([DataCheck isValidDictionary:activityfield]) {
+    if ([DataCheck isValidDict:activityfield]) {
         
         self.titleLab.frame = CGRectMake(15, 18, KScreenWidth - 30, 20);
         CGFloat selectHeight = 0;

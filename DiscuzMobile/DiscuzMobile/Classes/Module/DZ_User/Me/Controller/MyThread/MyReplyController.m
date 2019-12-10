@@ -73,7 +73,7 @@
         cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
     }
     NSDictionary * dic = [self.dataSourceArr objectAtIndex:indexPath.row];
-    if ([DataCheck isValidDictionary:dic]) {
+    if ([DataCheck isValidDict:dic]) {
         [cell setData:dic];
     }
     return cell;

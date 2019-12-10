@@ -25,7 +25,7 @@ NSString * const domainName = @"name";
     [self configNaviBar:@"添加" type:NaviItemText Direction:NaviDirectionRight];
     
     NSDictionary *dic = [[DZFileManager shareInstance] readDocumentPlist:domainList];
-    if ([DataCheck isValidDictionary:dic] && [DataCheck isValidArray:dic[domain]]) {
+    if ([DataCheck isValidDict:dic] && [DataCheck isValidArray:dic[domain]]) {
         self.dataSourceArr = [NSMutableArray arrayWithArray:dic[domain]];
     } else {
         

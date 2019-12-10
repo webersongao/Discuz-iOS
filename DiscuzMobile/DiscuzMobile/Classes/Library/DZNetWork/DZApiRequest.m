@@ -74,10 +74,10 @@
 
 // 掌上论坛公共处理
 + (void)publicDo:(id)responseObject {
-    if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]]) { // 公共提醒
+    if ([DataCheck isValidDict:[responseObject objectForKey:@"Variables"]]) { // 公共提醒
         [[DZMobileCtrl sharedCtrl].User updateFormHash:[[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"]];
         if ([DZLoginModule isLogged]) {
-            if ([DataCheck isValidDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]]) { //公共提醒
+            if ([DataCheck isValidDict:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]]) { //公共提醒
                 [MessageNoticeCenter shared].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]];
             }
         }

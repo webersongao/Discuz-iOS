@@ -83,7 +83,7 @@
         self.tipIcon.hidden = YES;
     }
     
-    if ([DataCheck isValidDictionary:info.forumnames]) {
+    if ([DataCheck isValidDict:info.forumnames]) {
         self.tipLab.text = [NSString stringWithFormat:@"#%@",[info.forumnames objectForKey:@"name"]];
     }
     
@@ -196,7 +196,7 @@
                 NSString *imageSrc = info.imglist[i];
                 imageSrc = [imageSrc makeDomain];
                 [imageV sd_setImageWithURL:[NSURL URLWithString:imageSrc]placeholderImage:[UIImage imageNamed:@"wutu"] options:SDWebImageRetryFailed];
-            } else if ([DataCheck isValidDictionary:info.imglist[i]]) {
+            } else if ([DataCheck isValidDict:info.imglist[i]]) {
                 NSDictionary *imgDic = info.imglist[i];
                 NSString *imageSrc = [imgDic objectForKey:@"src"];
                 imageSrc = [imageSrc makeDomain];

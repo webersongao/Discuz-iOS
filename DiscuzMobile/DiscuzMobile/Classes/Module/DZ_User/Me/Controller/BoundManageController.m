@@ -144,7 +144,7 @@
     } success:^(id responseObject, JTLoadType type) {
         [self.HUD hide];
         NSDictionary *msgDic = [responseObject objectForKey:@"Message"];
-        if ([DataCheck isValidDictionary:msgDic]) {
+        if ([DataCheck isValidDict:msgDic]) {
             NSString *messageStatus = [msgDic objectForKey:@"messageval"];
             if ([DataCheck isValidString:messageStatus]) {
                 if ([messageStatus containsString:@"succeed"]) {

@@ -128,14 +128,14 @@
     
     if ([DataCheck isValidArray:dataModel.userfield]) {
         [dataModel.userfield enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([DataCheck isValidDictionary:dataModel.dbufielddata]) {
+            if ([DataCheck isValidDict:dataModel.dbufielddata]) {
                 
                 NSDictionary *dic = [dataModel.dbufielddata objectForKey:obj];
                 DZApartInItem *mm = [DZApartInItem modelWithJSON:dic];
                 [self.dataSourceArr addObject:mm];
             }
         }];
-    } else if ([DataCheck isValidDictionary:dataModel.dbufielddata]) {
+    } else if ([DataCheck isValidDict:dataModel.dbufielddata]) {
         
         [dataModel.dbufielddata enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             DZApartInItem *mm = [DZApartInItem modelWithJSON:obj];

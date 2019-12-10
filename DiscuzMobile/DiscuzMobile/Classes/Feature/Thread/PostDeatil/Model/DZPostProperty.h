@@ -176,6 +176,7 @@
 @property (nonatomic, copy) NSString *number;  //!< 属性注释
 @property (nonatomic, copy) NSString *expiration;  //!< 属性注释
 @property (nonatomic, strong) NSDictionary *ufield;  //!< 属性注释
+@property (nonatomic, strong) NSDictionary *settings;  //!< 属性注释
 @property (nonatomic, copy) NSString *credit;  //!< 属性注释
 @property (nonatomic, copy) NSString *thumb;  //!< 属性注释
 @property (nonatomic, copy) NSString *attachurl;  //!< 属性注释

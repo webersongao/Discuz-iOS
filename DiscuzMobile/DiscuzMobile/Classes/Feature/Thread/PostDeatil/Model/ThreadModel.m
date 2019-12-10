@@ -34,7 +34,7 @@
     }
     self.shareUrl = [NSString stringWithFormat:@"%@forum.php?mod=viewthread&tid=%@",DZ_BASEURL,self.tid];
     
-    NSDictionary *jsonDic = [self manageJsonWitnAttchment:VarPost];
+    NSDictionary *jsonDic = [self manageJsonContentWitnAttchment:VarPost];
     self.jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:nil];
     
     self.ppp = VarPost.ppp;
@@ -60,10 +60,9 @@
         } else if ([dataDic.thread.special isEqualToString:@"4"]) {
             path = [[NSBundle mainBundle] pathForResource:@"thread_temp_activity" ofType:@"html"];
         }
-        //        else if ([dataDic.thread.special isEqualToString:@"5"]) { // 辩论帖
-        //            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
-        //
-        //        }
+//        else if ([dataDic.thread.special isEqualToString:@"5"]) { // 辩论帖
+//            path = [[NSBundle mainBundle] pathForResource:@"thread_temp_debate" ofType:@"html"];
+//        }
     }
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     return baseURL;
@@ -79,9 +78,9 @@
     //        NSString * strapplied= dataDic.special_activity.applied;
     NSString * strbutton = dataDic.special_activity.button;
     NSString * strclosed = dataDic.special_activity.closed;
-//    if ([strapplied isEqualToString:@"0"]&&[DataCheck isValidString:strapplied]&&[strbutton isEqualToString:@"join"]&&[DataCheck isValidString:strbutton]&&[strclosed isEqualToString:@"0"]&&[DataCheck isValidString:strclosed]) {
-//        return YES;
-//    }
+    //    if ([strapplied isEqualToString:@"0"]&&[DataCheck isValidString:strapplied]&&[strbutton isEqualToString:@"join"]&&[DataCheck isValidString:strbutton]&&[strclosed isEqualToString:@"0"]&&[DataCheck isValidString:strclosed]) {
+    //        return YES;
+    //    }
     if ([DataCheck isValidString:strbutton] &&
         [DataCheck isValidString:strclosed]) {
         if ([strbutton isEqualToString:@"join"] &&
@@ -92,18 +91,23 @@
     return NO;
 }
 
-- (NSMutableDictionary *)manageJsonWitnAttchment:(DZPostVarModel *)dataDic {
+- (NSDictionary *)manageJsonContentWitnAttchment:(DZPostVarModel *)varPost {
+    
+    NSDictionary *oriDict = [varPost modelToJSONObject];
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:oriDict];
+    if (![DataCheck isValidDict:dataDic] || ![DataCheck isValidDict:oriDict]) {
+        return nil;
+    }
     
     [self dealWithattachment:dataDic];
-    NSMutableDictionary * Variables = [dataDic objectForKey:@"Variables"];
     
     // 投票帖数据 - start
-    NSMutableDictionary *special_poll = [Variables objectForKey:@"special_poll"];
-    if ([DataCheck isValidDictionary:special_poll]) {
+    NSMutableDictionary *special_poll = [dataDic objectForKey:@"special_poll"];
+    if ([DataCheck isValidDict:special_poll]) {
         NSMutableDictionary *polloptions  = [special_poll objectForKey:@"polloptions"];
         [polloptions enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSMutableDictionary *imginfo = [obj objectForKey:@"imginfo"];
-            if ([DataCheck isValidDictionary:imginfo]) {
+            if ([DataCheck isValidDict:imginfo]) {
                 NSString *small = [[imginfo objectForKey:@"small"] makeDomain];
                 NSString *big = [[imginfo objectForKey:@"big"] makeDomain];
                 [imginfo setValue:small forKey:@"small"];
@@ -114,8 +118,8 @@
     // 投票帖数据 - end
     
     // 活动帖数据 - start
-    NSMutableDictionary * special_activity = [Variables objectForKey:@"special_activity"];
-    if ([DataCheck isValidDictionary:special_activity]) { // 取活动封面图
+    NSMutableDictionary * special_activity = [dataDic objectForKey:@"special_activity"];
+    if ([DataCheck isValidDict:special_activity]) { // 取活动封面图
         NSString * activityurl = [special_activity objectForKey:@"attachurl"];
         if ([DataCheck isValidString:activityurl]) {
             activityurl = [activityurl makeDomain];
@@ -124,17 +128,17 @@
     }
     // 活动帖数据 - end
     
-    return dataDic.mutableCopy;
+    return dataDic;
 }
 
-- (void)dealWithattachment:(DZPostVarModel *)dataDic {
+- (void)dealWithattachment:(NSDictionary *)dataDic {
     
-    NSMutableArray * list = [[dataDic objectForKey:@"Variables"] objectForKey:@"postlist"];
+    NSMutableArray * list = [dataDic objectForKey:@"postlist"];
     for (int i = 0; i<list.count; i++) {
         NSDictionary * item = [list objectAtIndex:i];
         
         NSMutableDictionary *attachmentsDic = [item objectForKey:@"attachments"];
-        if ([DataCheck isValidDictionary:attachmentsDic]) {
+        if ([DataCheck isValidDict:attachmentsDic]) {
             
             NSMutableArray *attachmentArr = [NSMutableArray array];
             NSMutableArray *mp3Arr = [NSMutableArray array];
@@ -163,7 +167,7 @@
     }
     
     //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
-    //     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
+    //     [DZPostThreadModel modelWithJSON:[dataDic objectForKey:@"thread"]];
     //    if (self.currentPage == 1) {
     //        BACK(^{
     //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {

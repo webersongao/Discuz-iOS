@@ -40,10 +40,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"参加活动";
-    NSDictionary *special_activity = [[self.threadModel.VarPost objectForKey:@"Variables"]  objectForKey:@"special_activity"];
-    self.cost = [special_activity objectForKey:@"cost"];
-    NSString *credit = [special_activity objectForKey:@"credit"];
-    NSString *creditcost = [special_activity objectForKey:@"creditcost"];
+    self.cost = self.threadModel.VarPost.special_activity.cost;
+    NSString *credit = self.threadModel.VarPost.special_activity.credit;
+    NSString *creditcost = self.threadModel.VarPost.special_activity.creditcost;
     if ([DataCheck isValidString:self.cost] && [self.cost integerValue] > 0) {
         ParInActiveModel *partModel = [[ParInActiveModel alloc] init];
         partModel.formtype = @"jt_cost";
@@ -62,11 +61,11 @@
         self.tableView.tableHeaderView = header;
     }
     
-    NSDictionary *joinfieldDic =  [special_activity objectForKey:@"joinfield"];
-    NSDictionary *ufieldDic = [special_activity objectForKey:@"ufield"];
-    NSDictionary *settings = [special_activity objectForKey:@"settings"];
+    NSDictionary *joinfieldDic = self.threadModel.VarPost.special_activity.joinfield;
+    NSDictionary *ufieldDic = self.threadModel.VarPost.special_activity.ufield;
+    NSDictionary *settings = self.threadModel.VarPost.special_activity.settings;
     
-    if ([DataCheck isValidDictionary:ufieldDic]) {
+    if ([DataCheck isValidDict:ufieldDic]) {
         if ([DataCheck isValidArray:[ufieldDic objectForKey:@"userfield"]]) {
             NSArray *userFieldArr = [ufieldDic objectForKey:@"userfield"];
             [userFieldArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -77,9 +76,8 @@
                     partModel.fieldValue = @"0";
                     partModel.choicesArray = @[@"保密",@"男",@"女"];
                 }
-                if ([DataCheck isValidDictionary:settings]) {
-                    
-                    if ([DataCheck isValidDictionary:[settings objectForKey:partModel.fieldid]]) {
+                if ([DataCheck isValidDict:settings]) {
+                    if ([DataCheck isValidDict:[settings objectForKey:partModel.fieldid]]) {
                         [self.dataSourceArr addObject:partModel];
                     }
                     

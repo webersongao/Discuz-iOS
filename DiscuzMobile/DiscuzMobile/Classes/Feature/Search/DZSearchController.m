@@ -207,7 +207,7 @@
         [self.HUD hide];
         [self.tableView.mj_footer endRefreshing];
         
-        if ([DataCheck isValidDictionary:[responseObject objectForKey:@"Variables"]]) {
+        if ([DataCheck isValidDict:[responseObject objectForKey:@"Variables"]]) {
             
             if ([DataCheck isValidArray: [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
                 NSArray *dataArr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"];

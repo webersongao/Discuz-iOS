@@ -560,7 +560,7 @@ static int voteIndex = 0 ;
         [self.HUD hideAnimated:YES];
     } success:^(id response) {
         
-        if ([DataCheck isValidDictionary:response]) {
+        if ([DataCheck isValidDict:response]) {
             NSString *aid = [response objectForKey:@"aid"];
             [self.pollImageDic setValue:aid forKey:[NSString stringWithFormat:@"%ld",self.imgBtnTag]];
             

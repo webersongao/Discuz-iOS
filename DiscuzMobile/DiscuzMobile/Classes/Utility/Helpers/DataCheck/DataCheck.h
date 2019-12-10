@@ -11,7 +11,7 @@
 @interface DataCheck : NSObject
 
 + (BOOL) isValidString:(id)input;
-+ (BOOL) isValidDictionary:(id)input;
++ (BOOL) isValidDict:(id)input;
 + (BOOL) isValidArray:(id)input;
 + (BOOL)arrayA:(NSArray *)arrayA isEqualArrayB:(NSArray *)arrayB;
 
