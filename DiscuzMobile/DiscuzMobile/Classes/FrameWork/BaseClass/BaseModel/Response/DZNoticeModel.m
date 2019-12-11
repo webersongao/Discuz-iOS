@@ -22,6 +22,9 @@ NSString * const Msg_ApplySucc       = @"activity_completion"; //报名参与活
 
 NSString * const Msg_FavSucc       = @"favorite_do_success"; // 收藏成功
 NSString * const Msg_FavRepeat   = @"favorite_repeat"; // 收藏重复
+NSString * const Msg_GroupNoPer   = @"group_nopermission"; // 组内无权限
+
+
 
 NSString * const Msg_No_bind        = @"no_bind";  //未绑定第三方在账号
 NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问题为空
@@ -91,7 +94,13 @@ NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问�
     return NO;
 }
 
-
+// 是否是 用户组无权限
+-(BOOL)isGroup_Nopermission{
+    if ([self.messageval isEqualToString:Msg_GroupNoPer]) {
+        return YES;
+    }
+    return NO;
+}
 
 @end
 

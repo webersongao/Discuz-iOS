@@ -421,13 +421,9 @@ static int voteIndex = 0 ;
     NSDictionary  * postDic =[self.voteModel creatVoteDictdata:self.verifyView voteArr:pollImageArr];
     [self.HUD showLoadingMessag:@"发布中" toView:self.view];
     self.HUD.userInteractionEnabled = YES;
-    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(id responseObject, NSError *error) {
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(DZBaseResModel *resModel,NSString *tidStr,NSError *error) {
         [self.HUD hide];
-        if (responseObject) {
-            [self requestPostSucceed:responseObject];
-        }else{
-            [self requestPostFailure:error];
-        }
+        [self configPostSucceed:resModel tid:tidStr failure:error];
     }];
 }
 

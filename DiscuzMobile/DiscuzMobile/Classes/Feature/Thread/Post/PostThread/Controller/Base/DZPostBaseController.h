@@ -31,9 +31,7 @@ typedef void(^PushDetailBlock)(NSString *tid);
 
 - (void)viewEndEditing;
 
-// 发帖请求失败
-- (void)requestPostFailure:(NSError *)error;
 // 发帖成功
-- (void)requestPostSucceed:(id)responseObject;
+- (void)configPostSucceed:(DZBaseResModel *)resModel tid:(NSString *)tid failure:(NSError *)error;
 
 @end

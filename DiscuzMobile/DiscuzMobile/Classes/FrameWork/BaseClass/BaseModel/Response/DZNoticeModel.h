@@ -47,8 +47,8 @@
 // 是否 收藏重复
 -(BOOL)isFavoriteRepeat;
 
-
-
+// 是否是 用户组无权限
+-(BOOL)isGroup_Nopermission;
 
 
 

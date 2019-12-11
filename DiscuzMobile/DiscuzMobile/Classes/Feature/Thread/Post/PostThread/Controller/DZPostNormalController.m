@@ -299,22 +299,16 @@
     NSDictionary * postdic=  [self.normalModel creatNormalDictdata:self.verifyView toolCell:[self getToolCell]];
     [self.HUD showLoadingMessag:@"发送中" toView:self.view];
     self.HUD.userInteractionEnabled = YES;
-    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(id responseObject, NSError *error) {
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(DZBaseResModel *resModel,NSString *tidStr,NSError *error) {
         [self.HUD hide];
-        if (responseObject) {
-            [self requestPostSucceed:responseObject];
-            self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
-        }else{
-            self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
-            [self requestPostFailure:error];
-        }
+        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
+        [self configPostSucceed:resModel tid:tidStr failure:error];
     }];
 }
 
-- (void)requestPostSucceed:(id)responseObject {
-    [super requestPostSucceed:responseObject];
-    NSString *message = [responseObject messageval];
-    if ([message containsString:@"succeed"] || [message containsString:@"success"]) {
+-(void)configPostSucceed:(DZBaseResModel *)resModel tid:(NSString *)tid failure:(NSError *)error {
+    [super configPostSucceed:resModel tid:tid failure:error];
+    if (resModel.Message && resModel.Message.isSuccessed) {
         [[AudioTool shareInstance] clearAudio];
     }
 }

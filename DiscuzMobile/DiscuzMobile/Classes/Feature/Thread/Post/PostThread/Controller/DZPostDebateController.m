@@ -280,14 +280,9 @@
     
     NSDictionary * postdic=  [self.debateModel creatDebateDictdata:self.verifyView];
     [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(id responseObject, NSError *error) {
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(DZBaseResModel *resModel,NSString *tidStr,NSError *error) {
         [self.HUD hide];
-        if (responseObject) {
-            [self requestPostSucceed:responseObject];
-        }else{
-            [self showServerError:error];
-        }
-        
+        [self configPostSucceed:resModel tid:tidStr failure:error];
     }];
 }
 

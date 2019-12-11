@@ -35,7 +35,7 @@
             model.name = [obj flattenHTMLTrimWhiteSpace:NO];
             [self.typeArray addObject:model];
         }];
-
+        
         NSMutableArray *arr = [NSMutableArray array];
         for (DZThreadTypeModel *model in self.typeArray) {
             [arr addObject:model.name];
@@ -46,7 +46,7 @@
             [self.pickView setToolbarTintColor:K_Color_ToolBar];
         }
     }
-
+    
     [self.view addSubview:self.tableView];
 }
 
@@ -57,33 +57,31 @@
     }
 }
 
-- (void)requestPostFailure:(NSError *)error {
-    [self.HUD hide];
-    [self showServerError:error];
-}
 
-- (void)requestPostSucceed:(id)responseObject {
+
+- (void)configPostSucceed:(DZBaseResModel *)resModel tid:(NSString *)tid failure:(NSError *)error{
     
-    [self.HUD hide];
-    NSString *messageval = [responseObject messageval];
-    NSString *messagestr = [responseObject messagestr];
-    if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
-        if ([DataCheck isValidString:[[responseObject objectForKey:@"Variables"] objectForKey:@"tid"]]) {
+    if (resModel) {
+        if (resModel.Message && resModel.Message.isSuccessed && tid.length) {
             [self.navigationController popViewControllerAnimated:NO];
             if (self.pushDetailBlock) {
-                self.pushDetailBlock([[responseObject objectForKey:@"Variables"] objectForKey:@"tid"]);
+                self.pushDetailBlock(tid);
             }
             return;
         }
+        
+        if (resModel.Message.isGroup_Nopermission && resModel.Message.messagestr.length) {
+            [UIAlertController alertTitle:@"提示" message:resModel.Message.messagestr controller:self doneText:@"确定" cancelText:nil doneHandle:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            } cancelHandle:nil];
+            return;
+        }
+        
+        [MBProgressHUD showInfo:resModel.Message.messagestr];
+        
+    }else{
+        [self showServerError:error];
     }
-    if ([messageval isEqualToString:@"group_nopermission"]) {
-        [UIAlertController alertTitle:@"提示" message:messagestr controller:self doneText:@"确定" cancelText:nil doneHandle:^{
-            [self.navigationController popViewControllerAnimated:YES];
-        } cancelHandle:nil];
-        return;
-    }
-    
-    [MBProgressHUD showInfo:messagestr];
     
 }
 

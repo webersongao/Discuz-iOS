@@ -228,13 +228,9 @@
     NSDictionary  * postDic = [self.activityModel createActivityPostDict:self.verifyView];
     [self.HUD showLoadingMessag:@"活动发起中" toView:self.view];
     self.HUD.userInteractionEnabled = YES;
-    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(id responseObject, NSError *error) {
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(DZBaseResModel *resModel,NSString *tidStr,NSError *error) {
         [self.HUD hide];
-        if (responseObject) {
-            [self requestPostSucceed:responseObject];
-        }else{
-            [self requestPostFailure:error];
-        }
+        [self configPostSucceed:resModel tid:tidStr failure:error];
     }];
 }
 

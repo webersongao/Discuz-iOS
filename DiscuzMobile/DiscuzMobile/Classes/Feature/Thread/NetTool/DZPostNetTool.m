@@ -207,7 +207,7 @@
 
 
 // 发布帖子
-+ (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(id responseObject,NSError *error))completion{
++ (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(DZBaseResModel *resModel,NSString *tidStr,NSError *error))completion{
     
     if (!fid.length || !postDict.allValues.count || !completion) {
         return;
@@ -219,9 +219,11 @@
         request.parameters = postDict;
         request.getParam = @{@"fid":fid};
     } success:^(id responseObject, JTLoadType type) {
-        completion(responseObject,nil);
+        NSString *tidStr = [[responseObject dictionaryForKey:@"Variables"] stringForKey:@"tid"];
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,tidStr,nil);
     } failed:^(NSError *error) {
-        completion(nil,error);
+        completion(nil,nil,error);
     }];
     
 }
