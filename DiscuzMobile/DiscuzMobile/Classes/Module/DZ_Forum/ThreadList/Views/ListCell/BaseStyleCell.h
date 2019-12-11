@@ -32,6 +32,8 @@
 
 - (CGFloat)caculateCellHeight:(DZThreadListModel *)info;
 
-- (void)updateListCell:(DZThreadListModel *)cellModel;
+
+- (void)updateThreadCell:(DZThreadListModel *)info;
+
 
 @end

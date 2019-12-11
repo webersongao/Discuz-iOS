@@ -329,7 +329,9 @@
     if (cell == nil) {
         cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
-    [cell updateListCell:listModel];
+
+    [cell updateThreadCell:listModel];
+
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];
