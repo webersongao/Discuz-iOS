@@ -128,9 +128,8 @@
         request.parameters = dic;
         request.methodType = JTMethodTypePOST;
     } success:^(id responseObject, JTLoadType type) {
-        
         DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
-        if (resModel.Message.isSuccessed) {
+        if (resModel.Message && resModel.Message.isSuccessed) {
             if (success) {
                 success(YES);
             }
@@ -229,31 +228,158 @@
 
 
 
+/// 取消活动
++ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(ThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!tid.length || !threadModel || !completion) {
+        return;
+    }
+    //取消活动
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary * dic = @{@"tid":tid,
+                               @"fid":threadModel.fid,
+                               @"pid":threadModel.pid,
+        };
+        NSDictionary *postDic = @{@"tid":tid,
+                                  @"fid":threadModel.fid,
+                                  @"pid":threadModel.pid,
+                                  @"activitycancel":@"true",
+                                  @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
+        };
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_ActivityApplies;
+        request.parameters = postDic;
+        request.getParam = dic;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
 
 
 
 
+/// 发布帖子 回复（回帖）
++ (void)DZ_SendPostReply:(NSDictionary *)dict completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!dict.allValues.count || !completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_Sendreply;
+        request.parameters = dict;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
 
 
+/// 参与投票
++(void)DZ_PubLishVoteWithData:(id)data fid:(NSString *)fid tid:(NSString *)tid completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!data || !fid.length || !tid.length || !completion) {
+        return;
+    }
+    NSString * strUrl = [data stringByReplacingOccurrencesOfString:@"{" withString:@""];
+    NSString * str1 = [strUrl stringByReplacingOccurrencesOfString:@"}" withString:@""];
+    NSArray *pollanswers = [str1 componentsSeparatedByString:@"|"];
+    NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+                             @"pollanswers":pollanswers};
+    NSDictionary *getDic = @{@"fid":fid,
+                             @"tid":tid};
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_Pollvote;
+        request.parameters = postdic;
+        request.getParam = getDic;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
 
 
+/// 获取引用的回复 （带有Html标签）
++ (void)DZ_ReferenceReply:(NSString *)dataStr tid:(NSString *)tid completion:(void(^)(DZBaseResModel *resModel,NSString * notice,NSError *error))completion{
+    
+    if (!dataStr.length || !tid.length || !completion) {
+        return;
+    }
+    NSDictionary * dict =@{@"tid":tid,
+                           @"repquote":dataStr};
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        
+        request.urlString = DZ_Url_ReplyContent;
+        request.parameters = dict;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        NSString *notice = [[responseObject objectForKey:@"Variables"] objectForKey:@"noticetrimstr"];
+        completion(resModel,notice,nil);
+    } failed:^(NSError *error) {
+        completion(nil,nil,error);
+    }];
+}
 
 
+// 参与活动
++ (void)DZ_APPlyActivity:(NSDictionary *)paraDict getDict:(NSDictionary *)getDict completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!getDict.allValues.count || !paraDict.allValues.count || !completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_ActivityApplies;
+        request.methodType = JTMethodTypePOST;
+        request.parameters = paraDict;
+        request.getParam = getDict;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 活动管理 （批准，删除等操作）
++ (void)DZ_ManageActivity:(NSString *)tid reason:(NSString *)reason operation:(NSString *)operation applyid:(NSString *)applyid completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!tid.length || !reason.length || !operation.length || !applyid.length || !completion) {
+        return;
+    }
+    
+    NSDictionary *postDic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+                              @"handlekey":@"activity",
+                              @"applyidarray[]":applyid,
+                              @"reason":reason,
+                              @"operation":operation};
+    NSDictionary *getDic = @{@"tid":tid,
+                             @"applylistsubmit":@"yes"};
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_ManageActivity;
+        request.parameters = postDic;
+        request.getParam = getDic;
+        request.methodType = JTMethodTypePOST;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
 
 
 

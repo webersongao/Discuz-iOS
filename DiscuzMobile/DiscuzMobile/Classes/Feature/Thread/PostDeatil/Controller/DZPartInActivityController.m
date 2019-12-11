@@ -12,7 +12,7 @@
 
 #import "ZHPickView.h"
 #import "AddressSelectView.h"
-
+#import "DZPostNetTool.h"
 #import "PartInNormalCell.h"
 #import "PartInSexCell.h"
 #import "PartInPayCell.h"
@@ -88,7 +88,7 @@
             
             
             // ************test *******************
-//            [self testData];
+            //            [self testData];
         }
     }
     [self.view addSubview:self.tableView];
@@ -172,7 +172,7 @@
     NSDictionary * getdic = @{@"fid":self.threadModel.fid,
                               @"tid":self.threadModel.tid,
                               @"pid":self.threadModel.pid
-                              };
+    };
     
     
     NSMutableDictionary * dic =[NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
@@ -211,27 +211,20 @@
             
         }
     }
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"正在请求。。" toView:self.view];
-        request.urlString = DZ_Url_ActivityApplies;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = dic;
-        request.getParam = getdic;
-    } success:^(id responseObject, JTLoadType type) {
+    [self.HUD showLoadingMessag:@"正在请求。。" toView:self.view];
+    [DZPostNetTool DZ_APPlyActivity:dic getDict:getdic completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        if ([[responseObject messageval] isEqualToString:@"activity_completion"]) {
-            [MBProgressHUD showInfo:@"报名成功"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_RefreshWeb_Notify object:nil];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            [MBProgressHUD showInfo:[responseObject messagestr]];
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [MBProgressHUD showInfo:@"报名成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DZ_RefreshWeb_Notify object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+        }else{
+            [self showServerError:error];
         }
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
 }
 
@@ -270,7 +263,7 @@
 }
 
 - (void)selectAddress:(NSString *)address {
-   
+    
     ParInActiveModel *model = self.dataSourceArr[self.currentIndexPath.row];
     model.fieldValue = address;
     PartInSelectCell *cell = [self.tableView cellForRowAtIndexPath:self.currentIndexPath];
@@ -286,7 +279,7 @@
             ParInActiveModel *model = self.dataSourceArr[0];
             model.payment = @"1";
         } else {
-             ParInActiveModel *model = self.dataSourceArr[0];
+            ParInActiveModel *model = self.dataSourceArr[0];
             model.payment = @"0";
         }
     }
@@ -319,7 +312,7 @@
         [self.oneSelectPickView remove];
     }
     if (_datePickView != nil) {
-         [self.datePickView remove];
+        [self.datePickView remove];
     }
     if (_cityPickView != nil) {
         
@@ -357,7 +350,7 @@
     
     NSString *payID = @"partPayID";
     NSString *normalID = [NSString stringWithFormat:@"partInNormalID%ld",(long)indexPath.row];
-//    static NSString *sexID = @"partInSexID";
+    //    static NSString *sexID = @"partInSexID";
     NSString *selectID = [NSString stringWithFormat:@"partSelectID%ld",indexPath.row];
     NSString *multiSelectID = [NSString stringWithFormat:@"partMultiSelect%ld",(long)indexPath.row];
     NSString *detailID = [NSString stringWithFormat:@"partDetailID%ld",indexPath.row];
@@ -374,13 +367,13 @@
         }
         cell.payTextField.delegate = self;
         cell.payTextField.tag = 100 + indexPath.row;
-//        cell.tipLab.text = [NSString stringWithFormat:@"注意：参加此活动将扣除您 %@ 金钱",self.cost];
+        //        cell.tipLab.text = [NSString stringWithFormat:@"注意：参加此活动将扣除您 %@ 金钱",self.cost];
         return cell;
     }
     else if ([partModel.formtype isEqualToString:@"select"] ||  [partModel.formtype isEqualToString:@"radio"]
              
-//             && ![partModel.fieldid isEqualToString:@"birthcommunity"]
-//             && ([partModel.fieldid isEqualToString:@"gender"] || [partModel.fieldid isEqualToString:@"birthday"] || [partModel.fieldid isEqualToString:@"residecity"] || [partModel.fieldid isEqualToString:@"birthcity"] || [partModel.fieldid isEqualToString:@"birthdist"] || [partModel.fieldid isEqualToString:@"education"])
+             //             && ![partModel.fieldid isEqualToString:@"birthcommunity"]
+             //             && ([partModel.fieldid isEqualToString:@"gender"] || [partModel.fieldid isEqualToString:@"birthday"] || [partModel.fieldid isEqualToString:@"residecity"] || [partModel.fieldid isEqualToString:@"birthcity"] || [partModel.fieldid isEqualToString:@"birthdist"] || [partModel.fieldid isEqualToString:@"education"])
              ) {
         
         PartInSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:selectID];
@@ -396,28 +389,28 @@
         cell.titleLab.attributedText = [[NSString stringWithFormat:@"%@:",partModel.title] getAttributeStr];
         return cell;
         
-//        if ([partModel.fieldid isEqualToString:@"gender"]) {
-//            PartInSexCell *cell = [tableView dequeueReusableCellWithIdentifier:sexID];
-//            if (cell == nil) {
-//                cell = [[PartInSexCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:sexID];
-//            }
-//            UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sexClick)];
-//            [cell.sexSelectView addGestureRecognizer:tap2];
-//            cell.titleLab.attributedText = [Utils getAttributeStr:[NSString stringWithFormat:@"%@:",partModel.title]];
-//            return cell;
-//        }
+        //        if ([partModel.fieldid isEqualToString:@"gender"]) {
+        //            PartInSexCell *cell = [tableView dequeueReusableCellWithIdentifier:sexID];
+        //            if (cell == nil) {
+        //                cell = [[PartInSexCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:sexID];
+        //            }
+        //            UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sexClick)];
+        //            [cell.sexSelectView addGestureRecognizer:tap2];
+        //            cell.titleLab.attributedText = [Utils getAttributeStr:[NSString stringWithFormat:@"%@:",partModel.title]];
+        //            return cell;
+        //        }
         
-//        else {
-//            PartInSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:selectID];
-//            if (cell == nil) {
-//                cell = [[PartInSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:selectID];
-//                cell.detailTextLabel.font = [DZFontSize HomecellTimeFontSize14];
-//                cell.detailTextLabel.text = @"请选择";
-//            }
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//            cell.titleLab.attributedText = [Utils getAttributeStr:[NSString stringWithFormat:@"%@:",partModel.title]];
-//            return cell;
-//        }
+        //        else {
+        //            PartInSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:selectID];
+        //            if (cell == nil) {
+        //                cell = [[PartInSelectCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:selectID];
+        //                cell.detailTextLabel.font = [DZFontSize HomecellTimeFontSize14];
+        //                cell.detailTextLabel.text = @"请选择";
+        //            }
+        //            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //            cell.titleLab.attributedText = [Utils getAttributeStr:[NSString stringWithFormat:@"%@:",partModel.title]];
+        //            return cell;
+        //        }
         
     }
     
@@ -450,7 +443,7 @@
         if (cell == nil) {
             cell = [[ActivityApplyReplyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:detailID];
         }
-//        cell.tipLab.text = partModel.title;
+        //        cell.tipLab.text = partModel.title;
         if (indexPath.row != self.dataSourceArr.count - 1) {
             cell.tipLab.attributedText = [[NSString stringWithFormat:@"%@:",partModel.title] getAttributeStr];
             

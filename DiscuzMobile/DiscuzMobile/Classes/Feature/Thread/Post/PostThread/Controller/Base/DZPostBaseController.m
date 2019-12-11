@@ -9,7 +9,6 @@
 #import "DZPostBaseController.h"
 #import "UIAlertController+Extension.h"
 #import "ZHPickView.h"
-#import "DZPostNetTool.h"
 #import "DZImagePickerView.h"
 
 @interface DZPostBaseController ()
@@ -36,9 +35,7 @@
             model.name = [obj flattenHTMLTrimWhiteSpace:NO];
             [self.typeArray addObject:model];
         }];
-        
-        
-        
+
         NSMutableArray *arr = [NSMutableArray array];
         for (DZThreadTypeModel *model in self.typeArray) {
             [arr addObject:model.name];

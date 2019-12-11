@@ -7,6 +7,7 @@
 //
 
 #import "DZSendMsgViewController.h"
+#import "DZMsgNetTool.h"
 
 @interface DZSendMsgViewController ()<UITextFieldDelegate,UITextViewDelegate,UIScrollViewDelegate>
 @property (nonatomic, strong) UITextView *messageTextView;
@@ -102,32 +103,20 @@
         [MBProgressHUD showInfo:@"用户名内容为空"];
         return;
     }
-
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                               @"message":self.messageTextView.text,
-                               @"username":self.titleTextField.text};
-        
-        NSDictionary * getdic = @{@"touid":@"0",
-                                  @"pmid":@"0"};
-        request.urlString = DZ_Url_Sendpm;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = dic;
-        request.getParam = getdic;
-    } success:^(id responseObject, JTLoadType type) {
+    [self.HUD showLoadingMessag:@"发送中" toView:self.view];
+    [DZMsgNetTool DZ_PostMsgToOtherUser:self.messageTextView.text UserNamme:self.titleTextField.text completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        NSString *stauts = [responseObject messageval];
-        NSString *msg = [responseObject messagestr];
-        [MBProgressHUD showInfo:msg];
-        if ([stauts isEqualToString:@"do_success"]) {
-            [self.navigationController popViewControllerAnimated:YES];
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            self.messageTextView.text = nil;
+            self.placeholderLabel.hidden = NO;
+            self.titleTextField.text = nil;
+        }else{
+          [self showServerError:error];
         }
-        self.messageTextView.text = nil;
-        self.placeholderLabel.hidden = NO;
-        self.titleTextField.text = nil;
-    } failed:^(NSError *error) {
-        [self showServerError:error];
     }];
 }
 

@@ -11,7 +11,7 @@
 #import "EmoticonKeyboard.h"
 #import "DZLoginModule.h"
 #import "ChatContentCell.h"
-
+#import "DZMsgNetTool.h"
 #import "DZOtherUserController.h"
 
 @interface DZMsgChatDetailController ()<UITableViewDelegate,UITableViewDataSource>
@@ -197,7 +197,7 @@
  */
 - (void)keyboardShowChatViewScroll:(CGFloat)customKeyboardHeight {
     NSTimeInterval animationDuration = BShowTime;
-
+    
     if (self.messageModelArr.count > 0) {
         
         NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:self.messageModelArr.count - 1 inSection:0];
@@ -286,44 +286,27 @@
     if (![DataCheck isValidString:messagestr]) {
         return;
     }
-    
-    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                           @"message":messagestr,
-                           @"username":self.username,
-                           @"touid":self.touid
-                           };
-    
-    NSDictionary * getdic = @{@"touid":self.touid,
-                              @"pmid":@"0"
-                              };
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"" toView:nil];
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_Sendpm;
-        request.parameters = dic;
-        request.getParam = getdic;
-    } success:^(id responseObject, JTLoadType type) {
+    KWEAKSELF
+    [self.HUD showLoadingMessag:@"" toView:nil];
+    [DZMsgNetTool DZ_SendMsgToOtherUser:messagestr UserNamme:self.username touid:self.touid completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        NSString *messageval = [responseObject messageval];
-        NSString *messagestr = [responseObject messagestr];
-        if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"])  {
-            [MBProgressHUD showInfo:@"发送成功"];
-            self.page = 0;
-            _isRefresh = YES;
-            [self performSelector:@selector(updateData) withObject:nil afterDelay:1];
-            self.emoKeyboard.textBarView.textView.text = @"";
-            
-        } else {
-            NSString *tip = @"发消息的时间间隔小于15秒，请稍后再试";
-            if ([DataCheck isValidString:messagestr]) {
-                tip = messagestr;
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [MBProgressHUD showInfo:@"发送成功"];
+                self.page = 0;
+                weakSelf.isRefresh = YES;
+                [self performSelector:@selector(updateData) withObject:nil afterDelay:1];
+                self.emoKeyboard.textBarView.textView.text = @"";
+            } else {
+                if (resModel.Message.messagestr.length) {
+                    [MBProgressHUD showInfo:resModel.Message.messagestr];
+                }else{
+                    [MBProgressHUD showInfo:@"发消息的时间间隔小于15秒，请稍后再试"];
+                }
             }
-            [MBProgressHUD showInfo:tip];
+        }else{
+            [self showServerError:error];
         }
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
     
 }
@@ -395,30 +378,22 @@
 
 - (void)deleteMessage {
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        MessageModel *message = self.messageModelArr[self.pressIndexRow];
-        NSDictionary *parameters = @{@"id":message.touid,
-                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                                     @"pid":message.pmid};
-        request.urlString = DZ_Url_DeleteOneMessage;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = parameters;
-    } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        
-        if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.pressIndexRow inSection:0];
-            [self.messageModelArr removeObjectAtIndex:self.pressIndexRow];
-            [self.cellHeightDict removeAllObjects];
-            [self.chatTableView beginUpdates];
-            [self.chatTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-            [self.chatTableView endUpdates];
-        } else {
-            [MBProgressHUD showInfo:@"删除失败"];
+    MessageModel *msgModel = self.messageModelArr[self.pressIndexRow];
+    [DZMsgNetTool DZ_DeleteOneMessage:msgModel.touid Pid:msgModel.pmid completion:^(DZBaseResModel *resModel, NSError *error) {
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.pressIndexRow inSection:0];
+                [self.messageModelArr removeObjectAtIndex:self.pressIndexRow];
+                [self.cellHeightDict removeAllObjects];
+                [self.chatTableView beginUpdates];
+                [self.chatTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                [self.chatTableView endUpdates];
+            } else {
+                [MBProgressHUD showInfo:@"删除失败"];
+            }
+        }else{
+          [self showServerError:error];
         }
-        
-    } failed:^(NSError *error) {
-        [self showServerError:error];
     }];
 }
 

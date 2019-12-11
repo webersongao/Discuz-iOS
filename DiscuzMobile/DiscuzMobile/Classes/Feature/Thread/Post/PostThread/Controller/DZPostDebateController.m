@@ -110,9 +110,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            
             if (indexPath.row == 0) {
-                
                 NSString *titleid = @"titleid";
                 DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
@@ -122,9 +120,7 @@
                 titleCell.titleTextField.tag = 1001;
                 return titleCell;
             } else {
-                
                 if (self.typeArray.count > 0) {
-                    
                     if (indexPath.row == 1) {
                         
                         NSString *typesId = @"selectTypeId";

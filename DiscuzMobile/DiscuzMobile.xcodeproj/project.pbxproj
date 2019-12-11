@@ -211,7 +211,6 @@
 		7062129C237936C900130B9D /* DZNormalDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210F8237936C800130B9D /* DZNormalDetailCell.m */; };
 		7062129D237936C900130B9D /* DZActiveTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210F9237936C800130B9D /* DZActiveTimeCell.m */; };
 		7062129E237936C900130B9D /* ActiveUserFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210FA237936C800130B9D /* ActiveUserFieldCell.m */; };
-		7062129F237936C900130B9D /* NSDictionary+ResMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210FF237936C800130B9D /* NSDictionary+ResMessage.m */; };
 		706212A2237936C900130B9D /* DZForumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621105237936C800130B9D /* DZForumTool.m */; };
 		706212A5237936C900130B9D /* DZLoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062110E237936C800130B9D /* DZLoginModule.m */; };
 		706212A6237936C900130B9D /* DZLoginResModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621110237936C800130B9D /* DZLoginResModel.m */; };
@@ -280,6 +279,7 @@
 		7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */; };
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
+		7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */; };
 		7070A8BF239F47C30052D32E /* DZPostVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8BE239F47C30052D32E /* DZPostVarModel.m */; };
 		7070A8C2239F4A3C0052D32E /* DZPostProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C1239F4A3C0052D32E /* DZPostProperty.m */; };
 		7070A8C5239F77340052D32E /* DZApplyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C4239F77340052D32E /* DZApplyProperty.m */; };
@@ -855,8 +855,6 @@
 		706210F8237936C800130B9D /* DZNormalDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZNormalDetailCell.m; sourceTree = "<group>"; };
 		706210F9237936C800130B9D /* DZActiveTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZActiveTimeCell.m; sourceTree = "<group>"; };
 		706210FA237936C800130B9D /* ActiveUserFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveUserFieldCell.m; sourceTree = "<group>"; };
-		706210FD237936C800130B9D /* NSDictionary+ResMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ResMessage.h"; sourceTree = "<group>"; };
-		706210FF237936C800130B9D /* NSDictionary+ResMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ResMessage.m"; sourceTree = "<group>"; };
 		70621105237936C800130B9D /* DZForumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumTool.m; sourceTree = "<group>"; };
 		70621106237936C800130B9D /* DZForumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZForumTool.h; sourceTree = "<group>"; };
 		7062110B237936C800130B9D /* DZLoginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoginModule.h; sourceTree = "<group>"; };
@@ -990,6 +988,8 @@
 		7065C99F237D61CA0056737C /* DZPostSiriViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostSiriViewController.h; sourceTree = "<group>"; };
 		7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostSiriViewController.m; sourceTree = "<group>"; };
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
+		7068959323A0C47A00A0EFAE /* DZMsgNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMsgNetTool.h; sourceTree = "<group>"; };
+		7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZMsgNetTool.m; sourceTree = "<group>"; };
 		7070A8BD239F47C30052D32E /* DZPostVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostVarModel.h; sourceTree = "<group>"; };
 		7070A8BE239F47C30052D32E /* DZPostVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostVarModel.m; sourceTree = "<group>"; };
 		7070A8C0239F4A3C0052D32E /* DZPostProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostProperty.h; sourceTree = "<group>"; };
@@ -1765,6 +1765,7 @@
 		7002A3232383D8CD00BC0C61 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				7068959223A0C45B00A0EFAE /* MsgNetTool */,
 				7002A3242383D8CD00BC0C61 /* Controller */,
 				7002A32F2383D8CD00BC0C61 /* Model */,
 				7002A33A2383D8CD00BC0C61 /* View */,
@@ -2324,18 +2325,8 @@
 			isa = PBXGroup;
 			children = (
 				7062110A237936C800130B9D /* Login */,
-				706210FC237936C800130B9D /* Response */,
 			);
 			path = Widget;
-			sourceTree = "<group>";
-		};
-		706210FC237936C800130B9D /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				706210FD237936C800130B9D /* NSDictionary+ResMessage.h */,
-				706210FF237936C800130B9D /* NSDictionary+ResMessage.m */,
-			);
-			path = Response;
 			sourceTree = "<group>";
 		};
 		70621104237936C800130B9D /* DZNetTool */ = {
@@ -2700,6 +2691,15 @@
 				27234C9D1EA499DB008A8B13 /* EmptyAlertView.m */,
 			);
 			path = EmptyAlertView;
+			sourceTree = "<group>";
+		};
+		7068959223A0C45B00A0EFAE /* MsgNetTool */ = {
+			isa = PBXGroup;
+			children = (
+				7068959323A0C47A00A0EFAE /* DZMsgNetTool.h */,
+				7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */,
+			);
+			path = MsgNetTool;
 			sourceTree = "<group>";
 		};
 		706AB8CE237BF55E00BE649F /* DemoVC */ = {
@@ -4296,6 +4296,7 @@
 				70621273237936C800130B9D /* DZThreadListModel.m in Sources */,
 				70FBDCDB2383FC1B00FC296E /* DZOtherUserController.m in Sources */,
 				273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */,
+				7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */,
 				70F9F8E5237AA72C0067B308 /* NSMutableAttributedString+JsEmotion.m in Sources */,
 				277EDC6A1E6D5B8D00E8F0E1 /* DZInstroductionView.m in Sources */,
 				70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */,
@@ -4407,7 +4408,6 @@
 				70FBDCE72383FC1B00FC296E /* BoundManageController.m in Sources */,
 				27E481601E8A369000AE0E02 /* DZLaunchScreenManager.m in Sources */,
 				709622CD238BC6E900AF657F /* PRNaviTabManager.m in Sources */,
-				7062129F237936C900130B9D /* NSDictionary+ResMessage.m in Sources */,
 				70DFD79C237A95DE00A13F0F /* DZBaseViewController.m in Sources */,
 				703C424E237D29150046C398 /* UIButton+Utils.mm in Sources */,
 				70FBDCEE2383FC1B00FC296E /* TextIconModel.m in Sources */,

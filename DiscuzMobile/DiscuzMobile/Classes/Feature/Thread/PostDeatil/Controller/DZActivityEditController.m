@@ -9,6 +9,7 @@
 #import "DZActivityEditController.h"
 #import "ActivityApplyCell.h"
 #import "ApplyActiver.h"
+#import "DZPostNetTool.h"
 #import "ExamineActivityView.h"
 
 @interface DZActivityEditController ()
@@ -46,41 +47,19 @@
 //operation 空批准  replenish 需完善 notification 发通知. delete拒绝
 - (void)oprationApply:(NSInteger)type {
     
-    NSString *operation = @"";
-    if (type == 1) {
-        operation = @"delete";
-    }
-    
-    NSString *reason = @"";
-    if ([DataCheck isValidString:self.examineView.reason]) {
-        reason = self.examineView.reason;
-    }
-    
-    NSDictionary *postDic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                              @"handlekey":@"activity",
-                              @"applyidarray[]":self.examineView.dataModel.applyid,
-                              @"reason":reason,
-                              @"operation":operation};
-    NSDictionary *getDic = @{@"tid":self.threadModel.tid,
-                             @"applylistsubmit":@"yes"};
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"处理中，请稍候" toView:self.view];
-        request.urlString = DZ_Url_ManageActivity;
-        request.parameters = postDic;
-        request.getParam = getDic;
-        request.methodType = JTMethodTypePOST;
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hide];
-        if ([[responseObject messageval] containsString:@"_completion"]) {
-            [MBProgressHUD showInfo:[responseObject messagestr]];
-            [self.examineView close];
-            
-            [self loadData];
+    NSString *reason = self.examineView.reason;
+    NSString *operation = (type == 1) ? @"delete" : @"";
+    [DZPostNetTool DZ_ManageActivity:self.threadModel.tid reason:reason operation:operation applyid:self.examineView.dataModel.applyid completion:^(DZBaseResModel *resModel, NSError *error) {
+       [self.HUD hide];
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+                [self.examineView close];
+                [self loadData];
+            }
+        }else{
+           [self showServerError:error];
         }
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
 }
 

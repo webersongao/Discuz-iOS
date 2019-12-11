@@ -10,6 +10,7 @@
 #import "DZBaseAuthModel.h"
 #import "DZPostVarModel.h"
 #import "DZPollVarModel.h"
+#import "ThreadModel.h"
 
 typedef NS_ENUM(NSUInteger, DZAttacheType) {
     DZAttacheImage,
@@ -52,7 +53,24 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 // 发布帖子
 + (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(id responseObject,NSError *error))completion;
 
+/// 取消活动
++ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(ThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
 
 
+/// 发布帖子 回复（回帖）
++ (void)DZ_SendPostReply:(NSDictionary *)dict completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
+
+/// 参与投票
++(void)DZ_PubLishVoteWithData:(id)data fid:(NSString *)fid tid:(NSString *)tid completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
+
+/// 获取引用的回复 （带有Html标签）
++ (void)DZ_ReferenceReply:(NSString *)dataStr tid:(NSString *)tid completion:(void(^)(DZBaseResModel *resModel,NSString * notice,NSError *error))completion;
+
+
+/// 参与活动
++ (void)DZ_APPlyActivity:(NSDictionary *)paraDict getDict:(NSDictionary *)getDict completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
+
+// 活动管理 （批准，删除等操作）
++ (void)DZ_ManageActivity:(NSString *)tid reason:(NSString *)reason operation:(NSString *)operation applyid:(NSString *)applyid completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
 
 @end

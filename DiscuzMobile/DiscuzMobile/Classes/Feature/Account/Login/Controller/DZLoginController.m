@@ -170,7 +170,7 @@ NSString * const debugPassword = @"debugPassword";
     [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
         if (resModel) {
-            if ([resModel.Message.messageval isEqualToString:Msg_loginEmpty]) {
+            if (resModel.Message && resModel.Message.isLoginEmpty) {
                 [self.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.height.mas_equalTo(TEXTHEIGHT);
                     self.loginView.securityView.hidden = NO;

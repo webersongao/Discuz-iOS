@@ -131,4 +131,42 @@
 }
 
 
+// 解绑第三方账号
++ (void)DZ_UnboundThird:(NSString *)Type completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
+    
+    if (!Type.length || !completion) {
+        return;
+    }
+    
+    NSDictionary *postData = @{@"unbind":@"yes",@"type":Type,@"formhash":[DZMobileCtrl sharedCtrl].User.formhash};
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_UnBindThird;
+        request.parameters = postData;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        completion(resModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

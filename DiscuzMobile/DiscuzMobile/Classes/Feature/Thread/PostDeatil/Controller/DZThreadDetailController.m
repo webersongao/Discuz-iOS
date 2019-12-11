@@ -168,7 +168,7 @@
     
     NSDictionary *dic=@{@"hash":uploadhash,
                         @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
-                        };
+    };
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
     [self.detailView.emoKeyboard.uploadView uploadImageArray:imageArr.copy getDic:getdic postDic:dic];
@@ -328,35 +328,19 @@
 - (void)cancelActivity {
     
     //取消活动
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
-        NSDictionary * dic = @{@"tid":_tid,
-                               @"fid":self.threadModel.fid,
-                               @"pid":self.threadModel.pid,
-                               };
-        NSDictionary *postDic = @{@"tid":_tid,
-                                  @"fid":self.threadModel.fid,
-                                  @"pid":self.threadModel.pid,
-                                  @"activitycancel":@"true",
-                                  @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
-                                  };
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_ActivityApplies;
-        request.parameters = postDic;
-        request.getParam = dic;
-    } success:^(id responseObject, JTLoadType type) {
+    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+    [DZPostNetTool DZ_CancelPostedActivity:self.tid Thread:self.threadModel completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        NSString *messagestr = [responseObject messagestr];
-        if ([[responseObject messageval] containsString:@"_success"]) {
-            [MBProgressHUD showInfo:messagestr];
-            self.currentPageId = 1;
-            [self newDownLoadData];
-            return;
+        if (resModel) {
+            [MBProgressHUD showInfo:resModel.Message.messagestr];
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                self.currentPageId = 1;
+                [self newDownLoadData];
+                return;
+            }
+        }else{
+            [self showServerError:error];
         }
-        [MBProgressHUD showInfo:messagestr];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self showServerError:error];
     }];
 }
 
@@ -382,26 +366,26 @@
                       doneTextArr:@[@"广告垃圾",@"违规内容",@"恶意灌水",@"重复发帖"]
                        cancelText:@"取消"
                        doneHandle:^(NSInteger index) {
-                           switch (index) {
-                               case 0:
-                                   [self createPostjb:@"广告垃圾"];
-                                   break;
-                               case 1:
-                                   [self createPostjb:@"违规内容"];
-                                   break;
-                               case 2:
-                                   [self createPostjb:@"恶意灌水"];
-                                   break;
-                               case 3:
-                                   [self createPostjb:@"重复发帖"];
-                                   break;
-                               default:
-                                   break;
-                                   
-                           }
-                       } cancelHandle:^{
-                           self.jubaoPid = nil;
-                       }];
+        switch (index) {
+            case 0:
+                [self createPostjb:@"广告垃圾"];
+                break;
+            case 1:
+                [self createPostjb:@"违规内容"];
+                break;
+            case 2:
+                [self createPostjb:@"恶意灌水"];
+                break;
+            case 3:
+                [self createPostjb:@"重复发帖"];
+                break;
+            default:
+                break;
+                
+        }
+    } cancelHandle:^{
+        self.jubaoPid = nil;
+    }];
 }
 
 #pragma mark - 提交举报
@@ -440,43 +424,27 @@
     if (![self isLogin]) {
         return;
     }
-    
     if (![DataCheck isValidString:data]) {
         [MBProgressHUD showInfo:@"请选择投票选项"];
         return;
     }
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSString * strUrl = [data stringByReplacingOccurrencesOfString:@"{" withString:@""];
-        NSString * str1 = [strUrl stringByReplacingOccurrencesOfString:@"}" withString:@""];
-        NSArray *pollanswers = [str1 componentsSeparatedByString:@"|"];
-        
-        NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
-                                 @"pollanswers":pollanswers,
-                                 };
-        NSDictionary *getDic = @{@"fid":self.threadModel.fid,
-                                 @"tid":self.tid,
-                                 };
-        
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_Pollvote;
-        request.parameters = postdic;
-        request.getParam = getDic;
-    } success:^(id responseObject, JTLoadType type) {
-        if ([[responseObject messageval] containsString:@"succeed"]) {
-            [UIAlertController alertTitle:@"投票成功"
-                                  message:@"是否查看投票结果"
-                               controller:self
-                                 doneText:@"确定"
-                               cancelText:@"取消"
-                               doneHandle:^{
-                                   [self newDownLoadData];
-                               } cancelHandle:nil];
-        } else {
-            [MBProgressHUD showInfo:[responseObject messagestr]];
+    [DZPostNetTool DZ_PubLishVoteWithData:data fid:self.threadModel.fid tid:self.tid completion:^(DZBaseResModel *resModel, NSError *error) {
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [UIAlertController alertTitle:@"投票成功"
+                                      message:@"是否查看投票结果"
+                                   controller:self
+                                     doneText:@"确定"
+                                   cancelText:@"取消"
+                                   doneHandle:^{
+                    [self newDownLoadData];
+                } cancelHandle:nil];
+            } else {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+        }else{
+            [self showServerError:error];
         }
-    } failed:^(NSError *error) {
-        [self showServerError:error];
     }];
 }
 
@@ -486,28 +454,20 @@
     if (![self isLogin]) {
         return;
     }
-    
     [view becomeFirstResponder];
     
-    _reppid = (NSString *)data;
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary * dic =@{@"tid":self.tid,
-                              @"repquote":(NSString*)data
-                              };
-        request.urlString = DZ_Url_ReplyContent;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
-        
-        NSString *messagestr = [[responseObject objectForKey:@"Message"] objectForKey:@"messagestr"];
-        if ([DataCheck isValidString:messagestr]) {
-            [MBProgressHUD showInfo:messagestr];
+    _reppid = checkNull(data);
+    KWEAKSELF
+    [DZPostNetTool DZ_ReferenceReply:_reppid tid:self.tid completion:^(DZBaseResModel *resModel,NSString * notice,NSError *error) {
+        if (resModel) {
+            if (resModel.Message.messagestr.length) {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+            weakSelf.isReferenceReply = YES;
+            weakSelf.noticetrimstr = notice;
+        }else{
+            [weakSelf showServerError:error];
         }
-        _noticetrimstr = [[responseObject objectForKey:@"Variables"]objectForKey:@"noticetrimstr"];
-        
-        _isReferenceReply = YES;
-        
-    } failed:^(NSError *error) {
     }];
 }
 
@@ -781,45 +741,39 @@
 
 - (void)sendReply:(NSDictionary *)dic {
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"发帖中..." toView:self.view];
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_Sendreply;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
+    KWEAKSELF
+    [self.HUD showLoadingMessag:@"发帖中..." toView:self.view];
+    [DZPostNetTool DZ_SendPostReply:dic completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        NSDictionary *messageDic = [responseObject objectForKey:@"Message"];
-        NSString *messagestr = [messageDic objectForKey:@"messagestr"];
-        NSString *messageval = [messageDic objectForKey:@"messageval"];
-        if ([DataCheck isValidString:messageval]) {
-            if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
-                _isReferenceReply = NO;
-                [self.detailView.emoKeyboard clearData];
-                if (![messagestr containsString:@"审核"]) {
-                    [MBProgressHUD showInfo:@"回帖成功"];
-                    if (_currentPageId==1) {
-                        if (self.threadModel.replies + 1 < self.threadModel.ppp - 1) {
-                            //                        [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid]];
-                            //                        [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData]];
-                            [self newDownLoadData];
+        if (resModel) {
+            if (resModel.Message) {
+                if (resModel.Message.isSuccessed) {
+                    weakSelf.isReferenceReply = NO;
+                    [self.detailView.emoKeyboard clearData];
+                    if (![resModel.Message.messagestr containsString:@"审核"]) {
+                        [MBProgressHUD showInfo:@"回帖成功"];
+                        if (weakSelf.currentPageId==1) {
+                            if (self.threadModel.replies + 1 < self.threadModel.ppp - 1) {
+                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid]];
+                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData]];
+                                [self newDownLoadData];
+                            }
                         }
+                    } else {
+                        [MBProgressHUD showInfo:resModel.Message.messagestr];
                     }
-                } else {
-                    [MBProgressHUD showInfo:messagestr];
+                }else{
+                    [MBProgressHUD showInfo:resModel.Message.messagestr];
+                    if ([resModel.Message.messageval isEqualToString:@"post_sm_isnull"]) {
+                        self.detailView.emoKeyboard.textBarView.textView.text = nil;
+                    }
                 }
-            }else {
-                [MBProgressHUD showInfo:messagestr];
-                if ([messageval isEqualToString:@"post_sm_isnull"]) {
-                    self.detailView.emoKeyboard.textBarView.textView.text = nil;
-                }
+            }else{
+                [MBProgressHUD showInfo:@"回帖失败"];
             }
-        } else {
-            [MBProgressHUD showInfo:@"回帖失败"];
+        }else{
+            [self showServerError:error];
         }
-        [self.HUD hide];
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        [self.HUD hide];
     }];
 }
 

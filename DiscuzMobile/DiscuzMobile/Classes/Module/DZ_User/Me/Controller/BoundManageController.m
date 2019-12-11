@@ -13,6 +13,7 @@
 #import "BoundInfoModel.h"
 #import "DZLoginNetTool.h"
 #import "DZShareCenter.h"
+#import "DZUserNetTool.h"
 #import "UIAlertController+Extension.h"
 
 @interface BoundManageController ()
@@ -131,34 +132,20 @@
 }
 
 - (void)unbound:(BoundInfoModel *)model {
-    NSDictionary *postData = @{
-        @"unbind":@"yes",
-        @"type":model.type,
-        @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
-    };
+    
     [self.HUD showLoadingMessag:@"解除绑定" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_UnBindThird;
-        request.parameters = postData;
-    } success:^(id responseObject, JTLoadType type) {
+    [DZUserNetTool DZ_UnboundThird:model.type completion:^(DZBaseResModel *resModel, NSError *error) {
         [self.HUD hide];
-        NSDictionary *msgDic = [responseObject objectForKey:@"Message"];
-        if ([DataCheck isValidDict:msgDic]) {
-            NSString *messageStatus = [msgDic objectForKey:@"messageval"];
-            if ([DataCheck isValidString:messageStatus]) {
-                if ([messageStatus containsString:@"succeed"]) {
-                    [MBProgressHUD showInfo:@"解绑成功"];
-                    [self requestData];
-                    return;
-                }
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed) {
+                [MBProgressHUD showInfo:@"解绑成功"];
+                [self requestData];
+                return;
             }
+            [MBProgressHUD showInfo:@"对不起，解绑失败"];
+        }else{
+            [MBProgressHUD showInfo:@"对不起，解绑失败"];
         }
-        
-        [MBProgressHUD showInfo:@"对不起，解绑失败"];
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
     }];
 }
 
@@ -175,7 +162,6 @@
         }else{
             [DZMobileCtrl showAlertError:@"绑定失败"];
         }
-        
     }];
 }
 

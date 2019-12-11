@@ -12,6 +12,7 @@
 #import "MessageCell.h"
 #import "SystemNoteCell.h"
 #import "MsglistCell.h"
+#import "DZMsgNetTool.h"
 
 @interface DZMsgSubListController ()
 @end
@@ -127,7 +128,7 @@
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
         UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [(MessageCell *)cell cellHeight];
-//        return 70.0;
+        //        return 70.0;
     }
     else {
         UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -181,7 +182,7 @@
     
     if ([DataCheck isValidString:self.typeModel.view] && [self.typeModel.view isEqualToString:@"mypost"]) {
         if (model.notevar) {
-                [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:model.notevar.tid];
+            [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:model.notevar.tid];
         } else {
             NSArray *arr = [model.note componentsSeparatedByString:@"tid="];
             if (arr.count >= 2) {
@@ -225,25 +226,21 @@
 
 - (void)deletePmessage:(NSIndexPath *)indexPath {
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        MessageListModel *model = self.dataSourceArr[indexPath.row];
-        NSDictionary *parameters = @{@"id":model.touid,@"formhash":[DZMobileCtrl sharedCtrl].User.formhash};
-        request.urlString = DZ_Url_DeleteMessage;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = parameters;
-    } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        
-        if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]){
-            [self.dataSourceArr removeObjectAtIndex:indexPath.row];
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-            [self.tableView endUpdates];
-        } else {
-            [MBProgressHUD showInfo:@"删除失败"];
+    MessageListModel *model = self.dataSourceArr[indexPath.row];
+    
+    [DZMsgNetTool DZ_DeletePMMessage:model.touid completion:^(DZBaseResModel *resModel, NSError *error) {
+        if (resModel) {
+            if (resModel.Message && resModel.Message.isSuccessed){
+                [self.dataSourceArr removeObjectAtIndex:indexPath.row];
+                [self.tableView beginUpdates];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                [self.tableView endUpdates];
+            } else {
+                [MBProgressHUD showInfo:@"删除失败"];
+            }
+        }else{
+            [self showServerError:error];
         }
-    } failed:^(NSError *error) {
-        [self showServerError:error];
     }];
 }
 

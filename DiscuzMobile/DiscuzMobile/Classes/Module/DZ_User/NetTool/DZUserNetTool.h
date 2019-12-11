@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DZUserVarModel.h"
 #import "DZLoginResModel.h"
+
 @interface DZUserNetTool : NSObject
 
 @property (nonatomic, copy) NSString *regUrl;
@@ -27,7 +28,17 @@
 // 更新用户头像
 + (void)DZ_UserUpdateAvatarToServer:(UIImage *)avatarImg  progress:(ProgressBlock)progress completion:(backBoolBlock)completion;
 
+// 解绑第三方账号
++ (void)DZ_UnboundThird:(NSString *)Type completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
+
+
+
 
 @end
+
+
+
+
+
 
 
