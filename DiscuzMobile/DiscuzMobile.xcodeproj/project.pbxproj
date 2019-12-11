@@ -280,6 +280,9 @@
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
 		7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */; };
+		7068959B23A0E83700A0EFAE /* DZReaderNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959A23A0E83700A0EFAE /* DZReaderNetTool.m */; };
+		706895A023A0E86E00A0EFAE /* DZShelfNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959F23A0E86E00A0EFAE /* DZShelfNetTool.m */; };
+		706895A623A0E8C600A0EFAE /* DZStoreTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 706895A523A0E8C600A0EFAE /* DZStoreTool.m */; };
 		7070A8BF239F47C30052D32E /* DZPostVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8BE239F47C30052D32E /* DZPostVarModel.m */; };
 		7070A8C2239F4A3C0052D32E /* DZPostProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C1239F4A3C0052D32E /* DZPostProperty.m */; };
 		7070A8C5239F77340052D32E /* DZApplyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C4239F77340052D32E /* DZApplyProperty.m */; };
@@ -990,6 +993,14 @@
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7068959323A0C47A00A0EFAE /* DZMsgNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMsgNetTool.h; sourceTree = "<group>"; };
 		7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZMsgNetTool.m; sourceTree = "<group>"; };
+		7068959923A0E83700A0EFAE /* DZReaderNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZReaderNetTool.h; sourceTree = "<group>"; };
+		7068959A23A0E83700A0EFAE /* DZReaderNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZReaderNetTool.m; sourceTree = "<group>"; };
+		7068959C23A0E84900A0EFAE /* DZShelfHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZShelfHeader.h; sourceTree = "<group>"; };
+		7068959E23A0E86E00A0EFAE /* DZShelfNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZShelfNetTool.h; sourceTree = "<group>"; };
+		7068959F23A0E86E00A0EFAE /* DZShelfNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZShelfNetTool.m; sourceTree = "<group>"; };
+		706895A223A0E89D00A0EFAE /* DZReaderHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZReaderHeader.h; sourceTree = "<group>"; };
+		706895A423A0E8C600A0EFAE /* DZStoreTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZStoreTool.h; sourceTree = "<group>"; };
+		706895A523A0E8C600A0EFAE /* DZStoreTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZStoreTool.m; sourceTree = "<group>"; };
 		7070A8BD239F47C30052D32E /* DZPostVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostVarModel.h; sourceTree = "<group>"; };
 		7070A8BE239F47C30052D32E /* DZPostVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostVarModel.m; sourceTree = "<group>"; };
 		7070A8C0239F4A3C0052D32E /* DZPostProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostProperty.h; sourceTree = "<group>"; };
@@ -2124,6 +2135,9 @@
 		7062107A237936C800130B9D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				706895AC23A0E9AD00A0EFAE /* ApplePay */,
+				706895AB23A0E96800A0EFAE /* Advertiser */,
+				706895A723A0E90F00A0EFAE /* CloudLibrary */,
 				708AED69238E58F3000A4397 /* Account */,
 				703C4253237D50570046C398 /* Speech */,
 				70621142237936C800130B9D /* Search */,
@@ -2578,10 +2592,13 @@
 		706211B4237936C800130B9D /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				7068959623A0E7B100A0EFAE /* DZ_Shelf */,
 				70FBDD1C2383FC4B00FC296E /* DZ_User */,
 				70FBDD132383FC4A00FC296E /* DZ_Home */,
 				70FBDCB62383FC1B00FC296E /* DZ_Forum */,
+				7068959823A0E7E400A0EFAE /* DZ_Reader */,
 				70FBDD0D2383FC4A00FC296E /* DZ_Discover */,
+				7068959723A0E7C800A0EFAE /* DZ_BookStore */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -2700,6 +2717,96 @@
 				7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */,
 			);
 			path = MsgNetTool;
+			sourceTree = "<group>";
+		};
+		7068959623A0E7B100A0EFAE /* DZ_Shelf */ = {
+			isa = PBXGroup;
+			children = (
+				7068959C23A0E84900A0EFAE /* DZShelfHeader.h */,
+				7068959D23A0E85200A0EFAE /* NetTool */,
+			);
+			path = DZ_Shelf;
+			sourceTree = "<group>";
+		};
+		7068959723A0E7C800A0EFAE /* DZ_BookStore */ = {
+			isa = PBXGroup;
+			children = (
+				706895A323A0E8B700A0EFAE /* NetTool */,
+			);
+			path = DZ_BookStore;
+			sourceTree = "<group>";
+		};
+		7068959823A0E7E400A0EFAE /* DZ_Reader */ = {
+			isa = PBXGroup;
+			children = (
+				706895A223A0E89D00A0EFAE /* DZReaderHeader.h */,
+				706895A123A0E88300A0EFAE /* NetTool */,
+			);
+			path = DZ_Reader;
+			sourceTree = "<group>";
+		};
+		7068959D23A0E85200A0EFAE /* NetTool */ = {
+			isa = PBXGroup;
+			children = (
+				7068959E23A0E86E00A0EFAE /* DZShelfNetTool.h */,
+				7068959F23A0E86E00A0EFAE /* DZShelfNetTool.m */,
+			);
+			path = NetTool;
+			sourceTree = "<group>";
+		};
+		706895A123A0E88300A0EFAE /* NetTool */ = {
+			isa = PBXGroup;
+			children = (
+				7068959923A0E83700A0EFAE /* DZReaderNetTool.h */,
+				7068959A23A0E83700A0EFAE /* DZReaderNetTool.m */,
+			);
+			path = NetTool;
+			sourceTree = "<group>";
+		};
+		706895A323A0E8B700A0EFAE /* NetTool */ = {
+			isa = PBXGroup;
+			children = (
+				706895A423A0E8C600A0EFAE /* DZStoreTool.h */,
+				706895A523A0E8C600A0EFAE /* DZStoreTool.m */,
+			);
+			path = NetTool;
+			sourceTree = "<group>";
+		};
+		706895A723A0E90F00A0EFAE /* CloudLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				706895A923A0E93300A0EFAE /* Download */,
+				706895A823A0E92B00A0EFAE /* Upload */,
+			);
+			path = CloudLibrary;
+			sourceTree = "<group>";
+		};
+		706895A823A0E92B00A0EFAE /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		706895A923A0E93300A0EFAE /* Download */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		706895AB23A0E96800A0EFAE /* Advertiser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Advertiser;
+			sourceTree = "<group>";
+		};
+		706895AC23A0E9AD00A0EFAE /* ApplePay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApplePay;
 			sourceTree = "<group>";
 		};
 		706AB8CE237BF55E00BE649F /* DemoVC */ = {
@@ -4320,6 +4427,7 @@
 				709A73112387E7FB00DF04CE /* DZRefreshFooter.m in Sources */,
 				944A015F22E16C68003266FA /* DZMonitorKeyboard.m in Sources */,
 				277EDC6D1E6D5B8D00E8F0E1 /* DZLaunchImageView.m in Sources */,
+				706895A023A0E86E00A0EFAE /* DZShelfNetTool.m in Sources */,
 				7062128A237936C900130B9D /* PostActivityModel.m in Sources */,
 				7028B696238FB1340047800C /* DZThreadReplyModel.m in Sources */,
 				7065AE74238686C4009B6DA7 /* NSString+Common.mm in Sources */,
@@ -4380,6 +4488,7 @@
 				70DFD7B0237A967700A13F0F /* DZRootTabBar.m in Sources */,
 				70DFD7A5237A95DE00A13F0F /* DZBaseUrlController.m in Sources */,
 				70F9F8E7237AA72C0067B308 /* NSString+EmojiCheck.m in Sources */,
+				7068959B23A0E83700A0EFAE /* DZReaderNetTool.m in Sources */,
 				706212DA237936C900130B9D /* PartInSelectCell.m in Sources */,
 				700BB5E32394EEE7002A62DE /* DZUserItemModel.m in Sources */,
 				70621291237936C900130B9D /* DZRefereeCell.m in Sources */,
@@ -4537,6 +4646,7 @@
 				70F9F8DB237AA72B0067B308 /* PriorityBoxArray.m in Sources */,
 				706322A2237C151A005943AB /* EFSQLiteHelper.m in Sources */,
 				70CA22E82386E91A0053B31B /* DZGroupModel.m in Sources */,
+				706895A623A0E8C600A0EFAE /* DZStoreTool.m in Sources */,
 				7065AE932386A8A6009B6DA7 /* AppDelegate+Launch.m in Sources */,
 				7062128F237936C900130B9D /* DZEndtimeCell.m in Sources */,
 				706212D3237936C900130B9D /* ApplyActiver.m in Sources */,
