@@ -20,7 +20,8 @@ NSString * const Msg_MsgSucc       = @"success"; //私信状态
 NSString * const Msg_ActiviMaSucc   = @"_completion"; // 活动管理批准
 NSString * const Msg_ApplySucc       = @"activity_completion"; //报名参与活动
 
-
+NSString * const Msg_FavSucc       = @"favorite_do_success"; // 收藏成功
+NSString * const Msg_FavRepeat   = @"favorite_repeat"; // 收藏重复
 
 NSString * const Msg_No_bind        = @"no_bind";  //未绑定第三方在账号
 NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问题为空
@@ -73,6 +74,22 @@ NSString * const Msg_loginEmpty       = @"login_question_empty";  // 登录问�
     return NO;
 }
 
+
+// 是否 收藏成功
+-(BOOL)isFavoriteSucc{
+    if ([self.messageval isEqualToString:Msg_FavSucc]) {
+        return YES;
+    }
+    return NO;
+}
+
+// 是否 收藏重复
+-(BOOL)isFavoriteRepeat{
+    if ([self.messageval isEqualToString:Msg_FavRepeat]) {
+        return YES;
+    }
+    return NO;
+}
 
 
 

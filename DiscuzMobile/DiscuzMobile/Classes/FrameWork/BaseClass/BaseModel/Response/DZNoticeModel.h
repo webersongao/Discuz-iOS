@@ -41,6 +41,20 @@
 // 是否 登录问题为空
 -(BOOL)isLoginEmpty;
 
+// 是否 收藏成功
+-(BOOL)isFavoriteSucc;
+
+// 是否 收藏重复
+-(BOOL)isFavoriteRepeat;
+
+
+
+
+
+
+
+
+
 
 
 @end

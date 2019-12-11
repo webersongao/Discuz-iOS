@@ -40,5 +40,12 @@
  */
 -(NSString *)convertDictionaryToJsonString;
 
+
+- (NSString *)messageval;
+- (NSString *)messagestr;
+
+
+
+
 @end
 

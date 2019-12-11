@@ -27,15 +27,21 @@
         request.getParam = @{@"id":checkNull(forumId)};
         request.parameters = @{@"formhash":formhash};
     } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        NSString *messagestr = [responseObject messagestr];
-        if ([messageval isEqualToString:@"favorite_do_success"]) {
-            success();
-        } else if ([messageval isEqualToString:@"favorite_repeat"]) {
-            [MBProgressHUD showInfo:messagestr];
-            success();
-        }else {
-            [MBProgressHUD showInfo:messagestr];
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        if (resModel.Message) {
+            if (resModel.Message.isFavoriteSucc) {
+                success();
+            } else if (resModel.Message.isFavoriteRepeat) {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+                success();
+            }else {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+        }else{
+            [MBProgressHUD showInfo:@"收藏失败"];
+            if (failure) {
+                failure(nil);
+            }
         }
     } failed:^(NSError *error) {
         [MBProgressHUD showInfo:@"收藏失败"];
@@ -60,12 +66,18 @@
         request.getParam = @{@"id":threadId};;
         request.parameters =  @{@"formhash":formhash};
     } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        NSString *messagestr = [responseObject messagestr];
-        if ([messageval isEqualToString:@"favorite_do_success"]) {
-            success?success():nil;
-        } else {
-            [MBProgressHUD showInfo:messagestr];
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        if (resModel.Message) {
+            if (resModel.Message.isFavoriteSucc) {
+                success?success():nil;
+            } else {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+        }else{
+            [MBProgressHUD showInfo:@"收藏失败"];
+            if (failure) {
+                failure(nil);
+            }
         }
     } failed:^(NSError *error) {
         [MBProgressHUD showInfo:@"收藏失败"];
@@ -95,14 +107,11 @@
         request.getParam = getDic;
         request.parameters = postDic;
     } success:^(id responseObject, JTLoadType type) {
-        NSString *messageval = [responseObject messageval];
-        NSString *messagestr = [responseObject messagestr];
-        if ([messageval isEqualToString:@"do_success"])
-        {
-            success();
-        } else
-        {
-            [MBProgressHUD showInfo:messagestr];
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        if (resModel.Message && resModel.Message.isSuccessed){
+            success ? success() : nil;
+        }else {
+            [MBProgressHUD showInfo:resModel.Message.messagestr];
         }
     } failed:^(NSError *error) {
         [MBProgressHUD showInfo:@"取消收藏失败"];
@@ -115,21 +124,19 @@
 // 赞主题
 + (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure {
     if ([DZLoginModule isLogged]) {
-        NSDictionary * paramter=@{@"tid":tid,
-                                  @"hash":checkNull([DZMobileCtrl sharedCtrl].User.formhash)
-        };
+        
+        NSDictionary * paramter=@{@"tid":tid,@"hash":checkNull([DZMobileCtrl sharedCtrl].User.formhash)};
+        
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             request.urlString = DZ_Url_Praise;
             request.parameters = paramter;
         } success:^(id responseObject, JTLoadType type) {
-            NSString *messageval = [responseObject messageval];
-            NSString *messagestr = [responseObject messagestr];
-            
-            if ([messageval containsString:@"succeed"] || [messageval containsString:@"success"]) {
+            DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+            if (resModel.Message && resModel.Message.isSuccessed) {
                 success?success():nil;
             } else {
                 failure?failure(nil):nil;
-                [MBProgressHUD showInfo:messagestr];
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
             }
             
         } failed:^(NSError *error) {
