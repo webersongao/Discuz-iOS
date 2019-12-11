@@ -16,7 +16,7 @@
 #import "DZEndtimeCell.h"
 #import "DZRefereeCell.h"
 #import "ZHPickView.h"
-
+#import "DZPostNetTool.h"
 #import "PostDebateModel.h"
 
 
@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     self.title = @"发起辩论";
-
+    
     self.tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -186,7 +186,7 @@
             }
         }
             break;
-        
+            
         default: {
             NSString *btnid = @"buttonid";
             __weak typeof(self) weakself = self;
@@ -282,47 +282,17 @@
         return;
     }
     
-    NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
-    NSMutableDictionary * postdic=  [self creatDicdata];
+    NSDictionary * postdic=  [self.debateModel creatDebateDictdata:self.verifyView];
     [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-        request.urlString = DZ_Url_PostCommonThread;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = postdic;
-        request.getParam = getdic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self requestPostSucceed:responseObject];
-    } failed:^(NSError *error) {
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(id responseObject, NSError *error) {
         [self.HUD hide];
-        [self showServerError:error];
-    }];
-}
-
-- (NSMutableDictionary *)creatDicdata {
-    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
-    [dic setObject:self.debateModel.subject forKey: @"subject"];
-    [dic setObject:self.debateModel.message forKey: @"message"];
-    [dic setObject:self.debateModel.special forKey:@"special"];
-    [dic setObject:self.debateModel.affirmpoint forKey:@"affirmpoint"];
-    [dic setObject:self.debateModel.negapoint forKey:@"negapoint"];
-    [dic setObject:self.debateModel.endtime forKey:@"endtime"];
-    [dic setObject:self.debateModel.umpire forKey:@"umpire"];
-    [dic setObject:@"1" forKey:@"allownoticeauthor"];  // 设置回帖的时候提醒作者
-    
-    // TODO: 正确处理应该要选择主题类型
-    if ([DataCheck isValidString:self.debateModel.typeId]) {
-        [dic setObject:[NSString stringWithFormat:@"%@",self.debateModel.typeId] forKey:@"typeid"];
-    }
-    
-    if (self.verifyView.isyanzhengma) {
-        [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
-        if (self.verifyView.secureData.secqaa.length) {
-            [dic setObject:self.verifyView.secTextField.text forKey:@"secanswer"];;
+        if (responseObject) {
+            [self requestPostSucceed:responseObject];
+        }else{
+            [self showServerError:error];
         }
-    }
-    return dic;
+        
+    }];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView {

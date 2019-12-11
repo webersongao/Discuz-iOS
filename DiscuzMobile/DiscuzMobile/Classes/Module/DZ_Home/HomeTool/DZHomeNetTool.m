@@ -62,6 +62,26 @@
 
 
 
-
+/// 首页帖子列表数据 拉取
++ (void)DZ_HomeDownLoadThreadList:(NSInteger)page Url:(NSString *)UrlString LoadType:(JTLoadType)type completion:(void(^)(DZHomeVarModel *discoverModel,NSError *error))completion {
+    
+    if (!UrlString.length || !completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = UrlString;
+        request.isCache = YES;
+        request.loadType = type;
+        request.parameters = @{@"page":[NSString stringWithFormat:@"%ld",(long)page]};
+        
+    } success:^(id responseObject, JTLoadType type) {
+        DZHomeVarModel *discover = [DZHomeVarModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
+        completion(discover,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
 
 @end

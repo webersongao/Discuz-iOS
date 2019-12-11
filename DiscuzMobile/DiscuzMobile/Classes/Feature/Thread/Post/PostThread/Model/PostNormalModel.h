@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZSecVerifyView.h"
+#import "DZNormalThreadToolCell.h"
 
 @interface PostNormalModel : NSObject
 
@@ -15,5 +17,8 @@
 @property (nonatomic, strong) NSMutableArray *aidArray;
 
 @property (nonatomic, copy) NSString *typeId;     // 选择类型
+
+- (NSDictionary *)creatNormalDictdata:(DZSecVerifyView *)verifyView toolCell:(DZNormalThreadToolCell *)toolCell;
+
 
 @end

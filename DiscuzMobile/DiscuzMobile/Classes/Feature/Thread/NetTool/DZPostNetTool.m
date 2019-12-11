@@ -207,6 +207,57 @@
 }
 
 
+// 发布帖子
++ (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(id responseObject,NSError *error))completion{
+    
+    if (!fid.length || !postDict.allValues.count || !completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_PostCommonThread;
+        request.parameters = postDict;
+        request.getParam = @{@"fid":fid};
+    } success:^(id responseObject, JTLoadType type) {
+        completion(responseObject,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #pragma mark   /********************* 对象属性初始化 *************************/
 

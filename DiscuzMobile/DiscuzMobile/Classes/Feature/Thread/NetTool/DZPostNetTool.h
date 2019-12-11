@@ -49,5 +49,10 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 //获取帖子详情
 -(void)DZ_DownloadPostDetail:(NSString *)tid Page:(NSInteger)page success:(void(^)(DZPosResModel *varModel,NSDictionary *resDict,NSError *error))success;
 
+// 发布帖子
++ (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(id responseObject,NSError *error))completion;
+
+
+
 
 @end

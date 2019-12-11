@@ -92,16 +92,6 @@ static NSString * headerSection = @"CellHeader";
             [self.collectionView.mj_header endRefreshing];
         }
     }];
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.isCache = YES;
-        request.urlString = DZ_Url_Forumindex;
-    } success:^(id responseObject, JTLoadType type) {
-        
-        
-    } failed:^(NSError *error) {
-        
-    }];
 }
 
 - (void)emptyShow {

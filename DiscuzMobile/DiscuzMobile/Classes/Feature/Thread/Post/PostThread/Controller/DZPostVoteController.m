@@ -9,9 +9,7 @@
 #import "DZPostVoteController.h"
 #import "QRadioButton.h"
 #import "QCheckBox.h"
-
 #import "PostVoteModel.h"
-
 #import "DZVoteTitleCell.h"
 #import "DZPostSelectTypeCell.h"
 #import "DZVoteSelectCell.h"
@@ -46,7 +44,7 @@ static int voteIndex = 0 ;
 }
 
 - (void)viewDidLoad {
-
+    
     [super viewDidLoad];
     self.imgBtnTag = 0;
     self.dz_NavigationItem.title = @"发起投票";
@@ -64,7 +62,7 @@ static int voteIndex = 0 ;
         self.pickView.delegate = self;
     }
     [self.view addSubview:self.tableView];
-
+    
 }
 
 #pragma mark ZhpickVIewDelegate
@@ -151,12 +149,12 @@ static int voteIndex = 0 ;
         [addView addGestureRecognizer:tap];
         [view addSubview:addView];
         
-//        UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        addBtn.frame = CGRectMake((WIDTH - 20) / 2 - 50, 5, 100, 30);
-//        [addBtn setImage:[UIImage imageNamed:@"vote_add"] forState:UIControlStateNormal];
-//        //添加  一个选项
-//        [addBtn addTarget:self action:@selector(addOption) forControlEvents:UIControlEventTouchUpInside];
-//        [addView addSubview:addBtn];
+        //        UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        addBtn.frame = CGRectMake((WIDTH - 20) / 2 - 50, 5, 100, 30);
+        //        [addBtn setImage:[UIImage imageNamed:@"vote_add"] forState:UIControlStateNormal];
+        //        //添加  一个选项
+        //        [addBtn addTarget:self action:@selector(addOption) forControlEvents:UIControlEventTouchUpInside];
+        //        [addView addSubview:addBtn];
         UILabel *addLab = [[UILabel alloc] init];
         addLab.frame = CGRectMake((KScreenWidth - 20) / 2 - 50, 5, 100, 30);
         addLab.text = @"＋ 添加一项";
@@ -262,7 +260,7 @@ static int voteIndex = 0 ;
             
         }
             break;
-
+            
         case 1: {
             
             DZVoteContentCell *contentCell = [self.dataSourceArr objectAtIndex:indexPath.row];
@@ -305,7 +303,7 @@ static int voteIndex = 0 ;
         }
             break;
     }
-
+    
 }
 
 
@@ -354,17 +352,17 @@ static int voteIndex = 0 ;
                 
                 [self.dataSourceArr removeObjectAtIndex:indexPath.row];
                 
-//                if (self.aidArray.count > indexPath.row) {
-//                    
-//                    
-//                    [self.aidArray removeObjectAtIndex:indexPath.row];
-////                    [self.pollImageDic.copy removeObjectForKey:<#(nonnull id)#>]
-//                    
-//                    
-//                }
+                //                if (self.aidArray.count > indexPath.row) {
+                //                    
+                //                    
+                //                    [self.aidArray removeObjectAtIndex:indexPath.row];
+                ////                    [self.pollImageDic.copy removeObjectForKey:<#(nonnull id)#>]
+                //                    
+                //                    
+                //                }
                 
                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//                [self.tableView reloadData];
+                //                [self.tableView reloadData];
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
             }
             
@@ -392,7 +390,7 @@ static int voteIndex = 0 ;
         [MBProgressHUD showInfo:@"请填写标题"];
         return;
     }
-   
+    
     if (![DataCheck isValidString:self.voteModel.selectNum]) {
         [MBProgressHUD showInfo:@"请输入最多可选项"];
         return;
@@ -416,46 +414,20 @@ static int voteIndex = 0 ;
     
     DLog(@"%@ ---- %@ --- %@",self.voteModel.checkArr ,self.voteModel.radioValue,self.voteModel.polloptionArr);
     
-    
-    // post需传值 formhash subject标题 typeid message帖子内容 没有内容就填写nil attachnew[aid][description] mobiletype allowlocal allowsound allowphoto location special maxchoices expiration
-    NSDictionary * getDic = @{@"fid":self.authModel.forum.fid};
-    NSMutableDictionary  * postDic =[NSMutableDictionary dictionary ];
-    // 设置回帖的时候提醒作者
-    [postDic setValue:@"1" forKey:@"allownoticeauthor"];
-    [postDic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
-    [postDic setValue:self.voteModel.subject forKey:@"subject"];
-    [postDic setValue:self.voteModel.message forKey:@"message"];
-    [postDic setValue:self.voteModel.selectNum forKey:@"maxchoices"];                 //最大可选项数
-    [postDic setValue:(self.voteModel.isVisibleResult?@"1":@"0") forKey:@"visibilitypoll"]; //是否投票可见
-    [postDic setValue:(self.voteModel.isVisibleParticipants?@"1":@"0") forKey:@"overt"];   //是否公开投票参与人
-    [postDic setValue:self.voteModel.polloptionArr forKey:@"polloption"];                  //选项内容 数组 模式
-    [postDic setValue:self.voteModel.dayNum forKey:@"expiration"];  //过期时间
-    [postDic setValue:@"1" forKey:@"special"];
-    if (self.verifyView.isyanzhengma)
-    {
-        [postDic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [postDic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
-    }
-    
-    if ([DataCheck isValidString:self.voteModel.typeId]) {
-        [postDic setValue:self.voteModel.typeId forKey:@"typeid"];
-    }
-    
+    NSArray *pollImageArr = nil;
     if (self.pollImageDic.count > 0) {
-        [postDic setValue:[self getPollImageArr] forKey:@"pollimage"];
+        pollImageArr = [self getPollImageArr];
     }
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"发布中" toView:self.view];
-        self.HUD.userInteractionEnabled = YES;
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_PostCommonThread;
-        request.parameters = postDic;
-        request.getParam = getDic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self requestPostSucceed:responseObject];
-    } failed:^(NSError *error) {
-        [self requestPostFailure:error];
+    NSDictionary  * postDic =[self.voteModel creatVoteDictdata:self.verifyView voteArr:pollImageArr];
+    [self.HUD showLoadingMessag:@"发布中" toView:self.view];
+    self.HUD.userInteractionEnabled = YES;
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(id responseObject, NSError *error) {
+        [self.HUD hide];
+        if (responseObject) {
+            [self requestPostSucceed:responseObject];
+        }else{
+            [self requestPostFailure:error];
+        }
     }];
 }
 
@@ -519,28 +491,28 @@ static int voteIndex = 0 ;
 }
 
 - (void)uploadImage:(UIImage *)image  andTag:(NSInteger)tag{
-//    NSData *data;
-//    if (UIImagePNGRepresentation(image) == nil)
-//    {
-//        data = UIImageJPEGRepresentation(image, 1.0);
-//    }
-//    else
-//    {
-//        data = UIImagePNGRepresentation(image);
-//    }
-//    
-//    //图片保存的路径
-//    //这里将图片放在沙盒的documents文件夹中
-//    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-//    //文件管理器
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    
-//    //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
-//    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
-//    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
-//    
-//    //        得到选择后沙盒中图片的完整路径
-//    _filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,  @"/image.png"];
+    //    NSData *data;
+    //    if (UIImagePNGRepresentation(image) == nil)
+    //    {
+    //        data = UIImageJPEGRepresentation(image, 1.0);
+    //    }
+    //    else
+    //    {
+    //        data = UIImagePNGRepresentation(image);
+    //    }
+    //    
+    //    //图片保存的路径
+    //    //这里将图片放在沙盒的documents文件夹中
+    //    NSString * DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    //    //文件管理器
+    //    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //    
+    //    //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+    //    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    //    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+    //    
+    //    //        得到选择后沙盒中图片的完整路径
+    //    _filePath = [[NSString alloc]initWithFormat:@"%@%@",DocumentsPath,  @"/image.png"];
     self.imgBtnTag = tag;
     NSArray * imagear = [NSArray arrayWithObject:image];
     
@@ -551,7 +523,7 @@ static int voteIndex = 0 ;
     
     NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
                         @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
-                        };
+    };
     NSDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                             @"operation":@"poll"};
     
@@ -610,7 +582,7 @@ static int voteIndex = 0 ;
     if (textField.tag == 1001) {
         return YES;
     }
-   // 限制输入
+    // 限制输入
     if (textField.tag == 10009) {
         NSUInteger lengthOfString = string.length;
         for (NSInteger loopIndex = 0; loopIndex < lengthOfString; loopIndex++) {//只允许数字输入
@@ -621,7 +593,7 @@ static int voteIndex = 0 ;
         NSUInteger proposedNewLength = textField.text.length - range.length + string.length;
         if (proposedNewLength > 3) return NO;
     }
-
+    
     // Check for total length
     NSUInteger proposedNewLength = textField.text.length - range.length + string.length;
     if (proposedNewLength > 15) return NO;//限制长度为15
@@ -649,7 +621,7 @@ static int voteIndex = 0 ;
         [self.voteModel.checkArr addObject:checkbox.titleLabel.text];
         self.voteModel.isVisibleResult=YES;
     }else{
-         [self.voteModel.checkArr removeObject:checkbox.titleLabel.text];
+        [self.voteModel.checkArr removeObject:checkbox.titleLabel.text];
         self.voteModel.isVisibleParticipants=YES;
     }
 }

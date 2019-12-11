@@ -9,6 +9,7 @@
 #import "DZHomeThreadListBaseCtrl.h"
 #import "DZHomeVarModel.h"
 #import "ThreadListCell.h"
+#import "DZHomeNetTool.h"
 #import "DZThreadListModel+Display.h"
 
 @interface DZHomeThreadListBaseCtrl ()
@@ -17,19 +18,15 @@
 
 @implementation DZHomeThreadListBaseCtrl
 
-- (SThreadListType)listType {
-    return 0;
-}
-
 #pragma mark - lifeCyle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initTableView];
     
-    if (self.listType == SThreadListTypeDigest) {
+    if (self.listType == HomeListBest) {
         self.urlString = DZ_Url_DigestAll;
-    } else if (self.listType == SThreadListTypeNewest) {
+    } else if (self.listType == HomeListNewest) {
         self.urlString = DZ_Url_NewAll;
     }
     
@@ -71,7 +68,7 @@
     if (![self.view hu_intersectsWithAnotherView:nil]) {
         return;
     }
-
+    
     NSDictionary *userInfo = notification.userInfo;
     if ([DataCheck isValidDict:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
@@ -99,40 +96,28 @@
 #pragma mark - 数据下载
 - (void)downLoadHomeThreadData:(NSInteger)page andLoadType:(JTLoadType)type {
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = self.urlString;
-        request.isCache = YES;
-        request.loadType = type;
-        request.parameters = @{@"page":[NSString stringWithFormat:@"%ld",(long)page]};
-        
-    } success:^(id responseObject, JTLoadType type) {
+    [DZHomeNetTool DZ_HomeDownLoadThreadList:page Url:self.urlString LoadType:type completion:^(DZHomeVarModel *discover, NSError *error) {
         [self.HUD hide];
-        [self.tableView.mj_header endRefreshing];
-        
-        DZHomeVarModel *discover = [DZHomeVarModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
-        
-        if (self.page == 1) { // 刷新列表 刷新的时候移除数据源
-            [self clearDatasource];
-        } else {
+        if (discover) {
+            [self.tableView.mj_header endRefreshing];
+            if (self.page == 1) { // 刷新列表 刷新的时候移除数据源
+                [self clearDatasource];
+            } else {
+                [self.tableView.mj_footer endRefreshing];
+            }
+            
+            if ([DataCheck isValidArray:discover.data]) {
+                [self.dataSourceArr addObjectsFromArray:discover.data];
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+            [self.tableView reloadData];
+        }else{
+            [self showServerError:error];
+            [self.tableView.mj_header endRefreshing];
             [self.tableView.mj_footer endRefreshing];
         }
-        
-        if ([DataCheck isValidArray:discover.data]) {
-            [self.dataSourceArr addObjectsFromArray:discover.data];
-        } else {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        
-        [self emptyShow];
-        [self.tableView reloadData];
-        
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self emptyShow];
-        [self showServerError:error];
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
-        
     }];
 }
 

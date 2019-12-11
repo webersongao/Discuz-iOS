@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZSecVerifyView.h"
 
 @interface PostDebateModel : NSObject
 
@@ -19,5 +20,13 @@
 @property (nonatomic, copy) NSString *umpire;      // 裁判
 
 @property (nonatomic, copy) NSString *typeId;     // 选择类型
+
+
+
+- (NSDictionary *)creatDebateDictdata:(DZSecVerifyView *)verifyView;
+
+
+
+
 
 @end

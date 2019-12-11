@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PostNormalModel.h"
+#import "DZSecVerifyView.h"
 
 @interface PostActivityModel : PostNormalModel
 
@@ -23,5 +24,9 @@
 @property (nonatomic, copy) NSString *activitycredit;  // 积分
 @property (nonatomic, copy) NSString *cost;   // 花销
 @property (nonatomic, copy) NSString *activityexpiration;  // 截止时间
+
+- (NSDictionary *)createActivityPostDict:(DZSecVerifyView *)verifyView;
+
+
 
 @end

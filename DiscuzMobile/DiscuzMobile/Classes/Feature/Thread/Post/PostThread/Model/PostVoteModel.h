@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZSecVerifyView.h"
 
 @interface PostVoteModel : NSObject
 
@@ -22,5 +23,9 @@
 @property (nonatomic, copy) NSString *selectNum;     // 最多可选项数
 
 @property (nonatomic, copy) NSString *typeId; // 要选择主题类型typeid
+
+
+- (NSDictionary *)creatVoteDictdata:(DZSecVerifyView *)verifyView voteArr:(NSArray *)voteArr;
+
 
 @end

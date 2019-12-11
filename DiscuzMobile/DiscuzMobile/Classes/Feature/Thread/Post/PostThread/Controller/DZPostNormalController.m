@@ -126,10 +126,10 @@
         }
         
     }
-     else {
-         if ([AudioTool shareInstance].audioArray.count > 0) {
-             return keyboardHeight;
-         }
+    else {
+        if ([AudioTool shareInstance].audioArray.count > 0) {
+            return keyboardHeight;
+        }
         return 0;
     }
 }
@@ -138,9 +138,7 @@
     
     switch (indexPath.section) {
         case 0: {
-            
             if (indexPath.row == 0) {
-                
                 NSString *titleid = @"titleid";
                 DZVoteTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:titleid];
                 if (titleCell == nil) {
@@ -152,11 +150,8 @@
                 [titleCell.titleTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
                 return titleCell;
             } else {
-                
                 if (self.typeArray.count > 0) {
-                    
                     if (indexPath.row == 1) {
-                        
                         NSString *typesId = @"selectTypeId";
                         DZPostSelectTypeCell *typeCell = [tableView dequeueReusableCellWithIdentifier:typesId];
                         if (typeCell == nil) {
@@ -169,18 +164,13 @@
                     } else {
                         return [self detailCell];
                     }
-                    
-                    
                 } else {
                     return [self detailCell];
                 }
-                
             }
-            
         }
             break;
         case 1: {
-            
             if ([AudioTool shareInstance].audioArray.count > 0) {
                 AudioModel *model = [AudioTool shareInstance].audioArray[indexPath.row];
                 NSString *toolId = @"audioId";
@@ -191,35 +181,31 @@
                 }
                 audioCell.timeLabel.text = [NSString stringWithFormat:@"%ld秒",model.time];
                 return audioCell;
-                
             } else {
                 return [self ToolCell];
             }
         }
             break;
         case 2: {
-            
             return [self ToolCell];
-            
-            
         }
             break;
-        
+            
         default: {
             
         }
             break;
     }
     
-        NSString *CellIdentifier = [NSString stringWithFormat:@"Cell%ld%ld", (long)[indexPath section],(long)[indexPath row]];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
+    NSString *CellIdentifier = [NSString stringWithFormat:@"Cell%ld%ld", (long)[indexPath section],(long)[indexPath row]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
-        return cell;
-  
+    return cell;
+    
 }
 
 - (DZNormalDetailCell *)detailCell {
@@ -268,7 +254,7 @@
             self.playingIndex = nil;
             return;
         }
-//        [self playlistAudio:model.mp3Url];
+        //        [self playlistAudio:model.mp3Url];
         [[AudioTool shareInstance] playlistAudio:model.mp3Url];
         self.playingIndex = indexPath;
     }
@@ -310,22 +296,18 @@
 -(void)postData {
     [self.view endEditing:YES];
     
-    NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
-    NSMutableDictionary * postdic=  [self creatDicdata];
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"发送中" toView:self.view];
-        self.HUD.userInteractionEnabled = YES;
-        request.urlString = DZ_Url_PostCommonThread;
-        request.methodType = JTMethodTypePOST;
-        request.parameters = postdic;
-        request.getParam = getdic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self requestPostSucceed:responseObject];
-        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
-    } failed:^(NSError *error) {
-        self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
-        [self requestPostFailure:error];
+    NSDictionary * postdic=  [self.normalModel creatNormalDictdata:self.verifyView toolCell:[self getToolCell]];
+    [self.HUD showLoadingMessag:@"发送中" toView:self.view];
+    self.HUD.userInteractionEnabled = YES;
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postdic completion:^(id responseObject, NSError *error) {
+        [self.HUD hide];
+        if (responseObject) {
+            [self requestPostSucceed:responseObject];
+            self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
+        }else{
+            self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
+            [self requestPostFailure:error];
+        }
     }];
 }
 
@@ -335,49 +317,6 @@
     if ([message containsString:@"succeed"] || [message containsString:@"success"]) {
         [[AudioTool shareInstance] clearAudio];
     }
-    
-}
-
-- (NSMutableDictionary *)creatDicdata
-{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
-    
-    [dic setObject:self.normalModel.subject forKey:@"subject"];
-    [dic setObject:self.normalModel.message forKey:@"message"];
-    [dic setObject:@"1" forKey:@"allownoticeauthor"];  // 设置回帖的时候提醒作者
-    
-    // TODO: 正确处理应该要选择主题类型
-    if ([DataCheck isValidString:self.normalModel.typeId]) {
-        [dic setObject:[NSString stringWithFormat:@"%@",self.normalModel.typeId] forKey:@"typeid"];
-    }
-    
-    if (self.verifyView.isyanzhengma) {
-        [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
-        if (self.verifyView.secureData.secqaa.length) {
-            [dic setObject:self.verifyView.secTextField.text forKey:@"secanswer"];;
-        }
-    }
-    
-    
-    if ([AudioTool shareInstance].audioArray.count > 0) {
-        for (int i = 0; i < [AudioTool shareInstance].audioArray.count; i ++) {
-            AudioModel *audio = [[AudioTool shareInstance].audioArray objectAtIndex:i];
-            NSString *description = [NSString stringWithFormat:@"%ld",(long)audio.time];
-            [dic setObject:description forKey:[NSString stringWithFormat:@"attachnew[%@][description]",audio.audioUploadId]];
-        }
-    }
-    
-    DZNormalThreadToolCell *cell = [self getToolCell];
-    if (cell.uploadView.uploadModel.aidArray.count > 0) {
-        for (int i=0; i < cell.uploadView.uploadModel.aidArray.count; i++) {
-            NSString *description = @"";
-            [dic setObject:description forKey:[NSString stringWithFormat:@"attachnew[%@][description]",[cell.uploadView.uploadModel.aidArray objectAtIndex:i]]];
-            
-        }
-        [dic setObject:@"1" forKey:@"allowphoto"];
-    }
-    return dic;
 }
 
 #pragma mark - 验证码
@@ -408,11 +347,11 @@
         return;
     }
     NSMutableDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
-                        @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid],
-                        }.mutableCopy;
+                               @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid],
+    }.mutableCopy;
     NSMutableDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                                    @"type":@"image",
-                                   }.mutableCopy;
+    }.mutableCopy;
     
     DZNormalThreadToolCell *cell = [self getToolCell];
     [self.HUD showLoadingMessag:@"" toView:self.view];
@@ -456,7 +395,7 @@
     
     NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
                         @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid],
-                        };
+    };
     NSDictionary * getdic=@{@"fid":self.authModel.forum.fid};
     NSArray *arr = @[[AudioTool shareInstance].mp3Url.absoluteString];
     [self.HUD showLoadingMessag:@"正在上传语音..." toView:self.view];

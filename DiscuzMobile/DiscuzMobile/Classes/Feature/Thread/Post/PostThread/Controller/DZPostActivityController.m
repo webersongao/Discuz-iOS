@@ -70,7 +70,7 @@
     
     
     _dropDownView = [[DropDownView alloc] initWithFrame:CGRectMake(KScreenWidth-120, 0, 96, 31 * self.activitytypeArr.count)  activityType:self.activitytypeArr];
-
+    
     _dropDownView.layer.borderColor = [K_Color_Theme CGColor];
     _dropDownView.layer.borderWidth = 0.5f;
     _dropDownView.backgroundColor = [UIColor whiteColor];
@@ -165,8 +165,8 @@
     
     NSDictionary *dic = @{@"hash":uploadhash,
                           @"uid":[DZMobileCtrl sharedCtrl].User.member_uid
-                          };
-  
+    };
+    
     NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};
     [self.HUD showLoadingMessag:@"上传中" toView:self.view];
     [[DZPostNetTool sharedTool] DZ_UpLoadAttachmentArr:imagear attacheType:DZAttacheImage getDic:getdic postDic:dic complete:^{
@@ -225,65 +225,17 @@
 
 - (void)postActiviti {
     
-    NSMutableDictionary  * dic = [NSMutableDictionary dictionaryWithDictionary:[self createPostDic]];;
-    NSDictionary * getDic= @{@"fid":self.authModel.forum.fid};
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        [self.HUD showLoadingMessag:@"活动发起中" toView:self.view];
-        self.HUD.userInteractionEnabled = YES;
-        request.urlString = DZ_Url_PostCommonThread;
-        request.parameters = dic;
-        request.getParam = getDic;
-        request.methodType = JTMethodTypePOST;
-    } success:^(id responseObject, JTLoadType type) {
-        [self requestPostSucceed:responseObject];
-    } failed:^(NSError *error) {
-        [self requestPostFailure:error];
-    }];
-}
-
-- (NSMutableDictionary *)createPostDic {
-    
-    NSMutableDictionary  * dic =[NSMutableDictionary dictionary];
-    
-    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
-    [dic setValue:self.activityModel.subject forKey:@"subject"];
-    [dic setValue:@"活动" forKey:@"typeid"];
-    [dic setValue:self.activityModel.message forKey:@"message"];
-    [dic setValue:@"1" forKey:@"activitytime"];
-    [dic setValue:self.activityModel.activityClass forKey:@"activityclass"];
-    [dic setValue:self.activityModel.startTime forKey:@"starttimefrom[1]"];
-    [dic setValue:@"4" forKey:@"special"];
-    [dic setValue:self.activityModel.endTime forKey:@"starttimeto"];
-    [dic setValue:self.activityModel.userArray forKey:@"userfield"];
-    [dic setValue:self.activityModel.place forKey:@"activityplace"];
-    [dic setValue:self.activityModel.peopleNum forKey:@"activitynumber"];
-    [dic setValue:@"IOS" forKey:@"mobiletype" ];
-    [dic setValue:self.activityModel.activitycity forKey:@"activitycity"];
-    [dic setValue:self.activityModel.gender forKey:@"gender"];
-    [dic setValue:self.activityModel.activitycredit forKey:@"activitycredit"];
-    [dic setValue:self.activityModel.cost forKey:@"cost"];
-    [dic setValue:self.activityModel.activityexpiration forKey:@"activityexpiration"];
-    
-    
-    // 设置回帖的时候提醒作者 集成推送才生效
-    [dic setValue:@"1" forKey:@"allownoticeauthor"];
-    
-    if ([DataCheck isValidArray:self.activityModel.aidArray]) {
-        
-        if (self.activityModel.aidArray.count > 0) {
-            [dic setValue:[NSString stringWithFormat:@"%@",[self.activityModel.aidArray objectAtIndex:0]] forKey:[NSString stringWithFormat:@"attachnew[%@][description]",[self.activityModel.aidArray objectAtIndex:0]]];
+    NSDictionary  * postDic = [self.activityModel createActivityPostDict:self.verifyView];
+    [self.HUD showLoadingMessag:@"活动发起中" toView:self.view];
+    self.HUD.userInteractionEnabled = YES;
+    [DZPostNetTool DZ_PublistPostThread:self.authModel.forum.fid postDict:postDic completion:^(id responseObject, NSError *error) {
+        [self.HUD hide];
+        if (responseObject) {
+            [self requestPostSucceed:responseObject];
+        }else{
+            [self requestPostFailure:error];
         }
-    }
-    
-    if (self.verifyView.isyanzhengma) {
-        [dic setObject:self.verifyView.yanTextField.text forKey:@"seccodeverify"];
-        [dic setObject:self.verifyView.secureData.sechash forKey:@"sechash"];
-    }
-    
-    if ([DataCheck isValidString:self.activityModel.typeId]) {
-        [dic setValue:self.activityModel.typeId forKey:@"typeid"];
-    }
-    return dic;
+    }];
 }
 
 #pragma mark - 验证码

@@ -14,9 +14,15 @@
 
 @implementation DZHomeNewListCtrl
 
-- (SThreadListType)listType {
-    return SThreadListTypeNewest;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.listType = HomeListNewest;
+    }
+    return self;
 }
+
 
 
 @end

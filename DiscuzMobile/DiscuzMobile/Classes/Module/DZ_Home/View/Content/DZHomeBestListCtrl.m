@@ -14,8 +14,13 @@
 
 @implementation DZHomeBestListCtrl
 
-- (SThreadListType)listType {
-    return SThreadListTypeDigest;
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.listType = HomeListBest;
+    }
+    return self;
 }
 
 
