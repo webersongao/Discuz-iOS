@@ -324,10 +324,10 @@
 }
 
 - (DZThreadListCell *)configListCell:(DZThreadListModel *)listModel {
-    static NSString * CellId = @"ThreadListId";
-    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
+    
+    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"ThreadListId"];
     if (cell == nil) {
-        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ThreadListId"];
     }
     [cell updateListCell:listModel];
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
