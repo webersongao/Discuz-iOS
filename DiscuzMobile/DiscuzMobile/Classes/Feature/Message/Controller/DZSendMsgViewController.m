@@ -32,8 +32,8 @@
 }
 
 -(void)initUI{
-    _bgScrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    _bgScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height+1);
+    _bgScrollView = [[UIScrollView alloc]initWithFrame:KView_OutNavi_Bounds];
+    _bgScrollView.contentSize = CGSizeMake(self.view.frame.size.width, KView_OutNavi_Bounds.size.height+1);
     [_bgScrollView setShowsHorizontalScrollIndicator:NO];
     [_bgScrollView setShowsVerticalScrollIndicator:NO];
     _bgScrollView.pagingEnabled = YES;

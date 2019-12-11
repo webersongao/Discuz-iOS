@@ -18,6 +18,7 @@
     [self downLoadData];
     self.title = @"我的好友";
     KWEAKSELF;
+    self.tableView.frame = KView_OutNavi_Bounds;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf refreshData];
