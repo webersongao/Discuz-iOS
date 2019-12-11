@@ -181,7 +181,7 @@
 		7062127D237936C900130B9D /* BaseStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B0237936C800130B9D /* BaseStyleCell.m */; };
 		7062127E237936C900130B9D /* DZThreadTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B2237936C800130B9D /* DZThreadTopCell.m */; };
 		7062127F237936C900130B9D /* DropTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B3237936C800130B9D /* DropTipView.m */; };
-		70621280237936C900130B9D /* ThreadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B5237936C800130B9D /* ThreadListCell.m */; };
+		70621280237936C900130B9D /* DZThreadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210B5237936C800130B9D /* DZThreadListCell.m */; };
 		70621281237936C900130B9D /* DZPostBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210BC237936C800130B9D /* DZPostBaseController.m */; };
 		70621282237936C900130B9D /* DZPostVoteController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210BF237936C800130B9D /* DZPostVoteController.m */; };
 		70621283237936C900130B9D /* DZPostDebateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706210C0237936C800130B9D /* DZPostDebateController.m */; };
@@ -780,7 +780,7 @@
 		706210A3237936C800130B9D /* DZThreadTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadTopCell.h; sourceTree = "<group>"; };
 		706210A4237936C800130B9D /* DZForumInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZForumInfoView.m; sourceTree = "<group>"; };
 		706210A5237936C800130B9D /* BaseStyleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseStyleCell.h; sourceTree = "<group>"; };
-		706210A6237936C800130B9D /* ThreadListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadListCell.h; sourceTree = "<group>"; };
+		706210A6237936C800130B9D /* DZThreadListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadListCell.h; sourceTree = "<group>"; };
 		706210A8237936C800130B9D /* PostTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTypeCell.m; sourceTree = "<group>"; };
 		706210A9237936C800130B9D /* DZPostTypeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPostTypeSelectView.m; sourceTree = "<group>"; };
 		706210AA237936C800130B9D /* PostTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTypeModel.h; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 		706210B2237936C800130B9D /* DZThreadTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadTopCell.m; sourceTree = "<group>"; };
 		706210B3237936C800130B9D /* DropTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropTipView.m; sourceTree = "<group>"; };
 		706210B4237936C800130B9D /* VerifyThreadRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyThreadRemindView.h; sourceTree = "<group>"; };
-		706210B5237936C800130B9D /* ThreadListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadListCell.m; sourceTree = "<group>"; };
+		706210B5237936C800130B9D /* DZThreadListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadListCell.m; sourceTree = "<group>"; };
 		706210B6237936C800130B9D /* SubForumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubForumCell.h; sourceTree = "<group>"; };
 		706210B7237936C800130B9D /* DZTopTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTopTitleLabel.h; sourceTree = "<group>"; };
 		706210BA237936C800130B9D /* DZPostDebateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPostDebateController.h; sourceTree = "<group>"; };
@@ -2908,8 +2908,8 @@
 				706210AE237936C800130B9D /* SubForumCell.m */,
 				706210A5237936C800130B9D /* BaseStyleCell.h */,
 				706210B0237936C800130B9D /* BaseStyleCell.m */,
-				706210A6237936C800130B9D /* ThreadListCell.h */,
-				706210B5237936C800130B9D /* ThreadListCell.m */,
+				706210A6237936C800130B9D /* DZThreadListCell.h */,
+				706210B5237936C800130B9D /* DZThreadListCell.m */,
 				70FBDCCA2383FC1B00FC296E /* RootForumCell.h */,
 				70FBDCC72383FC1B00FC296E /* RootForumCell.m */,
 				706210A3237936C800130B9D /* DZThreadTopCell.h */,
@@ -4540,7 +4540,7 @@
 				7065AE932386A8A6009B6DA7 /* AppDelegate+Launch.m in Sources */,
 				7062128F237936C900130B9D /* DZEndtimeCell.m in Sources */,
 				706212D3237936C900130B9D /* ApplyActiver.m in Sources */,
-				70621280237936C900130B9D /* ThreadListCell.m in Sources */,
+				70621280237936C900130B9D /* DZThreadListCell.m in Sources */,
 				70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */,
 				703C4258237D51330046C398 /* DZSiriTool.m in Sources */,
 				70DFD7A7237A95DE00A13F0F /* DZAttachModel.m in Sources */,

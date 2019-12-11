@@ -13,7 +13,7 @@
 #import "DZThreadListModel+Display.h"
 #import "DZShareCenter.h"
 #import "AsyncAppendency.h"
-#import "ThreadListCell.h"
+#import "DZThreadListCell.h"
 #import "DZThreadTopCell.h"
 #import "VerifyThreadRemindView.h"
 
@@ -261,10 +261,10 @@
             }
             return [(DZThreadTopCell *)cell cellHeight];
         } else {
-            return [(ThreadListCell *)cell cellHeight];
+            return [(DZThreadListCell *)cell cellHeight];
         }
     } else {
-        return [(ThreadListCell *)cell cellHeight];
+        return [(DZThreadListCell *)cell cellHeight];
     }
 }
 
@@ -323,11 +323,11 @@
     }
 }
 
-- (ThreadListCell *)configListCell:(DZThreadListModel *)listModel {
+- (DZThreadListCell *)configListCell:(DZThreadListModel *)listModel {
     static NSString * CellId = @"ThreadListId";
-    ThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
+    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
     if (cell == nil) {
-        cell = [[ThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
     cell.listInfo = listModel;
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];

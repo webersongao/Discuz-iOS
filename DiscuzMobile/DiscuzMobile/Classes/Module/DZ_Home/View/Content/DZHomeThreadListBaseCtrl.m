@@ -8,7 +8,7 @@
 
 #import "DZHomeThreadListBaseCtrl.h"
 #import "DZHomeVarModel.h"
-#import "ThreadListCell.h"
+#import "DZThreadListCell.h"
 #import "DZHomeNetTool.h"
 #import "DZThreadListModel+Display.h"
 
@@ -44,7 +44,7 @@
 
 - (void)initTableView {
     
-    [self.tableView registerClass:[ThreadListCell class] forCellReuseIdentifier:[ThreadListCell getReuseId]];
+    [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:[DZThreadListCell getReuseId]];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
@@ -137,7 +137,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    ThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:[ThreadListCell getReuseId]];
+    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId]];
     cell.listInfo = [listModel dealSpecialThread];
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
@@ -154,7 +154,7 @@
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    ThreadListCell *cell = [tableView dequeueReusableCellWithIdentifier:[ThreadListCell getReuseId]];
+    DZThreadListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId]];
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
     return [cell caculateCellHeight:listModel];
 }

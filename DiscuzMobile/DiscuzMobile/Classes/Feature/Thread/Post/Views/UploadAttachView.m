@@ -66,7 +66,6 @@
                 if (i == imageArr.count - 1) {
                     [self.pickerView.HUD hideAnimated:YES];
                 }
-                
             } success:^(id response) {
                 [self.pickerView.photosArray removeAllObjects];
                 [self.uploadModel.aidArray removeAllObjects];

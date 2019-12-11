@@ -1,20 +1,20 @@
 //
-//  ThreadListCell.m
+//  DZThreadListCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/18.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ThreadListCell.h"
+#import "DZThreadListCell.h"
 
-@interface ThreadListCell()
+@interface DZThreadListCell()
 
 @property (nonatomic, strong) UIImageView *typeIcon;
 
 @end
 
-@implementation ThreadListCell
+@implementation DZThreadListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

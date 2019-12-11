@@ -1,5 +1,5 @@
 //
-//  ThreadListCell.h
+//  DZThreadListCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/18.
@@ -10,6 +10,6 @@
 #import "BaseStyleCell.h"
 @class DZThreadListModel;
 
-@interface ThreadListCell : BaseStyleCell
+@interface DZThreadListCell : BaseStyleCell
 
 @end
