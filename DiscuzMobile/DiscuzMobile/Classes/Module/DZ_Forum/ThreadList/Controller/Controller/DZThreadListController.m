@@ -253,7 +253,7 @@
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     if (self.topThreadArray.count > 0) {
         if (indexPath.section == 0) {
             if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
@@ -324,10 +324,10 @@
 }
 
 - (DZThreadListCell *)configListCell:(DZThreadListModel *)listModel {
-    
-    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"ThreadListId"];
+    static NSString * CellId = @"ThreadListId";
+    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:CellId];
     if (cell == nil) {
-        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ThreadListId"];
+        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
     [cell updateListCell:listModel];
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];

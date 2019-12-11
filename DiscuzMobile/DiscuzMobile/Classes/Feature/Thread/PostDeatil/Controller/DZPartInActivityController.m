@@ -333,7 +333,7 @@
             return 38 * 3 + 24;
         }
         if ([partModel.formtype isEqualToString:@"list"] || [partModel.formtype isEqualToString:@"checkbox"]) {
-            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:indexPath];
             return [(PartInMultiSelectCell *)cell cellHeight];
         }
     }

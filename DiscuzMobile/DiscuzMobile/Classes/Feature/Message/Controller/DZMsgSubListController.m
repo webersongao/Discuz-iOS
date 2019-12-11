@@ -126,7 +126,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
-        UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [(MessageCell *)cell cellHeight];
         //        return 70.0;
     }
