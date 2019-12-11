@@ -157,7 +157,7 @@
     }];
 }
 
--(void)setListInfo:(DZThreadListModel *)listInfo{
+- (void)updateThreadCell:(DZThreadListModel *)listInfo{
     
     _listInfo = listInfo;
     
@@ -361,7 +361,8 @@
 }
 
 - (CGFloat)caculateCellHeight:(DZThreadListModel *)info {
-    self.listInfo = info;
+//    _listInfo = info;
+    [self updateThreadCell:info];
     return [self cellHeight];
 }
 

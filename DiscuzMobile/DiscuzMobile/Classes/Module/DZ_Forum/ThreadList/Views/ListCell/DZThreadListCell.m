@@ -27,8 +27,8 @@
     [self.desLab addSubview:self.typeIcon];
 }
 
--(void)setListInfo:(DZThreadListModel *)listInfo{
-    [super setListInfo:listInfo];
+- (void)updateThreadCell:(DZThreadListModel *)listInfo{
+    [super updateThreadCell:listInfo];
     
     if (![listInfo isSpecialThread]) {
         self.typeIcon.hidden = YES;

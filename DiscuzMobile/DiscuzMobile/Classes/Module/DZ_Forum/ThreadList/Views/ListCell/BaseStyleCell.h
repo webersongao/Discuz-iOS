@@ -26,10 +26,12 @@
 @property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数
 @property (nonatomic, strong) BaseIconTextView *priceLab;   // 点赞数
 
-@property (nonatomic, strong) DZThreadListModel *listInfo;
+@property (nonatomic, strong,readonly) DZThreadListModel *listInfo;
 
 - (CGFloat)cellHeight;
 
 - (CGFloat)caculateCellHeight:(DZThreadListModel *)info;
+
+- (void)updateThreadCell:(DZThreadListModel *)info;
 
 @end
