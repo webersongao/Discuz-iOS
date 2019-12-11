@@ -154,7 +154,7 @@
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    DZThreadListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId]];
+    DZThreadListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
     return [cell caculateCellHeight:listModel];
 }

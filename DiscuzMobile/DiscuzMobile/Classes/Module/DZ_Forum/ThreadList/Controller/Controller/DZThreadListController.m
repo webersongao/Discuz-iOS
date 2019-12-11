@@ -253,7 +253,7 @@
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
-    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     if (self.topThreadArray.count > 0) {
         if (indexPath.section == 0) {
             if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {

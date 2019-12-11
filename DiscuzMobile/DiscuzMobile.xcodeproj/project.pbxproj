@@ -3154,7 +3154,7 @@
 				70F9F88B237AA72B0067B308 /* NSDictionary */,
 				70F9F8AB237AA72B0067B308 /* UIAlertView */,
 				70F9F8AE237AA72B0067B308 /* UIView */,
-				70F9F8BE237AA72B0067B308 /* Cell */,
+				70F9F8BE237AA72B0067B308 /* ListCell */,
 				70F9F8B3237AA72B0067B308 /* UIText */,
 				70BA482E23852BA200634D76 /* UILabel */,
 				70F9F8CC237AA72B0067B308 /* NSDate */,
@@ -3307,13 +3307,13 @@
 			path = UIImageView;
 			sourceTree = "<group>";
 		};
-		70F9F8BE237AA72B0067B308 /* Cell */ = {
+		70F9F8BE237AA72B0067B308 /* ListCell */ = {
 			isa = PBXGroup;
 			children = (
 				70F9F8BF237AA72B0067B308 /* UITableViewCell+GetReuseID.h */,
 				70F9F8C0237AA72B0067B308 /* UITableViewCell+GetReuseID.m */,
 			);
-			path = Cell;
+			path = ListCell;
 			sourceTree = "<group>";
 		};
 		70F9F8C1237AA72B0067B308 /* NSString */ = {

@@ -408,7 +408,6 @@
                               debate:allowpostdebate
                     allowspecialonly:allowspecialonly
                            allowpost:allowpost];
-        
     } else {
         //        [self.selectView setPostType:@"0" andActivity:@"0" andDebate:@"0" andAllowspecialonly:@"0" andAllowpost:@"0"];
     }
