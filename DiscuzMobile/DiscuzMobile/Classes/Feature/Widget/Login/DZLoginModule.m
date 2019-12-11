@@ -17,7 +17,7 @@ NSString * const CookieValue = @"COOKIEVALU";
 
 + (void)loginAnylyeData:(DZLoginResModel *)resModel andView:(UIView *)view  andHandle:(void(^)(void))handle {
   
-    if (![resModel.Message.messageval containsString:@"succeed"]) {
+    if (resModel.Message && !resModel.Message.isSuccessed) {
         [MBProgressHUD showInfo:resModel.Message.messagestr];
         return;
     }

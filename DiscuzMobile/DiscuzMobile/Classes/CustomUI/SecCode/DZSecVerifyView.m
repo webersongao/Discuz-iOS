@@ -24,7 +24,7 @@
     _type = type;
     static NSInteger downYan_count = 0;
     KWEAKSELF
-    [DZForumTool DZ_DownSeccode:type success:^(DZSecAuthModel *authModel) {
+    [DZForumTool DZ_DownAuthSeccode:type success:^(DZSecAuthModel *authModel) {
         downYan_count = 0;
         weakSelf.secureData = authModel;
         if (authModel) {

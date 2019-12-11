@@ -177,7 +177,6 @@ NSString * const debugPassword = @"debugPassword";
                 }];
                 [DZMobileCtrl showAlertError:resModel.Message.messagestr];
             }else{
-                
                 [self updateUserResInfo:resModel];
 #if DEBUG
                 [self saveAccount];

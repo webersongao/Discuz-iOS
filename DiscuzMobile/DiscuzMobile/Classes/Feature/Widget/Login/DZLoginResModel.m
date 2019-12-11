@@ -18,4 +18,8 @@
 
 @implementation DZLoginResModel
 
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"Variables" : [DZUserModel class]};
+}
+
 @end

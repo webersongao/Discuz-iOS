@@ -29,7 +29,7 @@ typedef enum : NSUInteger {
 + (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure;
 
 // 刷新验证码 验证问题
-+ (void)DZ_DownSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure;
++ (void)DZ_DownAuthSeccode:(NSString *)type success:(void(^)(DZSecAuthModel *authModel))success failure:(void(^)(NSError *error))failure;
 
 
 @end
