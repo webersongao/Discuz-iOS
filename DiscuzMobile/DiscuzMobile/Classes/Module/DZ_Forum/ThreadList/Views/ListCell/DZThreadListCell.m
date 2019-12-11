@@ -27,23 +27,22 @@
     [self.desLab addSubview:self.typeIcon];
 }
 
--(void)setListInfo:(DZThreadListModel *)listInfo{
-    [super setListInfo:listInfo];
+-(void)updateListCell:(DZThreadListModel *)cellModel{
+    [super updateListCell:cellModel];
     
-    if (![listInfo isSpecialThread]) {
+    if (![cellModel isSpecialThread]) {
         self.typeIcon.hidden = YES;
     } else {
         self.typeIcon.hidden = NO;
         self.typeIcon.frame = CGRectMake(0, 2, 16, 16);
-        if ([listInfo.special isEqualToString:@"1"]) {
+        if ([cellModel.special isEqualToString:@"1"]) {
             self.typeIcon.image = [UIImage imageNamed:@"votesmall"];
-        } else if ([listInfo.special isEqualToString:@"4"]) {
+        } else if ([cellModel.special isEqualToString:@"4"]) {
             self.typeIcon.image = [UIImage imageNamed:@"activitysmall"];
-        } else if ([listInfo.special isEqualToString:@"5"]) {
+        } else if ([cellModel.special isEqualToString:@"5"]) {
             self.typeIcon.image = [UIImage imageNamed:@"debatesmall"];
         }
     }
-    
 }
 
 - (UIImageView *)typeIcon {

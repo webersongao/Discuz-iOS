@@ -157,76 +157,76 @@
     }];
 }
 
--(void)setListInfo:(DZThreadListModel *)listInfo{
+- (void)updateListCell:(DZThreadListModel *)cellModel{
     
-    _listInfo = listInfo;
+    _listInfo = cellModel;
     
     self.tipIcon.hidden = NO;
     NSString *gradestr = @"";
     
-    if ([DataCheck isValidString:listInfo.grouptitle]) {
-        gradestr = [NSString stringWithFormat:@" %@ ",listInfo.grouptitle];
-        if ([listInfo.grouptitle integerValue] > 0) {
-            gradestr = [NSString stringWithFormat:@" Lv%@ ",listInfo.grouptitle];
+    if ([DataCheck isValidString:cellModel.grouptitle]) {
+        gradestr = [NSString stringWithFormat:@" %@ ",cellModel.grouptitle];
+        if ([cellModel.grouptitle integerValue] > 0) {
+            gradestr = [NSString stringWithFormat:@" Lv%@ ",cellModel.grouptitle];
         }
     }
     
-    if ([listInfo.digest isEqualToString:@"1"] || [listInfo.digest isEqualToString:@"2"] || [listInfo.digest isEqualToString:@"3"]) {
+    if ([cellModel.digest isEqualToString:@"1"] || [cellModel.digest isEqualToString:@"2"] || [cellModel.digest isEqualToString:@"3"]) {
         self.tipIcon.image = [UIImage imageNamed:@"精华"];
-    } else if ([listInfo.digest isEqualToString:@"0"]) {
+    } else if ([cellModel.digest isEqualToString:@"0"]) {
         self.tipIcon.hidden = YES;
     }
     
-    if ([DataCheck isValidDict:listInfo.forumnames]) {
-        self.tipLab.text = [NSString stringWithFormat:@"#%@",[listInfo.forumnames objectForKey:@"name"]];
+    if ([DataCheck isValidDict:cellModel.forumnames]) {
+        self.tipLab.text = [NSString stringWithFormat:@"#%@",[cellModel.forumnames objectForKey:@"name"]];
     }
     
-    self.nameLab.text = listInfo.author;
+    self.nameLab.text = cellModel.author;
     self.grade.text = gradestr;
     
-    NSString *subjectStr = listInfo.useSubject;
-    if ([listInfo isSpecialThread]) {
+    NSString *subjectStr = cellModel.useSubject;
+    if ([cellModel isSpecialThread]) {
         NSString *spaceCharater = @"    ";
         
-        if ([DataCheck isValidString:listInfo.typeName]) {
+        if ([DataCheck isValidString:cellModel.typeName]) {
             NSMutableAttributedString *describe = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",subjectStr]];
-            NSRange typeRange = NSMakeRange(0, listInfo.typeName.length + 2);
+            NSRange typeRange = NSMakeRange(0, cellModel.typeName.length + 2);
             if ([subjectStr hasPrefix:spaceCharater]) {
-                typeRange = NSMakeRange(spaceCharater.length, listInfo.typeName.length + 2);
+                typeRange = NSMakeRange(spaceCharater.length, cellModel.typeName.length + 2);
             }
             [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
             self.desLab.attributedText = describe;
         } else {
-            self.desLab.text = listInfo.useSubject;
+            self.desLab.text = cellModel.useSubject;
         }
-    } else if ([DataCheck isValidString:listInfo.typeName]) {
+    } else if ([DataCheck isValidString:cellModel.typeName]) {
         NSMutableAttributedString *describe = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",subjectStr]];
-        NSRange typeRange = NSMakeRange(0, listInfo.typeName.length + 2);
+        NSRange typeRange = NSMakeRange(0, cellModel.typeName.length + 2);
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
         self.desLab.attributedText = describe;
         
     } else {
-        self.desLab.text = listInfo.useSubject;
+        self.desLab.text = cellModel.useSubject;
     }
     
-    self.messageLab.text = listInfo.message;
-    self.datelineLab.text = listInfo.dateline;
-    self.viewsLab.textLab.text = listInfo.views;
+    self.messageLab.text = cellModel.message;
+    self.datelineLab.text = cellModel.dateline;
+    self.viewsLab.textLab.text = cellModel.views;
     self.viewsLab.iconV.image = [UIImage imageNamed:@"list_see"];
-    self.repliesLab.textLab.text = listInfo.replies;
+    self.repliesLab.textLab.text = cellModel.replies;
     self.repliesLab.iconV.image = [UIImage imageNamed:@"list_message"];
     
-    self.priceLab.textLab.text = listInfo.recommend_add;
+    self.priceLab.textLab.text = cellModel.recommend_add;
     
     self.priceLab.iconV.image = [UIImage imageNamed:@"list_zan"];
-    if ([listInfo.recommend isEqualToString:@"1"]) {
+    if ([cellModel.recommend isEqualToString:@"1"]) {
         [self setPriceSelected];
     }
     
     UITapGestureRecognizer *recommendGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recommendAction:)];
     [self.priceLab addGestureRecognizer:recommendGes];
     if (![[DZMobileCtrl sharedCtrl] isGraphFree]) {
-        [self.headV sd_setImageWithURL:[NSURL URLWithString:listInfo.avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
+        [self.headV sd_setImageWithURL:[NSURL URLWithString:cellModel.avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
     }
     
     if ([DataCheck isValidString:self.messageLab.text]) {
@@ -248,7 +248,7 @@
         [iv removeFromSuperview];
     }
     
-    NSInteger count = (listInfo.imglist.count > 3)?3:listInfo.imglist.count;
+    NSInteger count = (cellModel.imglist.count > 3)?3:cellModel.imglist.count;
     
     if (count > 0 && ![[DZMobileCtrl sharedCtrl] isGraphFree]) { // 有附件图片的, 有图模式的
         CGFloat picWidth = (KScreenWidth - 30 - 20) / 3;
@@ -265,12 +265,12 @@
             //            [imageV sd_setIndicatorStyle:UIActivityIndicatorViewStyleGray];
             [self.imageBgV addSubview:imageV];
             
-            if ([DataCheck isValidString:listInfo.imglist[i]]) {
-                NSString *imageSrc = listInfo.imglist[i];
+            if ([DataCheck isValidString:cellModel.imglist[i]]) {
+                NSString *imageSrc = cellModel.imglist[i];
                 imageSrc = [imageSrc makeDomain];
                 [imageV sd_setImageWithURL:[NSURL URLWithString:imageSrc]placeholderImage:[UIImage imageNamed:@"wutu"] options:SDWebImageRetryFailed];
-            } else if ([DataCheck isValidDict:listInfo.imglist[i]]) {
-                NSDictionary *imgDic = listInfo.imglist[i];
+            } else if ([DataCheck isValidDict:cellModel.imglist[i]]) {
+                NSDictionary *imgDic = cellModel.imglist[i];
                 NSString *imageSrc = [imgDic objectForKey:@"src"];
                 imageSrc = [imageSrc makeDomain];
                 [imageV sd_setImageWithURL:[NSURL URLWithString:imageSrc] placeholderImage:[UIImage imageNamed:@"wutu"] options:SDWebImageRetryFailed];
@@ -361,7 +361,7 @@
 }
 
 - (CGFloat)caculateCellHeight:(DZThreadListModel *)info {
-    self.listInfo = info;
+    _listInfo = info;
     return [self cellHeight];
 }
 
