@@ -174,7 +174,7 @@ description 格式如 @"1.xxxxxx\n2.xxxxxx"
 - (void)updateVersion
 {
     NSString *str = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/id%@?mt=8", DZAPPID];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:nil completionHandler:nil];
 }
 
 /** 取消按钮点击事件 */
