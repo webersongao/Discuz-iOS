@@ -8,11 +8,5 @@
 
 #import "DZBaseTableViewController.h"
 
-typedef NS_ENUM(NSUInteger, searchPostionType) {
-    searchPostionTypeTabbar,
-    searchPostionTypeNext,
-};
-
 @interface DZSearchController : DZBaseTableViewController
-@property (nonatomic, assign) searchPostionType type;
 @end

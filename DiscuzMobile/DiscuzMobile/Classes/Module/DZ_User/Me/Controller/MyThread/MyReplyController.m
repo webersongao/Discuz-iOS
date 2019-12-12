@@ -72,7 +72,7 @@
     if (cell == nil) {
         cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
     }
-    DZThreeadItemModel *itemModel = [self.dataSourceArr objectAtIndex:indexPath.row];
+    DZThreeadItemModel *itemModel = self.dataSourceArr[indexPath.row];
     
     [cell updateSubjectCell:itemModel];
     
@@ -82,8 +82,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString * tidStr = [[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"tid"];
-    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tidStr];
+    DZThreeadItemModel *itemModel = self.dataSourceArr[indexPath.row];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:itemModel.tid];
 }
 
 - (void)downLoadData {

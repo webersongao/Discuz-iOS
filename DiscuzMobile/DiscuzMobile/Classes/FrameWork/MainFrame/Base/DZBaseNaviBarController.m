@@ -67,19 +67,6 @@
     self.dz_NavigationBar.hidden = dz_HideNaviBar;
 }
 
-- (void)dz_HiddenNavigationBarAndShowBackBtn:(BOOL)isShow {
-    
-    self.dz_NavigationBar.hidden = YES;
-    if (isShow) {
-        DZNavItemButton *backBtn = [[DZNavItemButton alloc] initWithFrame:CGRectMake(8, KStatusBarHeight, 44, 44)];
-        backBtn.isLeft = YES;
-        [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateNormal];
-        [backBtn setImage:[UIImage imageNamed:@"reader_naviBack"] forState:UIControlStateHighlighted];
-        [backBtn addTarget:self action:@selector(p_ClickBackBtn) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:backBtn];
-    }
-}
-
 - (void)p_ClickBackBtn {
     
     [self.navigationController popViewControllerAnimated:YES];

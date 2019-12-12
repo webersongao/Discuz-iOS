@@ -35,6 +35,7 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
+    self.tableView.frame = KView_OutNavi_Bounds;
     [self.view addSubview:self.tableView];
     self.userInfoView = [[CenterUserInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 140)];
     self.tableView.tableHeaderView = self.userInfoView;
@@ -67,10 +68,11 @@
     [self initData];
     
     KWEAKSELF
+    [self.HUD showLoadingMessag:@"获取信息" toView:self.view];
     [DZUserNetTool DZ_UserProfileFromServer:NO Uid:self.authorid userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
         [weakSelf.HUD hide];
         [weakSelf.tableView.mj_header endRefreshing];
-        [weakSelf.HUD showLoadingMessag:@"获取信息" toView:self.view];
+        [self.HUD hideAnimated:YES];
         
         if (errorStr.length) {
             [DZMobileCtrl showAlertInfo:errorStr];

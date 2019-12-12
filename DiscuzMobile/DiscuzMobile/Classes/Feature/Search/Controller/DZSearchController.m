@@ -23,23 +23,12 @@
 
 @implementation DZSearchController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) { // 设置默认
-        self.type = searchPostionTypeNext;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
     [self.view addSubview:self.tableView];
     self.tableView.frame = KView_OutNavi_Bounds;
-    if (self.type == searchPostionTypeNext) {
-        [self.searchView.searchBar becomeFirstResponder];
-    }
+    [self.searchView.searchBar becomeFirstResponder];
     
     KWEAKSELF;
     self.historyVC.SearchClick = ^(NSString *searchText) {
@@ -56,18 +45,10 @@
 #pragma mark - 布局
 - (void)setupViews {
     
-    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
-    [self.dz_NavigationItem setHidesBackButton:YES];
-    
-    self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 30)];
+    self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-(45+15), 30)];
     self.searchView.searchBar.delegate = self;
-    self.dz_NavigationItem.titleView = self.searchView;
-    [self.searchView.cancelBtn addTarget:self action:@selector(rightBarBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    if (self.type == searchPostionTypeTabbar) {
-        self.searchView.searchBar.frame = CGRectMake(5, 1, KScreenWidth - 30, 28);
-        [self.searchView.cancelBtn setHidden:YES];
-    }
-    
+    [self dz_SetNavigationTitleView:self.searchView];
+    [self.searchView.rightBtn addTarget:self action:@selector(rightBarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.tableView registerClass:[DZSearchListCell class] forCellReuseIdentifier:[DZSearchListCell getReuseId]];
     self.tableView.backgroundColor = [UIColor whiteColor];
@@ -80,12 +61,19 @@
     
 }
 
-- (void)rightBarBtnClick {
-    [self.searchView.searchBar resignFirstResponder];
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)rightBarBtnClick:(UIButton *)button {
+    button.selected = !button.isSelected;
+    if (button.selected) {
+        [self searchBarEndActive];
+        [self clickSearch:self.searchView.searchBar.text];
+    }else{
+        [self.searchView.searchBar resignFirstResponder];
+    }
 }
 
--(void)leftBarBtnClick{}
+-(void)leftBarBtnClick{
+    [super leftBarBtnClick];
+}
 
 
 #pragma mark - UITableDataSource
@@ -173,11 +161,13 @@
         return;
     }
     
-    NSString *searchText = searchBar.text;
-    [self clickSearch:searchText];
+    [self clickSearch:searchBar.text];
 }
 
 - (void)clickSearch:(NSString *)searchText {
+    if (!searchText.length) {
+        return;
+    }
     self.historyVC.view.hidden = YES;
     [self.historyVC saveSearchHistory:searchText];
     self.historyVC.view.hidden = YES;
@@ -195,7 +185,7 @@
 
 
 - (void)requestSearchData {
-    if (![DataCheck isValidArray:self.dataSourceArr]) {
+    if (!self.dataSourceArr.count) {
         [self.HUD showLoadingMessag:@"搜索中" toView:self.view];
     }
     [DZSearchNetTool DZ_SearchForumWithKey:self.searchView.searchBar.text Page:self.page completion:^(DZSearchVarModel *varModel, NSError *error) {

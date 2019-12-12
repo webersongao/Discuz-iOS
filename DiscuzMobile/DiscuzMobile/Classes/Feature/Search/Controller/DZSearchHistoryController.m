@@ -43,6 +43,8 @@
 #pragma mark - lifeCyle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.frame = KView_OutNavi_Bounds;
+    self.tableView.frame = self.view.bounds;
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.hotSearches = @[@"discuz",@"App",@"微社区",@"小程序",@"定制开发",@"应用中心",@"插件"].mutableCopy;
     self.hotSearchTags = [self addAndLayoutTagsWithTagsContentView:self.hotSearchView tagTexts:self.hotSearches].mutableCopy;
