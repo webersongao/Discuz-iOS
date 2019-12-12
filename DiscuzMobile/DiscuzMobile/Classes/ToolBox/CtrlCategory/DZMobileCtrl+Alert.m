@@ -10,7 +10,6 @@
 
 @implementation DZMobileCtrl (Alert)
 
-
 + (void)showAlertError:(NSString *)error{
     NSString * message = checkNull(error);
     if (message.length) {
