@@ -7,6 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2700AF161DEBE25300C50D0C /* DZShareCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2700AF151DEBE25300C50D0C /* DZShareCenter.m */; };
+		270C3E721F00F45D000F3E42 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 270C3E711F00F45D000F3E42 /* reset.css */; };
+		270C3E741F00F49D000F3E42 /* public.js in Resources */ = {isa = PBXBuildFile; fileRef = 270C3E731F00F49D000F3E42 /* public.js */; };
+		270FF4071E8E27A000FC8613 /* JTSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270FF4061E8E27A000FC8613 /* JTSegmentView.m */; };
+		271161B91F3C127700791B68 /* complain.png in Resources */ = {isa = PBXBuildFile; fileRef = 271161B81F3C127700791B68 /* complain.png */; };
+		2716AF701DDD932600F580AC /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716AF6F1DDD932600F580AC /* ZHPickView.m */; };
+		271C39CB1F1F4CAE008EB8C3 /* load_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 271C39CA1F1F4CAE008EB8C3 /* load_error.png */; };
+		2721536A1F01F585007391C5 /* ios_debate.js in Resources */ = {isa = PBXBuildFile; fileRef = 272153691F01F585007391C5 /* ios_debate.js */; };
+		27234C9E1EA499DB008A8B13 /* EmptyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27234C9D1EA499DB008A8B13 /* EmptyAlertView.m */; };
+		2729D8BA1F0E296F0019F9E4 /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2729D8B91F0E296F0019F9E4 /* vs.png */; };
+		2732E7A71DDD623600B2A57D /* DZFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2732E7A61DDD623600B2A57D /* DZFileManager.m */; };
+		2735821A1ECBEB0B005870FA /* 苹方 细体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 273582191ECBEB0B005870FA /* 苹方 细体.ttf */; };
+		2738C84A1F03B0D30016CF05 /* DZSecVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738C8491F03B0D30016CF05 /* DZSecVerifyView.m */; };
+		273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CCEFE1DD98E7100116331 /* DataCheck.m */; };
+		273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F30251ECE8AB900C78A6C /* DZDatabaseHandle.m */; };
+		273F302C1ECE92EA00C78A6C /* DZArchieverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F302B1ECE92EA00C78A6C /* DZArchieverTool.m */; };
+		27473AC41DD30C380024375F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AA01DD30C380024375F /* AppDelegate.m */; };
+		27473ACD1DD30C380024375F /* DZFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473ABD1DD30C380024375F /* DZFontSize.m */; };
+		27473ACF1DD30C380024375F /* DZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AC11DD30C380024375F /* DZDevice.m */; };
+		274C95161EE647C300163106 /* AttachmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C95151EE647C300163106 /* AttachmentBar.m */; };
+		274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */; };
+		275BABC71F346EE100DB804B /* AddressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC61F346EE100DB804B /* AddressSelectView.m */; };
+		275BABCA1F346EF500DB804B /* addressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC91F346EF500DB804B /* addressModel.m */; };
+		275BABCC1F346F0100DB804B /* area.json in Resources */ = {isa = PBXBuildFile; fileRef = 275BABCB1F346F0100DB804B /* area.json */; };
+		276FA2C81F2B256100F8924B /* discuss.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2C71F2B256100F8924B /* discuss.png */; };
+		276FA2CC1F2B2E7700F8924B /* praises.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2CB1F2B2E7700F8924B /* praises.png */; };
+		276FA2CE1F2B308F00F8924B /* praise.png in Resources */ = {isa = PBXBuildFile; fileRef = 276FA2CD1F2B308F00F8924B /* praise.png */; };
+		27714E4F1DDC47F8008CDC7A /* Verify_question.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E491DDC47F8008CDC7A /* Verify_question.plist */; };
+		27714E501DDC47F8008CDC7A /* Activity_type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27714E4A1DDC47F8008CDC7A /* Activity_type.plist */; };
 		27714E9C1DDC4A0C008CDC7A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9B1DDC4A0C008CDC7A /* libsqlite3.0.tbd */; };
 		27714E9E1DDC4A16008CDC7A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9D1DDC4A16008CDC7A /* libc++.tbd */; };
 		27714EA01DDC4A23008CDC7A /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27714E9F1DDC4A23008CDC7A /* libz.1.2.5.tbd */; };
