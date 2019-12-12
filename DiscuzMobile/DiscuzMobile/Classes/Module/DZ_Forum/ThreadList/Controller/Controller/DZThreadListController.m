@@ -18,6 +18,10 @@
 #import "VerifyThreadRemindView.h"
 
 @interface DZThreadListController ()
+
+@property (nonatomic, copy) NSString *fid;
+@property (nonatomic, assign) NSInteger order;
+
 @property (nonatomic, strong) VerifyThreadRemindView *verifyThreadRemindView;
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
@@ -28,10 +32,12 @@
 
 @implementation DZThreadListController
 
-- (instancetype)initWithType:(DZ_ListType)listType
+- (instancetype)initWithType:(DZ_ListType)listType fid:(NSString *)fid order:(NSInteger)order
 {
     self = [super init];
     if (self) {
+        self.fid = fid;
+        self.order = order;
         self.listType = listType;
     }
     return self;

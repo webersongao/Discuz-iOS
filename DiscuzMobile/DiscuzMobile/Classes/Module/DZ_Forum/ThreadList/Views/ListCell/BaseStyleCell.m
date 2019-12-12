@@ -191,7 +191,7 @@
     }
     
     if ([DataCheck isValidDict:listInfo.forumnames]) {
-        self.tipLab.text = [NSString stringWithFormat:@"#%@",[listInfo.forumnames objectForKey:@"name"]];
+        self.tipLab.text = [NSString stringWithFormat:@"#%@",[listInfo.forumnames stringForKey:@"name"]];
     }
     
     self.nameLab.text = listInfo.author;

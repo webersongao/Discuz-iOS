@@ -1,24 +1,24 @@
 //
-//  DZFastPlaceController.m
+//  DZFastPostController.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/18.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZFastPlaceController.h"
-#import "FastPostController.h"
+#import "DZFastPostController.h"
+#import "DZPostSelectController.h"
 #import "UIImageView+FindHairline.h"
 
-@interface DZFastPlaceController ()
+@interface DZFastPostController ()
 
 @property (nonatomic, strong) UIImageView *navBarHairlineImageView;
-@property (nonatomic, strong) FastPostController *listVc;
+@property (nonatomic, strong) DZPostSelectController *listVc;
 @property (nonatomic, strong) UINavigationController *navVC;
 
 @end
 
-@implementation DZFastPlaceController
+@implementation DZFastPostController
 
 - (void)viewWillDisappear:(BOOL)animated {
     _navBarHairlineImageView.hidden = NO;
@@ -44,9 +44,9 @@
     self.listVc.tabbarHeight = self.tabbarHeight;
 }
 
-- (FastPostController *)listVc {
+- (DZPostSelectController *)listVc {
     if (!_listVc) {
-        _listVc = [[FastPostController alloc] init];
+        _listVc = [[DZPostSelectController alloc] init];
     }
     return _listVc;
 }

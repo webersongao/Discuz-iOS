@@ -1,5 +1,5 @@
 //
-//  DZFastPlaceController.h
+//  DZFastPostController.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/18.
@@ -8,6 +8,6 @@
 
 #import "DZBaseViewController.h"
 
-@interface DZFastPlaceController : DZBaseViewController
+@interface DZFastPostController : DZBaseViewController
 
 @end

@@ -9,6 +9,11 @@
 #import "DropTipView.h"
 #import "UIButton+EnlargeEdge.h"
 
+@interface DropTipView ()
+
+
+@end
+
 @implementation DropTipView
 
 - (instancetype)initWithFrame:(CGRect)frame

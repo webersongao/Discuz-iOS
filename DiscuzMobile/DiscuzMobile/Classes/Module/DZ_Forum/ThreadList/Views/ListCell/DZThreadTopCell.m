@@ -47,7 +47,6 @@
 }
 
 - (CGFloat)cellHeight {
-    
     return CGRectGetMaxY(self.titleLabel.frame) + 5;
 }
 

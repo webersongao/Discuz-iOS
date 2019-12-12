@@ -1,5 +1,5 @@
 //
-//  FastPostController.h
+//  DZPostSelectController.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/17.
@@ -8,6 +8,6 @@
 
 #import "DZBaseTableViewController.h"
 
-@interface FastPostController : DZBaseTableViewController
+@interface DZPostSelectController : DZBaseTableViewController
 @property (nonatomic, strong) UITableView *leftTable;
 @end

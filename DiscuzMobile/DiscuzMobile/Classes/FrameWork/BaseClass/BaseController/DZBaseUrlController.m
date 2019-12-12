@@ -17,7 +17,6 @@
 @implementation DZBaseUrlController
 
 - (void)dealloc {
-    DLog(@"urlController销毁了");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DZ_STATUSBARTAP_Notify object:nil];
     [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@""]]];
     [self cleanWebChache];
@@ -45,6 +44,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:webView.request.URL];
@@ -84,7 +84,7 @@
 
 - (UIWebView *)webView {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height)];
+        _webView = [[UIWebView alloc] initWithFrame:KView_OutNavi_Bounds];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.userInteractionEnabled = YES;
         [_webView setOpaque:NO];
