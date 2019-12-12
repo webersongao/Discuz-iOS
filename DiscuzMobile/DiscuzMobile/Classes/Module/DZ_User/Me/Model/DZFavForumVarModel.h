@@ -1,5 +1,5 @@
 //
-//  DZCollectVarModel.h
+//  DZFavForumVarModel.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/12.
@@ -8,12 +8,12 @@
 
 #import "DZUserModel.h"
 
-@interface DZCollectItem : NSObject
+@interface DZFavForItem : NSObject
 
 
 @end
 
-@interface DZCollectVarModel : DZUserModel
+@interface DZFavForumVarModel : DZUserModel
 
 @property (nonatomic, strong) NSArray *list;  //!< 属性注释
 @property (nonatomic, assign) NSInteger count;  //!< 属性注释

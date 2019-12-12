@@ -111,7 +111,7 @@
 
 -(void)downLoadFavForumData {
     
-    [DZUserNetTool DZ_MyCollectionListWithPage:self.page completion:^(DZCollectVarModel *varModel, NSError *error) {
+    [DZUserNetTool DZ_FavoriteForumListWithPage:self.page completion:^(DZFavForumVarModel *varModel, NSError *error) {
         [self.HUD hideAnimated:YES];
         if (varModel) {
             [self mj_endRefreshing];

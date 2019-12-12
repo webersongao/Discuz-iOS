@@ -197,8 +197,8 @@
 }
 
 
-/// 我的 收藏列表
-+(void)DZ_MyCollectionListWithPage:(NSInteger)Page completion:(void (^)(DZCollectVarModel *varModel, NSError *error))completion{
+/// 我的 收藏板块列表
++(void)DZ_FavoriteForumListWithPage:(NSInteger)Page completion:(void (^)(DZFavForumVarModel *varModel, NSError *error))completion{
     
     if (!completion) {
         return;
@@ -210,7 +210,27 @@
         request.parameters = getDic;
     } success:^(id responseObject, JTLoadType type) {
         NSDictionary *dict = [responseObject objectForKey:@"Variables"];
-        DZCollectVarModel *varModel = [DZCollectVarModel modelWithJSON:dict];
+        DZFavForumVarModel *varModel = [DZFavForumVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
+
+/// 我的 收藏帖子列表
++(void)DZ_FavoriteThreadListWithPage:(NSInteger)Page completion:(void (^)(DZFavThreadVarModel *varModel, NSError *error))completion{
+    
+    if (!completion) {
+        return;
+    }
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *getDic = @{@"page":checkInteger(Page)};
+        request.urlString = DZ_Url_FavoriteThread;
+        request.parameters = getDic;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZFavThreadVarModel *varModel = [DZFavThreadVarModel modelWithJSON:dict];
         completion(varModel,nil);
     } failed:^(NSError *error) {
         completion(nil,error);

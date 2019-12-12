@@ -141,8 +141,9 @@
 		7023CC7223A1DF0000FB7E31 /* DZBaseThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7123A1DF0000FB7E31 /* DZBaseThread.m */; };
 		7023CC7623A21B1500FB7E31 /* DZFriendVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7523A21B1500FB7E31 /* DZFriendVarModel.m */; };
 		7023CC7923A21FF900FB7E31 /* DZMyThreadVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7823A21FF900FB7E31 /* DZMyThreadVarModel.m */; };
-		7023CC7C23A2289C00FB7E31 /* DZCollectVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7B23A2289C00FB7E31 /* DZCollectVarModel.m */; };
+		7023CC7C23A2289C00FB7E31 /* DZFavForumVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7B23A2289C00FB7E31 /* DZFavForumVarModel.m */; };
 		7023CC7F23A22AE600FB7E31 /* DZBindVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7E23A22AE600FB7E31 /* DZBindVarModel.m */; };
+		7023CC8223A22FF600FB7E31 /* DZFavThreadVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC8023A22FF600FB7E31 /* DZFavThreadVarModel.m */; };
 		7028B696238FB1340047800C /* DZThreadReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7028B695238FB1340047800C /* DZThreadReplyModel.m */; };
 		703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C4238237CF71D0046C398 /* iflyMSC.framework */; };
 		703C423B237CF7B40046C398 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C423A237CF7B40046C398 /* CoreLocation.framework */; };
@@ -719,10 +720,12 @@
 		7023CC7523A21B1500FB7E31 /* DZFriendVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZFriendVarModel.m; sourceTree = "<group>"; };
 		7023CC7723A21FF900FB7E31 /* DZMyThreadVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMyThreadVarModel.h; sourceTree = "<group>"; };
 		7023CC7823A21FF900FB7E31 /* DZMyThreadVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZMyThreadVarModel.m; sourceTree = "<group>"; };
-		7023CC7A23A2289C00FB7E31 /* DZCollectVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZCollectVarModel.h; sourceTree = "<group>"; };
-		7023CC7B23A2289C00FB7E31 /* DZCollectVarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZCollectVarModel.m; sourceTree = "<group>"; };
+		7023CC7A23A2289C00FB7E31 /* DZFavForumVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFavForumVarModel.h; sourceTree = "<group>"; };
+		7023CC7B23A2289C00FB7E31 /* DZFavForumVarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFavForumVarModel.m; sourceTree = "<group>"; };
 		7023CC7D23A22AE600FB7E31 /* DZBindVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBindVarModel.h; sourceTree = "<group>"; };
 		7023CC7E23A22AE600FB7E31 /* DZBindVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBindVarModel.m; sourceTree = "<group>"; };
+		7023CC8023A22FF600FB7E31 /* DZFavThreadVarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFavThreadVarModel.m; sourceTree = "<group>"; };
+		7023CC8123A22FF600FB7E31 /* DZFavThreadVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFavThreadVarModel.h; sourceTree = "<group>"; };
 		7028B694238FB1340047800C /* DZThreadReplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZThreadReplyModel.h; sourceTree = "<group>"; };
 		7028B695238FB1340047800C /* DZThreadReplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZThreadReplyModel.m; sourceTree = "<group>"; };
 		703C4232237CF6160046C398 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
@@ -3540,8 +3543,10 @@
 				7023CC7E23A22AE600FB7E31 /* DZBindVarModel.m */,
 				7023CC7423A21B1500FB7E31 /* DZFriendVarModel.h */,
 				7023CC7523A21B1500FB7E31 /* DZFriendVarModel.m */,
-				7023CC7A23A2289C00FB7E31 /* DZCollectVarModel.h */,
-				7023CC7B23A2289C00FB7E31 /* DZCollectVarModel.m */,
+				7023CC8123A22FF600FB7E31 /* DZFavThreadVarModel.h */,
+				7023CC8023A22FF600FB7E31 /* DZFavThreadVarModel.m */,
+				7023CC7A23A2289C00FB7E31 /* DZFavForumVarModel.h */,
+				7023CC7B23A2289C00FB7E31 /* DZFavForumVarModel.m */,
 				7023CC7723A21FF900FB7E31 /* DZMyThreadVarModel.h */,
 				7023CC7823A21FF900FB7E31 /* DZMyThreadVarModel.m */,
 			);
@@ -4340,7 +4345,7 @@
 				70F9F8D8237AA72B0067B308 /* PaletteSwatch.m in Sources */,
 				7062129D237936C900130B9D /* DZActiveTimeCell.m in Sources */,
 				94B1067422F1678700D40827 /* DZUpdateAlertView.m in Sources */,
-				7023CC7C23A2289C00FB7E31 /* DZCollectVarModel.m in Sources */,
+				7023CC7C23A2289C00FB7E31 /* DZFavForumVarModel.m in Sources */,
 				70DFD7AB237A95DE00A13F0F /* DZBaseNaviBarController.m in Sources */,
 				7065AE7823868783009B6DA7 /* PRNetWorkErrorView.m in Sources */,
 				7062129B237936C900130B9D /* DZActiveDetailCell.m in Sources */,
@@ -4564,6 +4569,7 @@
 				706212D4237936C900130B9D /* ThreadModel.m in Sources */,
 				7002A3632383D8CD00BC0C61 /* DZSendMsgViewController.m in Sources */,
 				27D7E0A01E07829E00A933D5 /* XinGeCenter.m in Sources */,
+				7023CC8223A22FF600FB7E31 /* DZFavThreadVarModel.m in Sources */,
 				2732E7A71DDD623600B2A57D /* DZFileManager.m in Sources */,
 				7023CC6823A1DAC800FB7E31 /* DZSearchListCell.m in Sources */,
 				706212CE237936C900130B9D /* DZActivityEditController.m in Sources */,

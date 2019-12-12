@@ -8,7 +8,6 @@
 
 #import "DZBaseViewController.h"
 #import "DZShareCenter.h"
-#import "DZLoginModel.h"
 #import "DZSecVerifyView.h"
 
 typedef void(^RefreshBlock)(void);
