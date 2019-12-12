@@ -46,6 +46,7 @@ NSString * const domainName = @"name";
         self.dataSourceArr = domainArray.mutableCopy;
     }
     [self.view addSubview:self.tableView];
+    self.tableView.frame = KView_OutNavi_Bounds;
 }
 
 - (void)rightBarBtnClick {

@@ -63,11 +63,11 @@
     
     self.canScroll = YES;
     
-    self.tableView = [[DZForumContainListView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView = [[DZForumContainListView alloc] initWithFrame:KView_OutNavi_Bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     
     self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, self.infoView.height)];
@@ -131,7 +131,6 @@
     // 0.设置提醒文字
     if (self.forumInfo.threadmodcount) {
         self.tipView.tipLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
-        
         CGRect orrect = self.tipView.frame;
         [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             self.tipView.tipAnimatefinsh = NO;
@@ -223,7 +222,7 @@
         [MBProgressHUD showInfo:@"您当前不能发帖"];
         return;
     } else if (self.selectView.typeArray.count == 1) {
-        PostTypeModel *model = self.selectView.typeArray[0];
+        PostTypeModel *model = self.selectView.typeArray.firstObject;
         [self switchTypeTopost:model.type];
     } else {
         [self.selectView show];
@@ -508,7 +507,7 @@
 
 - (DropTipView *)tipView {
     if (!_tipView) {
-        _tipView = [[DropTipView alloc] initWithFrame:CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, 44)];
+        _tipView = [[DropTipView alloc] initWithFrame:CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, KNavi_ContainStatusBar_Height)];
         _tipView.tipAnimatefinsh = YES;
     }
     return _tipView;
