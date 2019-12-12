@@ -10,7 +10,6 @@
 
 @implementation DZCustomSearchBarView
 
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -20,21 +19,31 @@
 }
 
 - (void)setupViews {
-    [self addSubview:self.cancelBtn];
-    self.searchBar = [[DZSearchBar alloc] initWithFrame:CGRectMake(5, 1, CGRectGetWidth(self.frame) - kCellDefaultHeight, CGRectGetHeight(self.frame) - 2)];
+    
+    [self addSubview:self.rightBtn];
     [self addSubview:self.searchBar];
     
-    self.cancelBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - 60, 0, 60, CGRectGetHeight(self.frame));
 }
 
-- (UIButton *)cancelBtn {
-    if (_cancelBtn == nil) {
-        _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_cancelBtn setTitleColor:K_Color_MainTitle forState:UIControlStateNormal];
-        _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-        [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+-(DZSearchBar *)searchBar{
+    if (_searchBar == nil) {
+        _searchBar = [[DZSearchBar alloc] initWithFrame:CGRectMake(5, 1, CGRectGetWidth(self.frame) - kCellDefaultHeight, CGRectGetHeight(self.frame) - 2)];
     }
-    return _cancelBtn;
+    return _searchBar;
 }
+
+- (UIButton *)rightBtn {
+    if (_rightBtn == nil) {
+        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _rightBtn.frame = CGRectMake(CGRectGetWidth(self.frame) - 60, 0, 60, CGRectGetHeight(self.frame));
+        [_rightBtn setTitleColor:K_Color_MainTitle forState:UIControlStateNormal];
+        _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+        [_rightBtn setTitle:@"搜索" forState:UIControlStateNormal];
+        [_rightBtn setTitle:@"取消" forState:UIControlStateSelected];
+    }
+    return _rightBtn;
+}
+
+
 
 @end

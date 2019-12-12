@@ -16,9 +16,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self downLoadData];
     self.title = @"我的好友";
     KWEAKSELF;
+    self.tableView.mj_footer.hidden = YES;
+    [self.view addSubview:self.tableView];
     self.tableView.frame = KView_OutNavi_Bounds;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
@@ -28,9 +29,7 @@
         weakSelf.page ++;
         [weakSelf refreshData];
     }];
-    self.tableView.mj_footer.hidden = YES;
-    [self.view addSubview:self.tableView];
-    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
+    [self downLoadData];
 }
 
 - (void)refreshData {
@@ -56,48 +55,40 @@
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
     
-    NSDictionary *dic;
-    if ([DataCheck isValidArray:self.dataSourceArr]) {
-        dic = [self.dataSourceArr objectAtIndex:indexPath.row];
-    }
-    [cell.headV sd_setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"avatar"]] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
-    cell.nameLab.text = [dic objectForKey:@"username"];
+    DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:indexPath.row];
+    
+    [cell.headV sd_setImageWithURL:[NSURL URLWithString:cellItem.avatar] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRetryFailed];
+    cell.nameLab.text = cellItem.username;
     cell.sendBtn.tag = indexPath.row;
     [cell.sendBtn addTarget:self action:@selector(sendMessageBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 - (void)sendMessageBtnClick:(UIButton *)btn {
-    NSDictionary *dic;
-    if ([DataCheck isValidArray:self.dataSourceArr]) {
-        dic = [self.dataSourceArr objectAtIndex:btn.tag];
-    }
     
-    [[DZMobileCtrl sharedCtrl] PushToMsgChatController:[dic stringForKey:@"uid"] name:[dic stringForKey:@"username"]];
+    DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:btn.tag];
+    
+    [[DZMobileCtrl sharedCtrl] PushToMsgChatController:cellItem.uid name:cellItem.username];
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *dic;
-    if ([DataCheck isValidArray:self.dataSourceArr]) {
-        dic = [self.dataSourceArr objectAtIndex:indexPath.row];
-    }
+    DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:indexPath.row];
+    
     DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
-    ovc.authorid = [dic objectForKey:@"uid"];
+    ovc.authorid = cellItem.uid;
     [self showViewController:ovc sender:nil];
     
 }
 
 - (void)downLoadData {
     
-    
+    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [DZUserNetTool DZ_FriendListWithUid:nil Page:self.page completion:^(DZFriendVarModel *varModel, NSError *error) {
         [self.HUD hideAnimated:YES];
         if (varModel) {
-            
             [self mj_endRefreshing];
-            
             if (varModel.list.count) {
                 if (self.page == 1) {
                     self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.list];

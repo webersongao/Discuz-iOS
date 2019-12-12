@@ -37,7 +37,7 @@
     [self.detailBtn setTitle:@"解绑" forState:UIControlStateSelected];
 }
 
-- (void)setData:(DZBindUser *)model {
+- (void)updateCellData:(DZBindUser *)model {
     if (model.name != nil) {
         self.nameV.iconV.image = [UIImage imageNamed:model.icon];
         NSString *name = model.name;

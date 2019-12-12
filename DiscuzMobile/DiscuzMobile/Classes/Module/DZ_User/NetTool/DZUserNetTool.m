@@ -155,12 +155,12 @@
 /// 好友列表
 +(void)DZ_FriendListWithUid:(NSString *)uid Page:(NSInteger)Page completion:(void (^)(DZFriendVarModel *varModel, NSError *error))completion{
     
-    if (!uid.length || !completion) {
+    if (/*!uid.length || */ !completion) {
         return;
     }
     
+    NSDictionary *getDic = @{@"uid":checkNull(uid),@"page":checkInteger(Page)};
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *getDic = @{@"uid":uid,@"page":checkInteger(Page)};
         request.urlString = DZ_Url_FriendList;
         request.parameters = getDic;
     } success:^(id responseObject, JTLoadType type) {

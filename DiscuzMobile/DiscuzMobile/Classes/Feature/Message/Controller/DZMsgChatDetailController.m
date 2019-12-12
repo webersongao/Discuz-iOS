@@ -14,10 +14,8 @@
 #import "DZMsgNetTool.h"
 #import "DZOtherUserController.h"
 
+static CGFloat kToolBarH = 50;
 @interface DZMsgChatDetailController ()<UITableViewDelegate,UITableViewDataSource>
-{
-    CGFloat kToolBarH;
-}
 
 @property (nonatomic, strong) UITableView *chatTableView;
 
@@ -47,7 +45,7 @@
  */
 - (void)addChatView {
     self.chatTableView = [[DZBaseTableView alloc] init];
-    self.chatTableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - kToolBarH);
+    self.chatTableView.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height -kToolBarH);
     self.chatTableView.backgroundColor = [UIColor whiteColor];
     self.chatTableView.delegate = self;
     self.chatTableView.dataSource = self;
@@ -68,8 +66,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.username;
-    
-    kToolBarH = 50;
     
     // 加自定义表情键盘必须添加这行代码。
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
@@ -113,9 +109,7 @@
 #pragma mark -  创建表情键盘
 - (EmoticonKeyboard *)emoKeyboard {
     if (_emoKeyboard == nil) {
-        //        CGRect fr = CGRectMake(0, 0, WIDTH, HEIGHT - 67);
-        CGFloat tabbarH = 50;
-        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - tabbarH, KScreenWidth, tabbarH)];
+        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - kToolBarH, KScreenWidth, kToolBarH)];
     }
     return _emoKeyboard;
 }
@@ -162,7 +156,7 @@
     
     if (!self.emoKeyboard.imageboaudIsShow) {
         [UIView animateWithDuration:BShowTime animations:^{
-            self.chatTableView.frame = CGRectMake(0, 0 - self.emoKeyboard.ChangeHeight, self.view.frame.size.width, self.view.frame.size.height - kToolBarH);
+            self.chatTableView.frame = CGRectMake(0, KNavi_ContainStatusBar_Height - self.emoKeyboard.ChangeHeight, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height - kToolBarH);
         }];
     }
 }
@@ -183,7 +177,7 @@
 
 - (void)chatViewScrollAnimation:(NSTimeInterval)duration andOffsetY:(CGFloat)offsetY {
     CGRect frame = self.chatTableView.frame;
-    CGRect rect = CGRectMake(0.0,offsetY,frame.size.width,frame.size.height);
+    CGRect rect = CGRectMake(0,offsetY,frame.size.width,frame.size.height);
     [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
     [UIView setAnimationDuration:duration];
     self.chatTableView.frame = rect;

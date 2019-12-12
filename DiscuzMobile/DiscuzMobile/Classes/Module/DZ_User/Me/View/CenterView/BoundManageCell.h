@@ -15,6 +15,6 @@
 @property (nonatomic, strong) DZHorizontalButton *nameV;
 @property (nonatomic, strong) UIButton *detailBtn;
 
-- (void)setData:(DZBindUser *)model;
+- (void)updateCellData:(DZBindUser *)model;
 
 @end

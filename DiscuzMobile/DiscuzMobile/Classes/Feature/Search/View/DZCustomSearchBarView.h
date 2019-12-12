@@ -11,7 +11,7 @@
 
 @interface DZCustomSearchBarView : UIView
 
+@property (nonatomic, strong) UIButton *rightBtn;
 @property (nonatomic, strong) DZSearchBar *searchBar;
-@property (nonatomic, strong) UIButton *cancelBtn;
 
 @end

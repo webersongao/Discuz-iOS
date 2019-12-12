@@ -29,6 +29,7 @@
     self.dz_NavigationItem.title = @"绑定管理";
     self.userInfoView = [[CenterUserInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 120)];
     [self.view addSubview:self.tableView];
+    self.tableView.frame = KView_OutNavi_Bounds;
     [self.userInfoView.identityLab setHidden:YES];
     self.tableView.tableHeaderView = self.userInfoView;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 80)];
@@ -72,7 +73,7 @@
         [cell.detailBtn addTarget:self action:@selector(boundTapAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     DZBindUser *model = self.dataSourceArr[indexPath.row];
-    [cell setData:model];
+    [cell updateCellData:model];
     
     return cell;
 }

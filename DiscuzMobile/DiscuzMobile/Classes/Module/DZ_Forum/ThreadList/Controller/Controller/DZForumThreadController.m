@@ -129,14 +129,17 @@
         return;
     }
     // 0.设置提醒文字
-    self.tipView.tipLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
-    CGRect orrect = self.tipView.frame;
-    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        self.tipView.tipAnimatefinsh = NO;
-        self.tipView.frame = CGRectMake(0, 0, orrect.size.width, orrect.size.height);
-    } completion:^(BOOL finished) {
-        [self performSelector:@selector(hideTipView) withObject:nil afterDelay:3];
-    }];
+    if (self.forumInfo.threadmodcount) {
+        self.tipView.tipLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
+        
+        CGRect orrect = self.tipView.frame;
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            self.tipView.tipAnimatefinsh = NO;
+            self.tipView.frame = CGRectMake(0, 0, orrect.size.width, orrect.size.height);
+        } completion:^(BOOL finished) {
+            [self performSelector:@selector(hideTipView) withObject:nil afterDelay:3];
+        }];
+    }
 }
 
 - (void)hideTipView {

@@ -32,7 +32,7 @@
 @implementation DZBindVarModel
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"users" : [DZUserModel class]};
+    return @{@"users" : [DZBindUser class]};
 }
 
 @end

@@ -157,7 +157,7 @@
             }
             
             NSString *threadmodcount = self.VarModel.forum.threadmodcount;
-            if ([DataCheck isValidString:threadmodcount] && [threadmodcount integerValue] > 0) {
+            if ([threadmodcount integerValue] > 0) {
                 if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
                     self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",threadmodcount];
                     [self showVerifyRemind];

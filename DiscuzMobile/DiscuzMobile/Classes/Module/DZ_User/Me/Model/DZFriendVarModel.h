@@ -11,6 +11,7 @@
 @interface DZFriendModel : NSObject
 
 @property (nonatomic, copy) NSString *uid;  //!< 属性注释
+@property (nonatomic, copy) NSString *avatar;  //!< 属性注释
 @property (nonatomic, copy) NSString *username;  //!< 属性注释
 
 
