@@ -52,7 +52,7 @@
     self.timeLabel.text = info.dateline;
     self.evaluateLabel.text = [NSString stringWithFormat:@"%@个评论",info.replies];
 }
-- (CGFloat)caculateCellHeight:(DZSearchModel *)info {
+- (CGFloat)caculateSearchCellHeight:(DZSearchModel *)info {
     self.info = info;
     [self layoutIfNeeded];
     return [self cellHeight];

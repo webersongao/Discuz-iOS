@@ -147,7 +147,7 @@
         NSString * titleStr = titleArr[index];
         PRTitleModel *titleModel = [[PRTitleModel alloc] init];
         
-        NSNumber *titleWValue = [WidthDict valueForKey:titleStr];
+        NSNumber *titleWValue = [WidthDict objectForKey:titleStr];
         CGFloat leftMargin = (index == 0) ? kNaviLeftRightMargin : titleMargin;
         CGFloat rightMargin = (index == cateCount - 1) ? kNaviLeftRightMargin : titleMargin;
         CGFloat titleWidth = (titleWValue.floatValue + leftMargin + rightMargin);

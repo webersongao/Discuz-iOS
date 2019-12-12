@@ -8,14 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "DZThreadProperty.h"
+#import "DZBaseThread.h"
 
-@interface DZPostThreadModel : NSObject
+@interface DZPostThreadModel : DZBaseThread
 
-//"author": "webersongao",
-//"authorid": "1",
-//"subject": "第31个世界艾滋病日防艾公益健康跑鸣枪启程传染不",
-//"dateline": "1574342981",
-//"lastpost": "2019-11-21 21:54",
 //"threadtable": "forum_thread",
 //"posttable": "forum_post",
 //"subjectenc": "%E7%AC%AC31%E4%B8%AA%E4%B8%96%E7%95%8C%E8%89%BE%E6%BB%8B%E7%97%85%E6%97%A5%E9%98%B2%E8%89%BE%E5%85%AC%E7%9B%8A%E5%81%A5%E5%BA%B7%E8%B7%91%E9%B8%A3%E6%9E%AA%E5%90%AF%E7%A8%8B%E4%BC%A0%E6%9F%93%E4%B8%8D",
@@ -24,49 +20,6 @@
 //"starttime": "1574342981",
 //"remaintime": "",
 
-@property (nonatomic, copy) NSString *tid;  //!< 属性注释
-@property (nonatomic, copy) NSString *fid;  //!< 属性注释
-@property (nonatomic, copy) NSString *posttableid;  //!< 属性注释
-@property (nonatomic, copy) NSString *typeId;  //!< 属性注释
-@property (nonatomic, copy) NSString *sortid;  //!< 属性注释
-@property (nonatomic, copy) NSString *readperm;  //!< 属性注释
-@property (nonatomic, copy) NSString *price;  //!< 属性注释
-@property (nonatomic, copy) NSString *author;  //!< 属性注释
-@property (nonatomic, copy) NSString *pid;  //!< 属性注释
-@property (nonatomic, copy) NSString *authorid;  //!< 属性注释
-@property (nonatomic, copy) NSString *subject;  //!< 属性注释
-@property (nonatomic, copy) NSString *dateline;  //!< 属性注释
-@property (nonatomic, copy) NSString *lastpost;  //!< 属性注释
-@property (nonatomic, copy) NSString *lastposter;  //!< 属性注释
-@property (nonatomic, copy) NSString *views;  //!< 属性注释
-@property (nonatomic, assign) NSInteger replies;  //!< 属性注释
-@property (nonatomic, copy) NSString *displayorder;  //!< 属性注释
-@property (nonatomic, copy) NSString *highlight;  //!< 属性注释
-@property (nonatomic, copy) NSString *digest;  //!< 属性注释
-@property (nonatomic, copy) NSString *rate;  //!< 属性注释
-@property (nonatomic, copy) NSString *special;  //!< 属性注释
-@property (nonatomic, copy) NSString *attachment;  //!< 属性注释
-@property (nonatomic, copy) NSString *moderated;  //!< 属性注释
-@property (nonatomic, copy) NSString *closed;  //!< 属性注释
-@property (nonatomic, copy) NSString *stickreply;  //!< 属性注释
-@property (nonatomic, copy) NSString *recommends;  //!< 属性注释
-@property (nonatomic, copy) NSString *recommend_add;  //!< 属性注释
-@property (nonatomic, copy) NSString *recommend_sub;  //!< 属性注释
-@property (nonatomic, copy) NSString *heats;  //!< 属性注释
-@property (nonatomic, copy) NSString *status;  //!< 属性注释
-@property (nonatomic, copy) NSString *isgroup;  //!< 属性注释
-@property (nonatomic, copy) NSString *favtimes;  //!< 属性注释
-@property (nonatomic, copy) NSString *sharetimes;  //!< 属性注释
-@property (nonatomic, copy) NSString *stamp;  //!< 属性注释
-@property (nonatomic, copy) NSString *icon;  //!< 属性注释
-@property (nonatomic, copy) NSString *pushedaid;  //!< 属性注释
-@property (nonatomic, copy) NSString *cover;  //!< 属性注释
-@property (nonatomic, copy) NSString *replycredit;  //!< 属性注释
-@property (nonatomic, copy) NSString *relatebytag;  //!< 属性注释
-@property (nonatomic, copy) NSString *maxposition;  //!< 属性注释
-@property (nonatomic, copy) NSString *bgcolor;  //!< 属性注释
-@property (nonatomic, copy) NSString *comments;  //!< 属性注释
-@property (nonatomic, copy) NSString *hidden;  //!< 属性注释
 @property (nonatomic, copy) NSString *threadtable;  //!< 属性注释
 @property (nonatomic, copy) NSString *threadtableid;  //!< 属性注释
 @property (nonatomic, copy) NSString *posttable;  //!< 属性注释
@@ -87,6 +40,7 @@
 @property (nonatomic, copy) NSString *recommend;  //!< 属性注释
 
 @end
+
 
 @interface DZPostListItem : NSObject
 

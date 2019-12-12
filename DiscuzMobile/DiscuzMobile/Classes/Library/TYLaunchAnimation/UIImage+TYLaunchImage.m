@@ -21,7 +21,7 @@
         viewOrientation = @"Landscape";
     }
     NSString *launchImageName = nil;
-    NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"UILaunchImages"];
     CGSize viewSize = tyCurrentWindow.bounds.size;
     for (NSDictionary* dict in imagesDict)
     {

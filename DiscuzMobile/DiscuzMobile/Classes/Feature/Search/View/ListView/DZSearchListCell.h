@@ -18,6 +18,6 @@
 
 @property (nonatomic, strong) DZSearchModel *info;
 
-- (CGFloat)caculateCellHeight:(DZSearchModel *)info;
+- (CGFloat)caculateSearchCellHeight:(DZSearchModel *)info;
 
 @end
