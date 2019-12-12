@@ -38,9 +38,9 @@
 }
 
 -(void)setData:(NSDictionary*)dic{
-    self.titleLabel.text = [dic objectForKey:@"subject"];
-    self.nameLabel.text = [dic objectForKey:@"author"];
-    self.timeLabel.text =[dic objectForKey:@"dateline"];
+    self.titleLabel.text = [dic stringForKey:@"subject"];
+    self.nameLabel.text = [dic stringForKey:@"author"];
+    self.timeLabel.text =[dic stringForKey:@"dateline"];
     
 }
 

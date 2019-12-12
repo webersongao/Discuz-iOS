@@ -50,8 +50,8 @@
 }
 
 - (void)setdata:(NSDictionary*)dic {
-    NSString *username = [dic objectForKey:@"username"];
-    NSString *uid = [dic objectForKey:@"uid"];
+    NSString *username = [dic stringForKey:@"username"];
+    NSString *uid = [dic stringForKey:@"uid"];
     if ([DataCheck isValidString:username]) {
         self.nameLabel.text = username;
     }else {

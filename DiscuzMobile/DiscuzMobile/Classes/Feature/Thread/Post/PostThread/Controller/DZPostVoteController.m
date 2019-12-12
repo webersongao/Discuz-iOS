@@ -529,7 +529,7 @@ static int voteIndex = 0 ;
     } success:^(id response) {
         
         if ([DataCheck isValidDict:response]) {
-            NSString *aid = [response objectForKey:@"aid"];
+            NSString *aid = [response stringForKey:@"aid"];
             [self.pollImageDic setValue:aid forKey:[NSString stringWithFormat:@"%ld",self.imgBtnTag]];
             
             UIButton *imgbtn = [self.view viewWithTag:self.imgBtnTag];

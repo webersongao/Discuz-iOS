@@ -37,7 +37,7 @@
     } else {
         [XGPush setAccount:[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid]];
     }
-    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] objectForKey:DZ_XGTOKEN];
+    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] stringForKey:DZ_XGTOKEN];
     void (^successBlock)(void) = ^(void){
         //成功处理
         DLog(@"[XGPush]register successBlock");
@@ -66,9 +66,9 @@
 - (void)isActivePushAlert:(NSDictionary *)userInfo {
     
     DLog(@"%@",userInfo);
-    NSDictionary *oneDict = [userInfo objectForKey:@"aps"];
-    NSString *msg = [oneDict objectForKey:@"alert"];
-    NSDictionary *xgDic = [userInfo objectForKey:@"xg"];
+    NSDictionary *oneDict = [userInfo dictionaryForKey:@"aps"];
+    NSString *msg = [oneDict stringForKey:@"alert"];
+    NSDictionary *xgDic = [userInfo dictionaryForKey:@"xg"];
     NSString *ts = [NSString stringWithFormat:@"%@",[xgDic objectForKey:@"ts"]];
     if ([self.xgts isEqualToString:ts]) {
         return;
