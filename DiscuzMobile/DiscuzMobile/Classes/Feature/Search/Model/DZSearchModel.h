@@ -22,8 +22,8 @@
 
 @property (nonatomic, copy) NSString *realtid;  //!< 属性注释
 @property (nonatomic, copy) NSString *folder;  //!< 属性注释
-@property (nonatomic, copy) NSString *src_new;  //!< 属性注释
-@property (nonatomic, copy) NSString *src_id;  //!< 属性注释
+@property (nonatomic, copy) NSString *src_new;  //!< new字段
+@property (nonatomic, copy) NSString *src_id;  //!< id 字段
 @property (nonatomic, copy) NSString *forumname;  //!< 属性注释
 @property (nonatomic, copy) NSString *lastposterenc;  //!< 属性注释
 @property (nonatomic, copy) NSString *multipage;  //!< 属性注释
@@ -31,5 +31,8 @@
 
 // 自定义字段
 @property (nonatomic, copy) NSString *keyword;
+
+
+
 
 @end

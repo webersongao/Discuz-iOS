@@ -8,7 +8,7 @@
 
 #import "BoundManageCell.h"
 #import "DZHorizontalButton.h"
-#import "BoundInfoModel.h"
+#import "DZBindVarModel.h"
 
 @implementation BoundManageCell
 
@@ -37,7 +37,7 @@
     [self.detailBtn setTitle:@"解绑" forState:UIControlStateSelected];
 }
 
-- (void)setData:(BoundInfoModel *)model {
+- (void)setData:(DZBindUser *)model {
     if (model.name != nil) {
         self.nameV.iconV.image = [UIImage imageNamed:model.icon];
         NSString *name = model.name;

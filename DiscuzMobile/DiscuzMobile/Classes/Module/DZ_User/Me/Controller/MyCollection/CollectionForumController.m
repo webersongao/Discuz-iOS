@@ -8,7 +8,7 @@
 
 #import "CollectionForumController.h"
 #import "UIAlertController+Extension.h"
-
+#import "DZUserNetTool.h"
 #import "CollectionForumCell.h"
 #import "DZForumTool.h"
 
@@ -40,40 +40,6 @@
     self.tableView.mj_footer.hidden = YES;
 }
 
--(void)downLoadFavForumData {
-    
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *getDic = @{@"page":[NSString stringWithFormat:@"%ld",(long)self.page]};
-        request.urlString = DZ_Url_FavoriteForum;
-        request.parameters = getDic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self.HUD hideAnimated:YES];
-        [self mj_endRefreshing];
-        if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]]) {
-            if (self.page == 1) {
-                self.dataSourceArr = [NSMutableArray arrayWithArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
-            } else {
-                [self.dataSourceArr addObjectsFromArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
-            }
-        }
-        
-        if ([DataCheck isValidString:[[responseObject objectForKey:@"Variables"] objectForKey:@"count"]]) {
-            NSInteger count = [[[responseObject objectForKey:@"Variables"] objectForKey:@"count"] integerValue];
-            if (self.dataSourceArr.count >= count) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-        }
-        
-        [self emptyShow];
-        [self.tableView reloadData];
-    } failed:^(NSError *error) {
-        [self.HUD hideAnimated:YES];
-        [self emptyShow];
-        [self mj_endRefreshing];
-    }];
-    
-}
-
 
 - (void)mj_endRefreshing {
     if (self.page == 1) {
@@ -91,7 +57,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-     return self.dataSourceArr.count;
+    return self.dataSourceArr.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -136,11 +102,41 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     NSString *forumId = [[self.dataSourceArr objectAtIndex:indexPath.row]objectForKey:@"id"];
     [[DZMobileCtrl sharedCtrl] PushToForumListController:forumId];
 }
 
+
+
+-(void)downLoadFavForumData {
+    
+    [DZUserNetTool DZ_MyCollectionListWithPage:self.page completion:^(DZCollectVarModel *varModel, NSError *error) {
+        [self.HUD hideAnimated:YES];
+        if (varModel) {
+            [self mj_endRefreshing];
+            if (varModel.list.count) {
+                if (self.page == 1) {
+                    self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.list];
+                } else {
+                    [self.dataSourceArr addObjectsFromArray:varModel.list];
+                }
+            }
+            
+            if (self.dataSourceArr.count >= varModel.count) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+            [self emptyShow];
+            [self.tableView reloadData];
+        }else{
+            [self.HUD hideAnimated:YES];
+            [self emptyShow];
+            [self mj_endRefreshing];
+        }
+    }];
+    
+}
 
 
 @end
