@@ -70,7 +70,7 @@
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
-    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
     return [(ReplyCell *)cell cellHeight];
     

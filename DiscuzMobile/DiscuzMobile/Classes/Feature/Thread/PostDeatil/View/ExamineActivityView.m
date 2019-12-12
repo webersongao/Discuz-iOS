@@ -154,7 +154,7 @@
         return 38 * 3 + 24;
     }
     
-    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     return [(ActivityApplyDetailCell *)cell cellHeight];
 }
 
