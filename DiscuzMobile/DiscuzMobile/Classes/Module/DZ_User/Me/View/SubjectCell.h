@@ -8,11 +8,15 @@
 
 #import "DZBaseTableViewCell.h"
 
+@class DZThreeadItemModel;
 @interface SubjectCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 
--(void)setData:(NSDictionary*)dic;
+
+-(void)updateSubjectCell:(DZThreeadItemModel *)model;
+
+
 @end

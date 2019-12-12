@@ -8,7 +8,7 @@
 
 #import "DZSearchController.h"
 #import "DZSearchHistoryController.h"
-
+#import "DZSearchNetTool.h"
 #import "DZSearchModel.h"
 #import "DZSearchListCell.h"
 #import "DZCustomSearchBarView.h"
@@ -36,6 +36,7 @@
     [super viewDidLoad];
     [self setupViews];
     [self.view addSubview:self.tableView];
+    self.tableView.frame = KView_OutNavi_Bounds;
     if (self.type == searchPostionTypeNext) {
         [self.searchView.searchBar becomeFirstResponder];
     }
@@ -73,7 +74,7 @@
     KWEAKSELF
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
-        [weakSelf requestData];
+        [weakSelf requestSearchData];
     }];
     self.tableView.mj_footer.hidden = YES;
     
@@ -97,7 +98,7 @@
     
     DZSearchListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZSearchListCell getReuseId]];
     DZSearchModel *model = self.dataSourceArr[indexPath.row];
-    cell.info = model;
+    [cell updateSearchCell:model];
     return cell;
 }
 
@@ -138,15 +139,15 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.cellHeightDict[indexPath]) {
-        self.cellHeightDict[indexPath] = @([self caculateCellHeight:indexPath]);
+        self.cellHeightDict[indexPath] = @([self caculateSearchCellHeight:indexPath]);
     }
     return [self.cellHeightDict[indexPath] floatValue];
 }
 
-- (CGFloat)caculateCellHeight:(NSIndexPath *)indexPath {
+- (CGFloat)caculateSearchCellHeight:(NSIndexPath *)indexPath {
     DZSearchModel *model = self.dataSourceArr[indexPath.row];
     DZSearchListCell *cell = [self.tableView dequeueReusableCellWithIdentifier:[DZSearchListCell getReuseId]];
-    return [cell caculateCellHeight:model];
+    return [cell caculateSearchCellHeight:model];
 }
 
 // 右Button响应
@@ -189,53 +190,35 @@
     self.tableView.mj_footer.hidden = YES;
     self.tableView.contentOffset = CGPointZero;
     self.page = 1;
-    [self requestData];
+    [self requestSearchData];
 }
 
 
-- (void)requestData {
+- (void)requestSearchData {
     if (![DataCheck isValidArray:self.dataSourceArr]) {
         [self.HUD showLoadingMessag:@"搜索中" toView:self.view];
     }
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *dic = @{@"srchtxt":self.searchView.searchBar.text,
-                              @"page":[NSString stringWithFormat:@"%ld",self.page],
-                              };
-        request.urlString = DZ_Url_Search;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
+    [DZSearchNetTool DZ_SearchForumWithKey:self.searchView.searchBar.text Page:self.page completion:^(DZSearchVarModel *varModel, NSError *error) {
         [self.HUD hide];
-        [self.tableView.mj_footer endRefreshing];
-        
-        if ([DataCheck isValidDict:[responseObject objectForKey:@"Variables"]]) {
-            
-            if ([DataCheck isValidArray: [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
-                NSArray *dataArr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"];
-                for (NSDictionary *dic in dataArr) {
-                    
-                    DZSearchModel *model = [DZSearchModel modelWithJSON:dic];
-                    model.keyword = self.searchView.searchBar.text;
-                    [self.dataSourceArr addObject:model];
-                    
-                }
-                NSInteger total = [[[responseObject objectForKey:@"Variables"] objectForKey:@"total"] integerValue];
-                if (self.dataSourceArr.count >= total) {
+        if (varModel) {
+            [self.tableView.mj_footer endRefreshing];
+            if (varModel.threadlist.count) {
+                [self.dataSourceArr addObjectsFromArray:varModel.threadlist];
+                if (self.dataSourceArr.count >= varModel.total) {
                     [self.tableView.mj_footer endRefreshingWithNoMoreData];
                 }
+            } else {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                self.page --;
             }
-        } else {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            self.page --;
-        }
-        [self emptyShow];
-        if (self.dataSourceArr.count == 0) {
+            [self emptyShow];
+            if (self.dataSourceArr.count == 0) {
+                [self searchBarBecomeActive];
+            }
+            [self.tableView reloadData];
+        }else{
             [self searchBarBecomeActive];
         }
-        
-        [self.tableView reloadData];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
-        [self searchBarBecomeActive];
     }];
 }
 

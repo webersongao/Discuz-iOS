@@ -10,10 +10,6 @@
 
 @implementation DZPostThreadModel
 
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"typeId" : @"typeid",
-    };
-}
 
 @end
 

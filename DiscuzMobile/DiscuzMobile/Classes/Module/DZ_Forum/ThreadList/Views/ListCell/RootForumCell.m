@@ -25,32 +25,6 @@
     return self;
 }
 
-- (UIView *)sepLine {
-    if (_sepLine == nil) {
-        _sepLine = [[UIView alloc] init];
-        _sepLine.backgroundColor = K_Color_NaviBack;
-    }
-    return _sepLine;
-}
-
-- (UILabel *)textLab {
-    if (_textLab == nil) {
-        _textLab = [[UILabel alloc] init];
-        _textLab.font = [DZFontSize HomecellTitleFontSize15];
-        _textLab.textColor = K_Color_Theme;
-    }
-    return _textLab;
-}
-
-- (UIButton *)button {
-    if (_button == nil) {
-        _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        _button.userInteractionEnabled = NO;
-        [_button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [_button setImage:[UIImage imageTintColorWithName:@"close" andImageSuperView:_button] forState:UIControlStateNormal];
-    }
-    return _button;
-}
 
 - (void)setupViews {
     self.backgroundColor = [UIColor whiteColor];
@@ -94,5 +68,34 @@
     self.button.frame = CGRectMake(KScreenWidth - 30 - 10, (CGRectGetHeight(self.frame) - 30) / 2, 30, 30);
     self.sepLine.frame = CGRectMake(0, CGRectGetHeight(self.frame) - 0.5, KScreenWidth , 0.5);
 }
+
+
+- (UIView *)sepLine {
+    if (_sepLine == nil) {
+        _sepLine = [[UIView alloc] init];
+        _sepLine.backgroundColor = K_Color_NaviBack;
+    }
+    return _sepLine;
+}
+
+- (UILabel *)textLab {
+    if (_textLab == nil) {
+        _textLab = [[UILabel alloc] init];
+        _textLab.font = [DZFontSize HomecellTitleFontSize15];
+        _textLab.textColor = K_Color_Theme;
+    }
+    return _textLab;
+}
+
+- (UIButton *)button {
+    if (_button == nil) {
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        _button.userInteractionEnabled = NO;
+        [_button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_button setImage:[UIImage imageTintColorWithName:@"close" andImageSuperView:_button] forState:UIControlStateNormal];
+    }
+    return _button;
+}
+
 
 @end

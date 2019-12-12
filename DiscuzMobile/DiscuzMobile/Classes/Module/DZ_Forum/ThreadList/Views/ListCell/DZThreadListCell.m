@@ -24,7 +24,7 @@
 }
 
 - (void)addInit {
-    [self.desLab addSubview:self.typeIcon];
+    [self.mainTitleLabel addSubview:self.typeIcon];
 }
 
 

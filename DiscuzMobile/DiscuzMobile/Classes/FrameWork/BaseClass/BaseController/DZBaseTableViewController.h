@@ -22,8 +22,4 @@
  */
 - (void)emptyShow;
 
-
-/// 不含导航条位置的tableView
-- (void)updateTableViewToRemoveNaviBar;
-
 @end

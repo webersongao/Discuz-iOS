@@ -18,6 +18,19 @@
 @property (nonatomic, strong) UIView *imageBgV;
 @property (nonatomic, strong) UIView *sepLine;
 
+@property (nonatomic, strong) UILabel *nameLab;    // 用户名
+@property (nonatomic, strong) UILabel *grade;
+@property (nonatomic, strong) UIImageView *tipIcon;
+@property (nonatomic, strong) UILabel *tipLab;
+
+@property (nonatomic, assign) BOOL hasPic;
+@property (nonatomic, strong) UILabel *messageLab; // 内容
+@property (nonatomic, strong) UILabel *datelineLab; // 时间
+
+@property (nonatomic, strong) BaseIconTextView *viewsLab;   // 浏览数
+@property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数
+@property (nonatomic, strong) BaseIconTextView *priceLab;   // 点赞数
+
 @end
 
 @implementation BaseStyleCell
@@ -44,7 +57,7 @@
     [self.contentView addSubview:self.nameLab];
     [self.contentView addSubview:self.grade];
     [self.contentView addSubview:self.tipIcon];
-    [self.contentView addSubview:self.desLab];
+    [self.contentView addSubview:self.mainTitleLabel];
     [self.contentView addSubview:self.messageLab];
     [self.contentView addSubview:self.datelineLab];
     [self.contentView addSubview:self.tipLab];
@@ -94,9 +107,9 @@
     }];
     
     // 标题
-    self.desLab.preferredMaxLayoutWidth = KScreenWidth - 30;
-    self.desLab.numberOfLines = 2;
-    [self.desLab mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.mainTitleLabel.preferredMaxLayoutWidth = KScreenWidth - 30;
+    self.mainTitleLabel.numberOfLines = 2;
+    [self.mainTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headV);
         make.top.equalTo(self.sepLine.mas_bottom).offset(10);
     }];
@@ -106,14 +119,14 @@
     self.messageLab.preferredMaxLayoutWidth = KScreenWidth - 30;
      self.messageLab.numberOfLines = 2;
     [self.messageLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.desLab);
-        make.top.equalTo(self.desLab.mas_bottom).offset(8);
+        make.left.equalTo(self.mainTitleLabel);
+        make.top.equalTo(self.mainTitleLabel.mas_bottom).offset(8);
     }];
     
     // 时间
     [self.datelineLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.desLab);
-        make.top.equalTo(self.desLab.mas_bottom).offset(10);
+        make.left.equalTo(self.mainTitleLabel);
+        make.top.equalTo(self.mainTitleLabel.mas_bottom).offset(10);
         make.size.mas_equalTo(CGSizeMake(150, 15));
     }];
     // 显示板块名
@@ -178,7 +191,7 @@
     }
     
     if ([DataCheck isValidDict:listInfo.forumnames]) {
-        self.tipLab.text = [NSString stringWithFormat:@"#%@",[listInfo.forumnames objectForKey:@"name"]];
+        self.tipLab.text = [NSString stringWithFormat:@"#%@",[listInfo.forumnames stringForKey:@"name"]];
     }
     
     self.nameLab.text = listInfo.author;
@@ -195,18 +208,18 @@
                 typeRange = NSMakeRange(spaceCharater.length, listInfo.typeName.length + 2);
             }
             [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
-            self.desLab.attributedText = describe;
+            self.mainTitleLabel.attributedText = describe;
         } else {
-            self.desLab.text = listInfo.useSubject;
+            self.mainTitleLabel.text = listInfo.useSubject;
         }
     } else if ([DataCheck isValidString:listInfo.typeName]) {
         NSMutableAttributedString *describe = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",subjectStr]];
         NSRange typeRange = NSMakeRange(0, listInfo.typeName.length + 2);
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
-        self.desLab.attributedText = describe;
+        self.mainTitleLabel.attributedText = describe;
         
     } else {
-        self.desLab.text = listInfo.useSubject;
+        self.mainTitleLabel.text = listInfo.useSubject;
     }
     
     self.messageLab.text = listInfo.message;
@@ -231,15 +244,15 @@
     
     if ([DataCheck isValidString:self.messageLab.text]) {
         [self.datelineLab mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.desLab);
+            make.left.equalTo(self.mainTitleLabel);
             make.top.equalTo(self.messageLab.mas_bottom).offset(8);
             make.size.mas_equalTo(CGSizeMake(150, 15));
         }];
         
     } else {
         [self.datelineLab mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.desLab);
-            make.top.equalTo(self.desLab.mas_bottom).offset(10);
+            make.left.equalTo(self.mainTitleLabel);
+            make.top.equalTo(self.mainTitleLabel.mas_bottom).offset(10);
             make.size.mas_equalTo(CGSizeMake(150, 15));
         }];
     }
@@ -402,15 +415,15 @@
     return _tipIcon;
 }
 
-- (UILabel *)desLab {
-    if (_desLab == nil) {
-        _desLab = [[UILabel alloc] init];
-        _desLab.font = [DZFontSize HomecellTitleFontSize15];
-        _desLab.textColor = K_Color_MainTitle;
-        _desLab.textAlignment = NSTextAlignmentLeft;
-        _desLab.numberOfLines = 0;
+- (UILabel *)mainTitleLabel {
+    if (_mainTitleLabel == nil) {
+        _mainTitleLabel = [[UILabel alloc] init];
+        _mainTitleLabel.font = [DZFontSize HomecellTitleFontSize15];
+        _mainTitleLabel.textColor = K_Color_MainTitle;
+        _mainTitleLabel.textAlignment = NSTextAlignmentLeft;
+        _mainTitleLabel.numberOfLines = 0;
     }
-    return _desLab;
+    return _mainTitleLabel;
 }
 
 - (UILabel *)messageLab {

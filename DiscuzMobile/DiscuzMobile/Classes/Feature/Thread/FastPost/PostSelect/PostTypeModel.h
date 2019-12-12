@@ -14,8 +14,6 @@
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, assign) PostType type;
 
-- (instancetype)initWithTitle:(NSString *)title imageName:(NSString *)imageName type:(PostType)type;
-
 + (instancetype)initWithTitle:(NSString *)title imageName:(NSString *)imageName type:(PostType)type;
 
 

@@ -152,6 +152,114 @@
     }];
 }
 
+/// 好友列表
++(void)DZ_FriendListWithUid:(NSString *)uid Page:(NSInteger)Page completion:(void (^)(DZFriendVarModel *varModel, NSError *error))completion{
+    
+    if (!uid.length || !completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *getDic = @{@"uid":uid,@"page":checkInteger(Page)};
+        request.urlString = DZ_Url_FriendList;
+        request.parameters = getDic;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZFriendVarModel *varModel = [DZFriendVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
+
+/// 我的 帖子列表 回复列表
++(void)DZ_MyThreadOrReplyListWithType:(NSString *)Type Page:(NSInteger)Page completion:(void (^)(DZMyThreadVarModel *varModel, NSError *error))completion{
+    
+    if (!Type.length || !completion) {
+        return;
+    }
+    NSDictionary *dict = @{
+        @"page":checkInteger(Page),
+        @"type":Type
+    };
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_Mythread;
+        request.methodType = JTMethodTypeGET;
+        request.parameters = dict;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZMyThreadVarModel *varModel = [DZMyThreadVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
+
+
+/// 我的 收藏板块列表
++(void)DZ_FavoriteForumListWithPage:(NSInteger)Page completion:(void (^)(DZFavForumVarModel *varModel, NSError *error))completion{
+    
+    if (!completion) {
+        return;
+    }
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *getDic = @{@"page":checkInteger(Page)};
+        request.urlString = DZ_Url_FavoriteForum;
+        request.parameters = getDic;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZFavForumVarModel *varModel = [DZFavForumVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
+
+/// 我的 收藏帖子列表
++(void)DZ_FavoriteThreadListWithPage:(NSInteger)Page completion:(void (^)(DZFavThreadVarModel *varModel, NSError *error))completion{
+    
+    if (!completion) {
+        return;
+    }
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        NSDictionary *getDic = @{@"page":checkInteger(Page)};
+        request.urlString = DZ_Url_FavoriteThread;
+        request.parameters = getDic;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZFavThreadVarModel *varModel = [DZFavThreadVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+    
+}
+
+
+/// 查询 账号绑定状态
++(void)DZ_CheckUserBindStatusWithCompletion:(void (^)(DZBindVarModel *varModel, NSError *error))completion{
+    if (!completion) {
+        return;
+    }
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = DZ_Url_Oauths;
+    } success:^(id responseObject, JTLoadType type) {
+        NSDictionary *dict = [responseObject objectForKey:@"Variables"];
+        DZBindVarModel *varModel = [DZBindVarModel modelWithJSON:dict];
+        completion(varModel,nil);
+    } failed:^(NSError *error) {
+        completion(nil,error);
+    }];
+}
+
+
+
+
+
+
 
 @end
 

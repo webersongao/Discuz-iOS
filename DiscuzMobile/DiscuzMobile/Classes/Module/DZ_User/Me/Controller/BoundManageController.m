@@ -10,7 +10,6 @@
 #import "CenterUserInfoView.h"
 #import "BoundManageCell.h"
 #import "TextIconModel.h"
-#import "BoundInfoModel.h"
 #import "DZLoginNetTool.h"
 #import "DZShareCenter.h"
 #import "DZUserNetTool.h"
@@ -39,21 +38,21 @@
 
 - (void)requestData {
     [self.HUD showLoadingMessag:@"" toView:nil];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.urlString = DZ_Url_Oauths;
-    } success:^(id responseObject, JTLoadType type) {
+    
+    [DZUserNetTool DZ_CheckUserBindStatusWithCompletion:^(DZBindVarModel *varModel, NSError *error) {
         [self.HUD hide];
-        NSDictionary * info = [responseObject objectForKey:@"Variables"];
-        self.userInfoView.nameLab.text = [info objectForKey:@"member_username"];
-        [self.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:[info objectForKey:@"member_avatar"]]];
-        NSArray *users = [info objectForKey:@"users"];
-        if ([DataCheck isValidArray:users]) {
-            self.dataSourceArr = [[NSMutableArray alloc] initWithArray:[NSArray modelArrayWithClass:[BoundInfoModel class] json:users]];
+        if (varModel) {
+            self.userInfoView.nameLab.text = varModel.member_username;
+            [self.userInfoView.headView sd_setImageWithURL:[NSURL URLWithString:varModel.member_avatar]];
+            if (varModel.users.count) {
+                self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.users];
+            }
+            [self.tableView reloadData];
+        }else{
+            [self showServerError:error];
         }
-        [self.tableView reloadData];
-    } failed:^(NSError *error) {
-        [self.HUD hide];
     }];
+ 
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -72,7 +71,7 @@
         cell.detailBtn.tag = indexPath.row;
         [cell.detailBtn addTarget:self action:@selector(boundTapAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    BoundInfoModel *model = self.dataSourceArr[indexPath.row];
+    DZBindUser *model = self.dataSourceArr[indexPath.row];
     [cell setData:model];
     
     return cell;
@@ -84,7 +83,7 @@
 
 - (void)boundTapAction:(UIButton *)sender {
     NSInteger index = sender.tag;
-    BoundInfoModel *model = self.dataSourceArr[index];
+    DZBindUser *model = self.dataSourceArr[index];
     if ([model.status isEqualToString:@"1"]) {
         NSString *title = @"解除绑定？";
         NSString *message = @"解绑后，将不能使用三方登录，登录此账号";
@@ -131,7 +130,7 @@
     }
 }
 
-- (void)unbound:(BoundInfoModel *)model {
+- (void)unbound:(DZBindUser *)model {
     
     [self.HUD showLoadingMessag:@"解除绑定" toView:self.view];
     [DZUserNetTool DZ_UnboundThird:model.type completion:^(DZBaseResModel *resModel, NSError *error) {

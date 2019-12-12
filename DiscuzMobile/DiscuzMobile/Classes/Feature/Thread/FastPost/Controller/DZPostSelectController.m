@@ -1,12 +1,12 @@
 //
-//  FastPostController.m
+//  DZPostSelectController.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/7/17.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "FastPostController.h"
+#import "DZPostSelectController.h"
 #import "DZForumNodeModel.h"
 #import "DZForumLeftCell.h"
 #import "FastLevelCell.h"
@@ -20,7 +20,7 @@
 #import "UIImageView+FindHairline.h"
 #import "DZPostActivityController.h"
 
-@interface FastPostController ()
+@interface DZPostSelectController ()
 
 @property (nonatomic,assign) BOOL isSelected;
 @property (nonatomic, strong) NSMutableArray *leftDataArray;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation FastPostController
+@implementation DZPostSelectController
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

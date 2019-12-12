@@ -9,7 +9,7 @@
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
 #import "DZMessageListController.h"
-#import "DZFastPlaceController.h"
+#import "DZFastPostController.h"
 
 #import "DZUserController.h"
 #import "DZHomeController.h"
@@ -91,7 +91,7 @@
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *baseNaviVC = (UINavigationController *)viewController;
         UIViewController *baseVC = baseNaviVC.topViewController;
-        if ([baseVC isKindOfClass:[DZFastPlaceController class]]) {
+        if ([baseVC isKindOfClass:[DZFastPostController class]]) {
             if (![DZLoginModule isLogged]) {
                 [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
                 return NO;
@@ -126,7 +126,7 @@
     DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
     DZForumController *forumVC = [[DZForumController alloc] init];
     
-    //    DZFastPlaceController *fastVC = [[DZFastPlaceController alloc] init];
+    //    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
     DZUserController *userVC = [[DZUserController alloc] init];
     DZUserController *myVC = [[DZUserController alloc] init];

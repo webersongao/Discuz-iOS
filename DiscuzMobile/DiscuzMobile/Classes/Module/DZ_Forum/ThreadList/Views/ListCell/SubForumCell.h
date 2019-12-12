@@ -11,12 +11,6 @@
 
 @interface SubForumCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) UIImageView *iconV;
-@property (nonatomic, strong) UILabel *titleLab;
-@property (nonatomic, strong) UILabel *numLab;
-@property (nonatomic, strong) UILabel *postsLab;
-
-
 /**
  * 设置直接显示的cell数据
  */

@@ -341,10 +341,8 @@
             NSMutableArray *vcArr = [NSMutableArray array];
             for (int idx = 0; idx < self.titleArr.count; idx++) {
                 DZForTitleModel *obj = self.titleArr[idx];
-                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType];
+                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType fid:self.forumFid order:idx];
                 listVc.title = obj.name;
-                listVc.fid = self.forumFid;
-                listVc.order = idx;
                 listVc.sendListBlock = ^(DZThreadVarModel *varModel) {
                     [self subSendVarible:varModel];
                 };

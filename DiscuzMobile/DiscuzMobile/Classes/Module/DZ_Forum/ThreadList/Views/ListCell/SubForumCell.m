@@ -13,7 +13,12 @@
 
 @interface SubForumCell()
 
+@property (nonatomic, strong) UIImageView *iconV;
+@property (nonatomic, strong) UILabel *titleLab;
+@property (nonatomic, strong) UILabel *numLab;
+@property (nonatomic, strong) UILabel *postsLab;
 @property (nonatomic, strong) UIImageView *AccessoryV;
+
 
 @end
 

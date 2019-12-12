@@ -16,6 +16,6 @@
 @property (nonatomic,copy) NSString *username;
 @property (nonatomic,copy) NSString *gbkname;
 
-- (instancetype)initWithLogintype:(NSString *)logintype andOpenid:(NSString *)openid andGbkname:(NSString *)gbkname andUsername:(NSString *)username;
+
 + (instancetype)initWithLogintype:(NSString *)logintype andOpenid:(NSString *)openid andGbkname:(NSString *)gbkname andUsername:(NSString *)username;
 @end

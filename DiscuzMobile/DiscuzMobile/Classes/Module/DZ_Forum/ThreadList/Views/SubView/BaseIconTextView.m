@@ -10,15 +10,6 @@
 
 @implementation BaseIconTextView
 
-//- (instancetype)initWithFrame:(CGRect)frame
-//{
-//    self = [super initWithFrame:frame];
-//    if (self) {
-//        [self commitInit];
-//    }
-//    return self;
-//}
-
 - (instancetype)init {
     if (self = [super init]) {
         [self commitInit];

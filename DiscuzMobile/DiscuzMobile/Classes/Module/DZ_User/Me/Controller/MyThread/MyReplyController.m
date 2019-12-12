@@ -10,7 +10,7 @@
 #import "OtherUserPostReplyCell.h"
 #import "ReplyCell.h"
 #import "SubjectCell.h"
-
+#import "DZUserNetTool.h"
 #import "MsgReplyModel.h"
 
 @interface MyReplyController ()
@@ -72,10 +72,10 @@
     if (cell == nil) {
         cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
     }
-    NSDictionary * dic = [self.dataSourceArr objectAtIndex:indexPath.row];
-    if ([DataCheck isValidDict:dic]) {
-        [cell setData:dic];
-    }
+    DZThreeadItemModel *itemModel = [self.dataSourceArr objectAtIndex:indexPath.row];
+    
+    [cell updateSubjectCell:itemModel];
+    
     return cell;
 }
 
@@ -87,57 +87,31 @@
 }
 
 - (void)downLoadData {
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *dic = @{@"type":@"reply",
-                              @"page":[NSString stringWithFormat:@"%ld",self.page]};
-        request.urlString = DZ_Url_Mythread;
-        request.parameters = dic;
-    } success:^(id responseObject, JTLoadType type) {
-        [self.tableView.mj_header endRefreshing];
+    
+    [DZUserNetTool DZ_MyThreadOrReplyListWithType:@"reply" Page:self.page completion:^(DZMyThreadVarModel *varModel, NSError *error) {
         [self.HUD hide];
-        NSArray *data = [[responseObject objectForKey:@"Variables"] objectForKey:@"data"];
-        NSInteger perpage = [[[responseObject objectForKey:@"Variables"] objectForKey:@"perpage"] integerValue];
-        if ([DataCheck isValidArray:data]) {
-            if (self.page == 1) {
-                self.dataSourceArr = data.mutableCopy;
-            } else {
-                [self.dataSourceArr addObjectsFromArray:data];
+        if (varModel) {
+            [self.tableView.mj_header endRefreshing];
+            if (varModel.data.count) {
+                if (self.page == 1) {
+                    self.dataSourceArr = varModel.data.mutableCopy;
+                } else {
+                    [self.dataSourceArr addObjectsFromArray:varModel.data];
+                }
+                if (varModel.data.count < varModel.perpage) {
+                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
             }
-            if (data.count < perpage) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
+            
+            [self emptyShow];
+            [self.tableView reloadData];
+        }else{
+            [self emptyShow];
+            [self showServerError:error];
+            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
         }
-        
-        [self emptyShow];
-        [self.tableView reloadData];
-        
-    } failed:^(NSError *error) {
-        [self emptyShow];
-        [self showServerError:error];
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
-        [self.HUD hide];
     }];
-    
-}
-
-- (void)analysisData:(NSArray *)dataArr {
-    
-    for (NSDictionary *dic in dataArr) {
-        
-        if ([DataCheck isValidArray:[dic objectForKey:@"reply"]]) {
-            
-            NSArray *arr = [dic objectForKey:@"reply"];
-            
-            for (NSDictionary *replyDic in arr) {
-                
-                MsgReplyModel *reply = [MsgReplyModel modelWithJSON:replyDic];
-//                reply.auther = [dic objectForKey:@"auther"];
-//                reply.subject = [dic objectForKey:@"subject"];
-                [self.replyArr addObject:reply];
-            }
-        }
-    }
 }
 
 - (void)clearData {

@@ -7,6 +7,7 @@
 //
 
 #import "SubjectCell.h"
+#import "DZMyThreadVarModel.h"
 
 @implementation SubjectCell
 
@@ -37,13 +38,18 @@
     [self addSubview:self.timeLabel];
 }
 
--(void)setData:(NSDictionary*)dic{
+-(void)updateSubjectCell:(DZThreeadItemModel *)model{
     
-    NSString *subject = [dic objectForKey:@"subject"];
-     self.titleLabel.text = subject;
+    if (![model isKindOfClass:[DZThreeadItemModel class]]) {
+        DLog(@"WBS  数据类型异常,无法显示");
+        return;
+    }
     
-    if ([DataCheck isValidString:[dic objectForKey:@"displayorder"]]) {
-        NSString *displayorder = [dic objectForKey:@"displayorder"];
+    NSString *subject = model.subject;
+    self.titleLabel.text = model.subject;
+    
+    if (model.displayorder.length) {
+        NSString *displayorder = model.displayorder;
         if ([displayorder isEqualToString:@"-2"]) {
             subject = [subject stringByAppendingString:[NSString stringWithFormat:@"(审核中)"]];
             
@@ -54,15 +60,14 @@
             NSMutableAttributedString *subjectStr = [[NSMutableAttributedString alloc] initWithString:subject];
             NSDictionary *attDic = @{NSForegroundColorAttributeName:K_Color_LightText,
                                      NSFontAttributeName:[DZFontSize forumInfoFontSize12]
-                                     };
+            };
             [subjectStr addAttributes:attDic range:NSMakeRange(subject.length - 5, 5)];
             self.titleLabel.attributedText = subjectStr;
         }
-        
     }
     
-    self.nameLabel.text = [dic objectForKey:@"author"];
-    self.timeLabel.text = [[dic objectForKey:@"dateline"] transformationStr];
+    self.nameLabel.text = model.author;
+    self.timeLabel.text = [model.dateline transformationStr];
 }
 
 @end

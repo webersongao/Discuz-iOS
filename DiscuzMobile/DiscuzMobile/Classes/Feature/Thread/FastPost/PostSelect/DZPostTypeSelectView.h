@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DZBaseFloatingView.h"
 #import "PostTypeModel.h"
-//typedef NS_ENUM(NSUInteger, PostType) {
-//    post_normal,
-//    post_vote,
-//    post_activity,
-//    post_debate,
-//};
 
 typedef void(^SelectTypeBlock)(PostType type);
 

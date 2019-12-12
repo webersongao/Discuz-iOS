@@ -15,14 +15,12 @@ typedef void(^EndRefreshBlock)(void);
 
 @interface DZThreadListController : DZForumListBaseCtrl
 
-@property (nonatomic, copy) NSString *fid;
-@property (nonatomic, assign) NSInteger order;
 @property (nonatomic, copy) SendValueBlock sendListBlock;
 @property (nonatomic, copy) EndRefreshBlock endRefreshBlock;
 
 - (void)refreshData;
 
-- (instancetype)initWithType:(DZ_ListType)listType;
+- (instancetype)initWithType:(DZ_ListType)listType fid:(NSString *)fid order:(NSInteger)order;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "CollectionThreadController.h"
 #import "CollectionViewCell.h"
+#import "DZUserNetTool.h"
 
 @interface CollectionThreadController ()
 
@@ -38,38 +39,33 @@
 // 收藏帖子
 -(void)downLoadMyFavThread{
     
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *getDic = @{@"page":[NSString stringWithFormat:@"%ld",(long)self.page]};
-        request.urlString = DZ_Url_FavoriteThread;
-        request.parameters = getDic;
-    } success:^(id responseObject, JTLoadType type) {
+    
+    [DZUserNetTool DZ_FavoriteThreadListWithPage:self.page completion:^(DZFavThreadVarModel *varModel, NSError *error) {
         [self.HUD hideAnimated:YES];
-        [self mj_endRefreshing];
-        if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]]) {
-            if (self.page == 1) {
-                self.dataSourceArr = [NSMutableArray arrayWithArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
-            } else {
-                [self.dataSourceArr addObjectsFromArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
+        if (varModel) {
+            [self mj_endRefreshing];
+            if (varModel.list.count) {
+                if (self.page == 1) {
+                    self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.list];
+                } else {
+                    [self.dataSourceArr addObjectsFromArray:varModel.list];
+                }
             }
-        }
-        
-        if ([DataCheck isValidString:[[responseObject objectForKey:@"Variables"] objectForKey:@"count"]]) {
-            NSInteger count = [[[responseObject objectForKey:@"Variables"] objectForKey:@"count"] integerValue];
-            if (self.dataSourceArr.count >= count) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            
+            if (varModel.count) {
+                if (self.dataSourceArr.count >= varModel.count) {
+                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
             }
+            
+            [self emptyShow];
+            [self.tableView reloadData];
+        }else{
+            [self emptyShow];
+            [self mj_endRefreshing];
         }
-        
-        
-        [self emptyShow];
-        [self.tableView reloadData];
-        DLog(@"+++++2+++%@",responseObject);
-    } failed:^(NSError *error) {
-        DLog(@"%@",error);
-        [self.HUD hideAnimated:YES];
-        [self emptyShow];
-        [self mj_endRefreshing];
     }];
+    
 }
 
 - (void)mj_endRefreshing {

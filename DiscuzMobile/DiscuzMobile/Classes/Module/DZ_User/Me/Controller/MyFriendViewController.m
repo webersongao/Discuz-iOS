@@ -9,15 +9,17 @@
 #import "MyFriendViewController.h"
 #import "DZOtherUserController.h"
 #import "FriendCell.h"
+#import "DZUserNetTool.h"
 
 @implementation MyFriendViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     [self downLoadData];
     self.title = @"我的好友";
     KWEAKSELF;
+    self.tableView.frame = KView_OutNavi_Bounds;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf refreshData];
@@ -70,7 +72,7 @@
     if ([DataCheck isValidArray:self.dataSourceArr]) {
         dic = [self.dataSourceArr objectAtIndex:btn.tag];
     }
-     
+    
     [[DZMobileCtrl sharedCtrl] PushToMsgChatController:[dic stringForKey:@"uid"] name:[dic stringForKey:@"username"]];
 }
 
@@ -88,42 +90,38 @@
 }
 
 - (void)downLoadData {
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *getDic = @{@"page":[NSString stringWithFormat:@"%ld",(long)self.page]};
-        request.urlString = DZ_Url_FriendList;
-        request.parameters = getDic;
-    } success:^(id responseObject, JTLoadType type) {
+    
+    
+    [DZUserNetTool DZ_FriendListWithUid:nil Page:self.page completion:^(DZFriendVarModel *varModel, NSError *error) {
         [self.HUD hideAnimated:YES];
-        
-        [self mj_endRefreshing];
-        
-        if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]]) {
+        if (varModel) {
             
-            if (self.page == 1) {
-                self.dataSourceArr = [NSMutableArray arrayWithArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
-            } else {
-                [self.dataSourceArr addObjectsFromArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"list"]];
+            [self mj_endRefreshing];
+            
+            if (varModel.list.count) {
+                if (self.page == 1) {
+                    self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.list];
+                } else {
+                    [self.dataSourceArr addObjectsFromArray:varModel.list];
+                }
             }
             
-        }
-        
-        
-        if ([DataCheck isValidString:[[responseObject objectForKey:@"Variables"] objectForKey:@"count"]]) {
-            NSInteger count = [[[responseObject objectForKey:@"Variables"] objectForKey:@"count"] integerValue];
-            if (self.dataSourceArr.count >= count) {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            if (varModel.count) {
+                if (self.dataSourceArr.count >= varModel.count) {
+                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+                self.title = [NSString stringWithFormat:@"我的好友（%ld）",varModel.count];
             }
-            self.title = [NSString stringWithFormat:@"我的好友（%ld）",count];
+            
+            [self emptyShow];
+            
+            [self.tableView reloadData];
+        }else{
+            [self showServerError:error];
+            [self.HUD hideAnimated:YES];
+            [self emptyShow];
+            [self mj_endRefreshing];
         }
-        
-        [self emptyShow];
-        
-        [self.tableView reloadData];
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        [self.HUD hideAnimated:YES];
-        [self emptyShow];
-        [self mj_endRefreshing];
     }];
     
 }
