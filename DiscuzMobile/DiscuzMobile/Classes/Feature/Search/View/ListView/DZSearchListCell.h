@@ -16,7 +16,9 @@
 @property (strong, nonatomic)  UILabel *timeLabel;
 @property (strong, nonatomic)  UILabel *evaluateLabel;
 
-@property (nonatomic, strong) DZSearchModel *info;
+@property (nonatomic, strong,readonly) DZSearchModel *info;
+
+-(void)updateSearchCell:(DZSearchModel *)cellModel;
 
 - (CGFloat)caculateSearchCellHeight:(DZSearchModel *)info;
 

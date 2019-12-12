@@ -43,17 +43,18 @@
     }];
 }
 
-- (void)setInfo:(DZSearchModel *)info {
-    NSRange range = [info.subject rangeOfString:info.keyword];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:info.subject];
+-(void)updateSearchCell:(DZSearchModel *)cellModel {
+    _info = cellModel;
+    NSRange range = [cellModel.subject rangeOfString:cellModel.keyword];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:cellModel.subject];
     [str addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:range];
     [str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17] range:range];
     self.contentLabel.attributedText = str;
-    self.timeLabel.text = info.dateline;
-    self.evaluateLabel.text = [NSString stringWithFormat:@"%@个评论",info.replies];
+    self.timeLabel.text = cellModel.dateline;
+    self.evaluateLabel.text = [NSString stringWithFormat:@"%ld个评论",(long)cellModel.replies];
 }
 - (CGFloat)caculateSearchCellHeight:(DZSearchModel *)info {
-    self.info = info;
+    [self updateSearchCell:info];
     [self layoutIfNeeded];
     return [self cellHeight];
 }

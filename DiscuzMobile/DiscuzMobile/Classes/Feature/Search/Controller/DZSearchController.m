@@ -98,7 +98,7 @@
     
     DZSearchListCell *cell = [tableView dequeueReusableCellWithIdentifier:[DZSearchListCell getReuseId]];
     DZSearchModel *model = self.dataSourceArr[indexPath.row];
-    cell.info = model;
+    [cell updateSearchCell:model];
     return cell;
 }
 
