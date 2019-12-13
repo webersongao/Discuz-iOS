@@ -37,7 +37,7 @@
     } else {
         [XGPush setAccount:[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid]];
     }
-    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] stringForKey:DZ_XGTOKEN];
+    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] objectForKey:DZ_XGTOKEN];
     void (^successBlock)(void) = ^(void){
         //成功处理
         DLog(@"[XGPush]register successBlock");

@@ -29,6 +29,7 @@ target 'DiscuzMobile' do
   pod 'DTCoreText'
 #  pod 'MJExtension'
   pod 'AFNetworking'
+  pod 'YBImageBrowser'
   pod 'MBProgressHUD'
   pod 'IQKeyboardManager'
   pod 'WebViewJavascriptBridge'

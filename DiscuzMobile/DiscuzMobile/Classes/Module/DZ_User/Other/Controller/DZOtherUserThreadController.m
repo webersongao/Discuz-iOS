@@ -109,10 +109,8 @@
         
         if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
             if (self.page == 1) {
-                
                 self.dataSourceArr = [NSMutableArray arrayWithArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]];
             } else {
-                
                 NSArray *arr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist" ];
                 [self.dataSourceArr addObjectsFromArray:arr];
             }
