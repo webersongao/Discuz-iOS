@@ -101,7 +101,7 @@
     ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
 }
 
-- (void)refreshData {
+- (void)refreshThreadListData {
     self.page = 1;
     [self.tableView.mj_footer resetNoMoreData];
     [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];

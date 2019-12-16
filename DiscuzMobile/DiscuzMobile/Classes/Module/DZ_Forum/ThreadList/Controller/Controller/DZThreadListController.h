@@ -18,7 +18,7 @@ typedef void(^EndRefreshBlock)(void);
 @property (nonatomic, copy) SendValueBlock sendListBlock;
 @property (nonatomic, copy) EndRefreshBlock endRefreshBlock;
 
-- (void)refreshData;
+- (void)refreshThreadListData;
 
 - (instancetype)initWithType:(DZ_ListType)listType fid:(NSString *)fid order:(NSInteger)order;
 

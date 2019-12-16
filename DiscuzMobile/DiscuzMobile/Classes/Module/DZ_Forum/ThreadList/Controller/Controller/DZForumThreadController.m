@@ -88,10 +88,9 @@
     
     KWEAKSELF;
     self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
         if (weakSelf.ctvArr.count > 0) {
             DZThreadListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
-            [fVc refreshData];
+            [fVc refreshThreadListData];
         } else {
             [weakSelf.tableView.mj_header endRefreshing];
         }
@@ -237,7 +236,7 @@
 - (void)loginedRefresh {
     if (self.ctvArr.count > 0) {
         DZThreadListController *fVc = self.ctvArr[self.selectIndex];
-        [fVc refreshData];
+        [fVc refreshThreadListData];
     } else {
         [self.tableView.mj_header endRefreshing];
     }
