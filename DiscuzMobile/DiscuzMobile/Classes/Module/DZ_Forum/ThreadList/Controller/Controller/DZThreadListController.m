@@ -47,44 +47,19 @@
     [super viewDidLoad];
     
     self.page = 1;
-    self.notThisFidCount = 0;
-    
     [self inittableView];
+    self.notThisFidCount = 0;
+    [self loadThreadDataCache];
     
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_ThreadListFirstReload_Notify object:nil];
-    
-    if (self.order == 0 && !self.dataSourceArr.count) {
-        [self loadCache];
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstThreadListRequest:) name:DZ_ThreadListFirstReload_Notify object:nil];
 }
 
-- (void)showVerifyRemind {
-    self.tableView.tableHeaderView = self.verifyThreadRemindView;
-    //    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
-}
-
-- (void)hidVerifyRemind {
-    self.tableView.tableHeaderView = nil;
-}
-
-- (void)firstRequest:(NSNotification *)notification {
-    NSDictionary *userInfo = notification.userInfo;
-    if ([DataCheck isValidDict:userInfo]) {
-        NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
-        if (index == self.order && !self.dataSourceArr.count) {
-            [self loadCache];
-        }
-    }
-}
 
 -(void)inittableView {
     
+    self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        
         if (self.VarModel.forum) {
             NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
             if (threadsCount > self.dataSourceArr.count) {
@@ -107,8 +82,7 @@
     [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
 }
 
-- (void)loadCache { // 读取缓存
-    
+- (void)loadThreadDataCache { // 读取缓存
     if (self.listType == DZ_ListAll) {
         [self downLoadListData:self.page andLoadType:JTRequestTypeCache];
         [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
@@ -188,8 +162,17 @@
     }];
 }
 
+
+- (void)showVerifyRemind {
+    self.tableView.tableHeaderView = self.verifyThreadRemindView;
+    //    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
+}
+
+- (void)hidVerifyRemind {
+    self.tableView.tableHeaderView = nil;
+}
+
 - (void)clearDatasource {
-    
     self.notThisFidCount = 0;
     if (self.dataSourceArr.count > 0) {
         [self.dataSourceArr removeAllObjects];
@@ -200,6 +183,16 @@
     if (self.topThreadArray.count > 0) {
         [self.topThreadArray removeAllObjects];
         [self.commonThreadArray removeAllObjects];
+    }
+}
+
+- (void)firstThreadListRequest:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    if ([DataCheck isValidDict:userInfo]) {
+        NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
+        if (index == self.order && !self.dataSourceArr.count) {
+            [self loadThreadDataCache];
+        }
     }
 }
 
@@ -332,9 +325,9 @@
     if (cell == nil) {
         cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
     }
-
+    
     [cell updateThreadCell:listModel];
-
+    
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];
@@ -342,10 +335,6 @@
 }
 
 - (void)toOtherCenter:(UITapGestureRecognizer *)sender {
-    
-    if (![self isLogin]) {
-        return;
-    }
     
     [[DZMobileCtrl sharedCtrl] PushToOtherUserController:checkInteger(sender.view.tag)];
 }
@@ -404,6 +393,10 @@
     }
     return _verifyThreadRemindView;
 }
+
+
+
+
 
 @end
 

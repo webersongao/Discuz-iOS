@@ -46,10 +46,12 @@
 
 - (void)PushToOtherUserController:(NSString *)userId{
     NSString *userIdStr = checkNull(userId);
-    if (userIdStr.length) {
+    if (userIdStr.length && [DZLoginModule isLogged]) {
         DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
         ovc.authorid = userIdStr;
         [self.mainNavi pushViewController:ovc animated:YES];
+    }else{
+        [self PresentLoginController:nil];
     }
 }
 

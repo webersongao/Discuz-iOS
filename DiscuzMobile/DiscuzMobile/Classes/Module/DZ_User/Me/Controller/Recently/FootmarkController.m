@@ -113,10 +113,6 @@
 }
 
 - (void)toOtherCenter:(UITapGestureRecognizer *)sender {
-    
-    if (![self isLogin]) {
-        return;
-    }
     [[DZMobileCtrl sharedCtrl] PushToOtherUserController:checkInteger(sender.view.tag)];
 }
 

@@ -135,9 +135,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
     DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId]];
-
+    
     [cell updateThreadCell:[listModel dealSpecialThread]];
-
+    
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [listModel.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];
@@ -175,9 +175,6 @@
 #pragma mark - Action
 - (void)toOtherCenter:(UITapGestureRecognizer *)sender {
     
-    if (![self isLogin]) {
-        return;
-    }
     [[DZMobileCtrl sharedCtrl] PushToOtherUserController:checkInteger(sender.view.tag)];
 }
 
