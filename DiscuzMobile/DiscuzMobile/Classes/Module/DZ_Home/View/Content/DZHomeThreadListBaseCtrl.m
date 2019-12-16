@@ -81,9 +81,6 @@
 - (void)cacheRequest {
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeCache];
-    if ([DZApiRequest isCache:self.urlString andParameters:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.page]}]) {
-        [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
-    }
     
 }
 

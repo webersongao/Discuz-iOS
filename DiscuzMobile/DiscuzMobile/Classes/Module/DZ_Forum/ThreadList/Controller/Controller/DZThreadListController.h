@@ -11,12 +11,11 @@
 #import "DZThreadNetTool.h"
 
 typedef void(^SendValueBlock)(DZThreadVarModel *varModel);
-typedef void(^EndRefreshBlock)(void);
 
 @interface DZThreadListController : DZForumListBaseCtrl
 
-@property (nonatomic, copy) SendValueBlock sendListBlock;
-@property (nonatomic, copy) EndRefreshBlock endRefreshBlock;
+@property (nonatomic, copy) SendValueBlock dataBlockWhenAll; // 当且仅在 listType 为all的时候返才会调用返回数据
+@property (nonatomic, copy) backNoneBlock endRefreshBlock;
 
 - (void)refreshThreadListData;
 

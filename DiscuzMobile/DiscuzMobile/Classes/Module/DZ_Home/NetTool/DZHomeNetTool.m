@@ -63,16 +63,19 @@
 
 
 /// 首页帖子列表数据 拉取
-+ (void)DZ_HomeDownLoadThreadList:(NSInteger)page Url:(NSString *)UrlString LoadType:(JTLoadType)type completion:(void(^)(DZHomeVarModel *discoverModel,NSError *error))completion {
++ (void)DZ_HomeDownLoadThreadList:(NSInteger)page Url:(NSString *)UrlString LoadType:(JTLoadType)loadType completion:(void(^)(DZHomeVarModel *discoverModel,NSError *error))completion {
     
     if (!UrlString.length || !completion) {
         return;
     }
     
+    BOOL isCache = [DZApiRequest isCache:UrlString andParameters:@{@"page":[NSString stringWithFormat:@"%ld",(long)page]}];
+    JTLoadType ReqLoadType = (isCache && loadType == JTRequestTypeCache) ? JTRequestTypeCache : JTRequestTypeRefresh;
+    
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = UrlString;
         request.isCache = YES;
-        request.loadType = type;
+        request.loadType = ReqLoadType;
         request.parameters = @{@"page":[NSString stringWithFormat:@"%ld",(long)page]};
         
     } success:^(id responseObject, JTLoadType type) {

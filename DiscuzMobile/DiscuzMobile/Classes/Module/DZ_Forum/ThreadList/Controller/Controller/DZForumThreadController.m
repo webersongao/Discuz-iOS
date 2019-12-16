@@ -344,7 +344,7 @@
                 DZForTitleModel *obj = self.titleArr[idx];
                 DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType fid:self.forumFid order:idx];
                 listVc.title = obj.name;
-                listVc.sendListBlock = ^(DZThreadVarModel *varModel) {
+                listVc.dataBlockWhenAll = ^(DZThreadVarModel *varModel) {
                     [self subSendVarible:varModel];
                 };
                 listVc.endRefreshBlock = ^{

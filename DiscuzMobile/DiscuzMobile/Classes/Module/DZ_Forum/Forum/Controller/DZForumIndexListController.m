@@ -49,9 +49,6 @@
 - (void)cacheAndRequest {
     [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
     [self loadDataWithType:JTRequestTypeCache];
-    if ([DZApiRequest isCache:DZ_Url_Forumindex andParameters:nil]) {
-        [self loadDataWithType:JTRequestTypeRefresh];
-    }
 }
 
 - (void)refreshData {

@@ -112,9 +112,6 @@
     if (self.listType == DZ_ListAll) {
         [self downLoadListData:self.page andLoadType:JTRequestTypeCache];
         [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
-        if ([DZApiRequest isCache:DZ_Url_ForumTlist andParameters:@{@"fid":[NSString stringWithFormat:@"%@",_fid],@"page":[NSString stringWithFormat:@"%ld",(long)self.page]}]) {
-            [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
-        }
     } else {
         [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
         [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
@@ -236,8 +233,8 @@
 
 - (void)sendVariablesToMixcontroller {
     if (self.listType == DZ_ListAll) {
-        if (self.sendListBlock) {
-            self.sendListBlock(self.VarModel);
+        if (self.dataBlockWhenAll) {
+            self.dataBlockWhenAll(self.VarModel);
         }
     }
 }
