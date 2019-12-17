@@ -74,6 +74,9 @@
 }
 
 - (id)initWithSectionTitles:(NSArray *)sectiontitles {
+    if (!sectiontitles.count) {
+        return nil;
+    }
     self = [self initWithFrame:CGRectZero];
     
     if (self) {

@@ -26,8 +26,7 @@
 @property (nonatomic ,strong) DZThreadVarModel *VarModel;  //  数据
 @property (nonatomic, assign) DZ_ListType listType;  //!< 属性注释
 @property (nonatomic, assign) NSInteger notThisFidCount;
-@property (nonatomic, strong) NSMutableArray *topThreadArray;
-@property (nonatomic, strong) NSMutableArray *commonThreadArray;
+@property (nonatomic, strong) NSMutableArray *allArray;  //!< 属性注释
 @end
 
 @implementation DZThreadListController
@@ -62,7 +61,7 @@
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if (self.VarModel.forum) {
             NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
-            if (threadsCount > self.dataSourceArr.count) {
+            if (threadsCount > self.allArray.count) {
                 self.page ++;
                 [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
             } else {
@@ -146,7 +145,7 @@
                 [self anylyeThreadListData:threadResModel];
             }
             NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
-            if (threadsCount <= self.dataSourceArr.count) {
+            if (threadsCount <= self.allArray.count) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
             [self.tableView reloadData];
@@ -174,16 +173,9 @@
 
 - (void)clearDatasource {
     self.notThisFidCount = 0;
-    if (self.dataSourceArr.count > 0) {
-        [self.dataSourceArr removeAllObjects];
-    }
-    if (self.cellHeightDict.count > 0) {
-        [self.cellHeightDict removeAllObjects];
-    }
-    if (self.topThreadArray.count > 0) {
-        [self.topThreadArray removeAllObjects];
-        [self.commonThreadArray removeAllObjects];
-    }
+    [self.allArray removeAllObjects];;
+    [self.dataSourceArr removeAllObjects];
+    [self.cellHeightDict removeAllObjects];
 }
 
 - (void)firstThreadListRequest:(NSNotification *)notification {
@@ -203,21 +195,23 @@
     [self.VarModel updateVarModel:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
         if (self.page == 1) {
             self.notThisFidCount = notFourmCount;
-            self.topThreadArray = [NSMutableArray arrayWithArray:topArr];
-            self.commonThreadArray = [NSMutableArray arrayWithArray:commonArr];
-            self.dataSourceArr = [NSMutableArray arrayWithArray:allArr];
+            [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
+            [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
+            self.allArray = [NSMutableArray arrayWithArray:allArr];
         } else {
-            if ([DataCheck isValidArray:commonArr]) {
+            if (commonArr.count) {
                 DZThreadListModel *model1 = commonArr.firstObject;
-                DZThreadListModel *model2 = self.dataSourceArr.firstObject;
+                NSMutableArray *commonListArr = [NSMutableArray arrayWithArray:self.dataSourceArr.lastObject];
+                DZThreadListModel *model2 = commonListArr.lastObject;
                 if ([model1.tid isEqualToString:model2.tid]) {
                     [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     return;
                 }
-                [self.commonThreadArray addObjectsFromArray:commonArr];
+                [commonListArr addObjectsFromArray:commonArr];
+                [self.dataSourceArr replaceObjectAtIndex:1 withObject:commonListArr];
             }
-            if ([DataCheck isValidArray:allArr]) {
-                [self.dataSourceArr addObjectsFromArray:allArr];
+            if (allArr.count) {
+                [self.allArray addObjectsFromArray:allArr];
             }
         }
     }];
@@ -234,10 +228,7 @@
 
 #pragma mark - tableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.topThreadArray.count > 0) {
-        return 2;
-    }
-    return 1;
+    return self.dataSourceArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -250,30 +241,19 @@
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
     UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    if (self.topThreadArray.count > 0) {
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
-                return 5;
-            }
-            return [(DZThreadTopCell *)cell cellHeight];
-        } else {
-            return [(DZThreadListCell *)cell cellHeight];
-        }
-    } else {
+    
+    
+    if ([cell isKindOfClass:[DZThreadTopCell class]]) {
+        return [(DZThreadTopCell *)cell cellHeight];
+    }else{
         return [(DZThreadListCell *)cell cellHeight];
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (self.topThreadArray.count > 0) {
-        if (section == 0) {
-            return self.topThreadArray.count + 2; // 为了置顶帖那里显示更协调
-        }
-        return self.commonThreadArray.count;
-    }
-    
-    return self.dataSourceArr.count;
+    NSArray *sectionArray = self.dataSourceArr[section];
+    return sectionArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -295,28 +275,19 @@
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //判断是不是置顶帖子  displayorder  3，2，1 置顶  0 正常  -1 回收站  -2 审核中  -3 审核忽略  -4草稿
-    if (self.topThreadArray.count > 0) {
-        if (indexPath.section == 0) {
-            static NSString * CellId = @"ForumTopThreadCellId";
-            DZThreadTopCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
-            if (cell == nil) {
-                cell = [[DZThreadTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
-            }
-            if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
-                [cell updateTopCellWithModel:nil];
-            } else {
-                DZThreadListModel *listModel = self.topThreadArray[indexPath.row - 1];
-                [cell updateTopCellWithModel:listModel];
-            }
-            return cell;
-        } else {
-            DZThreadListModel *listModel = self.commonThreadArray[indexPath.row];
-            return [self configListCell:listModel];
+    NSArray *sectionArr = self.dataSourceArr[indexPath.section];
+    
+    if (indexPath.section == 0) {
+        DZThreadTopCell  * cell = [tableView dequeueReusableCellWithIdentifier:@"ForumTopThreadCellId"];
+        if (cell == nil) {
+            cell = [[DZThreadTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ForumTopThreadCellId"];
         }
-    } else {
-        DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-        return [self configListCell:listModel];
+        [cell updateTopCellWithModel:sectionArr[indexPath.row]];
+        return cell;
     }
+    
+    DZThreadListModel *listModel = sectionArr[indexPath.row];
+    return [self configListCell:listModel];
 }
 
 - (DZThreadListCell *)configListCell:(DZThreadListModel *)listModel {
@@ -342,19 +313,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DZThreadListModel *listModel;
-    if (self.topThreadArray.count > 0) {
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0 || indexPath.row == self.topThreadArray.count + 1) {
-                return;
-            }
-            listModel = self.topThreadArray[indexPath.row - 1];
-        } else {
-            listModel = self.commonThreadArray[indexPath.row];
-        }
-    } else {
-        listModel = self.dataSourceArr[indexPath.row];
-    }
+    DZThreadListModel *listModel = self.dataSourceArr[indexPath.section][indexPath.row];
     
     [self pushThreadDetail:listModel];
 }
@@ -367,20 +326,6 @@
 - (void)ToDZMySubjectController {
     DZMySubjectController *mysubjectVc = [[DZMySubjectController alloc] init];
     [self showViewController:mysubjectVc sender:nil];
-}
-
-- (NSMutableArray *)topThreadArray {
-    if (!_topThreadArray) {
-        _topThreadArray = [NSMutableArray array];
-    }
-    return _topThreadArray;
-}
-
-- (NSMutableArray *)commonThreadArray {
-    if (!_commonThreadArray) {
-        _commonThreadArray = [NSMutableArray array];
-    }
-    return _commonThreadArray;
 }
 
 - (VerifyThreadRemindView *)verifyThreadRemindView {

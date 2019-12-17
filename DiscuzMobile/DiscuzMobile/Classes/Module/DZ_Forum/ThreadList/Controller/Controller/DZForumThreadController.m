@@ -22,23 +22,19 @@
 
 @interface DZForumThreadController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) DZForumInfoView *infoView;
-
-@property (nonatomic, strong) DZThreadVarModel *VarModel;
-
-@property (nonatomic, strong) DZForumThreadMixContainer *containVC;
 //YES代表能滑动
 @property (nonatomic, assign) BOOL canScroll;
-
+@property (nonatomic, strong) DZForumInfoView *infoView;
+@property (nonatomic, strong) DZThreadVarModel *VarModel;
 @property (nonatomic, strong) DZForumContainListView *tableView;
-
+@property (nonatomic, strong) DZForumThreadMixContainer *containVC;
 @property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
-
 @property (nonatomic, strong) NSMutableArray <DZForTitleModel *> *titleArr;
 
 @property (nonatomic, strong) DZForumModel *forumInfo;
 
 @property (nonatomic, strong) UIView *headView;
+@property (nonatomic, strong) UIButton *PostButton;
 @property (nonatomic, strong) UITableView *foldTableView;
 
 @property (nonatomic, strong) NSMutableArray<DZForumModel *> *subForumArr;
@@ -57,34 +53,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.selectIndex = 0;
+    self.canScroll = YES;
+    [self dl_addNotification];
     self.dz_NavigationItem.title = @"帖子列表";
     
-    [self dl_addNotification];
-    
-    self.canScroll = YES;
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    self.tableView = [[DZForumContainListView alloc] initWithFrame:KView_OutNavi_Bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
-    
-    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, self.infoView.height)];
-    self.headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [self setForumInfoHeader];
-    
-    self.foldTableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, self.infoView.height, KScreenWidth, 0) style:UITableViewStylePlain];
-    self.foldTableView.delegate = self;
-    self.foldTableView.dataSource = self;
+    [self.headView addSubview:self.infoView];
+    self.headView.height = self.infoView.height;
+    self.tableView.tableHeaderView = self.headView;
     [self.headView addSubview:self.foldTableView];
-    
-    [self.titleArr addObject:[DZForTitleModel modelName:@"全部" type:DZ_ListAll]];
-    [self.titleArr addObject:[DZForTitleModel modelName:@"最新" type:DZ_ListNew]];
-    [self.titleArr addObject:[DZForTitleModel modelName:@"热门" type:DZ_ListHot]];
-    [self.titleArr addObject:[DZForTitleModel modelName:@"精华" type:DZ_ListBest]];
-    
-    self.selectIndex = 0;
     
     KWEAKSELF;
     self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -97,24 +75,15 @@
         //        [weakSelf refreshData];
     }];
     
-    UIImageView *postBtn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"writePost"]];
-    CGFloat btn_width = 50.0;
-    postBtn.frame = CGRectMake(KScreenWidth - btn_width - 15, KScreenHeight - btn_width - 15 - KNavi_ContainStatusBar_Height - 10, btn_width, btn_width);
-    postBtn.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTypeView)];
-    [postBtn addGestureRecognizer:tap];
-    [self.view addSubview:postBtn];
+    [self.view addSubview:self.PostButton];
     self.selectView = [[DZPostTypeSelectView alloc] init];
     self.selectView.typeBlock = ^(PostType type) {
         [weakSelf.selectView close];
         [weakSelf switchTypeTopost:type];
     };
     
-    
     // 添加提示视图
     [self.view addSubview:self.tipView];
-    _tipView.userInteractionEnabled = YES;
-    [self.tipView.closeBtn addTarget:self action:@selector(closeTipView) forControlEvents:UIControlEventTouchUpInside];
     self.tipView.clickTipAction = ^{
         [weakSelf toMyThread];
     };
@@ -152,16 +121,6 @@
 - (void)closeTipView {
     self.tipView.frame = CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, 44);
     self.tipView.tipAnimatefinsh = YES;
-}
-
-- (void)setForumInfoHeader {
-    
-    self.infoView = [[DZForumInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 75 + 10)];
-    [self.infoView.collectionBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.headView addSubview:self.infoView];
-    self.headView.height = self.infoView.height;
-    self.tableView.tableHeaderView = self.headView;
 }
 
 - (void)setIsCollection {
@@ -205,7 +164,7 @@
     
 }
 
-- (void)showTypeView {
+- (void)showTypeView:(UIButton *)button{
     
     if (![self isLogin]) {
         return;
@@ -337,31 +296,12 @@
             cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
-        if (self.ctvArr.count == 0) {
-            NSMutableArray *vcArr = [NSMutableArray array];
-            for (int idx = 0; idx < self.titleArr.count; idx++) {
-                DZForTitleModel *obj = self.titleArr[idx];
-                DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType fid:self.forumFid order:idx];
-                listVc.title = obj.name;
-                listVc.dataBlockWhenAll = ^(DZThreadVarModel *varModel) {
-                    [self subSendVarible:varModel];
-                };
-                listVc.endRefreshBlock = ^{
-                    [self checkForumShowTipView];
-                    [self.tableView.mj_header endRefreshing];
-                };
-                [vcArr addObject:listVc];
-            };
-            
-            if ([DataCheck isValidArray:vcArr]) {
-                self.ctvArr = vcArr;
-                CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
-                self.contentView = cell.contentView;
-                self.containVC = [[DZForumThreadMixContainer alloc] init];
-                [self.containVC setSubControllers:self.ctvArr parentController:self andSegmentRect:segmentRect];
-                self.containVC.navigotionBarBackgroundColor = [UIColor whiteColor];
-            }
+        if (self.ctvArr && self.ctvArr.count) {
+            self.contentView = cell.contentView;
+            self.containVC = [[DZForumThreadMixContainer alloc] init];
+            CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
+            self.containVC.navigotionBarBackgroundColor = [UIColor whiteColor];
+            [self.containVC setSubControllers:self.ctvArr parentController:self andSegmentRect:segmentRect];
         }
         
         return cell;
@@ -490,12 +430,7 @@
 }
 
 #pragma mark - setter、getter
-- (NSMutableArray *)titleArr {
-    if (!_titleArr) {
-        _titleArr = [NSMutableArray array];
-    }
-    return _titleArr;
-}
+
 
 - (NSMutableArray<DZForumModel *> *)subForumArr {
     if (!_subForumArr) {
@@ -508,9 +443,89 @@
     if (!_tipView) {
         _tipView = [[DropTipView alloc] initWithFrame:CGRectMake(0, -KNavi_ContainStatusBar_Height, KScreenWidth, KNavi_ContainStatusBar_Height)];
         _tipView.tipAnimatefinsh = YES;
+        _tipView.userInteractionEnabled = YES;
+        [_tipView.closeBtn addTarget:self action:@selector(closeTipView) forControlEvents:UIControlEventTouchUpInside];
     }
     return _tipView;
 }
+
+-(DZForumContainListView *)tableView{
+    if (_tableView == nil) {
+        _tableView = [[DZForumContainListView alloc] initWithFrame:KView_OutNavi_Bounds style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }
+    return _tableView;
+}
+
+-(UIView *)headView{
+    if (_headView == nil) {
+        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, self.infoView.height)];
+        _headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }
+    return _headView;
+}
+
+-(DZForumInfoView *)infoView{
+    if (_infoView == nil) {
+        _infoView = [[DZForumInfoView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 75 + 10)];
+        [_infoView.collectionBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _infoView;
+}
+
+
+-(UITableView *)foldTableView{
+    if (_foldTableView == nil) {
+        _foldTableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, self.infoView.height, KScreenWidth, 0) style:UITableViewStylePlain];
+        _foldTableView.delegate = self;
+        _foldTableView.dataSource = self;
+    }
+    return _foldTableView;
+}
+
+-(NSMutableArray<DZForTitleModel *> *)titleArr {
+    if (_titleArr == nil) {
+        _titleArr = [NSMutableArray array];
+        [_titleArr addObject:[DZForTitleModel modelName:@"全部" type:DZ_ListAll]];
+        [_titleArr addObject:[DZForTitleModel modelName:@"最新" type:DZ_ListNew]];
+        [_titleArr addObject:[DZForTitleModel modelName:@"热门" type:DZ_ListHot]];
+        [_titleArr addObject:[DZForTitleModel modelName:@"精华" type:DZ_ListBest]];
+    }
+    return _titleArr;
+}
+
+-(UIButton *)PostButton{
+    if (_PostButton == nil) {
+        CGFloat btn_width = 50.0;
+        _PostButton = [UIButton ButtonNormalWithFrame:CGRectMake(KScreenWidth - btn_width - 15, KScreenHeight - btn_width - 15 - KNavi_ContainStatusBar_Height - 10, btn_width, btn_width) title:@"" titleFont:nil titleColor:nil normalImgPath:@"writePost" touchImgPath:@"writePost" isBackImage:YES];
+        [_PostButton addTarget:self action:@selector(showTypeView:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _PostButton;
+}
+
+-(NSMutableArray<DZThreadListController *> *)ctvArr{
+    if (_ctvArr == nil) {
+        _ctvArr = [NSMutableArray arrayWithCapacity:3];
+        for (int idx = 0; idx < self.titleArr.count; idx++) {
+            DZForTitleModel *obj = self.titleArr[idx];
+            DZThreadListController *listVc = [[DZThreadListController alloc] initWithType:obj.listType fid:self.forumFid order:idx];
+            listVc.title = obj.name;
+            listVc.dataBlockWhenAll = ^(DZThreadVarModel *varModel) {
+                [self subSendVarible:varModel];
+            };
+            listVc.endRefreshBlock = ^{
+                [self checkForumShowTipView];
+                [self.tableView.mj_header endRefreshing];
+            };
+            [_ctvArr addObject:listVc];
+        };
+    }
+    return _ctvArr;
+}
+
 
 @end
 
