@@ -82,11 +82,10 @@
 }
 
 - (void)loadThreadDataCache { // 读取缓存
+    [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
     if (self.listType == DZ_ListAll) {
         [self downLoadListData:self.page andLoadType:JTRequestTypeCache];
-        [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
     } else {
-        [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
         [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
     }
 }
@@ -126,15 +125,10 @@
                 }
             }
             
-            NSString *threadmodcount = self.VarModel.forum.threadmodcount;
-            if ([threadmodcount integerValue] > 0) {
-                if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
-                    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",threadmodcount];
-                    [self showVerifyRemind];
-                }
-            } else {
-                [self hidVerifyRemind];
+            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+                [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             }
+            
             if (self.page == 1) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self clearDatasource];
@@ -162,13 +156,13 @@
 }
 
 
-- (void)showVerifyRemind {
-    self.tableView.tableHeaderView = self.verifyThreadRemindView;
-    //    self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
-}
-
-- (void)hidVerifyRemind {
-    self.tableView.tableHeaderView = nil;
+- (void)showVerifyRemind:(NSString *)modCount {
+    if (!modCount.length) {
+        self.tableView.tableHeaderView = nil;
+    }else{
+        self.tableView.tableHeaderView = self.verifyThreadRemindView;
+        self.verifyThreadRemindView.textLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",modCount];
+    }
 }
 
 - (void)clearDatasource {
