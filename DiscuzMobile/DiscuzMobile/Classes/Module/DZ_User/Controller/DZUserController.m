@@ -14,17 +14,15 @@
 #import "LogoutCell.h"
 #import "CenterCell.h"
 #import "DZUserNetTool.h"
-
 #import "TextIconModel.h"
-#import "CenterManageModel.h"
-
+#import "DZUserDataModel.h"
 #import "DZImagePickerView.h"
 #import "UIImage+Limit.h"
 
 @interface DZUserController ()
 
 @property (nonatomic, strong) MYCenterHeader *myHeader;
-@property (nonatomic, strong) CenterManageModel *centerModel;
+@property (nonatomic, strong) DZUserDataModel *centerModel;
 @property (nonatomic, strong) DZImagePickerView *pickerView;    // 相机相册
 
 @end
@@ -47,7 +45,6 @@
     [self.view addSubview:self.tableView];
     [self tooBarAction];
     
-    [self.HUD showLoadingMessag:@"拉取信息" toView:self.view];
     [self downLoadData];
     
     KWEAKSELF;
@@ -89,7 +86,7 @@
 }
 
 - (void)initData {
-    self.centerModel = [[CenterManageModel alloc] initWithType:JTCenterTypeMy];
+    self.centerModel = [[DZUserDataModel alloc] initWithType:JTCenterTypeMy];
 }
 
 // toobar 点击事件
@@ -132,6 +129,7 @@
 -(void)downLoadData {
     
     [self initData];
+    [self.HUD showLoadingMessag:@"拉取信息" toView:self.view];
     KWEAKSELF
     NSString *userId = [DZMobileCtrl sharedCtrl].User.member_uid;
     [DZUserNetTool DZ_UserProfileFromServer:YES Uid:userId userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
@@ -274,8 +272,8 @@
 
 - (void)uploadImage:(UIImage *)image {
     
-    [self.HUD showLoadingMessag:@"上传中" toView:self.view];
     KWEAKSELF
+    [self.HUD showLoadingMessag:@"上传中" toView:self.view];
     [DZUserNetTool DZ_UserUpdateAvatarToServer:image progress:^(double Progress, NSError *error) {
     } completion:^(BOOL boolState) {
         if (boolState) {

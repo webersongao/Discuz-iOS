@@ -14,7 +14,6 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *detail;
 
-- (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail;
 + (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail;
 
 @end

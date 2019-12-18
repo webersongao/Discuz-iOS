@@ -11,7 +11,7 @@
 #import "CenterToolView.h"
 #import "DZUserNetTool.h"
 #import "TextIconModel.h"
-#import "CenterManageModel.h"
+#import "DZUserDataModel.h"
 #import "CenterCell.h"
 #import "CenterUserInfoView.h"
 #import "AllOneButtonCell.h"
@@ -20,7 +20,7 @@
 @interface DZOtherUserController ()
 
 @property (nonatomic, strong) CenterUserInfoView *userInfoView;
-@property (nonatomic, strong) CenterManageModel *otherModel;
+@property (nonatomic, strong) DZUserDataModel *otherModel;
 
 @end
 
@@ -61,7 +61,7 @@
 }
 
 - (void)initData {
-    self.otherModel = [[CenterManageModel alloc] initWithType:JTCenterTypeOther];
+    self.otherModel = [[DZUserDataModel alloc] initWithType:JTCenterTypeOther];
 }
 
 -(void)downLoadData{
