@@ -43,8 +43,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.nameV.frame = CGRectMake(15, 11, 200, CGRectGetHeight(self.frame) - 20);
-    self.detailLab.frame = CGRectMake(KScreenWidth - 120 - 10, CGRectGetMinY(self.nameV.frame), 120, CGRectGetHeight(self.nameV.frame));
+    self.nameV.frame = CGRectMake(kMargin15, kMargin10, 200, CGRectGetHeight(self.frame) - kMargin20);
+    self.detailLab.frame = CGRectMake(KScreenWidth - 120 - kMargin15, CGRectGetMinY(self.nameV.frame), 120, CGRectGetHeight(self.nameV.frame));
 }
 
 @end

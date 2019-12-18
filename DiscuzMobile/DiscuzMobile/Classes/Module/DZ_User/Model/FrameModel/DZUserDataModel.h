@@ -18,15 +18,11 @@ typedef NS_ENUM(NSUInteger, JTCenterType) {
 @interface DZUserDataModel : NSObject
 
 @property (nonatomic, assign) BOOL isOther;
-//@property (nonatomic, strong) NSMutableArray<TextIconModel *> *useArr;  // 他人中心用
-//
-//// 公用
-//@property (nonatomic, strong) NSMutableArray<TextIconModel *> *manageArr;
-//@property (nonatomic, strong) NSMutableArray<TextIconModel *> *infoArr;
-
-@property (nonatomic, strong) DZUserVarModel *userVarModel;  //!< 属性注释
-@property (nonatomic, strong) NSArray *userDataArray;  //!< 属性注释
+@property (nonatomic, strong) NSArray *ListArray;  //!< 属性注释
+@property (nonatomic, strong,readonly) DZSpaceModel *spaceModel;  //!< 属性注释
 
 - (instancetype)initWithType:(JTCenterType)type;
+
+-(void)updateModel:(DZUserVarModel *)VarModel;
 
 @end

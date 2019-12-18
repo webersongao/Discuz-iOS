@@ -81,7 +81,7 @@
 }
 
 -(void)reloadUserController:(DZUserVarModel *)VarModel{
-    self.centerModel.userVarModel = VarModel;
+    [self.centerModel updateModel:VarModel];
     
     [[DZMobileCtrl sharedCtrl].User updateUserModel:VarModel];
     

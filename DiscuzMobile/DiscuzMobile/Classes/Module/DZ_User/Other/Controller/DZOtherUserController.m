@@ -72,7 +72,7 @@
 
 
 -(void)reloadUserInfo:(DZUserVarModel *)VarModel{
-    self.otherModel.userVarModel = VarModel;
+    [self.otherModel updateModel:VarModel];
     
     [self.otherListView updateUserTableView:self.otherModel];
     
@@ -112,10 +112,10 @@
 }
 
 - (void)addFriend {
-    if (self.otherModel.userVarModel.space.uid) {
+    if (self.otherModel.spaceModel.uid) {
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             [self.HUD showLoadingMessag:@"正在请求" toView:self.view];
-            NSDictionary *dic = @{@"uid":checkNull(self.otherModel.userVarModel.space.uid),@"type":@"1"};
+            NSDictionary *dic = @{@"uid":checkNull(self.otherModel.spaceModel.uid),@"type":@"1"};
             request.urlString = DZ_Url_AddFriend;
             request.parameters = dic;
         } success:^(id responseObject, JTLoadType type) {

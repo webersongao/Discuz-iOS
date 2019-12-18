@@ -14,6 +14,9 @@
 @property (nonatomic, strong) NSArray *UserArray;  //!< 属性注释
 @property (nonatomic, strong) NSMutableArray *extcreditsArray;  //!< 属性注释
 @property (nonatomic, strong) TextIconModel *endModel;  //!< 属性注释
+
+@property (nonatomic, strong) DZUserVarModel *userVarModel;  //!< 属性注释
+
 @end
 
 @implementation DZUserDataModel
@@ -74,36 +77,26 @@
     return [NSMutableArray arrayWithArray:@[ext01,ext02,ext03]];
 }
 
-
--(NSArray *)userDataArray{
-    
-    if (self.baseArray && self.userDataArray && self.extcreditsArray) {
-        return @[self.baseArray,self.userDataArray,self.extcreditsArray,@[self.endModel]];
-    }else{
-        return nil;
-    }
-}
-
--(void)setUserVarModel:(DZUserVarModel *)userVarModel{
+-(void)updateModel:(DZUserVarModel *)userVarModel{
     _userVarModel = userVarModel;
-    
+    _spaceModel = userVarModel.space;
     // 基本信息
     for (int i = 0; i < self.baseArray.count; i ++) {
         TextIconModel *model = self.baseArray[i];
         switch (i) {
             case 0:
             {
-                model.detail = self.userVarModel.space.group.grouptitle;
+                model.detail = userVarModel.space.group.grouptitle;
             }
                 break;
             case 1:
             {
-                model.detail = self.userVarModel.space.admingroup.grouptitle;
+                model.detail = userVarModel.space.admingroup.grouptitle;
             }
                 break;
             case 2:
             {
-                model.detail = self.userVarModel.space.regdate;
+                model.detail = userVarModel.space.regdate;
             }
                 break;
                 
@@ -117,18 +110,18 @@
         TextIconModel *model = self.extcreditsArray[i];
         switch (i) {
             case 0:
-                model.detail = self.userVarModel.space.threads;
+                model.detail = userVarModel.space.threads;
                 break;
             case 1:
             {
-                NSString *poststr = self.userVarModel.space.posts;
-                NSString *threads = self.userVarModel.space.threads;
+                NSString *poststr = userVarModel.space.posts;
+                NSString *threads = userVarModel.space.threads;
                 NSInteger realPost = [poststr integerValue] - [threads integerValue];
                 model.detail = [NSString stringWithFormat:@"%ld",(long)realPost];
             }
                 break;
             case 2:
-                model.detail = self.userVarModel.space.credits;
+                model.detail = userVarModel.space.credits;
                 break;
             default:
                 break;
@@ -163,6 +156,13 @@
             TextIconModel *itemModel = [TextIconModel initWithText:titleStr iconName:imageStr andDetail:detailStr action:cell_None];
             [self.extcreditsArray addObject:itemModel];
         }
+    }
+    
+    // 整合数据
+    if (self.baseArray && self.UserArray && self.extcreditsArray) {
+        self.ListArray = @[self.baseArray,self.UserArray,self.extcreditsArray,@[self.endModel]];
+    }else{
+        self.ListArray = nil;
     }
 }
 

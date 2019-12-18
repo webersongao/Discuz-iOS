@@ -22,6 +22,8 @@
 {
     self = [super initWithFrame:frame style:UITableViewStyleGrouped];
     if (self) {
+        self.delegate = self;
+        self.dataSource = self;
         [self registerClass:[DZLogoutCell class] forCellReuseIdentifier:@"DZLogoutCell"];
         [self registerClass:[DZUserCenterCell class] forCellReuseIdentifier:@"DZUserCenterCell"];
     }
@@ -39,7 +41,7 @@
 #pragma mark   /********************* 数据源方法 *************************/
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.centerModel.userDataArray.count;
+    return self.centerModel.ListArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -52,15 +54,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    NSArray *serctionArray = self.centerModel.userDataArray[section];
+    NSArray *serctionArray = self.centerModel.ListArray[section];
     
     return serctionArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TextIconModel *model = self.centerModel.userDataArray[indexPath.section][indexPath.row];
-    if (indexPath.section == self.centerModel.userDataArray.count - 1) {
+    TextIconModel *model = self.centerModel.ListArray[indexPath.section][indexPath.row];
+    if (indexPath.section == self.centerModel.ListArray.count - 1) {
         DZLogoutCell *LogoutCell = [tableView dequeueReusableCellWithIdentifier:@"DZLogoutCell" forIndexPath:indexPath];
         [LogoutCell updateLogoutCell:model.text];
         return LogoutCell;
@@ -78,12 +80,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return kCellDefaultHeight;
+    return kCellThinHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    TextIconModel *model = self.centerModel.userDataArray[indexPath.section][indexPath.row];
+    TextIconModel *model = self.centerModel.ListArray[indexPath.section][indexPath.row];
     if (self.CellTapAction) {
         self.CellTapAction(model);
     }

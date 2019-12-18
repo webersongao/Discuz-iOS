@@ -42,6 +42,7 @@
 #define kMargin25   25.0
 #define kMargin30   30.0
 #define kToolBarHeight   44.0
+#define kCellThinHeight   50.0
 #define kCellDefaultHeight   65.0
 
 /**
