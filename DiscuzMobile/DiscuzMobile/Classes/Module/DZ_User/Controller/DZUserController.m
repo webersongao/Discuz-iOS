@@ -211,7 +211,7 @@
 
 -(DZUserTableView *)UserListView{
     if (_UserListView == nil) {
-        _UserListView = [[DZUserTableView alloc] initWithFrame:KView_OutNavi_Bounds];
+        _UserListView = [[DZUserTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height - KTabbar_Height)];
         _UserListView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
     }
     return _UserListView;

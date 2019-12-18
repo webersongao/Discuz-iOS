@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         self.hideTabBarWhenPushed = YES;
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
