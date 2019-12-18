@@ -22,7 +22,7 @@
 #import "DZMsgChatDetailController.h"
 #import "DZOtherUserThreadController.h"
 #import "DZOtherUserPostReplyController.h"
-#import "BoundManageController.h"
+#import "DZBindManageController.h"
 #import "DZFootMarkRootController.h"
 #import "DZResetPwdController.h"
 #import "DZSendMsgViewController.h"
@@ -173,7 +173,7 @@
 
 /// 账号绑定
 - (void)ShowBindControllerFromVC:(UIViewController *)selfVC {
-    BoundManageController *boundVc = [[BoundManageController alloc] init];
+    DZBindManageController *boundVc = [[DZBindManageController alloc] init];
     [selfVC showViewController:boundVc sender:nil];
 }
 

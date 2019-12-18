@@ -30,7 +30,6 @@
         [weakSelf addData];
     }];
     self.tableView.mj_footer.hidden = YES;
-    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
 - (void)reloadData {
@@ -61,7 +60,7 @@
         cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
     }
     DZThreeadItemModel * itemModel = [self.dataSourceArr objectAtIndex:indexPath.row];
-
+    
     [cell updateSubjectCell:itemModel];
     
     return cell;
@@ -77,7 +76,7 @@
 }
 
 -(void)downLoadData {
-    
+    [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [DZUserNetTool DZ_MyThreadOrReplyListWithType:@"thread" Page:self.page completion:^(DZMyThreadVarModel *varModel, NSError *error) {
         [self.HUD hide];
         if (varModel) {
@@ -85,13 +84,11 @@
             [self.tableView.mj_footer endRefreshing];
             
             if (varModel.data.count) {
-                
                 if (self.page == 1) {
                     self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.data];
                     if (self.dataSourceArr.count < varModel.perpage) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     }
-                    
                 } else {
                     [self.dataSourceArr addObjectsFromArray:varModel.data];
                     if (varModel.data.count < varModel.perpage) {

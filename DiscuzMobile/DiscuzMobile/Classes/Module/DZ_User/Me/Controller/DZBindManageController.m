@@ -1,12 +1,12 @@
 //
-//  BoundManageController.m
+//  DZBindManageController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/7/12.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "BoundManageController.h"
+#import "DZBindManageController.h"
 #import "CenterUserInfoView.h"
 #import "BoundManageCell.h"
 #import "TextIconModel.h"
@@ -15,13 +15,13 @@
 #import "DZUserNetTool.h"
 #import "UIAlertController+Extension.h"
 
-@interface BoundManageController ()
+@interface DZBindManageController ()
 
 @property (nonatomic, strong) CenterUserInfoView *userInfoView;
 
 @end
 
-@implementation BoundManageController
+@implementation DZBindManageController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

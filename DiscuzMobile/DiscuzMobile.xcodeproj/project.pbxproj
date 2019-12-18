@@ -308,6 +308,8 @@
 		709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */; };
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
+		70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */; };
+		70A5E26923A9D62600236105 /* DZDiscoverSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26623A9D62600236105 /* DZDiscoverSquareView.m */; };
 		70B6B8E5239905AD003ED8F1 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9494507021196F8B0074C79E /* libmp3lame.a */; };
 		70BA483123852BA200634D76 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA483023852BA200634D76 /* UILabel+Common.m */; };
 		70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZHomeThreadContentView.m */; };
@@ -393,7 +395,7 @@
 		70FBDCE42383FC1B00FC296E /* DZFootMarkRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */; };
 		70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC792383FC1B00FC296E /* FootmarkController.m */; };
 		70FBDCE62383FC1B00FC296E /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */; };
-		70FBDCE72383FC1B00FC296E /* BoundManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7E2383FC1B00FC296E /* BoundManageController.m */; };
+		70FBDCE72383FC1B00FC296E /* DZBindManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7E2383FC1B00FC296E /* DZBindManageController.m */; };
 		70FBDCE82383FC1B00FC296E /* DZThreadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC802383FC1B00FC296E /* DZThreadRootController.m */; };
 		70FBDCE92383FC1B00FC296E /* DZMySubjectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC812383FC1B00FC296E /* DZMySubjectController.m */; };
 		70FBDCEA2383FC1B00FC296E /* MyReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC822383FC1B00FC296E /* MyReplyController.m */; };
@@ -1053,6 +1055,10 @@
 		709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseCollectionCell.m; sourceTree = "<group>"; };
 		709F70492387831800FEC4A9 /* AppDelegate+Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Config.h"; sourceTree = "<group>"; };
 		709F704A2387831800FEC4A9 /* AppDelegate+Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Config.m"; sourceTree = "<group>"; };
+		70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverSquareCell.m; sourceTree = "<group>"; };
+		70A5E26523A9D62600236105 /* DZDiscoverSquareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverSquareCell.h; sourceTree = "<group>"; };
+		70A5E26623A9D62600236105 /* DZDiscoverSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverSquareView.m; sourceTree = "<group>"; };
+		70A5E26723A9D62600236105 /* DZDiscoverSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverSquareView.h; sourceTree = "<group>"; };
 		70BA482F23852BA200634D76 /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
 		70BA483023852BA200634D76 /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
 		70BA4832238531A000634D76 /* DZHomeThreadContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeThreadContentView.h; sourceTree = "<group>"; };
@@ -1213,7 +1219,7 @@
 		70FBDC702383FC1B00FC296E /* CollectionForumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionForumController.h; sourceTree = "<group>"; };
 		70FBDC712383FC1B00FC296E /* CollectionThreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionThreadController.m; sourceTree = "<group>"; };
 		70FBDC722383FC1B00FC296E /* CollectionRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRootController.h; sourceTree = "<group>"; };
-		70FBDC732383FC1B00FC296E /* BoundManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundManageController.h; sourceTree = "<group>"; };
+		70FBDC732383FC1B00FC296E /* DZBindManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBindManageController.h; sourceTree = "<group>"; };
 		70FBDC752383FC1B00FC296E /* DZFootMarkRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootMarkRootController.h; sourceTree = "<group>"; };
 		70FBDC762383FC1B00FC296E /* FootForumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootForumController.m; sourceTree = "<group>"; };
 		70FBDC772383FC1B00FC296E /* FootmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootmarkController.h; sourceTree = "<group>"; };
@@ -1223,7 +1229,7 @@
 		70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriendViewController.m; sourceTree = "<group>"; };
 		70FBDC7C2383FC1B00FC296E /* DZUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUserController.h; sourceTree = "<group>"; };
 		70FBDC7D2383FC1B00FC296E /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
-		70FBDC7E2383FC1B00FC296E /* BoundManageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundManageController.m; sourceTree = "<group>"; };
+		70FBDC7E2383FC1B00FC296E /* DZBindManageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBindManageController.m; sourceTree = "<group>"; };
 		70FBDC802383FC1B00FC296E /* DZThreadRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadRootController.m; sourceTree = "<group>"; };
 		70FBDC812383FC1B00FC296E /* DZMySubjectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMySubjectController.m; sourceTree = "<group>"; };
 		70FBDC822383FC1B00FC296E /* MyReplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReplyController.m; sourceTree = "<group>"; };
@@ -2917,10 +2923,10 @@
 		709A73172387EF2B00DF04CE /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				709A73182387EF6100DF04CE /* DZDiscoverListView.h */,
-				709A73192387EF6100DF04CE /* DZDiscoverListView.m */,
 				709A731B2387EF8800DF04CE /* DZDiscoverListCell.h */,
 				709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */,
+				709A73182387EF6100DF04CE /* DZDiscoverListView.h */,
+				709A73192387EF6100DF04CE /* DZDiscoverListView.m */,
 			);
 			path = ListView;
 			sourceTree = "<group>";
@@ -2949,6 +2955,17 @@
 				70DFD777237A95DD00A13F0F /* DZBaseFloatingView.m */,
 			);
 			path = OtherView;
+			sourceTree = "<group>";
+		};
+		70A5E25D23A9D5BA00236105 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+				70A5E26523A9D62600236105 /* DZDiscoverSquareCell.h */,
+				70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */,
+				70A5E26723A9D62600236105 /* DZDiscoverSquareView.h */,
+				70A5E26623A9D62600236105 /* DZDiscoverSquareView.m */,
+			);
+			path = Square;
 			sourceTree = "<group>";
 		};
 		70A8F7A6239B943800696DD2 /* Response */ = {
@@ -3486,8 +3503,8 @@
 				70FBDC742383FC1B00FC296E /* Recently */,
 				70FBDC7D2383FC1B00FC296E /* MyFriendViewController.h */,
 				70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */,
-				70FBDC732383FC1B00FC296E /* BoundManageController.h */,
-				70FBDC7E2383FC1B00FC296E /* BoundManageController.m */,
+				70FBDC732383FC1B00FC296E /* DZBindManageController.h */,
+				70FBDC7E2383FC1B00FC296E /* DZBindManageController.m */,
 				70FBDC7F2383FC1B00FC296E /* MyThread */,
 			);
 			path = Controller;
@@ -3665,6 +3682,7 @@
 			children = (
 				709A73152387EEEC00DF04CE /* Controller */,
 				709A73172387EF2B00DF04CE /* ListView */,
+				70A5E25D23A9D5BA00236105 /* Square */,
 				7065AE5A238684C5009B6DA7 /* Model */,
 				7065AE57238684C5009B6DA7 /* NetTool */,
 			);
@@ -4443,6 +4461,7 @@
 				27473AC41DD30C380024375F /* AppDelegate.m in Sources */,
 				70D1D926238FA822003730CD /* DZThreadProperty.m in Sources */,
 				7062106D237935ED00130B9D /* UUDatePicker.m in Sources */,
+				70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */,
 				706212C7237936C900130B9D /* DZUserBoundView.m in Sources */,
 				706212E7237936C900130B9D /* DZLoginModel.m in Sources */,
 				70FBDCF42383FC1B00FC296E /* DZVerticalButton.m in Sources */,
@@ -4487,7 +4506,7 @@
 				706212CC237936C900130B9D /* DZViewPollPotionController.m in Sources */,
 				70F9F8D1237AA72B0067B308 /* NSDictionary+Utils.m in Sources */,
 				94F36BD220804221002AEF9E /* JTWebImageBrowerHelper.m in Sources */,
-				70FBDCE72383FC1B00FC296E /* BoundManageController.m in Sources */,
+				70FBDCE72383FC1B00FC296E /* DZBindManageController.m in Sources */,
 				27E481601E8A369000AE0E02 /* DZLaunchScreenManager.m in Sources */,
 				709622CD238BC6E900AF657F /* PRNaviTabManager.m in Sources */,
 				70DFD79C237A95DE00A13F0F /* DZBaseViewController.m in Sources */,
@@ -4529,6 +4548,7 @@
 				273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */,
 				7062127A237936C900130B9D /* PostTypeModel.m in Sources */,
 				70FBDCED2383FC1B00FC296E /* MsgReplyModel.m in Sources */,
+				70A5E26923A9D62600236105 /* DZDiscoverSquareView.m in Sources */,
 				70F9F8D0237AA72B0067B308 /* UIImage+DrawCricleImage.m in Sources */,
 				7062128C237936C900130B9D /* DZSelectTipView.m in Sources */,
 				70F19E5B237A8E9900499BED /* DZNavItemButton.m in Sources */,

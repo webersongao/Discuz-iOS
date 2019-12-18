@@ -6,12 +6,15 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZBaseCollectionView.h"
+#import "DZBaseTableView.h"
+#import "DZDiscoverListCell.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface DZDiscoverListView : DZBaseTableView
 
-@interface DZDiscoverListView : DZBaseCollectionView
+- (instancetype)initWithListFrame:(CGRect)frame;
+
+-(void)updateListView:(NSArray *)array;
 
 @end
 
-NS_ASSUME_NONNULL_END
+
