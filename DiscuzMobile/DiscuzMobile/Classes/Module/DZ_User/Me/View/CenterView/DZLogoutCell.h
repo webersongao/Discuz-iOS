@@ -1,5 +1,5 @@
 //
-//  LogoutCell.h
+//  DZLogoutCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/20.
@@ -8,8 +8,8 @@
 
 #import "DZBaseTableViewCell.h"
 
-@interface LogoutCell : DZBaseTableViewCell
+@interface DZLogoutCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) UILabel *lab;
+-(void)updateLogoutCell:(NSString *)text;
 
 @end

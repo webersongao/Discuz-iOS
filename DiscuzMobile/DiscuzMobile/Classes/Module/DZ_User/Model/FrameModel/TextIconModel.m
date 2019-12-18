@@ -14,17 +14,18 @@
     return [NSString stringWithFormat:@"text==> %@,iconName==> %@,detail==> %@",_text,_iconName,_detail];
 }
 
-- (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail {
+- (instancetype)initWithText:(NSString *)text iconName:(NSString *)iconName andDetail:(NSString *)detail action:(JTCellAction)action {
     if (self = [super init]) {
-        self.text = text;
-        self.iconName = iconName;
-        self.detail = detail;
+        _text = text;
+        _detail = detail;
+        _cellAction = action;
+        _iconName = iconName;
     }
     return self;
 }
 
-+ (instancetype)initWithText:(NSString *)text andIconName:(NSString *)iconName andDetail:(NSString *)detail {
-    TextIconModel *model = [[TextIconModel alloc] initWithText:text andIconName:iconName andDetail:checkNull(detail)];
++ (instancetype)initWithText:(NSString *)text iconName:(NSString *)iconName andDetail:(NSString *)detail action:(JTCellAction)action {
+    TextIconModel *model = [[TextIconModel alloc] initWithText:text iconName:iconName andDetail:checkNull(detail) action:action];
     return model;
 }
 

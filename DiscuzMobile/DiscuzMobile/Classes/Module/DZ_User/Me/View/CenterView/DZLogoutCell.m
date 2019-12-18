@@ -1,14 +1,20 @@
 //
-//  LogoutCell.m
+//  DZLogoutCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/20.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "LogoutCell.h"
+#import "DZLogoutCell.h"
 
-@implementation LogoutCell
+@interface DZLogoutCell ()
+
+@property (nonatomic, strong) UILabel *lab;
+
+@end
+
+@implementation DZLogoutCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -26,6 +32,11 @@
     self.lab.textColor = K_Color_LightText;
     self.lab.text = @"退出登录";
     [self.contentView addSubview:self.lab];
+}
+
+
+-(void)updateLogoutCell:(NSString *)text{
+    self.lab.text = text;
 }
 
 - (void)layoutSubviews {

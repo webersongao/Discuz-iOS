@@ -13,4 +13,9 @@
 @interface MYCenterHeader : UIView
 @property (nonatomic, strong) CenterUserInfoView *userInfoView;
 @property (nonatomic, strong) CenterToolView *tooView;
+
+
+-(void)updateHeader:(NSString *)name title:(NSString *)title icon:(NSString *)iconName;
+
+
 @end

@@ -7,13 +7,12 @@
 //
 
 #import "DZUserDataModel.h"
-#import "TextIconModel.h"
 
 @interface DZUserDataModel ()
 
 @property (nonatomic, strong) NSArray *baseArray;  //!< 属性注释
 @property (nonatomic, strong) NSArray *UserArray;  //!< 属性注释
-@property (nonatomic, strong) NSArray *extcreditsArray;  //!< 属性注释
+@property (nonatomic, strong) NSMutableArray *extcreditsArray;  //!< 属性注释
 @property (nonatomic, strong) TextIconModel *endModel;  //!< 属性注释
 @end
 
@@ -33,47 +32,46 @@
     
     if (type == JTCenterTypeMy) {
         self.UserArray = [self myUserInitData];
-        self.endModel = [TextIconModel initWithText:@"退出" andIconName:nil andDetail:nil];
+        self.endModel = [TextIconModel initWithText:@"退出" iconName:nil andDetail:nil action:cell_Logout];
     }else{
         self.UserArray = [self otherInitData];
-        self.endModel = [TextIconModel initWithText:@"加好友" andIconName:nil andDetail:nil];
+        self.endModel = [TextIconModel initWithText:@"加好友" iconName:nil andDetail:nil action:cell_addFriend];
     }
     self.extcreditsArray = [self extcreditsArray];
     self.isOther = (type == JTCenterTypeOther) ? YES : NO;
-    
 }
 
 
 -(NSArray *)baseInitData{
-    TextIconModel *model01 = [TextIconModel initWithText:@"用户组" andIconName:@"uclist_0" andDetail:nil];
-    TextIconModel *model02 = [TextIconModel initWithText:@"管理组" andIconName:@"uclist_2" andDetail:nil];
-    TextIconModel *model03 = [TextIconModel initWithText:@"注册时间" andIconName:@"uclist_1" andDetail:nil];
+    TextIconModel *model01 = [TextIconModel initWithText:@"用户组" iconName:@"uclist_0" andDetail:nil action:cell_None];
+    TextIconModel *model02 = [TextIconModel initWithText:@"管理组" iconName:@"uclist_2" andDetail:nil action:cell_None];
+    TextIconModel *model03 = [TextIconModel initWithText:@"注册时间" iconName:@"uclist_1" andDetail:nil action:cell_None];
     return @[model01,model02,model03];
 }
 
 - (NSArray *)myUserInitData {
     
-    TextIconModel *other01 = [TextIconModel initWithText:@"我的主题" andIconName:@"ucex_0" andDetail:nil];
-    TextIconModel *other02 = [TextIconModel initWithText:@"我的回复" andIconName:@"ucex_1" andDetail:nil];
+    TextIconModel *other01 = [TextIconModel initWithText:@"我的主题" iconName:@"ucex_0" andDetail:nil action:cell_Thread];
+    TextIconModel *other02 = [TextIconModel initWithText:@"我的回复" iconName:@"ucex_1" andDetail:nil action:cell_reply];
     
     return @[other01,other02];
 }
 
 - (NSArray *)otherInitData {
     
-    TextIconModel *other01 = [TextIconModel initWithText:@"他的主题" andIconName:@"ucex_0" andDetail:nil];
-    TextIconModel *other02 = [TextIconModel initWithText:@"他的回复" andIconName:@"ucex_1" andDetail:nil];
+    TextIconModel *other01 = [TextIconModel initWithText:@"他的主题" iconName:@"ucex_0" andDetail:nil action:cell_Thread];
+    TextIconModel *other02 = [TextIconModel initWithText:@"他的回复" iconName:@"ucex_1" andDetail:nil action:cell_reply];
     
     return @[other01,other02];
 }
 
-- (NSArray *)extcreditsArray {
+- (NSMutableArray *)extcreditsArray {
     
-    TextIconModel *ext01 = [TextIconModel initWithText:@"主题数" andIconName:@"ucex_0" andDetail:nil];  // 威望
-    TextIconModel *ext02 = [TextIconModel initWithText:@"回帖数" andIconName:@"ucex_1" andDetail:nil];  // 金钱
-    TextIconModel *ext03 = [TextIconModel initWithText:@"积分值" andIconName:@"ucex_2" andDetail:nil];  // 贡献
+    TextIconModel *ext01 = [TextIconModel initWithText:@"主题数" iconName:@"ucex_0" andDetail:nil action:cell_None];  // 威望
+    TextIconModel *ext02 = [TextIconModel initWithText:@"回帖数" iconName:@"ucex_1" andDetail:nil action:cell_None];  // 金钱
+    TextIconModel *ext03 = [TextIconModel initWithText:@"积分值" iconName:@"ucex_2" andDetail:nil action:cell_None];  // 贡献
     
-    return @[ext01,ext02,ext03];
+    return [NSMutableArray arrayWithArray:@[ext01,ext02,ext03]];
 }
 
 
@@ -85,9 +83,6 @@
         return nil;
     }
 }
-
-
-
 
 -(void)setUserVarModel:(DZUserVarModel *)userVarModel{
     _userVarModel = userVarModel;
@@ -165,24 +160,34 @@
         NSString * imageStr  = [NSString stringWithFormat:@"ucex_%ld",(long)index];
         
         if (titleStr.length) {
-            TextIconModel *itemModel = [TextIconModel initWithText:titleStr andIconName:imageStr andDetail:detailStr];
-//            [self.infoArr addObject:itemModel];
+            TextIconModel *itemModel = [TextIconModel initWithText:titleStr iconName:imageStr andDetail:detailStr action:cell_None];
+            [self.extcreditsArray addObject:itemModel];
         }
     }
-    
-//    self.extcreditsArray = [[]]
 }
 
 
 
 //- (void)initData {
 //
-//    TextIconModel *model01 = [TextIconModel initWithText:@"注册时间" andIconName:@"uclist_1" andDetail:nil];
-//    TextIconModel *model02 = [TextIconModel initWithText:@"我的足迹" andIconName:@"zuji" andDetail:nil];
-//    TextIconModel *model03 = [TextIconModel initWithText:@"绑定管理" andIconName:@"bind_icon" andDetail:nil];
-//    TextIconModel *model04 = [TextIconModel initWithText:@"修改密码" andIconName:@"uclist_2" andDetail:nil];
+//    TextIconModel *model01 = [TextIconModel initWithText:@"注册时间" iconName:@"uclist_1" andDetail:nil];
+//    TextIconModel *model02 = [TextIconModel initWithText:@"我的足迹" iconName:@"zuji" andDetail:nil];
+//    TextIconModel *model03 = [TextIconModel initWithText:@"绑定管理" iconName:@"bind_icon" andDetail:nil];
+//    TextIconModel *model04 = [TextIconModel initWithText:@"修改密码" iconName:@"uclist_2" andDetail:nil];
 //
 //    [self.manageArr addObjectsFromArray:@[model01,model02,model03,model04]];
+//if (indexPath.row == 0) {
+//    [[DZMobileCtrl sharedCtrl] ShowBindControllerFromVC:self];
+//}
+//
+//if (indexPath.row == 1) {
+//    return;
+//    [[DZMobileCtrl sharedCtrl] ShowResetPwdControllerFromVC:self];
+//}
+//
+//if (indexPath.row == 2) {
+//    [[DZMobileCtrl sharedCtrl] ShowFootMarkControllerFromVC:self];
+//}
 //}
 
 @end

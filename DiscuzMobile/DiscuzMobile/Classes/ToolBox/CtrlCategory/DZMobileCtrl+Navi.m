@@ -34,7 +34,7 @@
 #import "DZPostNormalController.h"
 #import "DZPostVoteController.h"
 #import "DZPostDebateController.h"
-#import "DZPostActivityController.h""
+#import "DZPostActivityController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -46,13 +46,8 @@
 
 - (void)PushToOtherUserController:(NSString *)userId{
     NSString *userIdStr = checkNull(userId);
-    if (userIdStr.length && [DZLoginModule isLogged]) {
-        DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
-        ovc.authorid = userIdStr;
-        [self.mainNavi pushViewController:ovc animated:YES];
-    }else{
-        [self PresentLoginController:nil];
-    }
+    DZOtherUserController * ovc = [[DZOtherUserController alloc] initWithAuthor:userIdStr];
+    [self.mainNavi pushViewController:ovc animated:YES];
 }
 
 /// 帖子详情页

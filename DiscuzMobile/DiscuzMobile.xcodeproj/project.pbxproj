@@ -409,11 +409,11 @@
 		70FBDCF22383FC1B00FC296E /* MyReplyViewControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC972383FC1B00FC296E /* MyReplyViewControllerCell.m */; };
 		70FBDCF32383FC1B00FC296E /* BoundManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC9D2383FC1B00FC296E /* BoundManageCell.m */; };
 		70FBDCF42383FC1B00FC296E /* DZVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC9E2383FC1B00FC296E /* DZVerticalButton.m */; };
-		70FBDCF52383FC1B00FC296E /* LogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA32383FC1B00FC296E /* LogoutCell.m */; };
+		70FBDCF52383FC1B00FC296E /* DZLogoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA32383FC1B00FC296E /* DZLogoutCell.m */; };
 		70FBDCF62383FC1B00FC296E /* AllOneButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA42383FC1B00FC296E /* AllOneButtonCell.m */; };
 		70FBDCF72383FC1B00FC296E /* MYCenterHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */; };
 		70FBDCF82383FC1B00FC296E /* CenterToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA82383FC1B00FC296E /* CenterToolView.m */; };
-		70FBDCF92383FC1B00FC296E /* CenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA92383FC1B00FC296E /* CenterCell.m */; };
+		70FBDCF92383FC1B00FC296E /* DZUserCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCA92383FC1B00FC296E /* DZUserCenterCell.m */; };
 		70FBDCFA2383FC1B00FC296E /* DZHorizontalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAA2383FC1B00FC296E /* DZHorizontalButton.m */; };
 		70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAB2383FC1B00FC296E /* CenterUserInfoView.m */; };
 		70FBDCFC2383FC1B00FC296E /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDCAE2383FC1B00FC296E /* UserInfoCell.m */; };
@@ -1254,21 +1254,21 @@
 		70FBDC972383FC1B00FC296E /* MyReplyViewControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyReplyViewControllerCell.m; sourceTree = "<group>"; };
 		70FBDC982383FC1B00FC296E /* ReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyCell.h; sourceTree = "<group>"; };
 		70FBDC9A2383FC1B00FC296E /* AllOneButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllOneButtonCell.h; sourceTree = "<group>"; };
-		70FBDC9B2383FC1B00FC296E /* LogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutCell.h; sourceTree = "<group>"; };
+		70FBDC9B2383FC1B00FC296E /* DZLogoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLogoutCell.h; sourceTree = "<group>"; };
 		70FBDC9C2383FC1B00FC296E /* MYCenterHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYCenterHeader.h; sourceTree = "<group>"; };
 		70FBDC9D2383FC1B00FC296E /* BoundManageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundManageCell.m; sourceTree = "<group>"; };
 		70FBDC9E2383FC1B00FC296E /* DZVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZVerticalButton.m; sourceTree = "<group>"; };
-		70FBDC9F2383FC1B00FC296E /* CenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterCell.h; sourceTree = "<group>"; };
+		70FBDC9F2383FC1B00FC296E /* DZUserCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUserCenterCell.h; sourceTree = "<group>"; };
 		70FBDCA02383FC1B00FC296E /* CenterToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterToolView.h; sourceTree = "<group>"; };
 		70FBDCA12383FC1B00FC296E /* CenterUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterUserInfoView.h; sourceTree = "<group>"; };
 		70FBDCA22383FC1B00FC296E /* DZHorizontalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZHorizontalButton.h; sourceTree = "<group>"; };
-		70FBDCA32383FC1B00FC296E /* LogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutCell.m; sourceTree = "<group>"; };
+		70FBDCA32383FC1B00FC296E /* DZLogoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZLogoutCell.m; sourceTree = "<group>"; };
 		70FBDCA42383FC1B00FC296E /* AllOneButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllOneButtonCell.m; sourceTree = "<group>"; };
 		70FBDCA52383FC1B00FC296E /* DZVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZVerticalButton.h; sourceTree = "<group>"; };
 		70FBDCA62383FC1B00FC296E /* BoundManageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundManageCell.h; sourceTree = "<group>"; };
 		70FBDCA72383FC1B00FC296E /* MYCenterHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYCenterHeader.m; sourceTree = "<group>"; };
 		70FBDCA82383FC1B00FC296E /* CenterToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterToolView.m; sourceTree = "<group>"; };
-		70FBDCA92383FC1B00FC296E /* CenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterCell.m; sourceTree = "<group>"; };
+		70FBDCA92383FC1B00FC296E /* DZUserCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUserCenterCell.m; sourceTree = "<group>"; };
 		70FBDCAA2383FC1B00FC296E /* DZHorizontalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZHorizontalButton.m; sourceTree = "<group>"; };
 		70FBDCAB2383FC1B00FC296E /* CenterUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterUserInfoView.m; sourceTree = "<group>"; };
 		70FBDCAD2383FC1B00FC296E /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
@@ -3600,10 +3600,10 @@
 		70FBDC992383FC1B00FC296E /* CenterView */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC9B2383FC1B00FC296E /* LogoutCell.h */,
-				70FBDCA32383FC1B00FC296E /* LogoutCell.m */,
-				70FBDC9F2383FC1B00FC296E /* CenterCell.h */,
-				70FBDCA92383FC1B00FC296E /* CenterCell.m */,
+				70FBDC9B2383FC1B00FC296E /* DZLogoutCell.h */,
+				70FBDCA32383FC1B00FC296E /* DZLogoutCell.m */,
+				70FBDC9F2383FC1B00FC296E /* DZUserCenterCell.h */,
+				70FBDCA92383FC1B00FC296E /* DZUserCenterCell.m */,
 				70FBDCA02383FC1B00FC296E /* CenterToolView.h */,
 				70FBDCA82383FC1B00FC296E /* CenterToolView.m */,
 				70FBDC9A2383FC1B00FC296E /* AllOneButtonCell.h */,
@@ -4656,7 +4656,7 @@
 				70F9F8E2237AA72C0067B308 /* UIDevice+Extension.m in Sources */,
 				70FBDCDD2383FC1B00FC296E /* OtherUserThearCell.m in Sources */,
 				70FBDCF02383FC1B00FC296E /* CollectionViewCell.m in Sources */,
-				70FBDCF52383FC1B00FC296E /* LogoutCell.m in Sources */,
+				70FBDCF52383FC1B00FC296E /* DZLogoutCell.m in Sources */,
 				70DFD7A4237A95DE00A13F0F /* DZBaseTableViewController.m in Sources */,
 				706212CA237936C900130B9D /* DZSettingController.m in Sources */,
 				70DFD7A2237A95DE00A13F0F /* DZBaseTextField.m in Sources */,
@@ -4683,7 +4683,7 @@
 				947ECB082064D403002D3536 /* JFImageGroupTableViewController.m in Sources */,
 				706212D6237936C900130B9D /* PartInMultiSelectCell.m in Sources */,
 				70D1D923238FA6D6003730CD /* DZThreadResModel.m in Sources */,
-				70FBDCF92383FC1B00FC296E /* CenterCell.m in Sources */,
+				70FBDCF92383FC1B00FC296E /* DZUserCenterCell.m in Sources */,
 				70F9F8E8237AA72C0067B308 /* MBProgressHUD+Add.m in Sources */,
 				706212DB237936C900130B9D /* PartInNormalCell.m in Sources */,
 				704DDA6C238BC5AE009C9CE2 /* DZDiscoverModel.m in Sources */,

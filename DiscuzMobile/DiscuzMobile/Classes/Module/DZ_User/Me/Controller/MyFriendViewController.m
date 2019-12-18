@@ -76,9 +76,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:indexPath.row];
     
-    DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
-    ovc.authorid = cellItem.uid;
-    [self showViewController:ovc sender:nil];
+    DZOtherUserController * otherVC = [[DZOtherUserController alloc] initWithAuthor:cellItem.uid];
+    [self showViewController:otherVC sender:nil];
     
 }
 

@@ -16,4 +16,9 @@
 
 - (void)setIdentityText:(NSString *)text;
 
+
+-(void)updateInfoHeader:(NSString *)name title:(NSString *)title icon:(NSString *)iconName;
+
+
+
 @end
