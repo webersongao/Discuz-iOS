@@ -21,6 +21,7 @@
     self.popGestureEnabled = YES;
     self.interactivePopGestureRecognizer.delegate = self;
     self.navigationBar.hidden = YES;
+            self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

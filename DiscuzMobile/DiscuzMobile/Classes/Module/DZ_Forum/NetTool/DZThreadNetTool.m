@@ -39,10 +39,11 @@
     if (!dict || !completion) {
         return;
     }
+    JTLoadType ReqLoadType = (isCache && loadType == JTRequestTypeCache) ? JTRequestTypeCache : JTRequestTypeRefresh;
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_ForumTlist;
         request.parameters = dict.mutableCopy;
-        request.loadType = loadType;
+        request.loadType = ReqLoadType;
         request.isCache = reqCache;
     } success:^(id responseObject, JTLoadType type) {
         DZThreadResModel *theadRes = [DZThreadResModel modelWithJSON:responseObject];
@@ -55,8 +56,19 @@
 /// 板块分类列表
 + (void)DZ_DownloadForumCategoryData:(JTLoadType)loadType isCache:(BOOL)isCache completion:(void(^)(DZDiscoverModel *indexModel))completion{
     
+    
+    JTLoadType ReqLoadType = loadType;
+    if ([DZApiRequest isCache:DZ_Url_Forumindex andParameters:nil]) {
+        ReqLoadType = (isCache && loadType == JTRequestTypeCache) ? JTRequestTypeCache : JTRequestTypeRefresh;
+    }
+    
+    if (!completion) {
+        return;
+    }
+    
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.urlString = DZ_Url_Forumindex;
+        request.loadType = ReqLoadType;
     } success:^(id responseObject, JTLoadType type) {
         DZDiscoverModel *forumDataModel = nil;
         NSDictionary *varibles = [responseObject dictionaryForKey:@"Variables"];

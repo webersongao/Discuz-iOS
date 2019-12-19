@@ -16,11 +16,9 @@
     if ([otherGestureRecognizer.view isKindOfClass:NSClassFromString(@"UILayoutContainerView")]) {
 //         再判断系统手势的state是began还是fail，同时判断scrollView的位置是不是正好在最左边
         if (otherGestureRecognizer.state != UIGestureRecognizerStateFailed && self.contentOffset.x == 0) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"kLeaveTopNtf" object:@1];
             return YES;
         }
     }
-//    DLog(@"%lf,%lf",self.contentOffset.x,self.contentOffset.y);
     return NO;
 }
 @end

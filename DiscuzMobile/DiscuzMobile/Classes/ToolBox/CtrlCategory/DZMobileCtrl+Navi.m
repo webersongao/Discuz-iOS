@@ -22,7 +22,7 @@
 #import "DZMsgChatDetailController.h"
 #import "DZOtherUserThreadController.h"
 #import "DZOtherUserPostReplyController.h"
-#import "BoundManageController.h"
+#import "DZBindManageController.h"
 #import "DZFootMarkRootController.h"
 #import "DZResetPwdController.h"
 #import "DZSendMsgViewController.h"
@@ -34,7 +34,7 @@
 #import "DZPostNormalController.h"
 #import "DZPostVoteController.h"
 #import "DZPostDebateController.h"
-#import "DZPostActivityController.h""
+#import "DZPostActivityController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -46,11 +46,8 @@
 
 - (void)PushToOtherUserController:(NSString *)userId{
     NSString *userIdStr = checkNull(userId);
-    if (userIdStr.length) {
-        DZOtherUserController * ovc = [[DZOtherUserController alloc] init];
-        ovc.authorid = userIdStr;
-        [self.mainNavi pushViewController:ovc animated:YES];
-    }
+    DZOtherUserController * ovc = [[DZOtherUserController alloc] initWithAuthor:userIdStr];
+    [self.mainNavi pushViewController:ovc animated:YES];
 }
 
 /// 帖子详情页
@@ -171,7 +168,7 @@
 
 /// 账号绑定
 - (void)ShowBindControllerFromVC:(UIViewController *)selfVC {
-    BoundManageController *boundVc = [[BoundManageController alloc] init];
+    DZBindManageController *boundVc = [[DZBindManageController alloc] init];
     [selfVC showViewController:boundVc sender:nil];
 }
 

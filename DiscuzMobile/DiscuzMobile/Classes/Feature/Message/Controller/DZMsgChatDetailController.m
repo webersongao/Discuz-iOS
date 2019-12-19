@@ -12,6 +12,7 @@
 #import "DZLoginModule.h"
 #import "ChatContentCell.h"
 #import "DZMsgNetTool.h"
+#import "DZBaseTableView.h"
 #import "DZOtherUserController.h"
 
 static CGFloat kToolBarH = 50;
@@ -327,13 +328,10 @@ static CGFloat kToolBarH = 50;
 }
 
 - (void)goOtherCenter:(UITapGestureRecognizer *)sender {
-    
     UIView *view = sender.view;
     MessageModel *model = self.messageModelArr[view.tag];
-    DZOtherUserController *ovc = [[DZOtherUserController alloc] init];
-    ovc.authorid = model.authorid;
-    [self showViewController:ovc sender:nil];
-    
+    DZOtherUserController *otherVC = [[DZOtherUserController alloc] initWithAuthor:model.authorid];
+    [self showViewController:otherVC sender:nil];
 }
 
 //长按触发的事件
@@ -386,7 +384,7 @@ static CGFloat kToolBarH = 50;
                 [MBProgressHUD showInfo:@"删除失败"];
             }
         }else{
-          [self showServerError:error];
+            [self showServerError:error];
         }
     }];
 }

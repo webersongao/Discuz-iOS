@@ -30,4 +30,12 @@
     [self addSubview:self.tooView];
 }
 
+
+-(void)updateHeader:(NSString *)name title:(NSString *)title icon:(NSString *)iconName{
+    [self.userInfoView updateInfoHeader:name title:title icon:iconName];
+}
+
+
+
+
 @end

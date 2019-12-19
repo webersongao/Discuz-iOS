@@ -106,6 +106,7 @@ NSString * const CookieValue = @"COOKIEVALU";
         [DZUserNetTool DZ_UserProfileFromServer:YES Uid:nil userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
             if (errorStr.length) {
                 [DZLoginModule signout];
+                DLog(@"WBS Cookie 过期");
             }
         }];
     }

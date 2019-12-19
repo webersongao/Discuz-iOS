@@ -45,7 +45,7 @@
 
     cell.textLabel.text=[NSString stringWithFormat:@"选择第%ld项的人",indexPath.row+1];
     cell.textLabel.font=[DZFontSize HomecellTitleFontSize15];
-    cell.detailTextLabel.text = [dic objectForKey:@"votes"];
+    cell.detailTextLabel.text = [dic stringForKey:@"votes"];
     cell.detailTextLabel.font = [DZFontSize messageFontSize14];
     cell.detailTextLabel.textColor = K_Color_Theme;
     return cell;

@@ -1,5 +1,5 @@
 //
-//  CenterCell.h
+//  DZUserCenterCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
@@ -7,13 +7,15 @@
 //
 
 #import "DZBaseTableViewCell.h"
-@class DZHorizontalButton,TextIconModel;
+#import "TextIconModel.h"
 
-@interface CenterCell : DZBaseTableViewCell
+@class DZHorizontalButton;
+
+@interface DZUserCenterCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) DZHorizontalButton *nameV;
 @property (nonatomic, strong) UILabel *detailLab;
 
-- (void)setData:(TextIconModel *)model;
+- (void)updateCenterCell:(TextIconModel *)model access:(BOOL)isIndicator;
 
 @end

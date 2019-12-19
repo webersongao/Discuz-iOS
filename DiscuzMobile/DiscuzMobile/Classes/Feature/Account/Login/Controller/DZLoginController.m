@@ -88,8 +88,8 @@ NSString * const debugPassword = @"debugPassword";
 
 - (BOOL)isHaveFullContent {
     NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
-    NSString *username = [userdefault objectForKey:debugUsername];
-    NSString *password = [userdefault objectForKey:debugPassword];
+    NSString *username = [userdefault stringForKey:debugUsername];
+    NSString *password = [userdefault stringForKey:debugPassword];
     if ([DataCheck isValidString:username] && [DataCheck isValidString:password]) {
         self.loginView.countView.userNameTextField.text = username;
         self.loginView.pwordView.userNameTextField.text = password;

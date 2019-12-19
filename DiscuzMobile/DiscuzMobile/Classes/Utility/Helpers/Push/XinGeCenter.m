@@ -66,9 +66,9 @@
 - (void)isActivePushAlert:(NSDictionary *)userInfo {
     
     DLog(@"%@",userInfo);
-    NSDictionary *oneDict = [userInfo objectForKey:@"aps"];
-    NSString *msg = [oneDict objectForKey:@"alert"];
-    NSDictionary *xgDic = [userInfo objectForKey:@"xg"];
+    NSDictionary *oneDict = [userInfo dictionaryForKey:@"aps"];
+    NSString *msg = [oneDict stringForKey:@"alert"];
+    NSDictionary *xgDic = [userInfo dictionaryForKey:@"xg"];
     NSString *ts = [NSString stringWithFormat:@"%@",[xgDic objectForKey:@"ts"]];
     if ([self.xgts isEqualToString:ts]) {
         return;

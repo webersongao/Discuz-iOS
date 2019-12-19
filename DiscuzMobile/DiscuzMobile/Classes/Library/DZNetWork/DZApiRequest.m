@@ -62,7 +62,7 @@
     
     urlStr = [NSString stringWithFormat:@"api/mobile/%@",urlStr];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *domain = [userDefault objectForKey:@"domain"];
+    NSString *domain = [userDefault stringForKey:@"domain"];
     if ([DataCheck isValidString:domain]) {
         urlStr = [NSString stringWithFormat:@"%@%@",domain,urlStr];
     } else {
@@ -75,10 +75,10 @@
 // 掌上论坛公共处理
 + (void)publicDo:(id)responseObject {
     if ([DataCheck isValidDict:[responseObject objectForKey:@"Variables"]]) { // 公共提醒
-        [[DZMobileCtrl sharedCtrl].User updateFormHash:[[responseObject objectForKey:@"Variables"] objectForKey:@"formhash"]];
+        [[DZMobileCtrl sharedCtrl].User updateFormHash:[[responseObject dictionaryForKey:@"Variables"] stringForKey:@"formhash"]];
         if ([DZLoginModule isLogged]) {
-            if ([DataCheck isValidDict:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]]) { //公共提醒
-                [MessageNoticeCenter shared].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject objectForKey:@"Variables"] objectForKey:@"notice"]];
+            if ([DataCheck isValidDict:[[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"notice"]]) { //公共提醒
+                [MessageNoticeCenter shared].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject dictionaryForKey:@"Variables"] objectForKey:@"notice"]];
             }
         }
         return;

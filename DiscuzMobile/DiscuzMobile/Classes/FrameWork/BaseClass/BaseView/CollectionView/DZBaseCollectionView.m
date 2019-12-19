@@ -16,7 +16,7 @@
 
 @implementation DZBaseCollectionView
 
-- (instancetype)initWithListFrame:(CGRect)frame
+- (instancetype)initWithSquareFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame collectionViewLayout:[DZLayoutTool listLayout]];
     if (self) {

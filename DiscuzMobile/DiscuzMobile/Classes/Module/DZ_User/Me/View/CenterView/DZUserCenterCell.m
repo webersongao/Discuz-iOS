@@ -1,16 +1,15 @@
 //
-//  CenterCell.m
+//  DZUserCenterCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/19.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "CenterCell.h"
+#import "DZUserCenterCell.h"
 #import "DZHorizontalButton.h"
-#import "TextIconModel.h"
 
-@implementation CenterCell
+@implementation DZUserCenterCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -23,6 +22,7 @@
 - (void)p_setupView {
     self.nameV = [[DZHorizontalButton alloc] init];
     [self.contentView addSubview:self.nameV];
+//    [self.contentView addSubview:self.seprateLine];
     
     self.detailLab = [[UILabel alloc] init];
 //    self.detailLab.backgroundColor= [UIColor redColor];
@@ -32,19 +32,20 @@
     [self.contentView addSubview:self.detailLab];
 }
 
-- (void)setData:(TextIconModel *)model {
+- (void)updateCenterCell:(TextIconModel *)model access:(BOOL)isIndicator{
     if (model != nil) {
-        
         self.nameV.textLabel.text = model.text;
         self.nameV.iconV.image = [UIImage imageNamed:model.iconName];
         self.detailLab.text = model.detail;
     }
+    
+    self.accessoryType = isIndicator ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.nameV.frame = CGRectMake(15, 11, 200, CGRectGetHeight(self.frame) - 20);
-    self.detailLab.frame = CGRectMake(KScreenWidth - 120 - 10, CGRectGetMinY(self.nameV.frame), 120, CGRectGetHeight(self.nameV.frame));
+    self.nameV.frame = CGRectMake(kMargin15, kMargin10, 200, CGRectGetHeight(self.frame) - kMargin20);
+    self.detailLab.frame = CGRectMake(KScreenWidth - 120 - kMargin15, CGRectGetMinY(self.nameV.frame), 120, CGRectGetHeight(self.nameV.frame));
 }
 
 @end

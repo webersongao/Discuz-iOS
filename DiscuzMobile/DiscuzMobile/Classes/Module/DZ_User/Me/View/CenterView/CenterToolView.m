@@ -37,9 +37,7 @@
     CGFloat item_width = (KScreenWidth - 24) / 4;
     for (int i = 0; i < 4; i ++) {
         
-        TextIconModel *model = [[TextIconModel alloc] init];
-        model.iconName = [NSString stringWithFormat:@"ucbar_%d",i];
-        model.text = arr[i];
+        TextIconModel *model = [TextIconModel initWithText:arr[i] iconName:[NSString stringWithFormat:@"ucbar_%d",i] andDetail:nil action:cell_None];
         [self.iconTextArr addObject:model];
         
         DZVerticalButton *item = [[DZVerticalButton alloc] initWithFrame:CGRectMake(12 + i * item_width, 12, item_width, CGRectGetHeight(self.frame))];

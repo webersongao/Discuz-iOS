@@ -32,6 +32,7 @@
     [super viewDidLoad];
     
     self.delegate = self;
+    self.view.backgroundColor = [UIColor whiteColor];
     [[DZMobileCtrl sharedCtrl] cofigLocalDataInfo];
     
 #ifndef MACRO_PRODUCT
@@ -105,19 +106,19 @@
 
 - (void)ttsetSelectInex:(NSNotification *)notify {
     
-//    if (notify.userInfo != nil) {
-//        NSDictionary *userInfo = notify.userInfo;
-//        if ([[userInfo objectForKey:@"type"] isEqualToString:@"cancel"]) {
-//            if (self.selectedIndex == self.viewControllers.count - 1) {
-//                self.selectedIndex = 0;
-//            }
-//        } else if ([[userInfo objectForKey:@"type"] isEqualToString:@"loginSuccess"]) {
-//            self.selectedIndex = self.viewControllers.count - 1;
-//        }
-//    } else {
-//        self.selectedIndex = self.notitySelected;
-//    }
-//    self.oldSelected = self.selectedIndex;
+    //    if (notify.userInfo != nil) {
+    //        NSDictionary *userInfo = notify.userInfo;
+    //        if ([[userInfo objectForKey:@"type"] isEqualToString:@"cancel"]) {
+    //            if (self.selectedIndex == self.viewControllers.count - 1) {
+    //                self.selectedIndex = 0;
+    //            }
+    //        } else if ([[userInfo objectForKey:@"type"] isEqualToString:@"loginSuccess"]) {
+    //            self.selectedIndex = self.viewControllers.count - 1;
+    //        }
+    //    } else {
+    //        self.selectedIndex = self.notitySelected;
+    //    }
+    //    self.oldSelected = self.selectedIndex;
 }
 
 - (void)addChildViewControllers {
@@ -128,8 +129,7 @@
     
     //    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
-    DZUserController *userVC = [[DZUserController alloc] init];
-    DZUserController *myVC = [[DZUserController alloc] init];
+    DZUserController *UserVC = [[DZUserController alloc] init];
     
     [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
     
@@ -138,8 +138,7 @@
     
     //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
     //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:userVC title:@"账户1" image:@"my" selectedImage:@"mys"];
-    [self addChildVc:myVC title:@"账户2" image:@"my" selectedImage:@"mys"];
+    [self addChildVc:UserVC title:@"我的" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addDemoChildViewControllers {

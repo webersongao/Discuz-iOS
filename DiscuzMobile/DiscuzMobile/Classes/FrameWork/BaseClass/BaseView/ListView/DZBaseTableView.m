@@ -16,6 +16,7 @@
     if (self) {
         [self loadSetting];
         self.backgroundColor = KRandom_Color;
+        self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }

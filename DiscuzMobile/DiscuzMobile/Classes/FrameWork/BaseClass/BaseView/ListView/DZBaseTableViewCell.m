@@ -33,11 +33,18 @@
     self.selectedBackgroundView.backgroundColor = KColor(@"#F7F7F8", 1);
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.seprateLine.frame = CGRectMake(kMargin10, self.height-0.5, self.width - kMargin20, 0.5);
+}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+- (UIView *)seprateLine{
+    if (_seprateLine == nil) {
+        _seprateLine = [[UIView alloc] initWithFrame:CGRectZero];
+        _seprateLine.backgroundColor = KColor(KLine_Color, 1.0);
+    }
+    return _seprateLine;
 }
 
 @end

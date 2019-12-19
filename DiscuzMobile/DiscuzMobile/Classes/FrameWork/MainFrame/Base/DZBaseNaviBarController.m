@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self dz_SetNavigationBar];
+            self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (DZNavigationBar *)dz_NavigationBar{

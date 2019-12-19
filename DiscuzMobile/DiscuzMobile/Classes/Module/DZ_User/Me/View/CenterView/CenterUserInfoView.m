@@ -76,7 +76,11 @@
 }
 
 
-
-
+-(void)updateInfoHeader:(NSString *)name title:(NSString *)title icon:(NSString *)iconName{
+   
+    self.nameLab.text = checkNull(name);
+    [self setIdentityText:checkNull(title)];
+    [self.headView sd_setImageWithURL:[NSURL URLWithString:checkNull(iconName)] placeholderImage:[UIImage imageNamed:@"noavatar_small"] options:SDWebImageRefreshCached];
+}
 
 @end

@@ -33,8 +33,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.iconV.frame = CGRectMake(0, 0, 25, 25);
-    self.textLabel.frame = CGRectMake(CGRectGetMaxY(self.iconV.frame) + 10, CGRectGetMinY(self.iconV.frame), 150, CGRectGetHeight(self.iconV.frame));
+    self.iconV.frame = CGRectMake(0, (self.height-25)/2.f, 25, 25);
+    self.textLabel.frame = CGRectMake(CGRectGetMaxY(self.iconV.frame) + 10, 0, 150, self.height);
 }
 
 

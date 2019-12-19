@@ -69,7 +69,7 @@
     forumCell.cancelBtn.tag = indexPath.row;
     [forumCell.cancelBtn addTarget:self action:@selector(collectionAction:) forControlEvents:UIControlEventTouchUpInside];
     NSDictionary *dic = [self.dataSourceArr objectAtIndex:indexPath.row];
-    forumCell.textLab.text = [dic objectForKey:@"title"];
+    forumCell.textLab.text = [dic stringForKey:@"title"];
     
     if ([[dic objectForKey:@"todayposts"] integerValue] > 0) {
         [forumCell.iconV sd_setImageWithURL:[NSURL URLWithString:[dic objectForKey:@"icon"]] placeholderImage:[UIImage imageNamed:@"forumNew_l"] options:SDWebImageRetryFailed];

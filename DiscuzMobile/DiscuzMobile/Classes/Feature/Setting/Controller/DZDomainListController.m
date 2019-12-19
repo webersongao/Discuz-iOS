@@ -46,6 +46,7 @@ NSString * const domainName = @"name";
         self.dataSourceArr = domainArray.mutableCopy;
     }
     [self.view addSubview:self.tableView];
+    self.tableView.frame = KView_OutNavi_Bounds;
 }
 
 - (void)rightBarBtnClick {
@@ -106,7 +107,7 @@ NSString * const domainName = @"name";
     
     NSString *detail = domainDic[domain];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowDomain = [userDefault objectForKey:domain];
+    NSString *nowDomain = [userDefault stringForKey:domain];
     if ([detail isEqualToString:nowDomain]) {
         detail = [detail stringByAppendingString:@"(当前)"];
     } else if (nowDomain == nil && [detail isEqualToString:DZ_BASEURL]) {
@@ -124,7 +125,7 @@ NSString * const domainName = @"name";
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
     NSString *detail = domainDic[domain];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowDomain = [userDefault objectForKey:domain];
+    NSString *nowDomain = [userDefault stringForKey:domain];
     
     if (![detail isEqualToString:DZ_BASEURL] || !([DataCheck isValidString:nowDomain] && [nowDomain isEqualToString:detail])) {
         [userDefault setObject:detail forKey:domain];

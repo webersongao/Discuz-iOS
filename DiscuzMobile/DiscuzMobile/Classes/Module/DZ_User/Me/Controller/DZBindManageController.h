@@ -1,5 +1,5 @@
 //
-//  BoundManageController.h
+//  DZBindManageController.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/7/12.
@@ -10,5 +10,5 @@
 
 typedef void(^RefreshBlock)(void);
 
-@interface BoundManageController : DZBaseTableViewController
+@interface DZBindManageController : DZBaseTableViewController
 @end

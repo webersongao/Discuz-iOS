@@ -6,8 +6,10 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZBaseTableViewController.h"
+#import "DZBaseViewController.h"
 
-@interface DZOtherUserController : DZBaseTableViewController
-@property (nonatomic ,copy) NSString *authorid;
+@interface DZOtherUserController : DZBaseViewController
+
+- (instancetype)initWithAuthor:(NSString *)authorid;
+
 @end

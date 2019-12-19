@@ -13,14 +13,11 @@ typedef void(^CForumBlock)(BOOL isCollection);
 
 @interface DZForumThreadController : DZBaseViewController
 
-@property (nonatomic, strong) UIView *contentView;
-
 @property (nonatomic ,copy) NSString *forumFid;
-
-@property (nonatomic, assign) NSInteger selectIndex;
-
 @property (nonatomic, copy) CForumBlock cForumBlock;
 
+@property (nonatomic, assign) NSInteger selectIndex;
+@property (nonatomic, strong) UIView *contentView;
 // 设置tableview滚动属性
 - (void)setScrollEnable:(BOOL)scrollable;
 

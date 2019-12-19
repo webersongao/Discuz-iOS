@@ -17,13 +17,13 @@
     message.text = [dict[@"message"] transformationStr];
     message.authorid = dict[@"msgfromid"];
 
-    message.time = [dict objectForKey:@"vdateline"];
-    message.type = [dict objectForKey:@"type"];
-    message.plid = [dict objectForKey:@"plid"];
-    message.pmid = [dict objectForKey:@"pmid"];
-    message.touid = [dict objectForKey:@"touid"];
-    message.fromavatar = [dict objectForKey:@"fromavatar"];
-    message.toavatar = [dict objectForKey:@"toavatar"];
+    message.time = [dict stringForKey:@"vdateline"];
+    message.type = [dict stringForKey:@"type"];
+    message.plid = [dict stringForKey:@"plid"];
+    message.pmid = [dict stringForKey:@"pmid"];
+    message.touid = [dict stringForKey:@"touid"];
+    message.fromavatar = [dict stringForKey:@"fromavatar"];
+    message.toavatar = [dict stringForKey:@"toavatar"];
 
     return message;
 }

@@ -130,7 +130,6 @@
                 }
                 [self emptyShow];
             } else {
-                
                 if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
                     NSArray *arr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist" ];
                     [self.dataSourceArr addObjectsFromArray:arr];
