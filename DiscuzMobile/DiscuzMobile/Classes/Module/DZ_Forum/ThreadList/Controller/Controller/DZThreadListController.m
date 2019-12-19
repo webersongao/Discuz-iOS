@@ -234,7 +234,7 @@
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
     UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-
+    
     if ([cell isKindOfClass:[DZThreadTopCell class]]) {
         return [(DZThreadTopCell *)cell cellHeight];
     }else{
