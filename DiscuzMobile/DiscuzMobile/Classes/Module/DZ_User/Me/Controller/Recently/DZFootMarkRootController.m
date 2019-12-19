@@ -8,8 +8,8 @@
 
 #import "DZFootMarkRootController.h"
 #import "DZContainerController.h"
-#import "FootForumController.h"
-#import "FootmarkController.h"
+#import "DZFootForumController.h"
+#import "DZFootThreadController.h"
 
 
 @interface DZFootMarkRootController ()
@@ -21,17 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"最近";
+    self.dz_normalTitle = @"最近";
     
-    FootForumController *forumVC = [[FootForumController alloc] init];
+    DZFootForumController *forumVC = [[DZFootForumController alloc] init];
     forumVC.title =@"版块";
     
-    FootmarkController *threadVC = [[FootmarkController alloc] init];
+    DZFootThreadController *threadVC = [[DZFootThreadController alloc] init];
     threadVC.title = @"帖子";
     
     NSArray *ctArr = @[forumVC,threadVC];
     
-    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
+    CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
     
     DZContainerController *containerVC = [[DZContainerController alloc] init];
     [containerVC setSubControllers:ctArr parentController:self andSegmentRect:segmentRect];

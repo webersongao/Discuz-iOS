@@ -300,7 +300,7 @@
 		709622CD238BC6E900AF657F /* PRNaviTabManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622C6238BC6E900AF657F /* PRNaviTabManager.m */; };
 		709622CE238BC6E900AF657F /* PRTagSegmentView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709622C7238BC6E900AF657F /* PRTagSegmentView.mm */; };
 		709622D1238BC97600AF657F /* BaseIconTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622D0238BC97600AF657F /* BaseIconTextView.m */; };
-		709622D4238BC9F900AF657F /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622D3238BC9F900AF657F /* HomeListCell.m */; };
+		709622D4238BC9F900AF657F /* DZFootListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622D3238BC9F900AF657F /* DZFootListCell.m */; };
 		709A730A2387E71900DF04CE /* DZBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73092387E71900DF04CE /* DZBaseCollectionView.m */; };
 		709A73112387E7FB00DF04CE /* DZRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730D2387E7FB00DF04CE /* DZRefreshFooter.m */; };
 		709A73122387E7FB00DF04CE /* DZRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730E2387E7FB00DF04CE /* DZRefreshHeader.m */; };
@@ -392,9 +392,9 @@
 		70FBDCE02383FC1B00FC296E /* CollectionRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC6D2383FC1B00FC296E /* CollectionRootController.m */; };
 		70FBDCE12383FC1B00FC296E /* CollectionForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC6F2383FC1B00FC296E /* CollectionForumController.m */; };
 		70FBDCE22383FC1B00FC296E /* CollectionThreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC712383FC1B00FC296E /* CollectionThreadController.m */; };
-		70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC762383FC1B00FC296E /* FootForumController.m */; };
+		70FBDCE32383FC1B00FC296E /* DZFootForumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC762383FC1B00FC296E /* DZFootForumController.m */; };
 		70FBDCE42383FC1B00FC296E /* DZFootMarkRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */; };
-		70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC792383FC1B00FC296E /* FootmarkController.m */; };
+		70FBDCE52383FC1B00FC296E /* DZFootThreadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC792383FC1B00FC296E /* DZFootThreadController.m */; };
 		70FBDCE62383FC1B00FC296E /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */; };
 		70FBDCE72383FC1B00FC296E /* DZBindManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC7E2383FC1B00FC296E /* DZBindManageController.m */; };
 		70FBDCE82383FC1B00FC296E /* DZThreadRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDC802383FC1B00FC296E /* DZThreadRootController.m */; };
@@ -435,6 +435,8 @@
 		70FBDD242383FC4B00FC296E /* DZHomeNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD1A2383FC4A00FC296E /* DZHomeNetTool.m */; };
 		70FBDD282383FDA500FC296E /* DZHomeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD272383FDA500FC296E /* DZHomeScrollView.m */; };
 		70FBDD2B2383FDC400FC296E /* DZHomeCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FBDD2A2383FDC400FC296E /* DZHomeCollectionView.m */; };
+		70FE716F23AB728800F20BE3 /* DZGaoThreadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE716E23AB728800F20BE3 /* DZGaoThreadCell.m */; };
+		70FE717323AB756A00F20BE3 /* DZThreadAttach.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE717223AB756A00F20BE3 /* DZThreadAttach.m */; };
 		9407BC521FC1072500D4E26B /* AsyncAppendency.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407BC511FC1072500D4E26B /* AsyncAppendency.m */; };
 		940BB6ED2079F799001BC1D1 /* SendEmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BB6EC2079F799001BC1D1 /* SendEmailHelper.m */; };
 		940BB6F02079F7C7001BC1D1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D44F702079C490000DA603 /* MessageUI.framework */; };
@@ -1040,8 +1042,8 @@
 		709622CA238BC6E900AF657F /* PRNaviSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRNaviSegmentView.h; sourceTree = "<group>"; };
 		709622CF238BC97600AF657F /* BaseIconTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseIconTextView.h; sourceTree = "<group>"; };
 		709622D0238BC97600AF657F /* BaseIconTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseIconTextView.m; sourceTree = "<group>"; };
-		709622D2238BC9F900AF657F /* HomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListCell.h; sourceTree = "<group>"; };
-		709622D3238BC9F900AF657F /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
+		709622D2238BC9F900AF657F /* DZFootListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootListCell.h; sourceTree = "<group>"; };
+		709622D3238BC9F900AF657F /* DZFootListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFootListCell.m; sourceTree = "<group>"; };
 		709A73082387E71900DF04CE /* DZBaseCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseCollectionView.h; sourceTree = "<group>"; };
 		709A73092387E71900DF04CE /* DZBaseCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseCollectionView.m; sourceTree = "<group>"; };
 		709A730D2387E7FB00DF04CE /* DZRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRefreshFooter.m; sourceTree = "<group>"; };
@@ -1224,11 +1226,11 @@
 		70FBDC722383FC1B00FC296E /* CollectionRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionRootController.h; sourceTree = "<group>"; };
 		70FBDC732383FC1B00FC296E /* DZBindManageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBindManageController.h; sourceTree = "<group>"; };
 		70FBDC752383FC1B00FC296E /* DZFootMarkRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootMarkRootController.h; sourceTree = "<group>"; };
-		70FBDC762383FC1B00FC296E /* FootForumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootForumController.m; sourceTree = "<group>"; };
-		70FBDC772383FC1B00FC296E /* FootmarkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootmarkController.h; sourceTree = "<group>"; };
+		70FBDC762383FC1B00FC296E /* DZFootForumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFootForumController.m; sourceTree = "<group>"; };
+		70FBDC772383FC1B00FC296E /* DZFootThreadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootThreadController.h; sourceTree = "<group>"; };
 		70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFootMarkRootController.m; sourceTree = "<group>"; };
-		70FBDC792383FC1B00FC296E /* FootmarkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootmarkController.m; sourceTree = "<group>"; };
-		70FBDC7A2383FC1B00FC296E /* FootForumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootForumController.h; sourceTree = "<group>"; };
+		70FBDC792383FC1B00FC296E /* DZFootThreadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFootThreadController.m; sourceTree = "<group>"; };
+		70FBDC7A2383FC1B00FC296E /* DZFootForumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFootForumController.h; sourceTree = "<group>"; };
 		70FBDC7B2383FC1B00FC296E /* MyFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriendViewController.m; sourceTree = "<group>"; };
 		70FBDC7C2383FC1B00FC296E /* DZUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUserController.h; sourceTree = "<group>"; };
 		70FBDC7D2383FC1B00FC296E /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
@@ -1308,6 +1310,10 @@
 		70FBDD272383FDA500FC296E /* DZHomeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZHomeScrollView.m; sourceTree = "<group>"; };
 		70FBDD292383FDC400FC296E /* DZHomeCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeCollectionView.h; sourceTree = "<group>"; };
 		70FBDD2A2383FDC400FC296E /* DZHomeCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZHomeCollectionView.m; sourceTree = "<group>"; };
+		70FE716D23AB728800F20BE3 /* DZGaoThreadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZGaoThreadCell.h; sourceTree = "<group>"; };
+		70FE716E23AB728800F20BE3 /* DZGaoThreadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZGaoThreadCell.m; sourceTree = "<group>"; };
+		70FE717123AB756A00F20BE3 /* DZThreadAttach.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZThreadAttach.h; sourceTree = "<group>"; };
+		70FE717223AB756A00F20BE3 /* DZThreadAttach.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZThreadAttach.m; sourceTree = "<group>"; };
 		8E99F76F682D3A882BACAD04 /* Pods-DiscuzMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscuzMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		9407BC501FC1072500D4E26B /* AsyncAppendency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAppendency.h; sourceTree = "<group>"; };
 		9407BC511FC1072500D4E26B /* AsyncAppendency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncAppendency.m; sourceTree = "<group>"; };
@@ -2277,6 +2283,7 @@
 		706210A0237936C800130B9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				70FE717023AB750D00F20BE3 /* GaoCell */,
 				70B6B8E32398FFC4003ED8F1 /* ListCell */,
 				70B6B8E42398FFE9003ED8F1 /* SubView */,
 			);
@@ -2982,6 +2989,15 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		70B070A623AB78D400FA4012 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				70FE717123AB756A00F20BE3 /* DZThreadAttach.h */,
+				70FE717223AB756A00F20BE3 /* DZThreadAttach.m */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		70B6B8E32398FFC4003ED8F1 /* ListCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3523,14 +3539,13 @@
 		70FBDC742383FC1B00FC296E /* Recently */ = {
 			isa = PBXGroup;
 			children = (
-				709622D2238BC9F900AF657F /* HomeListCell.h */,
-				709622D3238BC9F900AF657F /* HomeListCell.m */,
+				70FE716C23AB6A1A00F20BE3 /* View */,
+				70FBDC7A2383FC1B00FC296E /* DZFootForumController.h */,
+				70FBDC762383FC1B00FC296E /* DZFootForumController.m */,
+				70FBDC772383FC1B00FC296E /* DZFootThreadController.h */,
+				70FBDC792383FC1B00FC296E /* DZFootThreadController.m */,
 				70FBDC752383FC1B00FC296E /* DZFootMarkRootController.h */,
 				70FBDC782383FC1B00FC296E /* DZFootMarkRootController.m */,
-				70FBDC772383FC1B00FC296E /* FootmarkController.h */,
-				70FBDC792383FC1B00FC296E /* FootmarkController.m */,
-				70FBDC7A2383FC1B00FC296E /* FootForumController.h */,
-				70FBDC762383FC1B00FC296E /* FootForumController.m */,
 			);
 			path = Recently;
 			sourceTree = "<group>";
@@ -3766,6 +3781,25 @@
 				70DE5D182384035500686F2D /* DZHomeThreadContainerCtrl.m */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		70FE716C23AB6A1A00F20BE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				709622D2238BC9F900AF657F /* DZFootListCell.h */,
+				709622D3238BC9F900AF657F /* DZFootListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70FE717023AB750D00F20BE3 /* GaoCell */ = {
+			isa = PBXGroup;
+			children = (
+				70FE716D23AB728800F20BE3 /* DZGaoThreadCell.h */,
+				70FE716E23AB728800F20BE3 /* DZGaoThreadCell.m */,
+				70B070A623AB78D400FA4012 /* SubView */,
+			);
+			path = GaoCell;
 			sourceTree = "<group>";
 		};
 		943430A92022FAD0009C0102 /* Config */ = {
@@ -4391,7 +4425,7 @@
 				7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */,
 				70F9F8E5237AA72C0067B308 /* NSMutableAttributedString+JsEmotion.m in Sources */,
 				277EDC6A1E6D5B8D00E8F0E1 /* DZInstroductionView.m in Sources */,
-				70FBDCE52383FC1B00FC296E /* FootmarkController.m in Sources */,
+				70FBDCE52383FC1B00FC296E /* DZFootThreadController.m in Sources */,
 				70621298237936C900130B9D /* DZAudioListCell.m in Sources */,
 				7065AE962386A97A009B6DA7 /* AppDelegate+Update.m in Sources */,
 				70621277237936C800130B9D /* DZForumInfoView.m in Sources */,
@@ -4431,6 +4465,7 @@
 				7002A36A2383D8CD00BC0C61 /* MessageListModel.m in Sources */,
 				708AED65238E5703000A4397 /* DZPostNetTool.m in Sources */,
 				708AED5E238E5697000A4397 /* DZLoginNetTool.m in Sources */,
+				70FE716F23AB728800F20BE3 /* DZGaoThreadCell.m in Sources */,
 				7062127B237936C900130B9D /* SubForumCell.m in Sources */,
 				7062129C237936C900130B9D /* DZNormalDetailCell.m in Sources */,
 				70F9F8E3237AA72C0067B308 /* UIImageView+FindHairline.m in Sources */,
@@ -4484,7 +4519,7 @@
 				70FBDD062383FC1B00FC296E /* DZForumItemCell.m in Sources */,
 				703F2B89239DF99600E7882C /* DZSecAuthModel.m in Sources */,
 				7065AE64238684C5009B6DA7 /* DZDiscoverNetTool.m in Sources */,
-				70FBDCE32383FC1B00FC296E /* FootForumController.m in Sources */,
+				70FBDCE32383FC1B00FC296E /* DZFootForumController.m in Sources */,
 				70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */,
 				70621285237936C900130B9D /* DZPostActivityController.m in Sources */,
 				70FBDCFF2383FC1B00FC296E /* ReplyCell.m in Sources */,
@@ -4658,6 +4693,7 @@
 				70FBDCF02383FC1B00FC296E /* CollectionViewCell.m in Sources */,
 				70FBDCF52383FC1B00FC296E /* DZLogoutCell.m in Sources */,
 				70DFD7A4237A95DE00A13F0F /* DZBaseTableViewController.m in Sources */,
+				70FE717323AB756A00F20BE3 /* DZThreadAttach.m in Sources */,
 				706212CA237936C900130B9D /* DZSettingController.m in Sources */,
 				70DFD7A2237A95DE00A13F0F /* DZBaseTextField.m in Sources */,
 				7002A3752383D8CD00BC0C61 /* DZFastPostController.m in Sources */,
@@ -4705,7 +4741,7 @@
 				70EBEB802387C432005333D4 /* DZForumNodeModel.m in Sources */,
 				706212D9237936C900130B9D /* ActivityApplyReplyCell.m in Sources */,
 				70621299237936C900130B9D /* ActiveExtendCell.m in Sources */,
-				709622D4238BC9F900AF657F /* HomeListCell.m in Sources */,
+				709622D4238BC9F900AF657F /* DZFootListCell.m in Sources */,
 				70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */,
 				70FBDCE02383FC1B00FC296E /* CollectionRootController.m in Sources */,
 				947ECAFF2064D403002D3536 /* JFImagePickerController.m in Sources */,

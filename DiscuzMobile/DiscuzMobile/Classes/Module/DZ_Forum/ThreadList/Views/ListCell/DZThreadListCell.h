@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseStyleCell.h"
-@class DZThreadListModel;
 
 @interface DZThreadListCell : BaseStyleCell
+
+@property (nonatomic, strong) UIImageView *typeIcon;
 
 @end

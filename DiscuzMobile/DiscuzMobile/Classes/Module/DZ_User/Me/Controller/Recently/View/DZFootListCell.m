@@ -1,26 +1,28 @@
 //
-//  HomeListCell.m
+//  DZFootListCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "HomeListCell.h"
+#import "DZFootListCell.h"
 #import "BaseIconTextView.h"
 #import "DZLoginModule.h"
 #import "UIView+WebCache.h"
 #import "DZForumTool.h"
 
-@interface HomeListCell()
+@interface DZFootListCell()
 
 @property (nonatomic, strong) CALayer *lineV;
 @property (nonatomic, strong) CALayer *sepLine;
 @property (nonatomic, strong) UIView *imageBgV;
 
+@property (nonatomic, strong) DZThreadListModel *info;
+
 @end
 
-@implementation HomeListCell
+@implementation DZFootListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -59,7 +61,7 @@
     
 }
 
-- (void)setInfo:(DZThreadListModel *)info {
+- (void)updateThreadCell:(DZThreadListModel *)info {
     
     _info = info;
     

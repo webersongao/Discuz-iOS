@@ -1,18 +1,18 @@
 //
-//  FootForumController.m
+//  DZFootForumController.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "FootForumController.h"
+#import "DZFootForumController.h"
 #import "DZForumNodeModel.h"
 #import "DZThreadNetTool.h"
 #import "DZForumItemCell.h"
 #import "DZCollectSectionView.h"
 
-@interface FootForumController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DZFootForumController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation FootForumController
+@implementation DZFootForumController
 
 
 static NSString *CellID = @"fourmCollection";

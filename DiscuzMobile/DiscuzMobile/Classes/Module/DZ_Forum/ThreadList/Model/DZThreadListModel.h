@@ -10,6 +10,39 @@
 #import "DZThreadReplyModel.h"
 @class DZAttachModel;
 
+
+@interface DZThreadLayout : NSObject
+
+@property (nonatomic, assign) CGRect iconFrame;  //!< 头像
+@property (nonatomic, assign) CGRect nameFrame;  //!< 昵称
+@property (nonatomic, assign) CGRect gradeFrame;  //!< 管理组
+@property (nonatomic, assign) CGRect tagFrame;  //!< 置顶 或 精华
+
+@property (nonatomic, assign) CGRect lineOneFrame;  //!< 分割线
+@property (nonatomic, assign) CGRect titleFrame;  //!< 标题
+@property (nonatomic, assign) CGRect subtitleFrame;  //!< 内容 或 最近回复
+@property (nonatomic, assign) CGRect timeFrame;  //!< 时间
+
+@property (nonatomic, assign) CGRect oneImgFrame;  //!< 第一张
+@property (nonatomic, assign) CGRect twoImgFrame;  //!< 第二张
+@property (nonatomic, assign) CGRect threeImgFrame;  //!< 第三张
+@property (nonatomic, assign) CGRect attachFrame;  //!< 附件总高度
+
+@property (nonatomic, assign) CGRect lineTwoFrame;  //!< 分割线
+@property (nonatomic, assign) CGRect viewFrame;  //!< 浏览
+@property (nonatomic, assign) CGRect replyFrame;  //!< 回复
+@property (nonatomic, assign) CGRect zanFrame;  //!< 赞
+@property (nonatomic, assign) CGRect lineThreeeFrame;  //!< 分割线
+
+@property (nonatomic, assign) CGFloat cellHeight;  //!< 总高度
+
+
+
+
+- (instancetype)initWithModel:(DZThreadListModel *)Model;
+
+@end
+
 @interface DZThreadListModel : NSObject
 
 
@@ -52,11 +85,11 @@
 @property (nonatomic, copy) NSString *lastposter;
 @property (nonatomic, copy) NSString *views;   // 查看数
 @property (nonatomic, copy) NSString *replies; // 回复数
-@property (nonatomic, copy) NSString *displayorder; // 判断是不是置顶帖子  displayorder  3，2，1 置顶 全局置顶3  分类置顶2  本版置顶1  0 正常  -1 回收站  -2 审核中  -3 审核忽略  -4草稿
+@property (nonatomic, copy) NSString *recommend_add; // 点赞数
 @property (nonatomic, copy) NSString *digest;
+@property (nonatomic, copy) NSString *displayorder; // 判断是不是置顶帖子  displayorder  3，2，1 置顶 全局置顶3  分类置顶2  本版置顶1  0 正常  -1 回收站  -2 审核中  -3 审核忽略  -4草稿
 @property (nonatomic, copy) NSString *special; //判断帖子类型 0普通 1投票 2商品  3悬赏 4活动 5辩论
 @property (nonatomic, copy) NSString *attachment;
-@property (nonatomic, copy) NSString *recommend_add; // 点赞数
 @property (nonatomic, copy) NSString *replycredit;  //!< 属性注释
 @property (nonatomic, copy) NSString *dbdateline;  // 1 点赞过了
 @property (nonatomic, copy) NSString *dblastpost;  // 1 点赞过了
@@ -71,17 +104,11 @@
 @property (nonatomic, strong) NSDictionary *forumnames;
 
 
-// 我自己处理过的标题，接口里面没有
-@property (nonatomic, strong) NSMutableArray *imglist;
+// 自定义字段，接口里面没有
+@property (nonatomic, copy) NSString *typeName;
 @property (nonatomic, copy) NSString *useSubject;
 @property (nonatomic, copy) NSString *grouptitle;
-@property (nonatomic, copy) NSString *typeName;
-
-// 展示形式是否要依照特殊帖子的判断。
-- (BOOL)isSpecialThread;
-// 置顶帖判断
-- (BOOL)isTopThread;
-// 是否是本版帖子
-- (BOOL)isCurrentForum:(NSString *)fid;
+@property (nonatomic, strong) NSMutableArray *imglist;
+@property (nonatomic, strong) DZThreadLayout *layout;  //!< 帖子布局属性
 
 @end

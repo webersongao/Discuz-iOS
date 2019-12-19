@@ -82,34 +82,43 @@
 }
 
 
-// 特殊帖判断
-- (BOOL)isSpecialThread {
-    NSArray *specialArr = @[@"1",@"4",@"5"];
-    if ([DataCheck isValidString:self.special]) {
-        if ([specialArr containsObject:self.special]) {
-            return YES;
-        }
-    }
-    return NO;
+-(void)updateThreadModelLayout{
+    self.layout = [[DZThreadLayout alloc] initWithModel:self];
 }
 
-// 置顶帖判断
-- (BOOL)isTopThread {
-    NSArray *topCheckArray = @[@"1",@"2",@"3"];
-    if ([topCheckArray containsObject:self.displayorder]) {
-        return YES;
-    }
-    return false;
-}
-
-
-// 是否是本版帖子
-- (BOOL)isCurrentForum:(NSString *)fid {
-   if ([@[@"3",@"2"] containsObject:self.displayorder] && ![self.fid isEqualToString:fid]) { // 非本版帖子
-       return YES;
-    }
-    return NO;
-}
 
 
 @end
+
+#pragma mark   /********************* DZThreadLayout 布局参数 *************************/
+
+
+@implementation DZThreadLayout
+
+- (instancetype)initWithModel:(DZThreadListModel *)Model
+{
+    self = [super init];
+    if (self) {
+        [self caculateCell:Model];
+    }
+    return self;
+}
+
+-(void)caculateCell:(DZThreadListModel *)cellModel{
+    
+//    self.threadHeight = KWidthScale(100);
+//    self.attachHeight = cellModel.imglist.count ? KWidthScale(90) : 0;
+    
+}
+
+
+
+
+@end
+
+
+
+
+
+
+

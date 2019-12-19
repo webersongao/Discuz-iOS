@@ -10,8 +10,6 @@
 
 @interface DZThreadListCell()
 
-@property (nonatomic, strong) UIImageView *typeIcon;
-
 @end
 
 @implementation DZThreadListCell
@@ -53,5 +51,16 @@
     }
     return _typeIcon;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 @end

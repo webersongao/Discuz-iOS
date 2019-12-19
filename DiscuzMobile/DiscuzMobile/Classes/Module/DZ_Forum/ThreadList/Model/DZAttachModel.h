@@ -10,6 +10,25 @@
 
 @interface DZAttachModel : NSObject
 
+//"aid": "5",
+//"tid": "33",
+//"pid": "42",
+//"uid": "10013",
+//"dateline": "1575614004",
+//"filename": "人身保险伤残评定标准（行业标准）-太保安联.docx",
+//"filesize": "59055",
+//"attachment": "http://demo.516680.com/data/attachment/forum/201912/06/143324jls0fwu8vfi4syls.attach",
+//"remote": "0",
+//"description": "附件的描述",
+//"readperm": "0",
+//"price": "30",
+//"isimage": "0",
+//"width": "0",
+//"thumb": "http://demo.516680.com/api/mobile/?module=forumimage&aid=5&size=268x380&key=e7b632e5ea3d4a53&version=5",
+//"picid": "0",
+//"type": ""
+
+
 @property (nonatomic, copy) NSString *aid;
 @property (nonatomic, copy) NSString *tid;
 @property (nonatomic, copy) NSString *pid;
@@ -30,24 +49,6 @@
 @property (nonatomic, copy) NSString *readperm;
 @property (nonatomic, copy) NSString *type;
 
-
-//"aid": "5",
-//"tid": "33",
-//"pid": "42",
-//"uid": "10013",
-//"dateline": "1575614004",
-//"filename": "人身保险伤残评定标准（行业标准）-太保安联.docx",
-//"filesize": "59055",
-//"attachment": "http://demo.516680.com/data/attachment/forum/201912/06/143324jls0fwu8vfi4syls.attach",
-//"remote": "0",
-//"description": "附件的描述",
-//"readperm": "0",
-//"price": "30",
-//"isimage": "0",
-//"width": "0",
-//"thumb": "http://demo.516680.com/api/mobile/?module=forumimage&aid=5&size=268x380&key=e7b632e5ea3d4a53&version=5",
-//"picid": "0",
-//"type": ""
 
 @end
 

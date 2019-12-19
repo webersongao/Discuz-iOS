@@ -200,7 +200,6 @@
     NSString *subjectStr = listInfo.useSubject;
     if ([listInfo isSpecialThread]) {
         NSString *spaceCharater = @"    ";
-        
         if ([DataCheck isValidString:listInfo.typeName]) {
             NSMutableAttributedString *describe = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",subjectStr]];
             NSRange typeRange = NSMakeRange(0, listInfo.typeName.length + 2);
@@ -217,7 +216,6 @@
         NSRange typeRange = NSMakeRange(0, listInfo.typeName.length + 2);
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
         self.mainTitleLabel.attributedText = describe;
-        
     } else {
         self.mainTitleLabel.text = listInfo.useSubject;
     }

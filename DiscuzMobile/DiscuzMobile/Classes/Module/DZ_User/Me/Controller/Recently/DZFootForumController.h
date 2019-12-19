@@ -1,5 +1,5 @@
 //
-//  FootForumController.h
+//  DZFootForumController.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/5/2.
@@ -8,6 +8,6 @@
 
 #import "DZBaseViewController.h"
 
-@interface FootForumController : DZBaseViewController
+@interface DZFootForumController : DZBaseViewController
 
 @end

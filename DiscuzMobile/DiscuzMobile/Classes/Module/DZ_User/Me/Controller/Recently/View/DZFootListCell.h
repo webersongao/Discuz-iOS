@@ -1,5 +1,5 @@
 //
-//  HomeListCell.h
+//  DZFootListCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/16.
@@ -7,10 +7,10 @@
 //
 
 #import "DZBaseTableViewCell.h"
-#import "DZThreadListModel.h"
 #import "BaseIconTextView.h"
+#import "DZThreadListModel+Display.h"
 
-@interface HomeListCell : DZBaseTableViewCell
+@interface DZFootListCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *headV;  // 头像
 @property (nonatomic, strong) UILabel *nameLab;    // 用户名
@@ -26,8 +26,10 @@
 @property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数
 @property (nonatomic, strong) BaseIconTextView *priceLab;   // 点赞数
 
-@property (nonatomic, strong) DZThreadListModel *info;
-
 - (CGFloat)cellHeight;
+
+- (void)updateThreadCell:(DZThreadListModel *)info;
+
+
 
 @end

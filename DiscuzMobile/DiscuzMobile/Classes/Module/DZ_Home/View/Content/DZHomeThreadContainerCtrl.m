@@ -10,7 +10,6 @@
 #import "DZContainerController.h"
 #import "DZHomeBestListCtrl.h"
 #import "DZHomeNewListCtrl.h"
-#import "FootmarkController.h"
 
 @interface DZHomeThreadContainerCtrl ()
 

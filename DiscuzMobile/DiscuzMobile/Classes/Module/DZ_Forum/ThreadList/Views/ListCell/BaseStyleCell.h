@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewCell.h"
-#import "DZThreadListModel.h"
+#import "DZThreadListModel+Display.h"
 #import "BaseIconTextView.h"
 
 @interface BaseStyleCell : DZBaseTableViewCell

@@ -1,24 +1,24 @@
 //
-//  FootmarkController.m
+//  DZFootThreadController.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/4.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "FootmarkController.h"
+#import "DZFootThreadController.h"
 
 #import "DZThreadListModel.h"
-#import "HomeListCell.h"
+#import "DZFootListCell.h"
 
-@interface FootmarkController ()
+@interface DZFootThreadController ()
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSInteger perPage;
 
 @end
 
-@implementation FootmarkController
+@implementation DZFootThreadController
 
 
 - (void)viewDidLoad {
@@ -87,7 +87,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    return [(HomeListCell *)cell cellHeight];
+    return [(DZFootListCell *)cell cellHeight];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -98,9 +98,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static  NSString  * CellIdentiferId = @"HomeCellCellID";
-    HomeListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
+    DZFootListCell  * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentiferId];
     if (cell == nil) {
-        cell = [[HomeListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
+        cell = [[DZFootListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentiferId];
         
     }
     
@@ -108,7 +108,8 @@
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [model.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];
-    cell.info = model;
+    [cell updateThreadCell:model];
+    
     return cell;
 }
 
