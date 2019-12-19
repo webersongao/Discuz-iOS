@@ -30,6 +30,7 @@
     self.lab.textAlignment = NSTextAlignmentCenter;
     self.lab.font = [DZFontSize HomecellTitleFontSize17];
     self.lab.textColor = K_Color_LightText;
+    
     self.lab.text = @"退出登录";
     [self.contentView addSubview:self.lab];
 }

@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     self.delegate = self;
-            self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [[DZMobileCtrl sharedCtrl] cofigLocalDataInfo];
     
 #ifndef MACRO_PRODUCT
