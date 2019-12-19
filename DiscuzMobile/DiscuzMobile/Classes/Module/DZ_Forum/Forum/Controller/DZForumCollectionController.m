@@ -28,7 +28,7 @@ static NSString * headerSection = @"CellHeader";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self cacheRequest];
+    [self loadCacheRequest];
     [self configCollectionController];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TABBARREFRESH_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_IMAGEORNOT_Notify object:nil];
@@ -76,7 +76,7 @@ static NSString * headerSection = @"CellHeader";
     }];
 }
 
-- (void)cacheRequest {
+- (void)loadCacheRequest {
     [self.HUD showLoadingMessag:@"正在刷新" toView:self.view];
     [self loadForumIndexDataWitLoadType:JTRequestTypeCache]; // 读缓存，没有缓存的话自己会请求网络
     if ([JTRequestManager isCache:self.urlString andParameters:nil]) { // 缓存有的话，要刷新一次。缓存没有的话，不请求了，上面那个方法已经请求了

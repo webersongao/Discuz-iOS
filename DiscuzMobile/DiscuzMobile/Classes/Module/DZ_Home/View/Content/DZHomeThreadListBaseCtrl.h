@@ -9,15 +9,13 @@
 #import "DZBaseTableViewController.h"
 #import "HomeHeader.h"
 
-typedef NS_ENUM(NSUInteger, HomeListType) {
-    HomeListBest,
-    HomeListNewest,
-};
-
 @interface DZHomeThreadListBaseCtrl : DZBaseTableViewController
 
-@property (nonatomic, assign) HomeListType listType;  //!< <#属性注释#>
+@property (nonatomic, copy) NSString *urlString;
 
 @property (nonatomic, copy) void(^didScrollAction)(UIScrollView *scrollView);  //!< 属性注释
+
+
+
 
 @end

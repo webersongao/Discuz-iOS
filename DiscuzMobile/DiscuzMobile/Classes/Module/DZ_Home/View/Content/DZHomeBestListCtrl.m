@@ -14,14 +14,13 @@
 
 @implementation DZHomeBestListCtrl
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.listType = HomeListBest;
-    }
-    return self;
+
+
+- (NSString *)urlString{
+    return DZ_Url_DigestAll;
 }
+
+
 
 
 @end

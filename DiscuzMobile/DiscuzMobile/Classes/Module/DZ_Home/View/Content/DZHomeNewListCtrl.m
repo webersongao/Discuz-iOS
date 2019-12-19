@@ -14,14 +14,12 @@
 
 @implementation DZHomeNewListCtrl
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.listType = HomeListNewest;
-    }
-    return self;
+- (NSString *)urlString{
+    return DZ_Url_NewAll;
 }
+
+
+
 
 
 

@@ -13,33 +13,22 @@
 #import "DZThreadListModel+Display.h"
 
 @interface DZHomeThreadListBaseCtrl ()
-@property (nonatomic, copy) NSString *urlString;
+
 @end
 
 @implementation DZHomeThreadListBaseCtrl
 
 #pragma mark - lifeCyle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initTableView];
     
-    if (self.listType == HomeListBest) {
-        self.urlString = DZ_Url_DigestAll;
-    } else if (self.listType == HomeListNewest) {
-        self.urlString = DZ_Url_NewAll;
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_CONTAINERQUEST_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(firstRequest:)
-                                                 name:DZ_CONTAINERQUEST_Notify
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(refreshData)
-                                                 name:DZ_DomainUrlChange_Notify
-                                               object:nil];
-    
-    [self cacheRequest];
+    [self requestLocalCache];
 }
 
 - (void)initTableView {
@@ -73,12 +62,12 @@
     if ([DataCheck isValidDict:userInfo]) {
         NSInteger index = [[userInfo objectForKey:@"selectIndex"] integerValue];
         if (!self.dataSourceArr.count && index != 0) {
-            [self cacheRequest];
+            [self requestLocalCache];
         }
     }
 }
 
-- (void)cacheRequest {
+- (void)requestLocalCache {
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeCache];
     
@@ -103,7 +92,7 @@
                 [self.tableView.mj_footer endRefreshing];
             }
             
-            if ([DataCheck isValidArray:discover.data]) {
+            if (discover.data.count) {
                 [self.dataSourceArr addObjectsFromArray:discover.data];
             } else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -134,14 +123,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId]];
+    DZThreadListCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId] forIndexPath:indexPath];
     
-    [cell updateThreadCell:[listModel dealSpecialThread]];
+    [listCell updateThreadCell:[listModel dealSpecialThread]];
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
-    cell.headV.tag = [listModel.authorid integerValue];
-    [cell.headV addGestureRecognizer:tapGes];
-    return cell;
+    listCell.headV.tag = [listModel.authorid integerValue];
+    [listCell.headV addGestureRecognizer:tapGes];
+    return listCell;
 }
 
 #pragma mark - UITableViewDelegate

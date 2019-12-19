@@ -35,8 +35,8 @@
 
 - (void)configDiscoverPageView {
     
-    [self addItemClass:[DZHomeNewListCtrl class] andTitle:@"最新"];
-    [self addItemClass:[DZHomeBestListCtrl class] andTitle:@"精华"];
+    [self addItemClass:[[DZHomeNewListCtrl alloc] init] Title:@"最新"];
+    [self addItemClass:[[DZHomeBestListCtrl alloc] init] Title:@"精华"];
     
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kHomeSegmentHeight);
     self.rootVC = [[DZContainerController alloc] init];
@@ -67,14 +67,14 @@
 }
 
 
-- (void)addItemClass:(Class)class andTitle:(NSString *)title {
-    DZHomeThreadListBaseCtrl *vc = [class new];
-    vc.title = title;
+- (void)addItemClass:(DZHomeThreadListBaseCtrl *)baseVC Title:(NSString *)title {
+    baseVC.title = title;
+    baseVC.dz_normalTitle = title;
     KWEAKSELF
-    vc.didScrollAction = ^(UIScrollView *scrollView) {
+    baseVC.didScrollAction = ^(UIScrollView *scrollView) {
         [weakSelf listViewDidScroll:scrollView];
     };
-    [self.controllerArr addObject:vc];
+    [self.controllerArr addObject:baseVC];
 }
 
 - (void)leftBarBtnClick {
