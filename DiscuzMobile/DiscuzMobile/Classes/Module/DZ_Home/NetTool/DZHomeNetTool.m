@@ -80,6 +80,9 @@
         
     } success:^(id responseObject, JTLoadType type) {
         DZHomeVarModel *discover = [DZHomeVarModel modelWithJSON:[responseObject objectForKey:@"Variables"]];
+        for (DZThreadListModel *threadModel in discover.data) {
+            [threadModel updateThreadModelLayout];
+        }
         completion(discover,nil);
     } failed:^(NSError *error) {
         completion(nil,error);

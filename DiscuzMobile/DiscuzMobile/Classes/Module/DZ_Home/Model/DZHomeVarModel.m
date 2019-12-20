@@ -7,7 +7,6 @@
 //
 
 #import "DZHomeVarModel.h"
-#import "DZThreadListModel.h"
 
 @implementation DZHomeVarModel
 

@@ -83,9 +83,11 @@
     self.tagView.image = Model.tagImage;
     self.gradeLabel.text = Model.gradenName;
     
+    [self layoutThreadCell:Model.layout];
     
     self.mainTitleLabel.attributedText = Model.mainTitle;
     self.subTitleLabel.attributedText = Model.lastReply;
+    
     self.subTitleLabel.numberOfLines = 0;
     self.timeLabel.text = Model.dateline;
     
@@ -109,7 +111,7 @@
     self.lineOne.frame = layout.lineOneFrame;
     
     self.mainTitleLabel.frame = layout.titleFrame;
-    self.timeLabel.frame = layout.titleFrame;
+    self.timeLabel.frame = layout.timeFrame;
     self.subTitleLabel.frame = layout.subtitleFrame;
     
     self.attchView.frame = layout.attachFrame;
@@ -122,8 +124,8 @@
     
     self.lineThree.frame = layout.lineThreeeFrame;
     
-    [self.IconButton.layer masksToBounds];
     self.IconButton.layer.cornerRadius = layout.iconFrame.size.width/2.f;
+    self.IconButton.clipsToBounds = YES;
 }
 
 
@@ -139,14 +141,14 @@
 
 -(UILabel *)nameLabel{
     if (!_nameLabel) {
-        _nameLabel = [UILabel labelWithFrame:CGRectZero title:@"--" titleColor:KColor(KFF6565_Color, 1.0) font:KFont(14) textAlignment:NSTextAlignmentLeft];
+        _nameLabel = [UILabel labelWithFrame:CGRectZero title:@"--" titleColor:KColor(K2A2C2F_Color, 1.0) font:KFont(14) textAlignment:NSTextAlignmentLeft];
     }
     return _nameLabel;
 }
 
 -(UILabel *)gradeLabel{
     if (!_gradeLabel) {
-        _gradeLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(KFFCE2E_Color, 1.0) font:KFont(12) textAlignment:NSTextAlignmentLeft];
+        _gradeLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(K2A2C2F_Color, 1.0) font:KFont(12) textAlignment:NSTextAlignmentLeft];
     }
     return _gradeLabel;
 }
@@ -169,7 +171,7 @@
 
 -(UILabel *)mainTitleLabel{
     if (!_mainTitleLabel) {
-        _mainTitleLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(KF7F7F8_Color, 1.0) font:KBoldFont(16) textAlignment:NSTextAlignmentLeft];
+        _mainTitleLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(K2A2C2F_Color, 1.0) font:KBoldFont(16) textAlignment:NSTextAlignmentLeft];
         _mainTitleLabel.numberOfLines = 1;
     }
     return _mainTitleLabel;
@@ -177,7 +179,7 @@
 
 -(UILabel *)subTitleLabel{
     if (!_subTitleLabel) {
-        _subTitleLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(KFF6565_Color, 1.0) font:KFont(14) textAlignment:NSTextAlignmentLeft];
+        _subTitleLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(K2A2C2F_Color, 1.0) font:KFont(14) textAlignment:NSTextAlignmentLeft];
         _subTitleLabel.numberOfLines = 0;
     }
     return _subTitleLabel;
@@ -185,7 +187,7 @@
 
 - (UILabel *)timeLabel{
     if (!_timeLabel) {
-        _timeLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(KFFCE2E_Color, 1.0) font:KFont(12.f) textAlignment:NSTextAlignmentRight];
+        _timeLabel = [UILabel labelWithFrame:CGRectZero title:@"" titleColor:KColor(K2A2C2F_Color, 1.0) font:KFont(12.f) textAlignment:NSTextAlignmentRight];
     }
     return _timeLabel;
 }
@@ -207,7 +209,7 @@
 
 - (UIButton *)ViewButton{
     if (!_ViewButton) {
-        _ViewButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"浏览: -" titleFont:KFont(12) titleColor:KColor(KF7F7F8_Color, 1.0) normalImgPath:@"list_see" touchImgPath:@"list_see" isBackImage:NO];
+        _ViewButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"浏览: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_see" touchImgPath:@"list_see" isBackImage:NO];
         [_ViewButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
     }
     return _ViewButton;
@@ -215,7 +217,7 @@
 
 - (UIButton *)replyButton{
     if (!_replyButton) {
-        _replyButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"回复: -" titleFont:KFont(12) titleColor:KColor(KF7F7F8_Color, 1.0) normalImgPath:@"list_message" touchImgPath:@"list_message" isBackImage:NO];
+        _replyButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"回复: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_message" touchImgPath:@"list_message" isBackImage:NO];
         [_replyButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
     }
     return _replyButton;
@@ -223,7 +225,7 @@
 
 - (UIButton *)zanButton{
     if (!_zanButton) {
-        _zanButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"点赞: -" titleFont:KFont(12) titleColor:KColor(KF7F7F8_Color, 1.0) normalImgPath:@"list_zan" touchImgPath:@"list_zan_high" isBackImage:NO];
+        _zanButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"点赞: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_zan" touchImgPath:@"list_zan_high" isBackImage:NO];
         [_zanButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
     }
     return _zanButton;

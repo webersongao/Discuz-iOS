@@ -152,6 +152,7 @@
     self.iconFrame = CGRectMake(kMargin10, kMargin10, 30, 30);
     CGFloat attachHeight = cellModel.imglist.count ? KWidthScale(90) : 0;
     CGFloat nameWidth = [NSString cacaulteStringWidth:cellModel.author fontSize:16];
+    CGFloat timeWidth = [NSString cacaulteStringWidth:cellModel.dateline fontSize:12];
     CGFloat gradeWidth = [NSString cacaulteStringWidth:cellModel.gradenName fontSize:12];
     CGFloat subtitleHeight = [NSString cacaulteStringHeight:cellModel.lastReplyString fontSize:14 width:textWidth lineSpacing:5];
     
@@ -160,9 +161,9 @@
     self.tagFrame = CGRectMake(cellWidth-kMargin10-34, (60-17)/2.f, 34, 17);
     
     self.lineOneFrame = CGRectMake(kMargin10,CGRectGetMaxY(self.iconFrame)+kMargin10, textWidth, 0.5);
-    self.titleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.lineOneFrame)+kMargin10, textWidth-kMargin10-90, 17.f);
+    self.titleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.lineOneFrame)+kMargin10, textWidth-kMargin10-timeWidth, 17.f);
     self.subtitleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.titleFrame), textWidth, subtitleHeight);
-    self.timeFrame = CGRectMake(CGRectGetMaxX(self.titleFrame)+kMargin10, CGRectGetMinX(self.titleFrame), 90, 13.f);
+    self.timeFrame = CGRectMake(CGRectGetMaxX(self.titleFrame)+kMargin10, CGRectGetMinY(self.titleFrame), timeWidth, 13.f);
     
     self.attachFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.subtitleFrame), textWidth, attachHeight);
     self.lineTwoFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.attachFrame)+kMargin10, textWidth, 0.5);

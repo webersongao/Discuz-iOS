@@ -8,7 +8,7 @@
 
 #import "DZHomeThreadListBaseCtrl.h"
 #import "DZHomeVarModel.h"
-#import "DZThreadListCell.h"
+#import "DZGaoThreadCell.h"
 #import "DZHomeNetTool.h"
 #import "DZThreadListModel+Display.h"
 
@@ -33,7 +33,7 @@
 
 - (void)initTableView {
     
-    [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:[DZThreadListCell getReuseId]];
+    [self.tableView registerClass:[DZGaoThreadCell class] forCellReuseIdentifier:[DZGaoThreadCell getReuseId]];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
@@ -123,13 +123,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    DZThreadListCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId] forIndexPath:indexPath];
+    DZGaoThreadCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:[DZGaoThreadCell getReuseId] forIndexPath:indexPath];
     
     [listCell updateThreadCell:[listModel dealSpecialThread]];
     
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
-    listCell.headV.tag = [listModel.authorid integerValue];
-    [listCell.headV addGestureRecognizer:tapGes];
+//    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
+//    listCell.headV.tag = [listModel.authorid integerValue];
+//    [listCell.headV addGestureRecognizer:tapGes];
     return listCell;
 }
 
@@ -142,9 +142,10 @@
 }
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    DZThreadListCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    DZGaoThreadCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    return [cell caculateCellHeight:listModel];
+//    return [cell caculateCellHeight:listModel];
+    return listModel.layout.cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

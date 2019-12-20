@@ -115,7 +115,7 @@
 @property (nonatomic, copy) NSString *lastReplyString;  // 最新回复
 @property (nonatomic, strong) NSAttributedString *lastReply;  // 最新回复
 
-
+-(void)updateThreadModelLayout;
 
 
 @end

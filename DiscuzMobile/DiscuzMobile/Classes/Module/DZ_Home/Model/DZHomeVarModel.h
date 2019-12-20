@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseVarModel.h"
-@class DZThreadListModel;
+#import "DZThreadListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
