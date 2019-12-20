@@ -10,7 +10,6 @@
 
 @interface DZThreadAttach ()
 
-@property (nonatomic, strong) UIImageView *line;  //!< 属性注释
 @property (nonatomic, strong) UIImageView *imageOne;  //!< 属性注释
 @property (nonatomic, strong) UIImageView *imageTwo;  //!< 属性注释
 @property (nonatomic, strong) UIImageView *imageThree;  //!< 属性注释
@@ -19,23 +18,22 @@
 
 @implementation DZThreadAttach
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        
+        [self cofigThreadAttach];
+        self.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
 }
 
 -(void)cofigThreadAttach{
     
-    self.line = [[UIImageView alloc] init];
     self.imageOne = [[UIImageView alloc] init];
     self.imageTwo = [[UIImageView alloc] init];
     self.imageThree = [[UIImageView alloc] init];
     
-    [self addSubview:self.line];
     [self addSubview:self.imageOne];
     [self addSubview:self.imageTwo];
     [self addSubview:self.imageThree];
@@ -77,13 +75,11 @@
 
 -(void)layoutAttachSubviews:(CGSize)viewSize{
     
-    CGFloat cellWidth = (viewSize.width - kMargin10 *4)/3.f;
+    CGFloat cellWidth = (viewSize.width - kMargin10 *3)/3.f;
     
-    self.line = [[UIImageView alloc] initWithFrame:CGRectMake(kMargin10, kMargin10, viewSize.width-kMargin20, 0.5)];
-    
-    self.imageOne.frame = CGRectMake(kMargin10, self.line.bottom + 5, cellWidth, viewSize.height-self.line.top);
-    self.imageTwo.frame = CGRectMake(self.imageOne.right + kMargin10, self.line.bottom + 5, cellWidth, viewSize.height-self.line.top);
-    self.imageThree.frame = CGRectMake(self.imageTwo.right + kMargin10, self.line.bottom + 5, cellWidth, viewSize.height-self.line.top);
+    self.imageOne.frame = CGRectMake(kMargin10, 5, cellWidth, viewSize.height-kMargin10);
+    self.imageTwo.frame = CGRectMake(self.imageOne.right + 5, 5, cellWidth, viewSize.height-kMargin10);
+    self.imageThree.frame = CGRectMake(self.imageTwo.right + 5, 5, cellWidth, viewSize.height-kMargin10);
     
 }
 

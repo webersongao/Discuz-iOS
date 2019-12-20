@@ -120,7 +120,7 @@
         typeIcon = @"debatesmall";
     }
     
-    return [NSString attributedWithLeftimage:typeIcon RightTittle:String textColor:[UIColor redColor] FontSize:16];
+    return [NSString attributedWithLeftimage:typeIcon RightTittle:String textColor:KColor(K2A2C2F_Color, 1.0) FontSize:16];
 }
 
 -(void)updateThreadModelLayout{
