@@ -58,8 +58,6 @@
     return useSubjectStr;
 }
 
-
-
 // 特殊帖判断
 - (BOOL)isSpecialThread {
     NSArray *specialArr = @[@"1",@"4",@"5"];

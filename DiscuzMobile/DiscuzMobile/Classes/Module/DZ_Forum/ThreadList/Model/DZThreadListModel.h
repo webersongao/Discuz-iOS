@@ -23,9 +23,6 @@
 @property (nonatomic, assign) CGRect subtitleFrame;  //!< 内容 或 最近回复
 @property (nonatomic, assign) CGRect timeFrame;  //!< 时间
 
-@property (nonatomic, assign) CGRect oneImgFrame;  //!< 第一张
-@property (nonatomic, assign) CGRect twoImgFrame;  //!< 第二张
-@property (nonatomic, assign) CGRect threeImgFrame;  //!< 第三张
 @property (nonatomic, assign) CGRect attachFrame;  //!< 附件总高度
 
 @property (nonatomic, assign) CGRect lineTwoFrame;  //!< 分割线
@@ -108,7 +105,17 @@
 @property (nonatomic, copy) NSString *typeName;
 @property (nonatomic, copy) NSString *useSubject;
 @property (nonatomic, copy) NSString *grouptitle;
+
+
+@property (nonatomic, strong) UIImage *tagImage;  // 精华 置顶 等标记的图片
+@property (nonatomic, copy) NSString *gradenName;
 @property (nonatomic, strong) NSMutableArray *imglist;
 @property (nonatomic, strong) DZThreadLayout *layout;  //!< 帖子布局属性
+@property (nonatomic, copy) NSAttributedString *mainTitle;  // 标题
+@property (nonatomic, copy) NSString *lastReplyString;  // 最新回复
+@property (nonatomic, strong) NSAttributedString *lastReply;  // 最新回复
+
+
+
 
 @end

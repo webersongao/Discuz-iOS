@@ -87,6 +87,7 @@
 // 国际化 字符创
 #define _(x) [LocalStringUtil localString:x]
 #define checkInteger(__X__)        [NSString stringWithFormat:@"%ld",__X__]
+#define checkTwoStr(X,Y)        [NSString stringWithFormat:@"%@%@",X,Y]
 #define checkNull(__X__)        (__X__) == nil || [(__X__) isEqual:[NSNull null]] ? @"" : [NSString stringWithFormat:@"%@", (__X__)]
 
 #pragma mark - 网络请求超时时间

@@ -23,7 +23,6 @@
 @property (nonatomic, strong) UIImageView *tipIcon;
 @property (nonatomic, strong) UILabel *tipLab;
 
-@property (nonatomic, assign) BOOL hasPic;
 @property (nonatomic, strong) UILabel *messageLab; // 内容
 @property (nonatomic, strong) UILabel *datelineLab; // 时间
 
@@ -97,8 +96,6 @@
         make.centerY.equalTo(self.headV);
         make.size.mas_equalTo(CGSizeMake(34, 17));
     }];
-    
-    
     
     [self.sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
@@ -321,7 +318,7 @@
 }
 
 - (void)setPriceSelected {
-    self.priceLab.iconV.image = [UIImage imageTintColorWithName:@"list_zans" andImageSuperView:self.priceLab.iconV];
+    self.priceLab.iconV.image = [UIImage imageTintColorWithName:@"list_zan_high" andImageSuperView:self.priceLab.iconV];
 }
 
 

@@ -288,6 +288,7 @@
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
 		7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */; };
+		706C454723ACD1A700472386 /* NSString+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = 706C454623ACD1A700472386 /* NSString+Format.m */; };
 		7070A8BF239F47C30052D32E /* DZPostVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8BE239F47C30052D32E /* DZPostVarModel.m */; };
 		7070A8C2239F4A3C0052D32E /* DZPostProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C1239F4A3C0052D32E /* DZPostProperty.m */; };
 		7070A8C5239F77340052D32E /* DZApplyProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7070A8C4239F77340052D32E /* DZApplyProperty.m */; };
@@ -1018,6 +1019,8 @@
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7068959323A0C47A00A0EFAE /* DZMsgNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMsgNetTool.h; sourceTree = "<group>"; };
 		7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZMsgNetTool.m; sourceTree = "<group>"; };
+		706C454523ACD1A700472386 /* NSString+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Format.h"; sourceTree = "<group>"; };
+		706C454623ACD1A700472386 /* NSString+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Format.m"; sourceTree = "<group>"; };
 		7070A8BD239F47C30052D32E /* DZPostVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostVarModel.h; sourceTree = "<group>"; };
 		7070A8BE239F47C30052D32E /* DZPostVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostVarModel.m; sourceTree = "<group>"; };
 		7070A8C0239F4A3C0052D32E /* DZPostProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostProperty.h; sourceTree = "<group>"; };
@@ -3416,6 +3419,8 @@
 		70F9F8C1237AA72B0067B308 /* NSString */ = {
 			isa = PBXGroup;
 			children = (
+				706C454523ACD1A700472386 /* NSString+Format.h */,
+				706C454623ACD1A700472386 /* NSString+Format.m */,
 				7065AE72238686C4009B6DA7 /* NSString+Common.h */,
 				7065AE73238686C4009B6DA7 /* NSString+Common.mm */,
 				70F9F8C3237AA72B0067B308 /* NSString+EmojiCheck.h */,
@@ -4540,6 +4545,7 @@
 				70F9F8D1237AA72B0067B308 /* NSDictionary+Utils.m in Sources */,
 				94F36BD220804221002AEF9E /* JTWebImageBrowerHelper.m in Sources */,
 				70FBDCE72383FC1B00FC296E /* DZBindManageController.m in Sources */,
+				706C454723ACD1A700472386 /* NSString+Format.m in Sources */,
 				27E481601E8A369000AE0E02 /* DZLaunchScreenManager.m in Sources */,
 				709622CD238BC6E900AF657F /* PRNaviTabManager.m in Sources */,
 				70DFD79C237A95DE00A13F0F /* DZBaseViewController.m in Sources */,

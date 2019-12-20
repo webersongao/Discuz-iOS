@@ -27,6 +27,7 @@
 
 // 展示形式是否要依照特殊帖子的判断。
 - (BOOL)isSpecialThread;
+
 // 置顶帖判断
 - (BOOL)isTopThread;
 // 是否是本版帖子

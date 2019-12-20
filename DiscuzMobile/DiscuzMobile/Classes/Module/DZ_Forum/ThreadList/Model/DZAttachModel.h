@@ -38,7 +38,7 @@
 @property (nonatomic, copy) NSString *filename;
 @property (nonatomic, copy) NSString *filesize;
 @property (nonatomic, copy) NSString *remote;
-@property (nonatomic, copy) NSString *attchDesc;  // 描述文字 description
+@property (nonatomic, copy) NSString *attch_desc;  // 描述文字 description
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *isimage;
 @property (nonatomic, assign) float width;  //!< 属性注释

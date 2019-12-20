@@ -221,7 +221,7 @@
 }
 
 - (void)setPriceSelected {
-    self.priceLab.iconV.image = [UIImage imageTintColorWithName:@"list_zans" andImageSuperView:self.priceLab.iconV];
+    self.priceLab.iconV.image = [UIImage imageTintColorWithName:@"list_zan_high" andImageSuperView:self.priceLab.iconV];
 }
 
 

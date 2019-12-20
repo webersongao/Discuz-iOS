@@ -20,7 +20,6 @@
 @property (nonatomic, strong) UILabel *desLab;     // 标题
 @property (nonatomic, strong) UILabel *messageLab; // 内容
 @property (nonatomic, strong) UILabel *datelineLab; // 时间
-@property (nonatomic, assign) BOOL hasPic;
 
 @property (nonatomic, strong) BaseIconTextView *viewsLab;   // 浏览数
 @property (nonatomic, strong) BaseIconTextView *repliesLab; // 回复数

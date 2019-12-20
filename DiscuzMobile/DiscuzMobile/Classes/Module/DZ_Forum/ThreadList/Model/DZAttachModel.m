@@ -12,7 +12,7 @@
 
 + (NSDictionary*)modelCustomPropertyMapper {
     return @{
-        @"attchDesc" : @"description",
+        @"attch_desc" : @"description",
     };
 }
 
