@@ -52,7 +52,7 @@
 
 -(void)setSubject:(NSString *)subject{
     _subject = [subject transformationStr];
-    _useSubject = _subject;
+    _mainTitleString = _subject;
     _mainTitle = [self AttributedSubject:subject secial:self.special];
 }
 
@@ -70,7 +70,7 @@
     _reply = reply;
     DZThreadReplyModel *last = reply.lastObject;
     _lastReplyString = last.message;
-    _lastReply = [self AttributedReply:last.message];
+    _lastReply = [self AttributedReply:_lastReplyString];
 }
 
 -(void)setDigest:(NSString *)digest{
@@ -153,16 +153,16 @@
     CGFloat attachHeight = cellModel.imglist.count ? KWidthScale(90) : 0;
     CGFloat nameWidth = [NSString cacaulteStringWidth:cellModel.author fontSize:16];
     CGFloat timeWidth = [NSString cacaulteStringWidth:cellModel.dateline fontSize:12];
-    CGFloat gradeWidth = [NSString cacaulteStringWidth:cellModel.gradenName fontSize:12];
+    CGFloat gradeWidth = [NSString cacaulteStringWidth:cellModel.gradeName fontSize:12];
     CGFloat subtitleHeight = [NSString cacaulteStringHeight:cellModel.lastReplyString fontSize:14 width:textWidth lineSpacing:5];
     
     self.nameFrame = CGRectMake(CGRectGetMaxX(self.iconFrame) + kMargin10, kMargin10, nameWidth, 30);
-    self.gradeFrame = CGRectMake(CGRectGetMaxX(self.nameFrame)+ kMargin10, kMargin10, gradeWidth, cellModel.gradenName.length ? 30 : 0);
+    self.gradeFrame = CGRectMake(CGRectGetMaxX(self.nameFrame)+ kMargin10, kMargin10, gradeWidth, cellModel.gradeName.length ? 30 : 0);
     self.tagFrame = CGRectMake(cellWidth-kMargin10-34, (60-17)/2.f, 34, 17);
     
     self.lineOneFrame = CGRectMake(kMargin10,CGRectGetMaxY(self.iconFrame)+kMargin10, textWidth, 0.5);
     self.titleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.lineOneFrame)+kMargin10, textWidth-kMargin10-timeWidth, 17.f);
-    self.subtitleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.titleFrame), textWidth, subtitleHeight);
+    self.subtitleFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.titleFrame)+5.f, textWidth, subtitleHeight);
     self.timeFrame = CGRectMake(CGRectGetMaxX(self.titleFrame)+kMargin10, CGRectGetMinY(self.titleFrame), timeWidth, 13.f);
     
     self.attachFrame = CGRectMake(kMargin10, CGRectGetMaxY(self.subtitleFrame), textWidth, attachHeight);

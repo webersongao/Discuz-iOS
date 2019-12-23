@@ -194,7 +194,7 @@
     self.nameLab.text = listInfo.author;
     self.grade.text = gradestr;
     
-    NSString *subjectStr = listInfo.useSubject;
+    NSString *subjectStr = listInfo.mainTitleString;
     if ([listInfo isSpecialThread]) {
         NSString *spaceCharater = @"    ";
         if ([DataCheck isValidString:listInfo.typeName]) {
@@ -206,7 +206,7 @@
             [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
             self.mainTitleLabel.attributedText = describe;
         } else {
-            self.mainTitleLabel.text = listInfo.useSubject;
+            self.mainTitleLabel.text = listInfo.mainTitleString;
         }
     } else if ([DataCheck isValidString:listInfo.typeName]) {
         NSMutableAttributedString *describe = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",subjectStr]];
@@ -214,7 +214,7 @@
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
         self.mainTitleLabel.attributedText = describe;
     } else {
-        self.mainTitleLabel.text = listInfo.useSubject;
+        self.mainTitleLabel.text = listInfo.mainTitleString;
     }
     
     self.messageLab.text = listInfo.message;

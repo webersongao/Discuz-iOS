@@ -76,15 +76,16 @@
 
 // 自定义字段，接口里面没有
 @property (nonatomic, copy) NSString *typeName;
-@property (nonatomic, copy) NSString *useSubject;
 @property (nonatomic, copy) NSString *grouptitle;
 
 
 @property (nonatomic, strong) UIImage *tagImage;  // 精华 置顶 等标记的图片
-@property (nonatomic, copy) NSString *gradenName;
+@property (nonatomic, copy) NSString *gradeName;
 @property (nonatomic, strong) NSMutableArray *imglist;
 @property (nonatomic, strong) DZThreadLayout *layout;  //!< 帖子布局属性
+@property (nonatomic, copy) NSString * mainTitleString;  // 标题
 @property (nonatomic, copy) NSAttributedString *mainTitle;  // 标题
+
 @property (nonatomic, copy) NSString *lastReplyString;  // 最新回复
 @property (nonatomic, strong) NSAttributedString *lastReply;  // 最新回复
 

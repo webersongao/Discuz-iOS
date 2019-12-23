@@ -81,12 +81,12 @@
 
     self.nameLabel.text = Model.author;
     self.tagView.image = Model.tagImage;
-    self.gradeLabel.text = Model.gradenName;
+    self.gradeLabel.text = Model.gradeName;
     
     [self layoutThreadCell:Model.layout];
     
-    self.mainTitleLabel.attributedText = Model.mainTitle;
-    self.subTitleLabel.attributedText = Model.lastReply;
+    self.mainTitleLabel.text = Model.mainTitleString;
+    self.subTitleLabel.text = Model.lastReplyString;
     
     self.subTitleLabel.numberOfLines = 0;
     self.timeLabel.text = Model.dateline;

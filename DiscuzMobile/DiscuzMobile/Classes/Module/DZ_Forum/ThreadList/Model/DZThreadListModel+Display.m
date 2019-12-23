@@ -24,20 +24,20 @@
     self.grouptitle = [groupDic stringForKey:self.authorid];
     
     self.typeName = [typeDic stringForKey:self.typeId];
-    self.useSubject = [self dealSpecialTypeThread:page];
+    self.mainTitleString = [self dealSpecialTypeThread:page];
     
     return self;
 }
 
 
 - (DZThreadListModel *)dealSpecialThread{
-    self.useSubject = [self dealSpecialTypeThread:0];
+    self.mainTitleString = [self dealSpecialTypeThread:0];
     return self;
 }
 
 
 - (NSString *)dealSpecialTypeThread:(NSInteger)page {
-    NSString *useSubjectStr = self.useSubject;
+    NSString *useSubjectStr = self.mainTitleString;
     if ([self isTopThread] && page == 1 && self.typeName.length) {
         useSubjectStr = [NSString stringWithFormat:@"%@,%@",self.typeName,self.subject];
     } else {

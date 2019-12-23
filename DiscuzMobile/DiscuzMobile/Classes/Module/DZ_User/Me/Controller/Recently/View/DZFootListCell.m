@@ -92,7 +92,7 @@
     self.nameLab.text = info.author;
     self.grade.text = gradestr;
     
-    NSString *subjectStr = info.useSubject;
+    NSString *subjectStr = info.mainTitleString;
     if ([info isSpecialThread]) {
         NSString *spaceCharater = @"    ";
         
@@ -105,7 +105,7 @@
             [describe addAttribute:NSForegroundColorAttributeName value:K_Color_Theme range:typeRange];
             self.desLab.attributedText = describe;
         } else {
-            self.desLab.text = info.useSubject;
+            self.desLab.text = info.mainTitleString;
         }
     } else if ([DataCheck isValidString:info.typeName]) {
         
@@ -115,7 +115,7 @@
         self.desLab.attributedText = describe;
         
     } else {
-        self.desLab.text = info.useSubject;
+        self.desLab.text = info.mainTitleString;
     }
     
     self.messageLab.text = info.message;
