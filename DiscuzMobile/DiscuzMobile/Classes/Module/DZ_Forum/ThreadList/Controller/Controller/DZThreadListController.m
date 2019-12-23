@@ -14,7 +14,6 @@
 #import "DZShareCenter.h"
 #import "AsyncAppendency.h"
 #import "DZThreadListCell.h"
-#import "DZThreadTopCell.h"
 #import "VerifyThreadRemindView.h"
 
 @interface DZThreadListController ()
@@ -58,6 +57,7 @@
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:@"DZThreadListCell"];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         if (self.VarModel.forum) {
             NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
@@ -225,21 +225,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (!self.cellHeightDict[indexPath]) {
-        self.cellHeightDict[indexPath] = @([self heightForRowAtIndexPath:indexPath tableView:tableView]);
-    }
-    return [self.cellHeightDict[indexPath] floatValue];
-}
-
-- (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     
-    UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    DZThreadListModel *listModel = self.dataSourceArr[indexPath.section][indexPath.row];
     
-    if ([cell isKindOfClass:[DZThreadTopCell class]]) {
-        return [(DZThreadTopCell *)cell cellHeight];
-    }else{
-        return [(DZThreadListCell *)cell cellHeight];
-    }
+    return listModel.layout.cellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -267,50 +256,19 @@
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //判断是不是置顶帖子  displayorder  3，2，1 置顶  0 正常  -1 回收站  -2 审核中  -3 审核忽略  -4草稿
-    NSArray *sectionArr = self.dataSourceArr[indexPath.section];
+    DZThreadListModel *listModel = self.dataSourceArr[indexPath.section][indexPath.row];
     
-    if (indexPath.section == 0) {
-        DZThreadTopCell  * cell = [tableView dequeueReusableCellWithIdentifier:@"ForumTopThreadCellId"];
-        if (cell == nil) {
-            cell = [[DZThreadTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ForumTopThreadCellId"];
-        }
-        [cell updateTopCellWithModel:sectionArr[indexPath.row]];
-        return cell;
-    }
+    DZThreadListCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:@"DZThreadListCell" forIndexPath:indexPath];
     
-    DZThreadListModel *listModel = sectionArr[indexPath.row];
-    return [self configListCell:listModel];
-}
-
-- (DZThreadListCell *)configListCell:(DZThreadListModel *)listModel {
+    [listCell updateThreadCell:listModel isTop:((indexPath.section == 0) ? YES : NO)];
     
-    DZThreadListCell * cell = [self.tableView dequeueReusableCellWithIdentifier:@"ThreadListId"];
-    if (cell == nil) {
-        cell = [[DZThreadListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ThreadListId"];
-    }
-    
-    [cell updateThreadCell:listModel];
-    
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
-    cell.headV.tag = [listModel.authorid integerValue];
-    [cell.headV addGestureRecognizer:tapGes];
-    return cell;
-}
-
-- (void)toOtherCenter:(UITapGestureRecognizer *)sender {
-    
-    [[DZMobileCtrl sharedCtrl] PushToOtherUserController:checkInteger(sender.view.tag)];
+    return listCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.section][indexPath.row];
-    
-    [self pushThreadDetail:listModel];
-}
-
-- (void)pushThreadDetail:(DZThreadListModel *)listModel {
     
     [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:listModel.tid];
 }

@@ -1,5 +1,5 @@
 //
-//  DZGaoThreadCell.h
+//  DZThreadListCell.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/19.
@@ -9,7 +9,7 @@
 #import "DZBaseTableViewCell.h"
 #import "DZThreadListModel+Display.h"
 
-@interface DZGaoThreadCell : DZBaseTableViewCell
+@interface DZThreadListCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIButton *IconButton;  //!< 头像
 
@@ -17,7 +17,8 @@
 
 @property (nonatomic, strong,readonly) DZThreadListModel *cellModel;  //!< 属性注释
 
-- (void)updateThreadCell:(DZThreadListModel *)Model;
+/// @param isTop 是否 置顶帖
+- (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop;
 
 
 @end

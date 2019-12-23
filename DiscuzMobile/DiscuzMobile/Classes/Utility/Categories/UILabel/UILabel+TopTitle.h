@@ -1,9 +1,9 @@
 //
-//  DZTopTitleLabel.h
+//  UILabel+TopTitle.h
 //  DiscuzMobile
 //
-//  Created by HB on 2017/5/8.
-//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2019/12/23.
+//  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -13,10 +13,12 @@ typedef NS_ENUM(NSUInteger, AttchPosition) {
     P_after
 };
 
-@interface DZTopTitleLabel : UILabel
+@interface UILabel (TopTitle)
 
 - (void)setText:(NSString *)text andImageName:(NSString *)imageName andSize:(CGSize)size andPosition:(AttchPosition)position;
 
 - (void)setText:(NSString *)text andImage:(UIImage *)image andSize:(CGSize)size andPosition:(AttchPosition)position;
 
 @end
+
+

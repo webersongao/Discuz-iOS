@@ -1,15 +1,15 @@
 //
-//  DZGaoThreadCell+Manager.m
+//  DZThreadListCell+Manager.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/23.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZGaoThreadCell+Manager.h"
+#import "DZThreadListCell+Manager.h"
 #import "DZForumTool.h"
 
-@implementation DZGaoThreadCell (Manager)
+@implementation DZThreadListCell (Manager)
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -64,7 +64,7 @@
     self.zanButton.selected = isSuccess;
     self.cellModel.recommend = isSuccess ? @"1" : @"0";
     if (isSuccess) {
-        self.cellModel.recommend_add = [NSString stringWithFormat:@"%ld",[self.cellModel.recommend_add integerValue] + 1];
+        self.cellModel.recommend_add = [NSString stringWithFormat:@"%d",[self.cellModel.recommend_add integerValue] + 1];
     }else{
         self.zanButton.enabled = YES;
     }

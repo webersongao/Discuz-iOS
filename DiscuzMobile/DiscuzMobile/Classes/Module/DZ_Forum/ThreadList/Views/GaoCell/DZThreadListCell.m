@@ -1,15 +1,16 @@
 //
-//  DZGaoThreadCell.m
+//  DZThreadListCell.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/19.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZGaoThreadCell.h"
+#import "DZThreadListCell.h"
 #import "DZThreadAttach.h"
+#import "UILabel+TopTitle.h"
 
-@interface DZGaoThreadCell ()
+@interface DZThreadListCell ()
 
 @property (nonatomic, strong) UILabel *nameLabel;  //!< 昵称
 @property (nonatomic, strong) UILabel *gradeLabel;  //!< 等级
@@ -34,7 +35,7 @@
 @end
 
 
-@implementation DZGaoThreadCell
+@implementation DZThreadListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -71,7 +72,8 @@
 }
 
 
-- (void)updateThreadCell:(DZThreadListModel *)Model{
+/// @param isTop 是否 置顶帖
+- (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop{
 
     _cellModel = Model;
     
@@ -81,7 +83,12 @@
     
     [self layoutThreadCell:Model.layout];
     
-    self.mainTitleLabel.text = Model.mainTitleString;
+    
+    if (isTop) {
+        self.mainTitleLabel.text = Model.mainTitleString;
+    }else{
+        [self.mainTitleLabel setText:Model.mainTitleString andImageName:@"置顶" andSize:CGSizeMake(34 ,17) andPosition:P_before];
+    }
     self.subTitleLabel.text = Model.lastReplyString;
     
     self.subTitleLabel.numberOfLines = 0;
