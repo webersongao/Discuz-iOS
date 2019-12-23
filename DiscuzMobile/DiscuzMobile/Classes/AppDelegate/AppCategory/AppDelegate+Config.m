@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate+Config.h"
-#import "DZLoginModule.h"
 #import "RNCachingURLProtocol.h"
 #import "DZRootTabBarController.h"
 #import "DZShareCenter.h"

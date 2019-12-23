@@ -312,6 +312,7 @@
 		70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */; };
 		70A5E26923A9D62600236105 /* DZDiscoverSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26623A9D62600236105 /* DZDiscoverSquareView.m */; };
 		70A5E26C23AA030E00236105 /* DZUserTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26B23AA030E00236105 /* DZUserTableView.m */; };
+		70A7965623B0A853001FF672 /* DZGaoThreadCell+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7965523B0A853001FF672 /* DZGaoThreadCell+Manager.m */; };
 		70B6B8E5239905AD003ED8F1 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9494507021196F8B0074C79E /* libmp3lame.a */; };
 		70BA483123852BA200634D76 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA483023852BA200634D76 /* UILabel+Common.m */; };
 		70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZHomeThreadContentView.m */; };
@@ -1067,6 +1068,8 @@
 		70A5E26723A9D62600236105 /* DZDiscoverSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverSquareView.h; sourceTree = "<group>"; };
 		70A5E26A23AA030E00236105 /* DZUserTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZUserTableView.h; sourceTree = "<group>"; };
 		70A5E26B23AA030E00236105 /* DZUserTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZUserTableView.m; sourceTree = "<group>"; };
+		70A7965423B0A853001FF672 /* DZGaoThreadCell+Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZGaoThreadCell+Manager.h"; sourceTree = "<group>"; };
+		70A7965523B0A853001FF672 /* DZGaoThreadCell+Manager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZGaoThreadCell+Manager.m"; sourceTree = "<group>"; };
 		70BA482F23852BA200634D76 /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
 		70BA483023852BA200634D76 /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
 		70BA4832238531A000634D76 /* DZHomeThreadContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeThreadContentView.h; sourceTree = "<group>"; };
@@ -3802,6 +3805,8 @@
 			children = (
 				70FE716D23AB728800F20BE3 /* DZGaoThreadCell.h */,
 				70FE716E23AB728800F20BE3 /* DZGaoThreadCell.m */,
+				70A7965423B0A853001FF672 /* DZGaoThreadCell+Manager.h */,
+				70A7965523B0A853001FF672 /* DZGaoThreadCell+Manager.m */,
 				70B070A623AB78D400FA4012 /* SubView */,
 			);
 			path = GaoCell;
@@ -4530,6 +4535,7 @@
 				70FBDCFF2383FC1B00FC296E /* ReplyCell.m in Sources */,
 				70FBDD082383FC1B00FC296E /* DZCollectSectionView.m in Sources */,
 				27473ACD1DD30C380024375F /* DZFontSize.m in Sources */,
+				70A7965623B0A853001FF672 /* DZGaoThreadCell+Manager.m in Sources */,
 				947ECB202064D403002D3536 /* WSPhotosBroseVC.m in Sources */,
 				7002A3642383D8CD00BC0C61 /* DZMessageListController.m in Sources */,
 				7023CC6523A1DAC800FB7E31 /* DZSearchController.m in Sources */,

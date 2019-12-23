@@ -8,7 +8,6 @@
 
 #import "DZFootListCell.h"
 #import "BaseIconTextView.h"
-#import "DZLoginModule.h"
 #import "UIView+WebCache.h"
 #import "DZForumTool.h"
 

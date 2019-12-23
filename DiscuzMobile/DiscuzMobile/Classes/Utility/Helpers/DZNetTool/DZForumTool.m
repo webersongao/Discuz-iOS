@@ -7,7 +7,6 @@
 //
 
 #import "DZForumTool.h"
-#import "DZLoginModule.h"
 
 @implementation DZForumTool
 

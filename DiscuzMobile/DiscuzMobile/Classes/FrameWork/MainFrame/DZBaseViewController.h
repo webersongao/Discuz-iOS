@@ -7,7 +7,6 @@
 //
 
 #import "DZBaseNaviBarController.h"
-#import "DZLoginModule.h"
 #import "EmptyAlertView.h"
 
 typedef NS_ENUM(NSUInteger, NaviDirection) {

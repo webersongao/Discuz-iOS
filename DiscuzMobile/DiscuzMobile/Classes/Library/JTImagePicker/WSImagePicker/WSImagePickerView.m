@@ -10,7 +10,6 @@
 #import "WSPhotosBroseVC.h"
 #import "JFImagePickerController.h"
 #import "JTImagePickerCell.h"
-#import "DZLoginModule.h"
 
 static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
 

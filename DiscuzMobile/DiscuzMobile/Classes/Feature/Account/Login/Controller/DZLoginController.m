@@ -8,7 +8,6 @@
 
 #import "DZLoginController.h"
 #import <ShareSDK/ShareSDK.h>
-#import "DZLoginModule.h"
 #import "DZLoginView.h"
 #import "DZLoginTextField.h"
 #import "ZHPickView.h"

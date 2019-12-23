@@ -9,7 +9,6 @@
 #import "DZMsgChatDetailController.h"
 #import "MessageModel.h"
 #import "EmoticonKeyboard.h"
-#import "DZLoginModule.h"
 #import "ChatContentCell.h"
 #import "DZMsgNetTool.h"
 #import "DZBaseTableView.h"

@@ -9,7 +9,6 @@
 #import "AppDelegate+Launch.h"
 #import "AppDelegate+Config.h"
 #import "DZLaunchScreenManager.h"
-#import "DZLoginModule.h"
 #import "DZInstroductionView.h"
 
 @implementation AppDelegate (Launch)

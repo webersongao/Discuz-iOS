@@ -8,7 +8,6 @@
 
 #import "ThreadModel.h"
 #import "DZThreadListModel.h"
-#import "DZLoginModule.h"
 
 
 @implementation ThreadModel

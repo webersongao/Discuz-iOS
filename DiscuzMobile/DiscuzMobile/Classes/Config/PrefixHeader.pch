@@ -23,6 +23,7 @@
 #import "DZMobileHeader.h"
 #import "DZLocalContext.h"
 #import "DZLocalContext.h"
+#import "DZLoginModule.h"
 
 #import <FMDB.h>
 #import <YYKit.h>

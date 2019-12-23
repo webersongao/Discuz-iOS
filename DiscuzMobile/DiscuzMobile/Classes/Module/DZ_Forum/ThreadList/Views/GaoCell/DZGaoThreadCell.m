@@ -11,7 +11,6 @@
 
 @interface DZGaoThreadCell ()
 
-@property (nonatomic, strong) UIButton *IconButton;  //!< 头像
 @property (nonatomic, strong) UILabel *nameLabel;  //!< 昵称
 @property (nonatomic, strong) UILabel *gradeLabel;  //!< 等级
 @property (nonatomic, strong) UIImageView *tagView;  //!< 置顶 或 精华 标记
@@ -28,11 +27,8 @@
 
 @property (nonatomic, strong) UIButton *ViewButton;  //!< 浏览数
 @property (nonatomic, strong) UIButton *replyButton;  //!< 回复数
-@property (nonatomic, strong) UIButton *zanButton;  //!< 点赞数
 
 @property (nonatomic, strong) UIView *lineThree;  //!< 分割线
-
-@property (nonatomic, strong) DZThreadListModel *cellModel;  //!< 属性注释
 
 
 @end
@@ -71,14 +67,14 @@
     [self.contentView addSubview:self.zanButton];
     
     [self.contentView addSubview:self.lineThree];
-
+    
 }
 
 
 - (void)updateThreadCell:(DZThreadListModel *)Model{
-    
-    self.cellModel = Model;
 
+    _cellModel = Model;
+    
     self.nameLabel.text = Model.author;
     self.tagView.image = Model.tagImage;
     self.gradeLabel.text = Model.gradeName;
@@ -96,6 +92,7 @@
     [self.zanButton setTitle:checkTwoStr(@"点赞：", Model.recommend_add) forState:UIControlStateNormal];
     
     self.zanButton.selected = [Model.recommend isEqualToString:@"1"];
+    self.zanButton.enabled = [Model.recommend isEqualToString:@"1"] ? NO : YES;
     [self.attchView updateUrlList:Model.imglist size:Model.layout.attachFrame.size];
     [self.IconButton sd_setImageWithURL:[NSURL URLWithString:Model.avatar] forState:UIControlStateNormal];
     

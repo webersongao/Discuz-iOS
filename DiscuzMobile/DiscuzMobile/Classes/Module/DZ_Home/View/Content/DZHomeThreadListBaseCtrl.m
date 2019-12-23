@@ -8,8 +8,8 @@
 
 #import "DZHomeThreadListBaseCtrl.h"
 #import "DZHomeVarModel.h"
-#import "DZGaoThreadCell.h"
 #import "DZHomeNetTool.h"
+#import "DZGaoThreadCell+Manager.h"
 #import "DZThreadListModel+Display.h"
 
 @interface DZHomeThreadListBaseCtrl ()

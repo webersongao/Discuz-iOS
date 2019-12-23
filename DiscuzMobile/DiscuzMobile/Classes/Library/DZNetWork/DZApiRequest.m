@@ -7,7 +7,6 @@
 //
 
 #import "DZApiRequest.h"
-#import "DZLoginModule.h"
 #import "MessageNoticeCenter.h"
 
 @implementation DZApiRequest

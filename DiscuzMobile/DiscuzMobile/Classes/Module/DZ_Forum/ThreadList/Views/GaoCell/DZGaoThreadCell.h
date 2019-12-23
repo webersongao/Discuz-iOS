@@ -11,6 +11,12 @@
 
 @interface DZGaoThreadCell : DZBaseTableViewCell
 
+@property (nonatomic, strong) UIButton *IconButton;  //!< 头像
+
+@property (nonatomic, strong) UIButton *zanButton;  //!< 点赞数
+
+@property (nonatomic, strong,readonly) DZThreadListModel *cellModel;  //!< 属性注释
+
 - (void)updateThreadCell:(DZThreadListModel *)Model;
 
 
