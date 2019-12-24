@@ -1,21 +1,21 @@
 //
-//  RootForumCell.m
+//  DZRootForumCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/1/23.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "RootForumCell.h"
+#import "DZRootForumCell.h"
 #import "DZForumNodeModel.h"
 
-@interface RootForumCell()
+@interface DZRootForumCell()
 
 @property (nonatomic, strong) UIView *sepLine;
 
 @end
 
-@implementation RootForumCell
+@implementation DZRootForumCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

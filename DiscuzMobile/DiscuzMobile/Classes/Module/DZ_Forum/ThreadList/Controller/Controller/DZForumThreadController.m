@@ -15,9 +15,9 @@
 #import "DZPostTypeSelectView.h"
 #import "DZForTitleModel.h"
 #import "DZForumInfoView.h"
-#import "RootForumCell.h"
+#import "DZRootForumCell.h"
 #import "DZForumModel.h"
-#import "SubForumCell.h"
+#import "DZSubForumCell.h"
 #import "DropTipView.h"
 
 @interface DZForumThreadController () <UITableViewDelegate, UITableViewDataSource>
@@ -230,9 +230,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     static NSString * headerSection = @"CellHeader";
-    RootForumCell *cell = [tableView dequeueReusableCellWithIdentifier:headerSection];
+    DZRootForumCell *cell = [tableView dequeueReusableCellWithIdentifier:headerSection];
     if (cell == nil) {
-        cell = [[RootForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:headerSection];
+        cell = [[DZRootForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:headerSection];
         UITapGestureRecognizer *tapG = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didSelectHeaderWithSection:)];
         [cell addGestureRecognizer:tapG];
     }
@@ -279,9 +279,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.foldTableView) {
-        SubForumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"subForum"];
+        DZSubForumCell *cell = [tableView dequeueReusableCellWithIdentifier:@"subForum"];
         if (cell == nil) {
-            cell = [[SubForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"subForum"];
+            cell = [[DZSubForumCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"subForum"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         

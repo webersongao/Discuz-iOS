@@ -1,5 +1,5 @@
 //
-//  SubForumCell.h
+//  DZSubForumCell.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/22.
@@ -9,7 +9,7 @@
 #import "DZBaseTableViewCell.h"
 @class DZForumModel;
 
-@interface SubForumCell : DZBaseTableViewCell
+@interface DZSubForumCell : DZBaseTableViewCell
 
 /**
  * 设置直接显示的cell数据

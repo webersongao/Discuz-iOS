@@ -1,17 +1,17 @@
 //
-//  SubForumCell.m
+//  DZSubForumCell.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/5/22.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "SubForumCell.h"
+#import "DZSubForumCell.h"
 #import "DZForumNodeModel.h"
 #import "DZForumModel.h"
 #import "NSString+MoreMethod.h"
 
-@interface SubForumCell()
+@interface DZSubForumCell()
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation SubForumCell
+@implementation DZSubForumCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
