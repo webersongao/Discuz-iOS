@@ -32,7 +32,7 @@
     _replies = _VarPost.thread.replies;
     _subject = _VarPost.thread.subject;
     _author = _VarPost.thread.author;
-    if (self.currentPage == 1 && _VarPost.postlist.count) {
+    if (self.currentPage == 0 && _VarPost.postlist.count) {
         DZPostListItem *item = _VarPost.postlist.firstObject;
         _dateline = item.dateline;
         _pid = item.pid;
@@ -171,7 +171,7 @@
     
     //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
     //     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
-    //    if (self.currentPage == 1) {
+    //    if (self.currentpage == 0) {
     //        BACK(^{
     //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
     //                [[DZDatabaseHandle Helper] footThread:listModel];

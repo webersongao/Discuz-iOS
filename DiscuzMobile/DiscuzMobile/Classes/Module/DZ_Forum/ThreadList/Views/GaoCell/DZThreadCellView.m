@@ -83,7 +83,7 @@
     [self layoutThreadCell:Model.listLayout];
     
     
-    if (isTop) {
+    if (!isTop) {
         self.mainTitleLabel.text = Model.mainTitleString;
     }else{
         [self.mainTitleLabel setText:Model.mainTitleString andImageName:@"置顶" andSize:CGSizeMake(34 ,17) andPosition:P_before];

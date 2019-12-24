@@ -73,7 +73,11 @@
     DZForumThreadController *lianMixVc = [[DZForumThreadController alloc] init];
     lianMixVc.forumFid = fid;
     lianMixVc.cForumBlock = block;
-    [self.mainNavi pushViewController:lianMixVc animated:YES];
+    if (fid.length) {    
+        [self.mainNavi pushViewController:lianMixVc animated:YES];
+    }else{
+        DLog(@"没有fid 不可以跳转的");
+    }
 }
 
 

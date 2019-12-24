@@ -26,7 +26,8 @@
     self.typeName = [typeDic stringForKey:self.typeId];
     self.mainTitleString = [self dealSpecialTypeThread:page];
     
-    return self;
+    [self updateThreadModelLayout];
+    return  self;
 }
 
 
@@ -38,7 +39,7 @@
 
 - (NSString *)dealSpecialTypeThread:(NSInteger)page {
     NSString *useSubjectStr = self.mainTitleString;
-    if ([self isTopThread] && page == 1 && self.typeName.length) {
+    if ([self isTopThread] && page == 0 && self.typeName.length) {
         useSubjectStr = [NSString stringWithFormat:@"%@,%@",self.typeName,self.subject];
     } else {
         NSString *spaceCharater = @"    ";
@@ -81,8 +82,8 @@
 
 // 是否是本版帖子
 - (BOOL)isCurrentForum:(NSString *)fid {
-   if ([@[@"3",@"2"] containsObject:self.displayorder] && ![self.fid isEqualToString:fid]) { // 非本版帖子
-       return YES;
+    if ([@[@"3",@"2"] containsObject:self.displayorder] && ![self.fid isEqualToString:fid]) { // 非本版帖子
+        return YES;
     }
     return NO;
 }

@@ -19,16 +19,15 @@
 - (instancetype)initWithListFrame:(CGRect)frame{
     self = [super initWithFrame:frame style:UITableViewStyleGrouped];
     if (self) {
-        self.dataSource = self;
         self.delegate = self;
-        [self registerClass:[DZDiscoverListCell class] forCellReuseIdentifier:@"DZDiscoverListCell"];
+        self.dataSource = self;
+        [self registerClass:[DZThreadListCell class] forCellReuseIdentifier:@"DZThreadListCell"];
     }
     return self;
 }
 
 -(void)updateListView:(NSArray *)array{
     self.dataArray = array.copy;
-    
     [self reloadData];
 }
 
@@ -46,8 +45,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    DZDiscoverListCell *listCell = [tableView dequeueReusableCellWithIdentifier:@"DZDiscoverListCell" forIndexPath:indexPath];
+    DZThreadListModel *cellModel  = self.dataArray[indexPath.section][indexPath.row];
+    DZThreadListCell *listCell = [tableView dequeueReusableCellWithIdentifier:@"DZThreadListCell" forIndexPath:indexPath];
     
+    [listCell updateThreadCell:cellModel isTop:((indexPath.section == 0) ? YES : NO)];
     return listCell;
 }
 
@@ -56,8 +57,8 @@
 #pragma mark   /********************* 代理方法 *************************/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return kToolBarHeight;
+    DZThreadListModel *cellModel  = self.dataArray[indexPath.section][indexPath.row];
+    return cellModel.listLayout.cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

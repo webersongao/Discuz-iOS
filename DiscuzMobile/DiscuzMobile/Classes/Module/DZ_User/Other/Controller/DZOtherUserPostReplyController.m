@@ -120,7 +120,7 @@
         [self.tableView.mj_footer endRefreshing];
         
         if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
-            if (self.page == 1) {
+            if (self.page == 0) {
                 
                 [self clearData];
                 [self.tableView.mj_header endRefreshing];

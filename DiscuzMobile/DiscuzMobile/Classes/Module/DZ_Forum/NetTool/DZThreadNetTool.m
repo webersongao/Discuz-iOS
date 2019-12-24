@@ -15,6 +15,10 @@
 + (void)DZ_DownloadForumListWithType:(JTLoadType)loadType fid:(NSString *)fid page:(NSInteger)page listType:(DZ_ListType)listType completion:(void(^)(DZThreadResModel *threadResModel,BOOL isCache,NSError *error))completion{
     
     NSString *fourmId = checkNull(fid);
+    if (!fourmId.length) {
+        DLog(@"傻逼呀你，没有fid怎么拉取数据");
+        return;
+    }
     NSDictionary *tmpDic = @{@"fid":[NSString stringWithFormat:@"%@",fourmId],
                              @"page":[NSString stringWithFormat:@"%ld",(long)page]};
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:tmpDic];
@@ -35,7 +39,7 @@
     }
     
     BOOL isCache = [DZApiRequest isCache:DZ_Url_ForumTlist andParameters:dict];
-    BOOL reqCache = (listType == DZ_ListAll && page == 1) ? YES : NO;
+    BOOL reqCache = (listType == DZ_ListAll && page == 0) ? YES : NO;
     if (!dict || !completion) {
         return;
     }

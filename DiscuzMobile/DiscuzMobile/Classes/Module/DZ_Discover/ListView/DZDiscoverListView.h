@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableView.h"
-#import "DZDiscoverListCell.h"
+#import "DZThreadListCell.h"
 
 @interface DZDiscoverListView : DZBaseTableView
 

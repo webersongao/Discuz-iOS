@@ -302,7 +302,6 @@
 		709A73112387E7FB00DF04CE /* DZRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730D2387E7FB00DF04CE /* DZRefreshFooter.m */; };
 		709A73122387E7FB00DF04CE /* DZRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730E2387E7FB00DF04CE /* DZRefreshHeader.m */; };
 		709A731A2387EF6100DF04CE /* DZDiscoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73192387EF6100DF04CE /* DZDiscoverListView.m */; };
-		709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */; };
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
 		70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */; };
@@ -1047,8 +1046,6 @@
 		709A73102387E7FB00DF04CE /* DZRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRefreshFooter.h; sourceTree = "<group>"; };
 		709A73182387EF6100DF04CE /* DZDiscoverListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZDiscoverListView.h; sourceTree = "<group>"; };
 		709A73192387EF6100DF04CE /* DZDiscoverListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverListView.m; sourceTree = "<group>"; };
-		709A731B2387EF8800DF04CE /* DZDiscoverListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZDiscoverListCell.h; sourceTree = "<group>"; };
-		709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverListCell.m; sourceTree = "<group>"; };
 		709A73202387F0D000DF04CE /* DZBaseCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseCollectionCell.h; sourceTree = "<group>"; };
 		709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseCollectionCell.m; sourceTree = "<group>"; };
 		709F70492387831800FEC4A9 /* AppDelegate+Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Config.h"; sourceTree = "<group>"; };
@@ -2932,8 +2929,6 @@
 		709A73172387EF2B00DF04CE /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				709A731B2387EF8800DF04CE /* DZDiscoverListCell.h */,
-				709A731C2387EF8800DF04CE /* DZDiscoverListCell.m */,
 				709A73182387EF6100DF04CE /* DZDiscoverListView.h */,
 				709A73192387EF6100DF04CE /* DZDiscoverListView.m */,
 			);
@@ -4608,7 +4603,6 @@
 				70960273239BEE4A0078077D /* DZMobileCtrl+Config.m in Sources */,
 				706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */,
 				703F2B86239DF2A600E7882C /* DZCheckModel.m in Sources */,
-				709A731D2387EF8800DF04CE /* DZDiscoverListCell.m in Sources */,
 				70621293237936C900130B9D /* DZVoteSelectCell.m in Sources */,
 				70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */,
 				70F9F8D4237AA72B0067B308 /* UIControl+DelayEnable.m in Sources */,

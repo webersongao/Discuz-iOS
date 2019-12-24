@@ -93,7 +93,7 @@
         if (varModel) {
             [self.tableView.mj_header endRefreshing];
             if (varModel.data.count) {
-                if (self.page == 1) {
+                if (self.page == 0) {
                     self.dataSourceArr = varModel.data.mutableCopy;
                 } else {
                     [self.dataSourceArr addObjectsFromArray:varModel.data];

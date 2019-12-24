@@ -11,16 +11,6 @@
 
 @implementation DZThreadListCell (Manager)
 
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self configThreadCellManager];
-    }
-    return self;
-}
-
-
 -(void)configThreadCellManager{
     [self.cellView.IconButton addTarget:self action:@selector(IconButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     

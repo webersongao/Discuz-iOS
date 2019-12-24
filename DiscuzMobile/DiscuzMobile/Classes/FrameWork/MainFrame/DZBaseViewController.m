@@ -17,14 +17,8 @@
 
 @implementation DZBaseViewController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.hideTabBarWhenPushed = YES;
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
-    return self;
+-(BOOL)hideTabBarWhenPushed{
+    return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

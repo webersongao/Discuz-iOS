@@ -13,7 +13,6 @@
 
 @end
 
-
 @implementation DZThreadListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -21,6 +20,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self initBaseGaoThreadCell];
+        [self configThreadCellManager];
     }
     return self;
 }
@@ -29,6 +29,9 @@
 -(void)initBaseGaoThreadCell{
     
     [self.contentView addSubview:self.cellView];
+}
+
+-(void)configThreadCellManager{
     
 }
 
@@ -42,7 +45,6 @@
 - (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop{
     _cellModel = Model;
     [self.cellView updateThreadView:Model isTop:isTop];
-
 }
 
 

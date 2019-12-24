@@ -33,7 +33,7 @@
     
     [self setUserNavi];
     [self tooBarAction];
-    [self downLoadData];
+//    [self downLoadData];
     
     [self addNotify];
 }

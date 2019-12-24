@@ -12,9 +12,11 @@
 #import "DZThreadNetTool.h"
 
 @interface DZDiscoverCateController ()
-
+{
+    CGRect m_frame;
+}
 @property (nonatomic, strong) DZDiscoverListView *listView;  //!< 属性注释
-@property (nonatomic, strong) DZBaseForumModel *forumModel;  //!< 属性注释
+@property (nonatomic, strong,readonly) DZBaseForumModel *forumModel;  //!< 属性注释
 @property (nonatomic, strong) DZThreadVarModel *VarModel;  //!< 属性注释
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;  //!< 属性注释
@@ -29,17 +31,18 @@
 {
     self = [super init];
     if (self) {
-        self.allArray = [NSMutableArray array];
-        self.dataSourceArr = [NSMutableArray array];
-        self.listView = [[DZDiscoverListView alloc] initWithListFrame:frame];
+        m_frame = frame;
+        _forumModel = model;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dz_HideNaviBar = YES;
+    self.view.frame = m_frame;
     [self.view addSubview:self.listView];
+    self.view.backgroundColor = KRandom_Color;
+    [self.dz_NavigationBar removeFromSuperview];
 }
 
 -(void)updateDiscoverCateControllerView{
@@ -64,11 +67,11 @@
             //
             self.VarModel = threadResModel.Variables;
             
-            //            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+            //            if (page == 0 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
             //                [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             //            }
             
-            if (self.page == 1) { // 刷新列表
+            if (self.page == 0) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self.dataSourceArr removeAllObjects];
                 [self anylyeThreadListData:threadResModel];
@@ -80,7 +83,7 @@
             if (threadsCount <= self.allArray.count) {
                 [self.listView.mj_footer endRefreshingWithNoMoreData];
             }
-            [self.listView reloadData];
+            [self.listView updateListView:self.dataSourceArr];
         }else{
             [self showServerError:error];
             [self.listView.mj_header endRefreshing];
@@ -92,7 +95,7 @@
 - (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     [self.VarModel updateVarModel:self.forumModel.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        if (self.page == 1) {
+        if (self.page == 0) {
             self.notThisFidCount = notFourmCount;
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
@@ -107,7 +110,14 @@
                     return;
                 }
                 [commonListArr addObjectsFromArray:commonArr];
-                [self.dataSourceArr replaceObjectAtIndex:1 withObject:commonListArr];
+                if (self.dataSourceArr.count <= 0) {
+                    [self.dataSourceArr addObject:[NSArray array]];
+                }
+                if (self.dataSourceArr.count <= 1) {
+                    [self.dataSourceArr addObject:commonListArr];
+                }else{
+                    [self.dataSourceArr replaceObjectAtIndex:1 withObject:commonListArr];
+                }
             }
             if (allArr.count) {
                 [self.allArray addObjectsFromArray:allArr];
@@ -119,7 +129,14 @@
 #pragma mark   /********************* 初始化 *************************/
 
 
-
+-(DZDiscoverListView *)listView{
+    if (!_listView) {
+        _allArray = [NSMutableArray array];
+        _dataSourceArr = [NSMutableArray array];
+        _listView = [[DZDiscoverListView alloc] initWithListFrame:self.view.bounds];
+    }
+    return _listView;
+}
 
 
 

@@ -45,7 +45,7 @@
         if (varModel) {
             [self mj_endRefreshing];
             if (varModel.list.count) {
-                if (self.page == 1) {
+                if (self.page == 0) {
                     self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.list];
                 } else {
                     [self.dataSourceArr addObjectsFromArray:varModel.list];
@@ -69,7 +69,7 @@
 }
 
 - (void)mj_endRefreshing {
-    if (self.page == 1) {
+    if (self.page == 0) {
         [self.tableView.mj_header endRefreshing];
     } else {
         [self.tableView.mj_footer endRefreshing];

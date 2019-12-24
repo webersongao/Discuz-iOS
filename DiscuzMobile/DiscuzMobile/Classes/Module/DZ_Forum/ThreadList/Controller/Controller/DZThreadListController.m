@@ -108,28 +108,28 @@
             
             self.VarModel = threadResModel.Variables;
             
-            if (self.page == 1) {
+            if (self.page == 0) {
                 [self sendVariablesToMixcontroller];
             }
             if (!isCache) {
-                if (page == 1) {
+                if (page == 0) {
                     if (self.endRefreshBlock) {
                         self.endRefreshBlock();
                     }
                 }
             } else if (loadType == JTRequestTypeRefresh) {
-                if (page == 1) {
+                if (page == 0) {
                     if (self.endRefreshBlock) {
                         self.endRefreshBlock();
                     }
                 }
             }
             
-            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+            if (page == 0 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
                 [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             }
             
-            if (self.page == 1) { // 刷新列表
+            if (self.page == 0) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self clearDatasource];
                 [self anylyeThreadListData:threadResModel];
@@ -187,7 +187,7 @@
     self.VarModel = responseObject.Variables;
     
     [self.VarModel updateVarModel:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        if (self.page == 1) {
+        if (self.page == 0) {
             self.notThisFidCount = notFourmCount;
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
@@ -202,7 +202,14 @@
                     return;
                 }
                 [commonListArr addObjectsFromArray:commonArr];
-                [self.dataSourceArr replaceObjectAtIndex:1 withObject:commonListArr];
+                if (self.dataSourceArr.count <= 0) {
+                    [self.dataSourceArr addObject:[NSArray array]];
+                }
+                if (self.dataSourceArr.count <= 1) {
+                    [self.dataSourceArr addObject:commonListArr];
+                }else{
+                    [self.dataSourceArr replaceObjectAtIndex:1 withObject:commonListArr];
+                }
             }
             if (allArr.count) {
                 [self.allArray addObjectsFromArray:allArr];
