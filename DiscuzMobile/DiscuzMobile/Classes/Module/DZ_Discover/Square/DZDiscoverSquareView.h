@@ -11,6 +11,14 @@
 
 @interface DZDiscoverSquareView : DZBaseCollectionView
 
+
+-(void)updateDiscover:(NSArray *)dataArray;
+
+
+
+
+
+
 @end
 
 
