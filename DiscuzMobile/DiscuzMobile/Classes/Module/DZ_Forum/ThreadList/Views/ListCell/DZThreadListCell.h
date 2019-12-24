@@ -8,12 +8,11 @@
 
 #import "DZBaseTableViewCell.h"
 #import "DZThreadListModel+Display.h"
+#import "DZThreadCellView.h"
 
 @interface DZThreadListCell : DZBaseTableViewCell
 
-@property (nonatomic, strong) UIButton *IconButton;  //!< 头像
-
-@property (nonatomic, strong) UIButton *zanButton;  //!< 点赞数
+@property (nonatomic, strong) DZThreadCellView *cellView;  //!< 属性注释
 
 @property (nonatomic, strong,readonly) DZThreadListModel *cellModel;  //!< 属性注释
 

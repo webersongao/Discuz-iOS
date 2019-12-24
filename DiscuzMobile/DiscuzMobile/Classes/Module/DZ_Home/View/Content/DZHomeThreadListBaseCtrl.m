@@ -140,7 +140,7 @@
 
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
-    return listModel.layout.cellHeight;
+    return listModel.listLayout.cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

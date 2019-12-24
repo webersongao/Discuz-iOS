@@ -228,7 +228,7 @@
     
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.section][indexPath.row];
     
-    return listModel.layout.cellHeight;
+    return listModel.listLayout.cellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

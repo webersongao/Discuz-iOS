@@ -1,16 +1,17 @@
 //
-//  DZThreadListCell.m
+//  DZThreadCellView.m
 //  DiscuzMobile
 //
-//  Created by WebersonGao on 2019/12/19.
+//  Created by WebersonGao on 2019/12/24.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZThreadListCell.h"
+#import "DZThreadCellView.h"
 #import "DZThreadAttach.h"
 #import "UILabel+TopTitle.h"
+#import "DZThreadListModel.h"
 
-@interface DZThreadListCell ()
+@interface DZThreadCellView ()
 
 @property (nonatomic, strong) UILabel *nameLabel;  //!< 昵称
 @property (nonatomic, strong) UILabel *gradeLabel;  //!< 等级
@@ -31,57 +32,55 @@
 
 @property (nonatomic, strong) UIView *lineThree;  //!< 分割线
 
+@property (nonatomic, strong,readonly) DZThreadListModel *threadModel;  //!< 属性注释
 
 @end
 
 
-@implementation DZThreadListCell
+@implementation DZThreadCellView
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)init
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super init];
     if (self) {
-        [self initBaseGaoThreadCell];
+        [self comfigThreadView];
     }
     return self;
 }
 
-
--(void)initBaseGaoThreadCell{
+-(void)comfigThreadView{
+    [self addSubview:self.IconButton];
+    [self addSubview:self.nameLabel];
+    [self addSubview:self.gradeLabel];
+    [self addSubview:self.tagView];
     
-    [self.contentView addSubview:self.IconButton];
-    [self.contentView addSubview:self.nameLabel];
-    [self.contentView addSubview:self.gradeLabel];
-    [self.contentView addSubview:self.tagView];
+    [self addSubview:self.lineOne];
     
-    [self.contentView addSubview:self.lineOne];
+    [self addSubview:self.mainTitleLabel];
+    [self addSubview:self.timeLabel];
+    [self addSubview:self.subTitleLabel];
     
-    [self.contentView addSubview:self.mainTitleLabel];
-    [self.contentView addSubview:self.timeLabel];
-    [self.contentView addSubview:self.subTitleLabel];
+    [self addSubview:self.attchView];
     
-    [self.contentView addSubview:self.attchView];
+    [self addSubview:self.lineTwo];
+    [self addSubview:self.ViewButton];
+    [self addSubview:self.replyButton];
+    [self addSubview:self.zanButton];
     
-    [self.contentView addSubview:self.lineTwo];
-    [self.contentView addSubview:self.ViewButton];
-    [self.contentView addSubview:self.replyButton];
-    [self.contentView addSubview:self.zanButton];
-    
-    [self.contentView addSubview:self.lineThree];
-    
+    [self addSubview:self.lineThree];
 }
 
 
 /// @param isTop 是否 置顶帖
-- (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop{
-
-    _cellModel = Model;
+- (void)updateThreadView:(DZThreadListModel *)Model isTop:(BOOL)isTop{
+    
+    _threadModel = Model;
     
     self.nameLabel.text = Model.author;
     self.tagView.image = Model.tagImage;
     self.gradeLabel.text = Model.gradeName;
     
-    [self layoutThreadCell:Model.layout];
+    [self layoutThreadCell:Model.listLayout];
     
     
     if (isTop) {
@@ -100,7 +99,7 @@
     
     self.zanButton.selected = [Model.recommend isEqualToString:@"1"];
     self.zanButton.enabled = [Model.recommend isEqualToString:@"1"] ? NO : YES;
-    [self.attchView updateUrlList:Model.imglist size:Model.layout.attachFrame.size];
+    [self.attchView updateUrlList:Model.imglist size:Model.listLayout.attachFrame.size];
     [self.IconButton sd_setImageWithURL:[NSURL URLWithString:Model.avatar] forState:UIControlStateNormal];
     
 }
@@ -242,7 +241,6 @@
     }
     return _lineThree;
 }
-
 
 
 
