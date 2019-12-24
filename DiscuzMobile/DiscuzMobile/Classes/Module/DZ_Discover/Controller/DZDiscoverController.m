@@ -62,7 +62,6 @@
         [self.listViewArray addObject:listVC];
         [self.scrollView addSubview:listVC.view];
     }
-    
     [self.ScrollBar updateNaviBarWithTitle:titleArray];
     self.scrollView.contentSize = CGSizeMake(forumList.count * KScreenWidth, _scrollView.height);
 }
@@ -84,15 +83,15 @@
 #pragma mark   /********************* PRNaviSegmentViewDelegate *************************/
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView touchNaviIndex:(NSInteger)index{
-    
+    DLog(@"WBS 001 touchNaviIndex");
 }
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView touchSameNaviIndex:(NSInteger)index{
-    
+    DLog(@"WBS 002 touchSameNaviIndex");
 }
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView updateNaviTitleIndex:(NSInteger)index{
-    
+    DLog(@"WBS 003 updateNaviTitleIndex");
 }
 
 #pragma mark   /********************* UIScrollViewDelegate *************************/

@@ -507,7 +507,7 @@
 }
 
 -(NSMutableArray<DZThreadListController *> *)ctvArr{
-    if (_ctvArr == nil) {
+    if (!_ctvArr) {
         _ctvArr = [NSMutableArray arrayWithCapacity:3];
         for (int idx = 0; idx < self.titleArr.count; idx++) {
             DZForTitleModel *obj = self.titleArr[idx];

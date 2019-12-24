@@ -14,7 +14,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame Model:(DZBaseForumModel *)model;
 
-
+-(void)updateDiscoverCateControllerView;
 
 @end
 

@@ -6,9 +6,9 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZBaseTableViewCell.h"
+#import "DZThreadListCell.h"
 
-@interface DZDiscoverListCell : DZBaseTableViewCell
+@interface DZDiscoverListCell : DZThreadListCell
 
 @end
 

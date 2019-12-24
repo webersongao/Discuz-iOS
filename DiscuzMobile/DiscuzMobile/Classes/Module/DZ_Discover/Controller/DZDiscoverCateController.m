@@ -42,10 +42,14 @@
     [self.view addSubview:self.listView];
 }
 
+-(void)updateDiscoverCateControllerView{
+    [self downLoadListData:self.page andLoadType:JTRequestTypeCache];
+}
+
 #pragma mark - 数据下载
 - (void)downLoadListData:(NSInteger)page andLoadType:(JTLoadType)loadType {
     
-    [self.HUD showLoadingMessag:@"记载中" toView:self.view];
+    [self.HUD showLoadingMessag:@"加载中" toView:self.view];
     [DZThreadNetTool DZ_DownloadForumListWithType:loadType fid:self.forumModel.fid page:page listType:DZ_ListNew completion:^(DZThreadResModel *threadResModel, BOOL isCache, NSError *error) {
         [self.HUD hide];
         if (threadResModel) {
