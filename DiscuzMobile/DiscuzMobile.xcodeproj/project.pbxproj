@@ -265,6 +265,7 @@
 		706212EB237936C900130B9D /* DZResetPwdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B2237936C800130B9D /* DZResetPwdView.m */; };
 		706212EC237936C900130B9D /* DZWeb2AuthCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */; };
 		7062136623793CB300130B9D /* DZSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062136523793CB300130B9D /* DZSegmentedControl.m */; };
+		706301A923B3A42B0029B388 /* DZMobileCtrl+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 706301A823B3A42B0029B388 /* DZMobileCtrl+Tool.m */; };
 		7063229F237C151A005943AB /* EFSQLiteContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632298237C151A005943AB /* EFSQLiteContext.m */; };
 		706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70632299237C151A005943AB /* EFSQLiteObject.m */; };
 		706322A1237C151A005943AB /* KeyValuePair.m in Sources */ = {isa = PBXBuildFile; fileRef = 7063229A237C151A005943AB /* KeyValuePair.m */; };
@@ -974,6 +975,8 @@
 		706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZWeb2AuthCodeView.m; sourceTree = "<group>"; };
 		7062136423793CB300130B9D /* DZSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSegmentedControl.h; sourceTree = "<group>"; };
 		7062136523793CB300130B9D /* DZSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSegmentedControl.m; sourceTree = "<group>"; };
+		706301A723B3A42B0029B388 /* DZMobileCtrl+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Tool.h"; sourceTree = "<group>"; };
+		706301A823B3A42B0029B388 /* DZMobileCtrl+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Tool.m"; sourceTree = "<group>"; };
 		70632297237C151A005943AB /* EFSQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFSQLiteHelper.h; sourceTree = "<group>"; };
 		70632298237C151A005943AB /* EFSQLiteContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFSQLiteContext.m; sourceTree = "<group>"; };
 		70632299237C151A005943AB /* EFSQLiteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFSQLiteObject.m; sourceTree = "<group>"; };
@@ -3441,6 +3444,8 @@
 				70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */,
 				70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */,
 				70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */,
+				706301A723B3A42B0029B388 /* DZMobileCtrl+Tool.h */,
+				706301A823B3A42B0029B388 /* DZMobileCtrl+Tool.m */,
 				7065AE842386978D009B6DA7 /* DZMobileCtrl+Alert.h */,
 				7065AE852386978D009B6DA7 /* DZMobileCtrl+Alert.m */,
 				70960271239BEE4A0078077D /* DZMobileCtrl+Config.h */,
@@ -4724,6 +4729,7 @@
 				70EBEB802387C432005333D4 /* DZForumNodeModel.m in Sources */,
 				706212D9237936C900130B9D /* ActivityApplyReplyCell.m in Sources */,
 				70621299237936C900130B9D /* ActiveExtendCell.m in Sources */,
+				706301A923B3A42B0029B388 /* DZMobileCtrl+Tool.m in Sources */,
 				70DB801523B358C8004B0DB6 /* DZHomeTestViewController.m in Sources */,
 				709622D4238BC9F900AF657F /* DZFootListCell.m in Sources */,
 				70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */,

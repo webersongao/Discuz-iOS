@@ -242,7 +242,7 @@
 
 - (void)closeBtnClick {
     [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil];
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)reloadSection:(NSInteger)section withNodeModel:(DZForumNodeModel *)model withExpand:(BOOL)isExpand {

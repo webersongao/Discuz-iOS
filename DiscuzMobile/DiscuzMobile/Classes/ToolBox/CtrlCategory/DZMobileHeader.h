@@ -14,7 +14,7 @@
 #import "DZMobileCtrl+Alert.h"
 #import "DZMobileCtrl+Local.h"
 #import "DZMobileCtrl+Config.h"
-
+#import "DZMobileCtrl+Tool.h"
 
 
 
