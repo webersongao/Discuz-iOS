@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self dz_SetNavigationBar];
-            self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = KRandom_Color;
 }
 
 - (DZNavigationBar *)dz_NavigationBar{
@@ -86,15 +86,17 @@
 }
 
 - (void)setdz_BarTitleTextColor:(UIColor *)dz_BarTitleTextColor {
-    
-    _dz_BarTitleTextColor = dz_BarTitleTextColor;
-    self.dz_NavigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : dz_BarTitleTextColor};
+    if (dz_BarTitleTextColor) {
+        _dz_BarTitleTextColor = dz_BarTitleTextColor;
+        self.dz_NavigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : dz_BarTitleTextColor};
+    }
 }
 
 - (void)setdz_BarTitleFont:(UIFont *)dz_BarTitleFont {
-    
-    _dz_BarTitleFont = dz_BarTitleFont;
-    self.dz_NavigationBar.titleTextAttributes = @{NSFontAttributeName : dz_BarTitleFont};
+    if (dz_BarTitleFont) {
+        _dz_BarTitleFont = dz_BarTitleFont;
+        self.dz_NavigationBar.titleTextAttributes = @{NSFontAttributeName : dz_BarTitleFont};
+    }
 }
 
 - (void)dz_SetNavigationBackItemWithTarget:(id)target action:(SEL)action {
@@ -163,7 +165,6 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    
 }
 
 - (void)dz_AddSubView:(UIView *)view belowNavigationBar:(BOOL)isBelow {
@@ -173,6 +174,13 @@
     }else {
         [self.view insertSubview:view aboveSubview:self.dz_NavigationBar];
     }
+}
+
+
+/// 将导航条置于顶层
+-(void)dz_bringNavigationBarToFront{
+    self.dz_NavigationBar.hidden = NO;
+    [self.view bringSubviewToFront:self.dz_NavigationBar];
 }
 
 - (void)leftBarBtnClick {

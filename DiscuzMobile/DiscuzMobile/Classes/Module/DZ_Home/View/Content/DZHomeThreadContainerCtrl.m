@@ -68,7 +68,6 @@
 
 - (void)addItemClass:(DZHomeThreadListBaseCtrl *)baseVC Title:(NSString *)title {
     baseVC.title = title;
-    baseVC.dz_normalTitle = title;
     KWEAKSELF
     baseVC.didScrollAction = ^(UIScrollView *scrollView) {
         [weakSelf listViewDidScroll:scrollView];

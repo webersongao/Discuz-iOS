@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dz_normalTitle = @"最近";
+    self.title = @"最近";
     
     DZFootForumController *forumVC = [[DZFootForumController alloc] init];
     forumVC.title =@"版块";

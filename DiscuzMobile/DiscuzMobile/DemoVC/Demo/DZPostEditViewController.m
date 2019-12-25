@@ -104,7 +104,7 @@
 
 -(UITextView *)contentView{
     if (_contentView == nil) {
-        _contentView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, 15.f, KScreenWidth- 30, KScreenHeight-280)];
+        _contentView = [[UITextView alloc] initWithFrame:CGRectMake(15.f, KNavi_ContainStatusBar_Height+kMargin10, KScreenWidth- 30, KScreenHeight-250)];
         _contentView.layer.borderColor = [UIColor orangeColor].CGColor;
         _contentView.layer.borderWidth = 1.f;
     }

@@ -39,6 +39,9 @@ typedef NS_ENUM(NSInteger, DZNaviItemType) {
 @property(nonatomic,assign) BOOL dz_normalTitle;
 
 
+/// 将导航条置于顶层
+-(void)dz_bringNavigationBarToFront;
+
 /**
  设置Item
  

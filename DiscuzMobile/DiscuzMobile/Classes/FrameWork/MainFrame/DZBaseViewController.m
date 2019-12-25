@@ -39,8 +39,6 @@
 -(void)configBaseViewController{
     
     [self.view setExclusiveTouch:YES];
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transToLogin) name:DZ_UserLogin_Notify object:nil];
     // 监听UIWindow隐藏 播放视频的时候，状态栏会自动消失，处理后让状态栏重新出现
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen:) name:UIWindowDidBecomeHiddenNotification object:nil];

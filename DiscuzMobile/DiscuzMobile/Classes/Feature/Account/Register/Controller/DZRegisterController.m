@@ -34,8 +34,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    self.title = @"账户注册";
     _registerView.delegate = self;
+    [self dz_bringNavigationBarToFront];
     [_registerView.registerButton addTarget:self action:@selector(registerBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
     KWEAKSELF;
