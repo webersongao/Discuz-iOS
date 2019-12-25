@@ -13,8 +13,8 @@
 @interface DZFastPostController ()
 
 @property (nonatomic, strong) UIImageView *navBarHairlineImageView;
-@property (nonatomic, strong) DZPostSelectController *listVc;
-@property (nonatomic, strong) UINavigationController *navVC;
+@property (nonatomic, strong) DZPostSelectController *listVC;
+@property (nonatomic, strong) UINavigationController *naviVC;
 
 @end
 
@@ -32,7 +32,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self presentViewController:self.navVC animated:NO completion:nil];
+    [self presentViewController:self.naviVC animated:NO completion:nil];
     
 }
 
@@ -41,21 +41,21 @@
     _navBarHairlineImageView = [UIImageView findHairlineImageViewUnder:self.navigationController.navigationBar];
     [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
     
-    self.listVc.tabbarHeight = self.tabbarHeight;
+    self.listVC.tabbarHeight = self.tabbarHeight;
 }
 
-- (DZPostSelectController *)listVc {
-    if (!_listVc) {
-        _listVc = [[DZPostSelectController alloc] init];
+- (DZPostSelectController *)listVC {
+    if (!_listVC) {
+        _listVC = [[DZPostSelectController alloc] init];
     }
-    return _listVc;
+    return _listVC;
 }
 
-- (UINavigationController *)navVC {
-    if (!_navVC) {
-        _navVC = [[UINavigationController alloc] initWithRootViewController:self.listVc];
+- (UINavigationController *)naviVC {
+    if (!_naviVC) {
+        _naviVC = [[UINavigationController alloc] initWithRootViewController:self.listVC];
     }
-    return _navVC;
+    return _naviVC;
 }
 
 @end

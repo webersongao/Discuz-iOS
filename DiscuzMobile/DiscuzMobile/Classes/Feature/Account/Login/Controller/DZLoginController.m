@@ -12,7 +12,6 @@
 #import "DZLoginTextField.h"
 #import "ZHPickView.h"
 #import "DZShareCenter.h"
-#import "XinGeCenter.h"  // 信鸽
 #import "DZUserNetTool.h"
 #import "DZLoginNetTool.h"
 #import <ShareSDKExtension/ShareSDK+Extension.h>

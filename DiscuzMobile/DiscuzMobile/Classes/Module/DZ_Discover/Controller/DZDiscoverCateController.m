@@ -66,7 +66,6 @@
             //            }
             //
             self.VarModel = threadResModel.Variables;
-            
             //            if (page == 0 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
             //                [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             //            }
@@ -97,9 +96,9 @@
     [self.VarModel updateVarModel:self.forumModel.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
         if (self.page == 0) {
             self.notThisFidCount = notFourmCount;
+            self.allArray = [NSMutableArray arrayWithArray:allArr];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
-            self.allArray = [NSMutableArray arrayWithArray:allArr];
         } else {
             if (commonArr.count) {
                 DZThreadListModel *model1 = commonArr.firstObject;

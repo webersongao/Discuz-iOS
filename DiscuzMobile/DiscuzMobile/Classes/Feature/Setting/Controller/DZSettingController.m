@@ -10,7 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
-#import "XinGeCenter.h"
+#import "DZPushCenter.h"
 #import "SendEmailHelper.h"
 
 @interface DZSettingController ()
@@ -147,7 +147,7 @@
 }
 
 - (void)userTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:nil];
+    [[DZMobileCtrl sharedCtrl] PushToDZUsertermsController:nil];
 }
 
 #pragma mark - 无图浏览设置
@@ -166,18 +166,18 @@
     BOOL usbuttonon = [switchButton isOn];
     if (usbuttonon) {
         //开启
-        [[XinGeCenter shareInstance] Reregistration];
+        [[DZPushCenter shareInstance] Reregistration];
         
         if (![DZLoginModule isLogged]) {
             return;
         } else {
-            [[XinGeCenter shareInstance] setXG];
+            [[DZPushCenter shareInstance] setXG];
         }
-        if ([XGPush isUnRegisterStatus]) {
-            [MBProgressHUD showInfo:@"开启推送"];
-        } else {
-            [MBProgressHUD showInfo:@"开启推送失败"];
-        }
+//        if ([XGPush isUnRegisterStatus]) {
+//            [MBProgressHUD showInfo:@"开启推送"];
+//        } else {
+//            [MBProgressHUD showInfo:@"开启推送失败"];
+//        }
     } else {
         // 注销
         [self logoutDevice];
@@ -186,13 +186,13 @@
 
 - (void)logoutDevice{
     
-    [XGPush unRegisterDevice];
-    [XGPush setAccount:@"**"];
-    if ([XGPush isUnRegisterStatus]) {
-        [MBProgressHUD showInfo:@"注销设备"];
-    }else {
-        [MBProgressHUD showInfo:@"注销设备失败"];
-    }
+//    [XGPush unRegisterDevice];
+//    [XGPush setAccount:@"**"];
+//    if ([XGPush isUnRegisterStatus]) {
+//        [MBProgressHUD showInfo:@"注销设备"];
+//    }else {
+//        [MBProgressHUD showInfo:@"注销设备失败"];
+//    }
 }
 #pragma mark - 清除缓存
 -(void)clearAPP {

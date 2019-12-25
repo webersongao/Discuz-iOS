@@ -11,7 +11,6 @@
 #import "DZAuthCodeView.h"
 #import "DZLoginTextField.h"
 #import "DZLoginNetTool.h"
-#import "XinGeCenter.h"
 #import "DZUserNetTool.h"
 
 @interface DZRegisterController ()
@@ -62,7 +61,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToDZUsertermsController:self.bbrulestxt];
 }
 
 #pragma mark - 验证码
@@ -165,7 +164,6 @@
             [postData setValue:bloginModel.unionid forKey:@"unionid"];
         }
         [self.HUD showLoadingMessag:@"登录中" toView:self.view];
-        
     } else { // 普通注册
         [self.HUD showLoadingMessag:@"注册中" toView:self.view];
     }

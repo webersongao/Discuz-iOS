@@ -28,7 +28,7 @@
 
 - (void)setupViews {
     self.backgroundColor = [UIColor whiteColor];
-//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.contentView addSubview:self.button];
     

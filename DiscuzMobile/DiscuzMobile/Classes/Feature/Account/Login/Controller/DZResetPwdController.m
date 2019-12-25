@@ -7,7 +7,6 @@
 //
 
 #import "DZResetPwdController.h"
-#import "XinGeCenter.h"
 #import "DZResetPwdView.h"
 #import "DZAuthCodeView.h"
 #import "DZLoginTextField.h"
@@ -42,7 +41,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToDZUsertermsController:self.bbrulestxt];
 }
 
 - (void)tapAction {

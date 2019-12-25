@@ -56,7 +56,7 @@
     for (int index = 0; index < forumList.count; index ++) {
         DZBaseForumModel *model = forumList[index];
         [titleArray addObject:checkNull(model.name)];
-        DZDiscoverCateController *listVC = [[DZDiscoverCateController alloc] initWithFrame:CGRectMake(index * self.scrollView.width, 0, self.scrollView.width, self.scrollView.height) Model:model];
+        DZDiscoverCateController *listVC = [[DZDiscoverCateController alloc] initWithFrame:CGRectMake(index * KScreenWidth, 0, KScreenWidth, self.scrollView.height) Model:model];
         if (index == 0) {
             [listVC updateDiscoverCateControllerView];
         }
@@ -85,24 +85,21 @@
 #pragma mark   /********************* PRNaviSegmentViewDelegate *************************/
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView touchNaviIndex:(NSInteger)index{
-    DLog(@"WBS 001 touchNaviIndex");
+    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
     DZDiscoverCateController *listVC = [self.listViewArray objectAtIndex:index];
     [listVC updateDiscoverCateControllerView];
-    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
 }
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView touchSameNaviIndex:(NSInteger)index{
-    DLog(@"WBS 002 touchSameNaviIndex");
+    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
     DZDiscoverCateController *listVC = [self.listViewArray objectAtIndex:index];
     [listVC updateDiscoverCateControllerView];
-    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
 }
 
 - (void)naviSegment:(PRNaviSegmentView *)segmentView updateNaviTitleIndex:(NSInteger)index{
-    DLog(@"WBS 003 updateNaviTitleIndex");
+    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
     DZDiscoverCateController *listVC = [self.listViewArray objectAtIndex:index];
     [listVC updateDiscoverCateControllerView];
-    [self.scrollView setContentOffset:CGPointMake(index*self.scrollView.width, 0) animated:YES];
 }
 
 #pragma mark   /********************* UIScrollViewDelegate *************************/

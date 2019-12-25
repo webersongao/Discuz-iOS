@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+SDK.h"
-#import "AppDelegate+XinGe.h"
+#import "AppDelegate+Push.h"
 #import "AppDelegate+iflyMSC.h"
 
 @implementation AppDelegate (SDK)

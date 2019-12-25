@@ -9,5 +9,5 @@
 #import "DZBaseTableViewController.h"
 
 @interface DZPostSelectController : DZBaseTableViewController
-@property (nonatomic, strong) UITableView *leftTable;
+
 @end

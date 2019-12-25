@@ -7,7 +7,7 @@
 //
 
 #import "DZLoginModule.h"
-#import "XinGeCenter.h"
+#import "DZPushCenter.h"
 #import "DZShareCenter.h"
 #import "DZUserNetTool.h"
 
@@ -62,7 +62,7 @@ NSString * const CookieValue = @"COOKIEVALU";
  */
 + (void)signout {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:CookieValue];
-    [[XinGeCenter shareInstance] setXG];
+    [[DZPushCenter shareInstance] setXG];
     for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }

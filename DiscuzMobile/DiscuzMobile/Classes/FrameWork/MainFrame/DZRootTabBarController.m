@@ -15,6 +15,8 @@
 #import "DZHomeController.h"
 #import "DZForumController.h"
 #import "DZDiscoverController.h"
+#import "DZSearchController.h"
+#import "DZRegisterController.h"
 
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
@@ -122,22 +124,22 @@
 }
 
 - (void)addChildViewControllers {
-    DZHomeController *homeVC = [[DZHomeController alloc] init];
-    
-    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
-    DZForumController *forumVC = [[DZForumController alloc] init];
-    
-    //    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
+    //    DZHomeController *homeVC = [[DZHomeController alloc] init];
+    //    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
+    //    DZForumController *forumVC = [[DZForumController alloc] init];
     //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
+    //    [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
+    //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
+    
+    DZSearchController *searchVC = [[DZSearchController alloc] init];
+    DZRegisterController *regisVC = [[DZRegisterController alloc] init];
+    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
     DZUserController *UserVC = [[DZUserController alloc] init];
     
-    [self addChildVc:homeVC title:@"首页1" image:@"homem" selectedImage:@"homes"];
     
-    [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forumVC title:@"分类2" image:@"forumm" selectedImage:@"fourms"];
-    
-    //[self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
-    //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
+    [self addChildVc:searchVC title:@"搜索" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:regisVC title:@"注册" image:@"forumm" selectedImage:@"fourms"];
     [self addChildVc:UserVC title:@"我的" image:@"my" selectedImage:@"mys"];
 }
 

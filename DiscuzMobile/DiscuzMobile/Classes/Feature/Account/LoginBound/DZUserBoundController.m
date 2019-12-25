@@ -10,7 +10,6 @@
 #import "DZLoginTextField.h"
 #import "DZAuthCodeView.h"
 #import "DZUserBoundView.h"
-#import "XinGeCenter.h"
 #import "DZLoginNetTool.h"
 
 @interface DZUserBoundController () <UITextFieldDelegate>

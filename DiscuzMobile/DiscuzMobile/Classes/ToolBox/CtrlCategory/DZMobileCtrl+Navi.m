@@ -28,7 +28,7 @@
 #import "DZSendMsgViewController.h"
 #import "DZDomainListController.h"
 #import "DZAboutController.h"
-#import "UsertermsController.h"
+#import "DZUsertermsController.h"
 #import "DZRegisterController.h"
 #import "DZJudgeBoundController.h"
 #import "DZPostNormalController.h"
@@ -221,8 +221,8 @@
 }
 
 /// 用户 协议
--(void)PushToUsertermsController:(NSString *)bbsRulestxt {
-    UsertermsController *termVC = [[UsertermsController alloc] init];
+-(void)PushToDZUsertermsController:(NSString *)bbsRulestxt {
+    DZUsertermsController *termVC = [[DZUsertermsController alloc] init];
     termVC.bbrulestxt = bbsRulestxt;
     [self.mainNavi pushViewController:termVC animated:YES];
 }
