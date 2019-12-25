@@ -36,7 +36,7 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if ([viewController isKindOfClass:[DZBaseViewController class]]) {
         DZBaseViewController *vc = (DZBaseViewController *)viewController;
-        if (vc.hideTabBarWhenPushed) {
+        if (vc.DZ_DZ_hideTabBarWhenPushed) {
             vc.hidesBottomBarWhenPushed = YES;
         }
         

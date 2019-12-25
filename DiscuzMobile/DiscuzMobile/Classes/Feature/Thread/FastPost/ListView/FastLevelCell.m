@@ -47,7 +47,7 @@
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconV.mas_right).offset(10);
         make.centerY.equalTo(self.iconV);
-//        make.top.equalTo(self.iconV).offset(-1);
+        //        make.top.equalTo(self.iconV).offset(-1);
         make.right.equalTo(self).offset(-60);
         make.height.equalTo(self.iconV).multipliedBy(0.6);
     }];
@@ -76,13 +76,9 @@
  * 设置数据
  */
 - (void)updateLevelCell:(DZForumNodeModel *)node {
-    DZForumModel *infoMdel = node.infoModel;
+    DZBaseForumModel *infoMdel = node.infoModel;
     
-    if ([DataCheck isValidString:infoMdel.title]) {
-        self.titleLab.text = infoMdel.title;
-    } else {
-        self.titleLab.text = infoMdel.name;
-    }
+    self.titleLab.text = infoMdel.name;
     
     [self.iconV sd_setImageWithURL:[NSURL URLWithString:infoMdel.icon] placeholderImage:[UIImage imageNamed:@"forumCommon"] options:SDWebImageLowPriority | SDWebImageRetryFailed];
     
@@ -98,12 +94,9 @@
     if (node.isExpanded) {
         [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"All_downState"] forState:UIControlStateNormal];
     }else{
-        
         if ([DataCheck isValidArray:node.childNode]) {
             [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"All_rightState"] forState:UIControlStateNormal];
-            
         }else{
-            
             self.statusBtn.hidden = YES;
         }
     }

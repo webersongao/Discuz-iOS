@@ -13,6 +13,8 @@
 
 - (void)PushToController:(UIViewController *)CtrlVC;
 
+- (void)PresentViewController:(UIViewController *)CtrlVC;
+
 - (void)PushToOtherUserController:(NSString *)userId;
 
 /// 帖子详情页

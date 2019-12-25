@@ -188,7 +188,7 @@
 }
 
 
--(BOOL)hideTabBarWhenPushed{
+-(BOOL)DZ_hideTabBarWhenPushed{
     return NO;
 }
 - (void)addNotify {

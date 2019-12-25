@@ -34,7 +34,7 @@ static NSString *isFourmList = @"isFourmList";
     [self configForumView];
 }
 
--(BOOL)hideTabBarWhenPushed{
+-(BOOL)DZ_hideTabBarWhenPushed{
     return NO;
 }
 

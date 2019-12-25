@@ -44,6 +44,13 @@
     }
 }
 
+
+- (void)PresentViewController:(UIViewController *)CtrlVC{
+    if (CtrlVC) {
+        [self.mainNavi.topViewController presentViewController:CtrlVC animated:YES completion:nil];
+    }
+}
+
 - (void)PushToOtherUserController:(NSString *)userId{
     NSString *userIdStr = checkNull(userId);
     DZOtherUserController * ovc = [[DZOtherUserController alloc] initWithAuthor:userIdStr];
@@ -73,7 +80,7 @@
     DZForumThreadController *lianMixVc = [[DZForumThreadController alloc] init];
     lianMixVc.forumFid = fid;
     lianMixVc.cForumBlock = block;
-    if (fid.length) {    
+    if (fid.length) {
         [self.mainNavi pushViewController:lianMixVc animated:YES];
     }else{
         DLog(@"没有fid 不可以跳转的");

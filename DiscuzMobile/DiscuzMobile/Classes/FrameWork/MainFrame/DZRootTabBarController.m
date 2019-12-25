@@ -8,19 +8,13 @@
 
 #import "DZRootTabBarController.h"
 #import "DZBaseNavigationController.h"
-#import "DZMessageListController.h"
-#import "DZFastPostController.h"
 
 #import "DZUserController.h"
 #import "DZHomeController.h"
 #import "DZForumController.h"
+#import "DZFastPostController.h"
 #import "DZDiscoverController.h"
-#import "DZSearchController.h"
-#import "DZRegisterController.h"
-
-#import "DZPostSiriViewController.h"
-#import "DZPostEditViewController.h"
-#import "DZPostUIEditViewController.h"
+#import "DZHomeTestViewController.h"
 
 @interface DZRootTabBarController () <UITabBarControllerDelegate>
 @property (nonatomic, assign) NSInteger oldSelected;
@@ -37,11 +31,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [[DZMobileCtrl sharedCtrl] cofigLocalDataInfo];
     
-#ifndef MACRO_PRODUCT
-    [self addDemoChildViewControllers];
-#else
     [self addChildViewControllers];
-#endif
     
     //    [self.tabBar addSubview:self.composeButton];
     //    CGFloat b_width = self.tabBar.width / self.childViewControllers.count;
@@ -96,7 +86,7 @@
         UIViewController *baseVC = baseNaviVC.topViewController;
         if ([baseVC isKindOfClass:[DZFastPostController class]]) {
             if (![DZLoginModule isLogged]) {
-                [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
+                [[DZMobileCtrl sharedCtrl] PresentLoginController:baseNaviVC];
                 return NO;
             }
         }else {
@@ -124,35 +114,19 @@
 }
 
 - (void)addChildViewControllers {
-    //    DZHomeController *homeVC = [[DZHomeController alloc] init];
-    //    DZDiscoverController *for001 = [[DZDiscoverController alloc] init];
-    //    DZForumController *forumVC = [[DZForumController alloc] init];
-    //    DZMessageListController *msgVC = [[DZMessageListController alloc] init];
-    //    [self addChildVc:for001 title:@"分类1" image:@"forumm" selectedImage:@"fourms"];
-    //[self addChildVc:msgVC title:@"消息" image:@"forumm" selectedImage:@"fourms"];
     
-    DZSearchController *searchVC = [[DZSearchController alloc] init];
-    DZRegisterController *regisVC = [[DZRegisterController alloc] init];
-    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
+    DZHomeController *homeVC = [[DZHomeController alloc] init];
+    DZDiscoverController *disVC = [[DZDiscoverController alloc] init];
+    DZForumController *forumVC = [[DZForumController alloc] init];
     DZUserController *UserVC = [[DZUserController alloc] init];
+    DZHomeTestViewController *testVC = [[DZHomeTestViewController alloc] initWithNibName:@"DZHomeTest" bundle:nil];
     
+    [self addChildVc:testVC title:@"首页" image:@"homem" selectedImage:@"homes"];
     
-    [self addChildVc:fastVC title:@"发布" image:@"clarity" selectedImage:@"clarity"];
-    [self addChildVc:searchVC title:@"搜索" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:regisVC title:@"注册" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:UserVC title:@"我的" image:@"my" selectedImage:@"mys"];
-}
-
-- (void)addDemoChildViewControllers {
-    
-    DZPostSiriViewController *editSiriVC = [[DZPostSiriViewController alloc] init];
-    [self addChildVc:editSiriVC title:@"Siri输入" image:@"my" selectedImage:@"mys"];
-    
-    DZPostEditViewController *editVC = [[DZPostEditViewController alloc] init];
-    [self addChildVc:editVC title:@"默认输入" image:@"homem" selectedImage:@"homes"];
-    
-    DZPostUIEditViewController *editUIVC = [[DZPostUIEditViewController alloc] init];
-    [self addChildVc:editUIVC title:@"UI输入" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:homeVC title:@"home" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:disVC title:@"for" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:forumVC title:@"cate" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:UserVC title:@"wod" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {

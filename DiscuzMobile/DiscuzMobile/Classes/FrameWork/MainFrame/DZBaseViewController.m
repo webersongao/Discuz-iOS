@@ -17,7 +17,7 @@
 
 @implementation DZBaseViewController
 
--(BOOL)hideTabBarWhenPushed{
+-(BOOL)DZ_hideTabBarWhenPushed{
     return YES;
 }
 
