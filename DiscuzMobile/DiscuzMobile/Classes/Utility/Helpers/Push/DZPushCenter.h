@@ -13,7 +13,7 @@
 + (instancetype)shareInstance;
 
 /** 配置推送*/
-- (void)setXG;
+- (void)configPush;
 
 /** 收到推送后跳到某页 */
 - (void)getNotiToview:(NSDictionary *)userInfo;
@@ -27,7 +27,7 @@
 /** 回调版本示例 */
 - (void)receiveNotificationFeeback:(NSDictionary *)userInfo;
 
-/** 信鸽注册 */
+/** 推送注册 */
 - (void)Reregistration;
 
 @end

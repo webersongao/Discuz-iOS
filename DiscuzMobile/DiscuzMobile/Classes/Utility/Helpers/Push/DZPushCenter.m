@@ -28,7 +28,7 @@
 }
 
 ///** 配置推送 */
-//- (void)setXG {
+//- (void)configPush {
 //    
 //    if ([DZMobileCtrl sharedCtrl].User.member_uid == nil) { // 退出登录
 //        [XGPush setAccount:@"**"];

@@ -22,7 +22,7 @@
 #pragma mark - 请求成功操作
 - (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
     [DZLoginModule loginAnylyeData:loginResModel andView:self.view andHandle:^{ // 登录成功操作
-        [[DZPushCenter shareInstance] setXG]; // 设置信鸽推送
+        [[DZPushCenter shareInstance] configPush]; // 设置推送
         
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_LoginedRefreshInfo_Notify object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_REFRESHCENTER_Notify object:nil]; // 获取资料

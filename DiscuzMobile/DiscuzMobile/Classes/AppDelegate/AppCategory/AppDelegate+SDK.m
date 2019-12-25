@@ -16,7 +16,7 @@
 -(void)launchSDKConfigWithOptions:(NSDictionary *)launchOptions{
     
     [self launchXFSpeech];
-//    [self launchToInitXinGe:launchOptions];
+//    [self launchPushConfigration:launchOptions];
 }
 
 

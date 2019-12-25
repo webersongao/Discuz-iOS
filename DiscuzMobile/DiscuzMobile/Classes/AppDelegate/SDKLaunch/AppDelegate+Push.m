@@ -12,7 +12,7 @@
 @implementation AppDelegate (Push)
 
 // 连接信鸽
-- (void)launchToInitXinGe:(NSDictionary *)launchOptions {
+- (void)launchPushConfigration:(NSDictionary *)launchOptions {
     
     // 注册通知,信鸽注册设备
 //    [[DZPushCenter shareInstance] Reregistration];
@@ -25,7 +25,7 @@
 //
 //    //清除所有通知(包含本地通知)
 //    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-//    [[DZPushCenter shareInstance] setXG];
+//    [[DZPushCenter shareInstance] configPush];
 }
 
 #pragma mark - 信鸽推送收到（APP启动）

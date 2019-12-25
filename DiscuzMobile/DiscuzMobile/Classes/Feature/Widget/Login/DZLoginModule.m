@@ -62,7 +62,7 @@ NSString * const CookieValue = @"COOKIEVALU";
  */
 + (void)signout {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:CookieValue];
-    [[DZPushCenter shareInstance] setXG];
+    [[DZPushCenter shareInstance] configPush];
     for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }

@@ -171,7 +171,7 @@
         if (![DZLoginModule isLogged]) {
             return;
         } else {
-            [[DZPushCenter shareInstance] setXG];
+            [[DZPushCenter shareInstance] configPush];
         }
 //        if ([XGPush isUnRegisterStatus]) {
 //            [MBProgressHUD showInfo:@"开启推送"];
