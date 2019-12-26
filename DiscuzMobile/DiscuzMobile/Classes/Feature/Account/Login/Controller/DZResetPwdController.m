@@ -9,6 +9,7 @@
 #import "DZResetPwdController.h"
 #import "DZResetPwdView.h"
 #import "DZAuthCodeView.h"
+#import "DZLoginNetTool.h"
 #import "DZLoginTextField.h"
 
 @interface DZResetPwdController ()
@@ -103,37 +104,33 @@
     NSString *oldpassword = self.resetView.passwordView.userNameTextField.text;
     NSString *newpassword1 = self.resetView.newpasswordView.userNameTextField.text;
     NSString *newpassword2 = self.resetView.repassView.userNameTextField.text;
-//    NSString *email = [DZMobileCtrl sharedCtrl].User.email;
+    //    NSString *email = [DZMobileCtrl sharedCtrl].User.email;
     
     NSMutableDictionary *postDic = @{@"oldpassword":oldpassword,
                                      @"newpassword":newpassword1,
                                      @"newpassword2":newpassword2,
-//                                     @"emailnew":email?email:@"",
+                                     //          @"emailnew":email?email:@"",
                                      @"passwordsubmit":@"true",
-                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
-                                     }.mutableCopy;
+                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash}.mutableCopy;
     if (self.verifyView.isyanzhengma) {
         [postDic setValue:self.resetView.authCodeView.textField.text forKey:@"seccodeverify"];
         [postDic setValue:self.verifyView.secureData.sechash forKey:@"sechash"];
     }
     [self.HUD showLoadingMessag:@"正在提交" toView:self.view];
-    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        request.methodType = JTMethodTypePOST;
-        request.urlString = DZ_Url_ResetPwd;
-        request.parameters = postDic;
-    } success:^(id responseObject, JTLoadType type) {
+    [DZLoginNetTool DZ_UserResetPasswordWithPostDic:postDic completion:^(DZBaseResModel *resModel) {
         [self.HUD hide];
-        if ([[responseObject messageval] containsString:@"succeed"]) {
-            [MBProgressHUD showInfo:@"修改密码成功，请重新登录"];
-            [DZLoginModule signout];
-            [self.navigationController popViewControllerAnimated:NO];
-            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_UserSigOut_Notify object:nil];
-        } else {
-            [MBProgressHUD showInfo:[responseObject messagestr]];
+        if (resModel) {
+            if ([resModel.Message isSuccessed]) {
+                [MBProgressHUD showInfo:@"修改密码成功，请重新登录"];
+                [DZLoginModule signout];
+                [self.navigationController popViewControllerAnimated:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DZ_UserSigOut_Notify object:nil];
+            } else {
+                [MBProgressHUD showInfo:resModel.Message.messagestr];
+            }
+        }else{
+            [MBProgressHUD showInfo:@"修改密码失败~~"];
         }
-    } failed:^(NSError *error) {
-        [self showServerError:error];
-        [self.HUD hide];
     }];
     
 }

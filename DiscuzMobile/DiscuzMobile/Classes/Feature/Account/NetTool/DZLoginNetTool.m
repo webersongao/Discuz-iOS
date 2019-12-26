@@ -49,9 +49,9 @@
     } success:^(id responseObject, JTLoadType type) {
         // 放弃了 reginput 参数
         NSDictionary *msgDict = [responseObject dictionaryForKey:@"Message"];
-//        NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
+        //        NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
         DZLoginResModel *resModel = [DZLoginResModel modelWithJSON:responseObject];
-//        DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
+        //        DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
         DZBackMsgModel *msgModel = [DZBackMsgModel modelWithJSON:msgDict];
         if (completion) {
             completion(resModel,msgModel);
@@ -88,6 +88,25 @@
         }
     }];
     
+}
+
+// 用户 重置密码
++ (void)DZ_UserResetPasswordWithPostDic:(NSDictionary *)postDic completion:(void(^)(DZBaseResModel *resModel))completion{
+    
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.methodType = JTMethodTypePOST;
+        request.urlString = DZ_Url_ResetPwd;
+        request.parameters = postDic;
+    } success:^(id responseObject, JTLoadType type) {
+        DZBaseResModel *resModel = [DZBaseResModel modelWithJSON:responseObject];
+        if (completion) {
+            completion(resModel);
+        }
+    } failed:^(NSError *error) {
+        if (completion) {
+            completion(nil);
+        }
+    }];
 }
 
 @end

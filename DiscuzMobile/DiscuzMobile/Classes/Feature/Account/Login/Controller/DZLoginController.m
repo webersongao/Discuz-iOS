@@ -146,7 +146,6 @@ NSString * const debugPassword = @"debugPassword";
                                     @"您个人计算机的型号":@"5",
                                     @"您最喜欢的餐馆名称":@"6",
                                     @"驾驶执照最后四位数字":@"7"};
-        
         [dic setValue:[dicvalue objectForKey:self.loginView.securityView.userNameTextField.text] forKey:@"questionid"];
         [dic setValue:self.loginView.answerView.userNameTextField.text forKey:@"answer"];
     }

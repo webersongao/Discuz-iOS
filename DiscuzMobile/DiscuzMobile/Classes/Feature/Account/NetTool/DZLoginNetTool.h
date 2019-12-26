@@ -21,7 +21,8 @@
 /// 微信绑定
 + (void)DZ_WeixinLoginWithName:(NSString *)name passWord:(NSString *)pass  completion:(void(^)(DZLoginResModel *resModel))completion;
 
-
+// 用户 重置密码
++ (void)DZ_UserResetPasswordWithPostDic:(NSDictionary *)postDic completion:(void(^)(DZBaseResModel *resModel))completion;
 
 
 @end

@@ -50,11 +50,11 @@
     
     _judgeView.desclabl.attributedText = describe;
     
-     [_judgeView.registerBtn addTarget:self action:@selector(registerBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [_judgeView.registerBtn addTarget:self action:@selector(registerBindBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_judgeView.boundBtn addTarget:self action:@selector(boundBtnClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)registerBtnClick {
+- (void)registerBindBtnClick {
     [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
 }
 
