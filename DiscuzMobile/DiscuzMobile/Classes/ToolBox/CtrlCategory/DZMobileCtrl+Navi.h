@@ -30,10 +30,9 @@
 
 
 - (void)PushToWebViewController:(NSString *)link;
-- (void)PresentLoginController:(UIViewController *)selfVC;
 
 // 跳转登录
-- (void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select;
+- (void)PresentLoginController;
 
 - (void)PushToSearchController;
 

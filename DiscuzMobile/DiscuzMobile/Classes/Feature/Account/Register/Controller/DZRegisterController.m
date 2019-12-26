@@ -187,7 +187,7 @@
             [weakSelf.HUD hide];
             [weakSelf updateUserResInfo:resModel];
             [DZMobileCtrl showAlertError:@"注册成功啦，赶紧去登录吧"];
-            [[DZMobileCtrl sharedCtrl] PresentLoginController:nil];
+            [[DZMobileCtrl sharedCtrl] PresentLoginController];
             [weakSelf dismissViewControllerAnimated:NO completion:nil];
         }
     }];

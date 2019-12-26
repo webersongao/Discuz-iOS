@@ -47,6 +47,7 @@
 
 - (void)PresentViewController:(UIViewController *)CtrlVC{
     if (CtrlVC) {
+        CtrlVC.modalPresentationStyle = UIModalPresentationFullScreen;
         [self.mainNavi.topViewController presentViewController:CtrlVC animated:YES completion:nil];
     }
 }
@@ -101,25 +102,12 @@
 }
 
 
-- (void)PresentLoginController:(UIViewController *)selfVC{
-    
-    [self PresentLoginController:selfVC tabSelect:NO];
-}
-
-- (void)PresentLoginController:(UIViewController *)selfVC tabSelect:(BOOL)select{
-    
+- (void)PresentLoginController{
     DZLoginController *loginVC = [[DZLoginController alloc] init];
-    loginVC.isKeepTabbarSelected = select;
-    
-    if (!selfVC) {
-        [self.mainNavi presentViewController:loginVC animated:YES completion:nil];
-    }else{
-        UINavigationController * preVC = [[UINavigationController alloc] initWithRootViewController:loginVC];;
-        [selfVC presentViewController:preVC animated:YES completion:nil];
-    }
+    loginVC.isTabbarSelected = NO;
+    loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.mainNavi.topViewController presentViewController:loginVC animated:YES completion:nil];
 }
-
-
 
 - (void)PushToSearchController{
     

@@ -95,7 +95,7 @@
 
 // 弹出登录界面
 - (void)transToLogin {
-    [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
+    [[DZMobileCtrl sharedCtrl] PresentLoginController];
 }
 
 // 界面是否登录

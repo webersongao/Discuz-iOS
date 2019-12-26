@@ -32,7 +32,7 @@
         
         UITabBarController *tabbBarVC = (UITabBarController *)[[UIApplication sharedApplication].delegate window].rootViewController;
         UINavigationController *navVC = tabbBarVC.childViewControllers[tabbBarVC.selectedIndex];
-        if (navVC.childViewControllers.count == 1 && !self.isKeepTabbarSelected) {
+        if (navVC.childViewControllers.count == 1 && !self.isTabbarSelected) {
             NSDictionary *userInfo = @{@"type":@"loginSuccess"};
             [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil userInfo:userInfo];
         }

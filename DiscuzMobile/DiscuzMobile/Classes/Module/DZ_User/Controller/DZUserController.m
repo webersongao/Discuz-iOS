@@ -184,7 +184,7 @@
 }
 
 - (void)transtoUserLogin {
-    [[DZMobileCtrl sharedCtrl] PresentLoginController:self];
+    [[DZMobileCtrl sharedCtrl] PresentLoginController];
 }
 
 

@@ -137,7 +137,7 @@ static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
 {
 //    NSMutableArray *tmpArray = [NSMutableArray new];
     if (![DZLoginModule isLogged]) {
-        [[DZMobileCtrl sharedCtrl] PresentLoginController:nil];
+        [[DZMobileCtrl sharedCtrl] PresentLoginController];
         return;
     }
     if(indexPath.row < _photosArray.count) {

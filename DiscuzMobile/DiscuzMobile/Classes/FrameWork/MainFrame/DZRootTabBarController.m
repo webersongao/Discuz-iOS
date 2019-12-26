@@ -86,7 +86,7 @@
         UIViewController *baseVC = baseNaviVC.topViewController;
         if ([baseVC isKindOfClass:[DZFastPostController class]]) {
             if (![DZLoginModule isLogged]) {
-                [[DZMobileCtrl sharedCtrl] PresentLoginController:baseNaviVC];
+                [[DZMobileCtrl sharedCtrl] PresentLoginController];
                 return NO;
             }
         }else {
