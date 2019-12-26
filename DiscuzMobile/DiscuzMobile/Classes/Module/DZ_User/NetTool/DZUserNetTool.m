@@ -32,24 +32,29 @@
 
 - (void)DZ_CheckRegisterRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure {
     [self DZ_CheckRequestSuccess:^{
-        [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-            request.urlString = self.regUrl;
-        } success:^(id responseObject, JTLoadType type) {
-            // 放弃了 reginput 参数
-            NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
-            DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
-            if (regVar) {
-                self.regModel = regVar;
-                success?success():nil;
-            }else{
-                failure?failure():nil;
-            }
-            success?success():nil;
-        } failed:^(NSError *error) {
-            failure?failure():nil;
-        }];
+        [self DZ_CheckRequestRegModelSuccess:success failure:failure];
     } failure:failure];
 }
+
+- (void)DZ_CheckRequestRegModelSuccess:(void(^)(void))success failure:(void(^)(void))failure {
+    [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
+        request.urlString = self.regUrl;
+    } success:^(id responseObject, JTLoadType type) {
+        // 放弃了 reginput 参数
+        NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
+        DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
+        if (regVar) {
+            self.regModel = regVar;
+            success?success():nil;
+        }else{
+            failure?failure():nil;
+        }
+        success?success():nil;
+    } failed:^(NSError *error) {
+        failure?failure():nil;
+    }];
+}
+
 
 - (void)DZ_CheckRequestSuccess:(void(^)(void))success failure:(void(^)(void))failure {
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
@@ -58,7 +63,7 @@
         DZCheckModel *model = [DZCheckModel modelWithJSON:responseObject];
         if (model.regname.length) {
             self.regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,model.regname];
-            [[DZMobileCtrl sharedCtrl].User updateFormHash:model.formhash];
+            [[DZMobileCtrl sharedCtrl] updateUserFormHash:model.formhash];
             success?success():nil;
         }else{
             failure?failure():nil;

@@ -22,8 +22,7 @@
 
 - (void)loadView {
     [super loadView];
-    _registerView = [[DZRegisterView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view = _registerView;
+    self.registerView = [[DZRegisterView alloc] initWithFrame:KView_OutNavi_Bounds];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,6 +35,7 @@
     [super viewDidLoad];
     self.title = @"账户注册";
     _registerView.delegate = self;
+    [self.view addSubview:self.registerView];
     [self dz_bringNavigationBarToFront];
     [_registerView.registerButton addTarget:self action:@selector(registerBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
@@ -141,6 +141,16 @@
         return;
     }
     
+    if (!username.length || !password.length || !repass.length || !email.length) {
+        [MBProgressHUD showInfo:@"账户填写信息异常，请检查后重试"];
+        return;
+    }
+    NSString *formhashStr = [DZMobileCtrl sharedCtrl].User.formhash;
+    if (!formhashStr.length) {
+        [MBProgressHUD showInfo:@"网络数据异常，请稍后重试"];
+        return;
+    }
+    
     NSMutableDictionary *postData = @{regModel.username:username,
                                       regModel.password:password,
                                       regModel.password2:repass,
@@ -168,13 +178,17 @@
     } else { // 普通注册
         [self.HUD showLoadingMessag:@"注册中" toView:self.view];
     }
-    
-    [DZLoginNetTool DZ_UserRegisterWithName:postData getData:getData completion:^(DZLoginResModel *resModel, DZRegInputModel *regVar) {
-        if (resModel) {
-            [self.HUD hide];
-            [self updateUserResInfo:resModel];
-        }else{
-            [DZMobileCtrl showAlertError:@"注册失败"];
+    KWEAKSELF
+    [DZLoginNetTool DZ_UserRegisterWithName:postData getData:getData completion:^(DZLoginResModel *resModel, DZBackMsgModel *msgModel) {
+        [weakSelf.HUD hideAnimated:YES];
+        if (msgModel.messageval.length) {
+            [DZMobileCtrl showAlertError:msgModel.messagestr];
+        }else if (resModel){
+            [weakSelf.HUD hide];
+            [weakSelf updateUserResInfo:resModel];
+            [DZMobileCtrl showAlertError:@"注册成功啦，赶紧去登录吧"];
+            [[DZMobileCtrl sharedCtrl] PresentLoginController:nil];
+            [weakSelf dismissViewControllerAnimated:NO completion:nil];
         }
     }];
     

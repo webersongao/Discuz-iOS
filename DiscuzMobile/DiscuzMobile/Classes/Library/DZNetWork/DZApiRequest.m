@@ -74,7 +74,7 @@
 // 掌上论坛公共处理
 + (void)publicDo:(id)responseObject {
     if ([DataCheck isValidDict:[responseObject objectForKey:@"Variables"]]) { // 公共提醒
-        [[DZMobileCtrl sharedCtrl].User updateFormHash:[[responseObject dictionaryForKey:@"Variables"] stringForKey:@"formhash"]];
+        [[DZMobileCtrl sharedCtrl] updateUserFormHash:[[responseObject dictionaryForKey:@"Variables"] stringForKey:@"formhash"]];
         if ([DZLoginModule isLogged]) {
             if ([DataCheck isValidDict:[[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"notice"]]) { //公共提醒
                 [MessageNoticeCenter shared].noticeDic = [NSMutableDictionary dictionaryWithDictionary:[[responseObject dictionaryForKey:@"Variables"] objectForKey:@"notice"]];

@@ -289,6 +289,7 @@
 		708306FA239A588A0083B015 /* DZBaseAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 708306F9239A588A0083B015 /* DZBaseAuthModel.m */; };
 		708AED5E238E5697000A4397 /* DZLoginNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED5D238E5697000A4397 /* DZLoginNetTool.m */; };
 		708AED65238E5703000A4397 /* DZPostNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 708AED64238E5703000A4397 /* DZPostNetTool.m */; };
+		708FAA8923B4ACC0001CA6F2 /* DZMobileCtrl+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 708FAA8823B4ACC0001CA6F2 /* DZMobileCtrl+Update.m */; };
 		70960273239BEE4A0078077D /* DZMobileCtrl+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 70960272239BEE4A0078077D /* DZMobileCtrl+Config.m */; };
 		709622CB238BC6E900AF657F /* PRNaviSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709622C2238BC6E900AF657F /* PRNaviSegmentView.m */; };
 		709622CC238BC6E900AF657F /* PRTriangleCaptionBtn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709622C5238BC6E900AF657F /* PRTriangleCaptionBtn.mm */; };
@@ -1020,6 +1021,8 @@
 		708AED5D238E5697000A4397 /* DZLoginNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLoginNetTool.m; sourceTree = "<group>"; };
 		708AED63238E5703000A4397 /* DZPostNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostNetTool.h; sourceTree = "<group>"; };
 		708AED64238E5703000A4397 /* DZPostNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostNetTool.m; sourceTree = "<group>"; };
+		708FAA8723B4ACC0001CA6F2 /* DZMobileCtrl+Update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Update.h"; sourceTree = "<group>"; };
+		708FAA8823B4ACC0001CA6F2 /* DZMobileCtrl+Update.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Update.m"; sourceTree = "<group>"; };
 		70960271239BEE4A0078077D /* DZMobileCtrl+Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DZMobileCtrl+Config.h"; sourceTree = "<group>"; };
 		70960272239BEE4A0078077D /* DZMobileCtrl+Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZMobileCtrl+Config.m"; sourceTree = "<group>"; };
 		709622C2238BC6E900AF657F /* PRNaviSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRNaviSegmentView.m; sourceTree = "<group>"; };
@@ -2452,8 +2455,8 @@
 		7062114F237936C800130B9D /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				70621150237936C800130B9D /* Controller */,
 				70621155237936C800130B9D /* View */,
+				70621150237936C800130B9D /* Controller */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -3444,6 +3447,8 @@
 				70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */,
 				70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */,
 				70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */,
+				708FAA8723B4ACC0001CA6F2 /* DZMobileCtrl+Update.h */,
+				708FAA8823B4ACC0001CA6F2 /* DZMobileCtrl+Update.m */,
 				706301A723B3A42B0029B388 /* DZMobileCtrl+Tool.h */,
 				706301A823B3A42B0029B388 /* DZMobileCtrl+Tool.m */,
 				7065AE842386978D009B6DA7 /* DZMobileCtrl+Alert.h */,
@@ -4536,6 +4541,7 @@
 				70FBDCFD2383FC1B00FC296E /* FriendCell.m in Sources */,
 				706212E5237936C900130B9D /* DZResetPwdController.m in Sources */,
 				70BA483123852BA200634D76 /* UILabel+Common.m in Sources */,
+				708FAA8923B4ACC0001CA6F2 /* DZMobileCtrl+Update.m in Sources */,
 				9494508821196F8B0074C79E /* AudioModel.m in Sources */,
 				70621279237936C900130B9D /* DZPostTypeSelectView.m in Sources */,
 				70621292237936C900130B9D /* DZVoteTitleCell.m in Sources */,

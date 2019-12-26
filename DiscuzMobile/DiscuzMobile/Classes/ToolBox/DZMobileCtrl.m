@@ -27,8 +27,13 @@ static DZMobileCtrl *instance = nil;
     if (self) {
         // 初始化布局管理器
         [PRLayouter sharedLayouter];
+        [self MobileCtrlConfigration];
     }
     return self;
+}
+
+-(void)MobileCtrlConfigration{
+ 
 }
 
 -(void)setTababar:(UITabBarController *)Tababar mainNavi:(UINavigationController *)mainNavi{

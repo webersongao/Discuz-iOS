@@ -22,7 +22,7 @@
 #define DZ_COMPANYNAME  @"北京康创联盛科技有限公司" // 公司
 #define DZ_APPNAME      KAppDisplayName
 #define DZ_EMPTYIMAGE   @"empty_icon" // 无数据显示图片
-#define DZ_LOGONAME     @"ap_name" // 登录、注册页APP名称图片
+#define DZ_LOGONAME     @"" // @"ap_name" // 登录、注册页APP名称图片
 #define DZ_MAINCOLOR    mRGBColor(50, 120, 230) // 主题色 mRGBColor(220, 130, 0)
 #define DZ_BBSRULE      [NSString stringWithFormat:@"bbsrule_%@",@"discuz"]; // 网站服务条款txt名字
 #define DZ_INCINFO      [NSString stringWithFormat:@"©2001 - %@ comsenz-service.com.",KNowYear] // 版权时间

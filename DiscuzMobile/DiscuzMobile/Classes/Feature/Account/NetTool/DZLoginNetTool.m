@@ -35,7 +35,7 @@
 
 
 // 用户 注册
-+ (void)DZ_UserRegisterWithName:(NSDictionary *)postData getData:(NSDictionary *)getData completion:(void(^)(DZLoginResModel *resModel,DZRegInputModel *regVar))completion{
++ (void)DZ_UserRegisterWithName:(NSDictionary *)postData getData:(NSDictionary *)getData completion:(void(^)(DZLoginResModel *resModel,DZBackMsgModel *msgModel))completion{
     
     NSString *registerUrl = [DZUserNetTool sharedTool].regUrl;
     if (!registerUrl.length) {
@@ -48,11 +48,13 @@
         request.methodType = JTMethodTypePOST;
     } success:^(id responseObject, JTLoadType type) {
         // 放弃了 reginput 参数
-        NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
+        NSDictionary *msgDict = [responseObject dictionaryForKey:@"Message"];
+//        NSDictionary *regDict = [[responseObject dictionaryForKey:@"Variables"] dictionaryForKey:@"reginput"];
         DZLoginResModel *resModel = [DZLoginResModel modelWithJSON:responseObject];
-        DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
+//        DZRegInputModel *regVar = [DZRegInputModel modelWithJSON:regDict];
+        DZBackMsgModel *msgModel = [DZBackMsgModel modelWithJSON:msgDict];
         if (completion) {
-            completion(resModel,regVar);
+            completion(resModel,msgModel);
         }
     } failed:^(NSError *error) {
         if (completion) {

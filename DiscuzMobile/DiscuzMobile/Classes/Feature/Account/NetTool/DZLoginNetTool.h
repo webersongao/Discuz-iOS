@@ -16,7 +16,7 @@
 
 
 /// 用户 注册
-+ (void)DZ_UserRegisterWithName:(NSDictionary *)postData getData:(NSDictionary *)getData completion:(void(^)(DZLoginResModel *resModel,DZRegInputModel *regVar))completion;
++ (void)DZ_UserRegisterWithName:(NSDictionary *)postData getData:(NSDictionary *)getData completion:(void(^)(DZLoginResModel *resModel,DZBackMsgModel *msgModel))completion;
 
 /// 微信绑定
 + (void)DZ_WeixinLoginWithName:(NSString *)name passWord:(NSString *)pass  completion:(void(^)(DZLoginResModel *resModel))completion;

@@ -23,10 +23,5 @@
 // 自定义值 
 @property (nonatomic, copy) NSString *authKey;
 
-
--(void)updateFormHash:(NSString *)formHash;
-
--(void)updateUserModel:(DZUserModel *)UserModel;
-
 @end
 

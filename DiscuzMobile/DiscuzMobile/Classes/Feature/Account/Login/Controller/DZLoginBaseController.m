@@ -15,6 +15,11 @@
 
 @implementation DZLoginBaseController
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 #pragma mark - 请求成功操作
 - (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
     [DZLoginModule loginAnylyeData:loginResModel andView:self.view andHandle:^{ // 登录成功操作

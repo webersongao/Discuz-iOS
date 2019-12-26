@@ -155,7 +155,7 @@
     } success:^(id responseObject, JTLoadType type) {
         NSDictionary *varDict = [responseObject dictionaryForKey:@"Variables"];
         DZSecAuthModel *authModel = [DZSecAuthModel modelWithJSON:varDict];
-        [[DZMobileCtrl sharedCtrl].User updateFormHash:authModel.formhash];
+        [[DZMobileCtrl sharedCtrl] updateUserFormHash:authModel.formhash];
         if (success) {
             success(authModel);
         }

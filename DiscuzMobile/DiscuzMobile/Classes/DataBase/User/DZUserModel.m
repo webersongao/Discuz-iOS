@@ -15,18 +15,6 @@
     _authKey = [NSString stringWithFormat:@"%@%@",cookiepre,@"auth"];
 }
 
--(void)updateFormHash:(NSString *)formHash{
-    _formhash = checkNull(formHash);
-}
-
--(void)updateUserModel:(DZUserModel *)UserModel{
-    _member_uid = UserModel.member_uid;
-    _member_username = UserModel.member_username;
-    _member_avatar = UserModel.member_avatar;
-    _formhash = UserModel.formhash;
-    [self setCookiepre:UserModel.cookiepre];
-}
-
 #pragma mark   /********************* 数据库继承方法 *************************/
 
 - (NSArray *)primaryKey

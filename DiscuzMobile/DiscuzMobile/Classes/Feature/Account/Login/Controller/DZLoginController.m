@@ -38,8 +38,7 @@ NSString * const debugPassword = @"debugPassword";
     [super loadView];
     BOOL isInstallQQ = [ShareSDK isClientInstalled:SSDKPlatformTypeQQ];
     BOOL isInstallWechat = [ShareSDK isClientInstalled:SSDKPlatformTypeWechat];
-    self.loginView = [[DZLoginView alloc] initWithFrame:KScreenBounds isQQ:isInstallQQ isWx:isInstallWechat];
-    self.view = self.loginView;
+    self.loginView = [[DZLoginView alloc] initWithFrame:KView_OutNavi_Bounds isQQ:isInstallQQ isWx:isInstallWechat];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,6 +49,7 @@ NSString * const debugPassword = @"debugPassword";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createBarBtn];
+    [self.view addSubview:self.loginView];
     [[DZUserNetTool sharedTool] DZ_CheckRegisterAPIRequest];
     KWEAKSELF;
     self.loginView.authCodeView.refreshAuthCodeBlock = ^{
