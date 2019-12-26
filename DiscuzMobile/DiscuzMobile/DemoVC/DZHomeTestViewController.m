@@ -87,6 +87,47 @@
 }
 
 
+// 阅读器
+- (IBAction)readerAction:(UIButton *)sender {
+    
+}
+
+// 书城
+- (IBAction)bookStoreAction:(UIButton *)sender {
+    
+}
+
+// 设置
+- (IBAction)settingAction:(UIButton *)sender {
+    
+}
+
+// 支付
+- (IBAction)applePayAction:(UIButton *)sender {
+    
+}
+
+// 广告
+- (IBAction)appAdvertAction:(UIButton *)sender {
+    
+}
+
+// 修改密码
+- (IBAction)resetPasswordAction:(UIButton *)sender {
+    
+}
+
+// 微信登录
+- (IBAction)weixinLoginAction:(UIButton *)sender {
+    
+}
+
+// 退出账号
+- (IBAction)userLogOutAction:(UIButton *)sender {
+    
+}
+
+
 
 @end
 

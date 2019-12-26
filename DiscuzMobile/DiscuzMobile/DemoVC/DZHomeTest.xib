@@ -168,7 +168,7 @@
                     </constraints>
                     <state key="normal" title="阅读"/>
                     <connections>
-                        <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="Zmz-Ye-ne3"/>
+                        <action selector="readerAction:" destination="-1" eventType="touchUpInside" id="gbi-Cz-VFF"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdK-Gc-Y0e">
@@ -180,7 +180,7 @@
                     </constraints>
                     <state key="normal" title="书城"/>
                     <connections>
-                        <action selector="messageAction:" destination="-1" eventType="touchUpInside" id="aTN-Dr-Sud"/>
+                        <action selector="bookStoreAction:" destination="-1" eventType="touchUpInside" id="ux9-jC-iRn"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLd-J6-Lji">
@@ -192,7 +192,7 @@
                     </constraints>
                     <state key="normal" title="支付"/>
                     <connections>
-                        <action selector="postThreadAction:" destination="-1" eventType="touchUpInside" id="kpS-n4-Clz"/>
+                        <action selector="applePayAction:" destination="-1" eventType="touchUpInside" id="0ll-r6-wqd"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92w-qX-Qdv">
@@ -204,7 +204,7 @@
                     </constraints>
                     <state key="normal" title="微信登录"/>
                     <connections>
-                        <action selector="defautInputAction:" destination="-1" eventType="touchUpInside" id="erC-I5-4f1"/>
+                        <action selector="weixinLoginAction:" destination="-1" eventType="touchUpInside" id="ULa-C8-VFz"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAc-qW-ZJO">
@@ -216,7 +216,7 @@
                     </constraints>
                     <state key="normal" title="退出登录"/>
                     <connections>
-                        <action selector="siriUIInputAction:" destination="-1" eventType="touchUpInside" id="J1e-rD-tX5"/>
+                        <action selector="userLogOutAction:" destination="-1" eventType="touchUpInside" id="Np1-7Z-fI1"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vi-MC-KhQ">
@@ -228,7 +228,7 @@
                     </constraints>
                     <state key="normal" title="广告"/>
                     <connections>
-                        <action selector="userLoginAction:" destination="-1" eventType="touchUpInside" id="p2r-dR-x8M"/>
+                        <action selector="appAdvertAction:" destination="-1" eventType="touchUpInside" id="1Fp-xZ-GzB"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qg-o8-gO8">
@@ -240,7 +240,7 @@
                     </constraints>
                     <state key="normal" title="设置"/>
                     <connections>
-                        <action selector="registerAction:" destination="-1" eventType="touchUpInside" id="gvp-YQ-XiZ"/>
+                        <action selector="settingAction:" destination="-1" eventType="touchUpInside" id="my6-X9-cnK"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da0-ba-F7Y">
@@ -252,7 +252,7 @@
                     </constraints>
                     <state key="normal" title="密码重置"/>
                     <connections>
-                        <action selector="siriInputAction:" destination="-1" eventType="touchUpInside" id="au4-Tu-LEd"/>
+                        <action selector="resetPasswordAction:" destination="-1" eventType="touchUpInside" id="Ljc-c7-EBW"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owa-vf-I9N">
