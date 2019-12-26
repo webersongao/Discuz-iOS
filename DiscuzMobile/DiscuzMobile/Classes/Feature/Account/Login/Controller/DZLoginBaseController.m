@@ -18,6 +18,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self configNaviBar:@"reader_down" type:NaviItemImage Direction:NaviDirectionLeft];
 }
 
 #pragma mark - 请求成功操作
@@ -42,6 +43,19 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];
 }
+
+
+
+
+
+-(void)leftBarBtnClick{
+    if (self.isPresent) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [[DZMobileCtrl sharedCtrl].mainNavi popViewControllerAnimated:YES];
+    }
+}
+
 
 - (DZSecVerifyView *)verifyView {
     if (!_verifyView) {

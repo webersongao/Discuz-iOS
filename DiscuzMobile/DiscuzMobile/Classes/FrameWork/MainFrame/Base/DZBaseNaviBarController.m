@@ -119,12 +119,12 @@
         item = [[UIBarButtonItem alloc] initWithItemImageName:infoStr Layout:isLeft target:target action:action];
     }
     
-    if (isFix && !currentItems.count) {
-        //为了缩进
-        UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        spaceItem.width = -5;
-        [currentItems addObject:spaceItem];
-    }
+    //    if (isFix && !currentItems.count) {
+    //        //为了缩进
+    //        UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    //        spaceItem.width = -5;
+    //        [currentItems addObject:spaceItem];
+    //    }
     
     if (!isLeft) {
         [currentItems insertObject:item atIndex:0];
@@ -187,7 +187,20 @@
     
 }
 
-
+- (BOOL)isPresent {
+    
+    BOOL isPresent = false;
+    
+    NSArray *viewcontrollers = self.navigationController.viewControllers;
+    
+    if (viewcontrollers.count > 1) {
+        isPresent = (self.navigationController.topViewController == self); //push方式
+    }else{
+        isPresent = YES;  // modal方式
+    }
+    
+    return isPresent;
+}
 
 @end
 

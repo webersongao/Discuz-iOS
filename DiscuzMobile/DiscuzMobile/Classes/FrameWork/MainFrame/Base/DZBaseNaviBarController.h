@@ -113,6 +113,8 @@ typedef NS_ENUM(NSInteger, DZNaviItemType) {
 -(void)leftBarBtnClick;
 
 
+- (BOOL)isPresent;
+
 @end
 
 

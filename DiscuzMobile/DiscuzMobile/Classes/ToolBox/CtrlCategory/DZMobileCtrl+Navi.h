@@ -33,8 +33,9 @@
 
 // 跳转登录
 - (void)PresentLoginController;
-
 - (void)PushToSearchController;
+- (void)PresentRegisterController;
+- (void)PresentFastPostController;
 
 /// 跳转 我的好友
 -(void)PushToMyFriendViewController;

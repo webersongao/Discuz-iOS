@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, NaviItemType) {
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) EmptyAlertView *emptyView;
 
-@property (nonatomic, assign) BOOL DZ_DZ_hideTabBarWhenPushed;  //!< push该控制器时是否隐藏TabBar
+@property (nonatomic, assign) BOOL DZ_hideTabBarWhenPushed;  //!< push该控制器时是否隐藏TabBar
 
 /**
  * 创建左右 导航按钮

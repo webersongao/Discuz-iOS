@@ -252,20 +252,15 @@ NSString * const debugPassword = @"debugPassword";
     [self.view endEditing:YES];
     NSDictionary *userInfo = @{@"type":@"cancel"};
     [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil userInfo:userInfo];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [super leftBarBtnClick];
 }
 #pragma mark - 注册
 - (void)rightBarBtnClick {
     [self.view endEditing:YES];
-    [self registerNavview];
-}
-
-- (void)registerNavview {
-    // 重置一下
     //    [DZShareCenter shareInstance].bloginModel = nil;
-    [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [[DZMobileCtrl sharedCtrl] PresentRegisterController];
 }
-
 
 - (void)boundThirdview {
     [[DZMobileCtrl sharedCtrl] PushToJudgeBindController];

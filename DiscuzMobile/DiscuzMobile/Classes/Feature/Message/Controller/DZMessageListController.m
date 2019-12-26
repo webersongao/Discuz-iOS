@@ -32,7 +32,6 @@
     self.title = @"我的消息";
     [self.view addSubview:self.tableView];
     self.tableView.frame = KView_OutNavi_Bounds;
-    [self configNaviBar:nil type:NaviItemText Direction:NaviDirectionLeft];
     self.dataSourceArr = @[@"我的消息",@"我的帖子",@"坛友互动",@"系统提醒",@"管理工作"].mutableCopy;
 }
 

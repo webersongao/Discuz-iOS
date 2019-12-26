@@ -23,13 +23,13 @@
 @interface DZFastPostController ()
 
 @property (nonatomic,assign) BOOL isSelected;
-@property (nonatomic, strong) UITableView *leftTable;
-@property (nonatomic, strong) NSMutableArray *leftDataArray;
-@property (nonatomic, strong) UIButton *closeBtn;
-@property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, copy) NSString *selectFid;
-@property (nonatomic, strong) DZBaseAuthModel *authModel;
+@property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) UIButton *refreshBtn;
+@property (nonatomic, strong) UITableView *leftTable;
+@property (nonatomic, strong) DZBaseAuthModel *authModel;
+@property (nonatomic, strong) NSMutableArray *leftDataArray;
+@property (nonatomic, strong) DZPostTypeSelectView *selectView;
 
 @end
 
@@ -54,11 +54,11 @@
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = K_Color_ForumGray;
     self.tableView.backgroundColor = K_Color_ForumGray;
-    [self configNaviBar:@"" type:NaviItemText Direction:NaviDirectionLeft];
+    [self configNaviBar:@"reader_down" type:NaviItemImage Direction:NaviDirectionLeft];
     [self.tableView registerClass:[FastLevelCell class] forCellReuseIdentifier:[FastLevelCell getReuseId]];
     
-    self.leftTable.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth *0.22, KView_OutNavi_Bounds.size.height);
-    self.tableView.frame = CGRectMake(self.leftTable.right, self.leftTable.top, KScreenWidth *0.78, KView_OutNavi_Bounds.size.height);
+    self.leftTable.frame = CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth *0.22, KView_OutNavi_Bounds.size.height - KTabbar_Height);
+    self.tableView.frame = CGRectMake(self.leftTable.right, self.leftTable.top, KScreenWidth *0.78, self.leftTable.height);
     [self.view addSubview:self.closeBtn];
     [self.view addSubview:self.refreshBtn];
     
@@ -214,6 +214,10 @@
     }
 }
 
+-(void)leftBarBtnClick{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)errorRefresh {
     [self loadDataWithType:JTRequestTypeRefresh];
 }
@@ -237,7 +241,9 @@
 
 #pragma mark - 点击去往发帖页
 - (void)switchTypeTopost:(PostType)type {
-    [[DZMobileCtrl sharedCtrl] PushToThreadPostController:self.selectFid thread:self.authModel type:type];
+    [self dismissViewControllerAnimated:NO completion:^{
+        [[DZMobileCtrl sharedCtrl] PushToThreadPostController:self.selectFid thread:self.authModel type:type];
+    }];
 }
 
 - (void)closeBtnClick {
@@ -247,7 +253,7 @@
 
 - (void)reloadSection:(NSInteger)section withNodeModel:(DZForumNodeModel *)model withExpand:(BOOL)isExpand {
     
-    NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:section];
+    NSMutableArray *sectionDataArry = [NSMutableArray arrayWithArray:[self.dataSourceArr objectAtIndex:section]];
     
     // 点击的行
     NSInteger currentRow = [sectionDataArry indexOfObject:model];
@@ -286,7 +292,7 @@
 
 // 插入行
 - (void)expandInsertRow:(NSIndexPath *)indexPath nodeModel:(DZForumNodeModel *)model {
-    NSMutableArray *sectionDataArry = [self.dataSourceArr objectAtIndex:indexPath.section];
+    NSMutableArray *sectionDataArry = [NSMutableArray arrayWithArray:[self.dataSourceArr objectAtIndex:indexPath.section]];
     // 这一步是防止在二级展开的情况下,关闭一级展开, 则二级展开的状态还是展开,需要手动置回 NO
     for (int i =0; i<model.childNode.count; i++) {
         DZForumNodeModel *mod = [model.childNode objectAtIndex:i];

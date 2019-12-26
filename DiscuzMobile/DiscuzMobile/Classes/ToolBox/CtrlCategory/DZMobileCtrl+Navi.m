@@ -33,6 +33,7 @@
 #import "DZJudgeBoundController.h"
 #import "DZPostNormalController.h"
 #import "DZPostVoteController.h"
+#import "DZFastPostController.h"
 #import "DZPostDebateController.h"
 #import "DZPostActivityController.h"
 
@@ -107,6 +108,17 @@
     loginVC.isTabbarSelected = NO;
     loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.mainNavi.topViewController presentViewController:loginVC animated:YES completion:nil];
+}
+
+- (void)PresentRegisterController{
+    DZRegisterController *registVC = [[DZRegisterController alloc] init];
+    registVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.mainNavi.topViewController presentViewController:registVC animated:YES completion:nil];
+}
+
+- (void)PresentFastPostController{
+    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
+    [[DZMobileCtrl sharedCtrl] PresentViewController:fastVC];
 }
 
 - (void)PushToSearchController{
