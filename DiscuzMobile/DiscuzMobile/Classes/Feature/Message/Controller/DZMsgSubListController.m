@@ -130,8 +130,7 @@
         UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         return [(MessageCell *)cell cellHeight];
         //        return 70.0;
-    }
-    else {
+     }else {
         UITableViewCell * cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
         return [(MsglistCell *)cell cellHeight];
     }
@@ -159,8 +158,7 @@
         
         [cell setData:model];
         return cell;
-    }
-    else {
+     }else {
         
         MsglistCell *cell = [tableView dequeueReusableCellWithIdentifier:alertId];
         if (cell == nil) {

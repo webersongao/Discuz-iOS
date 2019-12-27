@@ -321,8 +321,7 @@ static CGFloat btn_width = 24.0;
 - (CGFloat)measureHeight {
     if ([self respondsToSelector:@selector(snapshotViewAfterScreenUpdates:)]) {
         return ceilf([self.textView sizeThatFits:self.textView.frame.size].height);
-    }
-    else {
+     }else {
         return self.textView.contentSize.height;
     }
 }

@@ -95,8 +95,7 @@
     }];
     if (cv.childViewControllers.count > 0) {
         return [[self class] getSubUIVCWithVC:cv];
-    }
-    else {
+     }else {
         return cv;
     }
 }

@@ -65,6 +65,7 @@ static AppDelegate *m_appDelegate;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {

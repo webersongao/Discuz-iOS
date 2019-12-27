@@ -17,8 +17,7 @@
 - (void)setValue:(NSString *)value forHeaderField:(NSString *)field{
     if (value) {
         [self.mutableHTTPRequestHeaders setValue:value forKey:field];
-    }
-    else {
+     }else {
         [self removeHeaderForkey:field];
     }
 }

@@ -112,8 +112,7 @@ static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
         cell.deleteBtn.tag = indexPath.row + 100;
         [cell.deleteBtn addTarget:self action:@selector(onClickDel:) forControlEvents:UIControlEventTouchUpInside];
         [cell.deleteBtn setHidden:NO];
-    }
-    else {
+     }else {
         cell.imageView.image = nil;
         cell.imageView.image = [UIImage imageNamed:@"bg_photo_add"];
         [cell.deleteBtn setHidden:YES];
@@ -158,8 +157,7 @@ static NSString *imagePickerCellIdentifier = @"imagePickerCellIdentifier";
             [weakSelf deleteImage:sort];
         };
         [self.navigationController pushViewController:vc animated:YES];
-    }
-    else {
+     }else {
         [self pickPhotos];
     }
 }

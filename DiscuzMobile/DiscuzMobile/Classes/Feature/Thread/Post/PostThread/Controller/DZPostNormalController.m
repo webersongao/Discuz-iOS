@@ -125,8 +125,7 @@
             return keyboardHeight;
         }
         
-    }
-    else {
+     }else {
         if ([AudioTool shareInstance].audioArray.count > 0) {
             return keyboardHeight;
         }

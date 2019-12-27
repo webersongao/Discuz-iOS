@@ -44,8 +44,7 @@
 - (void)tap:(UITapGestureRecognizer *)tap {
     if(_scrollView.zoomScale != 1) {
         [_scrollView setZoomScale:1 animated:YES];
-    }
-    else {
+     }else {
         [_scrollView setZoomScale:2.5 animated:YES];
     }
 }
@@ -55,8 +54,7 @@
     _model = model;
     if(model.image) {
         _imageView.image = model.image;
-    }
-    else {
+     }else {
         [_imageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
     }
     

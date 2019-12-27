@@ -317,8 +317,7 @@
         //        UIWebView *view = (UIWebView *)self.sourceImagesContainerView;
         sourceView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH)];
         
-    }
-    else {
+     }else {
         sourceView = self.sourceImagesContainerView.subviews[self.currentImageIndex];
     }
     CGRect rect = [self.sourceImagesContainerView convertRect:sourceView.frame toView:self];

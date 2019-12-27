@@ -150,8 +150,7 @@
         float i = [self floatValue]/10000;
         i = floorf(i * 10) / 10;
         return [NSString stringWithFormat:@"%.1f万",i];
-    }
-    else {
+     }else {
         return self;
     }
 }

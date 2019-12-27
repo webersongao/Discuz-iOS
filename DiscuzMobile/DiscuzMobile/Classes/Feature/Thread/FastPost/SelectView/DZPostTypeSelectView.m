@@ -216,8 +216,7 @@
     else if ([debate isEqualToString:@"1"]) {
         imagesArr = [NSMutableArray arrayWithObjects:@"thread_ordinary",@"thread_ activity", nil];
         titleArr = [NSMutableArray arrayWithObjects:@"普通帖",@"辩论帖", nil];
-    }
-    else {
+     }else {
         imagesArr = [NSMutableArray arrayWithObjects:@"thread_ordinary", nil];
         titleArr = [NSMutableArray arrayWithObjects:@"普通帖", nil];
     }

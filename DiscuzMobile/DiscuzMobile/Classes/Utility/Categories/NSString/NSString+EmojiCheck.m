@@ -14,8 +14,7 @@
     if(stringUtf8Length >= 4 && (stringUtf8Length / self.length != 3)) {
         [MBProgressHUD showInfo:@"不支持使用emoji表情"];
         return YES;
-    }
-    else {
+     }else {
         return NO;
     }
 }

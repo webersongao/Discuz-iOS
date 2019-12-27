@@ -68,8 +68,7 @@
     id result = [self objectForKey:key];
     if ([result isKindOfClass:[NSNumber class]]) {
         return [result boolValue];
-    }
-    else {
+     }else {
         return false;
     }
 }
@@ -78,8 +77,7 @@
     id result = [self objectForKey:key];
     if ([result isKindOfClass:[NSNumber class]]) {
         return [result integerValue];
-    }
-    else {
+     }else {
         return -1;
     }
 }
@@ -88,8 +86,7 @@
     id result = [self objectForKey:key];
     if ([result isKindOfClass:[NSNumber class]]) {
         return [result longLongValue];
-    }
-    else {
+    }else {
         return -1;
     }
 }
@@ -98,8 +95,7 @@
     id result = [self objectForKey:key];
     if ([result isKindOfClass:[NSNumber class]]) {
         return [result integerValue];
-    }
-    else {
+     }else {
         return 0;
     }
 }
@@ -108,8 +104,7 @@
     id result = [self objectForKey:key];
     if ([result isKindOfClass:[NSNumber class]]) {
         return [result doubleValue];
-    }
-    else {
+     }else {
         return 0;
     }
 }
@@ -121,8 +116,7 @@
     if([result isKindOfClass:[NSDictionary class]])
     {
         return result;
-    }
-    else {
+     }else {
         return nil;
     }
 }
@@ -134,8 +128,7 @@
     if([result isKindOfClass:[NSArray class]])
     {
         return result;
-    }
-    else {
+     }else {
         return nil;
     }
 }

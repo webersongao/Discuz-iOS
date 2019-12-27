@@ -50,8 +50,7 @@ typedef enum {
     }
     else if(type == NavigationBarItemTypeRight) {
         self.navigationItem.rightBarButtonItems = @[space,buttonItem];
-    }
-    else {
+     }else {
         self.navigationItem.backBarButtonItem = buttonItem;
     }
     

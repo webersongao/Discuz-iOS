@@ -47,8 +47,7 @@
     if(_showIndex > 0 && _showIndex < _imageArray.count) {
         [self.collectionView setContentOffset:CGPointMake(_showIndex*self.collectionView.frame.size.width, 0) animated:NO];
         [self refreshTitle];
-    }
-    else {
+     }else {
         [self refreshTitle];
     }
 }
