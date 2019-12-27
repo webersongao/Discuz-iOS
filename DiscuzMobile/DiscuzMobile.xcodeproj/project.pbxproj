@@ -164,6 +164,10 @@
 		704B852D237EA7110098C48D /* DZGlobalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B852C237EA7110098C48D /* DZGlobalModel.m */; };
 		704DDA65238BB2F6009C9CE2 /* DZLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 704DDA64238BB2F6009C9CE2 /* DZLayoutTool.m */; };
 		704DDA6C238BC5AE009C9CE2 /* DZDiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704DDA6A238BC5AE009C9CE2 /* DZDiscoverModel.m */; };
+		7058532D23B5EEDF005CA467 /* DZDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7058532B23B5EEDF005CA467 /* DZDropMenuView.m */; };
+		7058532E23B5EEDF005CA467 /* DZMenuTableListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7058532C23B5EEDF005CA467 /* DZMenuTableListView.m */; };
+		7058533123B5EF01005CA467 /* DZGaoPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7058533023B5EF01005CA467 /* DZGaoPostViewController.m */; };
+		7058533323B5F414005CA467 /* dz_address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7058533223B5F414005CA467 /* dz_address.plist */; };
 		7062106D237935ED00130B9D /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062104F237935ED00130B9D /* UUDatePicker.m */; };
 		7062106E237935ED00130B9D /* UUDatePicker_DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621050237935ED00130B9D /* UUDatePicker_DateModel.m */; };
 		70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062105B237935ED00130B9D /* TYLaunchFadeScaleAnimation.m */; };
@@ -773,6 +777,13 @@
 		704DDA64238BB2F6009C9CE2 /* DZLayoutTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLayoutTool.m; sourceTree = "<group>"; };
 		704DDA6A238BC5AE009C9CE2 /* DZDiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverModel.m; sourceTree = "<group>"; };
 		704DDA6B238BC5AE009C9CE2 /* DZDiscoverModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDiscoverModel.h; sourceTree = "<group>"; };
+		7058532923B5EEDF005CA467 /* DZMenuTableListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMenuTableListView.h; sourceTree = "<group>"; };
+		7058532A23B5EEDF005CA467 /* DZDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDropMenuView.h; sourceTree = "<group>"; };
+		7058532B23B5EEDF005CA467 /* DZDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDropMenuView.m; sourceTree = "<group>"; };
+		7058532C23B5EEDF005CA467 /* DZMenuTableListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMenuTableListView.m; sourceTree = "<group>"; };
+		7058532F23B5EF01005CA467 /* DZGaoPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZGaoPostViewController.h; sourceTree = "<group>"; };
+		7058533023B5EF01005CA467 /* DZGaoPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZGaoPostViewController.m; sourceTree = "<group>"; };
+		7058533223B5F414005CA467 /* dz_address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dz_address.plist; sourceTree = "<group>"; };
 		7062104E237935ED00130B9D /* UUDatePicker_DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUDatePicker_DateModel.h; sourceTree = "<group>"; };
 		7062104F237935ED00130B9D /* UUDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker.m; sourceTree = "<group>"; };
 		70621050237935ED00130B9D /* UUDatePicker_DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUDatePicker_DateModel.m; sourceTree = "<group>"; };
@@ -1553,6 +1564,7 @@
 				94A3E66220E617300039C560 /* EmoticonJT.bundle */,
 				94A3E65E20E6172A0039C560 /* ResourceJT.bundle */,
 				27C82D791EB077E900D781CB /* defaultHead.png */,
+				7058533223B5F414005CA467 /* dz_address.plist */,
 				94B2ED351FE3A3600093851E /* bbsrule_discuz.txt */,
 			);
 			path = Resources;
@@ -2875,6 +2887,12 @@
 		708AED67238E58A6000A4397 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7058532A23B5EEDF005CA467 /* DZDropMenuView.h */,
+				7058532B23B5EEDF005CA467 /* DZDropMenuView.m */,
+				7058532923B5EEDF005CA467 /* DZMenuTableListView.h */,
+				7058532C23B5EEDF005CA467 /* DZMenuTableListView.m */,
+				7058532F23B5EF01005CA467 /* DZGaoPostViewController.h */,
+				7058533023B5EF01005CA467 /* DZGaoPostViewController.m */,
 				7002A3512383D8CD00BC0C61 /* DZFastPostController.h */,
 				7002A34C2383D8CD00BC0C61 /* DZFastPostController.m */,
 			);
@@ -4301,6 +4319,7 @@
 				27F615A41ED42ACD0066CD4C /* right.png in Resources */,
 				27CD9DA51DDEB29E0075831B /* ios_poll_result.js in Resources */,
 				27F6158B1ED42ACD0066CD4C /* additem.png in Resources */,
+				7058533323B5F414005CA467 /* dz_address.plist in Resources */,
 				2735821A1ECBEB0B005870FA /* 苹方 细体.ttf in Resources */,
 				27F6158F1ED42ACD0066CD4C /* button.png in Resources */,
 				27F615AB1ED42ACD0066CD4C /* ui-bg_gloss-wave_35_f6a828_500x100.png in Resources */,
@@ -4506,6 +4525,7 @@
 				7023CC7623A21B1500FB7E31 /* DZFriendVarModel.m in Sources */,
 				7002A3722383D8CD00BC0C61 /* PmlistCell.m in Sources */,
 				7002A3762383D8CD00BC0C61 /* FastLevelCell.m in Sources */,
+				7058532E23B5EEDF005CA467 /* DZMenuTableListView.m in Sources */,
 				704DDA65238BB2F6009C9CE2 /* DZLayoutTool.m in Sources */,
 				947ECAF92064D403002D3536 /* JFImagePickerViewCell.m in Sources */,
 				7062128B237936C900130B9D /* DZPostTextFieldView.m in Sources */,
@@ -4542,6 +4562,7 @@
 				70FBDD062383FC1B00FC296E /* DZForumItemCell.m in Sources */,
 				703F2B89239DF99600E7882C /* DZSecAuthModel.m in Sources */,
 				7065AE64238684C5009B6DA7 /* DZDiscoverNetTool.m in Sources */,
+				7058532D23B5EEDF005CA467 /* DZDropMenuView.m in Sources */,
 				70FBDCE32383FC1B00FC296E /* DZFootForumController.m in Sources */,
 				70FBDCFB2383FC1B00FC296E /* CenterUserInfoView.m in Sources */,
 				70621285237936C900130B9D /* DZPostActivityController.m in Sources */,
@@ -4593,6 +4614,7 @@
 				7070A8C5239F77340052D32E /* DZApplyProperty.m in Sources */,
 				70F3CBCC238E8EB300BFA199 /* DZBaseResModel.m in Sources */,
 				70621297237936C900130B9D /* DZSelectTypeButton.m in Sources */,
+				7058533123B5EF01005CA467 /* DZGaoPostViewController.m in Sources */,
 				70FBDCDE2383FC1B00FC296E /* OtherUserPostReplyCell.m in Sources */,
 				70DFD7A8237A95DE00A13F0F /* DZBaseVarModel.m in Sources */,
 				7002A3702383D8CD00BC0C61 /* ChatYYLabel.m in Sources */,

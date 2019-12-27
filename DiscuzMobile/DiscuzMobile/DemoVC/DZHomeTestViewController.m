@@ -13,6 +13,7 @@
 #import "DZLoginController.h"
 #import "DZRegisterController.h"
 
+#import "DZGaoPostViewController.h"
 #import "DZPostSiriViewController.h"
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
@@ -57,7 +58,8 @@
 
 // 发布
 - (IBAction)postThreadAction:(UIButton *)sender {
-    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
+    DZGaoPostViewController *fastVC = [[DZGaoPostViewController alloc] init];
+//    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
     [[DZMobileCtrl sharedCtrl] PresentViewController:fastVC];
 }
 
