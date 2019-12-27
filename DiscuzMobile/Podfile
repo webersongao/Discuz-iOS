@@ -25,6 +25,7 @@ target 'DiscuzMobile' do
   pod 'Masonry'
   pod 'MJRefresh'
 #  pod 'libPusher'
+  pod 'XHLaunchAd'
   pod 'SDWebImage'
   pod 'DTCoreText'
   pod 'AFNetworking'

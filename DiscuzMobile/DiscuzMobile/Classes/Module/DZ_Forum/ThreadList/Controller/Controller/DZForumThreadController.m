@@ -176,7 +176,6 @@
     }
     
     if (self.selectView.typeArray.count == 0) {
-        
         [MBProgressHUD showInfo:@"您当前不能发帖"];
         return;
     } else if (self.selectView.typeArray.count == 1) {

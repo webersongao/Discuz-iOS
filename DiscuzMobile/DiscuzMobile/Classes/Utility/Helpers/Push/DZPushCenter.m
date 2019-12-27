@@ -28,7 +28,7 @@
 }
 
 ///** 配置推送 */
-//- (void)configPush {
+- (void)configPush {
 //    
 //    if ([DZMobileCtrl sharedCtrl].Global.member_uid == nil) { // 退出登录
 //        [XGPush setAccount:@"**"];
@@ -50,19 +50,19 @@
 //        NSString * deviceTokenStr = [XGPush registerDevice:datatoken successCallback:successBlock errorCallback:errorBlock];
 //        DLog(@"%@",deviceTokenStr);
 //    }
-//}
+}
 //
 //#pragma mark - 收到推送后跳到某页
-//- (void)getNotiToview:(NSDictionary *)userInfo {
+- (void)getNotiToview:(NSDictionary *)userInfo {
 //    
 //    DLog(@"%@",userInfo);
 //    //角标清0
 //    [self cancelPushBadge];
-//}
-//
-//// 本来就在前台的时候
-//- (void)isActivePushAlert:(NSDictionary *)userInfo {
-//    
+}
+
+// 本来就在前台的时候
+- (void)isActivePushAlert:(NSDictionary *)userInfo {
+    
 //    DLog(@"%@",userInfo);
 //    NSDictionary *oneDict = [userInfo dictionaryForKey:@"aps"];
 //    NSString *msg = [oneDict stringForKey:@"alert"];
@@ -80,18 +80,18 @@
 //    } cancelHandle:^{
 //        [self cancelPushBadge];
 //    }];
-//}
-//
-///** 角标清0 */
-//- (void)cancelPushBadge {
-//    //角标清0
-//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-//}
-//
-//
-//#pragma mark - 信鸽注册
-//- (void)Reregistration {
-//    
+}
+
+/* 角标清0 */
+- (void)cancelPushBadge {
+    //角标清0
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
+
+#pragma mark - 信鸽注册
+- (void)Reregistration {
+    
 //    [XGPush startApp:DZ_XG_APPID appKey:DZ_XG_APPKEY];
 //    //注销之后需要再次注册前的准备
 //    void (^successCallback)(void) = ^(void){
@@ -118,8 +118,8 @@
 //        }
 //    };
 //    [XGPush initForReregister:successCallback];
-//}
-//
+}
+
 //- (void)registerPushForIOS8{
 //#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
 //    
@@ -148,8 +148,8 @@
 //#endif
 //}
 //
-//- (void)receiveNotificationFeeback:(NSDictionary *)userInfo {
-//    // 回调版本示例
+- (void)receiveNotificationFeeback:(NSDictionary *)userInfo {
+    // 回调版本示例
 //    void (^successBlock)(void) = ^(void){
 //        //成功之后的处理
 //        DLog(@"[XGPush]handleReceiveNotification successBlock");
@@ -166,8 +166,8 @@
 //    };
 //    // 推送反馈(app在运行时),支持回调版本
 //    [XGPush handleReceiveNotification:userInfo successCallback:successBlock errorCallback:errorBlock completion:completion];
-//}
-//
+}
+
 //- (void)registerPush{
 //    
 ////    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];

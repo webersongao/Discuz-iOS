@@ -15,6 +15,12 @@
     _authKey = [NSString stringWithFormat:@"%@%@",cookiepre,@"auth"];
 }
 
+-(BOOL)isUserLogin{
+    if (self.member_uid.length && ![self.member_uid isEqualToString:@"0"] && self.member_username.length) {
+        return YES;
+    }
+    return NO;
+}
 #pragma mark   /********************* 数据库继承方法 *************************/
 
 - (NSArray *)primaryKey

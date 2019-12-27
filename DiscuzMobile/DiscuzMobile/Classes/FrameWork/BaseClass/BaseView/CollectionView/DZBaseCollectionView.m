@@ -57,7 +57,6 @@
         DZRefreshFooter *footer = [DZRefreshFooter footerWithRefreshingBlock:^{
             [weakSelf footerViewPullUpAction];
         }];
-        footer.onlyRefreshPerDrag = YES;
         self.mj_footer = footer;
     }
 }

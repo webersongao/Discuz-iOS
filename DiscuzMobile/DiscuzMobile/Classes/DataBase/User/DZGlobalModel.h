@@ -23,5 +23,7 @@
 // 自定义值 
 @property (nonatomic, copy) NSString *authKey;
 
+-(BOOL)isUserLogin;
+
 @end
 

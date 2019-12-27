@@ -168,15 +168,20 @@
         [self.HUD hide];
         if (authModel) {
             self.authModel = authModel;
-            if (authModel.group) { // 能发的帖子类型处理
-                NSString *allowspecialonly = authModel.forum.allowspecialonly;
-                [self.selectView setPostType:checkInteger(authModel.group.allowpostpoll)
-                                    activity:checkInteger(authModel.group.allowpostactivity)
-                                      debate:checkInteger(authModel.group.allowpostdebate)
-                            allowspecialonly:allowspecialonly
-                                   allowpost:authModel.allowperm.allowpost];
-            } else {
-                [MBProgressHUD showInfo:@"暂无发帖权限"];
+            if ([authModel isUserLogin]) {
+                if (authModel.group) { // 能发的帖子类型处理
+                    NSString *allowspecialonly = authModel.forum.allowspecialonly;
+                    [self.selectView setPostType:checkInteger(authModel.group.allowpostpoll)
+                                        activity:checkInteger(authModel.group.allowpostactivity)
+                                          debate:checkInteger(authModel.group.allowpostdebate)
+                                allowspecialonly:allowspecialonly
+                                       allowpost:authModel.allowperm.allowpost];
+                    [self showTypeView];
+                } else {
+                    [MBProgressHUD showInfo:@"暂无发帖权限"];
+                }
+            }else{
+                [self transToLogin];
             }
         }else{
             [MBProgressHUD showInfo:@"暂无发帖权限"];
@@ -248,7 +253,7 @@
 
 - (void)closeBtnClick {
     [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dz_PopCurrentViewController];
 }
 
 - (void)reloadSection:(NSInteger)section withNodeModel:(DZForumNodeModel *)model withExpand:(BOOL)isExpand {
@@ -263,20 +268,15 @@
     NSIndexPath *scrollIndexPath;
     
     if (isExpand){
-        
         [self expandInsertRow:currentIndexPath nodeModel:model];
-        
         // 需要滚动的下标
         NSInteger mustvisableRow = currentRow + 1;
         if (model.childNode.count >= 2) {
             mustvisableRow = currentRow + 2;
         }
         scrollIndexPath = [NSIndexPath indexPathForRow:mustvisableRow inSection:section];
-        
     } else {
-        
         [self expandDeleteRow:currentIndexPath nodeModel:model];
-        
         scrollIndexPath = [NSIndexPath indexPathForRow:currentRow inSection:section];
     }
     

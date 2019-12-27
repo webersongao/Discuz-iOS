@@ -84,25 +84,10 @@
     };
 }
 
-- (void)thirdConnectWithService:(NSDictionary *)dic getData:(NSDictionary *)getData {
-    [self.HUD showLoadingMessag:@"" toView:self.view];
-    
-    [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
-        [self.HUD hide];
-        if (resModel) {
-           [self updateUserResInfo:resModel];
-        }else{
-            if ([[getData objectForKey:@"type"] isEqualToString:@"weixin"]) {
-                if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
-                    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat result:nil];
-                }
-            }
-        }
-    }];
-}
-
 #pragma mark - 请求成功操作
 - (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
+    
+    [self dz_PopCurrentViewController];
     
     if (!loginResModel.Message.isBindThird) {
         // 去第三方绑定页面
@@ -290,7 +275,22 @@
     }];
 }
 
-
+- (void)thirdConnectWithService:(NSDictionary *)dic getData:(NSDictionary *)getData {
+    [self.HUD showLoadingMessag:@"" toView:self.view];
+    
+    [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
+        [self.HUD hide];
+        if ([resModel.Variables isUserLogin]) {
+           [self updateUserResInfo:resModel];
+        }else{
+            if ([[getData objectForKey:@"type"] isEqualToString:@"weixin"]) {
+                if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
+                    [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat result:nil];
+                }
+            }
+        }
+    }];
+}
 
 @end
 
