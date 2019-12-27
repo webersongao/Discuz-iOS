@@ -7,6 +7,7 @@
 //
 
 #import "DZDropMenuView.h"
+#import "DZForumBaseNode.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) NSArray *tableViewArr;  //!< 表视图数组
 @property (nonatomic, strong) UIView *tableViewUnderView;  //!< 表视图的 底部视图
 @property (nonatomic, assign) NSInteger tableCount;  //!< 显示 TableView 数量
-@property (nonatomic, strong) NSArray *dataArr; /// 数据
+@property (nonatomic, strong) NSArray<DZForumBaseNode *> *dataArr; /// 数据
 
 
 
@@ -45,7 +46,7 @@
         for (int i = 0; i < 3; i++) {
             m_selects[i] = -1;
         }
-
+        
         /* 底层取消按钮 */
         self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.cancelButton.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
@@ -59,15 +60,15 @@
         
         /** 默认设置为no, row高度为40 */
         self.isShow = NO;
-        self.rowHeightNum = 40.0f;
-
+        self.rowHeightNum = kCellDefaultHeight;
+        
     }
     return self;
 }
 
 
 -(void)creatDropView:(UIView *)view withShowTableNum:(NSInteger)tableNum withData:(NSArray *)arr{
-
+    
     if (!self.isShow) {
         
         self.isShow = !self.isShow;
@@ -80,7 +81,7 @@
         for (UITableView *tableView in self.tableViewArr) {
             [tableView reloadData];
         }
-
+        
         // 初始位置 设置
         CGFloat x = 0.f;
         CGFloat y = view.frame.origin.y + view.frame.size.height;
@@ -89,8 +90,7 @@
         
         self.frame = CGRectMake(x, y, w, h);
         self.cancelButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        self.tableViewUnderView.frame = CGRectMake(0, 0, self.frame.size.width, self.rowHeightNum * 7);
-        
+        self.tableViewUnderView.frame = CGRectMake(0, 0, self.frame.size.width, self.rowHeightNum * arr.count);
         
         if (!self.superview) {
             
@@ -109,7 +109,7 @@
         /** 什么也不选择时候, 再次点击按钮 消失视图 */
         [self dismiss];
     }
-
+    
 }
 
 
@@ -144,7 +144,6 @@
     // 显示的 TableView 数量
     int addTableCount = 0;
     for (UITableView *tableView in self.tableViewArr) {
-        
         if (tableView.superview) {
             addTableCount++;
         }
@@ -180,7 +179,7 @@
             NSInteger secondSelectRow = ((UITableView *)self.tableViewArr[1]).indexPathForSelectedRow.row ;
             
             count = [self countForChooseTable:idx firstTableSelectRow:firstSelectRow withSecondTableSelectRow:secondSelectRow];
-
+            
         }
     }];
     
@@ -191,7 +190,7 @@
 
 
 -(NSInteger)countForChooseTable:(NSInteger)idx firstTableSelectRow:(NSInteger)firstSelectRow withSecondTableSelectRow:(NSInteger)secondSelectRow{
-
+    
     if (idx == 0) {
         return self.dataArr.count;
     }else  if (idx == 1){
@@ -199,16 +198,20 @@
             return 0;
         }else{
             if (self.tableCount == 2) {
-                return [self.dataArr[firstSelectRow][@"subcategories"] count];
+                DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+                return baseNode.subNodeList.count;
             }else{
-                return [self.dataArr[firstSelectRow][@"sub"] count];
+                DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+                return baseNode.subNodeList.count;
             }
         }
     }else{
         if (secondSelectRow == -1) {
             return 0;
         }else{
-            return [self.dataArr[firstSelectRow][@"sub"][secondSelectRow][@"sub"] count];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[secondSelectRow];
+            return innerNode.subNodeList.count;
         }
     }
 }
@@ -225,32 +228,41 @@
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     
     if (self.tableCount == 1) {
-        cell.textLabel.text = self.dataArr[indexPath.row][@"label"];
+        DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+        cell.textLabel.text = baseNode.nameStr;
     }else if (self.tableCount == 2){
-          NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
+        NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
         if (tableView == self.tableViewArr[0]) {
-            cell.textLabel.text = self.dataArr[indexPath.row][@"name"];
+            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+            cell.textLabel.text = baseNode.nameStr;
         }else if (tableView == self.tableViewArr[1]){
-            cell.textLabel.text = self.dataArr[firstSelectRow][@"subcategories"][indexPath.row];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[indexPath.row];
+            cell.textLabel.text = innerNode.nameStr;
         }
     }else if (self.tableCount == 3){
-         NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
-         NSInteger secondSelectRow = ((UITableView *)self.tableViewArr[1]).indexPathForSelectedRow.row;
+        NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
+        NSInteger secondSelectRow = ((UITableView *)self.tableViewArr[1]).indexPathForSelectedRow.row;
         
         if (tableView == self.tableViewArr[0]) {
-            
-            cell.textLabel.text = self.dataArr[indexPath.row][@"name"];
-            
+            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+            cell.textLabel.text = baseNode.nameStr;
         }else if (tableView == self.tableViewArr[1]){
             
-            cell.textLabel.text = self.dataArr[firstSelectRow][@"sub"][indexPath.row][@"name"];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[indexPath.row];
+            
+            cell.textLabel.text = innerNode.nameStr;
             
         }else if (tableView == self.tableViewArr[2]){
             
-           cell.textLabel.text =  self.dataArr[firstSelectRow][@"sub"][secondSelectRow][@"sub"][indexPath.row];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[secondSelectRow];
+            DZForumBaseNode *innerthriNode = innerNode.subNodeList[indexPath.row];
+            cell.textLabel.text =  innerthriNode.nameStr;
         }
     }
-
+    
     return cell;
     
 }
@@ -265,7 +277,8 @@
     if (self.tableCount == 1) {
         [self saveSelects];
         [self dismiss];
-        [_delegate DZDropMenuView:self didSelectName:self.dataArr[indexPath.row][@"label"]];
+        DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+        [_delegate DZDropMenuView:self didSelectName:baseNode.nameStr];
     }else if (self.tableCount == 2){
         if (tableView == self.tableViewArr[0]) {
             if (!secondTableView.superview) {
@@ -276,8 +289,10 @@
         }else if (tableView == self.tableViewArr[1]){
             [self saveSelects];
             [self dismiss];
-             NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
-             [_delegate DZDropMenuView:self didSelectName:self.dataArr[firstSelectRow][@"subcategories"][indexPath.row]];
+            NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[indexPath.row];
+            [_delegate DZDropMenuView:self didSelectName:innerNode.nameStr];
         }
     }else if (self.tableCount == 3){
         NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
@@ -298,7 +313,10 @@
         }else if (tableView == self.tableViewArr[2]){
             [self saveSelects];
             [self dismiss];
-            [_delegate DZDropMenuView:self didSelectName:self.dataArr[firstSelectRow][@"sub"][secondSelectRow][@"sub"][indexPath.row]];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[secondSelectRow];
+            DZForumBaseNode *innerthriNode = innerNode.subNodeList[indexPath.row];
+            [_delegate DZDropMenuView:self didSelectName:innerthriNode.nameStr];
         }
     }
     

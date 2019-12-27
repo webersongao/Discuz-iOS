@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "DZForumModel.h"
+#import "DZForumBaseNode.h"
 
-@interface DZForumNodeModel : NSObject
+@interface DZForumNodeModel : DZForumBaseNode
 
 @property (nonatomic, copy) NSString *fid;  //!< 属性注释
 @property (nonatomic, copy) NSString *name;  //!< 属性注释

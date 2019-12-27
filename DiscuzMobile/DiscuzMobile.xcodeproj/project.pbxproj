@@ -312,6 +312,7 @@
 		70A5E26C23AA030E00236105 /* DZUserTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26B23AA030E00236105 /* DZUserTableView.m */; };
 		70A7965623B0A853001FF672 /* DZThreadListCell+Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7965523B0A853001FF672 /* DZThreadListCell+Manager.m */; };
 		70A7965923B0D19B001FF672 /* UILabel+TopTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7965823B0D19B001FF672 /* UILabel+TopTitle.m */; };
+		70AB555223B6111500F618F4 /* DZForumBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AB555123B6111500F618F4 /* DZForumBaseNode.m */; };
 		70B6B8E5239905AD003ED8F1 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9494507021196F8B0074C79E /* libmp3lame.a */; };
 		70BA483123852BA200634D76 /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA483023852BA200634D76 /* UILabel+Common.m */; };
 		70BA4834238531A000634D76 /* DZHomeThreadContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BA4833238531A000634D76 /* DZHomeThreadContentView.m */; };
@@ -1070,6 +1071,8 @@
 		70A7965523B0A853001FF672 /* DZThreadListCell+Manager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DZThreadListCell+Manager.m"; sourceTree = "<group>"; };
 		70A7965723B0D19B001FF672 /* UILabel+TopTitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+TopTitle.h"; sourceTree = "<group>"; };
 		70A7965823B0D19B001FF672 /* UILabel+TopTitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+TopTitle.m"; sourceTree = "<group>"; };
+		70AB555023B6111500F618F4 /* DZForumBaseNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZForumBaseNode.h; sourceTree = "<group>"; };
+		70AB555123B6111500F618F4 /* DZForumBaseNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZForumBaseNode.m; sourceTree = "<group>"; };
 		70BA482F23852BA200634D76 /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
 		70BA483023852BA200634D76 /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
 		70BA4832238531A000634D76 /* DZHomeThreadContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZHomeThreadContentView.h; sourceTree = "<group>"; };
@@ -2744,6 +2747,8 @@
 				704DDA6A238BC5AE009C9CE2 /* DZDiscoverModel.m */,
 				70EBEB7E2387C432005333D4 /* DZForumNodeModel.h */,
 				70EBEB7F2387C432005333D4 /* DZForumNodeModel.m */,
+				70AB555023B6111500F618F4 /* DZForumBaseNode.h */,
+				70AB555123B6111500F618F4 /* DZForumBaseNode.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4461,6 +4466,7 @@
 				94920877202412EE00543C09 /* JTRequestManager+PathMethod.m in Sources */,
 				709622D1238BC97600AF657F /* BaseIconTextView.m in Sources */,
 				706212A6237936C900130B9D /* DZLoginResModel.m in Sources */,
+				70AB555223B6111500F618F4 /* DZForumBaseNode.m in Sources */,
 				70621076237935ED00130B9D /* Reachability.m in Sources */,
 				70621270237936C800130B9D /* DZForumThreadController.m in Sources */,
 				70621273237936C800130B9D /* DZThreadListModel.m in Sources */,

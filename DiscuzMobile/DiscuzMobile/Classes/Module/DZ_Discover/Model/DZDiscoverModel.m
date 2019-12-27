@@ -36,6 +36,16 @@
         [nodeModel childTreeNode:self.forumlist];
     }
     
+    NSMutableArray *nodeArr = [[NSMutableArray alloc] initWithCapacity:3];
+    // 分类
+    for (DZForumNodeModel *nodeModel in self.catlist) {
+        DZForumBaseNode *baseNode = [[DZForumBaseNode alloc] init];
+        baseNode.fidStr = nodeModel.fid;
+        baseNode.nameStr = nodeModel.name;
+        baseNode.subNodeList = [baseNode subTreeNodeList:nodeModel.forums allForum:self.forumlist];
+        [nodeArr addObject:baseNode];
+    }
+    self.indexNodeArray = nodeArr.copy;
     
     return self;
 }

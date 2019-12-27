@@ -10,7 +10,7 @@
 
 @interface DZMenuTableListView : UIView
 
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray *nodeDataArray;
 
 -(void)dismissMenuListView;
 

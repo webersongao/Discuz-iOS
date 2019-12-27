@@ -8,10 +8,13 @@
 
 #import "DZGaoPostViewController.h"
 #import "DZMenuTableListView.h"
+#import "DZThreadNetTool.h"
+
 
 @interface DZGaoPostViewController ()
 
 @property (nonatomic, strong) DZMenuTableListView *menuBar;  //条件选择器
+@property (nonatomic, strong) NSArray *dataArray;  //!< <#属性注释#>
 
 @end
 
@@ -19,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self downloadPosMenuListData];
     [self configPostViewController];
 }
 
@@ -27,6 +31,28 @@
     [self.view addSubview:self.menuBar];
     self.menuBar.backgroundColor = [UIColor whiteColor];
 }
+
+
+// 下载数据
+- (void)downloadPosMenuListData {
+    
+    KWEAKSELF
+    [self.HUD showLoadingMessag:@"数据加载中" toView:self.view];
+    [DZThreadNetTool DZ_DownloadForumCategoryData:JTRequestTypeRefresh isCache:NO completion:^(DZDiscoverModel *indexModel) {
+        [self.HUD hideAnimated:YES];
+        if (indexModel.catlist) {
+            weakSelf.menuBar.nodeDataArray = indexModel.indexNodeArray;
+        }else{
+            [DZMobileCtrl showAlertError:@"获取信息失败，请稍后重试"];
+        }
+    }];
+    
+}
+
+
+
+
+
 
 -(void)leftBarBtnClick{
     [self.menuBar dismissMenuListView];

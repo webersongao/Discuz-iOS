@@ -38,28 +38,33 @@
         UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height - 0.5, KScreenWidth, 0.5)];
         horizontalLine.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.000];
         [self addSubview:horizontalLine];
-        
     }
     return self;
 }
 
+#pragma mark   /********************* 动作交互 *************************/
 
-
-#pragma mark - 按钮点击推出菜单 (并且其他的菜单收起)
--(void)clickButton:(UIButton *)button{
+///   按钮点击推出菜单 (并且其他的菜单收起)
+-(void)clickButtonAction:(UIButton *)button{
     
-    [self.MenuListView creatDropView:self withShowTableNum:3 withData:self.dataArray];
+    if (!self.nodeDataArray.count) {
+        return;
+    }
+    [self.MenuListView creatDropView:self withShowTableNum:3 withData:self.nodeDataArray];
     
 }
 
-#pragma mark - 筛选菜单消失
+
+///   筛选菜单消失
 -(void)dismissMenuListView{
 
     [self.MenuListView dismiss];
 }
 
 
-#pragma mark - 协议实现
+#pragma mark   /********************* DZDropMenuViewDelegate 代理方法 *************************/
+
+///   协议实现
 -(void)DZDropMenuView:(DZDropMenuView *)view didSelectName:(NSString *)String{
     
     DLog(@"当前的 选项是 %@",String);
@@ -69,13 +74,12 @@
 }
 
 
+#pragma mark   /********************* 初始化 *************************/
 
-
-
-#pragma mark - 设置Button
+///  设置Button
 -(void)setUpButton:(UIButton *)button withText:(NSString *)str{
     
-    [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(clickButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     [button setTitle:str forState:UIControlStateNormal];
     button.titleLabel.font =  [UIFont systemFontOfSize:11];
@@ -97,15 +101,12 @@
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, button.titleLabel.bounds.size.width + 10, 0, -button.titleLabel.bounds.size.width + 2)];
 }
 
-
-
-
--(NSArray *)dataArray{
-    if (_dataArray == nil) {
-        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dz_address.plist" ofType:nil]];
-        _dataArray = dic[@"address"];
-    }
-    return _dataArray;
-}
+//-(NSArray *)nodeDataArray{
+//    if (_nodeDataArray == nil) {
+//        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dz_address.plist" ofType:nil]];
+//        _nodeDataArray = [dic arrayForKey:@"address"];
+//    }
+//    return _nodeDataArray;
+//}
 
 @end
