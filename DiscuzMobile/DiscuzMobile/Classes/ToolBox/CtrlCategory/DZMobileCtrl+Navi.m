@@ -228,9 +228,8 @@
 }
 
 /// 用户 协议
--(void)PushToUsertermsController:(NSString *)bbsRulestxt {
+-(void)PushToUsertermsController {
     DZUsertermsController *termVC = [[DZUsertermsController alloc] init];
-    termVC.bbrulestxt = bbsRulestxt;
     [self.mainNavi showViewController:termVC sender:nil];
 }
 

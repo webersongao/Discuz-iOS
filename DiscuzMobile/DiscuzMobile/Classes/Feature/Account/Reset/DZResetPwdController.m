@@ -14,7 +14,6 @@
 
 @interface DZResetPwdController ()
 @property (nonatomic,strong) DZResetPwdView *resetView;
-@property (nonatomic, copy) NSString *bbrulestxt;
 @end
 
 @implementation DZResetPwdController
@@ -42,7 +41,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController];
 }
 
 - (void)tapAction {

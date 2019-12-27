@@ -32,16 +32,10 @@
     self.contentLabel.numberOfLines = 0;
     self.contentLabel.font = [DZFontSize HomecellNameFontSize16];
     [self.view addSubview:self.contentLabel];
-    
+//    bbsrule_discuz
     NSString *fileName = DZ_BBSRULE;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
-    NSString *strp = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
-    if ([DataCheck isValidString:self.bbrulestxt]) {
-        self.contentLabel.text = self.bbrulestxt;
-    } else {
-        self.contentLabel.text = strp;
-    }
+    self.contentLabel.text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
     CGSize messageSize = [self.contentLabel.text sizeWithFont:[DZFontSize HomecellNameFontSize16] maxSize:CGSizeMake(KScreenWidth - 40, CGFLOAT_MAX)];
     self.contentLabel.frame = CGRectMake(20, 15, messageSize.width, messageSize.height);

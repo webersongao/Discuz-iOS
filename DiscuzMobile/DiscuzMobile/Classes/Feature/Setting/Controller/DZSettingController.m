@@ -147,7 +147,7 @@
 }
 
 - (void)userTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:nil];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController];
 }
 
 #pragma mark - 无图浏览设置

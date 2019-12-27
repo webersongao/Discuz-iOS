@@ -64,11 +64,11 @@
  
  @param frontString 前半段文字
  @param textColor 前半段文字颜色
- @param FontSize 前半段字体大小
+ @param Font 前半段字体大小
  
  @param endString 后半段文字
  @param endtextColor 后半段文字颜色
- @param endFontSize 后半段字号
+ @param endFont 后半段字号
  @param lineSpacing 行间距
  */
 +(NSMutableAttributedString *)attributeTextWithFrontString:(NSString *)frontString textColor:(UIColor*)textColor Font:(UIFont *)Font endString:(NSString *)endString endtextColor:(UIColor*)endtextColor endFont:(UIFont *)endFont LineSpaceing:(int)lineSpacing;
@@ -77,15 +77,15 @@
 /**
  局部可点击的富文本
  
- @param frontString 正常显示的文字
- @param textColor 正常的文字颜色
- @param FontSize 正常的文字字号
+ @param normalString 正常显示的文字
+ @param normalColor 正常的文字颜色
+ @param normalSize 正常的文字字号
  @param lineSpacing 文字间距
  @param tapString 可点击的文字
  @param tapTextColor 点击文字颜色
  @param tapActionBlock 点击的block事件
  */
-+(NSMutableAttributedString *)attributeTextWithNormalString:(NSString *)normalString normalColor:(UIColor*)normalColor normalSize:(CGFloat)normalSize LineSpaceing:(int)lineSpacing tapString:(NSString *)tapString tapTextColor:(UIColor*)tapTextColor tapActionBlock:(void(^)())tapActionBlock;
++(NSMutableAttributedString *)attributeTextWithNormalString:(NSString *)normalString normalColor:(UIColor*)normalColor normalSize:(CGFloat)normalSize LineSpaceing:(int)lineSpacing tapString:(NSString *)tapString tapTextColor:(UIColor*)tapTextColor tapActionBlock:(void(^)(void))tapActionBlock;
 
 /**
  带有删除线的富文本

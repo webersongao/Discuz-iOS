@@ -15,7 +15,6 @@
 
 @interface DZRegisterController ()
 @property (nonatomic,strong) DZRegisterView *registerView;
-@property (nonatomic, copy) NSString *bbrulestxt;
 @end
 
 @implementation DZRegisterController
@@ -62,7 +61,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController];
 }
 
 #pragma mark - 验证码
@@ -74,9 +73,6 @@
             }];
             self.registerView.authCodeView.hidden = NO;
         }
-        
-        self.bbrulestxt = @"WBS 用户须知丢啦，你自己找去";
-        
         [self loadSeccodeImage];
     } failure:^(NSError *error) {
         [self showServerError:error];
