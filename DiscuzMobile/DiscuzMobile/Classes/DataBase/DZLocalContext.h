@@ -13,11 +13,11 @@
 
 + (DZLocalContext *)shared;
 
-- (BOOL)removeLocalUser;
+- (BOOL)removeLocalGLoabalInfo;
 
-- (BOOL)updateLocalUser:(DZGlobalModel *)user;
+- (BOOL)updateLocalGlobal:(DZGlobalModel *)global;
 
--(DZGlobalModel *)GetLocalUserInfo;
+-(DZGlobalModel *)GetLocalGlobalInfo;
 
 
 

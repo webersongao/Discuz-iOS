@@ -63,12 +63,12 @@ NSString * const domainName = @"name";
         UITextField *domainTextField = alertController.textFields.lastObject;
         if (![DataCheck isValidString:nameTextField.text]) {
             [MBProgressHUD showInfo:@"请输入名称"];
-            [self presentViewController:alertController animated:YES completion:nil];
+            [self showDetailViewController:alertController sender:nil];
             return;
         }
         if (![DataCheck isValidString:domainTextField.text]) {
             [MBProgressHUD showInfo:@"请输入域名"];
-            [self presentViewController:alertController animated:YES completion:nil];
+            [self showDetailViewController:alertController sender:nil];
             return;
         }
         NSString *domainString = domainTextField.text;
@@ -88,7 +88,7 @@ NSString * const domainName = @"name";
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:doneAction];
     [alertController addAction:cancelAction];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self showDetailViewController:alertController sender:nil];
     
 }
 

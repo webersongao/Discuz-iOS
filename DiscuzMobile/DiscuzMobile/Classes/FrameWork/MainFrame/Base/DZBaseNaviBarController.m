@@ -194,7 +194,7 @@
     NSArray *viewcontrollers = self.navigationController.viewControllers;
     
     if (viewcontrollers.count > 1) {
-        isPresent = (self.navigationController.topViewController == self); //push方式
+        isPresent = !(self.navigationController.topViewController == self); //push方式
     }else{
         isPresent = YES;  // modal方式
     }

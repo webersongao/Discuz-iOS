@@ -55,7 +55,7 @@
 }
 
 - (void)registerBindBtnClick {
-    [[DZMobileCtrl sharedCtrl] PushToAccountRegisterController];
+    [[DZMobileCtrl sharedCtrl] PresentRegisterController];
 }
 
 - (void)boundBtnClick {

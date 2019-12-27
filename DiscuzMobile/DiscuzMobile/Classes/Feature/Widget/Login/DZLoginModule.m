@@ -34,7 +34,7 @@ NSString * const CookieValue = @"COOKIEVALU";
     
     // 普通登录或者登录成功
     [DZMobileCtrl sharedCtrl].Global = resModel.Variables;
-    [DZLoginModule saveLocalUserInfo:resModel.Variables];
+    [DZLoginModule saveLocalGlobalInfo:resModel.Variables];
     NSString *cookirStr = [DZMobileCtrl sharedCtrl].Global.authKey;
     for (NSHTTPCookie * cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         if ([[cookie name] isEqualToString:checkNull(cookirStr)]) {
@@ -48,14 +48,13 @@ NSString * const CookieValue = @"COOKIEVALU";
  * 判断是否登录
  */
 + (BOOL)isLogged {
-    NSString *uid = [DZMobileCtrl sharedCtrl].Global.member_uid;
     NSString *auth = [DZMobileCtrl sharedCtrl].Global.auth;
+    NSString *uid = [DZMobileCtrl sharedCtrl].Global.member_uid;
     if ([DataCheck isValidString:uid] && [DataCheck isValidString:auth]) {
         return YES;
     }
     return NO;
 }
-
 
 /*
  * 退出登录
@@ -67,7 +66,7 @@ NSString * const CookieValue = @"COOKIEVALU";
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }
     //  LoginFile
-    [[DZLocalContext shared] removeLocalUser];
+    [[DZLocalContext shared] removeLocalGLoabalInfo];
     [DZShareCenter shareInstance].bloginModel = nil;
     
 }
@@ -77,7 +76,7 @@ NSString * const CookieValue = @"COOKIEVALU";
  */
 
 + (void)setAutoLogin {
-   DZGlobalModel *user = [[DZLocalContext shared] GetLocalUserInfo];
+   DZGlobalModel *user = [[DZLocalContext shared] GetLocalGlobalInfo];
     if (user.member_uid.length) {
         [self setHttpCookie:[self getCookie]];
     }
@@ -86,8 +85,8 @@ NSString * const CookieValue = @"COOKIEVALU";
 /*
  * 保存登录信息到本地
  */
-+ (void)saveLocalUserInfo:(DZGlobalModel *)varinfo {
-    [[DZLocalContext shared] updateLocalUser:varinfo];
++ (void)saveLocalGlobalInfo:(DZGlobalModel *)varinfo {
+    [[DZLocalContext shared] updateLocalGlobal:varinfo];
 }
 
 // 获取当前登录的uid

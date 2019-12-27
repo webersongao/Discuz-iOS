@@ -32,7 +32,7 @@ static DZLocalContext *infoContext;
     return self;
 }
 
--(BOOL)removeLocalUser{
+-(BOOL)removeLocalGLoabalInfo{
     __block BOOL result = YES;
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
         result = [database executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@", kDZUserTable]];
@@ -41,15 +41,15 @@ static DZLocalContext *infoContext;
     return result;
 }
 
-- (BOOL)updateLocalUser:(DZGlobalModel *)user {
-    BOOL ret = [self updateObject:user];
+- (BOOL)updateLocalGlobal:(DZGlobalModel *)global {
+    BOOL ret = [self updateObject:global];
     if (!ret) {
-      ret = [self addObject:user];
+      ret = [self addObject:global];
     }
     return ret;
 }
 
--(DZGlobalModel *)GetLocalUserInfo{
+-(DZGlobalModel *)GetLocalGlobalInfo{
     __block NSMutableArray *userArr = [NSMutableArray array];
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
         FMResultSet *resultSet = [database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ order by rowID desc",kDZUserTable]];

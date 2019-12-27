@@ -49,7 +49,7 @@
 - (void)PresentViewController:(UIViewController *)CtrlVC{
     if (CtrlVC) {
         CtrlVC.modalPresentationStyle = UIModalPresentationFullScreen;
-        [self.mainNavi.topViewController presentViewController:CtrlVC animated:YES completion:nil];
+        [self.mainNavi.topViewController showViewController:CtrlVC sender:nil];
     }
 }
 
@@ -107,13 +107,13 @@
     DZLoginController *loginVC = [[DZLoginController alloc] init];
     loginVC.isTabbarSelected = NO;
     loginVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.mainNavi.topViewController presentViewController:loginVC animated:YES completion:nil];
+    [self.mainNavi.topViewController showViewController:loginVC sender:nil];
 }
 
 - (void)PresentRegisterController{
     DZRegisterController *registVC = [[DZRegisterController alloc] init];
     registVC.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.mainNavi.topViewController presentViewController:registVC animated:YES completion:nil];
+    [self.mainNavi.topViewController showViewController:registVC sender:nil];
 }
 
 - (void)PresentFastPostController{
@@ -252,12 +252,6 @@
 -(void)PushToJudgeBindController {
     DZJudgeBoundController * judegVC =[[DZJudgeBoundController alloc]init];
     [self.mainNavi pushViewController:judegVC animated:YES];
-}
-
-/// 用户注册
--(void)PushToAccountRegisterController {
-    DZRegisterController * regVC = [[DZRegisterController alloc] init];
-    [self.mainNavi pushViewController:regVC animated:YES];
 }
 
 /// 发布帖子

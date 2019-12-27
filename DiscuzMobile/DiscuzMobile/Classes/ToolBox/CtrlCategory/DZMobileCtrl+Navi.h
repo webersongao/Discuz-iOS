@@ -93,9 +93,6 @@
 /// 账号绑定状态
 -(void)PushToJudgeBindController;
 
-/// 用户注册
--(void)PushToAccountRegisterController;
-
 /// 发布帖子
 -(void)PushToThreadPostController:(NSString *)fid thread:(DZBaseAuthModel *)threadModel type:(PostType)type;
 
