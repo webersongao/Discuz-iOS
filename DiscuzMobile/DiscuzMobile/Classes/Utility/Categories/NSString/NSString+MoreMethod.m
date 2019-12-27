@@ -172,11 +172,10 @@
 }
 
 - (NSString *)makeDomain {
-    if ([self ifUrlContainDomain]) {
+    if ([self isUrlContainDomain]) {
         return self;
     }
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *domain = [userDefault objectForKey:@"domain"];
+    NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:KRoot_Domainkey];
     NSString *urlStr = self;
     if ([DataCheck isValidString:domain]) {
         urlStr = [NSString stringWithFormat:@"%@%@",domain,urlStr];
@@ -186,7 +185,7 @@
     return urlStr;
 }
 
-- (BOOL)ifUrlContainDomain {
+- (BOOL)isUrlContainDomain {
     return  (![self hasPrefix:@"http://"] && ![self hasPrefix:@"https://"]) ? NO : YES;
 }
 

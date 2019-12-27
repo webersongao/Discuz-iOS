@@ -1,5 +1,5 @@
 //
-//  SendEmailHelper.h
+//  DZEmailHelper.h
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/4/8.
@@ -8,9 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SendEmailHelper : NSObject
+@interface DZEmailHelper : NSObject
 
 @property (nonatomic, weak) UINavigationController *navigationController;
-+ (instancetype)shareInstance;
+
++ (instancetype)Helper;
+
 - (void)prepareSendEmail;
+
+
 @end
+
+
+
+
+

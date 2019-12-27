@@ -9,10 +9,11 @@
 #import "DZDomainListController.h"
 #import "UIAlertController+Extension.h"
 
-NSString * const domainList = @"domainList";
+NSString * const KDomainListKey = @"domainLisKey";
+NSString * const KLocalDomainList = @"local_DomainList";
 
-NSString * const domain = @"domain";
-NSString * const domainName = @"name";
+NSString * const KDomainkey = @"domain";
+NSString * const KDomainNameKey = @"name";
 
 @interface DZDomainListController ()
 
@@ -24,29 +25,9 @@ NSString * const domainName = @"name";
     [super viewDidLoad];
     [self configNaviBar:@"添加" type:NaviItemText Direction:NaviDirectionRight];
     
-    NSDictionary *dic = [[DZFileManager shareInstance] readDocumentPlist:domainList];
-    if ([DataCheck isValidDict:dic] && [DataCheck isValidArray:dic[domain]]) {
-        self.dataSourceArr = [NSMutableArray arrayWithArray:dic[domain]];
-    } else {
-        
-        NSDictionary *disDz = @{domain:@"https://bbs.comsenz-service.com/",
-                                domainName:@"掌上论坛",
-                                };
-        NSDictionary *devDz = @{domain:@"https://guanjia.comsenz-service.com/",
-                                domainName:@"管家测试",
-                                };
-        NSDictionary *wbDZ = @{domain:@"http://demo.516680.com/",
-                               domainName:@"卫博生DZ测试站",
-                               };
-        NSDictionary *bird = @{domain:@"https://www.birdnet.com/",
-                               domainName:@"鸟网",
-                               };
-        NSArray *domainArray = @[disDz,devDz,bird,wbDZ];
-        [[DZFileManager shareInstance] writeDocumentPlist:@{domain:domainArray} fileName:@"domainList"];
-        self.dataSourceArr = domainArray.mutableCopy;
-    }
     [self.view addSubview:self.tableView];
     self.tableView.frame = KView_OutNavi_Bounds;
+    self.dataSourceArr = [NSMutableArray arrayWithArray:[self localDomainData]];
 }
 
 - (void)rightBarBtnClick {
@@ -76,11 +57,11 @@ NSString * const domainName = @"name";
             domainString = [domainString stringByAppendingString:@"/"];
         }
         
-        NSDictionary *dic = @{domainName:nameTextField.text,
-                              domain:domainString
+        NSDictionary *dic = @{KDomainNameKey:nameTextField.text,
+                              KDomainkey:domainString
                               };
         [self.dataSourceArr addObject:dic];
-        [[DZFileManager shareInstance] writeDocumentPlist:@{domain:self.dataSourceArr} fileName:@"domainList"];
+        [[DZFileManager shareInstance] writeDocumentPlist:@{KDomainListKey:self.dataSourceArr} fileName:KDomainListKey];
         [DZLoginModule signout];
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_DomainUrlChange_Notify object:nil];
         [self.tableView reloadData];
@@ -105,15 +86,14 @@ NSString * const domainName = @"name";
     }
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
     
-    NSString *detail = domainDic[domain];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowDomain = [userDefault stringForKey:domain];
+    NSString *detail = domainDic[KDomainkey];
+    NSString *nowDomain = [[NSUserDefaults standardUserDefaults] stringForKey:KRoot_Domainkey];
     if ([detail isEqualToString:nowDomain]) {
-        detail = [detail stringByAppendingString:@"(当前)"];
+        detail = [detail stringByAppendingString:@"(当前) "];
     } else if (nowDomain == nil && [detail isEqualToString:DZ_BASEURL]) {
-        detail = [detail stringByAppendingString:@"(当前)"];
+        detail = [detail stringByAppendingString:@"(当前) "];
     }
-    cell.textLabel.text = domainDic[domainName];
+    cell.textLabel.text = domainDic[KDomainNameKey];
     cell.detailTextLabel.text = detail;
     
     return cell;
@@ -123,13 +103,12 @@ NSString * const domainName = @"name";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
-    NSString *detail = domainDic[domain];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowDomain = [userDefault stringForKey:domain];
+    NSString *detail = domainDic[KDomainkey];
+    NSString *nowDomain = [[NSUserDefaults standardUserDefaults] stringForKey:KRoot_Domainkey];
     
     if (![detail isEqualToString:DZ_BASEURL] || !([DataCheck isValidString:nowDomain] && [nowDomain isEqualToString:detail])) {
-        [userDefault setObject:detail forKey:domain];
-        [userDefault synchronize];
+        [[NSUserDefaults standardUserDefaults] setObject:detail forKey:KRoot_Domainkey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [DZLoginModule signout];
         [[NSNotificationCenter defaultCenter] postNotificationName:DZ_DomainUrlChange_Notify object:Nil];
         [tableView reloadData];
@@ -137,7 +116,6 @@ NSString * const domainName = @"name";
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return UITableViewCellEditingStyleDelete;
 }
 
@@ -146,9 +124,7 @@ NSString * const domainName = @"name";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
         [self deleteDomain:indexPath];
     }
 }
@@ -156,19 +132,49 @@ NSString * const domainName = @"name";
 - (void)deleteDomain:(NSIndexPath *)indexPath {
     
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
-    NSString *detail = domainDic[domain];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowDomain = [userDefault objectForKey:domain];
-    if ([detail isEqualToString:nowDomain]) {
-        [userDefault setObject:nil forKey:domain];
-        [userDefault synchronize];
+    NSString *nowDomain = [[NSUserDefaults standardUserDefaults] objectForKey:KRoot_Domainkey];
+    if ([domainDic[KDomainkey] isEqualToString:nowDomain]) {
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:KRoot_Domainkey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     [self.dataSourceArr removeObjectAtIndex:indexPath.row];
-    [[DZFileManager shareInstance] writeDocumentPlist:@{domain:self.dataSourceArr} fileName:@"domainList"];
+    [[DZFileManager shareInstance] writeDocumentPlist:@{KDomainListKey:self.dataSourceArr} fileName:KDomainListKey];
     
     [self.tableView beginUpdates];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView endUpdates];
 }
 
+
+-(NSArray *)localDomainData{
+    NSArray *domainArray = nil;
+    NSDictionary *dic = [[DZFileManager shareInstance] readDocumentPlist:KDomainListKey];
+    if ([DataCheck isValidDict:dic] && [DataCheck isValidArray:dic[KDomainListKey]]) {
+        domainArray = [dic arrayForKey:KDomainListKey];
+    } else {
+        NSDictionary *disDz = @{KDomainkey:@"https://bbs.comsenz-service.com/",
+                                KDomainNameKey:@"掌上论坛",
+                                };
+        NSDictionary *devDz = @{KDomainkey:@"https://guanjia.comsenz-service.com/",
+                                KDomainNameKey:@"管家测试",
+                                };
+        NSDictionary *wbDZ = @{KDomainkey:@"http://demo.516680.com/",
+                               KDomainNameKey:@"卫博生DZ测试站",
+                               };
+        NSDictionary *bird = @{KDomainkey:@"https://www.birdnet.com/",
+                               KDomainNameKey:@"鸟网",
+                               };
+        domainArray = @[disDz,devDz,bird,wbDZ];
+        [[DZFileManager shareInstance] writeDocumentPlist:@{KDomainListKey:domainArray} fileName:KDomainListKey];
+    }
+    
+    return domainArray;
+}
+
 @end
+
+
+
+
+
+

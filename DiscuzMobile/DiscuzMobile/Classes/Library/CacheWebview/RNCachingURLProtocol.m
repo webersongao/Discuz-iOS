@@ -109,7 +109,7 @@ static NSSet *RNCachingSupportedSchemes;
 {
     
     NSString *url = self.request.URL.absoluteString;
-    if ([url ifUrlContainDomain]) {
+    if ([url isUrlContainDomain]) {
         if ([url containsString:@".jpg"] || [url containsString:@".jpeg"] || [url containsString:@".png"])  {
             
             NSString *defaultPath = [[SDImageCache sharedImageCache] cachePathForKey:url];

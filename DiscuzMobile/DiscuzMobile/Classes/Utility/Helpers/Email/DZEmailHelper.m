@@ -1,32 +1,33 @@
 //
-//  SendEmailHelper.m
+//  DZEmailHelper.m
 //  DiscuzMobile
 //
 //  Created by ZhangJitao on 2018/4/8.
 //  Copyright © 2018年 comsenz-service.com.  All rights reserved.
 //
 
-#import "SendEmailHelper.h"
+#import "DZEmailHelper.h"
 #import <MessageUI/MessageUI.h>
 #import "UIDevice+Extension.h"
 
-@interface SendEmailHelper()<MFMailComposeViewControllerDelegate>
+@interface DZEmailHelper()<MFMailComposeViewControllerDelegate>
 
 @end
 
-@implementation SendEmailHelper
+@implementation DZEmailHelper
 
-+ (instancetype)shareInstance {
-    static SendEmailHelper *sendHelper = nil;
++ (instancetype)Helper {
+    static DZEmailHelper *sendHelper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sendHelper = [[SendEmailHelper alloc] init];
+        sendHelper = [[DZEmailHelper alloc] init];
     });
     return sendHelper;
 }
 
 - (void)prepareSendEmail {
-    if (MFMailComposeViewController.canSendMail == YES) {
+    if ([MFMailComposeViewController canSendMail]) {
+        
         NSString *deviceName = [UIDevice currentDevice].name;
         NSString *device = [UIDevice deviceVersion];
         NSString *systemVersion = [UIDevice currentDevice].systemVersion;

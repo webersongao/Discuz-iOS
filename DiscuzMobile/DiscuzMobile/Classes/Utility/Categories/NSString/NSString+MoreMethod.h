@@ -42,7 +42,7 @@
 - (NSString *)makeDomain;
 
 // 判断链接是否包含域名
-- (BOOL)ifUrlContainDomain;
+- (BOOL)isUrlContainDomain;
 
 // 计算两个时间字符串 开始时间是否早于结束时间 2016-12-05 00:00
 - (BOOL)checkStarttimeAndEndtime:(NSString *)endtime;

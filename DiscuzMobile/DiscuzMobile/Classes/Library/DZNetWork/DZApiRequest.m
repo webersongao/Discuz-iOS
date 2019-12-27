@@ -60,8 +60,7 @@
 + (NSString *)checkUrl:(NSString *)urlStr {
     
     urlStr = [NSString stringWithFormat:@"api/mobile/%@",urlStr];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *domain = [userDefault stringForKey:@"domain"];
+    NSString *domain = [[NSUserDefaults standardUserDefaults] stringForKey:KRoot_Domainkey];
     if ([DataCheck isValidString:domain]) {
         urlStr = [NSString stringWithFormat:@"%@%@",domain,urlStr];
     } else {

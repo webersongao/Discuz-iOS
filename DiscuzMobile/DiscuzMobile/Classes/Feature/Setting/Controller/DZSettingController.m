@@ -11,7 +11,7 @@
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 #import "DZPushCenter.h"
-#import "SendEmailHelper.h"
+#import "DZEmailHelper.h"
 
 @interface DZSettingController ()
 @property (nonatomic,copy) NSString * strcache;
@@ -126,8 +126,8 @@
 }
 
 - (void)sendEmail {
-    [SendEmailHelper shareInstance].navigationController = self.navigationController;
-    [[SendEmailHelper shareInstance] prepareSendEmail];
+    [DZEmailHelper Helper].navigationController = self.navigationController;
+    [[DZEmailHelper Helper] prepareSendEmail];
 }
 
 - (void)setDomain {

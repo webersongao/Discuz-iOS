@@ -443,7 +443,7 @@
 		70FE716F23AB728800F20BE3 /* DZThreadListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE716E23AB728800F20BE3 /* DZThreadListCell.m */; };
 		70FE717323AB756A00F20BE3 /* DZThreadAttach.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FE717223AB756A00F20BE3 /* DZThreadAttach.m */; };
 		9407BC521FC1072500D4E26B /* AsyncAppendency.m in Sources */ = {isa = PBXBuildFile; fileRef = 9407BC511FC1072500D4E26B /* AsyncAppendency.m */; };
-		940BB6ED2079F799001BC1D1 /* SendEmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BB6EC2079F799001BC1D1 /* SendEmailHelper.m */; };
+		940BB6ED2079F799001BC1D1 /* DZEmailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 940BB6EC2079F799001BC1D1 /* DZEmailHelper.m */; };
 		940BB6F02079F7C7001BC1D1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D44F702079C490000DA603 /* MessageUI.framework */; };
 		941111061FDFD14C0033E94C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D1C8F21DD2BE8E00B835B7 /* Assets.xcassets */; };
 		94171FF42025665E00A1328B /* JTCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94171FF32025665E00A1328B /* JTCacheManager.m */; };
@@ -1330,8 +1330,8 @@
 		8E99F76F682D3A882BACAD04 /* Pods-DiscuzMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiscuzMobile.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		9407BC501FC1072500D4E26B /* AsyncAppendency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAppendency.h; sourceTree = "<group>"; };
 		9407BC511FC1072500D4E26B /* AsyncAppendency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncAppendency.m; sourceTree = "<group>"; };
-		940BB6EB2079F799001BC1D1 /* SendEmailHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendEmailHelper.h; sourceTree = "<group>"; };
-		940BB6EC2079F799001BC1D1 /* SendEmailHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendEmailHelper.m; sourceTree = "<group>"; };
+		940BB6EB2079F799001BC1D1 /* DZEmailHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZEmailHelper.h; sourceTree = "<group>"; };
+		940BB6EC2079F799001BC1D1 /* DZEmailHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZEmailHelper.m; sourceTree = "<group>"; };
 		94171FF22025665E00A1328B /* JTCacheManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTCacheManager.h; sourceTree = "<group>"; };
 		94171FF32025665E00A1328B /* JTCacheManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTCacheManager.m; sourceTree = "<group>"; };
 		94195AEB20246E120024D074 /* DZURLStrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZURLStrings.h; sourceTree = "<group>"; };
@@ -3949,8 +3949,8 @@
 		9438F07522F3E3070093EB0B /* Email */ = {
 			isa = PBXGroup;
 			children = (
-				940BB6EB2079F799001BC1D1 /* SendEmailHelper.h */,
-				940BB6EC2079F799001BC1D1 /* SendEmailHelper.m */,
+				940BB6EB2079F799001BC1D1 /* DZEmailHelper.h */,
+				940BB6EC2079F799001BC1D1 /* DZEmailHelper.m */,
 			);
 			path = Email;
 			sourceTree = "<group>";
@@ -4816,7 +4816,7 @@
 				70F9F8DF237AA72C0067B308 /* UIView+Extension.m in Sources */,
 				709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */,
 				947ECB0B2064D403002D3536 /* JFPhotoView.m in Sources */,
-				940BB6ED2079F799001BC1D1 /* SendEmailHelper.m in Sources */,
+				940BB6ED2079F799001BC1D1 /* DZEmailHelper.m in Sources */,
 				706212A2237936C900130B9D /* DZForumTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

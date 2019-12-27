@@ -15,3 +15,4 @@ typedef NS_ENUM(NSUInteger, PostType) {
     post_debate,
 };
 
+#define KRoot_Domainkey      @"root_domain"
