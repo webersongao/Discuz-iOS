@@ -1570,22 +1570,21 @@
 		277EDC511E6D5B8D00E8F0E1 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
-				709A730C2387E7FB00DF04CE /* DZRefresh */,
-				709622C1238BC6E900AF657F /* NaviSegment */,
-				9438F07022F3E1FA0093EB0B /* ImagePicker */,
-				7065AE7523868782009B6DA7 /* PRNetWorkErrorView */,
-				7066D8CF238274A000017168 /* EmptyAlertView */,
-				7066D8CE2382748700017168 /* DropDownView */,
-				7066D8CD2382746D00017168 /* ZHPickView */,
-				7066D8CC2382741D00017168 /* InstroductionView */,
 				94430F3122FBB69E008E3F67 /* SecCode */,
+				709A730C2387E7FB00DF04CE /* DZRefresh */,
+				9438F07022F3E1FA0093EB0B /* ImagePicker */,
+				7066D8CD2382746D00017168 /* ZHPickView */,
 				94430F3222FBB739008E3F67 /* RadioCheck */,
 				277EDC721E6D5BD700E8F0E1 /* HpTextView */,
+				704E5DDB23B5A1F5003FA510 /* PlaceHolder */,
+				709622C1238BC6E900AF657F /* NaviSegment */,
 				277EDC5D1E6D5B8D00E8F0E1 /* LaunchImage */,
+				7066D8CE2382748700017168 /* DropDownView */,
+				7066D8CF238274A000017168 /* EmptyAlertView */,
+				7066D8CC2382741D00017168 /* InstroductionView */,
 				275BABC41F346ECA00DB804B /* AddressSelectView */,
+				7065AE7523868782009B6DA7 /* PRNetWorkErrorView */,
 				277EDC581E6D5B8D00E8F0E1 /* JTSegmentedControl */,
-				277EDC801E6D5BD700E8F0E1 /* DZPlaceholderTextView.h */,
-				277EDC811E6D5BD700E8F0E1 /* DZPlaceholderTextView.m */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -2120,6 +2119,45 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		704E5DD823B5A048003FA510 /* Reset */ = {
+			isa = PBXGroup;
+			children = (
+				706211A5237936C800130B9D /* DZResetPwdController.h */,
+				706211A1237936C800130B9D /* DZResetPwdController.m */,
+				704E5DDA23B5A084003FA510 /* View */,
+			);
+			path = Reset;
+			sourceTree = "<group>";
+		};
+		704E5DD923B5A071003FA510 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7062115C237936C800130B9D /* DZUserBoundView.h */,
+				7062115E237936C800130B9D /* DZUserBoundView.m */,
+				706211AC237936C800130B9D /* DZJudgeBoundView.h */,
+				706211B0237936C800130B9D /* DZJudgeBoundView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		704E5DDA23B5A084003FA510 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				706211AE237936C800130B9D /* DZResetPwdView.h */,
+				706211B2237936C800130B9D /* DZResetPwdView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		704E5DDB23B5A1F5003FA510 /* PlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				277EDC801E6D5BD700E8F0E1 /* DZPlaceholderTextView.h */,
+				277EDC811E6D5BD700E8F0E1 /* DZPlaceholderTextView.m */,
+			);
+			path = PlaceHolder;
+			sourceTree = "<group>";
+		};
 		705BB912238A6C2C002C505A /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -2428,8 +2466,6 @@
 			children = (
 				7062110B237936C800130B9D /* DZLoginModule.h */,
 				7062110E237936C800130B9D /* DZLoginModule.m */,
-				7062110D237936C800130B9D /* DZLoginResModel.h */,
-				70621110237936C800130B9D /* DZLoginResModel.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2486,10 +2522,11 @@
 		7062115A237936C800130B9D /* LoginBound */ = {
 			isa = PBXGroup;
 			children = (
-				7062115C237936C800130B9D /* DZUserBoundView.h */,
-				7062115E237936C800130B9D /* DZUserBoundView.m */,
+				704E5DD923B5A071003FA510 /* View */,
 				7062115B237936C800130B9D /* DZUserBoundController.h */,
 				7062115D237936C800130B9D /* DZUserBoundController.m */,
+				706211A3237936C800130B9D /* DZJudgeBoundController.h */,
+				706211A0237936C800130B9D /* DZJudgeBoundController.m */,
 			);
 			path = LoginBound;
 			sourceTree = "<group>";
@@ -2605,12 +2642,8 @@
 			children = (
 				706211A4237936C800130B9D /* DZLoginController.h */,
 				7062119F237936C800130B9D /* DZLoginController.m */,
-				706211A5237936C800130B9D /* DZResetPwdController.h */,
-				706211A1237936C800130B9D /* DZResetPwdController.m */,
 				7062119E237936C800130B9D /* DZLoginBaseController.h */,
 				706211A2237936C800130B9D /* DZLoginBaseController.m */,
-				706211A3237936C800130B9D /* DZJudgeBoundController.h */,
-				706211A0237936C800130B9D /* DZJudgeBoundController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2620,6 +2653,8 @@
 			children = (
 				706211A7237936C800130B9D /* DZLoginModel.h */,
 				706211A8237936C800130B9D /* DZLoginModel.m */,
+				7062110D237936C800130B9D /* DZLoginResModel.h */,
+				70621110237936C800130B9D /* DZLoginResModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2631,10 +2666,6 @@
 				706211AF237936C800130B9D /* DZLoginView.m */,
 				706211AB237936C800130B9D /* DZLoginTextField.h */,
 				706211B1237936C800130B9D /* DZLoginTextField.m */,
-				706211AE237936C800130B9D /* DZResetPwdView.h */,
-				706211B2237936C800130B9D /* DZResetPwdView.m */,
-				706211AC237936C800130B9D /* DZJudgeBoundView.h */,
-				706211B0237936C800130B9D /* DZJudgeBoundView.m */,
 				706211AD237936C800130B9D /* DZWeb2AuthCodeView.h */,
 				706211B3237936C800130B9D /* DZWeb2AuthCodeView.m */,
 			);
@@ -2864,6 +2895,7 @@
 			isa = PBXGroup;
 			children = (
 				708AED5B238E5687000A4397 /* NetTool */,
+				704E5DD823B5A048003FA510 /* Reset */,
 				7062119C237936C800130B9D /* Login */,
 				7062114F237936C800130B9D /* Register */,
 				7062115A237936C800130B9D /* LoginBound */,
