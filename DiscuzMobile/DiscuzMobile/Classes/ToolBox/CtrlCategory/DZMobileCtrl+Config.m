@@ -12,7 +12,7 @@
 
 // 进行数据的初始化配置
 -(void)cofigLocalDataInfo{
-    self.User = [DZLocalContext shared].GetLocalUserInfo;
+    self.Global = [DZLocalContext shared].GetLocalUserInfo;
 }
 
 @end

@@ -12,9 +12,9 @@
 @interface DZMobileCtrl (Update)
 
 
--(void)updateUserFormHash:(NSString *)formHash;
+-(void)updateGlobalFormHash:(NSString *)formHash;
 
--(void)updateUserModel:(DZUserModel *)UserModel;
+-(void)updateGlobalModel:(DZGlobalModel *)GlobalModel;
 
 @end
 

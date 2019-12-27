@@ -149,7 +149,7 @@ NSString * const debugPassword = @"debugPassword";
         [dic setValue:[dicvalue objectForKey:self.loginView.securityView.userNameTextField.text] forKey:@"questionid"];
         [dic setValue:self.loginView.answerView.userNameTextField.text forKey:@"answer"];
     }
-    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     
     NSMutableDictionary *getData = [NSMutableDictionary dictionary];
     if ([DZShareCenter shareInstance].bloginModel.openid != nil) { // 三方登录过来的注册

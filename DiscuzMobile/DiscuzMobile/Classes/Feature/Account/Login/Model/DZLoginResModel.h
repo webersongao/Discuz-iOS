@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZBaseResModel.h"
 
 @interface DZRegInputModel : NSObject
@@ -28,6 +28,6 @@
 
 @interface DZLoginResModel : DZBaseResModel
 
-@property (nonatomic, strong) DZUserModel *Variables;  //!< 属性注释
+@property (nonatomic, strong) DZGlobalModel *Variables;  //!< 属性注释
 
 @end

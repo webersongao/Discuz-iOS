@@ -150,7 +150,7 @@
 }
 
 - (void)thirdConnectWithService:(NSDictionary *)dic getData:(NSDictionary *)getData {
-    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     [dic setValue:@"yes" forKey:@"loginsubmit"];
     [self.HUD showLoadingMessag:@"" toView:self.view];
     KWEAKSELF

@@ -63,7 +63,7 @@
         DZCheckModel *model = [DZCheckModel modelWithJSON:responseObject];
         if (model.regname.length) {
             self.regUrl = [NSString stringWithFormat:@"%@&mod=%@",DZ_Url_Register,model.regname];
-            [[DZMobileCtrl sharedCtrl] updateUserFormHash:model.formhash];
+            [[DZMobileCtrl sharedCtrl] updateGlobalFormHash:model.formhash];
             success?success():nil;
         }else{
             failure?failure():nil;
@@ -143,7 +143,7 @@
         return;
     }
     
-    NSDictionary *postData = @{@"unbind":@"yes",@"type":Type,@"formhash":[DZMobileCtrl sharedCtrl].User.formhash};
+    NSDictionary *postData = @{@"unbind":@"yes",@"type":Type,@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash};
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         request.methodType = JTMethodTypePOST;

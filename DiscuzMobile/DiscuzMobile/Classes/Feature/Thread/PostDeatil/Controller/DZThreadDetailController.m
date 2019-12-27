@@ -167,7 +167,7 @@
     }
     
     NSDictionary *dic=@{@"hash":uploadhash,
-                        @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
+                        @"uid":[DZMobileCtrl sharedCtrl].Global.member_uid,
     };
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
@@ -708,7 +708,7 @@
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.detailView.emoKeyboard.textBarView.textView.text forKey:@"message"];
-    [dic setObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    [dic setObject:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     [dic setObject:self.threadModel.tid  forKey:@"tid"];
     // 引用回复 post 增加 两个参数
     if (_isReferenceReply) {

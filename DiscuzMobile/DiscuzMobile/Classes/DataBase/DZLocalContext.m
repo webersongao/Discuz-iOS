@@ -41,7 +41,7 @@ static DZLocalContext *infoContext;
     return result;
 }
 
-- (BOOL)updateLocalUser:(DZUserModel *)user {
+- (BOOL)updateLocalUser:(DZGlobalModel *)user {
     BOOL ret = [self updateObject:user];
     if (!ret) {
       ret = [self addObject:user];
@@ -49,18 +49,18 @@ static DZLocalContext *infoContext;
     return ret;
 }
 
--(DZUserModel *)GetLocalUserInfo{
+-(DZGlobalModel *)GetLocalUserInfo{
     __block NSMutableArray *userArr = [NSMutableArray array];
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
         FMResultSet *resultSet = [database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ order by rowID desc",kDZUserTable]];
         while ([resultSet next]) {
             NSDictionary *dict = [resultSet resultDictionary];
-            DZUserModel *  user = [DZUserModel modelWithJSON:dict];
+            DZGlobalModel *  user = [DZGlobalModel modelWithJSON:dict];
             [userArr addObject:user];
         }
         [resultSet close];
     }];
-    DZUserModel *user = userArr.firstObject;
+    DZGlobalModel *user = userArr.firstObject;
     if (user.auth.length && user.member_username.length) {
         return user;
     }else{

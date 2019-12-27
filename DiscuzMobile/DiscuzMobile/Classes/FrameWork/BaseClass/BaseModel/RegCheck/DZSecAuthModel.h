@@ -6,9 +6,9 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //  注册登录 安全验证
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
-@interface DZSecAuthModel : DZUserModel
+@interface DZSecAuthModel : DZGlobalModel
 
 @property (nonatomic, copy) NSString *sechash;  //!< sechash
 @property (nonatomic, copy) NSString *seccode;  //!< 验证码

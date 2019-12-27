@@ -104,14 +104,14 @@
     NSString *oldpassword = self.resetView.passwordView.userNameTextField.text;
     NSString *newpassword1 = self.resetView.newpasswordView.userNameTextField.text;
     NSString *newpassword2 = self.resetView.repassView.userNameTextField.text;
-    //    NSString *email = [DZMobileCtrl sharedCtrl].User.email;
+    //    NSString *email = [DZMobileCtrl sharedCtrl].Global.email;
     
     NSMutableDictionary *postDic = @{@"oldpassword":oldpassword,
                                      @"newpassword":newpassword1,
                                      @"newpassword2":newpassword2,
                                      //          @"emailnew":email?email:@"",
                                      @"passwordsubmit":@"true",
-                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash}.mutableCopy;
+                                     @"formhash":[DZMobileCtrl sharedCtrl].Global.formhash}.mutableCopy;
     if (self.verifyView.isyanzhengma) {
         [postDic setValue:self.resetView.authCodeView.textField.text forKey:@"seccodeverify"];
         [postDic setValue:self.verifyView.secureData.sechash forKey:@"sechash"];

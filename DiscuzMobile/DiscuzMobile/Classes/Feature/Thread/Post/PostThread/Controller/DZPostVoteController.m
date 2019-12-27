@@ -518,7 +518,7 @@ static int voteIndex = 0 ;
     }
     
     NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
-                        @"uid":[DZMobileCtrl sharedCtrl].User.member_uid,
+                        @"uid":[DZMobileCtrl sharedCtrl].Global.member_uid,
     };
     NSDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                             @"operation":@"poll"};

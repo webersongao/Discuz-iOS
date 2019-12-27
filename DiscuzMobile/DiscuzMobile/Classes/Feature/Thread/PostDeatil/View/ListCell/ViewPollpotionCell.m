@@ -59,7 +59,7 @@
     }
     NSURL * url =[NSURL URLWithString:[dic objectForKey:@"avatar"]];
     [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"noavatar_small"]];
-    if ([[DZMobileCtrl sharedCtrl].User.member_uid isEqualToString:uid]) {
+    if ([[DZMobileCtrl sharedCtrl].Global.member_uid isEqualToString:uid]) {
         _messageBtn.hidden = YES;
     } else {
         _messageBtn.hidden = NO;

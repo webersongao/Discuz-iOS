@@ -145,7 +145,7 @@
         [MBProgressHUD showInfo:@"账户填写信息异常，请检查后重试"];
         return;
     }
-    NSString *formhashStr = [DZMobileCtrl sharedCtrl].User.formhash;
+    NSString *formhashStr = [DZMobileCtrl sharedCtrl].Global.formhash;
     if (!formhashStr.length) {
         [MBProgressHUD showInfo:@"网络数据异常，请稍后重试"];
         return;
@@ -155,7 +155,7 @@
                                       regModel.password:password,
                                       regModel.password2:repass,
                                       regModel.email:email,
-                                      @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+                                      @"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                                       @"regsubmit":@"yes",
     }.mutableCopy;
     NSMutableDictionary *getData = [NSMutableDictionary dictionary];

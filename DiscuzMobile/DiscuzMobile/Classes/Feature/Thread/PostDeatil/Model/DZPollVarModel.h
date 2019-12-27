@@ -6,7 +6,7 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZBaseUser.h"
 #import "DZBaseResModel.h"
 
@@ -19,7 +19,7 @@
 @end
 
 
-@interface DZPollVarModel : DZUserModel
+@interface DZPollVarModel : DZGlobalModel
 
 @property (nonatomic, strong) DZPollviewvote *viewvote;  //!< 属性注释
 

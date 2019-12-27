@@ -7,7 +7,7 @@
 //
 
 #import "EFSQLiteContext.h"
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
 @interface DZLocalContext : EFSQLiteContext
 
@@ -15,9 +15,9 @@
 
 - (BOOL)removeLocalUser;
 
-- (BOOL)updateLocalUser:(DZUserModel *)user;
+- (BOOL)updateLocalUser:(DZGlobalModel *)user;
 
--(DZUserModel *)GetLocalUserInfo;
+-(DZGlobalModel *)GetLocalUserInfo;
 
 
 

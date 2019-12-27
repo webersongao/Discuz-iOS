@@ -1,14 +1,14 @@
 //
-//  DZUserModel.m
+//  DZGlobalModel.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/15.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
-@implementation DZUserModel
+@implementation DZGlobalModel
 
 -(void)setCookiepre:(NSString *)cookiepre{
     _cookiepre = cookiepre;

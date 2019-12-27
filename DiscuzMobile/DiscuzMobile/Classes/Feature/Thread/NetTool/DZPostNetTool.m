@@ -116,7 +116,7 @@
     }
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+        NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                                @"reportsubmit":@"true",
                                @"message":checkNull(msg),
                                @"rtype":@"post",
@@ -246,7 +246,7 @@
                                   @"fid":threadModel.fid,
                                   @"pid":threadModel.pid,
                                   @"activitycancel":@"true",
-                                  @"formhash":[DZMobileCtrl sharedCtrl].User.formhash
+                                  @"formhash":[DZMobileCtrl sharedCtrl].Global.formhash
         };
         request.methodType = JTMethodTypePOST;
         request.urlString = DZ_Url_ActivityApplies;
@@ -293,7 +293,7 @@
     NSString * strUrl = [data stringByReplacingOccurrencesOfString:@"{" withString:@""];
     NSString * str1 = [strUrl stringByReplacingOccurrencesOfString:@"}" withString:@""];
     NSArray *pollanswers = [str1 componentsSeparatedByString:@"|"];
-    NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+    NSDictionary * postdic=@{@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                              @"pollanswers":pollanswers};
     NSDictionary *getDic = @{@"fid":fid,
                              @"tid":tid};
@@ -363,7 +363,7 @@
         return;
     }
     
-    NSDictionary *postDic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+    NSDictionary *postDic = @{@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                               @"handlekey":@"activity",
                               @"applyidarray[]":applyid,
                               @"reason":reason,

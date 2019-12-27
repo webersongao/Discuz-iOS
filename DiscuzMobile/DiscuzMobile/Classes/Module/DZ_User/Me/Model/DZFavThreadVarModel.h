@@ -6,14 +6,14 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
 @interface DZFavThreadItem : NSObject
 
 
 @end
 
-@interface DZFavThreadVarModel : DZUserModel
+@interface DZFavThreadVarModel : DZGlobalModel
 
 @property (nonatomic, strong) NSArray *list;  //!< 属性注释
 @property (nonatomic, assign) NSInteger count;  //!< 属性注释

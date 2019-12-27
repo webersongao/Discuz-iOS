@@ -6,12 +6,12 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZNoticeModel.h"
 #import "DZSearchModel.h"
 
 
-@interface DZSearchVarModel : DZUserModel
+@interface DZSearchVarModel : DZGlobalModel
 
 //"notice": {4 items},
 //"threadlist": [9 items],

@@ -36,7 +36,7 @@
     NSMutableDictionary  * postDic =[NSMutableDictionary dictionary ];
     // 设置回帖的时候提醒作者
     [postDic setValue:@"1" forKey:@"allownoticeauthor"];
-    [postDic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    [postDic setValue:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     [postDic setValue:self.subject forKey:@"subject"];
     [postDic setValue:self.message forKey:@"message"];
     [postDic setValue:self.selectNum forKey:@"maxchoices"];                 //最大可选项数

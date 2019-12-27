@@ -6,7 +6,7 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZBaseThread.h"
 
 
@@ -31,7 +31,7 @@
 
 
 
-@interface DZMyThreadVarModel : DZUserModel
+@interface DZMyThreadVarModel : DZGlobalModel
 
 @property (nonatomic, strong) NSArray<DZThreeadItemModel *> *data;  //!< 属性注释
 @property (nonatomic, assign) NSInteger perpage;  //!< 属性注释

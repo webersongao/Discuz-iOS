@@ -161,7 +161,7 @@
 		704B8522237E92ED0098C48D /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8520237E92ED0098C48D /* NSDate+Additions.m */; };
 		704B8526237EA5780098C48D /* DZLocalContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8525237EA5780098C48D /* DZLocalContext.m */; };
 		704B8529237EA5A20098C48D /* DZLocalDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B8528237EA5A20098C48D /* DZLocalDataHelper.m */; };
-		704B852D237EA7110098C48D /* DZUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B852C237EA7110098C48D /* DZUserModel.m */; };
+		704B852D237EA7110098C48D /* DZGlobalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B852C237EA7110098C48D /* DZGlobalModel.m */; };
 		704DDA65238BB2F6009C9CE2 /* DZLayoutTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 704DDA64238BB2F6009C9CE2 /* DZLayoutTool.m */; };
 		704DDA6C238BC5AE009C9CE2 /* DZDiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704DDA6A238BC5AE009C9CE2 /* DZDiscoverModel.m */; };
 		7062106D237935ED00130B9D /* UUDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062104F237935ED00130B9D /* UUDatePicker.m */; };
@@ -767,8 +767,8 @@
 		704B8525237EA5780098C48D /* DZLocalContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLocalContext.m; sourceTree = "<group>"; };
 		704B8527237EA5A20098C48D /* DZLocalDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLocalDataHelper.h; sourceTree = "<group>"; };
 		704B8528237EA5A20098C48D /* DZLocalDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLocalDataHelper.m; sourceTree = "<group>"; };
-		704B852B237EA7110098C48D /* DZUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZUserModel.h; sourceTree = "<group>"; };
-		704B852C237EA7110098C48D /* DZUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZUserModel.m; sourceTree = "<group>"; };
+		704B852B237EA7110098C48D /* DZGlobalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZGlobalModel.h; sourceTree = "<group>"; };
+		704B852C237EA7110098C48D /* DZGlobalModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZGlobalModel.m; sourceTree = "<group>"; };
 		704DDA63238BB2F6009C9CE2 /* DZLayoutTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZLayoutTool.h; sourceTree = "<group>"; };
 		704DDA64238BB2F6009C9CE2 /* DZLayoutTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZLayoutTool.m; sourceTree = "<group>"; };
 		704DDA6A238BC5AE009C9CE2 /* DZDiscoverModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverModel.m; sourceTree = "<group>"; };
@@ -2098,10 +2098,10 @@
 		704B852A237EA6EF0098C48D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				704B852B237EA7110098C48D /* DZUserModel.h */,
-				704B852C237EA7110098C48D /* DZUserModel.m */,
 				70E5191C239F8CD400BFC238 /* DZBaseUser.h */,
 				70E5191D239F8CD400BFC238 /* DZBaseUser.m */,
+				704B852B237EA7110098C48D /* DZGlobalModel.h */,
+				704B852C237EA7110098C48D /* DZGlobalModel.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -3475,18 +3475,18 @@
 			isa = PBXGroup;
 			children = (
 				70F9F8EF237AA7580067B308 /* DZMobileHeader.h */,
-				70F9F8EE237AA7580067B308 /* DZMobileCtrl+Navi.h */,
-				70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */,
-				70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */,
-				70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */,
-				708FAA8723B4ACC0001CA6F2 /* DZMobileCtrl+Update.h */,
-				708FAA8823B4ACC0001CA6F2 /* DZMobileCtrl+Update.m */,
 				706301A723B3A42B0029B388 /* DZMobileCtrl+Tool.h */,
 				706301A823B3A42B0029B388 /* DZMobileCtrl+Tool.m */,
 				7065AE842386978D009B6DA7 /* DZMobileCtrl+Alert.h */,
 				7065AE852386978D009B6DA7 /* DZMobileCtrl+Alert.m */,
+				70F9F8EE237AA7580067B308 /* DZMobileCtrl+Navi.h */,
+				70F9F8F0237AA7580067B308 /* DZMobileCtrl+Navi.m */,
+				70F3CBC7238E7D7D00BFA199 /* DZMobileCtrl+Local.h */,
+				70F3CBC8238E7D7D00BFA199 /* DZMobileCtrl+Local.m */,
 				70960271239BEE4A0078077D /* DZMobileCtrl+Config.h */,
 				70960272239BEE4A0078077D /* DZMobileCtrl+Config.m */,
+				708FAA8723B4ACC0001CA6F2 /* DZMobileCtrl+Update.h */,
+				708FAA8823B4ACC0001CA6F2 /* DZMobileCtrl+Update.m */,
 			);
 			name = CtrlCategory;
 			path = DiscuzMobile/Classes/ToolBox/CtrlCategory;
@@ -4475,7 +4475,7 @@
 				7028B696238FB1340047800C /* DZThreadReplyModel.m in Sources */,
 				7065AE74238686C4009B6DA7 /* NSString+Common.mm in Sources */,
 				70F9F8DA237AA72B0067B308 /* PaletteColorModel.m in Sources */,
-				704B852D237EA7110098C48D /* DZUserModel.m in Sources */,
+				704B852D237EA7110098C48D /* DZGlobalModel.m in Sources */,
 				277EDC6F1E6D5B8D00E8F0E1 /* QCheckBox.m in Sources */,
 				7002A3682383D8CD00BC0C61 /* MessageNoticeCenter.m in Sources */,
 				7002A36D2383D8CD00BC0C61 /* MessageDetailCell.m in Sources */,

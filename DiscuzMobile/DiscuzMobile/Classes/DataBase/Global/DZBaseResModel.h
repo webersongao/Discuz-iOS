@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DZBaseVarModel.h"
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
 @interface DZBaseResModel : NSObject
 

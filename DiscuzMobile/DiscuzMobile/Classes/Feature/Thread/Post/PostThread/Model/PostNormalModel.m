@@ -22,7 +22,7 @@
 
 - (NSDictionary *)creatNormalDictdata:(DZSecVerifyView *)verifyView toolCell:(DZNormalThreadToolCell *)toolCell{
     
-    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     
     [dic setObject:self.subject forKey:@"subject"];
     [dic setObject:self.message forKey:@"message"];

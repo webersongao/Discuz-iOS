@@ -6,7 +6,7 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
 
 @interface DZBindUser: NSObject
@@ -29,7 +29,7 @@
 
 @end
 
-@interface DZBindVarModel : DZUserModel
+@interface DZBindVarModel : DZGlobalModel
 
 @property (nonatomic, strong) NSArray<DZBindUser *> *users;  //!< 属性注释
 

@@ -6,11 +6,11 @@
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZNoticeModel.h"
 #import "DZGroupModel.h"
 
-@interface DZBaseVarModel : DZUserModel
+@interface DZBaseVarModel : DZGlobalModel
 
 @property (nonatomic, copy) NSString *member_email;
 @property (nonatomic, copy) NSString *member_credits;

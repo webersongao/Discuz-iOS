@@ -66,7 +66,7 @@
     [self initData];
     [self.HUD showLoadingMessag:@"拉取信息" toView:self.view];
     KWEAKSELF
-    NSString *userId = [DZMobileCtrl sharedCtrl].User.member_uid;
+    NSString *userId = [DZMobileCtrl sharedCtrl].Global.member_uid;
     [DZUserNetTool DZ_UserProfileFromServer:YES Uid:userId userBlock:^(DZUserVarModel *UserVarModel, NSString *errorStr) {
         [weakSelf.HUD hide];
         if (errorStr.length) {
@@ -83,7 +83,7 @@
 -(void)reloadUserController:(DZUserVarModel *)VarModel{
     [self.centerModel updateModel:VarModel];
     
-    [[DZMobileCtrl sharedCtrl] updateUserModel:VarModel];
+    [[DZMobileCtrl sharedCtrl] updateGlobalModel:VarModel];
     
     [self.UserListView updateUserTableView:self.centerModel];
     

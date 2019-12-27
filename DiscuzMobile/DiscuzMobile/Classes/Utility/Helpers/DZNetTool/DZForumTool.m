@@ -15,7 +15,7 @@
 + (void)DZ_CollectionForum:(NSString *)fid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
     
     NSString *forumId = checkNull(fid);
-    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].Global.formhash);
     if (!forumId.length) {
         return;
     }
@@ -54,7 +54,7 @@
 + (void)DZ_CollectionThread:(NSString *)tid success:(void(^)(void))success failure:(void(^)(NSError *error))failure {
     
     NSString *threadId = checkNull(tid);
-    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].Global.formhash);
     if (!threadId.length) {
         return;
     }
@@ -92,7 +92,7 @@
     
     NSString *forumId = checkNull(fid);
     NSString *typeId = (type == collectForum) ? @"forum" : @"thread";
-    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].User.formhash);
+    NSString *formhash = checkNull([DZMobileCtrl sharedCtrl].Global.formhash);
     if (!forumId.length) {
         return;
     }
@@ -124,7 +124,7 @@
 + (void)DZ_PraiseRequestTid:(NSString *)tid successBlock:(void(^)(void))success failureBlock:(void(^)(NSError *error))failure {
     if ([DZLoginModule isLogged]) {
         
-        NSDictionary * paramter=@{@"tid":tid,@"hash":checkNull([DZMobileCtrl sharedCtrl].User.formhash)};
+        NSDictionary * paramter=@{@"tid":tid,@"hash":checkNull([DZMobileCtrl sharedCtrl].Global.formhash)};
         
         [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
             request.urlString = DZ_Url_Praise;
@@ -155,7 +155,7 @@
     } success:^(id responseObject, JTLoadType type) {
         NSDictionary *varDict = [responseObject dictionaryForKey:@"Variables"];
         DZSecAuthModel *authModel = [DZSecAuthModel modelWithJSON:varDict];
-        [[DZMobileCtrl sharedCtrl] updateUserFormHash:authModel.formhash];
+        [[DZMobileCtrl sharedCtrl] updateGlobalFormHash:authModel.formhash];
         if (success) {
             success(authModel);
         }

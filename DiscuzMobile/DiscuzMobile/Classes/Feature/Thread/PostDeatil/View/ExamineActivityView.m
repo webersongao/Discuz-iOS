@@ -86,7 +86,7 @@
     
     self.listTableView.contentOffset = CGPointMake(0, 0);
     
-    if ([[DZMobileCtrl sharedCtrl].User.member_uid isEqualToString:dataModel.uid]) {
+    if ([[DZMobileCtrl sharedCtrl].Global.member_uid isEqualToString:dataModel.uid]) {
         self.rejectBtn.hidden = YES;
         self.allowBtn.hidden = YES;
         self.listTableView.frame = CGRectMake(8, close_width + 20, CGRectGetWidth(self.contentView.frame) - 20, allHeight + 70);
@@ -160,7 +160,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (![[DZMobileCtrl sharedCtrl].User.member_uid isEqualToString:_dataModel.uid]) {
+    if (![[DZMobileCtrl sharedCtrl].Global.member_uid isEqualToString:_dataModel.uid]) {
         return self.dataSourceArr.count + 1;
     }
     

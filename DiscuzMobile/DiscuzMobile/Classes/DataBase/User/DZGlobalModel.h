@@ -1,5 +1,5 @@
 //
-//  DZUserModel.h
+//  DZGlobalModel.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/11/15.
@@ -8,7 +8,7 @@
 
 #import "EFSQLiteObject.h"
 
-@interface DZUserModel : EFSQLiteObject
+@interface DZGlobalModel : EFSQLiteObject
 
 @property (nonatomic, copy) NSString *cookiepre;
 @property (nonatomic, copy) NSString *auth;

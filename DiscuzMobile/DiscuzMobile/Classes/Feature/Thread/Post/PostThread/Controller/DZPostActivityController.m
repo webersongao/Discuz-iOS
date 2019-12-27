@@ -164,7 +164,7 @@
     NSString *uploadhash = self.authModel.allowperm.uploadhash;
     
     NSDictionary *dic = @{@"hash":uploadhash,
-                          @"uid":[DZMobileCtrl sharedCtrl].User.member_uid
+                          @"uid":[DZMobileCtrl sharedCtrl].Global.member_uid
     };
     
     NSDictionary * getdic = @{@"fid":self.authModel.forum.fid};

@@ -18,7 +18,7 @@
         return;
     }
     
-    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                            @"message":message,
                            @"username":userName};
     NSDictionary * getdic = @{@"touid":@"0",
@@ -44,7 +44,7 @@
         return;
     }
     
-    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+    NSDictionary * dic = @{@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                            @"message":message,
                            @"username":userName,
                            @"touid":touid};
@@ -72,7 +72,7 @@
         return;
     }
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
-        NSDictionary *parameters = @{@"id":touid,@"formhash":[DZMobileCtrl sharedCtrl].User.formhash};
+        NSDictionary *parameters = @{@"id":touid,@"formhash":[DZMobileCtrl sharedCtrl].Global.formhash};
         request.urlString = DZ_Url_DeleteMessage;
         request.methodType = JTMethodTypePOST;
         request.parameters = parameters;
@@ -94,7 +94,7 @@
     
     [DZApiRequest requestWithConfig:^(JTURLRequest *request) {
         NSDictionary *parameters = @{@"id":touid,
-                                     @"formhash":[DZMobileCtrl sharedCtrl].User.formhash,
+                                     @"formhash":[DZMobileCtrl sharedCtrl].Global.formhash,
                                      @"pid":Pid};
         request.urlString = DZ_Url_DeleteOneMessage;
         request.methodType = JTMethodTypePOST;

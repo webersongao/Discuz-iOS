@@ -10,22 +10,22 @@
 
 @implementation DZMobileCtrl (Update)
 
--(void)updateUserFormHash:(NSString *)formHash{
-    if (!self.User) {
-        self.User = [[DZUserModel alloc] init];
+-(void)updateGlobalFormHash:(NSString *)formHash{
+    if (!self.Global) {
+        self.Global = [[DZGlobalModel alloc] init];
     }
-    self.User.formhash = checkNull(formHash);
+    self.Global.formhash = checkNull(formHash);
 }
 
--(void)updateUserModel:(DZUserModel *)UserModel{
-    if (!self.User) {
-        self.User = [[DZUserModel alloc] init];
+-(void)updateGlobalModel:(DZGlobalModel *)GlobalModel{
+    if (!self.Global) {
+        self.Global = [[DZGlobalModel alloc] init];
     }
-    self.User.member_uid = UserModel.member_uid;
-    self.User.member_username = UserModel.member_username;
-    self.User.member_avatar = UserModel.member_avatar;
-    self.User.formhash = UserModel.formhash;
-    self.User.cookiepre = UserModel.cookiepre;
+    self.Global.member_uid = GlobalModel.member_uid;
+    self.Global.member_username = GlobalModel.member_username;
+    self.Global.member_avatar = GlobalModel.member_avatar;
+    self.Global.formhash = GlobalModel.formhash;
+    self.Global.cookiepre = GlobalModel.cookiepre;
 }
 
 

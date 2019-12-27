@@ -6,14 +6,14 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 #import "DZBaseResModel.h"
 #import "DZPostProperty.h"
 #import "DZThreadProperty.h"
 #import "DZGroupModel.h"
 #import "DZNoticeModel.h"
 
-@interface DZPostVarModel : DZUserModel
+@interface DZPostVarModel : DZGlobalModel
 
 //"allowperm": {5 items},
 //"threadtypes": {5 items},

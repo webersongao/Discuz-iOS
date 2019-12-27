@@ -21,7 +21,7 @@
     
     NSMutableDictionary  * dic =[NSMutableDictionary dictionary];
     
-    [dic setValue:[DZMobileCtrl sharedCtrl].User.formhash forKey:@"formhash"];
+    [dic setValue:[DZMobileCtrl sharedCtrl].Global.formhash forKey:@"formhash"];
     [dic setValue:self.subject forKey:@"subject"];
     [dic setValue:@"活动" forKey:@"typeid"];
     [dic setValue:self.message forKey:@"message"];

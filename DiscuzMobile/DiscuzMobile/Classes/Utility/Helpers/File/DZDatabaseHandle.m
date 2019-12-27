@@ -76,7 +76,7 @@ static FMDatabase *_db;
 - (void)saveThread:(DZThreadListModel *)thread {
     NSData *data = [DZArchieverTool Archiever:thread forKey:FootThread];
     NSString *sqlStr = @"insert into t_foot (tid,uid,aData) values (?,?,?)";
-    [_db executeUpdate:sqlStr,thread.tid,[DZMobileCtrl sharedCtrl].User.member_uid,data];
+    [_db executeUpdate:sqlStr,thread.tid,[DZMobileCtrl sharedCtrl].Global.member_uid,data];
     DLog(@"%@",_db.lastError);
 }
 
@@ -85,7 +85,7 @@ static FMDatabase *_db;
  */
 - (DZThreadListModel *)searchFootThreadTid:(NSString *)tid {
     
-    NSString *uid = [DZMobileCtrl sharedCtrl].User.member_uid;
+    NSString *uid = [DZMobileCtrl sharedCtrl].Global.member_uid;
     NSString *sqlStr;
     FMResultSet *resultSet;
     
@@ -178,7 +178,7 @@ static FMDatabase *_db;
 - (void)removeFootThreadWithtid:(NSString *)tid {
     NSString *sqlStr = @"delete from t_foot where tid = ? and uid = ?";
     
-    [_db executeUpdate:sqlStr,tid,[DZMobileCtrl sharedCtrl].User.member_uid];
+    [_db executeUpdate:sqlStr,tid,[DZMobileCtrl sharedCtrl].Global.member_uid];
 }
 
 /**

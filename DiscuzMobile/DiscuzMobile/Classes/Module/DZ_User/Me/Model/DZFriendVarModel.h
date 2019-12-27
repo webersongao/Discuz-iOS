@@ -6,7 +6,7 @@
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZUserModel.h"
+#import "DZGlobalModel.h"
 
 @interface DZFriendModel : NSObject
 
@@ -17,7 +17,7 @@
 
 @end
 
-@interface DZFriendVarModel : DZUserModel
+@interface DZFriendVarModel : DZGlobalModel
 
 @property (nonatomic, strong) NSArray<DZFriendModel *> *list;  //!< 属性注释
 @property (nonatomic, assign) NSInteger count;  //!< 属性注释

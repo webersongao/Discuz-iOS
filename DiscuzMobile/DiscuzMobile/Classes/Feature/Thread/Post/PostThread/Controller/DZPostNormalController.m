@@ -341,7 +341,7 @@
         return;
     }
     NSMutableDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
-                               @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid],
+                               @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].Global.member_uid],
     }.mutableCopy;
     NSMutableDictionary * getdic=@{@"fid":self.authModel.forum.fid,
                                    @"type":@"image",
@@ -388,7 +388,7 @@
 - (void)uploadAudio {
     
     NSDictionary *dic=@{@"hash":self.authModel.allowperm.uploadhash,
-                        @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].User.member_uid],
+                        @"uid":[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].Global.member_uid],
     };
     NSDictionary * getdic=@{@"fid":self.authModel.forum.fid};
     NSArray *arr = @[[AudioTool shareInstance].mp3Url.absoluteString];
