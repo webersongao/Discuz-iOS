@@ -259,64 +259,46 @@
 /** 点击 */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     UITableView *secondTableView = self.tableViewArr[1];
     UITableView *thirdTableView = self.tableViewArr[2];
     
     if (self.tableCount == 1) {
-        
         [self saveSelects];
         [self dismiss];
         [_delegate DZDropMenuView:self didSelectName:self.dataArr[indexPath.row][@"label"]];
-
     }else if (self.tableCount == 2){
-        
         if (tableView == self.tableViewArr[0]) {
-            
             if (!secondTableView.superview) {
                 [self.tableViewUnderView addSubview:secondTableView];
             }
             [secondTableView reloadData];
             [self adjustTableViews];
-            
         }else if (tableView == self.tableViewArr[1]){
-            
             [self saveSelects];
             [self dismiss];
-
              NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
-            
              [_delegate DZDropMenuView:self didSelectName:self.dataArr[firstSelectRow][@"subcategories"][indexPath.row]];
         }
-        
     }else if (self.tableCount == 3){
-        
         NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
         NSInteger secondSelectRow = ((UITableView *)self.tableViewArr[1]).indexPathForSelectedRow.row;
-        
         if (tableView == self.tableViewArr[0]) {
-
             if (!secondTableView.superview) {
                 [self.tableViewUnderView addSubview:secondTableView];
             }
             [self adjustTableViews];
             [secondTableView reloadData];
             [thirdTableView reloadData];
-            
         }else if (tableView == self.tableViewArr[1]){
-
             if (!thirdTableView.superview) {
                 [self.tableViewUnderView addSubview:thirdTableView];
             }
             [self adjustTableViews];
             [thirdTableView reloadData];
-            
         }else if (tableView == self.tableViewArr[2]){
-            
             [self saveSelects];
             [self dismiss];
             [_delegate DZDropMenuView:self didSelectName:self.dataArr[firstSelectRow][@"sub"][secondSelectRow][@"sub"][indexPath.row]];
-           
         }
     }
     
@@ -334,26 +316,19 @@
 
 #pragma mark - 视图消失
 - (void)dismiss{
-    
     if(self.superview) {
-        
         self.isShow = !self.isShow;
-        
         [self endEditing:YES];
-        
-        
         self.alpha = .0f;
         [self.tableViewUnderView.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
             [obj removeFromSuperview];
         }];
-        
         [self removeFromSuperview];
         [UIView animateWithDuration:0.2 animations:^{
             if (self.arrowView) {
                 self.arrowView.transform = CGAffineTransformMakeRotation(0);
             }
         }];
-        
     }
 }
 

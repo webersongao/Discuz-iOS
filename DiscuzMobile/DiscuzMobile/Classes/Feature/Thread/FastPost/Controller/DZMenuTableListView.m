@@ -60,10 +60,10 @@
 
 
 #pragma mark - 协议实现
--(void)DZDropMenuView:(DZDropMenuView *)view didSelectName:(NSString *)str{
+-(void)DZDropMenuView:(DZDropMenuView *)view didSelectName:(NSString *)String{
     
-    DLog(@"当前的 选项是 %@",str);
-    [self.menuButton setTitle:str forState:UIControlStateNormal];
+    DLog(@"当前的 选项是 %@",String);
+    [self.menuButton setTitle:String forState:UIControlStateNormal];
     [self buttonEdgeInsets:self.menuButton];
     
 }
@@ -81,7 +81,7 @@
     button.titleLabel.font =  [UIFont systemFontOfSize:11];
     button.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [button setTitleColor:[UIColor colorWithWhite:0.3 alpha:1.000] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"downarr"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"manu_downarr"] forState:UIControlStateNormal];
     
     [self buttonEdgeInsets:button];
     
@@ -102,7 +102,7 @@
 
 -(NSArray *)dataArray{
     if (_dataArray == nil) {
-        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"address.plist" ofType:nil]];
+        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dz_address.plist" ofType:nil]];
         _dataArray = dic[@"address"];
     }
     return _dataArray;
