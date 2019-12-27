@@ -42,7 +42,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToDZUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
 }
 
 - (void)tapAction {

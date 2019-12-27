@@ -62,7 +62,7 @@
 }
 
 - (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToDZUsertermsController:self.bbrulestxt];
+    [[DZMobileCtrl sharedCtrl] PushToUsertermsController:self.bbrulestxt];
 }
 
 #pragma mark - 验证码

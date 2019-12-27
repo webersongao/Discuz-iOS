@@ -85,7 +85,7 @@
 -(void)PushToAppAboutViewController;
 
 /// 用户 协议
--(void)PushToDZUsertermsController:(NSString *)bbsRulestxt;
+-(void)PushToUsertermsController:(NSString *)bbsRulestxt;
 
 /// 分享 app
 - (void)shareMyMobileAPPWithView:(UIView *)view;

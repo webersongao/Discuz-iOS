@@ -49,11 +49,7 @@
 
 
 -(void)leftBarBtnClick{
-    if (self.isPresent) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }else{
-        [[DZMobileCtrl sharedCtrl].mainNavi popViewControllerAnimated:YES];
-    }
+    [self dz_PopCurrentViewController];
 }
 
 

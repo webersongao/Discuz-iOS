@@ -228,10 +228,10 @@
 }
 
 /// 用户 协议
--(void)PushToDZUsertermsController:(NSString *)bbsRulestxt {
+-(void)PushToUsertermsController:(NSString *)bbsRulestxt {
     DZUsertermsController *termVC = [[DZUsertermsController alloc] init];
     termVC.bbrulestxt = bbsRulestxt;
-    [self.mainNavi pushViewController:termVC animated:YES];
+    [self.mainNavi showViewController:termVC sender:nil];
 }
 
 /// appstore 评价APP

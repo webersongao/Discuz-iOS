@@ -115,6 +115,16 @@ typedef NS_ENUM(NSInteger, DZNaviItemType) {
 
 - (BOOL)isPresent;
 
+
+-(void)dz_PopCurrentViewController;
+
+
+
+
+
+
+
+
 @end
 
 

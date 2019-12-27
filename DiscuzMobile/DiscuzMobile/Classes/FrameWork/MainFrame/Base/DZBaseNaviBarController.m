@@ -202,6 +202,16 @@
     return isPresent;
 }
 
+-(void)dz_PopCurrentViewController{
+    if (self.isPresent) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+
 @end
 
 
