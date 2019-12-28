@@ -25,22 +25,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.dz_NavigationItem.title = [NSString stringWithFormat:@"%@ 服务条款",DZ_APPNAME];
-    
-    self.contentLabel = [[UILabel alloc] init];
-    self.contentLabel.numberOfLines = 0;
-    self.contentLabel.font = [DZFontSize HomecellNameFontSize16];
+    [self dz_bringNavigationBarToFront];
     [self.view addSubview:self.contentLabel];
-//    bbsrule_discuz
-    NSString *fileName = DZ_BBSRULE;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
-    self.contentLabel.text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
-    CGSize messageSize = [self.contentLabel.text sizeWithFont:[DZFontSize HomecellNameFontSize16] maxSize:CGSizeMake(KScreenWidth - 40, CGFLOAT_MAX)];
-    self.contentLabel.frame = CGRectMake(20, 15, messageSize.width, messageSize.height);
-    self.scrollview.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(self.contentLabel.frame) + 40);
+    self.scrollview.backgroundColor = [UIColor whiteColor];
+    self.dz_NavigationItem.title = checkTwoStr(DZ_APPNAME, @"服务条款");
+}
+
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    CGSize messageSize = [self.contentLabel.text sizeWithFont:[DZFontSize HomecellNameFontSize16] maxSize:CGSizeMake(KScreenWidth - kMargin30, CGFLOAT_MAX)];
+    self.contentLabel.frame = CGRectMake(kMargin15, KNavi_ContainStatusBar_Height, messageSize.width, messageSize.height);
+    self.scrollview.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(self.contentLabel.frame) + KTabbar_Height);
 }
 
 
+-(UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.font = [DZFontSize HomecellNameFontSize16];
+        //    bbsrule_discuz
+        NSString *fileName = DZ_BBSRULE;
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
+        _contentLabel.text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    }
+    return _contentLabel;
+}
+
+
+
+
+
+
 @end
+
+
+
+
+
+

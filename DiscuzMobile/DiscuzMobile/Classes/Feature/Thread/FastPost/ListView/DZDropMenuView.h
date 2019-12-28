@@ -11,7 +11,7 @@
 @class DZDropMenuView;
 @protocol DZDropMenuViewDelegate <NSObject>
 
--(void)DZDropMenuView:(DZDropMenuView *)view didSelectName:(NSString *)String;
+-(void)DropMenuListView:(DZDropMenuView *)view didSelectNode:(DZForumBaseNode *)indexNode;
 
 @end
 

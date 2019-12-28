@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class DZMenuTableListView;
+@protocol DZMenuTableViewDelagete <NSObject>
+
+-(void)MenuTableView:(DZMenuTableListView *)view didSelectCell:(DZForumBaseNode *)cellNode;
+
+@end
+
 @interface DZMenuTableListView : UIView
 
 @property (nonatomic, strong) NSArray *nodeDataArray;
+@property (nonatomic, weak) id<DZMenuTableViewDelagete> delegate;
 
 -(void)dismissMenuListView;
 

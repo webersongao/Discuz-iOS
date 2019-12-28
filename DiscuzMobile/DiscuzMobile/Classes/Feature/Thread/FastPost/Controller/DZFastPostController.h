@@ -2,12 +2,14 @@
 //  DZFastPostController.h
 //  DiscuzMobile
 //
-//  Created by WebersonGao on 2019/12/25.
+//  Created by WebersonGao on 2019/12/27.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "DZBaseTableViewController.h"
+#import "DZBaseViewController.h"
 
-@interface DZFastPostController : DZBaseTableViewController
+
+@interface DZFastPostController : DZBaseViewController
 
 @end
+

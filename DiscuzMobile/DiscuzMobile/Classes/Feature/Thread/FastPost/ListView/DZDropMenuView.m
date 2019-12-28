@@ -9,9 +9,6 @@
 #import "DZDropMenuView.h"
 #import "DZForumBaseNode.h"
 
-#define kWidth [UIScreen mainScreen].bounds.size.width
-#define kHeight [UIScreen mainScreen].bounds.size.height
-
 @interface DZDropMenuView ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger m_selects[3]; /** 保存 选择的数据(行数) */
@@ -34,11 +31,10 @@
 @implementation DZDropMenuView
 
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        
         /** 数据初始化 */
         self.dataArr = [NSArray array];
         
@@ -48,13 +44,13 @@
         }
         
         /* 底层取消按钮 */
-        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.cancelButton = [[UIButton alloc] initWithFrame:self.bounds];
         self.cancelButton.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
-        [self.cancelButton addTarget:self action:@selector(clickCancelButton:) forControlEvents:UIControlEventTouchUpInside];
+        [self.cancelButton addTarget:self action:@selector(backCancelButonClickAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.cancelButton];
         
         /** 表视图的 底部视图初始化 */
-        self.tableViewUnderView = [[UIView alloc] init];
+        self.tableViewUnderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 0)];
         self.tableViewUnderView.backgroundColor = [UIColor colorWithRed:0.74 green:0.73 blue:0.76 alpha:1.000];
         [self.cancelButton addSubview:self.tableViewUnderView];
         
@@ -72,44 +68,22 @@
     if (!self.isShow) {
         
         self.isShow = !self.isShow;
-        
         // 显示 TableView数量
+        self.dataArr = arr;
         self.tableCount = tableNum;
+        self.tableViewUnderView.alpha = 1.0;
+        self.tableViewUnderView.height = self.rowHeightNum * arr.count;
         
         // 数据
-        self.dataArr = arr;
         for (UITableView *tableView in self.tableViewArr) {
             [tableView reloadData];
         }
-        
-        // 初始位置 设置
-        CGFloat x = 0.f;
-        CGFloat y = view.frame.origin.y + view.frame.size.height;
-        CGFloat w = kWidth;
-        CGFloat h = kHeight - y;
-        
-        self.frame = CGRectMake(x, y, w, h);
-        self.cancelButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        self.tableViewUnderView.frame = CGRectMake(0, 0, self.frame.size.width, self.rowHeightNum * arr.count);
-        
-        if (!self.superview) {
-            
-            [[[UIApplication sharedApplication] keyWindow] addSubview:self];
-            self.alpha = 0.0f;
-            [UIView animateWithDuration:0.2f animations:^{
-                self.alpha = 1.0f;
-            }];
-            
-            
-            [self loadSelects];
-            [self adjustTableViews];
-        }
-        
+        [self loadSelects];
+        [self adjustTableViews];
     }else{
         /** 什么也不选择时候, 再次点击按钮 消失视图 */
         [self dismiss];
     }
-    
 }
 
 
@@ -154,7 +128,7 @@
         UITableView *tableView = self.tableViewArr[i];
         CGRect adjustFrame = tableView.frame;
         
-        adjustFrame.size.width = kWidth / addTableCount ;
+        adjustFrame.size.width = KScreenWidth / addTableCount ;
         adjustFrame.origin.x = adjustFrame.size.width * i + 0.5 * i;
         adjustFrame.size.height = self.tableViewUnderView.frame.size.height ;
         
@@ -168,12 +142,10 @@
 /** 行数 */
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
     NSInteger __block count;
     [self.tableViewArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         if (obj == tableView) {
-            
             NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row ;
             
             NSInteger secondSelectRow = ((UITableView *)self.tableViewArr[1]).indexPathForSelectedRow.row ;
@@ -278,7 +250,7 @@
         [self saveSelects];
         [self dismiss];
         DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
-        [_delegate DZDropMenuView:self didSelectName:baseNode.nameStr];
+        [_delegate DropMenuListView:self didSelectNode:baseNode];
     }else if (self.tableCount == 2){
         if (tableView == self.tableViewArr[0]) {
             if (!secondTableView.superview) {
@@ -286,13 +258,15 @@
             }
             [secondTableView reloadData];
             [self adjustTableViews];
+            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+            [_delegate DropMenuListView:self didSelectNode:baseNode];
         }else if (tableView == self.tableViewArr[1]){
             [self saveSelects];
             [self dismiss];
             NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
             DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
             DZForumBaseNode *innerNode = baseNode.subNodeList[indexPath.row];
-            [_delegate DZDropMenuView:self didSelectName:innerNode.nameStr];
+            [_delegate DropMenuListView:self didSelectNode:innerNode];
         }
     }else if (self.tableCount == 3){
         NSInteger firstSelectRow = ((UITableView *)self.tableViewArr[0]).indexPathForSelectedRow.row;
@@ -304,19 +278,25 @@
             [self adjustTableViews];
             [secondTableView reloadData];
             [thirdTableView reloadData];
+            
+            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+            [_delegate DropMenuListView:self didSelectNode:baseNode];
         }else if (tableView == self.tableViewArr[1]){
             if (!thirdTableView.superview) {
                 [self.tableViewUnderView addSubview:thirdTableView];
             }
             [self adjustTableViews];
             [thirdTableView reloadData];
+            DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
+            DZForumBaseNode *innerNode = baseNode.subNodeList[indexPath.row];
+            [_delegate DropMenuListView:self didSelectNode:innerNode];
         }else if (tableView == self.tableViewArr[2]){
             [self saveSelects];
             [self dismiss];
             DZForumBaseNode *baseNode = self.dataArr[firstSelectRow];
             DZForumBaseNode *innerNode = baseNode.subNodeList[secondSelectRow];
             DZForumBaseNode *innerthriNode = innerNode.subNodeList[indexPath.row];
-            [_delegate DZDropMenuView:self didSelectName:innerthriNode.nameStr];
+            [_delegate DropMenuListView:self didSelectNode:innerthriNode];
         }
     }
     
@@ -337,11 +317,10 @@
     if(self.superview) {
         self.isShow = !self.isShow;
         [self endEditing:YES];
-        self.alpha = .0f;
+        self.tableViewUnderView.alpha = .0f;
         [self.tableViewUnderView.subviews enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger idx, BOOL *stop) {
             [obj removeFromSuperview];
         }];
-        [self removeFromSuperview];
         [UIView animateWithDuration:0.2 animations:^{
             if (self.arrowView) {
                 self.arrowView.transform = CGAffineTransformMakeRotation(0);
@@ -351,9 +330,10 @@
 }
 
 /** 底部按钮, 视图消失 */
--(void)clickCancelButton:(UIButton *)button{
-    
-    [self dismiss];
+-(void)backCancelButonClickAction:(UIButton *)button{
+    if (self.tableViewUnderView.alpha > 0) {
+        [self dismiss];
+    }
 }
 
 

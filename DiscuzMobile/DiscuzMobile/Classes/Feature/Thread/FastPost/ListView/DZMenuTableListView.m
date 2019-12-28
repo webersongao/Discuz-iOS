@@ -12,9 +12,9 @@
 @interface DZMenuTableListView ()<DZDropMenuViewDelegate>
 
 @property (nonatomic, strong) UIButton *menuButton;
-
+@property (nonatomic, strong) UIButton *postButton;  //!< 属性注释
+@property (nonatomic, strong) DZForumBaseNode *selectNode;  //!< <#属性注释#>
 @property (nonatomic, strong) DZDropMenuView *MenuListView;
-
 
 @end
 
@@ -26,13 +26,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.menuButton.frame = self.bounds;
+        self.menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.width, kToolBarHeight)];
         [self setUpButton:self.menuButton withText:@"区域选择"];
         
-        self.MenuListView = [[DZDropMenuView alloc] init];
+        self.MenuListView = [[DZDropMenuView alloc] initWithFrame:CGRectMake(0, kToolBarHeight, self.width, self.height - kToolBarHeight)];
         self.MenuListView.arrowView = self.menuButton.imageView;
         self.MenuListView.delegate = self;
+        
+        [self addSubview:self.menuButton];
+        [self addSubview:self.MenuListView];
+        [self addSubview:self.postButton];
         
         /** 最下面横线 */
         UIView *horizontalLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.height - 0.5, KScreenWidth, 0.5)];
@@ -51,13 +54,21 @@
         return;
     }
     [self.MenuListView creatDropView:self withShowTableNum:3 withData:self.nodeDataArray];
-    
 }
 
 
+-(void)postButtonClickAction{
+    if (self.selectNode) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(MenuTableView:didSelectCell:)]) {
+            [self.delegate MenuTableView:self didSelectCell:self.selectNode];
+        }
+    }else{
+        [DZMobileCtrl showAlertWarn:@"请选择发帖板块"];
+    }
+}
+
 ///   筛选菜单消失
 -(void)dismissMenuListView{
-
     [self.MenuListView dismiss];
 }
 
@@ -65,12 +76,11 @@
 #pragma mark   /********************* DZDropMenuViewDelegate 代理方法 *************************/
 
 ///   协议实现
--(void)DZDropMenuView:(DZDropMenuView *)view didSelectName:(NSString *)String{
+-(void)DropMenuListView:(DZDropMenuView *)view didSelectNode:(DZForumBaseNode *)indexNode{
     
-    DLog(@"当前的 选项是 %@",String);
-    [self.menuButton setTitle:String forState:UIControlStateNormal];
+    self.selectNode = indexNode;
+    [self.menuButton setTitle:indexNode.nameStr forState:UIControlStateNormal];
     [self buttonEdgeInsets:self.menuButton];
-    
 }
 
 
@@ -101,12 +111,12 @@
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, button.titleLabel.bounds.size.width + 10, 0, -button.titleLabel.bounds.size.width + 2)];
 }
 
-//-(NSArray *)nodeDataArray{
-//    if (_nodeDataArray == nil) {
-//        NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dz_address.plist" ofType:nil]];
-//        _nodeDataArray = [dic arrayForKey:@"address"];
-//    }
-//    return _nodeDataArray;
-//}
+- (UIButton *)postButton {
+    if (!_postButton) {
+        _postButton = [UIButton ButtonTextWithFrame:CGRectMake(kMargin20, self.height - (KTabbar_Height *2), self.width - kMargin40, kToolBarHeight) titleStr:@"发 布" titleColor:[UIColor blackColor] titleTouColor:[UIColor blueColor] font:KBoldFont(18) Radius:4 Target:self action:@selector(postButtonClickAction)];
+        _postButton.backgroundColor = [UIColor orangeColor];
+    }
+    return _postButton;
+}
 
 @end

@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.frame = KView_OutNavi_Bounds;
+    [self.view addSubview:self.tableView];
     if (self.authModel.threadtypes.types.allValues.count) {
         NSMutableDictionary *typeDic = [NSMutableDictionary dictionaryWithDictionary:self.authModel.threadtypes.types];
         [typeDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -47,7 +49,7 @@
         }
     }
     
-    [self.view addSubview:self.tableView];
+    
 }
 
 - (void)viewEndEditing {
