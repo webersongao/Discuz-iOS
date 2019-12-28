@@ -65,6 +65,7 @@
 }
 
 -(void)rightBarBtnClick{
+    [self.menuBar dismissMenuListView];
     [self downloadPosMenuListData];
 }
 

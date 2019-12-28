@@ -69,6 +69,7 @@
 
 ///   筛选菜单消失
 -(void)dismissMenuListView{
+    self.selectNode = nil;
     [self.MenuListView dismiss];
 }
 
