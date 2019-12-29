@@ -44,8 +44,9 @@
 
 #pragma mark   /********************* HeaderCollectionDelegate *************************/
 
-- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell indexPath:(NSIndexPath *)indexPath{
+- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell {
     DLog(@"WBS 点击了 板块：%@",itemCell.cellModel.name);
+    [[DZMobileCtrl sharedCtrl] PushToForumListController:itemCell.cellModel.fid];
 }
 
 - (void)collectionView:(DZHomeCollectionView *)collectionView longPressItemCell:(DZHomeCollectionCell *)itemCell{

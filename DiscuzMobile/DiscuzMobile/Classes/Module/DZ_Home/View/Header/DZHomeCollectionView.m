@@ -92,8 +92,8 @@ static NSString * const cellIdentifier = @"DZThreadCell";
     
     DZHomeCollectionCell *itemCell = (DZHomeCollectionCell *)[self cellForItemAtIndexPath:indexPath];
     
-    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionView:didSelectItemCell: indexPath:)]) {
-        [self.headerDelegate collectionView:self didSelectItemCell:itemCell indexPath:indexPath];
+    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionView:didSelectItemCell:)]) {
+        [self.headerDelegate collectionView:self didSelectItemCell:itemCell];
     }
 }
 
@@ -106,7 +106,7 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionViewWillBeginDragging)]) {
+    if (self.headerDelegate && [self.headerDelegate respondsToSelector:@selector(collectionView:scrollDidScroll:)]) {
         [self.headerDelegate collectionViewWillBeginDragging];
     }
 }

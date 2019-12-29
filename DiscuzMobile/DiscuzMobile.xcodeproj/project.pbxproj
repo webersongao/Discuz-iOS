@@ -152,6 +152,7 @@
 		703C4252237D32180046C398 /* DZPostUIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4251237D32180046C398 /* DZPostUIEditViewController.m */; };
 		703C4258237D51330046C398 /* DZSiriTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4257237D51330046C398 /* DZSiriTool.m */; };
 		703C425B237D514A0046C398 /* DZiFlyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C425A237D514A0046C398 /* DZiFlyTool.m */; };
+		703CB4F623B8F2C3008A5EF6 /* DZAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703CB4F523B8F2C3008A5EF6 /* DZAreaViewController.m */; };
 		703F2B86239DF2A600E7882C /* DZCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 703F2B85239DF2A600E7882C /* DZCheckModel.m */; };
 		703F2B89239DF99600E7882C /* DZSecAuthModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 703F2B88239DF99600E7882C /* DZSecAuthModel.m */; };
 		70471C632394C00700CCF5AC /* DZUserNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 70471C622394C00700CCF5AC /* DZUserNetTool.m */; };
@@ -752,6 +753,8 @@
 		703C4257237D51330046C398 /* DZSiriTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZSiriTool.m; sourceTree = "<group>"; };
 		703C4259237D514A0046C398 /* DZiFlyTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZiFlyTool.h; sourceTree = "<group>"; };
 		703C425A237D514A0046C398 /* DZiFlyTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZiFlyTool.m; sourceTree = "<group>"; };
+		703CB4F423B8F2C3008A5EF6 /* DZAreaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZAreaViewController.h; sourceTree = "<group>"; };
+		703CB4F523B8F2C3008A5EF6 /* DZAreaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZAreaViewController.m; sourceTree = "<group>"; };
 		703F2B84239DF2A600E7882C /* DZCheckModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZCheckModel.h; sourceTree = "<group>"; };
 		703F2B85239DF2A600E7882C /* DZCheckModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZCheckModel.m; sourceTree = "<group>"; };
 		703F2B87239DF99600E7882C /* DZSecAuthModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZSecAuthModel.h; sourceTree = "<group>"; };
@@ -2070,6 +2073,15 @@
 			path = iFly;
 			sourceTree = "<group>";
 		};
+		703CB4F323B8F29B008A5EF6 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				703CB4F423B8F2C3008A5EF6 /* DZAreaViewController.h */,
+				703CB4F523B8F2C3008A5EF6 /* DZAreaViewController.m */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
 		703F2B83239DF27E00E7882C /* RegCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -2815,6 +2827,7 @@
 		706AB8CE237BF55E00BE649F /* DemoVC */ = {
 			isa = PBXGroup;
 			children = (
+				703CB4F323B8F29B008A5EF6 /* Area */,
 				705BB913238A6E73002C505A /* Demo */,
 				70DB801323B358C8004B0DB6 /* DZHomeTestViewController.h */,
 				70DB801423B358C8004B0DB6 /* DZHomeTestViewController.m */,
@@ -4722,6 +4735,7 @@
 				706212D3237936C900130B9D /* ApplyActiver.m in Sources */,
 				70621296237936C900130B9D /* DZPostSelectTypeCell.m in Sources */,
 				703C4258237D51330046C398 /* DZSiriTool.m in Sources */,
+				703CB4F623B8F2C3008A5EF6 /* DZAreaViewController.m in Sources */,
 				70DFD7A7237A95DE00A13F0F /* DZAttachModel.m in Sources */,
 				9494508521196F8B0074C79E /* AudioRecordView.m in Sources */,
 				70FBDCEF2383FC1B00FC296E /* CollectionForumCell.m in Sources */,

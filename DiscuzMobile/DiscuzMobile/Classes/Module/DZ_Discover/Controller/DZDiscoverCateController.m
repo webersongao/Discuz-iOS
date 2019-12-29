@@ -98,7 +98,7 @@
             self.notThisFidCount = notFourmCount;
             [self.dataSourceArr removeAllObjects];
             self.allArray = [NSMutableArray arrayWithArray:allArr];
-            [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
+            [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];
         } else {
             if (commonArr.count) {

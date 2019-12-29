@@ -13,7 +13,7 @@
 @class DZHomeCollectionView,DZHomeCollectionCell;
 @protocol HeaderCollectionDelegate <NSObject>
 @optional
-- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell indexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(DZHomeCollectionView *)collectionView didSelectItemCell:(DZHomeCollectionCell *)itemCell;
 
 - (void)collectionView:(DZHomeCollectionView *)collectionView longPressItemCell:(DZHomeCollectionCell *)itemCell;
 

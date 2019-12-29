@@ -40,8 +40,8 @@ static NSString *isFourmList = @"isFourmList";
 
 -(void)configNaviBar {
     NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
-    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
-    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
+    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionRight];
+    [self configNaviBar:@"社区" type:NaviItemText Direction:NaviDirectionLeft];
 }
 
 -(void)configForumView{
@@ -49,18 +49,6 @@ static NSString *isFourmList = @"isFourmList";
     [self addChildViewController:self.collectVC];
     [self dz_AddSubView:self.collectVC.view belowNavigationBar:YES];
 }
-
-- (void)leftBarBtnClick {
-    m_isList = !m_isList;
-    if (m_isList) {
-        [self presentFormOldController:self.collectVC toNewController:self.indexListVC];
-    }else{
-        [self presentFormOldController:self.indexListVC toNewController:self.collectVC];
-    }
-    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
-    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
-}
-
 
 - (void)presentFormOldController:(DZBaseViewController *)oldController toNewController:(DZBaseViewController *)newController{
     [self addChildViewController:newController];
@@ -76,8 +64,22 @@ static NSString *isFourmList = @"isFourmList";
     }];
 }
 
+
+- (void)leftBarBtnClick {
+    
+}
+
+
+
 - (void)rightBarBtnClick {
-    [[DZMobileCtrl sharedCtrl] PushToSearchController];
+    m_isList = !m_isList;
+    if (m_isList) {
+        [self presentFormOldController:self.collectVC toNewController:self.indexListVC];
+    }else{
+        [self presentFormOldController:self.indexListVC toNewController:self.collectVC];
+    }
+    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
+    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
 }
 
 - (DZForumIndexListController *)indexListVC {

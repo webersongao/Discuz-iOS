@@ -56,14 +56,27 @@
 
 #pragma mark   /********************* 代理方法 *************************/
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return nil;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return nil;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     DZThreadListModel *cellModel  = self.dataArray[indexPath.section][indexPath.row];
     return cellModel.listLayout.cellHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+    DZThreadListModel *cellModel  = self.dataArray[indexPath.section][indexPath.row];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:cellModel.tid];
 }
 
 
