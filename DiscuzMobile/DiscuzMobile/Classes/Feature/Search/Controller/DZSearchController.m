@@ -27,7 +27,6 @@
     [super viewDidLoad];
     [self setupViews];
     [self.view addSubview:self.tableView];
-    self.tableView.frame = KView_OutNavi_Bounds;
     [self.searchView.searchBar becomeFirstResponder];
     
     KWEAKSELF;

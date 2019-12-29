@@ -25,7 +25,7 @@
     self.dz_NavigationItem.title = @"通用设置";
     self.dataSourceArr = self.listArray.copy;
     
-    self.tableView = [[DZBaseTableView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight-KNavi_ContainStatusBar_Height) style:UITableViewStyleGrouped];
+    self.tableView = [[DZBaseTableView alloc] initWithFrame:KView_OutNavi_Bounds style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
@@ -33,13 +33,16 @@
 
 #pragma mark - UITableViewDataSource
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.dataSourceArr.count;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray *arr = self.dataSourceArr[section];
     return arr.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     static NSString *CellId = @"SettingCellId";
     

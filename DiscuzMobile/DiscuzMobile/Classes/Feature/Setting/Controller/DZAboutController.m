@@ -17,15 +17,12 @@
 
 @implementation DZAboutController
 
-- (void)loadView {
-    [super loadView];
-    
-    self.aboutView = [[DZAboutView alloc] initWithFrame:self.view.bounds];
-    self.view = self.aboutView;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于";
+    self.aboutView = [[DZAboutView alloc] initWithFrame:KView_OutNavi_Bounds];
+    [self.view addSubview:self.aboutView];
 }
+
 @end

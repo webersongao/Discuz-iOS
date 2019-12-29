@@ -11,9 +11,10 @@
 
 @interface DZContainerController()
 
-@property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, assign) NSInteger selectIndex;
+@property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic,strong) UICollectionView *collectonView;
+
 @end
 
 @implementation DZContainerController
@@ -109,11 +110,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger index = scrollView.contentOffset.x / self.view.bounds.size.width;
     [self.segmentControl  setSelectedSegmentIndex:index];
-    if (self.sendNotify) {
-        if (self.selectIndex != index) {
-            // 延迟0.03秒执行 为了界面滑动流畅啊！！！！
-            [self performSelector:@selector(firstRequest) withObject:nil afterDelay:0.03];
-        }
+    if (self.sendNotify && self.selectIndex != index) {
+        // 延迟0.03秒执行 为了界面滑动流畅啊！！！！
+        [self performSelector:@selector(firstRequest) withObject:nil afterDelay:0.03];
     }
     self.selectIndex = index;
 }
@@ -125,7 +124,7 @@
 
 #pragma mark - setting
 - (void)setSelectedAtIndex:(NSInteger)selectedIndex {
-    CGFloat offsetX = self.view.width * selectedIndex;
+    CGFloat offsetX = self.collectonView.width * selectedIndex;
     self.collectonView.contentOffset = CGPointMake(offsetX, 0);
 }
 

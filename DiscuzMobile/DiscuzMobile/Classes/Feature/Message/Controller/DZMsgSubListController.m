@@ -27,7 +27,6 @@
     }
     [self loadData];
     [self.view addSubview:self.tableView];
-    self.tableView.frame = KView_OutNavi_Bounds;
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;

@@ -78,8 +78,6 @@
     [(DZForumThreadController *)self.parentController setScrollEnable:YES];
 }
 
-
-
 @end
 
 

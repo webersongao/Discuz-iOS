@@ -20,7 +20,6 @@
     KWEAKSELF;
     self.tableView.mj_footer.hidden = YES;
     [self.view addSubview:self.tableView];
-    self.tableView.frame = KView_OutNavi_Bounds;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf refreshData];

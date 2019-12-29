@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZAboutView : UIScrollView
+@interface DZAboutView : UIView
 
 @property (nonatomic, strong) UIImageView *logoView;
 @property (nonatomic, strong) UILabel *appNameLabel;

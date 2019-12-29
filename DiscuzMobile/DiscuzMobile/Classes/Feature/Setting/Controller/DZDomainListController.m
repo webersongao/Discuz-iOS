@@ -26,7 +26,6 @@ NSString * const KDomainNameKey = @"name";
     [self configNaviBar:@"添加" type:NaviItemText Direction:NaviDirectionRight];
     
     [self.view addSubview:self.tableView];
-    self.tableView.frame = KView_OutNavi_Bounds;
     self.dataSourceArr = [NSMutableArray arrayWithArray:[self localDomainData]];
 }
 

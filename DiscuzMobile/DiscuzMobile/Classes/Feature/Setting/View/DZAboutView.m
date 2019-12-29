@@ -27,12 +27,6 @@
 
 - (void)p_setupViews {
     
-    if (@available(iOS 11.0, *)) {
-        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    
-    self.contentSize = CGSizeMake(KScreenWidth, KScreenHeight - 63);
-    self.showsVerticalScrollIndicator = NO;
     self.bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"aboutbg"]];
     [self addSubview:self.bgImageView];
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {

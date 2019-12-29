@@ -19,14 +19,15 @@
 
 - (void)loadView {
     [super loadView];
-    self.scrollview = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view = self.scrollview;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.scrollview = [[UIScrollView alloc] initWithFrame:KView_OutNavi_Bounds];
+    [self.view addSubview:self.scrollview];
     [self dz_bringNavigationBarToFront];
-    [self.view addSubview:self.contentLabel];
+    [self.scrollview addSubview:self.contentLabel];
     self.scrollview.backgroundColor = [UIColor whiteColor];
     self.dz_NavigationItem.title = checkTwoStr(DZ_APPNAME, @"服务条款");
 }
@@ -34,7 +35,7 @@
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     CGSize messageSize = [self.contentLabel.text sizeWithFont:[DZFontSize HomecellNameFontSize16] maxSize:CGSizeMake(KScreenWidth - kMargin30, CGFLOAT_MAX)];
-    self.contentLabel.frame = CGRectMake(kMargin15, KNavi_ContainStatusBar_Height, messageSize.width, messageSize.height);
+    self.contentLabel.frame = CGRectMake(kMargin15, kMargin15, messageSize.width, messageSize.height);
     self.scrollview.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(self.contentLabel.frame) + KTabbar_Height);
 }
 
