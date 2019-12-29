@@ -71,7 +71,6 @@
         [weakSelf.HUD hide];
         if (errorStr.length) {
             [weakSelf UserSignout];
-            [weakSelf transtoUserLogin];
             [DZMobileCtrl showAlertInfo:errorStr];
         }else{
             [weakSelf reloadUserController:UserVarModel];

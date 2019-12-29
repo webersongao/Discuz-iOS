@@ -15,4 +15,8 @@
 + (BOOL) isValidArray:(id)input;
 + (BOOL)arrayA:(NSArray *)arrayA isEqualArrayB:(NSArray *)arrayB;
 
++(NSString *)rebuiltParams:(NSDictionary *)rootDictionary url:(NSString *)requestUrl;
+
+
+
 @end

@@ -32,7 +32,7 @@
     for (DZThreadListModel * innerModel in self.forum_threadlist) {
         DZThreadListModel *listModel = [innerModel dealModelWithPage:page andGroup:self.groupiconid andType:self.threadtypes.types];
         [allArray addObject:listModel];
-        if (page == 0) {
+        if (page == 1) {
             if ([listModel isCurrentForum:fid]) { // 非本版帖子
                 notThisFidCount ++;
             }

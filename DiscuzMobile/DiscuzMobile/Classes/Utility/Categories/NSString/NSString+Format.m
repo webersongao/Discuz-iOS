@@ -60,7 +60,8 @@
     
     NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
     //图片
-    UIImage *attachImage = [UIImage imageNamed:imageName];
+    imageName = checkNull(imageName);
+    UIImage *attachImage = imageName.length ? [UIImage imageNamed:imageName] : nil;
     textAttachment.image = attachImage;
     float imageWidth = FontSize*(attachImage.size.width)/(attachImage.size.height);
     textAttachment.bounds = CGRectMake(0, -2, imageWidth, FontSize);

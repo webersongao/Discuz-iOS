@@ -108,28 +108,28 @@
             
             self.VarModel = threadResModel.Variables;
             
-            if (self.page == 0) {
+            if (self.page == 1) {
                 [self sendVariablesToMixcontroller];
             }
             if (!isCache) {
-                if (page == 0) {
+                if (page == 1) {
                     if (self.endRefreshBlock) {
                         self.endRefreshBlock();
                     }
                 }
             } else if (loadType == JTRequestTypeRefresh) {
-                if (page == 0) {
+                if (page == 1) {
                     if (self.endRefreshBlock) {
                         self.endRefreshBlock();
                     }
                 }
             }
             
-            if (page == 0 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
                 [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             }
             
-            if (self.page == 0) { // 刷新列表
+            if (self.page == 1) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self clearDatasource];
                 [self anylyeThreadListData:threadResModel];
@@ -187,7 +187,7 @@
     self.VarModel = responseObject.Variables;
     
     [self.VarModel updateVarModel:self.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        if (self.page == 0) {
+        if (self.page == 1) {
             self.notThisFidCount = notFourmCount;
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];

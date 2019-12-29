@@ -25,7 +25,7 @@
         PostTypeModel *common = [PostTypeModel initWithTitle:@"普通帖" imageName:@"thread_ordinary" type:post_normal];
         PostTypeModel *vote = [PostTypeModel initWithTitle:@"投票帖" imageName:@"thread_vote" type:post_vote];
         PostTypeModel *activity = [PostTypeModel initWithTitle:@"活动帖" imageName:@"thread_ activity" type:post_activity];
-        PostTypeModel *debate = [PostTypeModel initWithTitle:@"辩论帖" imageName:@"thread_debate" type:post_debate];
+//        PostTypeModel *debate = [PostTypeModel initWithTitle:@"辩论帖" imageName:@"thread_debate" type:post_debate];
         [_allTypeArray addObject:common];
         [_allTypeArray addObject:vote];
         [_allTypeArray addObject:activity];

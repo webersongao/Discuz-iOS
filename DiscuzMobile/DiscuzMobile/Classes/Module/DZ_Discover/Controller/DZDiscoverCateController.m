@@ -66,11 +66,11 @@
             //            }
             //
             self.VarModel = threadResModel.Variables;
-            //            if (page == 0 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
+            //            if (page == 1 && (isCache == NO || loadType == JTRequestTypeRefresh)) {
             //                [self showVerifyRemind:self.VarModel.forum.threadmodcount];
             //            }
             
-            if (self.page == 0) { // 刷新列表
+            if (self.page == 1) { // 刷新列表
                 // 刷新的时候移除数据源
                 [self.dataSourceArr removeAllObjects];
                 [self anylyeThreadListData:threadResModel];
@@ -94,7 +94,7 @@
 - (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     [self.VarModel updateVarModel:self.forumModel.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        if (self.page == 0) {
+        if (self.page == 1) {
             self.notThisFidCount = notFourmCount;
             self.allArray = [NSMutableArray arrayWithArray:allArr];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];

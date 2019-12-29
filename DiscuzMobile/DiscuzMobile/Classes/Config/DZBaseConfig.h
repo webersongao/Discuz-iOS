@@ -16,7 +16,7 @@
  *  BaseUrl设置  MACRO_PRODUCT == 1为生产环境，注释为测试环境
  */
 
-#define MACRO_PRODUCT 1
+//#define MACRO_PRODUCT 1
 
 
 #define DZ_COMPANYNAME  @"北京康创联盛科技有限公司" // 公司

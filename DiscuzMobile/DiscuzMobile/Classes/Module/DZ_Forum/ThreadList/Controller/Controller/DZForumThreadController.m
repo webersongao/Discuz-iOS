@@ -310,6 +310,7 @@
 
 - (void)subSendVarible:(DZThreadVarModel *)VarModel {
     // 版块信息设置
+    self.VarModel = VarModel;
     self.forumInfo = VarModel.forum;
     if ([DataCheck isValidString:self.forumInfo.favorited]) {
         if ([self.forumInfo.favorited isEqualToString:@"1"]) {

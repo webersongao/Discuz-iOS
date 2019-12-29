@@ -108,7 +108,7 @@
         [self.tableView.mj_footer endRefreshing];
         
         if ([DataCheck isValidArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]]) {
-            if (self.page == 0) {
+            if (self.page == 1) {
                 self.dataSourceArr = [NSMutableArray arrayWithArray:[[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist"]];
             } else {
                 NSArray *arr = [[responseObject objectForKey:@"Variables"] objectForKey:@"threadlist" ];

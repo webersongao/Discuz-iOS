@@ -99,4 +99,20 @@
 }
 
 
++(NSString *)rebuiltParams:(NSDictionary *)rootDictionary url:(NSString *)requestUrl{
+    
+    NSMutableString *mutableString =[NSMutableString string];
+    if (![rootDictionary isKindOfClass:[NSDictionary class]] && rootDictionary != nil) {
+        return requestUrl;
+    }
+    for (NSString *key in [rootDictionary allKeys]) {
+        NSString *value = rootDictionary[key];
+        NSString *keyAndValue = [[NSString alloc]initWithFormat:@"&%@=%@",key,value];
+        [mutableString appendFormat:@"%@",keyAndValue];
+    }
+    [mutableString insertString:requestUrl atIndex:0];
+    
+    return mutableString.copy;
+}
+
 @end

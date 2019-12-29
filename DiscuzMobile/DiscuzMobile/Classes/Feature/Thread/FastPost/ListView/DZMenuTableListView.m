@@ -27,7 +27,7 @@
     if (self) {
         
         self.menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.width, kToolBarHeight)];
-        [self setUpButton:self.menuButton withText:@"区域选择"];
+        [self setUpButton:self.menuButton withText:@"选择发帖选择"];
         
         self.MenuListView = [[DZDropMenuView alloc] initWithFrame:CGRectMake(0, kToolBarHeight, self.width, self.height - kToolBarHeight)];
         self.MenuListView.arrowView = self.menuButton.imageView;

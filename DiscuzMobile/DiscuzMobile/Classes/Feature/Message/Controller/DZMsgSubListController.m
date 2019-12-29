@@ -89,7 +89,7 @@
     NSArray *arr = [[responseObject objectForKey:@"Variables"] objectForKey:@"list"];
     if ([DataCheck isValidArray:arr]) {
         
-        if (self.page == 0) {
+        if (self.page == 1) {
             self.dataSourceArr = [NSMutableArray array];
         }
         
@@ -111,7 +111,7 @@
 }
 
 - (void)mj_endRefreshing {
-    if (self.page == 0) {
+    if (self.page == 1) {
         [self.tableView.mj_header endRefreshing];
     } else {
         [self.tableView.mj_footer endRefreshing];

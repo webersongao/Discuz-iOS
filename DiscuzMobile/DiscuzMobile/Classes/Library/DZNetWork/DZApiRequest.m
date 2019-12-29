@@ -28,11 +28,19 @@
     [JTRequestManager requestWithConfig:^(JTURLRequest *request) {
         config ? config(request) : nil;
         request.urlString = [self checkUrl:request.urlString];
+#ifndef MACRO_PRODUCT
+        [self rebuiltUrlParams:request.parameters url:request.urlString];
+#endif
     } progress:progress success:^(id responseObject, JTLoadType type) {
         success(responseObject,type);
     } failed:^(NSError *error) {
         failed(error);
     }];
+}
+
++(void)rebuiltUrlParams:(NSDictionary *)rootDictionary url:(NSString *)requestUrl{
+    
+    DLog(@"请求链接：requestURL is \n\n %@ \n\n",[DataCheck rebuiltParams:rootDictionary url:requestUrl]);
 }
 
 /**

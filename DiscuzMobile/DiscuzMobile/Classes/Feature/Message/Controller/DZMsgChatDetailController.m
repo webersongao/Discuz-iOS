@@ -98,7 +98,7 @@ static CGFloat kToolBarH = 50;
         if (weakSelf.isRefresh == YES || weakSelf.page > 0) {
             [weakSelf updateData];
             weakSelf.page -- ;
-        } else if (weakSelf.page == 0) {
+        } else if (weakSelf.page == 1) {
             DLog(@"无数据");
             [MBProgressHUD showInfo:@"没有更多回复"];
         }

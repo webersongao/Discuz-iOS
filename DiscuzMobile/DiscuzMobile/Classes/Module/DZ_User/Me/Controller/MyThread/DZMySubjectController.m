@@ -84,7 +84,7 @@
             [self.tableView.mj_footer endRefreshing];
             
             if (varModel.data.count) {
-                if (self.page == 0) {
+                if (self.page == 1) {
                     self.dataSourceArr = [NSMutableArray arrayWithArray:varModel.data];
                     if (self.dataSourceArr.count < varModel.perpage) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];

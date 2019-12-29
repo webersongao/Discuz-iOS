@@ -39,7 +39,7 @@
 
 - (NSString *)dealSpecialTypeThread:(NSInteger)page {
     NSString *useSubjectStr = self.mainTitleString;
-    if ([self isTopThread] && page == 0 && self.typeName.length) {
+    if ([self isTopThread] && page == 1 && self.typeName.length) {
         useSubjectStr = [NSString stringWithFormat:@"%@,%@",self.typeName,self.subject];
     } else {
         NSString *spaceCharater = @"    ";

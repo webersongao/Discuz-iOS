@@ -86,7 +86,7 @@
         [self.HUD hide];
         if (discover) {
             [self.tableView.mj_header endRefreshing];
-            if (self.page == 0) { // 刷新列表 刷新的时候移除数据源
+            if (self.page == 1) { // 刷新列表 刷新的时候移除数据源
                 [self clearDatasource];
             } else {
                 [self.tableView.mj_footer endRefreshing];

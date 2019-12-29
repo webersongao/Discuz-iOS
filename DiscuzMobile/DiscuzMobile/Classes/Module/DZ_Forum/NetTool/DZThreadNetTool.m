@@ -39,7 +39,7 @@
     }
     
     BOOL isCache = [DZApiRequest isCache:DZ_Url_ForumTlist andParameters:dict];
-    BOOL reqCache = (listType == DZ_ListAll && page == 0) ? YES : NO;
+    BOOL reqCache = (listType == DZ_ListAll && page == 1) ? YES : NO;
     if (!dict || !completion) {
         return;
     }
