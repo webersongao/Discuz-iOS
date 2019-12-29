@@ -11,16 +11,15 @@
 
 @interface DZContainerController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic,strong) UIColor *navigotionBarBackgroundColor;
 @property (nonatomic, assign) BOOL sendNotify;
+@property (nonatomic,strong) UIColor *naviBackgroundColor;
 
 @property (nonatomic, weak) UIViewController *parentController;
-@property (strong, nonatomic) NSArray <UITableViewController *>*viewControllers;
+@property (strong, nonatomic) DZSegmentedControl *segmentControl;
+@property (nonatomic,strong) UICollectionViewFlowLayout *flowLayout;
 @property (strong, nonatomic) UITableViewController *currentController;
-@property (nonatomic,weak) UICollectionView *collectonView;
-@property (nonatomic,weak) UICollectionViewFlowLayout *flowLayout;
-@property (strong, nonatomic) DZSegmentedControl *segmentedControl;
+@property (strong, nonatomic) NSArray <UITableViewController *>*viewControllers;
 
-- (void)setSubControllers:(NSArray<UITableViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect;
+- (void)configSubControllers:(NSArray<UITableViewController *>*)subControllers parentVC:(UIViewController *)parentVC segmentRect:(CGRect)segmentRect;
 
 @end

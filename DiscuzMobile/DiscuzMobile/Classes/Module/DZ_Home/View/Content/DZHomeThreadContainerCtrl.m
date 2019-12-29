@@ -40,7 +40,7 @@
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kHomeSegmentHeight);
     self.rootVC = [[DZContainerController alloc] init];
     self.rootVC.sendNotify = YES;
-    [self.rootVC setSubControllers:self.controllerArr parentController:self andSegmentRect:segmentRect];
+    [self.rootVC configSubControllers:self.controllerArr parentVC:self segmentRect:segmentRect];
 }
 
 -(void)setListOffSetY:(CGPoint)listOffSet{

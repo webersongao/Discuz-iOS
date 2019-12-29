@@ -21,7 +21,6 @@
 - (void)setParentControl:(UIViewController *)parentController {
     self.parentController = parentController;
     DZForumThreadController *bdVC = (DZForumThreadController *)self.parentController;
-    self.collectonView.bounces = NO;
     [bdVC addChildViewController:self];
     [bdVC.contentView addSubview:self.view];
 }
@@ -29,10 +28,6 @@
 #pragma mark - collectionView datasource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.viewControllers.count;
-}
-
-- (void)setNavigotionBarBackgroundColor:(UIColor *)navigotionBarBackgroundColor {
-    [self.segmentedControl setBackgroundColor:navigotionBarBackgroundColor];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,8 +52,8 @@
 #pragma mark - collectionView delegate
 // 这里覆盖了父类的方法
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSInteger index = scrollView.contentOffset.x / self.collectonView.frame.size.width;
-    [self.segmentedControl  setSelectedSegmentIndex:index];
+    NSInteger index = scrollView.contentOffset.x / scrollView.width;
+    [self.segmentControl  setSelectedSegmentIndex:index];
     
     [(DZForumThreadController *)self.parentController setSelectIndex:index];
     if (self.selectIndex != index) {
@@ -82,13 +77,6 @@
     
     [(DZForumThreadController *)self.parentController setScrollEnable:YES];
 }
-
-// 这里不能少， 不能用super方法，不让页面布局错乱
-- (void)setSelectedAtIndex:(NSInteger)selectedIndex {
-    CGFloat offsetX = self.collectonView.frame.size.width * selectedIndex;
-    self.collectonView.contentOffset = CGPointMake(offsetX, 0);
-}
-
 
 
 

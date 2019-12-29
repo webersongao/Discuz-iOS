@@ -299,8 +299,8 @@
             self.contentView = cell.contentView;
             self.containVC = [[DZForumThreadMixContainer alloc] init];
             CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
-            self.containVC.navigotionBarBackgroundColor = [UIColor whiteColor];
-            [self.containVC setSubControllers:self.ctvArr parentController:self andSegmentRect:segmentRect];
+            self.containVC.naviBackgroundColor = [UIColor whiteColor];
+            [self.containVC configSubControllers:self.ctvArr parentVC:self segmentRect:segmentRect];
         }
         
         return cell;

@@ -34,7 +34,7 @@
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, kToolBarHeight);
     
     DZContainerController *containerVC = [[DZContainerController alloc] init];
-    [containerVC setSubControllers:ctArr parentController:self andSegmentRect:segmentRect];
+    [containerVC configSubControllers:ctArr parentVC:self segmentRect:segmentRect];
 }
 
 

@@ -94,8 +94,9 @@
 - (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     [self.VarModel updateVarModel:self.forumModel.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
-        if (self.page == 1) {
+        if (self.page == 0) {
             self.notThisFidCount = notFourmCount;
+            [self.dataSourceArr removeAllObjects];
             self.allArray = [NSMutableArray arrayWithArray:allArr];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:topArr]];
             [self.dataSourceArr addObject:[NSArray arrayWithArray:commonArr]];

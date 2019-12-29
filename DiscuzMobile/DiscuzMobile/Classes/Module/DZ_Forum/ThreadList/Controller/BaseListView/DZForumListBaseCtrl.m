@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    [self.dz_NavigationBar removeFromSuperview];
     self.tableView.showsVerticalScrollIndicator = NO;
 }
 

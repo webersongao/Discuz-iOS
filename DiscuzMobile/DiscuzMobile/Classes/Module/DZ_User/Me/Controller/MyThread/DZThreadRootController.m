@@ -33,7 +33,7 @@
     CGRect segmentRect = CGRectMake(0, 0, KScreenWidth, 44);
     self.view.height = KScreenHeight - KNavi_ContainStatusBar_Height;
     DZContainerController *containVc = [[DZContainerController alloc] init];
-    [containVc setSubControllers:ctArr parentController:self andSegmentRect:segmentRect];
+    [containVc configSubControllers:ctArr parentVC:self segmentRect:segmentRect];
 }
 
 @end

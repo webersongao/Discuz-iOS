@@ -7,45 +7,18 @@
 //
 
 #import "DZContainerController.h"
+#import "DZBaseTableViewController.h"
 
 @interface DZContainerController()
 
 @property (nonatomic, strong) NSMutableArray *titleArray;
 @property (nonatomic, assign) NSInteger selectIndex;
-
+@property (nonatomic,strong) UICollectionView *collectonView;
 @end
 
 @implementation DZContainerController
 
 #pragma mark - init
-
-- (instancetype)init {
-    
-    if (self = [super init]) {
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        _flowLayout = flowLayout;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        flowLayout.minimumLineSpacing = 0;
-        flowLayout.minimumInteritemSpacing = 0;
-        
-        //设置collectionView的属性
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
-        collectionView.pagingEnabled = YES;
-        collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.allowsSelection = NO;
-        //禁用滚动到最顶部的属性
-        collectionView.scrollsToTop = NO;
-        collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        
-        _collectonView = collectionView;
-        [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([self class])];
-        collectionView.delegate = self;
-        collectionView.dataSource = self;
-        
-        [self.view addSubview:collectionView];
-    }
-    return self;
-}
 
 - (void)setParentControl:(UIViewController *)parentController {
     if (_parentController == nil) {
@@ -56,31 +29,34 @@
     }
 }
 
-- (void)setSubControllers:(NSArray<UITableViewController *>*)viewControllers parentController:(UIViewController *)vc andSegmentRect:(CGRect)segmentRect {
+- (void)configSubControllers:(NSArray<UITableViewController *>*)subVCArray parentVC:(UIViewController *)parentVC segmentRect:(CGRect)segmentRect {
     
-    [self setViewControllers:viewControllers];
-    [self setParentControl:vc];
+    [self setViewControllers:subVCArray];
+    [self setParentControl:parentVC];
     
-    if (viewControllers.count > 0) {
+    if (subVCArray.count > 0) {
         [self.titleArray removeAllObjects];
         if (self.childViewControllers.count > 0) {
             [self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [obj.view removeFromSuperview];
                 [obj removeFromParentViewController];
             }];
-            self.segmentedControl = nil;
+            self.segmentControl = nil;
         }
         
-        [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [subVCArray enumerateObjectsUsingBlock:^(UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self addChildViewController:obj];
             [self.titleArray addObject:obj.title ? : @""];
+            if ([obj isKindOfClass:[DZBaseTableViewController class]]) {
+                DZBaseTableViewController *tableVC = (DZBaseTableViewController *)obj;
+                tableVC.tableView.frame = KScreenBounds;
+            }
         }];
     }
     
-    [self.view addSubview:self.segmentedControl];
-    self.segmentedControl.frame = CGRectMake(0, CGRectGetMinY(segmentRect), segmentRect.size.width, segmentRect.size.height);
-    [self.segmentedControl setSectionTitles:self.titleArray.copy];
-    
+    [self.view addSubview:self.segmentControl];
+    self.segmentControl.frame = CGRectMake(0, CGRectGetMinY(segmentRect), segmentRect.size.width, segmentRect.size.height);
+    [self.segmentControl setSectionTitles:self.titleArray.copy];
     
     CGFloat height = KScreenHeight;
     CGFloat navMaxY = CGRectGetMaxY(self.navigationController.navigationBar.frame);
@@ -88,7 +64,7 @@
     if (self.navigationController) {
         height -= navMaxY;
     }
-    if (vc.navigationController.viewControllers.count == 1) {
+    if (parentVC.navigationController.viewControllers.count == 1) {
         height -= tabbarHeight;
     }
     
@@ -97,8 +73,8 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+    [self.view addSubview:self.collectonView];
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -108,8 +84,9 @@
     return self.viewControllers.count;
 }
 
-- (void)setNavigotionBarBackgroundColor:(UIColor *)navigotionBarBackgroundColor {
-    [self.segmentedControl setBackgroundColor:navigotionBarBackgroundColor];
+-(void)setNaviBackgroundColor:(UIColor *)naviBackgroundColor{
+    _naviBackgroundColor = naviBackgroundColor;
+    [self.segmentControl setBackgroundColor:naviBackgroundColor];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,7 +108,7 @@
 #pragma mark - collectionView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger index = scrollView.contentOffset.x / self.view.bounds.size.width;
-    [self.segmentedControl  setSelectedSegmentIndex:index];
+    [self.segmentControl  setSelectedSegmentIndex:index];
     if (self.sendNotify) {
         if (self.selectIndex != index) {
             // 延迟0.03秒执行 为了界面滑动流畅啊！！！！
@@ -148,13 +125,12 @@
 
 #pragma mark - setting
 - (void)setSelectedAtIndex:(NSInteger)selectedIndex {
-    
-    CGFloat offsetX = self.view.bounds.size.width * selectedIndex;
+    CGFloat offsetX = self.view.width * selectedIndex;
     self.collectonView.contentOffset = CGPointMake(offsetX, 0);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-   [self scrollViewToCurrentTarget:scrollView.contentOffset.x];
+    [self scrollViewToCurrentTarget:scrollView.contentOffset.x];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -179,24 +155,24 @@
     return _titleArray;
 }
 
-- (DZSegmentedControl *)segmentedControl {
-    if (_segmentedControl == nil) {
-        _segmentedControl = [[DZSegmentedControl alloc] initWithSectionTitles:self.titleArray.copy];
-        _segmentedControl.borderType = DZSegmentedControlBorderTypeBottom | DZSegmentedControlBorderTypeTop;
-        _segmentedControl.borderColor = K_Color_Line;
-        _segmentedControl.borderWidth = 0.5;
-        [_segmentedControl setSelectionIndicatorColor:K_Color_Theme];
-        [_segmentedControl setSelectionIndicatorHeight:2.0];
-        [_segmentedControl setBackgroundColor:[UIColor whiteColor]];
-        _segmentedControl.segmentWidthStyle = DZSegmentedControlSegmentWidthStyleFixed;
-        _segmentedControl.selectionStyle = DZSegmentedControlSelectionStyleTextWidthMorelittle;
-        _segmentedControl.selectionIndicatorLocation = DZSegmentedControlSelectionIndicatorLocationDown;
+-(DZSegmentedControl *)segmentControl{
+    if (!_segmentControl) {
+        _segmentControl = [[DZSegmentedControl alloc] initWithSectionTitles:self.titleArray.copy];
+        _segmentControl.borderType = DZSegmentedControlBorderTypeBottom | DZSegmentedControlBorderTypeTop;
+        _segmentControl.borderColor = K_Color_Line;
+        _segmentControl.borderWidth = 0.5;
+        [_segmentControl setSelectionIndicatorColor:K_Color_Theme];
+        [_segmentControl setSelectionIndicatorHeight:2.0];
+        [_segmentControl setBackgroundColor:[UIColor whiteColor]];
+        _segmentControl.segmentWidthStyle = DZSegmentedControlSegmentWidthStyleFixed;
+        _segmentControl.selectionStyle = DZSegmentedControlSelectionStyleTextWidthMorelittle;
+        _segmentControl.selectionIndicatorLocation = DZSegmentedControlSelectionIndicatorLocationDown;
         
         CGFloat minsize = 16.0;
         CGFloat maxsize = 17.0;
         CGFloat  space = (self.viewControllers.count <= 4) ? 0 : 16;
-        _segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, space, 0, space);
-        [_segmentedControl setTitleFormatter:^NSAttributedString *(DZSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
+        _segmentControl.segmentEdgeInset = UIEdgeInsetsMake(0, space, 0, space);
+        [_segmentControl setTitleFormatter:^NSAttributedString *(DZSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
             NSAttributedString *attString = [[NSAttributedString alloc] init];
             attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : K_Color_LightText,NSFontAttributeName:[DZFontSize SlideTitleFontSize:minsize andIsBold:NO]}];
             if (selected) {
@@ -206,12 +182,48 @@
         }];
         
         KWEAKSELF;
-        [_segmentedControl setIndexChangeBlock:^(NSInteger index) {
+        [_segmentControl setIndexChangeBlock:^(NSInteger index) {
             [weakSelf setSelectedAtIndex:index];
         }];
-        [_segmentedControl setSelectedSegmentIndex:self.selectIndex];
+        [_segmentControl setSelectedSegmentIndex:self.selectIndex];
     }
-    return _segmentedControl;
+    return _segmentControl;
 }
 
+
+-(UICollectionView *)collectonView{
+    if (!_collectonView) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _flowLayout.minimumLineSpacing = 0;
+        _flowLayout.minimumInteritemSpacing = 0;
+        
+        //设置collectionView的属性
+        _collectonView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_flowLayout];
+        _collectonView.pagingEnabled = YES;
+        _collectonView.showsHorizontalScrollIndicator = NO;
+        _collectonView.allowsSelection = NO;
+        //禁用滚动到最顶部的属性
+        _collectonView.scrollsToTop = NO;
+        _collectonView.bounces = NO;
+        _collectonView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        
+        [_collectonView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([self class])];
+        _collectonView.delegate = self;
+        _collectonView.dataSource = self;
+    }
+    return _collectonView;
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
