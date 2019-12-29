@@ -23,8 +23,6 @@
 @property (nonatomic, strong) NSArray<DZForumBaseNode *> *dataArr; /// 数据
 
 
-
-
 @end
 
 
@@ -278,9 +276,8 @@
             [self adjustTableViews];
             [secondTableView reloadData];
             [thirdTableView reloadData];
-            
-            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
-            [_delegate DropMenuListView:self didSelectNode:baseNode];
+//            DZForumBaseNode *baseNode = self.dataArr[indexPath.row];
+//            [_delegate DropMenuListView:self didSelectNode:baseNode];
         }else if (tableView == self.tableViewArr[1]){
             if (!thirdTableView.superview) {
                 [self.tableViewUnderView addSubview:thirdTableView];
@@ -299,7 +296,6 @@
             [_delegate DropMenuListView:self didSelectNode:innerthriNode];
         }
     }
-    
 }
 
 
@@ -362,3 +358,11 @@
 
 
 @end
+
+
+
+
+
+
+
+
