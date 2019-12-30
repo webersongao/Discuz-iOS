@@ -15,6 +15,10 @@
 //判断是否为浮点型
 - (BOOL)isPureFloat;
 
++(NSString *)decodeString:(NSString*)strUrl;
+
++(NSString *)encodeString:(NSString*)strUrl;
+
 //检测是否是充值选择金额页面
 - (BOOL)checkisContainTBValueUrl;
 
@@ -46,5 +50,21 @@
  */
 - (CGFloat)customStringWidthWithFontSize:(CGFloat)fontSize maxHeight:(CGFloat)height;
 
+- (CGSize)customSizeWithFont:(UIFont *)font;
+- (CGSize)customSizeWithFont:(UIFont *)font forWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
+// Single line, no wrapping. Truncation based on the NSLineBreakMode.
+- (CGSize)customDrawAtPoint:(CGPoint)point withFont:(UIFont *)font;
+
+- (CGSize)customDrawAtPoint:(CGPoint)point forWidth:(CGFloat)width withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
+- (CGSize)customSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
+
+- (CGSize)customSizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
+// Wrapping to fit horizontal and vertical size.
+- (CGSize)customDrawInRect:(CGRect)rect withFont:(UIFont *)font;
+- (CGSize)customDrawInRect:(CGRect)rect withFont:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
+
+- (CGSize)customSizeWithFont:(UIFont *)font minFontSize:(CGFloat)minFontSize actualFontSize:(CGFloat *)actualFontSize forWidth:(CGFloat)width lineBreakMode:(NSLineBreakMode)lineBreakMode;
 
 @end

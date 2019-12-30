@@ -43,6 +43,7 @@
 #define kMargin30   30.0
 #define kMargin40   40.0
 #define kToolBarHeight   44.0
+#define KCenterBarHeight 49.0  // 常用 状态条 工具条 高度
 #define kCellThinHeight   50.0
 #define kCellDefaultHeight   65.0
 

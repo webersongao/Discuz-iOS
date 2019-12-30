@@ -16,3 +16,4 @@ typedef NS_ENUM(NSUInteger, PostType) {
 };
 
 #define KRoot_Domainkey      @"root_domain"
+#define shadowAlertCommonView_AlertView_Tag  18111301 // 通用的 ShadowAletView 的弹窗默认tag

@@ -10,12 +10,14 @@
 #import "DZBaseNavigationController.h"
 #import "DZDiscoverModel.h"
 #import "DZGlobalModel.h"
+#import "DZShadowView.h"
 
 @interface DZMobileCtrl : NSObject
 
 +(instancetype)sharedCtrl;
 
 @property (nonatomic, strong) DZGlobalModel *Global;  //!< 用户信息
+@property (nonatomic, strong) DZShadowView *shadowAlertView;  //!< 阴影View
 @property (nonatomic, strong) DZDiscoverModel *forumInfo;  //!< 论坛全局数据
 @property(nonatomic,strong,readonly) DZRootTabBarController *rootTababar;
 @property(nonatomic,strong,readonly) DZBaseNavigationController *mainNavi;

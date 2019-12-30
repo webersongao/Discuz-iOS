@@ -8,7 +8,7 @@
 #import "DZRefreshHeader.h"
 
 @interface DZRefreshHeader ()
-
+@property (nonatomic, assign) DZRefreshHeaderMode pr_mode;  //!< 属性注释
 @end
 
 @implementation DZRefreshHeader
@@ -48,6 +48,23 @@
     if (self.state == MJRefreshStateRefreshing && !self.gifView.isAnimating) {
         [self.gifView startAnimating];
     }
+}
+
++ (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action mode:(DZRefreshHeaderMode)mode {
+    DZRefreshHeader *cmp = [[self alloc] initWithMode:mode];
+    cmp.pr_mode = mode;
+    [cmp setRefreshingTarget:target refreshingAction:action];
+    return cmp;
+}
+
+- (instancetype)initWithMode:(DZRefreshHeaderMode)mode {
+    
+    _pr_mode = mode;
+    
+    if (self = [super init]) {
+        
+    }
+    return self;
 }
 
 @end

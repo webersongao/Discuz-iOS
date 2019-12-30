@@ -1,9 +1,9 @@
 //
 //  NSString+Format.h
-//  PandaReader
+//  DiscuzMobile
 //
-//  Created by 李红 on 16/7/25.
-//
+//  Created by WebersonGao on 2019/12/29.
+//  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -47,9 +47,11 @@
 #define KF7F7F8_Color  @"#F7F7F8" // 点击高亮色
 #define KCDCDCD_Color  @"#CDCDCD"
 #define KFCA43B_Color  @"#FCA43B"
+#define K00BF99_Color  @"#00BF99" //绿色
 #define K2A2C2F_Color  @"#2A2C2F" //tabbar 黑色
 
 #define KLine_Color  @"#f5f5f5" //分割线
+
 
 
 #define KF5F6F8_Color  @"#F5F6F8"
