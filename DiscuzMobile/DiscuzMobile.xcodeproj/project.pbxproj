@@ -2689,9 +2689,9 @@
 		706211B4237936C800130B9D /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				707B7B7623B9D17E003C8136 /* DZ_ Community */,
 				70FBDD1C2383FC4B00FC296E /* DZ_User */,
 				70FBDD132383FC4A00FC296E /* DZ_Home */,
+				707B7B7623B9D17E003C8136 /* DZ_ Community */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -3758,9 +3758,9 @@
 			children = (
 				701F378823851D0D000F7953 /* HomeHeader.h */,
 				70FBDD192383FC4A00FC296E /* NetTool */,
-				70FBDD142383FC4A00FC296E /* Controller */,
-				70FBDD172383FC4A00FC296E /* Model */,
 				70FBDD182383FC4A00FC296E /* View */,
+				70FBDD172383FC4A00FC296E /* Model */,
+				70FBDD142383FC4A00FC296E /* Controller */,
 			);
 			path = DZ_Home;
 			sourceTree = "<group>";

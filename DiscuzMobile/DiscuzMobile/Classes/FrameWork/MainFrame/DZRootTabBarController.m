@@ -117,13 +117,13 @@
     DZHomeController *homeVC = [[DZHomeController alloc] init];
     DZUserController *UserVC = [[DZUserController alloc] init];
     DZCommunityController *CommunityVC = [[DZCommunityController alloc] init];
-    DZHomeTestViewController *testVC = [[DZHomeTestViewController alloc] initWithNibName:@"DZHomeTest" bundle:nil];
+//    DZHomeTestViewController *testVC = [[DZHomeTestViewController alloc] initWithNibName:@"DZHomeTest" bundle:nil];
     
-    [self addChildVc:testVC title:@"首页" image:@"homem" selectedImage:@"homes"];
+//    [self addChildVc:testVC title:@"首页" image:@"homem" selectedImage:@"homes"];
     
-    [self addChildVc:homeVC title:@"home" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:CommunityVC title:@"cate" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:UserVC title:@"wod" image:@"my" selectedImage:@"mys"];
+    [self addChildVc:homeVC title:@"首页" image:@"homem" selectedImage:@"homes"];
+    [self addChildVc:CommunityVC title:@"社区" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:UserVC title:@"我的" image:@"my" selectedImage:@"mys"];
 }
 
 - (void)addChildVc:(UIViewController *)childVc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {

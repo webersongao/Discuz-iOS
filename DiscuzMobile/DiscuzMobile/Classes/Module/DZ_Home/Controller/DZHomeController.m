@@ -61,6 +61,7 @@
     if (![self isLogin]) {
         return;
     }
+    [[DZMobileCtrl sharedCtrl] PushToMyMessageViewController];
 }
 
 - (void)rightBarBtnClick {

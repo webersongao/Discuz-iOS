@@ -30,9 +30,9 @@
     
     [self addChildViewController:self.forumVC];
     [self addChildViewController:self.discoverVC];
+    [self.view addSubview:self.discoverVC.view];
     
     [self dz_bringNavigationBarToFront];
-    [self.view addSubview:self.discoverVC.view];
     [self configNaviBar:nil type:NaviItemText Direction:NaviDirectionLeft];
     [self configNaviBar:@"切换" type:NaviItemText Direction:NaviDirectionRight];
 }
