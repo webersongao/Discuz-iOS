@@ -36,7 +36,7 @@
         //        }
         //        [helpView setPerpage:imageArr];
         //        helpView.dismissBlock = ^ {
-        //            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_FIRSTAPP_Notify object:nil];
+        //            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_FirstLaunchApp_Notify object:nil];
         //        };
     } else {
         if (!self.isOpenUrl) {

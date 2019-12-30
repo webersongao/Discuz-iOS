@@ -2,8 +2,8 @@
 //  DZUserDataModel.m
 //  DiscuzMobile
 //
-//  Created by HB on 2017/9/8.
-//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2019/11/8.
+//  Copyright © 2019年 comsenz-service.com.  All rights reserved.
 //
 
 #import "DZUserDataModel.h"

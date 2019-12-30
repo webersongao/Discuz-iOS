@@ -100,7 +100,7 @@
 - (void)leftBarBtnClick {
     [self.view endEditing:YES];
     NSDictionary *userInfo = @{@"type":@"cancel"};
-    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_ConfigSelectedIndex_Notify object:nil userInfo:userInfo];
     [super leftBarBtnClick];
 }
 #pragma mark - 注册

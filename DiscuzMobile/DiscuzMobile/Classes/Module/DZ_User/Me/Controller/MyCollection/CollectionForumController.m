@@ -93,7 +93,7 @@
     
     [DZForumTool DZ_DeleCollection:fidStr type:collectForum success:^{
         [self.dataSourceArr removeObjectAtIndex:index];
-        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_CollectionInfoRefresh_Notify object:nil];
         [self.tableView reloadData];
     } failure:nil];
     

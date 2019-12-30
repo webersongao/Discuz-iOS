@@ -180,7 +180,7 @@
 
 #pragma mark - 添加通知
 - (void)addNotifi {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_STATUSBARTAP_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentWebView) name:DZ_RefreshWeb_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginedReshData) name:DZ_LoginedRefreshInfo_Notify object:nil];
 }

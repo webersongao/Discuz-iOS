@@ -2,7 +2,7 @@
 //  DZThreadListModel+Display.h
 //  DiscuzMobile
 //
-//  Created by ZhangJitao on 2019/7/31.
+//  Created by WebersonGao on 2019/7/31.
 //  Copyright © 2019 comsenz-service.com.  All rights reserved.
 //
 

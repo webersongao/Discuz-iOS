@@ -41,9 +41,9 @@
     [self cacheAndRequest];
     
     // 刷新
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_TABBARREFRESH_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_TabbarRefresh_Notify object:nil];
     // 监听通知 收藏板块操作后，如果没有blockc传入，就必须发通知刷新这个页面数据
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:COLLECTIONFORUMREFRESH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_CollectionInfoRefresh_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
 }
 

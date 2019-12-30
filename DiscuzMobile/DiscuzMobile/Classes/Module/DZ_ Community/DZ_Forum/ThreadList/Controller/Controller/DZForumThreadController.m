@@ -129,7 +129,7 @@
     if (self.cForumBlock) {
         self.cForumBlock(YES);
     } else {
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_CollectionInfoRefresh_Notify object:nil];
     }
 }
 
@@ -139,7 +139,7 @@
     if (self.cForumBlock) {
         self.cForumBlock(NO);
     } else {
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_CollectionInfoRefresh_Notify object:nil];
     }
 }
 

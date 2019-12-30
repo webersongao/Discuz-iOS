@@ -17,11 +17,11 @@
     self.page = 1;
     
     // 点击菜单栏刷新
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TABBARREFRESH_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TabbarRefresh_Notify object:nil];
     // 无图模式
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_IMAGEORNOT_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_ImageOrNot_Notify object:nil];
     // 点击导航栏到顶部
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_STATUSBARTAP_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
 
 - (void)dealloc {

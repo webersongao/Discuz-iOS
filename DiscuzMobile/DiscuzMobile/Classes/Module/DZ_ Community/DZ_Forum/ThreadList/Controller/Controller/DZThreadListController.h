@@ -2,8 +2,8 @@
 //  DZThreadListController.h
 //  DiscuzMobile
 //
-//  Created by HB on 2017/5/19.
-//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2019/12/8.
+//  Copyright © 2019年 comsenz-service.com.  All rights reserved.
 //
 
 #import "DZForumListBaseCtrl.h"

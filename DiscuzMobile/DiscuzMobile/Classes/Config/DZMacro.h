@@ -129,29 +129,29 @@ typedef void(^ProgressBlock)(double Progress,NSError *error);
 #pragma mark - 通知 ================================================
 
 // tabbar个人中心选中
-#define DZ_configSelectedIndex_Notify @"selec7tIndex"
+#define DZ_ConfigSelectedIndex_Notify   @"selec7tIndexNot8ify"
 // 连续点击tabbar刷新
-#define DZ_TABBARREFRESH_Notify @"TabbarButt3onClickDidRepeatNotification"
+#define DZ_TabbarRefresh_Notify         @"TabbarButt3onClickDidRepeatNotification"
 // 刷新个人中心资料
-#define DZ_REFRESHCENTER_Notify     @"get6Ziliao"
-#define DZ_IMAGEORNOT_Notify        @"IMGOR3NOT_Notify"
-#define DZ_UserSigOut_Notify       @"SIGNOUT4NOTIFY"
+#define DZ_RefreshUserCenter_Notify     @"getUser6Ziliao"
+#define DZ_ImageOrNot_Notify            @"IMGOR3NOT_Notify"
+#define DZ_UserSigOut_Notify            @"SIGNOUT4NOTIFY"
 // 点中statusbar
-#define DZ_STATUSBARTAP_Notify @"statuBarTappedNotification"
+#define DZ_StatusBarTap_Notify          @"statuBarTappedNotification"
 // 防止首次加载APP的时候没有数据，划过导航页面的时候刷新一次
-#define DZ_FIRSTAPP_Notify @"APPFIRSTLanch"
+#define DZ_FirstLaunchApp_Notify        @"APPFIRSTLanch"
 
 // 首次请求帖子列表的时候通知
 #define DZ_ThreadListFirstReload_Notify @"THREADLIST3FISTREQUEST"
 // 使用DZContainerController控件，请求的时候
-#define DZ_CONTAINERQUEST_Notify @"DZCONTAINERQUEST"
+#define DZ_ContainerRequest_Notify      @"DZCONTAsas24INERQUEST"
 
 // 登录后刷新一些页面，获取cookie或者formhash
-#define DZ_LoginedRefreshInfo_Notify @"LOGINEndRefreshGetInfo"
-#define COLLECTIONFORUMREFRESH @"COLLECTIO6NFORUMREFRESH"
-#define DZ_RefreshWeb_Notify @"refreshL9ocalWeb"
+#define DZ_RefreshWeb_Notify            @"refreshL9ocalWeb"
+#define DZ_LoginedRefreshInfo_Notify    @"LOGINEndRefreshGetInfo"
+#define DZ_CollectionInfoRefresh_Notify @"COLLECTIO6NFORUMREFRESH"
 
-#define DZ_DomainUrlChange_Notify @"DomainN4ameChange"
-#define DZ_UserLogin_Notify @"user9LoginNotification"
+#define DZ_DomainUrlChange_Notify       @"DomainN4ameChange"
+#define DZ_UserLogin_Notify             @"user9LoginNotification"
 
 #endif /* DZMacro_h */

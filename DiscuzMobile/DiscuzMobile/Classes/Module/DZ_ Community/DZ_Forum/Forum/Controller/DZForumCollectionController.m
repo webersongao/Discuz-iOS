@@ -30,8 +30,8 @@ static NSString * headerSection = @"CellHeader";
     [super viewDidLoad];
     [self loadCacheRequest];
     [self configCollectionController];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TABBARREFRESH_Notify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_IMAGEORNOT_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:DZ_TabbarRefresh_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadImage) name:DZ_ImageOrNot_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
 }
 

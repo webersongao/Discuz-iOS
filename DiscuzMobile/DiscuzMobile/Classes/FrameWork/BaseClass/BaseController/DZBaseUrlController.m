@@ -17,7 +17,7 @@
 @implementation DZBaseUrlController
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DZ_STATUSBARTAP_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DZ_StatusBarTap_Notify object:nil];
     [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@""]]];
     [self cleanWebChache];
     self.webView.delegate = nil;
@@ -39,7 +39,7 @@
     NSURL *url = [NSURL URLWithString:encodeUrlStr];
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_STATUSBARTAP_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];

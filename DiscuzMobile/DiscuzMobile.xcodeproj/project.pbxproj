@@ -3244,6 +3244,27 @@
 			path = BaseModel;
 			sourceTree = "<group>";
 		};
+		70EA908323B9E6B600814952 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				9494507621196F8B0074C79E /* Recording.png */,
+				9494507A21196F8B0074C79E /* pause.png */,
+				9494506D21196F8B0074C79E /* playRecord.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		70EA908423B9E6FC00814952 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9494507221196F8B0074C79E /* AudioModel.h */,
+				9494507821196F8B0074C79E /* AudioModel.m */,
+				9494507321196F8B0074C79E /* AudioRecordView.h */,
+				9494507721196F8B0074C79E /* AudioRecordView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		70EBEB842387C4D5005333D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
@@ -3810,12 +3831,12 @@
 		70FBDD1C2383FC4B00FC296E /* DZ_User */ = {
 			isa = PBXGroup;
 			children = (
-				700F5922239674B800DD6DFF /* View */,
-				700BB5D72394C0D3002A62DE /* Model */,
-				700BB5D62394C088002A62DE /* Controller */,
-				70471C602394BFEC00CCF5AC /* NetTool */,
-				70FBDC5C2383FC1B00FC296E /* Other */,
 				70FBDC692383FC1B00FC296E /* Me */,
+				700F5922239674B800DD6DFF /* View */,
+				70FBDC5C2383FC1B00FC296E /* Other */,
+				700BB5D72394C0D3002A62DE /* Model */,
+				70471C602394BFEC00CCF5AC /* NetTool */,
+				700BB5D62394C088002A62DE /* Controller */,
 			);
 			path = DZ_User;
 			sourceTree = "<group>";
@@ -4073,19 +4094,14 @@
 		9494506C21196F8B0074C79E /* AudioTool */ = {
 			isa = PBXGroup;
 			children = (
-				9494506F21196F8B0074C79E /* lame */,
-				9494507621196F8B0074C79E /* Recording.png */,
-				9494507A21196F8B0074C79E /* pause.png */,
-				9494506D21196F8B0074C79E /* playRecord.png */,
-				9494507521196F8B0074C79E /* AudioConst.h */,
-				9494507221196F8B0074C79E /* AudioModel.h */,
-				9494507821196F8B0074C79E /* AudioModel.m */,
-				9494507321196F8B0074C79E /* AudioRecordView.h */,
-				9494507721196F8B0074C79E /* AudioRecordView.m */,
 				9494506E21196F8B0074C79E /* AudioTool.h */,
 				9494507921196F8B0074C79E /* AudioTool.m */,
+				9494507521196F8B0074C79E /* AudioConst.h */,
 				9494507421196F8B0074C79E /* AudioManager.h */,
 				9494507B21196F8B0074C79E /* AudioManager.m */,
+				70EA908423B9E6FC00814952 /* View */,
+				9494506F21196F8B0074C79E /* lame */,
+				70EA908323B9E6B600814952 /* Image */,
 			);
 			path = AudioTool;
 			sourceTree = "<group>";

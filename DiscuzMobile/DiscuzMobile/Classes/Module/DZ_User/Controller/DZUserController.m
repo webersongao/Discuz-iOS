@@ -33,7 +33,7 @@
     
     [self setUserNavi];
     [self tooBarAction];
-//    [self downLoadData];
+    [self downLoadData];
     
     [self addNotify];
 }
@@ -179,7 +179,7 @@
     [self initData];
     [self.UserListView reloadData];
     [self transtoUserLogin];
-    [[NSNotificationCenter defaultCenter] postNotificationName:COLLECTIONFORUMREFRESH object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_CollectionInfoRefresh_Notify object:nil];
 }
 
 - (void)transtoUserLogin {
@@ -191,7 +191,7 @@
     return NO;
 }
 - (void)addNotify {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_REFRESHCENTER_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_RefreshUserCenter_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UserSignout) name:DZ_UserSigOut_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiReloadData) name:DZ_DomainUrlChange_Notify object:nil];
 }

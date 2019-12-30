@@ -25,7 +25,7 @@
     
     [self initTableView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_CONTAINERQUEST_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_ContainerRequest_Notify object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
     
     [self requestLocalCache];

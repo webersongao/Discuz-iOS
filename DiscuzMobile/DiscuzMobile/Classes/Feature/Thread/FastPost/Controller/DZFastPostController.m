@@ -128,7 +128,7 @@
 }
 
 - (void)closeBtnClick {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_configSelectedIndex_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_ConfigSelectedIndex_Notify object:nil];
     [self dz_PopCurrentViewController];
 }
 

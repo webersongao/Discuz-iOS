@@ -47,7 +47,7 @@
     //    [[UINavigationBar appearance] setBarTintColor:K_Color_NaviBar];
     self.selectedIndex = 0;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ttsetSelectInex:) name:DZ_configSelectedIndex_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ttsetSelectInex:) name:DZ_ConfigSelectedIndex_Notify object:nil];
 }
 
 - (void)dealloc {
@@ -76,7 +76,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if (self.oldSelected == viewController.tabBarItem.tag) { // 双击刷新
         if (viewController.tabBarItem.tag == 0) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_TABBARREFRESH_Notify object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DZ_TabbarRefresh_Notify object:nil];
         }
     }
     self.oldSelected = viewController.tabBarItem.tag;

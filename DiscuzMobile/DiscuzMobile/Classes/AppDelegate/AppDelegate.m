@@ -37,7 +37,7 @@ static AppDelegate *m_appDelegate;
     CGPoint location = [[[event allTouches] anyObject] locationInView:self.window];
     CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
     if (CGRectContainsPoint(statusBarFrame, location)) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_STATUSBARTAP_Notify object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZ_StatusBarTap_Notify object:nil];
     }
 }
 

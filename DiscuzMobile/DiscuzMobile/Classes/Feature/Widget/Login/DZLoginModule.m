@@ -16,7 +16,7 @@ NSString * const CookieValue = @"COOKIEVALU";
 @implementation DZLoginModule
 
 + (void)loginAnylyeData:(DZLoginResModel *)resModel andView:(UIView *)view  andHandle:(void(^)(void))handle {
-  
+    
     if (resModel.Message && !resModel.Message.isSuccessed) {
         [MBProgressHUD showInfo:resModel.Message.messagestr];
         return;
@@ -63,7 +63,7 @@ NSString * const CookieValue = @"COOKIEVALU";
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:CookieValue];
     [[DZPushCenter shareInstance] configPush];
     for (NSHTTPCookie *cookie in [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies) {
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }
     //  LoginFile
     [[DZLocalContext shared] removeLocalGLoabalInfo];
@@ -76,7 +76,7 @@ NSString * const CookieValue = @"COOKIEVALU";
  */
 
 + (void)setAutoLogin {
-   DZGlobalModel *user = [[DZLocalContext shared] GetLocalGlobalInfo];
+    DZGlobalModel *user = [[DZLocalContext shared] GetLocalGlobalInfo];
     if (user.member_uid.length) {
         [self setHttpCookie:[self getCookie]];
     }

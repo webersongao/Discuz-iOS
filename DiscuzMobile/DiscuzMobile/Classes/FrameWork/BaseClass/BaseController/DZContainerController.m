@@ -119,7 +119,7 @@
 
 // 通知方法
 - (void)firstRequest {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_CONTAINERQUEST_Notify object:nil userInfo:@{@"selectIndex":[NSNumber numberWithInteger:self.selectIndex]}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZ_ContainerRequest_Notify object:nil userInfo:@{@"selectIndex":[NSNumber numberWithInteger:self.selectIndex]}];
 }
 
 #pragma mark - setting

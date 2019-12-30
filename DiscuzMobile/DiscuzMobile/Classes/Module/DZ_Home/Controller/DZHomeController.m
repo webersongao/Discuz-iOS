@@ -33,7 +33,6 @@
     [self.view addSubview:self.homeView];
     [self configNaviBar:@"bar_message" type:NaviItemImage Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
-    
 }
 
 -(void)configHomeScroolViewAction{
