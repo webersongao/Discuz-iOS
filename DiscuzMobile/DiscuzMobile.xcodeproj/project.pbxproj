@@ -4195,7 +4195,7 @@
 				27D1C8E01DD2BE8E00B835B7 /* Frameworks */,
 				27D1C8E11DD2BE8E00B835B7 /* Resources */,
 				4ADD5C85089B25EE88D5BCD9 /* [CP] Copy Pods Resources */,
-				1C8BA7BB91ECF25E6A66A593 /* [CP] Embed Pods Frameworks */,
+				5DAC4C80DE8405E83B91874F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -4382,23 +4382,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C8BA7BB91ECF25E6A66A593 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3AB6DC88E0BEE9C1F8D276CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4432,6 +4415,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DAC4C80DE8405E83B91874F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
