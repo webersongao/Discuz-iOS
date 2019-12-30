@@ -70,7 +70,7 @@
 
 - (void)loadView {
     [super loadView];
-    self.detailView = [[ThreadDetailView alloc] initWithFrame:CGRectMake(0, KNavi_ContainStatusBar_Height, KScreenWidth, KScreenHeight - KNavi_ContainStatusBar_Height)];
+    self.detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
     self.view = self.detailView;
 }
 

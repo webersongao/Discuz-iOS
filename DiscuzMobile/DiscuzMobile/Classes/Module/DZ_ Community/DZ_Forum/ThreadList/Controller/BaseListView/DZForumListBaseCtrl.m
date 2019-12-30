@@ -49,7 +49,6 @@
         self.canScroll = NO;
         scrollView.contentOffset = CGPointZero;
     }
-    
 }
 
 - (void)setCanScroll:(BOOL)canScroll {

@@ -98,11 +98,11 @@
     
     //验证码webview
     _identWebView=[[UIWebView alloc]initWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
-    _identWebView.userInteractionEnabled=YES;
+    _identWebView.userInteractionEnabled = YES;
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonSeccode.frame = CGRectMake(10+_yanTextField.frame.size.width/2, 120, _yanTextField.frame.size.width/2, 40);
-    [buttonSeccode addTarget:self action:@selector(oclcc) forControlEvents:UIControlEventTouchUpInside];
+    [buttonSeccode addTarget:self action:@selector(downSecCodeAction) forControlEvents:UIControlEventTouchUpInside];
     buttonSeccode.layer.cornerRadius = 5;
     [buttonSeccode setTitle:@"看不清?" forState:UIControlStateNormal];
     [buttonSeccode setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -123,7 +123,7 @@
         
         _secTextField.frame = CGRectMake(CGRectGetMinX(buttonSeccode.frame), CGRectGetMaxY(_identWebView.frame) + 15, CGRectGetWidth(buttonSeccode.frame), 40);
         _secTextField.placeholder = @"请输入答案";
-        _secTextField.tag=10010;
+        _secTextField.tag = 10010;
         _secTextField.borderStyle= UITextBorderStyleRoundedRect;
         _secTextField.layer.borderWidth = 2.0f;
         _secTextField.layer.cornerRadius = 5;
@@ -147,7 +147,7 @@
     
 }
 
-- (void)oclcc {
+- (void)downSecCodeAction {
     [self downSeccode:self.type success:nil failure:nil];
 }
 

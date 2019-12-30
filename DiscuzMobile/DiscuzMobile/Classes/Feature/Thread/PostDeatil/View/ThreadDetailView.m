@@ -24,14 +24,13 @@
 }
 
 - (void)p_setupViews {
-    self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView = [[UIWebView alloc] initWithFrame:self.bounds];
     self.backgroundColor = [UIColor whiteColor];
-    self.webView = [[UIWebView alloc] init];
-    self.webView.frame = self.bounds;
+    self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
     //    self.webView.delegate = self;
     self.webView.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.webView.opaque =NO;
+    self.webView.opaque = NO;
     //垂直不显示
     _webView.dataDetectorTypes = UIDataDetectorTypeLink;
     //取消右侧，下侧滚动条，去处上下滚动边界的黑色背景
