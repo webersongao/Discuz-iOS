@@ -29,13 +29,12 @@
     [self configForumController];
     [self loadViewIndexDataIfNeeded];
 }
--(BOOL)DZ_hideTabBarWhenPushed{
-    return NO;
-}
+
 -(void)configForumController{
     [self.view addSubview:self.ScrollBar];
     [self.view addSubview:self.scrollView];
     self.listViewArray = [NSMutableArray array];
+    [self.dz_NavigationBar removeFromSuperview];
     [self configNaviBar:@"版块" type:NaviItemText Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }

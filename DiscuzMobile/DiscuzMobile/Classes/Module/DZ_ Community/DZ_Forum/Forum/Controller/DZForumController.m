@@ -34,10 +34,6 @@ static NSString *isFourmList = @"isFourmList";
     [self configForumView];
 }
 
--(BOOL)DZ_hideTabBarWhenPushed{
-    return NO;
-}
-
 -(void)configNaviBar {
     NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
     [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionRight];
@@ -47,6 +43,7 @@ static NSString *isFourmList = @"isFourmList";
 -(void)configForumView{
     self.currentVC = self.collectVC;
     [self addChildViewController:self.collectVC];
+    [self.dz_NavigationBar removeFromSuperview];
     [self dz_AddSubView:self.collectVC.view belowNavigationBar:YES];
 }
 

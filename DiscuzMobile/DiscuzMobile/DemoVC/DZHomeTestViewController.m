@@ -18,6 +18,8 @@
 #import "DZPostEditViewController.h"
 #import "DZPostUIEditViewController.h"
 
+#import "DZCommunityController.h"
+
 @interface DZHomeTestViewController ()
 
 @end
@@ -129,6 +131,14 @@
     
 }
 
+
+
+
+// 账号 自动登录
+- (IBAction)userAutoLoginAction:(UIButton *)sender {
+    DZCommunityController *areaVC = [[DZCommunityController alloc] init];
+    [[DZMobileCtrl sharedCtrl] PushToController:areaVC];
+}
 
 
 @end

@@ -35,41 +35,9 @@ static NSString * headerSection = @"CellHeader";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)refresh {
-    if ([self viewIsShow]) {
-        // 刷新
-        [self.collectionView.mj_header beginRefreshing];
-    }
-}
-
-- (void)refreshData {
-    // 刷新
-    [self loadForumIndexDataWitLoadType:JTRequestTypeRefresh];
-}
-
-- (void)reloadImage {
-    [self.collectionView reloadData];
-}
-
-- (BOOL)viewIsShow {
-    //判断window是否在窗口上
-    if (self.view.window == nil) {
-        return NO;
-    }
-    //判断当前的view是否与窗口重合
-    if (![self.view hu_intersectsWithAnotherView:nil]) {
-        return NO;
-    }
-    
-    return YES;
-}
-
 - (void)configCollectionController {
     [self.view addSubview:self.collectionView];
+    [self.dz_NavigationBar removeFromSuperview];
     KWEAKSELF;
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadForumIndexDataWitLoadType:JTRequestTypeRefresh];
@@ -190,6 +158,39 @@ static NSString * headerSection = @"CellHeader";
     [self.collectionView reloadData];
     
 }
+- (void)refresh {
+    if ([self viewIsShow]) {
+        // 刷新
+        [self.collectionView.mj_header beginRefreshing];
+    }
+}
+
+- (void)refreshData {
+    // 刷新
+    [self loadForumIndexDataWitLoadType:JTRequestTypeRefresh];
+}
+
+- (void)reloadImage {
+    [self.collectionView reloadData];
+}
+
+- (BOOL)viewIsShow {
+    //判断window是否在窗口上
+    if (self.view.window == nil) {
+        return NO;
+    }
+    //判断当前的view是否与窗口重合
+    if (![self.view hu_intersectsWithAnotherView:nil]) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (NSMutableArray *)dataSourceArr {
     if (!_dataSourceArr) {

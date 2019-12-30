@@ -31,6 +31,7 @@
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.leftMenuList];
+    [self.dz_NavigationBar removeFromSuperview];
     self.tableView.backgroundColor = K_Color_ForumGray;
     [self.leftMenuList registerClass:[DZForumLeftCell class] forCellReuseIdentifier:[DZForumLeftCell getReuseId]];
     [self.tableView registerClass:[DZForumRightCell class] forCellReuseIdentifier:[DZForumRightCell getReuseId]];

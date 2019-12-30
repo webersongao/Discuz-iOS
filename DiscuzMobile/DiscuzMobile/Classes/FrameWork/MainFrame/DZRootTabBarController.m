@@ -11,9 +11,8 @@
 
 #import "DZUserController.h"
 #import "DZHomeController.h"
-#import "DZForumController.h"
 #import "DZFastPostController.h"
-#import "DZDiscoverController.h"
+#import "DZCommunityController.h"
 #import "DZHomeTestViewController.h"
 
 @interface DZRootTabBarController () <UITabBarControllerDelegate>
@@ -116,16 +115,14 @@
 - (void)addChildViewControllers {
     
     DZHomeController *homeVC = [[DZHomeController alloc] init];
-    DZDiscoverController *disVC = [[DZDiscoverController alloc] init];
-    DZForumController *forumVC = [[DZForumController alloc] init];
     DZUserController *UserVC = [[DZUserController alloc] init];
+    DZCommunityController *CommunityVC = [[DZCommunityController alloc] init];
     DZHomeTestViewController *testVC = [[DZHomeTestViewController alloc] initWithNibName:@"DZHomeTest" bundle:nil];
     
     [self addChildVc:testVC title:@"首页" image:@"homem" selectedImage:@"homes"];
     
     [self addChildVc:homeVC title:@"home" image:@"homem" selectedImage:@"homes"];
-    [self addChildVc:disVC title:@"for" image:@"forumm" selectedImage:@"fourms"];
-    [self addChildVc:forumVC title:@"cate" image:@"forumm" selectedImage:@"fourms"];
+    [self addChildVc:CommunityVC title:@"cate" image:@"forumm" selectedImage:@"fourms"];
     [self addChildVc:UserVC title:@"wod" image:@"my" selectedImage:@"mys"];
 }
 

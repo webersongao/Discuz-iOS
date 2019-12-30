@@ -1,5 +1,5 @@
 //
-//  DZAreaViewController.h
+//  DZCommunityController.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/29.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DZAreaViewController : DZBaseViewController
+@interface DZCommunityController : DZBaseViewController
 
 @end
 
