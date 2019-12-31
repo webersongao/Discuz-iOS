@@ -129,7 +129,7 @@
 
 
 // 跳转 我的好友
--(void)PushToMyFriendViewController{
+-(void)PushToMyFriendListController{
     MyFriendViewController *mfvc = [[MyFriendViewController alloc] init];
     [self.mainNavi pushViewController:mfvc animated:YES];
 }

@@ -134,13 +134,13 @@
                         return typeCell;
                     } else {
                         
-                        return [self detailCell:tableView];
+                        return [self configDetailCell:tableView];
                     }
                     
                     
                 } else {
                     
-                    return [self detailCell:tableView];
+                    return [self configDetailCell:tableView];
                 }
             }
             
@@ -201,7 +201,7 @@
     }
 }
 
-- (DZActiveDetailCell *)detailCell:(UITableView *)tableView {
+- (DZActiveDetailCell *)configDetailCell:(UITableView *)tableView {
     NSString *CellId = @"detailId";
     DZActiveDetailCell *detailCell = [tableView dequeueReusableCellWithIdentifier:CellId];
     if (detailCell == nil) {

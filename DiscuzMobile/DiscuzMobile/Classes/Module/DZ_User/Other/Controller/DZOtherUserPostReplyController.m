@@ -86,11 +86,9 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *CellId = @"CellId";
-    
-    ReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    ReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Repl4yCell"];
     if (cell == nil) {
-        cell = [[ReplyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
+        cell = [[ReplyCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Repl4yCell"];
     }
     MsgReplyModel *model = self.replyArr[indexPath.row];
     [cell setInfo:model];

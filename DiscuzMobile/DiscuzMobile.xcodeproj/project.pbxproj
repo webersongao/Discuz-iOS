@@ -119,7 +119,7 @@
 		7002A36F2383D8CD00BC0C61 /* SystemNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A33F2383D8CD00BC0C61 /* SystemNoteCell.m */; };
 		7002A3702383D8CD00BC0C61 /* ChatYYLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3402383D8CD00BC0C61 /* ChatYYLabel.m */; };
 		7002A3712383D8CD00BC0C61 /* ChatContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3412383D8CD00BC0C61 /* ChatContentCell.m */; };
-		7002A3722383D8CD00BC0C61 /* PmlistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3442383D8CD00BC0C61 /* PmlistCell.m */; };
+		7002A3722383D8CD00BC0C61 /* DZPMListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3442383D8CD00BC0C61 /* DZPMListCell.m */; };
 		7002A3732383D8CD00BC0C61 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A3492383D8CD00BC0C61 /* MessageCell.m */; };
 		7002A37B2383D8CD00BC0C61 /* DZHomeVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7002A35E2383D8CD00BC0C61 /* DZHomeVarModel.m */; };
 		700BB5DA2394E744002A62DE /* DZUserVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 700BB5D92394E744002A62DE /* DZUserVarModel.m */; };
@@ -681,7 +681,7 @@
 		7002A3382383D8CD00BC0C61 /* PmTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PmTypeModel.m; sourceTree = "<group>"; };
 		7002A3392383D8CD00BC0C61 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		7002A33B2383D8CD00BC0C61 /* ChatContainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatContainScrollView.m; sourceTree = "<group>"; };
-		7002A33C2383D8CD00BC0C61 /* PmlistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PmlistCell.h; sourceTree = "<group>"; };
+		7002A33C2383D8CD00BC0C61 /* DZPMListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPMListCell.h; sourceTree = "<group>"; };
 		7002A33D2383D8CD00BC0C61 /* MessageDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailCell.m; sourceTree = "<group>"; };
 		7002A33E2383D8CD00BC0C61 /* MsglistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsglistCell.m; sourceTree = "<group>"; };
 		7002A33F2383D8CD00BC0C61 /* SystemNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemNoteCell.m; sourceTree = "<group>"; };
@@ -689,7 +689,7 @@
 		7002A3412383D8CD00BC0C61 /* ChatContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatContentCell.m; sourceTree = "<group>"; };
 		7002A3422383D8CD00BC0C61 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		7002A3432383D8CD00BC0C61 /* ChatContainScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatContainScrollView.h; sourceTree = "<group>"; };
-		7002A3442383D8CD00BC0C61 /* PmlistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PmlistCell.m; sourceTree = "<group>"; };
+		7002A3442383D8CD00BC0C61 /* DZPMListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPMListCell.m; sourceTree = "<group>"; };
 		7002A3452383D8CD00BC0C61 /* ChatYYLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatYYLabel.h; sourceTree = "<group>"; };
 		7002A3462383D8CD00BC0C61 /* SystemNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemNoteCell.h; sourceTree = "<group>"; };
 		7002A3472383D8CD00BC0C61 /* MsglistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsglistCell.h; sourceTree = "<group>"; };
@@ -1883,8 +1883,8 @@
 		7002A33A2383D8CD00BC0C61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7002A33C2383D8CD00BC0C61 /* PmlistCell.h */,
-				7002A3442383D8CD00BC0C61 /* PmlistCell.m */,
+				7002A33C2383D8CD00BC0C61 /* DZPMListCell.h */,
+				7002A3442383D8CD00BC0C61 /* DZPMListCell.m */,
 				7002A3472383D8CD00BC0C61 /* MsglistCell.h */,
 				7002A33E2383D8CD00BC0C61 /* MsglistCell.m */,
 				7002A3452383D8CD00BC0C61 /* ChatYYLabel.h */,
@@ -3624,8 +3624,8 @@
 		70FBDC5C2383FC1B00FC296E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				70FBDC5D2383FC1B00FC296E /* Controller */,
 				70FBDC642383FC1B00FC296E /* View */,
+				70FBDC5D2383FC1B00FC296E /* Controller */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -4634,7 +4634,7 @@
 				94B1066E22F165D800D40827 /* DZVersionUpdate.m in Sources */,
 				706212C3237936C900130B9D /* DZUsertermsController.m in Sources */,
 				7023CC7623A21B1500FB7E31 /* DZFriendVarModel.m in Sources */,
-				7002A3722383D8CD00BC0C61 /* PmlistCell.m in Sources */,
+				7002A3722383D8CD00BC0C61 /* DZPMListCell.m in Sources */,
 				7058532E23B5EEDF005CA467 /* DZMenuTableListView.m in Sources */,
 				704DDA65238BB2F6009C9CE2 /* DZLayoutTool.m in Sources */,
 				947ECAF92064D403002D3536 /* JFImagePickerViewCell.m in Sources */,

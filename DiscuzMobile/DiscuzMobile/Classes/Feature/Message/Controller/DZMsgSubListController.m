@@ -142,26 +142,23 @@
 
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * CellId = @"CellId";
-    static NSString *alertId = @"alertId";
     
     MessageListModel *model = self.dataSourceArr[indexPath.row];
     
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
         
-        
-        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Messag5eCell"];
         if (cell == nil) {
-            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Messag5eCell"];
         }
         
         [cell setData:model];
         return cell;
      }else {
         
-        MsglistCell *cell = [tableView dequeueReusableCellWithIdentifier:alertId];
+        MsglistCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Msglist3dCell"];
         if (cell == nil) {
-            cell = [[MsglistCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:alertId];
+            cell = [[MsglistCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Msglist3dCell"];
         }
         
         [cell setData:model];

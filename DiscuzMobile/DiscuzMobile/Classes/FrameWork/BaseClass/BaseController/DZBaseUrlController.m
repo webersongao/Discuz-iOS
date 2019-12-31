@@ -35,8 +35,7 @@
         } cancelHandle:nil];
         return;
     }
-    NSString *encodeUrlStr = [_urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:encodeUrlStr];
+    NSURL *url = [NSURL URLWithString:[NSString encodeString:_urlString]];
     [_webView loadRequest:[NSURLRequest requestWithURL:url]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];

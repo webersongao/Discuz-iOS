@@ -15,32 +15,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"我的好友";
-    KWEAKSELF;
     self.tableView.mj_footer.hidden = YES;
     [self.view addSubview:self.tableView];
+    [self downLoadFriendInfoData];
+    [self configFriendViewController];
+}
+
+- (void)refreshFriendListData {
+    [self downLoadFriendInfoData];
+}
+
+-(void)configFriendViewController{
+    KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
-        [weakSelf refreshData];
+        [weakSelf refreshFriendListData];
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
-        [weakSelf refreshData];
+        [weakSelf refreshFriendListData];
     }];
-    [self downLoadData];
 }
 
-- (void)refreshData {
-    [self downLoadData];
-}
-
-
-#pragma mark - tableView delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
-}
+#pragma mark   /********************* tableView delegate *************************/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSourceArr.count;
@@ -48,10 +46,9 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellId = @"FriendId";
-    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Frie3fndCell"];
     if (cell == nil) {
-        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Frie3fndCell"];
     }
     
     DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:indexPath.row];
@@ -63,13 +60,9 @@
     return cell;
 }
 
-- (void)sendMessageBtnClick:(UIButton *)btn {
-    
-    DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:btn.tag];
-    
-    [[DZMobileCtrl sharedCtrl] PushToMsgChatController:cellItem.uid name:cellItem.username];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kCellMediumHeight;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -77,10 +70,16 @@
     
     DZOtherUserController * otherVC = [[DZOtherUserController alloc] initWithAuthor:cellItem.uid];
     [self showViewController:otherVC sender:nil];
-    
 }
 
-- (void)downLoadData {
+- (void)sendMessageBtnClick:(UIButton *)btn {
+    
+    DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:btn.tag];
+    
+    [[DZMobileCtrl sharedCtrl] PushToMsgChatController:cellItem.uid name:cellItem.username];
+}
+
+- (void)downLoadFriendInfoData {
     
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
     [DZUserNetTool DZ_FriendListWithUid:nil Page:self.page completion:^(DZFriendVarModel *varModel, NSError *error) {
@@ -94,16 +93,13 @@
                     [self.dataSourceArr addObjectsFromArray:varModel.list];
                 }
             }
-            
             if (varModel.count) {
                 if (self.dataSourceArr.count >= varModel.count) {
                     [self.tableView.mj_footer endRefreshingWithNoMoreData];
                 }
                 self.title = [NSString stringWithFormat:@"我的好友（%ld）",varModel.count];
             }
-            
             [self emptyShow];
-            
             [self.tableView reloadData];
         }else{
             [self showServerError:error];
@@ -112,7 +108,6 @@
             [self mj_endRefreshing];
         }
     }];
-    
 }
 
 - (void)mj_endRefreshing {
@@ -123,5 +118,13 @@
     }
 }
 
+
+
+
 @end
+
+
+
+
+
 

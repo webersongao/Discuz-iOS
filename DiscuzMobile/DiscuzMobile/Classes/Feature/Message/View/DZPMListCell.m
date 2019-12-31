@@ -1,25 +1,25 @@
 //
-//  PmlistCell.m
+//  DZPMListCell.m
 //  DiscuzMobile
 //
-//  Created by HB on 2017/7/17.
-//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2019/12/31.
+//  Copyright © 2019年 comsenz-service.com.  All rights reserved.
 //
 
-#import "PmlistCell.h"
+#import "DZPMListCell.h"
 #import "DZHorizontalButton.h"
 
-@implementation PmlistCell
+@implementation DZPMListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self p_setupView];
+        [self dz_setupView];
     }
     return self;
 }
 
-- (void)p_setupView {
+- (void)dz_setupView {
     self.iconV = [[UIImageView alloc] init];
     self.iconV.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:self.iconV];
@@ -34,16 +34,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.iconV.frame = CGRectMake(14, 13, 18, 18);
-    self.titleLab.frame = CGRectMake(CGRectGetMaxX(self.iconV.frame) + 8, 10, 180, 24);
+    self.iconV.frame = CGRectMake(kMargin15, (self.height - 18)/2.f, 18, 18);
+    self.titleLab.frame = CGRectMake(CGRectGetMaxX(self.iconV.frame) + 8, (self.height - 24)/2.f, self.width - 65, 24);
 }
 
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-}
 
 @end

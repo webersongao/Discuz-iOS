@@ -45,6 +45,7 @@
 #define kToolBarHeight   44.0
 #define KCenterBarHeight 49.0  // 常用 状态条 工具条 高度
 #define kCellThinHeight   50.0
+#define kCellMediumHeight   60.0
 #define kCellDefaultHeight   65.0
 
 /**

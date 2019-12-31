@@ -54,10 +54,9 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellId = @"CellId";
-    SubjectCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    SubjectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCelsal"];
     if (cell == nil) {
-        cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
+        cell = [[SubjectCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SubjectCelsal"];
     }
     DZThreeadItemModel * itemModel = [self.dataSourceArr objectAtIndex:indexPath.row];
     

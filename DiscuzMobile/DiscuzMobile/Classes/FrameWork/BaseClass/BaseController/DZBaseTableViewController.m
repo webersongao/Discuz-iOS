@@ -24,20 +24,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSourceArr.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellId = @"CellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"defaul5CellId"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaul5CellId"];
     }
     return cell;
 }
@@ -54,15 +50,12 @@
         self.emptyView.hidden = YES;
     } else {
         self.emptyView.hidden = NO;
-        self.emptyView.frame = self.tableView.frame;
-        if (self.tableView.tableHeaderView != nil) {
-            CGFloat height = CGRectGetHeight(self.tableView.tableHeaderView.frame);
-            if (height > 0) {
-                CGRect tempRect = self.tableView.frame;
-                self.emptyView.frame = CGRectMake(tempRect.origin.x, tempRect.origin.y + height, CGRectGetWidth(tempRect), CGRectGetHeight(tempRect) - height);
-            }
+        if (!self.tableView.tableHeaderView) {
+            self.emptyView.frame = self.tableView.bounds;
+        }else{
+            CGFloat headerHeight = CGRectGetHeight(self.tableView.tableHeaderView.frame);
+            self.emptyView.frame = CGRectMake(self.tableView.left, self.tableView.top + headerHeight, self.tableView.width, self.tableView.height - headerHeight);
         }
-        
         if (!self.emptyView.isOnView) {
             [self.tableView addSubview:self.emptyView];
             self.emptyView.isOnView = YES;
@@ -91,6 +84,10 @@
         [self.cellHeightDict removeAllObjects];
     }
     [self.tableView reloadData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark setter getter

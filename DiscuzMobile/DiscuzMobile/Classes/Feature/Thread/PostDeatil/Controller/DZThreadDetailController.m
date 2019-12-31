@@ -677,7 +677,7 @@
 
 - (void)emptyShow {
     self.emptyView.hidden = NO;
-    self.emptyView.frame = self.view.frame;
+    self.emptyView.frame = self.view.bounds;
     self.detailView.emoKeyboard.hidden = YES;
     self.detailView.webView.scrollView.mj_footer.hidden = YES;
 }

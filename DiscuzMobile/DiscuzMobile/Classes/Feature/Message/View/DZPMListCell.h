@@ -1,15 +1,15 @@
 //
-//  PmlistCell.h
+//  DZPMListCell.h
 //  DiscuzMobile
 //
-//  Created by HB on 2017/7/17.
-//  Copyright © 2017年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2019/12/31.
+//  Copyright © 2019年 comsenz-service.com.  All rights reserved.
 //
 
 #import "DZBaseTableViewCell.h"
 @class DZHorizontalButton;
 
-@interface PmlistCell : DZBaseTableViewCell
+@interface DZPMListCell : DZBaseTableViewCell
 
 @property (nonatomic, strong) UIImageView *iconV;
 @property (nonatomic, strong) UILabel *titleLab;

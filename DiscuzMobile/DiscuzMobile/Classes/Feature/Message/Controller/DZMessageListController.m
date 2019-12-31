@@ -11,7 +11,7 @@
 #import "DZMsgSubListController.h"
 #import "DZMsgSubListController.h"
 
-#import "PmlistCell.h"
+#import "DZPMListCell.h"
 #import "PmTypeModel.h"
 #import "MessageNoticeCenter.h"
 
@@ -39,10 +39,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellID = @"CenterID";
-    PmlistCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+    
+    DZPMListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Pmlis8GtCell"];
     if (cell == nil) {
-        cell = [[PmlistCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellID];
+        cell = [[DZPMListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Pmlis8GtCell"];
     }
     
     NSString *title = self.dataSourceArr[indexPath.row];
@@ -70,6 +70,9 @@
     }
     
     return describe;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return kCellThinHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

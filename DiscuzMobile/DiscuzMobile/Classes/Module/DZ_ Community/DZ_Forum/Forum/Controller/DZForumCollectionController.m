@@ -74,7 +74,7 @@ static NSString * headerSection = @"CellHeader";
         self.emptyView.hidden = YES;
     } else {
         self.emptyView.hidden = NO;
-        self.emptyView.frame = self.collectionView.frame;
+        self.emptyView.frame = self.collectionView.bounds;
         if (!self.emptyView.isOnView) {
             [self.collectionView addSubview:self.emptyView];
             self.emptyView.isOnView = YES;

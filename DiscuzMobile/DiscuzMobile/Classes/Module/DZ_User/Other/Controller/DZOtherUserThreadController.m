@@ -69,11 +69,9 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    static NSString *CellId = @"CellId";
-    OtherUserThearCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId];
+    OtherUserThearCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OtherUserThes3arCell"];
     if (cell == nil) {
-        cell = [[OtherUserThearCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellId];
+        cell = [[OtherUserThearCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"OtherUserThes3arCell"];
     }
     NSDictionary *dic = [self.dataSourceArr objectAtIndex:indexPath.row];
     if ([DataCheck isValidDict:dic]) {

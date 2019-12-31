@@ -38,7 +38,7 @@
 - (void)PresentFastPostController;
 
 /// 跳转 我的好友
--(void)PushToMyFriendViewController;
+-(void)PushToMyFriendListController;
 
 /// 跳转 我的收藏
 -(void)PushToMyCollectionViewController;

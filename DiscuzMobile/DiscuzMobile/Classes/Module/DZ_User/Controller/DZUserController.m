@@ -100,7 +100,7 @@
         switch (index) {
             case 0:          //我的好友
             {
-                [[DZMobileCtrl sharedCtrl] PushToMyFriendViewController];
+                [[DZMobileCtrl sharedCtrl] PushToMyFriendListController];
             }
                 break;
             case 1:          //我的收藏
