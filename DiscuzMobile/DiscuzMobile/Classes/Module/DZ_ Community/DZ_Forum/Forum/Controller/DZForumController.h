@@ -10,4 +10,8 @@
 
 @interface DZForumController : DZBaseViewController
 
+
+- (void)listStyleChangeWithBarClick:(BOOL)isList;
+
+
 @end

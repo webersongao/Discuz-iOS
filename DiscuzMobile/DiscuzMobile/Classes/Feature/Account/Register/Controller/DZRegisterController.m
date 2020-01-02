@@ -19,11 +19,6 @@
 
 @implementation DZRegisterController
 
-- (void)loadView {
-    [super loadView];
-    self.registerView = [[DZRegisterView alloc] initWithFrame:KView_OutNavi_Bounds];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.registerView thirdPlatformAuth];
@@ -190,5 +185,18 @@
     
 }
 
+
+-(DZRegisterView *)registerView{
+    if (!_registerView) {
+        _registerView = [[DZRegisterView alloc] initWithFrame:KView_OutNavi_Bounds];
+    }
+    return _registerView;
+}
+
+
 @end
+
+
+
+
 

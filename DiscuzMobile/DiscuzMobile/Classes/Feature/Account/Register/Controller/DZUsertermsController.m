@@ -17,11 +17,6 @@
 
 @implementation DZUsertermsController
 
-- (void)loadView {
-    [super loadView];
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scrollview = [[UIScrollView alloc] initWithFrame:KView_OutNavi_Bounds];

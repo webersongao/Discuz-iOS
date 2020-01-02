@@ -68,12 +68,6 @@
     }];
 }
 
-- (void)loadView {
-    [super loadView];
-    self.detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
-    self.view = self.detailView;
-}
-
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
@@ -100,6 +94,7 @@
         self.edgesForExtendedLayout = UIRectEdgeAll;
     }
     self.currentPageId =1;
+    [self.view addSubview:self.detailView];
     [self.detailView.webView.scrollView addSubview:self.emptyView];
     [self commitInit];
     [self newDownLoadData];
@@ -811,6 +806,13 @@
         _threadModel = [[ThreadModel alloc] init];
     }
     return _threadModel;
+}
+
+-(ThreadDetailView *)detailView{
+    if (!_detailView) {
+        _detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
+    }
+    return _detailView;
 }
 
 @end

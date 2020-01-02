@@ -23,20 +23,13 @@
     BOOL m_isLoginQues;  // 是否有安全问答
 }
 
-@property (nonatomic, strong) DZLoginView *loginView;
 @property (nonatomic, copy) NSString *preSalkey;
+@property (nonatomic, strong) DZLoginView *loginView;
 
 @end
 
 
 @implementation DZLoginController
-
-- (void)loadView {
-    [super loadView];
-    BOOL isInstallQQ = [ShareSDK isClientInstalled:SSDKPlatformTypeQQ];
-    BOOL isInstallWechat = [ShareSDK isClientInstalled:SSDKPlatformTypeWechat];
-    self.loginView = [[DZLoginView alloc] initWithFrame:KView_OutNavi_Bounds isQQ:isInstallQQ isWx:isInstallWechat];
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -50,7 +43,6 @@
     [self downlodyan];
     [self setViewDelegate];
     [self setViewAction];
-    
 }
 
 - (void)setViewDelegate {
@@ -281,7 +273,7 @@
     [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
         [self.HUD hide];
         if ([resModel.Variables isUserLogin]) {
-           [self updateUserResInfo:resModel];
+            [self updateUserResInfo:resModel];
         }else{
             if ([[getData objectForKey:@"type"] isEqualToString:@"weixin"]) {
                 if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
@@ -291,6 +283,20 @@
         }
     }];
 }
+
+
+
+#pragma mark   /********************* 初始化 *************************/
+
+-(DZLoginView *)loginView{
+    if (!_loginView) {
+        BOOL isInstallQQ = [ShareSDK isClientInstalled:SSDKPlatformTypeQQ];
+        BOOL isInstallWechat = [ShareSDK isClientInstalled:SSDKPlatformTypeWechat];
+        _loginView = [[DZLoginView alloc] initWithFrame:KView_OutNavi_Bounds isQQ:isInstallQQ isWx:isInstallWechat];
+    }
+    return _loginView;
+}
+
 
 @end
 

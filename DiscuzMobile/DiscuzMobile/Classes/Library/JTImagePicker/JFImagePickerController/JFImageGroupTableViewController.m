@@ -34,8 +34,7 @@
     label.font = [UIFont systemFontOfSize:17];
     [label sizeToFit];
     self.navigationItem.titleView = label;
-	UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-	self.navigationItem.rightBarButtonItem = cancel;
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
 }
 
 - (void)cancel{

@@ -14,14 +14,11 @@
 static NSString *isFourmList = @"isFourmList";
 
 @interface DZForumController()
-{
-    BOOL m_isList;
-}
+
 @property (nonatomic, strong) NSMutableArray *controllerArr;
 @property (nonatomic, strong) DZContainerController *containVc;
 @property (nonatomic, strong) DZForumIndexListController *indexListVC;
 @property (nonatomic, strong) DZForumCollectionController *collectVC;
-@property (nonatomic, strong) DZBaseViewController *currentVC;
 @property (nonatomic, assign) BOOL isList;
 
 @end
@@ -30,53 +27,38 @@ static NSString *isFourmList = @"isFourmList";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configNaviBar];
     [self configForumView];
+    [self configNavigationBar];
 }
 
--(void)configNaviBar {
-    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
-    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionRight];
-    [self configNaviBar:@"社区" type:NaviItemText Direction:NaviDirectionLeft];
+-(void)configNavigationBar {
+    [self configNaviBar:@"forum_collect" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
 -(void)configForumView{
-    self.currentVC = self.collectVC;
     [self addChildViewController:self.collectVC];
+    [self addChildViewController:self.indexListVC];
     [self.dz_NavigationBar removeFromSuperview];
-    [self dz_AddSubView:self.collectVC.view belowNavigationBar:YES];
+    [self.view addSubview:self.collectVC.view];
 }
 
-- (void)presentFormOldController:(DZBaseViewController *)oldController toNewController:(DZBaseViewController *)newController{
-    [self addChildViewController:newController];
-    [self transitionFromViewController:oldController toViewController:newController duration:0.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+- (void)presentFormOldCtrl:(DZBaseViewController *)oldVC toNewCtrl:(DZBaseViewController *)newVC{
+    
+    [self transitionFromViewController:oldVC toViewController:newVC duration:0.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [oldVC.view removeFromSuperview];
     } completion:^(BOOL finished) {
-        if(finished){
-            self.currentVC = newController;
-            [oldController removeFromParentViewController];
-            [self dz_AddSubView:newController.view belowNavigationBar:YES];
-        }else{
-            self.currentVC = oldController;
-        }
+        [self.view addSubview:newVC.view];
     }];
 }
 
-
-- (void)leftBarBtnClick {
-    
-}
-
-
-
-- (void)rightBarBtnClick {
-    m_isList = !m_isList;
-    if (m_isList) {
-        [self presentFormOldController:self.collectVC toNewController:self.indexListVC];
+- (void)listStyleChangeWithBarClick:(BOOL)isList {
+    if (isList) {
+        [self presentFormOldCtrl:self.collectVC toNewCtrl:self.indexListVC];
     }else{
-        [self presentFormOldController:self.indexListVC toNewController:self.collectVC];
+        [self presentFormOldCtrl:self.indexListVC toNewCtrl:self.collectVC];
     }
-    NSString *leftTitle = m_isList ? @"forum_list" : @"forum_collect";
-    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionLeft];
+    NSString *leftTitle = isList ? @"forum_list" : @"forum_collect";
+    [self configNaviBar:leftTitle type:NaviItemImage Direction:NaviDirectionRight];
 }
 
 - (DZForumIndexListController *)indexListVC {

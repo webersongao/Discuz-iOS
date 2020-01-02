@@ -324,7 +324,6 @@
     } failure:^(NSError *error) {
         [self showServerError:error];
         self.dz_NavigationItem.rightBarButtonItem.enabled = YES;
-        
     }];
     
     KWEAKSELF;
