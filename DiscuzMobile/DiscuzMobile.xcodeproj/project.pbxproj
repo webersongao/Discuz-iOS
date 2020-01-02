@@ -2606,8 +2606,8 @@
 		7062116A237936C800130B9D /* Thread */ = {
 			isa = PBXGroup;
 			children = (
-				708AED66238E578C000A4397 /* NetTool */,
 				708AED68238E58D1000A4397 /* Post */,
+				708AED66238E578C000A4397 /* NetTool */,
 				7002A34B2383D8CD00BC0C61 /* FastPost */,
 				7070A8C6239F7D830052D32E /* PostDeatil */,
 			);

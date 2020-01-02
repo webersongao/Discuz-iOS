@@ -44,7 +44,7 @@
 #pragma mark - 布局
 - (void)setupViews {
     
-    self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-(45+15), 30)];
+    self.searchView = [[DZCustomSearchBarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth-((kMargin15 * 2.f)+kMargin30), kMargin30)];
     self.searchView.searchBar.delegate = self;
     [self dz_SetNavigationTitleView:self.searchView];
     [self.searchView.rightBtn addTarget:self action:@selector(rightBarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -122,8 +122,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 40;
+    return (kMargin30 + kMargin10);
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!self.cellHeightDict[indexPath]) {
         self.cellHeightDict[indexPath] = @([self caculateSearchCellHeight:indexPath]);

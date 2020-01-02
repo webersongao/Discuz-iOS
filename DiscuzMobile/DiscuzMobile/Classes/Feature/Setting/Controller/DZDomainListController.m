@@ -85,7 +85,7 @@ NSString * const KDomainNameKey = @"name";
     }
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
     
-    NSString *detail = domainDic[KDomainkey];
+    NSString *detail = [domainDic stringForKey:KDomainkey];
     NSString *nowDomain = [[NSUserDefaults standardUserDefaults] stringForKey:KRoot_Domainkey];
     if ([detail isEqualToString:nowDomain]) {
         detail = [detail stringByAppendingString:@"(当前) "];
@@ -102,7 +102,7 @@ NSString * const KDomainNameKey = @"name";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *domainDic = self.dataSourceArr[indexPath.row];
-    NSString *detail = domainDic[KDomainkey];
+    NSString *detail = [domainDic stringForKey:KDomainkey];
     NSString *nowDomain = [[NSUserDefaults standardUserDefaults] stringForKey:KRoot_Domainkey];
     
     if (![detail isEqualToString:DZ_BASEURL] || !([DataCheck isValidString:nowDomain] && [nowDomain isEqualToString:detail])) {
