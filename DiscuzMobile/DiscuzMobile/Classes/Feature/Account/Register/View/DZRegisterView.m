@@ -135,7 +135,7 @@
     
     [self.registerButton layoutIfNeeded];
     
-    _usertermsView = [[UsertermsView alloc] init];
+    _usertermsView = [[DZTermsLabel alloc] init];
     [self addSubview:_usertermsView];
     
     [self addSubview:self.thridAuthTipLabl];

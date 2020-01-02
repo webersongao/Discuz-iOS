@@ -1,30 +1,30 @@
 //
-//  UsertermsView.m
+//  DZTermsLabel.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/3/8.
 //  Copyright © 2017年 comsenz-service.com. All rights reserved.
 //
 
-#import "UsertermsView.h"
+#import "DZTermsLabel.h"
 #import "QCheckBox.h"
 
-@interface UsertermsView()<QCheckBoxDelegate>
+@interface DZTermsLabel()<QCheckBoxDelegate>
 
 @end
 
-@implementation UsertermsView
+@implementation DZTermsLabel
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commitInit];
+        [self configTermsLabel];
     }
     return self;
 }
 
-- (void)commitInit {
+- (void)configTermsLabel {
     QCheckBox *checkBox= [[QCheckBox alloc] initWithDelegate:self];;
     checkBox.frame = CGRectMake(0, 0, 80, 40);
     [checkBox setTitle:@"我同意:" forState:UIControlStateNormal];

@@ -27,29 +27,13 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self viewInit];
+        [self webViewInit];
     }
     return self;
-}
-
-- (id)initWithFrame:(CGRect)frame resultDelegate:(id)resultDelegate{
-    
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-        
-    }
-    return self;
-}
-
-- (void)viewInit
-{
-    [self webViewInit];
 }
 
 - (void)webViewInit
 {
-    
     //创建网页配置对象
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     // 创建设置对象
@@ -63,9 +47,8 @@
     config.preferences = preference;
     // 是使用h5的视频播放器在线播放, 还是使用原生播放器全屏播放
     config.allowsInlineMediaPlayback = YES;
-        
-    CGRect rectView = self.bounds;
-    self.contentWebView = [[DZWebView alloc]initWithFrame:rectView configuration:config];
+    
+    self.contentWebView = [[DZWebView alloc]initWithFrame:self.bounds configuration:config];
     _contentWebView.pWebapi.delegate = self;
     _contentWebView.IydDelegate = self;
     [_contentWebView refrshViewInitWithInsertFlag:[self isShouldWebRefreshHeaderContentInsertSetting]];
@@ -121,7 +104,7 @@
     if ([_contentWebView.urlLoad hasPrefix:baseUrl]) {
         [_contentWebView reload];
     }
-
+    
     NSArray *preUrlArray = [_contentWebView.urlLoad componentsSeparatedByString:@"?"];
     NSArray *currentUrlarray = [baseUrl componentsSeparatedByString:@"?"];
     
@@ -209,4 +192,19 @@
     [[DZMobileCtrl sharedCtrl] PushToWebViewController:url];
 }
 
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+

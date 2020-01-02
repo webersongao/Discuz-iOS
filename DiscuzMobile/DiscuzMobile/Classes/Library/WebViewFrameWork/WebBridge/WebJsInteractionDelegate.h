@@ -8,7 +8,9 @@
 #import <Foundation/Foundation.h>
 
 @protocol WebJsInteractionDelegate <NSObject>
+
 @optional
+
 - (void)jumpToView:(NSDictionary*)data;
 - (void)linkToView:(NSDictionary*)data;
 - (void)nativeCall:(NSDictionary*)data funcHandle:(NSString*)handleID;
@@ -17,4 +19,9 @@
 - (void)webViewGoBack:(NSDictionary*)data;
 - (void)webLoadFinished;
 - (void)updatePageTitleName:(NSDictionary *)data;
+
 @end
+
+
+
+

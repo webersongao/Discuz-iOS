@@ -63,18 +63,7 @@
     } else {
         return 38;
     }
-    
-//    DLog(@"%f === %f",CGRectGetMaxY(self.infoLab.frame) + 5,CGRectGetHeight(self.infoLab.frame));
-//    return CGRectGetMaxY(self.infoLab.frame) + 5;
 }
 
-
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

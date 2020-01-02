@@ -21,7 +21,6 @@
     self = [super init];
     if (self) {
         _delegate = delegate;
-        
         self.exclusiveTouch = YES;
         [self setImage:[UIImage imageNamed:@"checkbox1_unchecked.png"] forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:@"checkbox1_checked.png"] forState:UIControlStateSelected];

@@ -13,8 +13,6 @@
 
 @property (nonatomic,strong) DZWebView *contentWebView;
 
-- (id)initWithFrame:(CGRect)frame resultDelegate:(id)resultDelegate;
-
 - (void)reloadCurrentWebByBaseUrl:(NSString *)baseUrl;
 - (void)loadViewWithUrl:(NSString*)url;
 - (void)loadViewWithUrl:(NSString*)url encode:(BOOL)encode;

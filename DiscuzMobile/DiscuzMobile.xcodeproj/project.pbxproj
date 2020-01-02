@@ -228,7 +228,7 @@
 		706212A8237936C900130B9D /* UploadAttachView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621117237936C800130B9D /* UploadAttachView.m */; };
 		706212C2237936C900130B9D /* DZRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621152237936C800130B9D /* DZRegisterController.m */; };
 		706212C3237936C900130B9D /* DZUsertermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621154237936C800130B9D /* DZUsertermsController.m */; };
-		706212C4237936C900130B9D /* UsertermsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621157237936C800130B9D /* UsertermsView.m */; };
+		706212C4237936C900130B9D /* DZTermsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621157237936C800130B9D /* DZTermsLabel.m */; };
 		706212C5237936C900130B9D /* DZRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621158237936C800130B9D /* DZRegisterView.m */; };
 		706212C6237936C900130B9D /* DZUserBoundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062115D237936C800130B9D /* DZUserBoundController.m */; };
 		706212C7237936C900130B9D /* DZUserBoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062115E237936C800130B9D /* DZUserBoundView.m */; };
@@ -914,9 +914,9 @@
 		70621153237936C800130B9D /* DZRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRegisterController.h; sourceTree = "<group>"; };
 		70621154237936C800130B9D /* DZUsertermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUsertermsController.m; sourceTree = "<group>"; };
 		70621156237936C800130B9D /* DZRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRegisterView.h; sourceTree = "<group>"; };
-		70621157237936C800130B9D /* UsertermsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsertermsView.m; sourceTree = "<group>"; };
+		70621157237936C800130B9D /* DZTermsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTermsLabel.m; sourceTree = "<group>"; };
 		70621158237936C800130B9D /* DZRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRegisterView.m; sourceTree = "<group>"; };
-		70621159237936C800130B9D /* UsertermsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsertermsView.h; sourceTree = "<group>"; };
+		70621159237936C800130B9D /* DZTermsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTermsLabel.h; sourceTree = "<group>"; };
 		7062115B237936C800130B9D /* DZUserBoundController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUserBoundController.h; sourceTree = "<group>"; };
 		7062115C237936C800130B9D /* DZUserBoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUserBoundView.h; sourceTree = "<group>"; };
 		7062115D237936C800130B9D /* DZUserBoundController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUserBoundController.m; sourceTree = "<group>"; };
@@ -2552,8 +2552,8 @@
 		70621155237936C800130B9D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				70621159237936C800130B9D /* UsertermsView.h */,
-				70621157237936C800130B9D /* UsertermsView.m */,
+				70621159237936C800130B9D /* DZTermsLabel.h */,
+				70621157237936C800130B9D /* DZTermsLabel.m */,
 				70621156237936C800130B9D /* DZRegisterView.h */,
 				70621158237936C800130B9D /* DZRegisterView.m */,
 			);
@@ -3297,9 +3297,9 @@
 			children = (
 				70EA90B023BA05A400814952 /* WebLogicManager.h */,
 				70EA90AF23BA05A400814952 /* WebLogicManager.mm */,
-				70EA908623B9F88F00814952 /* WebCommon */,
-				70EA909123B9F89000814952 /* WebBridge */,
 				70EA909A23B9F89000814952 /* WebUI */,
+				70EA909123B9F89000814952 /* WebBridge */,
+				70EA908623B9F88F00814952 /* WebCommon */,
 			);
 			path = WebViewFrameWork;
 			sourceTree = "<group>";
@@ -4730,7 +4730,7 @@
 				70FBDCDE2383FC1B00FC296E /* OtherUserPostReplyCell.m in Sources */,
 				70DFD7A8237A95DE00A13F0F /* DZBaseVarModel.m in Sources */,
 				7002A3702383D8CD00BC0C61 /* ChatYYLabel.m in Sources */,
-				706212C4237936C900130B9D /* UsertermsView.m in Sources */,
+				706212C4237936C900130B9D /* DZTermsLabel.m in Sources */,
 				706212DC237936C900130B9D /* ViewPollpotionCell.m in Sources */,
 				7062126F237936C800130B9D /* DZThreadListController.m in Sources */,
 				7002A3662383D8CD00BC0C61 /* DZMsgChatDetailController.m in Sources */,

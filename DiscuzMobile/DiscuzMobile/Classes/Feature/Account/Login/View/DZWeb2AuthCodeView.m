@@ -37,7 +37,7 @@
     self.webview.userInteractionEnabled = YES;
     [self.webview setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.webview.scrollView.scrollEnabled = NO;
-    UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGes)];
+    UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesACtion)];
     tapges.delegate = self;
     [self.webview addGestureRecognizer:tapges];
     [self addSubview:self.webview];
@@ -61,7 +61,7 @@
 -(void)loadRequestWithCodeUrl:(NSString *)urlString{
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
-- (void)tapGes {
+- (void)tapGesACtion {
     self.refreshAuthCodeBlock?self.refreshAuthCodeBlock():nil;
 }
 

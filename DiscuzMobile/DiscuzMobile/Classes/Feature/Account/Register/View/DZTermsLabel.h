@@ -1,5 +1,5 @@
 //
-//  UsertermsView.h
+//  DZTermsLabel.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/3/8.
@@ -10,7 +10,7 @@
 
 typedef void(^ReadTermsBlock)(void);
 
-@interface UsertermsView : UIView
+@interface DZTermsLabel : UIView
 
 @property (nonatomic, assign) BOOL isAgree;
 

@@ -69,8 +69,6 @@
     }
     
     [self.statusView.infoLab setStatusText:status];
-    
-//    self.statusView.infoLab.statusLab.text = status;
 }
 
 - (void)layoutSubviews {

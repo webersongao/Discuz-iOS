@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UsertermsView.h"
+#import "DZTermsLabel.h"
 #import "DZWeb2AuthCodeView.h"
 
 @class DZLoginTextField,DZAuthCodeView;
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) UILabel *thridAuthTipLabl;
 
 @property (nonatomic, strong) UIButton *registerButton;
-@property (nonatomic, strong) UsertermsView *usertermsView;
+@property (nonatomic, strong) DZTermsLabel *usertermsView;
 
 - (void)thirdPlatformAuth;
 
