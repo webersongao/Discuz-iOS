@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "ThreadKeyboard.h"
+#import <WebKit/WebKit.h>
 #import "EmoticonKeyboard.h"
 
 @interface ThreadDetailView : UIView
 
 @property (nonatomic, strong) EmoticonKeyboard *emoKeyboard;
-
-@property (nonatomic,strong) UIWebView *webView;
-
+@property (nonatomic,strong) WKWebView *webView;
 
 @end

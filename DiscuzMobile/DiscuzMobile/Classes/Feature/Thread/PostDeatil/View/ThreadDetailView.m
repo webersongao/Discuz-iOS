@@ -12,6 +12,10 @@
 #define  keyboardHeight 216
 #define  toolBarHeight 40
 
+@interface ThreadDetailView ()
+
+@end
+
 @implementation ThreadDetailView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -24,7 +28,7 @@
 }
 
 - (void)p_setupViews {
-    self.webView = [[UIWebView alloc] initWithFrame:self.bounds];
+    self.webView = [[WKWebView alloc] initWithFrame:self.bounds];
     self.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
@@ -32,10 +36,11 @@
     self.webView.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.webView.opaque = NO;
     //垂直不显示
-    _webView.dataDetectorTypes = UIDataDetectorTypeLink;
+//    _webView.dataDetectorTypes = UIDataDetectorTypeLink;
     //取消右侧，下侧滚动条，去处上下滚动边界的黑色背景
     _webView.backgroundColor = [UIColor clearColor];
-    [_webView setScalesPageToFit:YES];
+    [_webView setContentScaleFactor:YES];
+//    [_webView setScalesPageToFit:YES];
     [self addSubview:self.webView];
     
     // 创建键盘
