@@ -29,7 +29,7 @@
     [self.view addSubview:self.webView];
    
     // 无数据的时候显示
-    if ([_urlString isEqualToString:@""] || (![_urlString isUrlContainDomain])) {
+    if (![_urlString isUrlContainDomain]) {
         [UIAlertController alertTitle:nil message:@"请求地址不存在" controller:self doneText:@"返回" cancelText:nil doneHandle:^{
             [self.navigationController popViewControllerAnimated:YES];
         } cancelHandle:nil];

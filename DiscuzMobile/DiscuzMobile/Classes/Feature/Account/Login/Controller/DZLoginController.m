@@ -115,8 +115,7 @@
 
 
 - (void)loadSeccodeWebView {
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.verifyView.secureData.seccode]];
-    [self.loginView.authCodeView.webview loadRequest:request];
+    [self.loginView.authCodeView loadRequestWithCodeUrl:self.verifyView.secureData.seccode];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {

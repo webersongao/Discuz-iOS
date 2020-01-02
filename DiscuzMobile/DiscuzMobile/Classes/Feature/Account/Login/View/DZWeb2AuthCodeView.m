@@ -9,7 +9,7 @@
 #import "DZWeb2AuthCodeView.h"
 
 @interface DZWeb2AuthCodeView()<UIGestureRecognizerDelegate>
-
+@property (nonatomic, strong) WKWebView *webview;
 @end
 
 @implementation DZWeb2AuthCodeView
@@ -32,7 +32,7 @@
 
     self.textField.borderStyle = UITextBorderStyleRoundedRect;
     
-    self.webview = [[UIWebView alloc] init];
+    self.webview = [[WKWebView alloc] init];
     self.webview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.webview.userInteractionEnabled = YES;
     [self.webview setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -58,6 +58,9 @@
 
 }
 
+-(void)loadRequestWithCodeUrl:(NSString *)urlString{
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+}
 - (void)tapGes {
     self.refreshAuthCodeBlock?self.refreshAuthCodeBlock():nil;
 }

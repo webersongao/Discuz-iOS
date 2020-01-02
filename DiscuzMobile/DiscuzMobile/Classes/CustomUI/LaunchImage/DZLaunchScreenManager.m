@@ -11,7 +11,6 @@
 #import "TYLaunchFadeScaleAnimation.h"
 #import "UIImage+TYLaunchImage.h"
 #import "DZLaunchImageView.h"
-#import "DZBaseUrlController.h"
 
 @implementation DZLaunchScreenManager
 
@@ -83,16 +82,8 @@
 // 点击启动页跳转的控制器，webview
 - (void)pushAdViewCntroller:(NSString *)Url {
     
-    if (![Url isEqualToString:@""]) {
-        UIWindow *window = [[UIApplication sharedApplication].delegate window];
-        UITabBarController *tabbBarVC = (UITabBarController *)window.rootViewController;
-        UINavigationController *navVC = tabbBarVC.selectedViewController;
-        // 你要推出的VC
-        DZBaseUrlController *urlVC = [[DZBaseUrlController alloc]init];
-        urlVC.hidesBottomBarWhenPushed = YES;
-        urlVC.urlString = Url;
-        [navVC pushViewController:urlVC animated:YES];
-    }
+    [[DZMobileCtrl sharedCtrl] PushToWebViewController:Url];
+    
 }
 
 

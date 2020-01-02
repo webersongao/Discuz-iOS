@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @interface DZWeb2AuthCodeView : UIView
 
 @property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UIWebView *webview;
 @property (nonatomic, copy) void(^refreshAuthCodeBlock)(void);
+
+
+-(void)loadRequestWithCodeUrl:(NSString *)urlString;
 
 @end

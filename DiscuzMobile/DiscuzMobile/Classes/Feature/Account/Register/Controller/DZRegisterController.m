@@ -77,8 +77,7 @@
 
 - (void)loadSeccodeImage {
     
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.verifyView.secureData.seccode]];
-    [self.registerView.authCodeView.webview loadRequest:request];
+    [self.registerView.authCodeView loadRequestWithCodeUrl:self.verifyView.secureData.seccode];
     
 }
 

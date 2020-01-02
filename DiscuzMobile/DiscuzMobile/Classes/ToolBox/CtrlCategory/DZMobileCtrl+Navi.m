@@ -97,6 +97,10 @@
 }
 
 - (void)PushToWebViewController:(NSString *)link {
+    link = checkNull(link);
+    if (!link.length) {
+        return;
+    }
     DZBaseUrlController *urlCtrl = [[DZBaseUrlController alloc] init];
     urlCtrl.urlString = link;
     [self.mainNavi pushViewController:urlCtrl animated:YES];

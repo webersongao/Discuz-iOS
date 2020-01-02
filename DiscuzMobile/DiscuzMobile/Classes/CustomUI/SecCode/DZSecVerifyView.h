@@ -19,7 +19,6 @@ typedef void(^CodeSubmitBlock)(void);
 
 @property (nonatomic, strong) UITextField * yanTextField;
 @property (nonatomic, strong) UITextField * secTextField;
-@property (nonatomic, strong) UIWebView * identWebView;
 @property (nonatomic, strong) UILabel * secqaaLabel;
 
 @property (nonatomic, copy) CodeSubmitBlock submitBlock;
