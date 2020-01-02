@@ -33,9 +33,9 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    self.timeLab = [[UILabel alloc] initWithFrame:CGRectMake((A_WIDTH - 100) / 2, 10, 100, 20)];
+    self.timeLab = [[UILabel alloc] initWithFrame:CGRectMake((KScreenWidth - 100) / 2, 10, 100, 20)];
     self.timeLab.font = [UIFont systemFontOfSize:14];
-    self.timeLab.textColor = A_TEXT_COLOR;
+    self.timeLab.textColor = K_Color_LightText;
     self.timeLab.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:self.timeLab];
@@ -47,7 +47,7 @@
     [self.longPressImageV addGestureRecognizer:longGes];
     [self addSubview:self.longPressImageV];
     CGFloat width = 200;
-    self.longPressImageV.frame = CGRectMake((A_WIDTH - width) / 2, 35, width, width / 2);
+    self.longPressImageV.frame = CGRectMake((KScreenWidth - width) / 2, 35, width, width / 2);
     
     
     self.playImageV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"playRecord"]];
@@ -56,7 +56,7 @@
     longGes.minimumPressDuration = 0.5;
     [self.playImageV addGestureRecognizer:tapGes];
     [self addSubview:self.playImageV];
-    self.playImageV.frame = CGRectMake((A_WIDTH - width) / 2, 35, width, width / 2);
+    self.playImageV.frame = CGRectMake((KScreenWidth - width) / 2, 35, width, width / 2);
     self.playImageV.hidden = YES;
     
     CGFloat resWidth = 40;
@@ -157,7 +157,7 @@
 // 停止录音
 - (void)stopRecord {
     self.tipLab.text = @"播放";
-    self.tipLab.textColor = A_TEXT_COLOR;
+    self.tipLab.textColor = K_Color_LightText;
     self.playImageV.hidden = NO;
     self.longPressImageV.hidden = YES;
     self.uploadBtn.hidden = NO;
@@ -253,7 +253,7 @@
     self.playImageV.hidden = YES;
     self.longPressImageV.hidden = NO;
     self.tipLab.text = @"长按开始录音";
-    self.tipLab.textColor = A_TEXT_COLOR;
+    self.tipLab.textColor = K_Color_LightText;
     self.timeLab.hidden = YES;
     self.uploadBtn.hidden = YES;
     self.slider.value = 0;

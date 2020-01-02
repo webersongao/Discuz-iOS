@@ -9,13 +9,6 @@
 #import "DZDevice.h"
 #define CC_MD5_DIGEST_LENGTH 16
 #import <CommonCrypto/CommonDigest.h>
-//#import "XGPush.h"
-//// share sdk
-//#import <ShareSDK/ShareSDK.h>
-//#import <ShareSDKConnector/ShareSDKConnector.h>
-//#import "WXApi.h"
-//#import <TencentOpenAPI/TencentOAuth.h>
-//#import <TencentOpenAPI/QQApiInterface.h>
 
 @implementation DZDevice
 

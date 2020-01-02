@@ -16,10 +16,5 @@ typedef NS_ENUM(NSUInteger, RecordStatus) {
     r_pause,
     r_play,
 };
-#define A_WIDTH [UIScreen mainScreen].bounds.size.width
-#define A_HEIGHT [UIScreen mainScreen].bounds.size.height
-
-#define A_RGBColor(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
-#define A_TEXT_COLOR  A_RGBColor(153, 153, 153)
 
 #endif /* AudioConst_h */
