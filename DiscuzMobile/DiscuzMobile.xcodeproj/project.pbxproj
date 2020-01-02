@@ -348,10 +348,10 @@
 		70E190FE23B222E7008F7494 /* DZThreadCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E190FD23B222E7008F7494 /* DZThreadCellView.m */; };
 		70E5191E239F8CD400BFC238 /* DZBaseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5191D239F8CD400BFC238 /* DZBaseUser.m */; };
 		70E51921239F8E4600BFC238 /* DZPollVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E51920239F8E4600BFC238 /* DZPollVarModel.m */; };
-		70EA90A023B9F89000814952 /* CommonUIWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA908D23B9F89000814952 /* CommonUIWebView.mm */; };
+		70EA90A023B9F89000814952 /* DZWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA908D23B9F89000814952 /* DZWebView.mm */; };
 		70EA90A223B9F89000814952 /* WebviewApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA909623B9F89000814952 /* WebviewApi.m */; };
 		70EA90A323B9F89000814952 /* WebviewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA909923B9F89000814952 /* WebviewBridge.m */; };
-		70EA90A423B9F89000814952 /* CommonStoreView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA909B23B9F89000814952 /* CommonStoreView.mm */; };
+		70EA90A423B9F89000814952 /* DZMainWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA909B23B9F89000814952 /* DZMainWebView.mm */; };
 		70EA90AA23B9FF5B00814952 /* DZAppLoadingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA90A623B9FF5B00814952 /* DZAppLoadingView.mm */; };
 		70EA90AB23B9FF5B00814952 /* DZLoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA90A923B9FF5B00814952 /* DZLoadingAnimationView.m */; };
 		70EA90AE23BA024600814952 /* DZShadowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA90AC23BA024500814952 /* DZShadowView.mm */; };
@@ -1147,15 +1147,15 @@
 		70E5191D239F8CD400BFC238 /* DZBaseUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseUser.m; sourceTree = "<group>"; };
 		70E5191F239F8E4600BFC238 /* DZPollVarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPollVarModel.h; sourceTree = "<group>"; };
 		70E51920239F8E4600BFC238 /* DZPollVarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPollVarModel.m; sourceTree = "<group>"; };
-		70EA908923B9F88F00814952 /* CommonUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUIWebView.h; sourceTree = "<group>"; };
-		70EA908D23B9F89000814952 /* CommonUIWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommonUIWebView.mm; sourceTree = "<group>"; };
+		70EA908923B9F88F00814952 /* DZWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZWebView.h; sourceTree = "<group>"; };
+		70EA908D23B9F89000814952 /* DZWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DZWebView.mm; sourceTree = "<group>"; };
 		70EA909223B9F89000814952 /* WebviewApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebviewApi.h; sourceTree = "<group>"; };
 		70EA909523B9F89000814952 /* WebviewBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebviewBridge.h; sourceTree = "<group>"; };
 		70EA909623B9F89000814952 /* WebviewApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebviewApi.m; sourceTree = "<group>"; };
 		70EA909723B9F89000814952 /* WebJsInteractionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebJsInteractionDelegate.h; sourceTree = "<group>"; };
 		70EA909923B9F89000814952 /* WebviewBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebviewBridge.m; sourceTree = "<group>"; };
-		70EA909B23B9F89000814952 /* CommonStoreView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommonStoreView.mm; sourceTree = "<group>"; };
-		70EA909C23B9F89000814952 /* CommonStoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonStoreView.h; sourceTree = "<group>"; };
+		70EA909B23B9F89000814952 /* DZMainWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DZMainWebView.mm; sourceTree = "<group>"; };
+		70EA909C23B9F89000814952 /* DZMainWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMainWebView.h; sourceTree = "<group>"; };
 		70EA90A623B9FF5B00814952 /* DZAppLoadingView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DZAppLoadingView.mm; sourceTree = "<group>"; };
 		70EA90A723B9FF5B00814952 /* DZAppLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZAppLoadingView.h; sourceTree = "<group>"; };
 		70EA90A823B9FF5B00814952 /* DZLoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZLoadingAnimationView.h; sourceTree = "<group>"; };
@@ -3299,7 +3299,7 @@
 				70EA90AF23BA05A400814952 /* WebLogicManager.mm */,
 				70EA908623B9F88F00814952 /* WebCommon */,
 				70EA909123B9F89000814952 /* WebBridge */,
-				70EA909A23B9F89000814952 /* webUI */,
+				70EA909A23B9F89000814952 /* WebUI */,
 			);
 			path = WebViewFrameWork;
 			sourceTree = "<group>";
@@ -3307,8 +3307,8 @@
 		70EA908623B9F88F00814952 /* WebCommon */ = {
 			isa = PBXGroup;
 			children = (
-				70EA908923B9F88F00814952 /* CommonUIWebView.h */,
-				70EA908D23B9F89000814952 /* CommonUIWebView.mm */,
+				70EA908923B9F88F00814952 /* DZWebView.h */,
+				70EA908D23B9F89000814952 /* DZWebView.mm */,
 			);
 			path = WebCommon;
 			sourceTree = "<group>";
@@ -3325,13 +3325,13 @@
 			path = WebBridge;
 			sourceTree = "<group>";
 		};
-		70EA909A23B9F89000814952 /* webUI */ = {
+		70EA909A23B9F89000814952 /* WebUI */ = {
 			isa = PBXGroup;
 			children = (
-				70EA909C23B9F89000814952 /* CommonStoreView.h */,
-				70EA909B23B9F89000814952 /* CommonStoreView.mm */,
+				70EA909C23B9F89000814952 /* DZMainWebView.h */,
+				70EA909B23B9F89000814952 /* DZMainWebView.mm */,
 			);
-			path = webUI;
+			path = WebUI;
 			sourceTree = "<group>";
 		};
 		70EA90A523B9FF5B00814952 /* DZLoading */ = {
@@ -4534,7 +4534,7 @@
 				70621290237936C900130B9D /* DZViewpointCell.m in Sources */,
 				7062129A237936C900130B9D /* ActiveContentCell.m in Sources */,
 				949208832024413B00543C09 /* JTRequestOperation.m in Sources */,
-				70EA90A023B9F89000814952 /* CommonUIWebView.mm in Sources */,
+				70EA90A023B9F89000814952 /* DZWebView.mm in Sources */,
 				7062127F237936C900130B9D /* DropTipView.m in Sources */,
 				706212CD237936C900130B9D /* DZPartInActivityController.m in Sources */,
 				70471C632394C00700CCF5AC /* DZUserNetTool.m in Sources */,
@@ -4549,7 +4549,7 @@
 				70DFD7AB237A95DE00A13F0F /* DZBaseNaviBarController.m in Sources */,
 				7065AE7823868783009B6DA7 /* PRNetWorkErrorView.m in Sources */,
 				7062129B237936C900130B9D /* DZActiveDetailCell.m in Sources */,
-				70EA90A423B9F89000814952 /* CommonStoreView.mm in Sources */,
+				70EA90A423B9F89000814952 /* DZMainWebView.mm in Sources */,
 				7023CC6F23A1DB9800FB7E31 /* DZSearchVarModel.m in Sources */,
 				70FBDCEC2383FC1B00FC296E /* DZUserDataModel.m in Sources */,
 				7063229F237C151A005943AB /* EFSQLiteContext.m in Sources */,

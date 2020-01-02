@@ -1,5 +1,5 @@
 //
-//  IydUIWebView.h
+//  DZWebView.h
 //  ebook
 //
 //  Created by zy.
@@ -26,7 +26,7 @@
 //统一的webview封装
 //内部含有诸多的webview的使用限定，比如说不能上下滑动等
 //内部含有和webview的交互（和js交互）
-@interface CommonUIWebView : WKWebView <WKNavigationDelegate>
+@interface DZWebView : WKWebView <WKNavigationDelegate>
 {
     WebviewBridge* bridge;//库里用来和webview进行交互的核心类，不处理具体事务
     WebviewApi* pWebapi; //自己写的，处理webview交互的具体事务的类

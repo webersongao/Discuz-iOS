@@ -1,5 +1,5 @@
 //
-//  CommonStoreView.h
+//  DZMainWebView.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/29.
@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommonUIWebView.h"
+#import "DZWebView.h"
 
-@interface CommonStoreView : UIView
+@interface DZMainWebView : UIView
 
-@property (nonatomic,strong) CommonUIWebView *contentWebView;
+@property (nonatomic,strong) DZWebView *contentWebView;
 
 - (id)initWithFrame:(CGRect)frame resultDelegate:(id)resultDelegate;
 

@@ -1,20 +1,20 @@
 //
-//  CommonStoreView.m
+//  DZMainWebView.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2019/12/29.
 //  Copyright © 2019 comsenz-service.com. All rights reserved.
 //
 
-#import "CommonStoreView.h"
+#import "DZMainWebView.h"
 #import "WebLogicManager.h"
 #import "DZBaseViewController.h"
 
-@interface CommonStoreView () <CommenUIWebViewDelegate,WebJsInteractionDelegate,WebLogicManagerDelegate>
+@interface DZMainWebView () <CommenUIWebViewDelegate,WebJsInteractionDelegate,WebLogicManagerDelegate>
 
 @end
 
-@implementation CommonStoreView
+@implementation DZMainWebView
 
 - (void)dealloc
 {
@@ -65,7 +65,7 @@
     config.allowsInlineMediaPlayback = YES;
         
     CGRect rectView = self.bounds;
-    self.contentWebView = [[CommonUIWebView alloc]initWithFrame:rectView configuration:config];
+    self.contentWebView = [[DZWebView alloc]initWithFrame:rectView configuration:config];
     _contentWebView.pWebapi.delegate = self;
     _contentWebView.IydDelegate = self;
     [_contentWebView refrshViewInitWithInsertFlag:[self isShouldWebRefreshHeaderContentInsertSetting]];
@@ -118,7 +118,6 @@
 
 - (void)reloadCurrentWebByBaseUrl:(NSString *)baseUrl
 {
-    
     if ([_contentWebView.urlLoad hasPrefix:baseUrl]) {
         [_contentWebView reload];
     }
@@ -127,9 +126,7 @@
     NSArray *currentUrlarray = [baseUrl componentsSeparatedByString:@"?"];
     
     if (preUrlArray.count && currentUrlarray.count && [_contentWebView.urlLoad hasPrefix:currentUrlarray[0]]) {
-        
         if (currentUrlarray.count == 2) {
-            
             NSString *preUrl = preUrlArray[0];
             NSString *paramsUrl = currentUrlarray[1];
             NSString *url = [NSString stringWithFormat:@"%@?%@",preUrl,paramsUrl];
@@ -138,9 +135,7 @@
         } else {
             [_contentWebView reload];
         }
-
     }
-    
 }
 
 - (void)reloadCurrentWeb

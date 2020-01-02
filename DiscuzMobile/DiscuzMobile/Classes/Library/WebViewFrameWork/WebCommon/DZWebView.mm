@@ -1,11 +1,11 @@
 //
-//  IydUIWebView.m
+//  DZWebView.m
 //  ebook
 //
 //  Created by zy
 //  Copyright (c) 2015年. All rights reserved.
 //
-#import "CommonUIWebView.h"
+#import "DZWebView.h"
 #import "WebviewBridge.h"
 #import "DZLoadingAnimationView.h"
 
@@ -14,7 +14,7 @@
 
 #define REFRESH_OFFSET 50
 #define PUSH_OFFSET 10
-@interface CommonUIWebView()<PRNetWorkErrorViewDelegate,UIScrollViewDelegate>
+@interface DZWebView  ()<PRNetWorkErrorViewDelegate,UIScrollViewDelegate>
 {
     BOOL webIsReloading;
     DZLoadingAnimationView * _actView;
@@ -29,7 +29,7 @@
 @end
 
 
-@implementation CommonUIWebView
+@implementation DZWebView
 
 @synthesize IydDelegate;
 @synthesize pWebapi;
@@ -317,7 +317,7 @@
      */
     if ([self.IydDelegate respondsToSelector:@selector(updateWebViewTitle:)])
     {
-        __weak CommonUIWebView *weakWeb = self;
+        __weak DZWebView *weakWeb = self;
         [webView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable title, NSError * _Nullable error) {
             if (!error && [title isKindOfClass:[NSString class]]) {
                 //获取webview的title
