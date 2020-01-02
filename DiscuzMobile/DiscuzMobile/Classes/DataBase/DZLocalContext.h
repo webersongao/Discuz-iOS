@@ -13,7 +13,7 @@
 
 + (DZLocalContext *)shared;
 
-- (BOOL)removeLocalGLoabalInfo;
+- (BOOL)removeLocalGloabalInfo;
 
 - (BOOL)updateLocalGlobal:(DZGlobalModel *)global;
 

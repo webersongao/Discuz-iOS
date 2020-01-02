@@ -61,7 +61,6 @@
 // 发布
 - (IBAction)postThreadAction:(UIButton *)sender {
     DZFastPostController *fastVC = [[DZFastPostController alloc] init];
-//    DZFastPostController *fastVC = [[DZFastPostController alloc] init];
     [[DZMobileCtrl sharedCtrl] PresentViewController:fastVC];
 }
 

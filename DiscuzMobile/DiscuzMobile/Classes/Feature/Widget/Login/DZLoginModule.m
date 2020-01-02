@@ -66,9 +66,8 @@ NSString * const CookieValue = @"COOKIEVALU";
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
     }
     //  LoginFile
-    [[DZLocalContext shared] removeLocalGLoabalInfo];
+    [[DZLocalContext shared] removeLocalGloabalInfo];
     [DZShareCenter shareInstance].bloginModel = nil;
-    
 }
 
 /*

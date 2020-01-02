@@ -15,6 +15,7 @@
 
 @property (nonatomic,assign) int currentIndex;
 @property(nonatomic,strong) UIView *sepLineView;
+@property (nonatomic, strong) UIButton *PostButton;  //!< <#属性注释#>
 @property (nonatomic, strong) UIScrollView *scrollView;  //!< 属性注释
 @property (nonatomic, strong) PRNaviSegmentView *ScrollBar;  //!< 属性注释
 @property(nonatomic,strong) NSMutableArray<DZDiscoverCateController*> *listViewArray;
@@ -33,6 +34,7 @@
 -(void)configForumController{
     [self.view addSubview:self.ScrollBar];
     [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.PostButton];
     self.listViewArray = [NSMutableArray array];
     [self.dz_NavigationBar removeFromSuperview];
     [self configNaviBar:@"版块" type:NaviItemText Direction:NaviDirectionLeft];
@@ -78,6 +80,10 @@
 
 - (void)rightBarBtnClick {
     [[DZMobileCtrl sharedCtrl] PushToSearchController];
+}
+
+-(void)transToFastPostAction:(UIButton *)button{
+    [[DZMobileCtrl sharedCtrl] PresentFastPostController];
 }
 
 
@@ -137,6 +143,15 @@
         _scrollView.delegate = self;
     }
     return _scrollView;
+}
+
+-(UIButton *)PostButton{
+    if (_PostButton == nil) {
+        CGFloat btn_width = 50.0;
+        _PostButton = [UIButton ButtonNormalWithFrame:CGRectMake(KScreenWidth - btn_width - 15, KScreenHeight - btn_width - 15 - KNavi_ContainStatusBar_Height - 10, btn_width, btn_width) title:@"" titleFont:nil titleColor:nil normalImgPath:@"writePost" touchImgPath:@"writePost" isBackImage:YES];
+        [_PostButton addTarget:self action:@selector(transToFastPostAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _PostButton;
 }
 
 @end

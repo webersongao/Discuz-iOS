@@ -32,7 +32,7 @@ static DZLocalContext *infoContext;
     return self;
 }
 
--(BOOL)removeLocalGLoabalInfo{
+-(BOOL)removeLocalGloabalInfo{
     __block BOOL result = YES;
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
         result = [database executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@", kDZUserTable]];
