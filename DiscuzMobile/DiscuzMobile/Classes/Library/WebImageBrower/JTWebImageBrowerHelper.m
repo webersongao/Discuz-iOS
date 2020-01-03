@@ -31,7 +31,7 @@
     self.thumbArray = thumArray.mutableCopy;
     photoBrowser.currentImageIndex = index;
     photoBrowser.imageCount = self.imagesArray.count;
-    photoBrowser.sourceImagesContainerView = imageBgV;
+    photoBrowser.sourceImagesContainer = imageBgV;
     [photoBrowser show];
 }
 

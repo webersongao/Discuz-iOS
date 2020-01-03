@@ -62,7 +62,7 @@
 
 -(WKWebView *)webView{
     if (!_webView) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height-KTabbar_Height)];
+        _webView = [[DZBaseWebView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height-KTabbar_Height)];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.scrollView.showsHorizontalScrollIndicator = NO;
         _webView.scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;

@@ -1,18 +1,18 @@
 //
-//  webviewApi.m
+//  WebViewApi.m
 //  ebook
 //
 //  Created by zy on 12-2-27.
 //  Copyright (c) 2015年. All rights reserved.
 //
 
-#import "WebviewApi.h"
+#import "WebViewApi.h"
 //#import "StringUtils.h"
 
  static NSString *AppstoreDownLoadUrl = @"http://itunes.apple";
  static NSString *AppstoreDownLoadHttpsUrl = @"https://itunes.apple";
 
-@implementation WebviewApi
+@implementation WebViewApi
 
 @synthesize delegate;
 
@@ -131,7 +131,7 @@
 
 + (BOOL)handleRedirectUrl:(NSString *)url
 {
-    if ([WebviewApi isAppOpenUrl:url])
+    if ([WebViewApi isAppOpenUrl:url])
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         return NO;

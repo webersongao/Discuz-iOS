@@ -7,6 +7,7 @@
 //
 
 #import "SDPhotoBrowser.h"
+#import <WebKit/WebKit.h>
 #import "UIImageView+WebCache.h"
 #import "SDBrowserImageView.h"
 
@@ -161,8 +162,9 @@
     SDBrowserImageView *imageView = _scrollView.subviews[index];
     self.currentImageIndex = index;
     if (imageView.hasLoadedImage) return;
-    if ([self highQualityImageURLForIndex:index]) {
-        [imageView setImageWithURL:[self highQualityImageURLForIndex:index] placeholderImage:[self placeholderImageForIndex:index]];
+    NSURL *imageUrl = [self highQualityImageURLForIndex:index];
+    if (imageUrl.absoluteString.length) {
+        [imageView setImageWithURL:imageUrl placeholderImage:[self placeholderImageForIndex:index]];
     } else {
         imageView.image = [self placeholderImageForIndex:index];
     }
@@ -181,21 +183,20 @@
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     
     UIView *sourceView = nil;
-    if ([self.sourceImagesContainerView isKindOfClass:UICollectionView.class]) {
-        UICollectionView *view = (UICollectionView *)self.sourceImagesContainerView;
+    if ([self.sourceImagesContainer isKindOfClass:UICollectionView.class]) {
+        UICollectionView *view = (UICollectionView *)self.sourceImagesContainer;
         NSIndexPath *path = [NSIndexPath indexPathForItem:currentIndex inSection:0];
         sourceView = [view cellForItemAtIndexPath:path];
-    }else if ([self.sourceImagesContainerView isKindOfClass:UIWebView.class] || [self.sourceImagesContainerView isKindOfClass:UITableViewCell.class]){
-//        UIWebView *view = (UIWebView *)self.sourceImagesContainerView;
+    }else if ([self.sourceImagesContainer isKindOfClass:UIWebView.class] || [self.sourceImagesContainer isKindOfClass:[WKWebView class]] || [self.sourceImagesContainer isKindOfClass:UITableViewCell.class]){
         sourceView = [[UIView alloc] initWithFrame:CGRectMake(0, screenH * 0.35, screenW, screenH * 0.4)];
         UIWindow *window = [UIApplication sharedApplication].delegate.window;
         window.windowLevel = UIWindowLevelNormal;
         [self removeFromSuperview];
     } else {
-        if (self.sourceImagesContainerView.subviews.count > currentIndex) {
-            sourceView = self.sourceImagesContainerView.subviews[currentIndex];
+        if (self.sourceImagesContainer.subviews.count > currentIndex) {
+            sourceView = self.sourceImagesContainer.subviews[currentIndex];
         } else {
-            sourceView = self.sourceImagesContainerView.subviews[0];
+            sourceView = self.sourceImagesContainer.subviews[0];
             UIWindow *window = [UIApplication sharedApplication].delegate.window;
             window.windowLevel = UIWindowLevelNormal;
             [self removeFromSuperview];
@@ -205,7 +206,7 @@
     
     
     
-    CGRect targetTemp = [self.sourceImagesContainerView convertRect:sourceView.frame toView:self];
+    CGRect targetTemp = [self.sourceImagesContainer convertRect:sourceView.frame toView:self];
     
     UIImageView *tempView = [[UIImageView alloc] init];
     tempView.contentMode = sourceView.contentMode;
@@ -308,19 +309,16 @@
     UIView *sourceView = nil;
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
-    if ([self.sourceImagesContainerView isKindOfClass:UICollectionView.class]) {
-        UICollectionView *view = (UICollectionView *)self.sourceImagesContainerView;
+    if ([self.sourceImagesContainer isKindOfClass:UICollectionView.class]) {
+        UICollectionView *view = (UICollectionView *)self.sourceImagesContainer;
         NSIndexPath *path = [NSIndexPath indexPathForItem:self.currentImageIndex inSection:0];
         sourceView = [view cellForItemAtIndexPath:path];
-    }
-    else if ([self.sourceImagesContainerView isKindOfClass:UIWebView.class] || [self.sourceImagesContainerView isKindOfClass:UITableViewCell.class]){
-        //        UIWebView *view = (UIWebView *)self.sourceImagesContainerView;
+    }else if ([self.sourceImagesContainer isKindOfClass:UIWebView.class] || [self.sourceImagesContainer isKindOfClass:[WKWebView class]]  || [self.sourceImagesContainer isKindOfClass:UITableViewCell.class]){
         sourceView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenW, screenH)];
-        
      }else {
-        sourceView = self.sourceImagesContainerView.subviews[self.currentImageIndex];
+        sourceView = self.sourceImagesContainer.subviews[self.currentImageIndex];
     }
-    CGRect rect = [self.sourceImagesContainerView convertRect:sourceView.frame toView:self];
+    CGRect rect = [self.sourceImagesContainer convertRect:sourceView.frame toView:self];
     
     UIImageView *tempView = [[UIImageView alloc] init];
     tempView.image = [self placeholderImageForIndex:self.currentImageIndex];

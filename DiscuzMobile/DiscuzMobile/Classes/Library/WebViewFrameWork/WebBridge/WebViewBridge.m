@@ -1,21 +1,21 @@
 //
-//  WebviewBridge.m
-//  WebviewBridge
+//  WebViewBridge.m
+//  WebViewBridge
 //
 //  Created by zy on 12-2-27.
 //  Copyright (c) 2015年. All rights reserved.
 //
 
-#import "WebviewBridge.h"
-#import "WebviewApi.h"
+#import "WebViewBridge.h"
+#import "WebViewApi.h"
 
 static NSString *ClentPrefix = @"wx://pandareader/";
 
-@interface WebviewBridge ()
-@property (nonatomic,weak) WebviewApi *webViewApi;
+@interface WebViewBridge ()
+@property (nonatomic,weak) WebViewApi *WebViewApi;
 @end
 
-@implementation WebviewBridge
+@implementation WebViewBridge
 
 - (id)init
 {
@@ -24,13 +24,12 @@ static NSString *ClentPrefix = @"wx://pandareader/";
 	{
         self.isAllowPandaJs = YES;
     }
-    
     return self;
 }
 
 - (void)setWebApiObject:(id)object
 {
-    self.webViewApi = object;
+    self.WebViewApi = object;
 }
 
 - (BOOL)requestIsTel:(NSURLRequest *)request
@@ -67,15 +66,15 @@ static NSString *ClentPrefix = @"wx://pandareader/";
         
     } else {
         //不是抖猫自己js，后还需要做js的兼容处理比如下载等其他错误js
-        return [WebviewApi handleRedirectUrl:reqstr];
+        return [WebViewApi handleRedirectUrl:reqstr];
     }
     
 }
 
 - (void)startExecJson:(NSString *)json
 {
-    if ([self.webViewApi respondsToSelector:@selector(WebviewClientExecSync:withConfig:)]) {
-        [self.webViewApi WebviewClientExecSync:json withConfig:nil];
+    if ([self.WebViewApi respondsToSelector:@selector(WebviewClientExecSync:withConfig:)]) {
+        [self.WebViewApi WebviewClientExecSync:json withConfig:nil];
     }
 }
 

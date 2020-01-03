@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年. All rights reserved.
 //
 #import "DZWebView.h"
-#import "WebviewBridge.h"
+#import "WebViewBridge.h"
 #import "DZLoadingAnimationView.h"
 
 #import "PRNetWorkErrorView.h"
@@ -47,8 +47,8 @@
         self.navigationDelegate = self;
         self.backgroundColor = [UIColor whiteColor];
         
-        bridge = [[WebviewBridge alloc]init];
-        pWebapi = [[WebviewApi alloc] init];
+        bridge = [[WebViewBridge alloc]init];
+        pWebapi = [[WebViewApi alloc] init];
         [bridge setWebApiObject:pWebapi];
         
         [self initCenterLoadingView];
@@ -248,9 +248,9 @@
 // 根据WebView对于即将跳转的HTTP请求头信息和相关信息来决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
-    if ([self.IydDelegate respondsToSelector:@selector(commonUIWebViewShouldStartLoadWithData:)])
+    if ([self.IydDelegate respondsToSelector:@selector(dz_CommonWebViewShouldStartLoadWithData:)])
     {
-        [self.IydDelegate performSelector:@selector(commonUIWebViewShouldStartLoadWithData:) withObject:nil];
+        [self.IydDelegate performSelector:@selector(dz_CommonWebViewShouldStartLoadWithData:) withObject:nil];
     }
     
     [self removeErrorView];
@@ -282,9 +282,9 @@
     if (!webIsReloading)
         [_actView startAnimationViewWithSuperView:self];
     
-    if ([self.IydDelegate respondsToSelector:@selector(commonUIWebViewDidStartLoad)])
+    if ([self.IydDelegate respondsToSelector:@selector(dz_CommonWebViewDidStartLoad)])
     {
-        [self.IydDelegate performSelector:@selector(commonUIWebViewDidStartLoad) withObject:nil];
+        [self.IydDelegate performSelector:@selector(dz_CommonWebViewDidStartLoad) withObject:nil];
     }
 }
 
@@ -327,9 +327,9 @@
         }];
     }
     
-    if ([self.IydDelegate respondsToSelector:@selector(commonUIWebViewDidFinishLoad:)])
+    if ([self.IydDelegate respondsToSelector:@selector(dz_CommonWebViewDidFinishLoad:)])
     {
-        [self.IydDelegate performSelector:@selector(commonUIWebViewDidFinishLoad:) withObject:nil];
+        [self.IydDelegate performSelector:@selector(dz_CommonWebViewDidFinishLoad:) withObject:nil];
     }
     
     /**
@@ -356,8 +356,8 @@
     DLog(@"load fail domain=%@,error_code=%ld",error.domain,(long)error.code);
     [self stopActIndicatorAnimating];
     
-    if ([self.IydDelegate respondsToSelector:@selector(commonUIWebViewDidFailLoad)]) {
-        [self.IydDelegate performSelector:@selector(commonUIWebViewDidFailLoad) withObject:nil];
+    if ([self.IydDelegate respondsToSelector:@selector(dz_CommonWebViewDidFailLoad)]) {
+        [self.IydDelegate performSelector:@selector(dz_CommonWebViewDidFailLoad) withObject:nil];
     }
     
     [self doneLoadingTableViewData];
@@ -401,8 +401,8 @@
     
     [self stopActIndicatorAnimating];
     
-    if ([self.IydDelegate respondsToSelector:@selector(commonUIWebViewDidFailLoad)]) {
-        [self.IydDelegate performSelector:@selector(commonUIWebViewDidFailLoad) withObject:nil];
+    if ([self.IydDelegate respondsToSelector:@selector(dz_CommonWebViewDidFailLoad)]) {
+        [self.IydDelegate performSelector:@selector(dz_CommonWebViewDidFailLoad) withObject:nil];
     }
     
     [self doneLoadingTableViewData];

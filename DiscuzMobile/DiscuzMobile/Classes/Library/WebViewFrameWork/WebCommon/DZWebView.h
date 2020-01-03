@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
-#import "WebviewApi.h"
+#import "WebViewApi.h"
 
-@protocol CommenUIWebViewDelegate <NSObject>
+@protocol CommenWebViewDelegate <NSObject>
 
 @optional
-- (void)commonUIWebViewDidStartLoad;
-- (void)commonUIWebViewDidFinishLoad:(id)active;
-- (void)commonUIWebViewDidFailLoad;
-- (void)commonUIWebViewShouldStartLoadWithData:(id)data;
+- (void)dz_CommonWebViewDidStartLoad;
+- (void)dz_CommonWebViewDidFinishLoad:(id)active;
+- (void)dz_CommonWebViewDidFailLoad;
+- (void)dz_CommonWebViewShouldStartLoadWithData:(id)data;
 - (void)updateWebViewTitle:(id)data;
-- (void)commonUIWebViewDidDeceleratingEndWithScrollView:(UIScrollView *)scrollView;
-- (void)commonUIWebViewBeginDragWithScrollView:(UIScrollView *)scrollView;
+- (void)dz_CommonWebViewDidDeceleratingEndWithScrollView:(UIScrollView *)scrollView;
+- (void)dz_CommonWebViewBeginDragWithScrollView:(UIScrollView *)scrollView;
 
 @end
 
@@ -28,12 +28,12 @@
 //内部含有和webview的交互（和js交互）
 @interface DZWebView : WKWebView <WKNavigationDelegate>
 {
-    WebviewBridge* bridge;//库里用来和webview进行交互的核心类，不处理具体事务
-    WebviewApi* pWebapi; //自己写的，处理webview交互的具体事务的类
+    WebViewBridge* bridge;//库里用来和webview进行交互的核心类，不处理具体事务
+    WebViewApi* pWebapi; //自己写的，处理webview交互的具体事务的类
 }
 
-@property(nonatomic,weak) id <CommenUIWebViewDelegate> IydDelegate;
-@property(nonatomic,readonly)  WebviewApi* pWebapi;
+@property(nonatomic,weak) id <CommenWebViewDelegate> IydDelegate;
+@property(nonatomic,readonly)  WebViewApi* pWebapi;
 @property(nonatomic,copy) NSString *urlLoad;
 
 @property (nonatomic, assign) BOOL isAjax;  //!< 是否执行Js,默认为YES

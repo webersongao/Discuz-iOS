@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <WebKit/WebKit.h>
+#import "DZBaseWebView.h"
 
 @interface DZWeb2AuthCodeView : UIView
 

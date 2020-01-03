@@ -10,7 +10,7 @@
 #import "WebLogicManager.h"
 #import "DZBaseViewController.h"
 
-@interface DZMainWebView () <CommenUIWebViewDelegate,WebJsInteractionDelegate,WebLogicManagerDelegate>
+@interface DZMainWebView () <CommenWebViewDelegate,WebJsInteractionDelegate,WebLogicManagerDelegate>
 
 @end
 
@@ -164,7 +164,7 @@
     
 }
 
-#pragma mark -- CommenUIWebViewDelegate
+#pragma mark -- CommenWebViewDelegate
 - (void)updateWebViewTitle:(id)data
 {
     DZBaseViewController *viewController = (DZBaseViewController*)self.viewController;

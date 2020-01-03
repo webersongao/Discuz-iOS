@@ -1,6 +1,6 @@
 //
 //  PRTriangleCaptionBtn.h
-//  PandaReaderApp
+//  PandaReader
 //
 //  Created by WebersonGao on 2019/6/4.
 //

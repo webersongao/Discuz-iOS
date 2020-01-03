@@ -32,7 +32,7 @@
 
     self.textField.borderStyle = UITextBorderStyleRoundedRect;
     
-    self.webview = [[WKWebView alloc] init];
+    self.webview = [[DZBaseWebView alloc] init];
     self.webview.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.webview.userInteractionEnabled = YES;
     [self.webview setTranslatesAutoresizingMaskIntoConstraints:NO];

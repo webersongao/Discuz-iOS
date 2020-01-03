@@ -1,6 +1,6 @@
 //
-//  WebviewBridge.h
-//  WebviewBridge
+//  WebViewBridge.h
+//  WebViewBridge
 //
 //  Created by zy on 12-2-27.
 //  Copyright (c) 2015年. All rights reserved.
@@ -15,7 +15,7 @@
 -(NSString*) WebviewClientExecSync:(NSString*) json withConfig:(NSDictionary*) config;
 @end
 
-@interface WebviewBridge : NSObject
+@interface WebViewBridge : NSObject
 
 
 - (void)setWebApiObject:(id)object;

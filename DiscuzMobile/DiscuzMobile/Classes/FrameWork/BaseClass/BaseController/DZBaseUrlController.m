@@ -9,9 +9,9 @@
 #import "DZBaseUrlController.h"
 #import "UIAlertController+Extension.h"
 
-@interface DZBaseUrlController ()<UIWebViewDelegate>
+@interface DZBaseUrlController ()<WKNavigationDelegate>
 
-@property (nonatomic,strong) UIWebView *webView;
+@property (nonatomic,strong) DZBaseWebView *webView;
 @end
 
 @implementation DZBaseUrlController
@@ -20,14 +20,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DZ_StatusBarTap_Notify object:nil];
     [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@""]]];
     [self cleanWebChache];
-    self.webView.delegate = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addSubview:self.webView];
-   
+    
     // 无数据的时候显示
     if (![_urlString isUrlContainDomain]) {
         [UIAlertController alertTitle:nil message:@"请求地址不存在" controller:self doneText:@"返回" cancelText:nil doneHandle:^{
@@ -40,24 +39,23 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
-- (void)webViewDidStartLoad:(UIWebView *)webView {
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:webView.request.URL];
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:webView.URL];
     NSEnumerator *enumerator = [cookies objectEnumerator];
     NSHTTPCookie *cookie;
     while (cookie = [enumerator nextObject]) {
-        DLog(@"COOKIE{name: %@, value: %@}", [cookie name], [cookie value]);
+        DLog(@"WBS -- COOKIE{name: %@, value: %@}", [cookie name], [cookie value]);
     }
     [self.HUD hideAnimated:YES];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     [self.HUD hideAnimated:YES];
     if (error.code == NSURLErrorCancelled) {
         //忽略这个错误。
@@ -81,15 +79,15 @@
     [self.webView.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-- (UIWebView *)webView {
+- (DZBaseWebView *)webView {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:KView_OutNavi_Bounds];
+        _webView = [[DZBaseWebView alloc] initWithFrame:KView_OutNavi_Bounds];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.userInteractionEnabled = YES;
         [_webView setOpaque:NO];
         // 自动缩放适应屏幕
-        [_webView setScalesPageToFit:YES];
-        _webView.delegate = self;
+        //        [_webView setScalesPageToFit:YES];
+        _webView.navigationDelegate = self;
     }
     return _webView;
 }
