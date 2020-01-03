@@ -285,6 +285,7 @@
 		7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */; };
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
 		706649F323BF7D02002B8388 /* DZBaseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706649F223BF7D02002B8388 /* DZBaseWebView.m */; };
+		706649F623BF9772002B8388 /* DZWebBrowerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 706649F523BF9772002B8388 /* DZWebBrowerHelper.m */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
 		7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */; };
 		706C454723ACD1A700472386 /* NSString+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = 706C454623ACD1A700472386 /* NSString+Format.m */; };
@@ -502,7 +503,6 @@
 		94B1067422F1678700D40827 /* DZUpdateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1067122F1678700D40827 /* DZUpdateAlertView.m */; };
 		94B1067522F1678700D40827 /* DZUpdateAlertConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1067222F1678700D40827 /* DZUpdateAlertConst.m */; };
 		94B2ED361FE3A3600093851E /* bbsrule_discuz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94B2ED351FE3A3600093851E /* bbsrule_discuz.txt */; };
-		94F36BD220804221002AEF9E /* JTWebImageBrowerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F36BD120804221002AEF9E /* JTWebImageBrowerHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1027,6 +1027,8 @@
 		7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostSiriViewController.m; sourceTree = "<group>"; };
 		706649F123BF7D02002B8388 /* DZBaseWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseWebView.h; sourceTree = "<group>"; };
 		706649F223BF7D02002B8388 /* DZBaseWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseWebView.m; sourceTree = "<group>"; };
+		706649F423BF9772002B8388 /* DZWebBrowerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebBrowerHelper.h; sourceTree = "<group>"; };
+		706649F523BF9772002B8388 /* DZWebBrowerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebBrowerHelper.m; sourceTree = "<group>"; };
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7068959323A0C47A00A0EFAE /* DZMsgNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZMsgNetTool.h; sourceTree = "<group>"; };
 		7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZMsgNetTool.m; sourceTree = "<group>"; };
@@ -1459,8 +1461,6 @@
 		94B2ED351FE3A3600093851E /* bbsrule_discuz.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bbsrule_discuz.txt; sourceTree = "<group>"; };
 		94D44F702079C490000DA603 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		94E405952041175F0000CE02 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
-		94F36BD020804221002AEF9E /* JTWebImageBrowerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTWebImageBrowerHelper.h; sourceTree = "<group>"; };
-		94F36BD120804221002AEF9E /* JTWebImageBrowerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JTWebImageBrowerHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4246,8 +4246,8 @@
 			isa = PBXGroup;
 			children = (
 				27CD9D221DDEA87F0075831B /* SDPhotoBrowser */,
-				94F36BD020804221002AEF9E /* JTWebImageBrowerHelper.h */,
-				94F36BD120804221002AEF9E /* JTWebImageBrowerHelper.m */,
+				706649F423BF9772002B8388 /* DZWebBrowerHelper.h */,
+				706649F523BF9772002B8388 /* DZWebBrowerHelper.m */,
 			);
 			path = WebImageBrower;
 			sourceTree = "<group>";
@@ -4728,7 +4728,6 @@
 				70DE5D132384029300686F2D /* DZHomeNewListCtrl.m in Sources */,
 				706212CC237936C900130B9D /* DZViewPollPotionController.m in Sources */,
 				70F9F8D1237AA72B0067B308 /* NSDictionary+Utils.m in Sources */,
-				94F36BD220804221002AEF9E /* JTWebImageBrowerHelper.m in Sources */,
 				70FBDCE72383FC1B00FC296E /* DZBindManageController.m in Sources */,
 				706C454723ACD1A700472386 /* NSString+Format.m in Sources */,
 				27E481601E8A369000AE0E02 /* DZLaunchScreenManager.m in Sources */,
@@ -4844,6 +4843,7 @@
 				70A7965923B0D19B001FF672 /* UILabel+TopTitle.m in Sources */,
 				70EA90AE23BA024600814952 /* DZShadowView.mm in Sources */,
 				947ECB052064D403002D3536 /* JFImageCollectionViewController.m in Sources */,
+				706649F623BF9772002B8388 /* DZWebBrowerHelper.m in Sources */,
 				70F9F884237A9A9A0067B308 /* LocalStringUtil.m in Sources */,
 				7023CC7F23A22AE600FB7E31 /* DZBindVarModel.m in Sources */,
 				70DFD7AA237A95DE00A13F0F /* DZNoticeModel.m in Sources */,

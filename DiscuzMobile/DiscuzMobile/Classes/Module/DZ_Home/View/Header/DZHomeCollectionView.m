@@ -12,8 +12,6 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 
 @interface DZHomeCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic, strong) UIPageControl *PageControl;  //!< 属性注释
-
 @end
 
 @implementation DZHomeCollectionView
@@ -35,7 +33,6 @@ static NSString * const cellIdentifier = @"DZThreadCell";
 
 
 -(void)configHomeCollectionView{
-    [self addSubview:self.PageControl];
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(lonePressRecognizerAction:)];
     [self addGestureRecognizer:longPress];
 }
@@ -46,7 +43,6 @@ static NSString * const cellIdentifier = @"DZThreadCell";
         _dataArray = array;
     }
     self.hidden = self.dataArray.count ? NO : YES;
-    self.PageControl.numberOfPages = ceil(array.count/(kRowNumber * 1.0));
     [self reloadHomeListThreadData];
 }
 
@@ -135,17 +131,6 @@ static NSString * const cellIdentifier = @"DZThreadCell";
     gridLayout.minimumInteritemSpacing = kLineSpacing;
     gridLayout.sectionInset = UIEdgeInsetsMake(0,kCellMargins, 0, kCellMargins);
     return gridLayout;
-}
-
--(UIPageControl *)PageControl{
-    if (_PageControl == nil) {
-        _PageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.height - kMargin15, KScreenWidth, kMargin10)];
-        _PageControl.currentPage = 0;
-        _PageControl.userInteractionEnabled = NO;
-        _PageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-        _PageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-    }
-    return _PageControl;
 }
 
 @end

@@ -253,7 +253,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 /**
  *  从现在起向后推几小时的日期
  *
- *  @param days 向后推的小时数
+ *  @param dHours 向后推的小时数
  *
  *  @return 后推得到的日期
  */
@@ -266,7 +266,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 /**
  *  从现在起向前推几小时的日期
  *
- *  @param days 向前推的小时数
+ *  @param dHours 向前推的小时数
  *
  *  @return 前推得到的日期
  */
@@ -279,7 +279,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 /**
  *  从现在起向后推几分钟的日期
  *
- *  @param days 向后推的分钟数
+ *  @param dMinutes 向后推的分钟数
  *
  *  @return 后推得到的日期
  */
@@ -292,7 +292,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 /**
  *  从现在起向前推几分钟的日期
  *
- *  @param days 向前推的分钟数
+ *  @param dMinutes 向前推的分钟数
  *
  *  @return 前推得到的日期
  */

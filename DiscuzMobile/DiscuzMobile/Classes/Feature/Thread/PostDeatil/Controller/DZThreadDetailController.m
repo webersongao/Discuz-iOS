@@ -22,7 +22,7 @@
 #import "DZDevice.h"
 
 #import "DZShareCenter.h"
-#import "JTWebImageBrowerHelper.h"
+#import "DZWebBrowerHelper.h"
 
 @interface DZThreadDetailController ()<UITextFieldDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
@@ -238,7 +238,7 @@
         NSString *urlstr = (NSString *)data;
         [weakSelf.picurlArray addObject:urlstr];
         // 创建图片浏览
-        [[JTWebImageBrowerHelper shareInstance] showPhotoImageSources:weakSelf.picurlArray thumImages:weakSelf.picurlArray currentIndex:0 imageContainView:weakSelf.detailView.webView];
+        [[DZWebBrowerHelper sharedHelper] showPhotoImageSources:weakSelf.picurlArray thumImages:weakSelf.picurlArray currentIndex:0 imageContainView:weakSelf.detailView.webView];
     }];
     
     [_bridge registerHandler:@"onthreadContentThumbsClick" handler:^(id data, WVJBResponseCallback responseCallback) {
@@ -248,7 +248,7 @@
         if (index >= imgs.count) {
             index = 0;
         }
-        [[JTWebImageBrowerHelper shareInstance] showPhotoImageSources:imgs thumImages:imgs currentIndex:index imageContainView:weakSelf.detailView.webView];
+        [[DZWebBrowerHelper sharedHelper] showPhotoImageSources:imgs thumImages:imgs currentIndex:index imageContainView:weakSelf.detailView.webView];
     }];
     
     [_bridge registerHandler:@"onLoadMore" handler:^(id data, WVJBResponseCallback responseCallback) {

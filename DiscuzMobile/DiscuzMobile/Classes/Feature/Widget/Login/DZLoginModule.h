@@ -14,7 +14,10 @@ extern NSString * const CookieValue;
 @interface DZLoginModule : NSObject
 
 // 分析登录信息
-+ (void)loginAnylyeData:(DZLoginResModel *)responseObject andView:(UIView *)view  andHandle:(void(^)(void))handle;
++(BOOL)loginAnylyeData:(DZLoginResModel *)resModel;
+
+// 保存登录数据
++ (void)saveLoginData:(DZLoginResModel *)resModel andHandle:(void(^)(void))handle;
 
 /*
  * 判断是否登录

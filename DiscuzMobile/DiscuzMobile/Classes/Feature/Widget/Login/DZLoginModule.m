@@ -15,22 +15,7 @@ NSString * const CookieValue = @"COOKIEVALU";
 
 @implementation DZLoginModule
 
-+ (void)loginAnylyeData:(DZLoginResModel *)resModel andView:(UIView *)view  andHandle:(void(^)(void))handle {
-    
-    if (resModel.Message && !resModel.Message.isSuccessed) {
-        [MBProgressHUD showInfo:resModel.Message.messagestr];
-        return;
-    }
-    
-    if(!resModel.Variables.auth.length) {
-        [MBProgressHUD showInfo:resModel.Message.messagestr];
-        return;
-    }
-    
-    if (!resModel.Variables.member_uid.length) {
-        [MBProgressHUD showInfo:@"未能获取到您的用户id"];
-        return;
-    }
++ (void)saveLoginData:(DZLoginResModel *)resModel andHandle:(void(^)(void))handle{
     
     // 普通登录或者登录成功
     [DZMobileCtrl sharedCtrl].Global = resModel.Variables;
@@ -42,6 +27,32 @@ NSString * const CookieValue = @"COOKIEVALU";
         }
     }
     handle?handle():nil;
+}
+
++(BOOL)loginAnylyeData:(DZLoginResModel *)resModel{
+    
+    if (resModel.Message && !resModel.Message.isSuccessed) {
+        [MBProgressHUD showInfo:resModel.Message.messagestr];
+        return NO;
+    }
+    
+    if(!resModel.Variables.auth.length) {
+        [MBProgressHUD showInfo:resModel.Message.messagestr];
+        return NO;
+    }
+    
+    if (!resModel.Variables.member_uid.length) {
+        [MBProgressHUD showInfo:@"未能获取到您的用户id"];
+        return NO;
+    }
+    
+    if (!resModel.Message.isBindThird) {
+        // 去第三方绑定页面
+        [[DZMobileCtrl sharedCtrl] PushToJudgeBindController];
+        return NO;
+    }
+    
+    return YES;
 }
 
 /*

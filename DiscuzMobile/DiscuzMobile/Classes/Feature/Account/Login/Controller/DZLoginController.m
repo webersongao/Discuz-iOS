@@ -78,15 +78,8 @@
 
 #pragma mark - 请求成功操作
 - (void)updateUserResInfo:(DZLoginResModel *)loginResModel {
-    
+    [super updateUserResInfo:loginResModel];
     [self dz_PopCurrentViewController];
-    
-    if (!loginResModel.Message.isBindThird) {
-        // 去第三方绑定页面
-        [self boundThirdview];
-    } else {
-        [super updateUserResInfo:loginResModel];
-    }
 }
 
 - (void)leftBarBtnClick {
@@ -101,10 +94,6 @@
     //    [DZShareCenter shareInstance].bloginModel = nil;
     [self dismissViewControllerAnimated:NO completion:nil];
     [[DZMobileCtrl sharedCtrl] PresentRegisterController];
-}
-
-- (void)boundThirdview {
-    [[DZMobileCtrl sharedCtrl] PushToJudgeBindController];
 }
 
 
@@ -157,6 +146,7 @@
 
 #pragma mark - 验证码
 - (void)downlodyan {
+    self.loginView.authCodeView.textField.text = nil;
     [self.verifyView downSeccode:@"login" success:^{
         if (self.verifyView.isyanzhengma) {
             [self.loginView.authCodeView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -246,19 +236,20 @@
         }
     }
     [self.HUD showLoadingMessag:@"登录中" toView:self.view];
-    
-    
+    KWEAKSELF
     [DZLoginNetTool DZ_UserLginWithNameOrThirdService:dic getData:getData completion:^(DZLoginResModel *resModel) {
-        [self.HUD hide];
+        [weakSelf.HUD hide];
         if (resModel) {
             if (resModel.Message && resModel.Message.isLoginEmpty) {
-                [self.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
+                [weakSelf.loginView.securityView mas_updateConstraints:^(MASConstraintMaker *make) {
                     make.height.mas_equalTo(DZ_TEXTHEIGHT);
-                    self.loginView.securityView.hidden = NO;
+                    weakSelf.loginView.securityView.hidden = NO;
                 }];
                 [DZMobileCtrl showAlertError:resModel.Message.messagestr];
+            }else if ([DZLoginModule loginAnylyeData:resModel]){
+                [weakSelf updateUserResInfo:resModel];
             }else{
-                [self updateUserResInfo:resModel];
+               [weakSelf downlodyan];
             }
         }else{
             [DZMobileCtrl showAlertError:@"登录失败"];

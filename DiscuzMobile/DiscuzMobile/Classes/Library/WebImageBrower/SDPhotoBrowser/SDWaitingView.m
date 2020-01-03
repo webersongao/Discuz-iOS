@@ -57,8 +57,6 @@
         case SDWaitingViewModePieDiagram:
             {
                 CGFloat radius = MIN(rect.size.width * 0.5, rect.size.height * 0.5) - SDWaitingViewItemMargin;
-                
-                
                 CGFloat w = radius * 2 + SDWaitingViewItemMargin;
                 CGFloat h = w;
                 CGFloat x = (rect.size.width - w) * 0.5;

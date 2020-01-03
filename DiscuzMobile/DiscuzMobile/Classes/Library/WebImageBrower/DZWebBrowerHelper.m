@@ -1,37 +1,39 @@
 //
-//  JTWebImageBrowerHelper.m
+//  DZWebBrowerHelper.m
 //  DiscuzMobile
 //
-//  Created by ZhangJitao on 2018/4/13.
-//  Copyright © 2018年 comsenz-service.com.  All rights reserved.
+//  Created by WebersonGao on 2020/1/3.
+//  Copyright © 2020 comsenz-service.com. All rights reserved.
 //
 
-#import "JTWebImageBrowerHelper.h"
+#import "DZWebBrowerHelper.h"
 #import "SDPhotoBrowser.h"
 
-@interface JTWebImageBrowerHelper()<SDPhotoBrowserDelegate>
-@property (nonatomic, strong) NSMutableArray *imagesArray;
-@property (nonatomic, strong) NSMutableArray *thumbArray;
+@interface DZWebBrowerHelper()<SDPhotoBrowserDelegate>
+
+@property (nonatomic, strong) NSArray *imagesArray;
+@property (nonatomic, strong) NSArray *thumbArray;
 @end
 
-@implementation JTWebImageBrowerHelper
-+ (instancetype)shareInstance {
-    static JTWebImageBrowerHelper *helper = nil;
+@implementation DZWebBrowerHelper
+
++ (instancetype)sharedHelper {
+    static DZWebBrowerHelper *helper = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        helper = [[JTWebImageBrowerHelper alloc] init];
+        helper = [[DZWebBrowerHelper alloc] init];
     });
     return helper;
 }
 
-- (void)showPhotoImageSources:(NSArray *)imagesArray thumImages:(NSArray *)thumArray currentIndex:(NSInteger)index imageContainView:(UIView *)imageBgV {
+- (void)showPhotoImageSources:(NSArray *)imagesArray thumImages:(NSArray *)thumArray currentIndex:(NSInteger)index imageContainView:(UIView *)imageContainer {
     SDPhotoBrowser *photoBrowser = [SDPhotoBrowser new];
     photoBrowser.delegate = self;
     self.imagesArray = imagesArray.mutableCopy;
     self.thumbArray = thumArray.mutableCopy;
     photoBrowser.currentImageIndex = index;
     photoBrowser.imageCount = self.imagesArray.count;
-    photoBrowser.sourceImagesContainer = imageBgV;
+    photoBrowser.sourceImagesContainer = imageContainer;
     [photoBrowser show];
 }
 
@@ -57,18 +59,7 @@
     return [NSURL URLWithString:urlStr];
 }
 
-#pragma mark - getting setting
-- (NSMutableArray *)imagesArray {
-    if (!_imagesArray) {
-        _imagesArray = [NSMutableArray array];
-    }
-    return _imagesArray;
-}
 
-- (NSMutableArray *)thumbArray {
-    if (!_thumbArray) {
-        _thumbArray = [NSMutableArray array];
-    }
-    return _thumbArray;
-}
 @end
+
+

@@ -60,7 +60,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         self.backgroundColor = RGBACOLOR(83, 83, 83, 0.5);
         UIWindow *window = [UIApplication sharedApplication].delegate.window;
         self.frame = window.bounds;
@@ -68,7 +67,6 @@
         tap.delegate = self;
         [self addGestureRecognizer:tap];
         _isCreate = NO;
-        
     }
     return self;
 }
@@ -87,19 +85,11 @@
     bgview.backgroundColor = mRGBColor(241, 241, 241);
     [self addSubview:bgview];
     
-    // 验证码field
-    _yanTextField= [[UITextField alloc] initWithFrame:CGRectMake(10, 50, KScreenWidth-100, 57)];
-    _yanTextField.placeholder = @"请输入验证码";
-    _yanTextField.tag=10010;
-    _yanTextField.borderStyle= UITextBorderStyleRoundedRect;
-    _yanTextField.layer.borderWidth = 2.0f;
-    _yanTextField.layer.cornerRadius = 5;
-    _yanTextField.layer.borderColor = K_Color_Theme.CGColor;
-    _yanTextField.font = [DZFontSize forumtimeFontSize14];//14
-    [bgview addSubview:_yanTextField];
+    
+    [bgview addSubview:self.yanTextField];
     
     //验证码webview
-    _identWebView=[[DZBaseWebView alloc]initWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
+    _identWebView = [[DZBaseWebView alloc]initWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
     _identWebView.userInteractionEnabled = YES;
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -184,5 +174,20 @@
     _secqaaLabel.text = self.secureData.secqaa;
 }
 
+
+-(UITextField *)yanTextField{
+    if (!_yanTextField) {
+        // 验证码field
+        _yanTextField= [[UITextField alloc] initWithFrame:CGRectMake(10, 50, KScreenWidth-100, 57)];
+        _yanTextField.placeholder = @"请输入验证码";
+        _yanTextField.tag=10010;
+        _yanTextField.borderStyle= UITextBorderStyleRoundedRect;
+        _yanTextField.layer.borderWidth = 2.0f;
+        _yanTextField.layer.cornerRadius = 5;
+        _yanTextField.layer.borderColor = K_Color_Theme.CGColor;
+        _yanTextField.font = [DZFontSize forumtimeFontSize14];//14
+    }
+    return _yanTextField;
+}
 
 @end
