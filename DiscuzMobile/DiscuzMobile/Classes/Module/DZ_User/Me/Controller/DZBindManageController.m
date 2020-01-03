@@ -113,7 +113,6 @@
         
         [self.HUD showLoadingMessag:@"" toView:self.view];
         if ([model.type isEqualToString:@"weixin"]) {
-            
             [[DZShareCenter shareInstance] loginWithWeiXinSuccess:^(id  _Nullable postData, id  _Nullable getData) {
                 [self thirdConnectWithService:postData getData:getData];
             } finish:^{

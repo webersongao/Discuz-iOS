@@ -36,7 +36,6 @@
 }
 
 - (void)allowAction {
-    
     [self oprationApply:0];
 }
 

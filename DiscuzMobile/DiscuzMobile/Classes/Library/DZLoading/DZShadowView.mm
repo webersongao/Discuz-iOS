@@ -66,7 +66,7 @@ const CGFloat PRShadowAnimationDuration = 0.4f;
     m_bCloseWhenRotate = NO;
     m_bCloseByTap = YES;
     m_bBottom = YES;
-    self.tag = shadowAlertCommonView_AlertView_Tag;
+    self.tag = KShadowAlert_Tag;
     m_animationType = animationType;
     
     if (!color) {

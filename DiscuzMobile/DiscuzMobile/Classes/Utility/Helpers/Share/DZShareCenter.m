@@ -9,15 +9,9 @@
 #import "DZShareCenter.h"
 
 // share sdk
-#import <ShareSDK/ShareSDK.h>
-#import <ShareSDKConnector/ShareSDKConnector.h>
-#import "WXApi.h"
-#import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <ShareSDKExtension/SSEShareHelper.h>
-#import <ShareSDKUI/ShareSDK+SSUI.h>
-#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+#import <ShareSDKUI/ShareSDKUI.h>
 #import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 
 @implementation DZShareCenter
 // 单例
@@ -38,51 +32,18 @@
         [platformsRegister setupQQWithAppId:DZ_QQ_APPID appkey:DZ_QQ_APPKEY];
         //微信
         [platformsRegister setupWeChatWithAppId:DZ_WX_APPID appSecret:DZ_WX_APPSECRET universalLink:DZ_BASEURL];
-
+        
+        [platformsRegister setupSinaWeiboWithAppkey:DZ_WB_APPID appSecret:DZ_WB_APPSECRET redirectUrl:DZ_WB_REDIRRCTURI];
     }];
-//    [ShareSDK registerActivePlatforms:@[
-//                                        @(SSDKPlatformTypeWechat),
-//                                        @(SSDKPlatformTypeQQ)]
-//                             onImport:^(SSDKPlatformType platformType)
-//     {
-//         switch (platformType)
-//         {
-//             case SSDKPlatformTypeWechat:
-//                 [ShareSDKConnector connectWeChat:[WXApi class]];
-//                 break;
-//             case SSDKPlatformTypeQQ:
-//                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
-//                 break;
-//             default:
-//                 break;
-//         }
-//     }
-//                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
-//     {
-//         switch (platformType)
-//         {
-//             case SSDKPlatformTypeWechat:
-//                 [appInfo SSDKSetupWeChatByAppId:WX_APPID
-//                                       appSecret:WX_APPSECRET];
-//                 break;
-//             case SSDKPlatformTypeQQ:
-//                 [appInfo SSDKSetupQQByAppId:QQ_APPID
-//                                      appKey:QQ_APPKEY
-//                                    authType:SSDKAuthTypeBoth
-//                                      useTIM:YES backUnionID:YES];
-//                 break;
-//             default:
-//                 break;
-//         }
-//     }];
 }
 
-- (void)createShare:(nonnull NSString *)text andImages:(nullable id)images andUrlstr:(nonnull NSString *)urlStr andTitle:(nonnull NSString *)title andView:(nullable UIView *)view andHUD:(nullable MBProgressHUD *)HUD {
+- (void)shareText:(nonnull NSString *)text andImages:(nullable id)images andUrlstr:(nonnull NSString *)urlStr andTitle:(nonnull NSString *)title andView:(nullable UIView *)view andHUD:(nullable MBProgressHUD *)HUD {
     NSMutableDictionary *shareParems = [NSMutableDictionary dictionary];
     [shareParems SSDKSetupShareParamsByText:text images:images url:[NSURL URLWithString:urlStr] title:title type:SSDKContentTypeAuto];
     NSMutableArray *activePlatforms = [NSMutableArray arrayWithArray:[ShareSDK activePlatforms]];
-    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
-    [ShareSDK showShareActionSheet:view items:activePlatforms shareParams:shareParems onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+    SSUIShareSheetConfiguration *config = [[SSUIShareSheetConfiguration alloc] init];
+    config.style = ShareActionSheetStyleSimple;
+    [ShareSDK showShareActionSheet:view customItems:activePlatforms shareParams:shareParems sheetConfiguration:config onStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
         switch (state) {
             case SSDKResponseStateBegin: {
 //                if (view != nil && HUD != nil) {
@@ -131,7 +92,7 @@
 - (void)loginWithQQSuccess:(void(^_Nullable)(id _Nullable postData,id _Nullable getData))success finish:(void(^_Nullable)(void))finish {
     
     if ([ShareSDK hasAuthorized:SSDKPlatformTypeQQ]) { // 由于qq登录需要切换账号
-        [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ result:nil];
     }
     
     [self loginWithPlatformType:SSDKPlatformTypeQQ success:success finish:finish];
@@ -182,14 +143,11 @@
                        } else {
                            [MBProgressHUD showInfo:@"服务器繁忙请重试"];
                        }
-                   }
-                   else if (state == SSDKResponseStateCancel) {
+                   }else if (state == SSDKResponseStateCancel) {
                        [MBProgressHUD showInfo:@"取消授权"];
-                   }
-                   else if (state == SSDKResponseStateFail) {
+                   }else if (state == SSDKResponseStateFail) {
                        [MBProgressHUD showInfo:@"授权失败"];
-                   }
-                   else {
+                   }else {
                        [MBProgressHUD showInfo:error.description];
                    }
                });

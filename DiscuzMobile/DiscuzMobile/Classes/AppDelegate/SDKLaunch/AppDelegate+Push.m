@@ -88,7 +88,7 @@
 //        DLog(@"[XGPush]register errorBlock");
 //    };
 //    NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
-//    [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:DZ_XGTOKEN];
+//    [[NSUserDefaults standardUserDefaults] setObject:deviceToken forKey:DZ_PushTOKEN];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //    
 //    DLog(@"deviceTokenStr=%@",deviceTokenStr);

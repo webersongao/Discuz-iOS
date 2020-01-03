@@ -35,7 +35,7 @@
 #define DZ_BASEURL      @"http://demo.516680.com/"
 #endif
 
-#pragma mark - 三方 ================================================
+#pragma mark   /********************* 第三方 *************************/
 // QQ、微信登录和分享，自己申请的appid 和 secret 微博暂无
 // QQ 
 #define DZ_QQ_APPID @""
@@ -47,12 +47,12 @@
 // 微博
 #define DZ_WB_APPID @""
 #define DZ_WB_APPSECRET @""
-#define DZ_REDIRRCTURI @"https://www.comsenz-service.com"
+#define DZ_WB_REDIRRCTURI @"https://www.comsenz-service.com"
 
-// 信鸽
-#define DZ_XGTOKEN      @"XGTOKEN"
-#define DZ_XG_APPID     2200197269
-#define DZ_XG_APPKEY    @""
+// 推送
+#define DZ_PushTOKEN      @"XGTOKEN"
+#define DZ_Push_APPID     2200197269
+#define DZ_Push_APPKEY    @""
 
 
 // 讯飞语音识别

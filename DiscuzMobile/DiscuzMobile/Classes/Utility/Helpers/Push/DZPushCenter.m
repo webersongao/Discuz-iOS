@@ -37,7 +37,7 @@
 //    } else {
 //        [XGPush setAccount:[NSString stringWithFormat:@"%@",[DZMobileCtrl sharedCtrl].Global.member_uid]];
 //    }
-//    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] objectForKey:DZ_XGTOKEN];
+//    NSData * datatoken =  [[NSUserDefaults standardUserDefaults] objectForKey:DZ_PushTOKEN];
 //    void (^successBlock)(void) = ^(void){
 //        //成功处理
 //        DLog(@"[XGPush]register successBlock");
@@ -92,7 +92,7 @@
 #pragma mark - 信鸽注册
 - (void)Reregistration {
     
-//    [XGPush startApp:DZ_XG_APPID appKey:DZ_XG_APPKEY];
+//    [XGPush startApp:DZ_Push_APPID appKey:DZ_Push_APPKEY];
 //    //注销之后需要再次注册前的准备
 //    void (^successCallback)(void) = ^(void){
 //        //如果变成需要注册状态

@@ -241,7 +241,7 @@
 
 /// 分享 app
 - (void)shareMyMobileAPPWithView:(UIView *)view {
-    [[DZShareCenter shareInstance] createShare:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:AppStorePath andTitle:DZ_APPNAME andView:view andHUD:nil];
+    [[DZShareCenter shareInstance] shareText:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:AppStorePath andTitle:DZ_APPNAME andView:view andHUD:nil];
 }
 
 /// 账号绑定状态

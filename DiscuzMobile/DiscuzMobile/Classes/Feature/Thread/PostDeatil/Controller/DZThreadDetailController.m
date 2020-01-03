@@ -500,14 +500,13 @@
         NSString *iconName = [DZDevice getIconName];
         [imageArray addObject:[UIImage imageNamed:iconName]];
     }
-    NSString *threadtitle = self.threadModel.subject;
     NSString *dateline = self.threadModel.dateline;
     NSString *authorname = self.threadModel.author;
     NSString *shareContent = [NSString stringWithFormat:@"作者：%@ 发表于：%@",authorname,dateline];
-    [[DZShareCenter shareInstance] createShare:shareContent
+    [[DZShareCenter shareInstance] shareText:shareContent
                                      andImages:imageArray
                                      andUrlstr:self.threadModel.shareUrl
-                                      andTitle:threadtitle
+                                      andTitle:self.threadModel.subject
                                        andView:self.view
                                         andHUD:self.HUD];
 }
