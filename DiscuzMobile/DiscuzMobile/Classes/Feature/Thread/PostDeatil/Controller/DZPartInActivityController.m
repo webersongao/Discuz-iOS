@@ -69,8 +69,7 @@
             NSArray *userFieldArr = [ufieldDic objectForKey:@"userfield"];
             [userFieldArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NSDictionary *dic = joinfieldDic[obj];
-                ParInActiveModel *partModel = [[ParInActiveModel alloc] init];
-                [partModel setValuesForKeysWithDictionary:dic];
+                ParInActiveModel *partModel = [ParInActiveModel modelWithJSON:dic];
                 if ([partModel.fieldid isEqualToString:@"gender"]) {
                     partModel.fieldValue = @"0";
                     partModel.choicesArray = @[@"保密",@"男",@"女"];
@@ -79,12 +78,10 @@
                     if ([DataCheck isValidDict:[settings objectForKey:partModel.fieldid]]) {
                         [self.dataSourceArr addObject:partModel];
                     }
-                    
                 } else {
                     [self.dataSourceArr addObject:partModel];
                 }
             }];
-            
             
             // ************test *******************
             //            [self testData];
@@ -545,4 +542,21 @@
     model.fieldValue = textView.text;
 }
 
+
+
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+

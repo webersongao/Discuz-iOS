@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *payment;
 
-@property (nonatomic, strong) NSArray *choicesArray;
 @property (nonatomic, copy) NSString *fieldValue;
+@property (nonatomic, strong) NSArray *choicesArray;
 
 @end

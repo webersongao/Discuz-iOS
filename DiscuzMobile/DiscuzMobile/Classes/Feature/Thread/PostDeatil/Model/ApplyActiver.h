@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *verified;
 @property (nonatomic, copy) NSString *payment;
 @property (nonatomic, strong) NSDictionary *dbufielddata;
-@property (nonatomic, strong) NSMutableArray *userfield;
+
+@property (nonatomic, strong) NSArray *userfield;
 
 @end

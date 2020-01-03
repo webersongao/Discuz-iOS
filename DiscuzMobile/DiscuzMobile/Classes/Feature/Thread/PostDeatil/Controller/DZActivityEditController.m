@@ -80,8 +80,8 @@
         if ([DataCheck isValidArray:[[[responseObject objectForKey:@"Variables"] objectForKey:@"activityapplylist"] objectForKey:@"applylist"]]) {
             NSArray *arr = [[[responseObject objectForKey:@"Variables"] objectForKey:@"activityapplylist"] objectForKey:@"applylist"];
             for (NSDictionary *dic in arr) {
-                ApplyActiver *apply = [[ApplyActiver alloc] init];
-                [apply setValuesForKeysWithDictionary:dic];
+                ApplyActiver *apply = [ApplyActiver modelWithJSON:dic];
+
                 NSDictionary *ufieldDic = self.threadModel.VarPost.special_activity.ufield;
                 if ([DataCheck isValidDict:ufieldDic]) {
                     if ([DataCheck isValidArray:[ufieldDic objectForKey:@"userfield"]]){

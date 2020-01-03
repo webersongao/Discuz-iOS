@@ -30,8 +30,6 @@
 - (void)initCommit {
     self.backgroundColor = [UIColor whiteColor];
     
-//    NSArray *arr = @[@"好友",@"收藏",@"消息",@"主题",@"回复"];
-    
     NSArray *arr = @[@"好友",@"收藏",@"消息",@"帖子"];
     
     CGFloat item_width = (KScreenWidth - 24) / 4;

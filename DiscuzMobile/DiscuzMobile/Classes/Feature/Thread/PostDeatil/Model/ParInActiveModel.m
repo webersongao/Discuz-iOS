@@ -10,10 +10,6 @@
 
 @implementation ParInActiveModel
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    
-}
-
 -(void)setChoices:(NSString *)choices{
     _choices = choices;
     _choicesArray = [choices componentsSeparatedByString:@"\n"];
