@@ -36,7 +36,7 @@
     
     [self dz_bringNavigationBarToFront];
     [self configNaviBar:@"切换" type:NaviItemText Direction:NaviDirectionLeft];
-    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionLeft];
+    [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
 
 -(BOOL)DZ_hideTabBarWhenPushed{

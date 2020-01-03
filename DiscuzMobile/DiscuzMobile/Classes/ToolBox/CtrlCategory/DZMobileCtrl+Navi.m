@@ -66,13 +66,6 @@
     [self.mainNavi pushViewController:threadVC animated:YES];
 }
 
-/// 帖子详情页
-- (void)ShowThreadDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid{
-    DZThreadDetailController *threadVC = [[DZThreadDetailController alloc] init];
-    threadVC.tid = checkNull(tid);
-    [selfVC showViewController:threadVC sender:nil];
-}
-
 /// 论坛版块帖子列表
 - (void)PushToForumListController:(NSString *)fid {
     [self PushToForumListController:fid block:nil];

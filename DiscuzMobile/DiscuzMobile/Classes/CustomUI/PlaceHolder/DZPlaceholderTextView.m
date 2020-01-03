@@ -63,8 +63,6 @@
     // 若用户没有设置placeholder的颜色，则给placeholder设置一个默认颜色
     attrs[NSForegroundColorAttributeName] = self.placeholderColor ? self.placeholderColor : [UIColor grayColor];
     [self.placeholder drawInRect:CGRectMake(placeholderRectX, placeholderRectY, placeholderRectW, placeholderRectH) withAttributes:attrs];
-    
-    
 }
 
 #pragma mark - 当用户手动更新当前字体属性时，就自动触发重绘

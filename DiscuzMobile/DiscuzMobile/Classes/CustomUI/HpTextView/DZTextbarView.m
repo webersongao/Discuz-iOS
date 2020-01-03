@@ -1,25 +1,25 @@
 //
-//  TextbarView.m
+//  DZTextbarView.m
 //  DiscuzMobile
 //
 //  Created by HB on 16/11/23.
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import "TextbarView.h"
+#import "DZTextbarView.h"
 #import "WBStatusComposeTextParser.h"
 #import "WBStatusLayout.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
 
-@interface TextbarView() <YYTextViewDelegate>
+@interface DZTextbarView() <YYTextViewDelegate>
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, assign) BOOL keyboardShow;
 @end
 
 
-@implementation TextbarView
+@implementation DZTextbarView
 
 static CGFloat btn_width = 24.0;
 
@@ -140,8 +140,7 @@ static CGFloat btn_width = 24.0;
 
 // MARK: - 消息详情页用的表情键盘
 - (void)initChatBar {
-    
-    
+
     self.textView.placeholderText = @"回复消息";
     [self addSubview:self.textView];
     
@@ -169,25 +168,19 @@ static CGFloat btn_width = 24.0;
             self.faceBtn.hidden = NO;
             self.addBtn.hidden = NO;
             self.sendBtn.hidden = NO;
-            
         } else {
-            
             self.keyboardShow = YES;
             self.toolContainView.hidden = YES;
             self.replyContainView.hidden = NO;
             self.textView.frame = CGRectMake(8, 7, KScreenWidth - 8 - btn_width - 32  - 60, height);
             self.replyContainView.frame = CGRectMake(CGRectGetMaxX(_textView.frame), CGRectGetMinY(self.textView.frame), 100 + 5, 35);
         }
-        
     } else if (status == bar_drop) {
-        
         if (self.style == detail_textBar) {
-            
             self.faceBtn.hidden = YES;
             self.addBtn.hidden = YES;
             self.sendBtn.hidden = YES;
         }
-        
         self.keyboardShow = NO;
         self.toolContainView.hidden = NO;
         self.replyContainView.hidden = YES;

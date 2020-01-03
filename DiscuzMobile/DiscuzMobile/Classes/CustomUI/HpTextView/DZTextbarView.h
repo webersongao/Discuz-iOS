@@ -1,5 +1,5 @@
 //
-//  TextbarView.h
+//  DZTextbarView.h
 //  DiscuzMobile
 //
 //  Created by HB on 16/11/23.
@@ -34,7 +34,7 @@ typedef void(^ChangeKeyboard)(NSInteger tag);
 typedef void(^SendMessage)(void);
 typedef void(^AddBlock)(void);
 
-@interface TextbarView : UIView
+@interface DZTextbarView : UIView
 
 @property (nonatomic, strong) YYTextView *textView;
 

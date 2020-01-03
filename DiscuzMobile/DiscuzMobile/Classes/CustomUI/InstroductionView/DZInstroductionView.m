@@ -45,13 +45,13 @@
             [button addTarget:self action:@selector(hidInstroduction) forControlEvents:UIControlEventTouchUpInside];
             button.frame = CGRectMake(KScreenWidth / 2 - 80, KScreenHeight - 105, 160, 50);
             [imgV addSubview:button];
-            //            button.layer.borderColor = [UIColor redColor].CGColor;
-            //            button.backgroundColor = [UIColor redColor];
-            //            button.layer.borderWidth = 1.5;
-            //            button.layer.cornerRadius = 10;
-            //            [button setTitle:@"立即进入" forState:UIControlStateNormal];
-            //            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            //            button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+            button.layer.borderColor = [UIColor redColor].CGColor;
+            button.backgroundColor = [UIColor redColor];
+            button.layer.borderWidth = 1.5;
+            button.layer.cornerRadius = 10;
+            [button setTitle:@"立即进入" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
         }
         [self addSubview:imgV];
     }

@@ -26,7 +26,7 @@
 		27473AC41DD30C380024375F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AA01DD30C380024375F /* AppDelegate.m */; };
 		27473ACD1DD30C380024375F /* DZFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473ABD1DD30C380024375F /* DZFontSize.m */; };
 		27473ACF1DD30C380024375F /* DZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AC11DD30C380024375F /* DZDevice.m */; };
-		274C95161EE647C300163106 /* AttachmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C95151EE647C300163106 /* AttachmentBar.m */; };
+		274C95161EE647C300163106 /* DZAttachmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C95151EE647C300163106 /* DZAttachmentBar.m */; };
 		274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */; };
 		275BABC71F346EE100DB804B /* AddressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC61F346EE100DB804B /* AddressSelectView.m */; };
 		275BABCA1F346EF500DB804B /* addressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BABC91F346EF500DB804B /* addressModel.m */; };
@@ -492,8 +492,8 @@
 		94A3E64C20E611740039C560 /* WBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E64320E611720039C560 /* WBModel.m */; };
 		94A3E64E20E611740039C560 /* WBStatusHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E64420E611730039C560 /* WBStatusHelper.m */; };
 		94A3E65020E611740039C560 /* WBStatusLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E64620E611740039C560 /* WBStatusLayout.m */; };
-		94A3E65620E611910039C560 /* EmoticonKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E65520E611910039C560 /* EmoticonKeyboard.m */; };
-		94A3E65B20E611B10039C560 /* TextbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E65A20E611B10039C560 /* TextbarView.m */; };
+		94A3E65620E611910039C560 /* DZEmoticonKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E65520E611910039C560 /* DZEmoticonKeyboard.m */; };
+		94A3E65B20E611B10039C560 /* DZTextbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A3E65A20E611B10039C560 /* DZTextbarView.m */; };
 		94A3E65F20E6172A0039C560 /* ResourceJT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94A3E65E20E6172A0039C560 /* ResourceJT.bundle */; };
 		94A3E66320E617300039C560 /* EmoticonJT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94A3E66220E617300039C560 /* EmoticonJT.bundle */; };
 		94B1066E22F165D800D40827 /* DZVersionUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B1066C22F165D700D40827 /* DZVersionUpdate.m */; };
@@ -554,8 +554,8 @@
 		27473AC01DD30C380024375F /* DZDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDevice.h; sourceTree = "<group>"; };
 		27473AC11DD30C380024375F /* DZDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDevice.m; sourceTree = "<group>"; };
 		27473AC31DD30C380024375F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		274C95141EE647C300163106 /* AttachmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentBar.h; sourceTree = "<group>"; };
-		274C95151EE647C300163106 /* AttachmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentBar.m; sourceTree = "<group>"; };
+		274C95141EE647C300163106 /* DZAttachmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZAttachmentBar.h; sourceTree = "<group>"; };
+		274C95151EE647C300163106 /* DZAttachmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZAttachmentBar.m; sourceTree = "<group>"; };
 		274F387B1EEA44F6009F4E10 /* DZImagePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZImagePickerView.h; sourceTree = "<group>"; };
 		274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZImagePickerView.m; sourceTree = "<group>"; };
 		2750F7E41EB2F77A008E9E80 /* DZBaseConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseConfig.h; sourceTree = "<group>"; };
@@ -1438,10 +1438,10 @@
 		94A3E64420E611730039C560 /* WBStatusHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBStatusHelper.m; sourceTree = "<group>"; };
 		94A3E64520E611730039C560 /* WBStatusHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBStatusHelper.h; sourceTree = "<group>"; };
 		94A3E64620E611740039C560 /* WBStatusLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBStatusLayout.m; sourceTree = "<group>"; };
-		94A3E65420E611900039C560 /* EmoticonKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoticonKeyboard.h; sourceTree = "<group>"; };
-		94A3E65520E611910039C560 /* EmoticonKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoticonKeyboard.m; sourceTree = "<group>"; };
-		94A3E65920E611B00039C560 /* TextbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextbarView.h; sourceTree = "<group>"; };
-		94A3E65A20E611B10039C560 /* TextbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextbarView.m; sourceTree = "<group>"; };
+		94A3E65420E611900039C560 /* DZEmoticonKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZEmoticonKeyboard.h; sourceTree = "<group>"; };
+		94A3E65520E611910039C560 /* DZEmoticonKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZEmoticonKeyboard.m; sourceTree = "<group>"; };
+		94A3E65920E611B00039C560 /* DZTextbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTextbarView.h; sourceTree = "<group>"; };
+		94A3E65A20E611B10039C560 /* DZTextbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTextbarView.m; sourceTree = "<group>"; };
 		94A3E65E20E6172A0039C560 /* ResourceJT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ResourceJT.bundle; sourceTree = "<group>"; };
 		94A3E66220E617300039C560 /* EmoticonJT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonJT.bundle; sourceTree = "<group>"; };
 		94B1066C22F165D700D40827 /* DZVersionUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZVersionUpdate.m; sourceTree = "<group>"; };
@@ -1653,22 +1653,13 @@
 		277EDC721E6D5BD700E8F0E1 /* HpTextView */ = {
 			isa = PBXGroup;
 			children = (
-				94A3E63D20E6116F0039C560 /* WBModel.h */,
-				94A3E64320E611720039C560 /* WBModel.m */,
-				94A3E65920E611B00039C560 /* TextbarView.h */,
-				94A3E65A20E611B10039C560 /* TextbarView.m */,
-				274C95141EE647C300163106 /* AttachmentBar.h */,
-				274C95151EE647C300163106 /* AttachmentBar.m */,
-				94A3E63E20E611700039C560 /* WBStatusLayout.h */,
-				94A3E64620E611740039C560 /* WBStatusLayout.m */,
-				94A3E64520E611730039C560 /* WBStatusHelper.h */,
-				94A3E64420E611730039C560 /* WBStatusHelper.m */,
-				94A3E65420E611900039C560 /* EmoticonKeyboard.h */,
-				94A3E65520E611910039C560 /* EmoticonKeyboard.m */,
-				94A3E63C20E6116E0039C560 /* WBEmoticonInputView.h */,
-				94A3E64220E611710039C560 /* WBEmoticonInputView.m */,
-				94A3E64020E611710039C560 /* WBStatusComposeTextParser.h */,
-				94A3E64120E611710039C560 /* WBStatusComposeTextParser.m */,
+				700D83C023BF168D000C7B12 /* WBKeyBoard */,
+				94A3E65920E611B00039C560 /* DZTextbarView.h */,
+				94A3E65A20E611B10039C560 /* DZTextbarView.m */,
+				274C95141EE647C300163106 /* DZAttachmentBar.h */,
+				274C95151EE647C300163106 /* DZAttachmentBar.m */,
+				94A3E65420E611900039C560 /* DZEmoticonKeyboard.h */,
+				94A3E65520E611910039C560 /* DZEmoticonKeyboard.m */,
 			);
 			path = HpTextView;
 			sourceTree = "<group>";
@@ -1947,6 +1938,23 @@
 				700BB5D92394E744002A62DE /* DZUserVarModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		700D83C023BF168D000C7B12 /* WBKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				94A3E63D20E6116F0039C560 /* WBModel.h */,
+				94A3E64320E611720039C560 /* WBModel.m */,
+				94A3E63E20E611700039C560 /* WBStatusLayout.h */,
+				94A3E64620E611740039C560 /* WBStatusLayout.m */,
+				94A3E64520E611730039C560 /* WBStatusHelper.h */,
+				94A3E64420E611730039C560 /* WBStatusHelper.m */,
+				94A3E63C20E6116E0039C560 /* WBEmoticonInputView.h */,
+				94A3E64220E611710039C560 /* WBEmoticonInputView.m */,
+				94A3E64020E611710039C560 /* WBStatusComposeTextParser.h */,
+				94A3E64120E611710039C560 /* WBStatusComposeTextParser.m */,
+			);
+			path = WBKeyBoard;
 			sourceTree = "<group>";
 		};
 		700F5922239674B800DD6DFF /* View */ = {
@@ -4525,7 +4533,7 @@
 			files = (
 				7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */,
 				706212EA237936C900130B9D /* DZLoginTextField.m in Sources */,
-				94A3E65620E611910039C560 /* EmoticonKeyboard.m in Sources */,
+				94A3E65620E611910039C560 /* DZEmoticonKeyboard.m in Sources */,
 				7002A36F2383D8CD00BC0C61 /* SystemNoteCell.m in Sources */,
 				706212CB237936C900130B9D /* DZAboutView.m in Sources */,
 				70621272237936C800130B9D /* DZForumContainListView.m in Sources */,
@@ -4560,7 +4568,7 @@
 				70F9F8D2237AA72B0067B308 /* UIScrollView+GestureConflict.m in Sources */,
 				70CA22E42386DF490053B31B /* DZGlobalTool.m in Sources */,
 				27234C9E1EA499DB008A8B13 /* EmptyAlertView.m in Sources */,
-				274C95161EE647C300163106 /* AttachmentBar.m in Sources */,
+				274C95161EE647C300163106 /* DZAttachmentBar.m in Sources */,
 				70F19E7F237A909300499BED /* UIView+PRLayouter.m in Sources */,
 				947ECB1D2064D403002D3536 /* WSImageBroserCell.m in Sources */,
 				70FBDCDA2383FC1B00FC296E /* DZOtherUserThreadController.m in Sources */,
@@ -4656,7 +4664,7 @@
 				70F9F8E6237AA72C0067B308 /* NSString+MoreMethod.m in Sources */,
 				274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */,
 				70DFD79B237A95DE00A13F0F /* DZRootTabBarController.m in Sources */,
-				94A3E65B20E611B10039C560 /* TextbarView.m in Sources */,
+				94A3E65B20E611B10039C560 /* DZTextbarView.m in Sources */,
 				70FBDCF32383FC1B00FC296E /* BoundManageCell.m in Sources */,
 				27473ACF1DD30C380024375F /* DZDevice.m in Sources */,
 				7002A36E2383D8CD00BC0C61 /* MsglistCell.m in Sources */,

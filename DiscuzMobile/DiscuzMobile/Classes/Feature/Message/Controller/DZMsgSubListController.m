@@ -177,14 +177,14 @@
     
     if ([DataCheck isValidString:self.typeModel.view] && [self.typeModel.view isEqualToString:@"mypost"]) {
         if (model.notevar) {
-            [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:model.notevar.tid];
+            [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:model.notevar.tid];
         } else {
             NSArray *arr = [model.note componentsSeparatedByString:@"tid="];
             if (arr.count >= 2) {
                 NSString *containTid = arr[1];
                 NSString *tid = [containTid componentsSeparatedByString:@"\" "][0];
                 if ([tid isNum:tid]) {
-                    [[DZMobileCtrl sharedCtrl] ShowThreadDetailControllerFromVC:self tid:tid];
+                    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
                 }
             }
         }

@@ -10,7 +10,7 @@
 #import "JTRequestManager+PathMethod.h"
 #import <CommonCrypto/CommonDigest.h>
 
-NSString *const PathSpace =@"JTKit";
+NSString *const PathSpace =@"com.516680.JTNetKit";
 NSString *const defaultCachePath =@"AppNetCache";
 static const NSInteger defaultCacheMaxCacheAge  = 60*60*24*7;  // 默认缓存时间为7天
 //static const NSInteger defaultCacheMixCacheAge = 60;

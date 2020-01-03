@@ -39,9 +39,9 @@
 @property (nonatomic,strong) NSMutableArray *picurlArray; // 页面图片 （接口限制，只有一张）
 
 // 验证码
-@property (nonatomic, strong) DZSecVerifyView *verifyView;
 @property (nonatomic, copy) NSString *preSalkey;
 @property (nonatomic, strong) ThreadModel *threadModel;
+@property (nonatomic, strong) DZSecVerifyView *verifyView;
 
 @end
 
@@ -670,7 +670,7 @@
                 }
                 self.threadModel.isRequest = NO;
             }
-            webView.frame=CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
+//            webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
             [self.HUD hide];
         }
     }
@@ -801,7 +801,8 @@
     [self downlodyan];
 }
 
-#pragma mark - getter
+#pragma mark   /********************* 初始化 *************************/
+
 - (DZSecVerifyView *)verifyView {
     if (!_verifyView) {
         _verifyView = [[DZSecVerifyView alloc] init];
@@ -816,11 +817,28 @@
     return _threadModel;
 }
 
--(ThreadDetailView *)detailView{
+- (ThreadDetailView *)detailView{
     if (!_detailView) {
         _detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
     }
     return _detailView;
 }
 
+
+
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+

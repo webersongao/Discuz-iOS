@@ -1,46 +1,37 @@
 //
-//  EmoticonKeyboard.m
+//  DZEmoticonKeyboard.m
 //  DiscuzMobile
 //
 //  Created by HB on 16/11/28.
 //  Copyright © 2016年 comsenz-service.com.  All rights reserved.
 //
 
-#import "EmoticonKeyboard.h"
+#import "DZEmoticonKeyboard.h"
 #import "WBEmoticonInputView.h"
 
 static const NSInteger RowFaceCount = 9;
 
-@interface EmoticonKeyboard() <WBStatusComposeEmoticonViewDelegate,TextBarDelegate>
+@interface DZEmoticonKeyboard() <WBStatusComposeEmoticonViewDelegate,TextBarDelegate>
 {
-    CGFloat toolBarHeight;
-    CGFloat keyboardHeight;
-    CGFloat emotionVHeight;
-    CGFloat TextBarHeight;
-    CGFloat SCHeight;
+    CGFloat m_keyboardHeight;
+    CGFloat m_TextBarHeight;
 }
 // 键盘属性
 @property (nonatomic, strong) UIScrollView *contentView;
 @property (nonatomic, assign) NSInteger currentTag;
 @property (nonatomic, assign) BOOL isSwitch;
 @end
-@implementation EmoticonKeyboard
 
-@synthesize imageboaudIsShow;  // 自定义表情可见
-@synthesize textBarView;
+@implementation DZEmoticonKeyboard
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardDidHideNotification object:nil];
-        toolBarHeight = 40;
-        keyboardHeight = 216;
-        emotionVHeight = 0;
-        TextBarHeight = 50;
-        SCHeight = 0;
+        m_keyboardHeight = 216;
+        m_TextBarHeight = 50;
         [self initKeyboardComponment];
-        
     }
     return self;
 }
@@ -53,14 +44,10 @@ static const NSInteger RowFaceCount = 9;
 - (void)initKeyboardComponment {
     if (KScreenWidth > 414) {
         CGFloat height = KScreenWidth  / (RowFaceCount + 0.5) * 4;
-        keyboardHeight = height;
+        m_keyboardHeight = height;
     }
     
-    SCHeight = KScreenHeight;
-    
-    emotionVHeight = keyboardHeight - toolBarHeight;
-    
-    self.contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame), KScreenWidth, keyboardHeight)];
+    self.contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame), KScreenWidth, m_keyboardHeight)];
     /*******************这里设置可以定义键盘更多东西************************************/
     self.contentView.contentSize = CGSizeMake(KScreenWidth * 2, 1);
     self.contentView.pagingEnabled = YES;
@@ -80,17 +67,16 @@ static const NSInteger RowFaceCount = 9;
 - (void)setTextBar {
     self.ChangeHeight = 0;
     // 创建回复栏
-    textBarView = [[TextbarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, TextBarHeight)];
-    textBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    imageboaudIsShow = NO;
+    self.textBarView = [[DZTextbarView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, m_TextBarHeight)];
+    self.textBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    self.imageboaudIsShow = NO;
     KWEAKSELF;
-    
-    textBarView.changeKeyboardBlock = ^(NSInteger tag) {
+    self.textBarView.changeKeyboardBlock = ^(NSInteger tag) {
         [weakSelf resignTextView:tag];
     };
-    textBarView.textBarDelegate = self;
+    self.textBarView.textBarDelegate = self;
     
-    [self addSubview:textBarView];
+    [self addSubview:self.textBarView];
 }
 
 - (void)textBarTextChange:(CGFloat)height {
@@ -100,18 +86,17 @@ static const NSInteger RowFaceCount = 9;
     tempRect.size.height += height;
     self.frame = tempRect;
     
-    CGRect textbarRect = textBarView.frame;
+    CGRect textbarRect = self.textBarView.frame;
     self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, textbarRect.size.height);
     
-    if (imageboaudIsShow) {
-        self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - keyboardHeight,KScreenWidth, keyboardHeight);
-        
+    if (self.imageboaudIsShow) {
+        self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - m_keyboardHeight,KScreenWidth, m_keyboardHeight);
     }
     
     WBEmoticonInputView *v = [WBEmoticonInputView sharedView];
-    v.frame = CGRectMake(0, CGRectGetHeight(textBarView.frame), KScreenWidth, keyboardHeight);
+    v.frame = CGRectMake(0, CGRectGetHeight(self.textBarView.frame), KScreenWidth, m_keyboardHeight);
     
-    self.ChangeHeight = self.textBarView.frame.size.height - TextBarHeight;
+    self.ChangeHeight = self.textBarView.frame.size.height - m_TextBarHeight;
     
     if (self.changeBlock) {
         self.changeBlock(height, self.ChangeHeight);
@@ -122,7 +107,7 @@ static const NSInteger RowFaceCount = 9;
 - (void)setEmoticonBoard {
     
     WBEmoticonInputView *v = [WBEmoticonInputView sharedView];
-    v.frame = CGRectMake(0, CGRectGetHeight(textBarView.frame), KScreenWidth, keyboardHeight);
+    v.frame = CGRectMake(0, CGRectGetHeight(self.textBarView.frame), KScreenWidth, m_keyboardHeight);
     v.hidden = YES;
     v.delegate = self;
     [self addSubview:v];
@@ -132,17 +117,17 @@ static const NSInteger RowFaceCount = 9;
 #pragma mark @protocol WBStatusComposeEmoticonView
 - (void)emoticonInputDidTapText:(NSString *)text {
     if (text.length) {
-        [textBarView.textView replaceRange:textBarView.textView.selectedTextRange withText:text];
+        [self.textBarView.textView replaceRange:self.textBarView.textView.selectedTextRange withText:text];
     }
 }
 
 - (void)emoticonInputDidTapBackspace {
-    [textBarView.textView deleteBackward];
+    [self.textBarView.textView deleteBackward];
 }
 
 
 - (void)setAttachmentBar {
-    self.attachmentBar = [[AttachmentBar alloc] initWithFrame:CGRectMake(KScreenWidth, 0, KScreenWidth, 44)];
+    self.attachmentBar = [[DZAttachmentBar alloc] initWithFrame:CGRectMake(KScreenWidth, 0, KScreenWidth, 44)];
     self.attachmentBar.layer.borderColor = K_Color_Line.CGColor;
     self.attachmentBar.layer.borderWidth = 0.8;
     [self.contentView addSubview:self.attachmentBar];
@@ -153,7 +138,7 @@ static const NSInteger RowFaceCount = 9;
 }
 
 - (void)setupPickerView {
-    self.uploadView = [[UploadAttachView alloc] initWithFrame:CGRectMake(KScreenWidth, CGRectGetHeight(self.attachmentBar.frame), KScreenWidth, keyboardHeight - CGRectGetHeight(self.attachmentBar.frame))];
+    self.uploadView = [[UploadAttachView alloc] initWithFrame:CGRectMake(KScreenWidth, CGRectGetHeight(self.attachmentBar.frame), KScreenWidth, m_keyboardHeight - CGRectGetHeight(self.attachmentBar.frame))];
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.uploadView];
 }
@@ -170,16 +155,16 @@ static const NSInteger RowFaceCount = 9;
         return;
     }
     
-    [textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
+    [self.textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
     
     if (self.keyboardShowBlock) {
         self.keyboardShowBlock();
     }
     
-    if (imageboaudIsShow) {
+    if (self.imageboaudIsShow) {
         [WBEmoticonInputView sharedView].hidden = YES;
     }
-    imageboaudIsShow = NO;
+    self.imageboaudIsShow = NO;
     
     CGRect keyboardBounds;
     [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
@@ -195,9 +180,9 @@ static const NSInteger RowFaceCount = 9;
     [UIView setAnimationCurve:[curve intValue]];
     
     // set views with new info
-    self.frame = CGRectMake(0, KScreenHeight - (keyboardBounds.size.height + TextBarHeight + self.ChangeHeight), KScreenWidth, keyboardBounds.size.height + TextBarHeight + self.ChangeHeight);
-    self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, TextBarHeight + self.ChangeHeight);
-    self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame), KScreenWidth, keyboardHeight);
+    self.frame = CGRectMake(0, KScreenHeight - (keyboardBounds.size.height + m_TextBarHeight + self.ChangeHeight), KScreenWidth, keyboardBounds.size.height + m_TextBarHeight + self.ChangeHeight);
+    self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, m_TextBarHeight + self.ChangeHeight);
+    self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame), KScreenWidth, m_keyboardHeight);
     
     [UIView commitAnimations];
     
@@ -210,28 +195,26 @@ static const NSInteger RowFaceCount = 9;
         return;
     }
     
-    if (imageboaudIsShow) {
-        
+    if (self.imageboaudIsShow) {
         if (self.isSwitch) { // 点击表情切换按钮后，已经处理过了不让它处理frame
-            
             self.isSwitch = NO;
         } else {
-            imageboaudIsShow = NO;
+            KWEAKSELF
+            self.imageboaudIsShow = NO;
             [WBEmoticonInputView sharedView].hidden = YES;
             [UIView animateWithDuration:BShowTime animations:^{
-                self.frame = CGRectMake(0, SCHeight - (keyboardHeight + TextBarHeight + self.ChangeHeight), KScreenWidth, keyboardHeight + TextBarHeight + self.ChangeHeight);
-                CGRect textbarRect = textBarView.frame;
+                self.frame = CGRectMake(0, KScreenHeight - (m_keyboardHeight + m_TextBarHeight + self.ChangeHeight), KScreenWidth, m_keyboardHeight + m_TextBarHeight + self.ChangeHeight);
+                CGRect textbarRect = self.textBarView.frame;
                 self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, textbarRect.size.height);
-                self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - keyboardHeight,KScreenWidth, keyboardHeight);
+                self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - m_keyboardHeight,KScreenWidth, m_keyboardHeight);
             }];
         }
         
     } else {
-        
         [UIView animateWithDuration:BShowTime animations:^{
-            self.frame = CGRectMake(0, SCHeight - CGRectGetHeight(self.textBarView.frame), KScreenWidth, CGRectGetHeight(self.textBarView.frame));
-            textBarView.frame = CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(textBarView.frame));
-            self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame),KScreenWidth, keyboardHeight);
+            self.frame = CGRectMake(0, KScreenHeight - CGRectGetHeight(self.textBarView.frame), KScreenWidth, CGRectGetHeight(self.textBarView.frame));
+            self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(self.textBarView.frame));
+            self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame),KScreenWidth, m_keyboardHeight);
         }];
     }
 }
@@ -239,9 +222,9 @@ static const NSInteger RowFaceCount = 9;
 - (void)hideCustomerKeyBoard {
     self.currentTag = 0;
     [self.textBarView.textView resignFirstResponder];
-    [textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
+    [self.textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
     CGRect containerFrame = self.frame;
-    containerFrame.origin.y = SCHeight - CGRectGetHeight(self.textBarView.frame);
+    containerFrame.origin.y = KScreenHeight - CGRectGetHeight(self.textBarView.frame);
     
     [UIView animateWithDuration:BShowTime animations:^{
         self.frame = CGRectMake(0, CGRectGetMinY(containerFrame), KScreenWidth, CGRectGetHeight(self.textBarView.frame));
@@ -252,7 +235,7 @@ static const NSInteger RowFaceCount = 9;
         self.keyboardHideBlock();
     }
     
-    imageboaudIsShow = NO;
+    self.imageboaudIsShow = NO;
     [WBEmoticonInputView sharedView].hidden = YES;
     self.contentView.contentOffset = CGPointMake(0, 0);
 }
@@ -262,8 +245,8 @@ static const NSInteger RowFaceCount = 9;
     
     self.isSwitch = YES;
     
-    if (!imageboaudIsShow) { // 使自定义表情出现
-        imageboaudIsShow = YES;  // 必须 如：第一次直接点击表情时
+    if (!self.imageboaudIsShow) { // 使自定义表情出现
+        self.imageboaudIsShow = YES;  // 必须 如：第一次直接点击表情时
         WBEmoticonInputView *v = [WBEmoticonInputView sharedView];
         if ([v superview] == nil) {
             [self addSubview:v];
@@ -279,19 +262,19 @@ static const NSInteger RowFaceCount = 9;
         }
         
         if (tag == 101) {
-            [textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+            [self.textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
         }
         
-        [textBarView.textView resignFirstResponder];
+        [self.textBarView.textView resignFirstResponder];
         
         // 表情键盘没有显示     则显示表情键盘   取消 textView  的第一响应
-        CGFloat selfheight = keyboardHeight + TextBarHeight + self.ChangeHeight;
+        CGFloat selfheight = m_keyboardHeight + m_TextBarHeight + self.ChangeHeight;
         
         [UIView animateWithDuration:BShowTime animations:^{
-            self.frame = CGRectMake(0, SCHeight - selfheight, KScreenWidth, selfheight);
-            self.textBarView.frame = CGRectMake(0, 0,  KScreenWidth,TextBarHeight + self.ChangeHeight);
-            self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - keyboardHeight,KScreenWidth, keyboardHeight);
-            v.frame = CGRectMake(0, CGRectGetHeight(textBarView.frame), KScreenWidth, keyboardHeight);
+            self.frame = CGRectMake(0, KScreenHeight - selfheight, KScreenWidth, selfheight);
+            self.textBarView.frame = CGRectMake(0, 0,  KScreenWidth,self->m_TextBarHeight + self.ChangeHeight);
+            self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - self->m_keyboardHeight,KScreenWidth, m_keyboardHeight);
+            v.frame = CGRectMake(0, CGRectGetHeight(self.textBarView.frame), KScreenWidth, m_keyboardHeight);
         }];
         
         if (self.showBlock) {
@@ -307,7 +290,7 @@ static const NSInteger RowFaceCount = 9;
             self.currentTag = 0;
         }
         
-        [textBarView.textView becomeFirstResponder]; // 键盘响应之后  下面控制 高度
+        [self.textBarView.textView becomeFirstResponder]; // 键盘响应之后  下面控制 高度
     }
 }
 
@@ -322,13 +305,11 @@ static const NSInteger RowFaceCount = 9;
 
 - (void)detailkeyBoardDeal:(NSInteger)tag {
     if (tag == 101) {
-        
-        [textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
+        [self.textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"compose_keyboardbutton_background"] forState:UIControlStateNormal];
         [WBEmoticonInputView sharedView].hidden = NO;
         self.contentView.contentOffset = CGPointMake(0, 0);
-        
     } else if (tag == 102) {
-        [textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
+        [self.textBarView.faceBtn setBackgroundImage:[UIImage imageNamed:@"chat_emo"] forState:UIControlStateNormal];
         [WBEmoticonInputView sharedView].hidden = YES;
         self.contentView.contentOffset = CGPointMake(KScreenWidth, 0);
         
@@ -337,7 +318,7 @@ static const NSInteger RowFaceCount = 9;
 
 
 - (void)clearData {
-    textBarView.textView.text = @"";
+    self.textBarView.textView.text = @"";
     if (self.uploadView.uploadModel.aidArray.count > 0) {
         [self.uploadView.uploadModel.aidArray removeAllObjects];
         [self.uploadView.uploadModel.photosArray removeAllObjects];

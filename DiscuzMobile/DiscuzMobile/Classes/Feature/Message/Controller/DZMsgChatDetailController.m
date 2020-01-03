@@ -8,7 +8,7 @@
 
 #import "DZMsgChatDetailController.h"
 #import "MessageModel.h"
-#import "EmoticonKeyboard.h"
+#import "DZEmoticonKeyboard.h"
 #import "ChatContentCell.h"
 #import "DZMsgNetTool.h"
 #import "DZBaseTableView.h"
@@ -27,7 +27,7 @@ static CGFloat kToolBarH = 50;
 @property (nonatomic, strong) NSMutableArray<MessageModel *> *messageModelArr;
 @property (nonatomic, strong) NSMutableDictionary *cellHeightDict;  // 缓存cell高度
 // 表情键盘
-@property (nonatomic, strong) EmoticonKeyboard *emoKeyboard;
+@property (nonatomic, strong) DZEmoticonKeyboard *emoKeyboard;
 
 @end
 
@@ -107,9 +107,9 @@ static CGFloat kToolBarH = 50;
 }
 
 #pragma mark -  创建表情键盘
-- (EmoticonKeyboard *)emoKeyboard {
+- (DZEmoticonKeyboard *)emoKeyboard {
     if (_emoKeyboard == nil) {
-        _emoKeyboard = [[EmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - kToolBarH, KScreenWidth, kToolBarH)];
+        _emoKeyboard = [[DZEmoticonKeyboard alloc] initWithFrame:CGRectMake(0, KScreenHeight - kToolBarH, KScreenWidth, kToolBarH)];
     }
     return _emoKeyboard;
 }

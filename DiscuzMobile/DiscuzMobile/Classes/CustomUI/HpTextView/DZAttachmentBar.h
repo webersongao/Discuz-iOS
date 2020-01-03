@@ -1,5 +1,5 @@
 //
-//  AttachmentBar.h
+//  DZAttachmentBar.h
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/6.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AttachmentBar : UIView
+@interface DZAttachmentBar : UIView
 
 @property (nonatomic, strong) UIButton *imageBtn;
 

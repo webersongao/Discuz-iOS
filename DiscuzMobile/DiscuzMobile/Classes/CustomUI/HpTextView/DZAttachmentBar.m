@@ -1,14 +1,14 @@
 //
-//  AttachmentBar.m
+//  DZAttachmentBar.m
 //  DiscuzMobile
 //
 //  Created by HB on 2017/6/6.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "AttachmentBar.h"
+#import "DZAttachmentBar.h"
 
-@implementation AttachmentBar
+@implementation DZAttachmentBar
 
 
 - (instancetype)initWithFrame:(CGRect)frame

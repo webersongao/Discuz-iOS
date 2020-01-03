@@ -19,7 +19,6 @@
 
 /// 帖子详情页
 - (void)PushToThreadDetailController:(NSString *)tid;
-- (void)ShowThreadDetailControllerFromVC:(UIViewController *)selfVC tid:(NSString *)tid;
 
 /// 论坛版块帖子列表
 - (void)PushToForumListController:(NSString *)fid;

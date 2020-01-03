@@ -1,5 +1,5 @@
 //
-//  EmoticonKeyboard.h
+//  DZEmoticonKeyboard.h
 //  DiscuzMobile
 //
 //  Created by HB on 16/11/28.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TextbarView.h"
-#import "AttachmentBar.h"
+#import "DZTextbarView.h"
+#import "DZAttachmentBar.h"
 #import "WSImagePickerView.h"
 #import "UploadAttachView.h"
 
@@ -20,7 +20,7 @@ typedef void(^TextChangeBlock)(CGFloat eveheight, CGFloat height);
 typedef void(^KeyboardShowBlock)(void);
 typedef void(^KeyboardHideBlock)(void);
 
-@interface EmoticonKeyboard : UIView<UIScrollViewDelegate>
+@interface DZEmoticonKeyboard : UIView<UIScrollViewDelegate>
 
 
 @property (nonatomic, assign) BOOL imageboaudIsShow;
@@ -28,10 +28,10 @@ typedef void(^KeyboardHideBlock)(void);
 @property (nonatomic, strong) NSMutableArray *faceArray;    // 图片表情plist中的数组
 @property (nonatomic, strong) NSMutableArray *imageNameArr; // 图片名字数组
 @property (nonatomic, strong) UIView * imagebuttonView;  // 酷猴 呆呆男等表情切换栏
-@property (nonatomic, strong) TextbarView *textBarView;
+@property (nonatomic, strong) DZTextbarView *textBarView;
 @property (nonatomic, strong) UploadAttachView *uploadView;
 
-@property (nonatomic, strong) AttachmentBar *attachmentBar;
+@property (nonatomic, strong) DZAttachmentBar *attachmentBar;
 
 @property (nonatomic, assign) CGFloat ChangeHeight;
 
