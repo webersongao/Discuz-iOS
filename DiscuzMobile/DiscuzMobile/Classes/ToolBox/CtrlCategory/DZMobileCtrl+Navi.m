@@ -36,6 +36,11 @@
 #import "DZFastPostController.h"
 #import "DZPostDebateController.h"
 #import "DZPostActivityController.h"
+#import "DZActivityEditController.h"
+#import "DZMySubjectController.h"
+#import "DZMsgSubListController.h"
+#import "DZPartInActivityController.h"
+#import "DZViewPollPotionController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -145,7 +150,7 @@
 }
 
 
-/// 跳转 我的帖子列表
+/// 跳转 我的帖子列表(帖子+回复)
 -(void)PushToMyThreadListViewController{
     DZThreadRootController *trVc = [[DZThreadRootController alloc] init];
     [self.mainNavi pushViewController:trVc animated:YES];
@@ -248,6 +253,43 @@
 -(void)PushToJudgeBindController {
     DZJudgeBoundController * judegVC =[[DZJudgeBoundController alloc]init];
     [self.mainNavi pushViewController:judegVC animated:YES];
+}
+
+// 活动编辑
+- (void)PushToActivityEditController:(ThreadModel *)threadModel {
+    DZActivityEditController *mgActive = [[DZActivityEditController alloc] init];
+    mgActive.threadModel = threadModel;
+    [self.mainNavi pushViewController:mgActive animated:YES];
+}
+
+/// 我的帖子主题列表
+- (void)PushToMyThreadViewController {
+    DZMySubjectController *subjectVc = [[DZMySubjectController alloc] init];
+    [self.mainNavi pushViewController:subjectVc animated:YES];
+}
+
+/// 我的子帖主题列表
+- (void)PushToMyMsgSubListController:(NSString *)title Model:(PmTypeModel *)typeModel {
+    DZMsgSubListController *psVc = [[DZMsgSubListController alloc] init];
+    psVc.title = title;
+    psVc.typeModel = typeModel;
+    [self.mainNavi pushViewController:psVc animated:YES];
+}
+
+/// 参加活动
+- (void)PushToPartInActivityController:(ThreadModel *)threadModel {
+    DZPartInActivityController * partinVc = [[DZPartInActivityController alloc]init];
+    partinVc.threadModel = threadModel;
+    [self.mainNavi pushViewController:partinVc animated:YES];
+}
+
+/// 投票项信息
+- (void)PushToMyPollPotionController:(NSString *)pollid tid:(NSString *)tid index:(NSInteger)index {
+    DZViewPollPotionController *vc=[[DZViewPollPotionController alloc]init];
+    vc.pollid=pollid;
+    vc.tid=tid;
+    vc.title = [NSString stringWithFormat:@"选择第%ld项目的人",index];
+    [self.mainNavi pushViewController:vc animated:YES];
 }
 
 /// 发布帖子

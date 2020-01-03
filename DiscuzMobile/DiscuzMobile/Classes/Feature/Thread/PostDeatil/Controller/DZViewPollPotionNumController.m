@@ -7,7 +7,6 @@
 //
 
 #import "DZViewPollPotionNumController.h"
-#import "DZViewPollPotionController.h"
 #import "DZPostNetTool.h"
 
 @interface DZViewPollPotionNumController()
@@ -56,12 +55,8 @@
     
     NSString *pollidNumber= [[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"polloptionid"];
     NSString * tid =[[self.dataSourceArr objectAtIndex:indexPath.row] objectForKey:@"tid"];
-    DZViewPollPotionController *vc=[[DZViewPollPotionController alloc]init];
-    vc.pollid=pollidNumber;
-    vc.tid=tid;
-    vc.title = [NSString stringWithFormat:@"选择第%ld项目的人",indexPath.row + 1];
-    [self.navigationController pushViewController:vc animated:YES];
 
+    [[DZMobileCtrl sharedCtrl] PushToMyPollPotionController:pollidNumber tid:tid index:(indexPath.row+1)];
 }
 
 - (void)downLoadData {

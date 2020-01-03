@@ -68,8 +68,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DZFriendModel *cellItem = [self.dataSourceArr objectAtIndex:indexPath.row];
     
-    DZOtherUserController * otherVC = [[DZOtherUserController alloc] initWithAuthor:cellItem.uid];
-    [self showViewController:otherVC sender:nil];
+    [[DZMobileCtrl sharedCtrl] PushToOtherUserController:cellItem.uid];
 }
 
 - (void)sendMessageBtnClick:(UIButton *)btn {

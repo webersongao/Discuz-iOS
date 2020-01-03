@@ -8,7 +8,6 @@
 
 #import "DZHomeTestViewController.h"
 #import "DZMessageListController.h"
-#import "DZFastPostController.h"
 #import "DZSearchController.h"
 #import "DZLoginController.h"
 #import "DZRegisterController.h"

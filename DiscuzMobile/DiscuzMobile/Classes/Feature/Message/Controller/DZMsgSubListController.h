@@ -7,7 +7,7 @@
 //
 
 #import "DZBaseTableViewController.h"
-@class PmTypeModel;
+#import "PmTypeModel.h"
 
 @interface DZMsgSubListController : DZBaseTableViewController
 

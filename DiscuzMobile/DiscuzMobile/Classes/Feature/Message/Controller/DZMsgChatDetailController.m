@@ -328,9 +328,8 @@ static CGFloat kToolBarH = 50;
 
 - (void)goOtherCenter:(UITapGestureRecognizer *)sender {
     UIView *view = sender.view;
-    MessageModel *model = self.messageModelArr[view.tag];
-    DZOtherUserController *otherVC = [[DZOtherUserController alloc] initWithAuthor:model.authorid];
-    [self showViewController:otherVC sender:nil];
+    MessageModel *model = self.messageModelArr[view.tag];    
+    [[DZMobileCtrl sharedCtrl] PushToOtherUserController:model.authorid];
 }
 
 //长按触发的事件

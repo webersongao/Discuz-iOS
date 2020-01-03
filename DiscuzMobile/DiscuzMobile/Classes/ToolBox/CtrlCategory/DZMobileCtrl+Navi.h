@@ -8,6 +8,8 @@
 
 #import "DZMobileCtrl.h"
 
+@class PmTypeModel;
+@class ThreadModel;
 @class DZBaseAuthModel;
 @interface DZMobileCtrl (Navi)
 
@@ -47,7 +49,7 @@
 -(void)PushToMyMessageViewController;
 
 
-/// 跳转 我的帖子列表
+/// 跳转 我的帖子列表(帖子+回复)
 -(void)PushToMyThreadListViewController;
 
 /// 跳转 用户设置
@@ -91,6 +93,21 @@
 
 /// 账号绑定状态
 -(void)PushToJudgeBindController;
+
+/// 我的帖子主题列表
+- (void)PushToMyThreadViewController;
+
+/// 参加活动
+- (void)PushToPartInActivityController:(ThreadModel *)threadModel;
+
+/// 活动编辑
+- (void)PushToActivityEditController:(ThreadModel *)threadModel;
+
+/// 我的子帖主题列表
+- (void)PushToMyMsgSubListController:(NSString *)title Model:(PmTypeModel *)typeModel;
+
+/// 投票项信息
+- (void)PushToMyPollPotionController:(NSString *)pollid tid:(NSString *)tid index:(NSInteger)index;
 
 /// 发布帖子
 -(void)PushToThreadPostController:(NSString *)fid thread:(DZBaseAuthModel *)threadModel type:(PostType)type;

@@ -7,7 +7,6 @@
 //
 
 #import "DZMsgSubListController.h"
-#import "PmTypeModel.h"
 #import "MessageListModel.h"
 #import "MessageCell.h"
 #import "SystemNoteCell.h"

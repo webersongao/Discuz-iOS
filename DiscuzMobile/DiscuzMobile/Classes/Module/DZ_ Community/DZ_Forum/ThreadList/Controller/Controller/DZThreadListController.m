@@ -281,8 +281,7 @@
 }
 
 - (void)ToDZMySubjectController {
-    DZMySubjectController *mysubjectVc = [[DZMySubjectController alloc] init];
-    [self showViewController:mysubjectVc sender:nil];
+    [[DZMobileCtrl sharedCtrl] PushToMyThreadViewController];
 }
 
 - (VerifyThreadRemindView *)verifyThreadRemindView {

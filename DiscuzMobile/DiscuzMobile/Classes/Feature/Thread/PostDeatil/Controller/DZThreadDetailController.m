@@ -11,9 +11,8 @@
 #import "UIAlertController+Extension.h"
 #import "DZForumTool.h"
 #import "DZPostNetTool.h"
+#import "DZThreadTool.h"
 #import "DZViewPollPotionNumController.h"
-#import "DZActivityEditController.h"
-#import "DZPartInActivityController.h"
 
 #import "ThreadDetailView.h"
 #import "ThreadModel.h"
@@ -27,14 +26,18 @@
 
 @interface DZThreadDetailController ()<UITextFieldDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, assign) BOOL isOnePage;
+@property (nonatomic, copy) NSString * forumtitle;
+@property (nonatomic, assign) NSInteger currentPageId;  //!< 属性注释
+@property (nonatomic, copy) NSString * allowPostSpecial; // 发帖 数帖子的标记
+
+@property (nonatomic, assign) CGFloat currentScale;
 @property (nonatomic, strong) ThreadDetailView *detailView; // 详细页view 替换原来的view
-@property (nonatomic, assign)CGFloat currentScale;
 @property (nonatomic, strong) WebViewJavascriptBridge * javascriptBridge;
 
 @property (nonatomic, assign) BOOL  isReferenceReply;           // 是否是 引用回复
 @property (nonatomic, copy) NSString * noticetrimstr;         // 引用回复内容
 @property (nonatomic, copy) NSString * reppid;                // 被引用帖子pid
-@property (nonatomic, copy) NSString * jubaoPid;              // 举报 id
 
 @property (nonatomic,strong) NSMutableArray *picurlArray; // 页面图片 （接口限制，只有一张）
 
@@ -78,7 +81,6 @@
 }
 
 -(void)handlePinches:(UIPinchGestureRecognizer *)paramSender {
-    
     if(paramSender.state == UIGestureRecognizerStateEnded) {
         self.currentScale = paramSender.scale;
         self.detailView.webView.scrollView.zoomScale = self.currentScale;
@@ -93,26 +95,17 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
     }
-    self.currentPageId =1;
+    self.currentPageId = 1;
     [self.view addSubview:self.detailView];
     [self.detailView.webView.scrollView addSubview:self.emptyView];
-    [self commitInit];
+    [self commitThreadDetailAction];
     [self newDownLoadData];
     [self addNotifi];
 }
 
-- (void)commitInit {
-    // 设置代理
-    self.detailView.webView.navigationDelegate = self;
-    self.detailView.webView.scrollView.delegate = self;
-    UIGestureRecognizer *gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinches:)];
-    [self.detailView.webView addGestureRecognizer:gestureRecognizer];
-    UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
-    tapges.delegate = self;
-    [self.detailView.webView addGestureRecognizer:tapges];
+- (void)commitThreadDetailAction {
     
     KWEAKSELF;
-    
     self.detailView.emoKeyboard.textBarView.praiseBlock = ^ {
         [weakSelf createPraise:nil];
     };
@@ -167,10 +160,6 @@
     NSDictionary * getdic=@{@"fid":self.threadModel.fid};
     [self.HUD showLoadingMessag:@"" toView:self.view];
     [self.detailView.emoKeyboard.uploadView uploadImageArray:imageArr.copy getDic:getdic postDic:dic];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - 添加通知
@@ -285,8 +274,7 @@
     
     [_bridge registerHandler:@"onComplain" handler:^(id data, WVJBResponseCallback responseCallback) {
         //举报
-        weakSelf.jubaoPid = data;
-        [weakSelf createComplain];
+        [weakSelf createComplain:checkNull(data)];
     }];
     
     [_bridge registerHandler:@"manageActive" handler:^(id data, WVJBResponseCallback responseCallback) {
@@ -301,11 +289,8 @@
     
     if (self.threadModel.isActivity) {
         //参加活动
-        DZPartInActivityController * partinVc = [[DZPartInActivityController alloc]init];
-        partinVc.threadModel = self.threadModel;
-        [[DZMobileCtrl sharedCtrl] PushToController:partinVc];
+        [[DZMobileCtrl sharedCtrl] PushToPartInActivityController:self.threadModel];
     } else {
-        
         NSString *message = @"确定取消报名？";
         NSString *donetip = @"确定";
         [UIAlertController alertTitle:@"提示" message:message controller:self doneText:donetip cancelText:@"取消" doneHandle:^{
@@ -315,9 +300,7 @@
 }
 
 - (void)manageTheActivity {
-    DZActivityEditController *mgActive = [[DZActivityEditController alloc] init];
-    mgActive.threadModel = self.threadModel;
-    [self showViewController:mgActive sender:nil];
+    [[DZMobileCtrl sharedCtrl] PushToActivityEditController:self.threadModel];
 }
 
 - (void)cancelActivity {
@@ -341,12 +324,12 @@
 
 
 #pragma mark  - 举报
--(void)createComplain{
+-(void)createComplain:(NSString *)jvbaoId{
     if (![self isLogin]) {
         return;
     }
-    
-    [self createComplainView];
+    jvbaoId = jvbaoId.length ? jvbaoId : self.threadModel.pid;
+    [DZThreadTool PostComplainWithCtrl:self jvbaoId:jvbaoId fid:self.threadModel.fid];
 }
 
 - (void)loginedReshData {
@@ -354,52 +337,10 @@
     [self newDownLoadData];
 }
 
-- (void)createComplainView {
-    [UIAlertController alertTitle:@"举报"
-                          message:nil
-                       controller:self
-                      doneTextArr:@[@"广告垃圾",@"违规内容",@"恶意灌水",@"重复发帖"]
-                       cancelText:@"取消"
-                       doneHandle:^(NSInteger index) {
-        switch (index) {
-            case 0:
-                [self createPostjb:@"广告垃圾"];
-                break;
-            case 1:
-                [self createPostjb:@"违规内容"];
-                break;
-            case 2:
-                [self createPostjb:@"恶意灌水"];
-                break;
-            case 3:
-                [self createPostjb:@"重复发帖"];
-                break;
-            default:
-                break;
-                
-        }
-    } cancelHandle:^{
-        self.jubaoPid = nil;
-    }];
-}
-
-#pragma mark - 提交举报
--(void)createPostjb:(NSString *)str {
-    NSString * strjubao = self.jubaoPid.length ? self.jubaoPid : self.threadModel.pid;
-    
-    [[DZPostNetTool sharedTool] DZ_ThreadReport:strjubao reportMsg:str fid:self.threadModel.fid success:^(BOOL isSucc) {
-        if (isSucc) {
-            [DZMobileCtrl showAlertInfo:@"提交成功！"];
-        }else{
-            [DZMobileCtrl showAlertInfo:@"提交失败，请稍后再试"];
-        }
-    }];
-}
-
 #pragma mark  - 查看参与投票人
 -(void)createVisitVotesrs:(id)data {
     DZViewPollPotionNumController * vppnvc = [[DZViewPollPotionNumController alloc]init];
-    vppnvc.tid=self.tid;
+    vppnvc.tid = self.tid;
     [[DZMobileCtrl sharedCtrl] PushToController:vppnvc];
 }
 
@@ -504,11 +445,11 @@
     NSString *authorname = self.threadModel.author;
     NSString *shareContent = [NSString stringWithFormat:@"作者：%@ 发表于：%@",authorname,dateline];
     [[DZShareCenter shareInstance] shareText:shareContent
-                                     andImages:imageArray
-                                     andUrlstr:self.threadModel.shareUrl
-                                      andTitle:self.threadModel.subject
-                                       andView:self.view
-                                        andHUD:self.HUD];
+                                   andImages:imageArray
+                                   andUrlstr:self.threadModel.shareUrl
+                                    andTitle:self.threadModel.subject
+                                     andView:self.view
+                                      andHUD:self.HUD];
 }
 
 #pragma mark - 帖子收藏
@@ -669,7 +610,7 @@
                 }
                 self.threadModel.isRequest = NO;
             }
-//            webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
+            //            webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
             [self.HUD hide];
         }
     }
@@ -800,6 +741,10 @@
     [self downlodyan];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark   /********************* 初始化 *************************/
 
 - (DZSecVerifyView *)verifyView {
@@ -819,6 +764,14 @@
 - (ThreadDetailView *)detailView{
     if (!_detailView) {
         _detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
+        // 设置代理
+        _detailView.webView.navigationDelegate = self;
+        _detailView.webView.scrollView.delegate = self;
+        UIGestureRecognizer *gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinches:)];
+        [_detailView.webView addGestureRecognizer:gestureRecognizer];
+        UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
+        tapges.delegate = self;
+        [_detailView.webView addGestureRecognizer:tapges];
     }
     return _detailView;
 }

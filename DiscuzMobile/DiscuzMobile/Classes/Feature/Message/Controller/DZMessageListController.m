@@ -8,8 +8,6 @@
 
 #import "DZMessageListController.h"
 #import "DZUserMsgBoxTabController.h"
-#import "DZMsgSubListController.h"
-#import "DZMsgSubListController.h"
 
 #import "DZPMListCell.h"
 #import "PmTypeModel.h"
@@ -77,16 +75,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PmTypeModel *m;
+    PmTypeModel *model = nil;
     if (indexPath.row < 3) {
         DZUserMsgBoxTabController *topBabVc = [[DZUserMsgBoxTabController alloc] init];
         switch (indexPath.row) {
             case 0: {
-                m = [[PmTypeModel alloc] initWithTitle:@"我的消息" andModule:@"mypm" anFilter:@"privatepm" andView:nil andType:nil];
-                DZMsgSubListController *psVc = [[DZMsgSubListController alloc] init];
-                psVc.typeModel = m;
-                psVc.title = self.dataSourceArr[indexPath.row];
-                [self showViewController:psVc sender:nil];
+                model = [[PmTypeModel alloc] initWithTitle:@"我的消息" andModule:@"mypm" anFilter:@"privatepm" andView:nil andType:nil];
+                [[DZMobileCtrl sharedCtrl] PushToMyMsgSubListController:self.dataSourceArr[indexPath.row] Model:model];
                 return;
             }
                 break;
@@ -104,15 +99,11 @@
     } else {
         
         if (indexPath.row == 3) {
-            m = [[PmTypeModel alloc] initWithTitle:@"系统提醒" andModule:@"mynotelist" anFilter:@"" andView:@"system" andType:@""];
+            model = [[PmTypeModel alloc] initWithTitle:@"系统提醒" andModule:@"mynotelist" anFilter:@"" andView:@"system" andType:@""];
         } else {
-             m = [[PmTypeModel alloc] initWithTitle:@"管理工作" andModule:@"mynotelist" anFilter:@"" andView:@"manage" andType:@""];
+             model = [[PmTypeModel alloc] initWithTitle:@"管理工作" andModule:@"mynotelist" anFilter:@"" andView:@"manage" andType:@""];
         }
-        
-        DZMsgSubListController *psVc = [[DZMsgSubListController alloc] init];
-        psVc.typeModel = m;
-        psVc.title = self.dataSourceArr[indexPath.row];
-        [self showViewController:psVc sender:nil];
+        [[DZMobileCtrl sharedCtrl] PushToMyMsgSubListController:self.dataSourceArr[indexPath.row] Model:model];
     }
 }
 

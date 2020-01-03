@@ -28,19 +28,16 @@
 @property (nonatomic, strong) DZThreadVarModel *VarModel;
 @property (nonatomic, strong) DZForumContainListView *tableView;
 @property (nonatomic, strong) DZForumThreadMixContainer *containVC;
-@property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
 @property (nonatomic, strong) NSMutableArray <DZForTitleModel *> *titleArr;
-
-@property (nonatomic, strong) DZForumModel *forumInfo;
+@property (nonatomic, strong) NSMutableArray<DZThreadListController *> *ctvArr;
 
 @property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) UIButton *PostButton;
 @property (nonatomic, strong) UITableView *foldTableView;
 
-@property (nonatomic, strong) NSMutableArray<DZForumModel *> *subForumArr;
-
-@property (nonatomic, strong) DZPostTypeSelectView *selectView;
 @property (nonatomic, strong) DropTipView *tipView;
+@property (nonatomic, strong) DZPostTypeSelectView *selectView;
+@property (nonatomic, strong) NSMutableArray<DZForumModel *> *subForumArr;
 
 @end
 
@@ -90,15 +87,15 @@
 }
 
 - (void)checkForumShowTipView {
-    if (self.selectIndex != 0 && !self.forumInfo.threadmodcount.integerValue) {
+    if (self.selectIndex != 0 && !self.VarModel.forum.threadmodcount.integerValue) {
         return;
     }
     if (self.tipView.tipAnimatefinsh == NO) {
         return;
     }
     // 0.设置提醒文字
-    if (self.forumInfo.threadmodcount) {
-        self.tipView.tipLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.forumInfo.threadmodcount];
+    if (self.VarModel.forum.threadmodcount) {
+        self.tipView.tipLabel.text = [NSString stringWithFormat:@"您有 %@ 个主题等待审核，点击查看",self.VarModel.forum.threadmodcount];
         CGRect orrect = self.tipView.frame;
         [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
             self.tipView.tipAnimatefinsh = NO;
@@ -311,9 +308,8 @@
 - (void)subSendVarible:(DZThreadVarModel *)VarModel {
     // 版块信息设置
     self.VarModel = VarModel;
-    self.forumInfo = VarModel.forum;
-    if ([DataCheck isValidString:self.forumInfo.favorited]) {
-        if ([self.forumInfo.favorited isEqualToString:@"1"]) {
+    if ([DataCheck isValidString:self.VarModel.forum.favorited]) {
+        if ([self.VarModel.forum.favorited isEqualToString:@"1"]) {
             [self setIsCollection];
         } else {
             [self setNotCollection];
@@ -355,17 +351,17 @@
 }
 
 - (void)setInfoViewInfo {
-    if ([DataCheck isValidString:self.forumInfo.rank]) {
-        self.infoView.bankLab.text = [NSString stringWithFormat:@"排名：%@",self.forumInfo.rank];
+    if ([DataCheck isValidString:self.VarModel.forum.rank]) {
+        self.infoView.bankLab.text = [NSString stringWithFormat:@"排名：%@",self.VarModel.forum.rank];
     }
-    self.infoView.titleLab.text = self.forumInfo.name;
-    self.infoView.threadsLab.text = [NSString stringWithFormat:@"主题：%@",self.forumInfo.threads];
-    if ([DataCheck isValidString:self.forumInfo.forum_desc]) {
-        self.infoView.describLab.text = self.forumInfo.forum_desc;
+    self.infoView.titleLab.text = self.VarModel.forum.name;
+    self.infoView.threadsLab.text = [NSString stringWithFormat:@"主题：%@",self.VarModel.forum.threads];
+    if ([DataCheck isValidString:self.VarModel.forum.forum_desc]) {
+        self.infoView.describLab.text = self.VarModel.forum.forum_desc;
         [self.infoView layoutIfNeeded];
     }
     self.infoView.height = CGRectGetMaxY(self.infoView.describLab.frame) + 15;
-    [self setInfoViewWithIcon:self.forumInfo.icon andtodaypost:self.forumInfo.todayposts];
+    [self setInfoViewWithIcon:self.VarModel.forum.icon andtodaypost:self.VarModel.forum.todayposts];
 }
 
 
@@ -394,8 +390,7 @@
 }
 
 - (void)toMyThread {
-    DZMySubjectController *subjectVc = [[DZMySubjectController alloc] init];
-    [self showViewController:subjectVc sender:nil];
+    [[DZMobileCtrl sharedCtrl] PushToMyThreadViewController];
 }
 
 - (void)setScrollEnable:(BOOL)scrollable {

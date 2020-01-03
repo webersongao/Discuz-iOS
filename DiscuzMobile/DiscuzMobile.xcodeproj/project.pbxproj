@@ -142,6 +142,7 @@
 		7023CC7F23A22AE600FB7E31 /* DZBindVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC7E23A22AE600FB7E31 /* DZBindVarModel.m */; };
 		7023CC8223A22FF600FB7E31 /* DZFavThreadVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7023CC8023A22FF600FB7E31 /* DZFavThreadVarModel.m */; };
 		7028B696238FB1340047800C /* DZThreadReplyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7028B695238FB1340047800C /* DZThreadReplyModel.m */; };
+		703AC73623BF3B7100950042 /* DZThreadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 703AC73523BF3B7100950042 /* DZThreadTool.m */; };
 		703C4239237CF74F0046C398 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C4238237CF71D0046C398 /* iflyMSC.framework */; };
 		703C423B237CF7B40046C398 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C423A237CF7B40046C398 /* CoreLocation.framework */; };
 		703C4242237CF9510046C398 /* AppDelegate+iflyMSC.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C4241237CF9510046C398 /* AppDelegate+iflyMSC.m */; };
@@ -740,6 +741,8 @@
 		7023CC8123A22FF600FB7E31 /* DZFavThreadVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFavThreadVarModel.h; sourceTree = "<group>"; };
 		7028B694238FB1340047800C /* DZThreadReplyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZThreadReplyModel.h; sourceTree = "<group>"; };
 		7028B695238FB1340047800C /* DZThreadReplyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZThreadReplyModel.m; sourceTree = "<group>"; };
+		703AC73423BF3B7100950042 /* DZThreadTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZThreadTool.h; sourceTree = "<group>"; };
+		703AC73523BF3B7100950042 /* DZThreadTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZThreadTool.m; sourceTree = "<group>"; };
 		703C4232237CF6160046C398 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		703C4238237CF71D0046C398 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		703C423A237CF7B40046C398 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1553,6 +1556,7 @@
 		27473AB91DD30C380024375F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				703AC73323BF3B5F00950042 /* ThreadTool */,
 				9438F06B22F3D55E0093EB0B /* File */,
 				9438F06F22F3E1D10093EB0B /* Font */,
 				9438F07522F3E3070093EB0B /* Email */,
@@ -2049,6 +2053,15 @@
 				706210BC237936C800130B9D /* DZPostBaseController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		703AC73323BF3B5F00950042 /* ThreadTool */ = {
+			isa = PBXGroup;
+			children = (
+				703AC73423BF3B7100950042 /* DZThreadTool.h */,
+				703AC73523BF3B7100950042 /* DZThreadTool.m */,
+			);
+			path = ThreadTool;
 			sourceTree = "<group>";
 		};
 		703C4231237CF6050046C398 /* iflyMSC */ = {
@@ -4738,6 +4751,7 @@
 				70FBDCDE2383FC1B00FC296E /* OtherUserPostReplyCell.m in Sources */,
 				70DFD7A8237A95DE00A13F0F /* DZBaseVarModel.m in Sources */,
 				7002A3702383D8CD00BC0C61 /* ChatYYLabel.m in Sources */,
+				703AC73623BF3B7100950042 /* DZThreadTool.m in Sources */,
 				706212C4237936C900130B9D /* DZTermsLabel.m in Sources */,
 				706212DC237936C900130B9D /* ViewPollpotionCell.m in Sources */,
 				7062126F237936C800130B9D /* DZThreadListController.m in Sources */,
@@ -5176,7 +5190,7 @@
 				PROVISIONING_PROFILE = "56ce636d-6762-4b86-bc74-9e16be0e6f93";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Debug;
@@ -5250,7 +5264,7 @@
 				PROVISIONING_PROFILE = "e4dbcae1-e5da-497c-b2de-c25159204981";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-shorten-64-to-32";
 			};
 			name = Release;
