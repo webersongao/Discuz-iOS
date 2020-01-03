@@ -97,6 +97,9 @@
 /// 我的帖子主题列表
 - (void)PushToMyThreadViewController;
 
+/// 查看参与投票人
+-(void)PushToVisitVotersController:(NSString *)tidStr;
+
 /// 参加活动
 - (void)PushToPartInActivityController:(ThreadModel *)threadModel;
 

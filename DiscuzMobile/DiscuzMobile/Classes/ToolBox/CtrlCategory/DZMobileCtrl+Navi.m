@@ -41,6 +41,7 @@
 #import "DZMsgSubListController.h"
 #import "DZPartInActivityController.h"
 #import "DZViewPollPotionController.h"
+#import "DZViewPollPotionNumController.h"
 
 @implementation DZMobileCtrl (Navi)
 
@@ -249,6 +250,12 @@
     [[DZShareCenter shareInstance] shareText:@"Discuz客户端产品，提供方便简洁的发帖与阅读体验" andImages:@[[DZDevice getIconName]] andUrlstr:AppStorePath andTitle:DZ_APPNAME andView:view andHUD:nil];
 }
 
+/// 查看参与投票人
+-(void)PushToVisitVotersController:(NSString *)tidStr {
+    DZViewPollPotionNumController * vppnvc = [[DZViewPollPotionNumController alloc]init];
+    vppnvc.tid = checkNull(tidStr);
+    [self.mainNavi pushViewController:vppnvc animated:YES];
+}
 /// 账号绑定状态
 -(void)PushToJudgeBindController {
     DZJudgeBoundController * judegVC =[[DZJudgeBoundController alloc]init];
@@ -315,7 +322,7 @@
     postVC.pushDetailBlock = ^(NSString *tid) {
         [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:tid];
     };
-    [[DZMobileCtrl sharedCtrl] PushToController:postVC];
+    [self.mainNavi pushViewController:postVC animated:YES];
 }
 
 

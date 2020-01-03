@@ -339,9 +339,7 @@
 
 #pragma mark  - 查看参与投票人
 -(void)createVisitVotesrs:(id)data {
-    DZViewPollPotionNumController * vppnvc = [[DZViewPollPotionNumController alloc]init];
-    vppnvc.tid = self.tid;
-    [[DZMobileCtrl sharedCtrl] PushToController:vppnvc];
+    [[DZMobileCtrl sharedCtrl] PushToVisitVotersController:self.tid];
 }
 
 #pragma mark  -  查看用户详情
