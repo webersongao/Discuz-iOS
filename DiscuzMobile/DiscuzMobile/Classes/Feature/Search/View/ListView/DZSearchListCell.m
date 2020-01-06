@@ -66,7 +66,7 @@
 - (UILabel *)contentLabel {
     if (_contentLabel == nil) {
         _contentLabel = [[UILabel alloc] init];
-        _contentLabel.font = [DZFontSize HomecellTitleFontSize17];
+        _contentLabel.font = KFont(17);
     }
     return _contentLabel;
 }
@@ -74,7 +74,7 @@
 - (UILabel *)timeLabel {
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc] init];
-        _timeLabel.font = [DZFontSize forumtimeFontSize14];
+        _timeLabel.font = KFont(14);
         _timeLabel.textColor = K_Color_LightText;
     }
     return  _timeLabel;
@@ -83,7 +83,7 @@
 - (UILabel *)evaluateLabel {
     if (_evaluateLabel == nil) {
         _evaluateLabel = [[UILabel alloc] init];
-        _evaluateLabel.font = [DZFontSize forumtimeFontSize14];
+        _evaluateLabel.font = KFont(14);
         _evaluateLabel.textColor = K_Color_LightText;
     }
     return _evaluateLabel;

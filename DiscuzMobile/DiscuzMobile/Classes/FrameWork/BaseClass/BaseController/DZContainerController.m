@@ -173,9 +173,9 @@
         _segmentControl.segmentEdgeInset = UIEdgeInsetsMake(0, space, 0, space);
         [_segmentControl setTitleFormatter:^NSAttributedString *(DZSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
             NSAttributedString *attString = [[NSAttributedString alloc] init];
-            attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : K_Color_LightText,NSFontAttributeName:[DZFontSize SlideTitleFontSize:minsize andIsBold:NO]}];
+            attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : K_Color_LightText,NSFontAttributeName:KFont(minsize)}];
             if (selected) {
-                attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : K_Color_Theme,NSFontAttributeName:[DZFontSize SlideTitleFontSize:maxsize andIsBold:YES]}];
+                attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : K_Color_Theme,NSFontAttributeName:KBoldFont(maxsize)}];
             }
             return attString;
         }];

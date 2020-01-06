@@ -26,17 +26,17 @@
     
     CGRect frame = self.headImageView.frame;
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width+20, 10, 190, 15)];
-    self.nameLabel.font = [DZFontSize forumtimeFontSize14];//13-14
+    self.nameLabel.font = KFont(14);//13-14
     self.nameLabel.textColor = K_Color_Theme;
     [self addSubview:self.nameLabel];
     
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(KScreenWidth-100, 10,90, 15)];
-    self.timeLabel.font = [DZFontSize HomecellmessageNumLFontSize10];//10
+    self.timeLabel.font = KFont(10);//10
     self.timeLabel.textColor = mRGBColor(180, 180, 180);
     [self addSubview:self.timeLabel];
     
     self.contenLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width+20, 25, KScreenWidth-(frame.size.width+20+10), 45)];
-    self.contenLabel.font =  [DZFontSize forumInfoFontSize12];//12
+    self.contenLabel.font =  KFont(12);//12
     self.contenLabel.numberOfLines = 0;
     [self addSubview:self.contenLabel];
     

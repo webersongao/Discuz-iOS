@@ -36,7 +36,7 @@
     
     self.nameLab = [[UILabel alloc] init];
     self.nameLab.textColor = K_Color_MainTitle;
-    self.nameLab.font = [DZFontSize HomecellTitleFontSize17];
+    self.nameLab.font = KFont(17);
     self.nameLab.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.nameLab];
     

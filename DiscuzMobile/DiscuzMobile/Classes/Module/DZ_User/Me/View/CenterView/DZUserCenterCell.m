@@ -27,7 +27,7 @@
     self.detailLab = [[UILabel alloc] init];
 //    self.detailLab.backgroundColor= [UIColor redColor];
     self.detailLab.textAlignment = NSTextAlignmentRight;
-    self.detailLab.font = [DZFontSize HomecellTimeFontSize14];
+    self.detailLab.font = KFont(12);
     self.detailLab.textColor = K_Color_LightText;
     [self.contentView addSubview:self.detailLab];
 }

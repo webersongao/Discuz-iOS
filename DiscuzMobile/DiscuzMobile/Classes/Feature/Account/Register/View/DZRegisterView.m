@@ -168,13 +168,13 @@
         
         NSRange allRange = {0,[describe length]};
         [describe addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:allRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize forumtimeFontSize14] range:allRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(14) range:allRange];
         
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_LightText range:dearRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize HomecellTimeFontSize16] range:dearRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(16) range:dearRange];
         
         [describe addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:nameRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize HomecellTimeFontSize16] range:nameRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(16) range:nameRange];
         self.thridAuthTipLabl.attributedText = describe;
         self.thridAuthTipLabl.hidden = NO;
         [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];

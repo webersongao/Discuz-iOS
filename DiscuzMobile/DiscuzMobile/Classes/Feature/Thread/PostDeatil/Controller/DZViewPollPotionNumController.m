@@ -43,9 +43,9 @@
     NSDictionary *dic = self.dataSourceArr[indexPath.row];
 
     cell.textLabel.text=[NSString stringWithFormat:@"选择第%ld项的人",indexPath.row+1];
-    cell.textLabel.font=[DZFontSize HomecellTitleFontSize15];
+    cell.textLabel.font=KFont(15);
     cell.detailTextLabel.text = [dic stringForKey:@"votes"];
-    cell.detailTextLabel.font = [DZFontSize messageFontSize14];
+    cell.detailTextLabel.font = KFont(14);
     cell.detailTextLabel.textColor = K_Color_Theme;
     return cell;
 }

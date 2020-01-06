@@ -23,7 +23,7 @@
     [self.contentView addSubview:self.iconV];
     
     self.textLab = [[UILabel alloc] init];
-    self.textLab.font = [DZFontSize HomecellTitleFontSize17];
+    self.textLab.font = KFont(17);
     self.textLab.textColor = K_Color_MainTitle;
     [self.contentView addSubview:self.textLab];
     

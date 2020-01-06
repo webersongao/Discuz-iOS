@@ -110,7 +110,7 @@
     [bgview addSubview:_secTextField];
     if (self.secureData.secqaa.length) {
         _secqaaLabel.frame = CGRectMake(CGRectGetMinX(_identWebView.frame), CGRectGetMaxY(_identWebView.frame) + 15,CGRectGetWidth(_identWebView.frame), 40);
-        _secqaaLabel.font = [DZFontSize forumtimeFontSize14];
+        _secqaaLabel.font = KFont(14);
         _secqaaLabel.textAlignment = NSTextAlignmentCenter;
         
         _secTextField.frame = CGRectMake(CGRectGetMinX(buttonSeccode.frame), CGRectGetMaxY(_identWebView.frame) + 15, CGRectGetWidth(buttonSeccode.frame), 40);
@@ -120,7 +120,7 @@
         _secTextField.layer.borderWidth = 2.0f;
         _secTextField.layer.cornerRadius = 5;
         _secTextField.layer.borderColor = K_Color_Theme.CGColor;
-        _secTextField.font = [DZFontSize forumtimeFontSize14];//14
+        _secTextField.font = KFont(14);//14
     }
     //    _yanTextField.delegate = self;
     UIButton * buttonpost = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -185,7 +185,7 @@
         _yanTextField.layer.borderWidth = 2.0f;
         _yanTextField.layer.cornerRadius = 5;
         _yanTextField.layer.borderColor = K_Color_Theme.CGColor;
-        _yanTextField.font = [DZFontSize forumtimeFontSize14];//14
+        _yanTextField.font = KFont(14);//14
     }
     return _yanTextField;
 }

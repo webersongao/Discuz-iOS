@@ -65,7 +65,7 @@
     if (!_tipLabel) {
         _tipLabel = [[UILabel alloc] init];
         _tipLabel.textAlignment =  NSTextAlignmentCenter;
-        _tipLabel.font = [DZFontSize messageFontSize14];
+        _tipLabel.font = KFont(14);
         _tipLabel.textColor = [UIColor whiteColor];
         _tipLabel.userInteractionEnabled = YES;
         [_tipLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTip)]];

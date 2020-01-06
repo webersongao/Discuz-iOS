@@ -26,7 +26,7 @@
     self.timeLabel = [[UILabel alloc] init];
     self.timeLabel.textAlignment = NSTextAlignmentLeft;
     self.timeLabel.textColor = K_Color_MainTitle;
-    self.timeLabel.font = [DZFontSize HomecellTitleFontSize15];
+    self.timeLabel.font = KFont(15);
     
 //    self.audioIv.frame = CGRectMake(15, 12, CGRectGetHeight(self.frame) - 24, CGRectGetHeight(self.frame) - 24);
 //    self.timeLabel.frame = CGRectMake(CGRectGetMaxX(self.audioIv.frame) + 20, CGRectGetMinY(self.audioIv.frame), 100, CGRectGetHeight(self.audioIv.frame));

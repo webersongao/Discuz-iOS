@@ -21,11 +21,11 @@
 - (void)commitInit {
     self.titleLab = [[UILabel alloc] init];
     self.titleLab.textColor = K_Color_Message;
-    self.titleLab.font = [DZFontSize HomecellTimeFontSize14];
+    self.titleLab.font = KFont(12);
     [self.contentView addSubview:self.titleLab];
     
     self.textField = [[UITextField alloc] init];
-    self.textField.font = [DZFontSize HomecellTimeFontSize14];
+    self.textField.font = KFont(12);
     [self.contentView addSubview:self.textField];
 }
 

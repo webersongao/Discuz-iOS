@@ -24,7 +24,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     UILabel *placeLable = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 70, 15)];
     placeLable.text = @"消耗积分：";
-    placeLable.font = [DZFontSize forumtimeFontSize14];
+    placeLable.font = KFont(14);
     [self.contentView addSubview:placeLable];
     
     UILabel * lineLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 52, KScreenWidth-25, 1)];
@@ -34,16 +34,16 @@
     
     self.integralTextfield =[[UITextField alloc] initWithFrame:CGRectMake(placeLable.frame.size.width +placeLable.frame.origin.x +10, 5, KScreenWidth - 95, 45)];
     self.integralTextfield.placeholder = @"活动参与需要消耗的积分";
-    self.integralTextfield.font = [DZFontSize forumtimeFontSize14];
+    self.integralTextfield.font = KFont(14);
     [self.contentView addSubview:self.integralTextfield];
     
     
     UILabel *cityLable = [[UILabel alloc] initWithFrame:CGRectMake(15, lineLabel1.frame.origin.y + 20, 70, 15)];
     cityLable.text = @"每人花销：";
-    cityLable.font = [DZFontSize forumtimeFontSize14];
+    cityLable.font = KFont(14);
     [self.contentView addSubview:cityLable];
     self.costTextfield =[[UITextField alloc] initWithFrame:CGRectMake(placeLable.frame.size.width +placeLable.frame.origin.x +10,lineLabel1.frame.origin.y + lineLabel1.frame.size.height + 5, KScreenWidth - 95, 45)];
-    self.costTextfield.font = [DZFontSize forumtimeFontSize14];
+    self.costTextfield.font = KFont(14);
     self.costTextfield.placeholder = @"元";
     [self.contentView addSubview:self.costTextfield];
     UILabel *lineLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 52*2, KScreenWidth-25, 1)];
@@ -54,13 +54,13 @@
     
     UILabel * placeLable3 = [[UILabel alloc] initWithFrame:CGRectMake(15, lineLabel2.frame.origin.y + 20, 70, 15)];
     placeLable3.text = @"报名截止：";
-    placeLable3.font = [DZFontSize forumtimeFontSize14];
+    placeLable3.font = KFont(14);
     [self.contentView addSubview:placeLable3];
     
     self.signupEndTextfield =[[UITextField alloc] initWithFrame:CGRectMake(cityLable.frame.size.width +cityLable.frame.origin.x +10,lineLabel2.frame.origin.y + lineLabel2.frame.size.height + 5, KScreenWidth-100-120, 45)];
     //    self.classTextField.backgroundColor = [UIColor redColor];
     self.signupEndTextfield.placeholder = @"报名截止时间";
-    self.signupEndTextfield.font = [DZFontSize forumtimeFontSize14];
+    self.signupEndTextfield.font = KFont(14);
     [self.contentView addSubview:self.signupEndTextfield];
     
     UILabel * lineLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(15, 52*3, KScreenWidth-25, 1)];

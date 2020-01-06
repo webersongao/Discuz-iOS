@@ -28,7 +28,7 @@
 - (void)commitInit {
     
     self.titleLab = [[UILabel alloc] init];
-    self.titleLab.font = [DZFontSize HomecellTimeFontSize14];
+    self.titleLab.font = KFont(12);
     self.titleLab.numberOfLines = 0;
     self.titleLab.textAlignment = NSTextAlignmentLeft;
     self.titleLab.textColor = K_Color_Message;
@@ -78,10 +78,10 @@
                     DZSelectTypeButton *button = [DZSelectTypeButton buttonWithType:UIButtonTypeCustom];
                     [button setTitle:obj forState:UIControlStateNormal];
                     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    button.titleLabel.font = [DZFontSize forumtimeFontSize14];
+                    button.titleLabel.font = KFont(14);
                     button.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
                     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-                    CGSize textSize = [obj sizeWithFont:[DZFontSize forumtimeFontSize14] maxSize:CGSizeMake(allWidth / 2, MAXFLOAT)];
+                    CGSize textSize = [obj sizeWithFont:KFont(14) maxSize:CGSizeMake(allWidth / 2, MAXFLOAT)];
                     CGFloat b_width = textSize.width + addWidth;
                     
                     // ************

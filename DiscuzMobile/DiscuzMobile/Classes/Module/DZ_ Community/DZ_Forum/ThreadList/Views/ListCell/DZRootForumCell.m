@@ -81,7 +81,7 @@
 - (UILabel *)textLab {
     if (_textLab == nil) {
         _textLab = [[UILabel alloc] init];
-        _textLab.font = [DZFontSize HomecellTitleFontSize15];
+        _textLab.font = KFont(15);
         _textLab.textColor = K_Color_Theme;
     }
     return _textLab;

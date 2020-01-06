@@ -28,7 +28,7 @@
     self.lab = [[UILabel alloc] initWithFrame:CGRectMake(KScreenWidth / 2 - 100, 5, 200, 50)];
     self.lab.backgroundColor = [UIColor whiteColor];
     self.lab.textAlignment = NSTextAlignmentCenter;
-    self.lab.font = [DZFontSize HomecellTitleFontSize17];
+    self.lab.font = KFont(17);
     self.lab.textColor = K_Color_LightText;
     
     self.lab.text = @"退出登录";

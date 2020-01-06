@@ -89,7 +89,7 @@
     if (!_textField) {
         _textField = [[UITextField alloc] init];
         _textField.placeholder = @"请输入验证码";
-        _textField.font = [DZFontSize forumtimeFontSize14];
+        _textField.font = KFont(14);
         [_textField setTranslatesAutoresizingMaskIntoConstraints:NO];
         _textField.borderStyle = UITextBorderStyleRoundedRect;
     }

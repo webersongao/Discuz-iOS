@@ -30,17 +30,17 @@
     
 //    CGRect frame = self.headImageView.frame;
 //    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width+20, 10, 190, 15)];
-//    self.nameLabel.font = [DZFontSize HomecellTimeFontSize16];
+//    self.nameLabel.font = KFont(16);
 //    [self addSubview:self.nameLabel];
     CGRect frame = self.headImageView.frame;
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width+20, 8, 200, 16)];
-    self.timeLabel.font = [DZFontSize forumInfoFontSize12];
+    self.timeLabel.font = KFont(12);
     self.timeLabel.textAlignment = NSTextAlignmentLeft;
     self.timeLabel.textColor = K_Color_MainTitle;
     [self addSubview:self.timeLabel];
     
     self.contenLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width+20, 25, KScreenWidth-(frame.size.width+20+10), 45)];
-    self.contenLabel.font =  [DZFontSize forumtimeFontSize14];
+    self.contenLabel.font =  KFont(14);
     self.contenLabel.textColor = K_Color_MainTitle;
     self.contenLabel.numberOfLines = 0;
     [self addSubview:self.contenLabel];
@@ -61,7 +61,7 @@
     CGFloat width = KScreenWidth-(frame.size.width+20+10);
     
     CGSize maxSize = CGSizeMake(width, CGFLOAT_MAX);
-    CGSize textSize = [self.contenLabel.text sizeWithFont:[DZFontSize forumtimeFontSize14] maxSize:maxSize];
+    CGSize textSize = [self.contenLabel.text sizeWithFont:KFont(14) maxSize:maxSize];
     if (textSize.height < 20) {
         self.contenLabel.frame = CGRectMake(frame.size.width+20, 25, width, 40);
     } else {

@@ -23,7 +23,7 @@
     self.selectField = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, KScreenWidth - 20, 45)];
     self.selectField.font = [UIFont systemFontOfSize:16.0];
     self.selectField.placeholder = @" 选择分类";
-    self.selectField.font = [DZFontSize HomecellTitleFontSize15];
+    self.selectField.font = KFont(15);
     self.selectField.tag = 103;
     [self.contentView addSubview:self.selectField];
 }

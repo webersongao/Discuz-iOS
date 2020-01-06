@@ -25,20 +25,20 @@
     }
     UILabel *tips = [[UILabel alloc] initWithFrame:CGRectMake(8, 22, KScreenWidth - 16, 30)];
     tips.text = @"关联已有掌上论坛账户";
-    tips.font = [DZFontSize HomecellTimeFontSize16];
+    tips.font = KFont(16);
     tips.textColor = [UIColor grayColor];
     [self addSubview:tips];
     
     
     _nameField = [[UITextField alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(tips.frame) + 22, KScreenWidth - 16, 40)];
-    _nameField.font = [DZFontSize HomecellTimeFontSize16];
+    _nameField.font = KFont(16);
     _nameField.borderStyle = UITextBorderStyleRoundedRect;
     _nameField.placeholder = @"请输入用户名/邮箱/已验证手机";
     _nameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self addSubview:_nameField];
     
     _passwordField = [[UITextField alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(_nameField.frame) + 22, KScreenWidth - 16, 40)];
-    _passwordField.font = [DZFontSize HomecellTimeFontSize16];
+    _passwordField.font = KFont(16);
     _passwordField.borderStyle = UITextBorderStyleRoundedRect;
     _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordField.secureTextEntry = YES;
@@ -46,7 +46,7 @@
     [self addSubview:_passwordField];
     
     _authCodeField = [[UITextField alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(_passwordField.frame) + 22, 110, 40)];
-    _authCodeField.font = [DZFontSize HomecellTimeFontSize16];
+    _authCodeField.font = KFont(16);
     _authCodeField.borderStyle = UITextBorderStyleRoundedRect;
     _authCodeField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _authCodeField.tag = 103;
@@ -61,10 +61,10 @@
     UILabel *tips2 = [[UILabel alloc] initWithFrame:CGRectMake(8, CGRectGetMaxY(_passwordField.frame) + 22, KScreenWidth - 16, 28)];
     
     tips2.textColor = K_Color_LightText;
-    tips2.font = [DZFontSize HomecellTimeFontSize14];
+    tips2.font = KFont(12);
     tips2.numberOfLines = 0;
     tips2.text = @"关联后，你的微信/QQ账户和论坛账户都可以登录";
-    CGSize textSize = [tips.text sizeWithFont:[DZFontSize HomecellTimeFontSize14] maxSize:CGSizeMake(KScreenWidth - 16, CGFLOAT_MAX)];
+    CGSize textSize = [tips.text sizeWithFont:KFont(12) maxSize:CGSizeMake(KScreenWidth - 16, CGFLOAT_MAX)];
     tips2.frame = CGRectMake(8, CGRectGetMaxY(_codeView.frame) + 22, KScreenWidth - 16, textSize.height);
     [self addSubview:tips2];
     

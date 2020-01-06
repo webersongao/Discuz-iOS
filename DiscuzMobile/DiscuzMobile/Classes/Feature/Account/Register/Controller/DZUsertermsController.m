@@ -29,7 +29,7 @@
 
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    CGSize messageSize = [self.contentLabel.text sizeWithFont:[DZFontSize HomecellNameFontSize16] maxSize:CGSizeMake(KScreenWidth - kMargin30, CGFLOAT_MAX)];
+    CGSize messageSize = [self.contentLabel.text sizeWithFont:KFont(14) maxSize:CGSizeMake(KScreenWidth - kMargin30, CGFLOAT_MAX)];
     self.contentLabel.frame = CGRectMake(kMargin15, kMargin15, messageSize.width, messageSize.height);
     self.scrollview.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(self.contentLabel.frame) + KTabbar_Height);
 }
@@ -39,7 +39,7 @@
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.numberOfLines = 0;
-        _contentLabel.font = [DZFontSize HomecellNameFontSize16];
+        _contentLabel.font = KFont(14);
         //    bbsrule_discuz
         NSString *fileName = DZ_BBSRULE;
         NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];

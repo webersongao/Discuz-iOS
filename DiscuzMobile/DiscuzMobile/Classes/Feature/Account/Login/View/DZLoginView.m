@@ -94,7 +94,7 @@
     [contentView addSubview:self.answerView];
     self.answerView.backgroundColor = [UIColor whiteColor];
     self.answerView.hidden = YES;
-    self.answerView.userNameTextField.font = [DZFontSize forumtimeFontSize14];
+    self.answerView.userNameTextField.font = KFont(14);
     self.answerView.userNameTextField.placeholder = @"验证问答答案";
     
     [self.answerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -180,7 +180,7 @@
     thirdLabel.backgroundColor = [UIColor whiteColor];
     thirdLabel.textColor = K_Color_LightText;
     thirdLabel.text = @"第三方登录";
-    thirdLabel.font = [DZFontSize HomecellTitleFontSize15];
+    thirdLabel.font = KFont(15);
     [self.thirdView addSubview:thirdLabel];
     [thirdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line1.mas_right);
@@ -253,13 +253,13 @@
         NSRange nameRange = {3,nameLength};
         NSRange allRange = {0,[describe length]};
         [describe addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:allRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize forumtimeFontSize14] range:allRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(14) range:allRange];
         
         [describe addAttribute:NSForegroundColorAttributeName value:K_Color_LightText range:dearRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize HomecellTimeFontSize16] range:dearRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(16) range:dearRange];
         
         [describe addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:nameRange];
-        [describe addAttribute:NSFontAttributeName value:[DZFontSize HomecellTimeFontSize16] range:nameRange];
+        [describe addAttribute:NSFontAttributeName value:KFont(16) range:nameRange];
         self.thridAuthTipLabl.attributedText = describe;
         self.thridAuthTipLabl.hidden = NO;
         [self.loginBtn setTitle:@"关联" forState:UIControlStateNormal];

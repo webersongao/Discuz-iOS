@@ -24,7 +24,6 @@
 		273F30261ECE8AB900C78A6C /* DZDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F30251ECE8AB900C78A6C /* DZDatabaseHandle.m */; };
 		273F302C1ECE92EA00C78A6C /* DZArchieverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 273F302B1ECE92EA00C78A6C /* DZArchieverTool.m */; };
 		27473AC41DD30C380024375F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AA01DD30C380024375F /* AppDelegate.m */; };
-		27473ACD1DD30C380024375F /* DZFontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473ABD1DD30C380024375F /* DZFontSize.m */; };
 		27473ACF1DD30C380024375F /* DZDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 27473AC11DD30C380024375F /* DZDevice.m */; };
 		274C95161EE647C300163106 /* DZAttachmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C95151EE647C300163106 /* DZAttachmentBar.m */; };
 		274F387D1EEA44F6009F4E10 /* DZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F387C1EEA44F6009F4E10 /* DZImagePickerView.m */; };
@@ -555,8 +554,6 @@
 		273F302B1ECE92EA00C78A6C /* DZArchieverTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZArchieverTool.m; sourceTree = "<group>"; };
 		27473A9F1DD30C380024375F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27473AA01DD30C380024375F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		27473ABC1DD30C380024375F /* DZFontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFontSize.h; sourceTree = "<group>"; };
-		27473ABD1DD30C380024375F /* DZFontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFontSize.m; sourceTree = "<group>"; };
 		27473AC01DD30C380024375F /* DZDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZDevice.h; sourceTree = "<group>"; };
 		27473AC11DD30C380024375F /* DZDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZDevice.m; sourceTree = "<group>"; };
 		27473AC31DD30C380024375F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -1573,7 +1570,6 @@
 			children = (
 				703AC73323BF3B5F00950042 /* ThreadTool */,
 				9438F06B22F3D55E0093EB0B /* File */,
-				9438F06F22F3E1D10093EB0B /* Font */,
 				9438F07522F3E3070093EB0B /* Email */,
 				9438F06D22F3D5990093EB0B /* Push */,
 				9438F06C22F3D5850093EB0B /* Share */,
@@ -4066,15 +4062,6 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
-		9438F06F22F3E1D10093EB0B /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				27473ABC1DD30C380024375F /* DZFontSize.h */,
-				27473ABD1DD30C380024375F /* DZFontSize.m */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		9438F07022F3E1FA0093EB0B /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -4734,7 +4721,6 @@
 				70621285237936C900130B9D /* DZPostActivityController.m in Sources */,
 				70FBDCFF2383FC1B00FC296E /* ReplyCell.m in Sources */,
 				70FBDD082383FC1B00FC296E /* DZCollectSectionView.m in Sources */,
-				27473ACD1DD30C380024375F /* DZFontSize.m in Sources */,
 				70A7965623B0A853001FF672 /* DZThreadListCell+Manager.m in Sources */,
 				947ECB202064D403002D3536 /* WSPhotosBroseVC.m in Sources */,
 				7002A3642383D8CD00BC0C61 /* DZMessageListController.m in Sources */,

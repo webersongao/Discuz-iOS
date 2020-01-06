@@ -25,10 +25,10 @@
     
     self.textLabel = [[UILabel alloc] init];
     [self addSubview:self.textLabel];
-    self.textLabel.font = [DZFontSize HomecellNameFontSize16];
+    self.textLabel.font = KFont(14);
     self.textLabel.textColor = K_Color_MainTitle;
     self.textLabel.textAlignment = NSTextAlignmentLeft;
-    self.textLabel.font = [DZFontSize HomecellNameFontSize16];
+    self.textLabel.font = KFont(14);
 }
 
 - (void)layoutSubviews {

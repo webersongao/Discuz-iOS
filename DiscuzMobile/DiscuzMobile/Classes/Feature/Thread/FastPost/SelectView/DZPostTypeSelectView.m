@@ -48,7 +48,7 @@
     
     self.titleLab = [[UILabel alloc] init];
     self.titleLab.text = @"请选择发帖类型";
-    self.titleLab.font = [DZFontSize NavTitleFontSize18];
+    self.titleLab.font = KFont(18);
     self.titleLab.textAlignment = NSTextAlignmentCenter;
     self.titleLab.textColor = K_Color_MainTitle;
     [self.contentView addSubview:self.titleLab];

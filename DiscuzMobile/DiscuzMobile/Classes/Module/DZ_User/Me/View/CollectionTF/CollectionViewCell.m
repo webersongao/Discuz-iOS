@@ -21,19 +21,19 @@
 
 -(void)createUI {
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, KScreenWidth-25, 50)];
-    self.titleLabel.font = [DZFontSize HomecellNameFontSize16];//14
+    self.titleLabel.font = KFont(14);//14
     self.titleLabel.textColor = K_Color_MainTitle;
     self.titleLabel.numberOfLines = 0;
     [self addSubview:self.titleLabel];
     
     
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.titleLabel.frame), CGRectGetMaxY(self.titleLabel.frame), 100, 15)];
-    self.nameLabel.font = [DZFontSize forumInfoFontSize12];//12
+    self.nameLabel.font = KFont(12);//12
     self.nameLabel.textColor = K_Color_Theme;
     [self addSubview:self.nameLabel];
     
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.nameLabel.frame) + 5, self.titleLabel.frame.size.height, 120, 15)];
-    self.timeLabel.font = [DZFontSize forumInfoFontSize12];//12
+    self.timeLabel.font = KFont(12);//12
     self.timeLabel.textColor = mRGBColor(180, 180, 180);
     [self addSubview:self.timeLabel];
     

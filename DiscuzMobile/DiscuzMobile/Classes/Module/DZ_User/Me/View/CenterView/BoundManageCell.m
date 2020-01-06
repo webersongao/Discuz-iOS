@@ -27,7 +27,7 @@
     self.detailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.detailBtn.cs_acceptEventInterval = 1;
     self.detailBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    self.detailBtn.titleLabel.font = [DZFontSize fontSize:14];
+    self.detailBtn.titleLabel.font = KFont(14);
     
     [self.detailBtn setTitleColor:K_Color_Theme forState:UIControlStateNormal];
     [self.detailBtn setTitleColor:K_Color_DarkText forState:UIControlStateSelected];
@@ -53,7 +53,7 @@
         }
         NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:checkNull(name)];
         NSRange brange = {name.length - 5, 5};
-        [attName addAttribute:NSFontAttributeName value:[DZFontSize forumInfoFontSize12] range:brange];
+        [attName addAttribute:NSFontAttributeName value:KFont(12) range:brange];
         [attName addAttribute:NSForegroundColorAttributeName value:K_Color_Message range:brange];
         self.nameV.textLabel.attributedText = attName;
     }

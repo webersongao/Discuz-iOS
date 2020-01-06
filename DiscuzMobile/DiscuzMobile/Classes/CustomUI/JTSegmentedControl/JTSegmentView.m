@@ -56,7 +56,7 @@
     
     JTSegmentedCell *cell = [[JTSegmentedCell alloc] init];
     cell.label.text = text;
-    cell.label.font = [DZFontSize HomecellTitleFontSize17];
+    cell.label.font = KFont(17);
     cell.label.textColor = K_Color_MainTitle;
     cell.imageView.image = image;
     return cell;

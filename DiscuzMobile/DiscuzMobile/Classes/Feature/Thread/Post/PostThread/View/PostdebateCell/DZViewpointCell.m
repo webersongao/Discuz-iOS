@@ -71,7 +71,7 @@
 
 - (UILabel *)getTypeLabel {
     UILabel *lab = [[UILabel alloc] init];
-    lab.font = [DZFontSize HomecellTitleFontSize15];
+    lab.font = KFont(15);
     lab.textAlignment = NSTextAlignmentLeft;
     return lab;
 }
@@ -81,7 +81,7 @@
     textview.layer.borderWidth = 1;
     textview.layer.masksToBounds = YES;
     textview.layer.borderColor = K_Color_Line.CGColor;
-    textview.font = [DZFontSize HomecellTitleFontSize15];
+    textview.font = KFont(15);
     return textview;
 }
 

@@ -44,12 +44,12 @@
     
     UILabel *peopleLable = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 80, 15)];
     peopleLable.text = @"收件人：";
-    peopleLable.font = [DZFontSize forumtimeFontSize14];// 14-15
+    peopleLable.font = KFont(14);// 14-15
     [userView addSubview:peopleLable];
     
     self.titleTextField =[[UITextField alloc] initWithFrame:CGRectMake(peopleLable.frame.size.width +peopleLable.frame.origin.x +10,5, KScreenWidth, 45)];
     self.titleTextField.placeholder = @"请输入用户名";
-    self.titleTextField.font = [DZFontSize HomecellTitleFontSize17];
+    self.titleTextField.font = KFont(17);
     self.titleTextField.delegate = self;
     
     if ([DataCheck isValidString:self.uid]) {
@@ -64,13 +64,13 @@
     
     self.messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10,KScreenWidth-20, 140)];
     self.messageTextView.delegate = self;
-    self.messageTextView.font =[DZFontSize HomecellTitleFontSize17];
+    self.messageTextView.font =KFont(17);
     
     self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,10, KScreenWidth-40, 15)];
     self.placeholderLabel.numberOfLines =0;
     self.placeholderLabel.textAlignment = NSTextAlignmentLeft;
     self.placeholderLabel.text =@"请输入短消息的内容";
-    self.placeholderLabel.font = [DZFontSize HomecellTitleFontSize17];
+    self.placeholderLabel.font = KFont(17);
     self.placeholderLabel.textColor =mRGBColor(211, 211, 211);
     
     [self.messageTextView addSubview:self.placeholderLabel];

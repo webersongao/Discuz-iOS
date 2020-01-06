@@ -34,7 +34,7 @@
     [self addSubview:self.textLabel];
     self.textLabel.textColor = K_Color_MainTitle;
     self.textLabel.textAlignment = NSTextAlignmentCenter;
-    self.textLabel.font = [DZFontSize HomecellNameFontSize16];
+    self.textLabel.font = KFont(14);
 }
 
 - (void)layoutSubviews { // 竖的

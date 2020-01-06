@@ -38,16 +38,16 @@
     [self.contentView addSubview:self.iconV];
     
     self.titleLab = [[UILabel alloc] init];
-    self.titleLab.font = [DZFontSize HomecellTitleFontSize15];
+    self.titleLab.font = KFont(15);
     [self.contentView addSubview:self.titleLab];
     
     self.numLab = [[UILabel alloc] init];
-    self.numLab.font = [DZFontSize forumtimeFontSize14];
+    self.numLab.font = KFont(14);
     self.numLab.textColor = K_Color_LightText;
     [self.contentView addSubview:self.numLab];
     
     self.postsLab = [[UILabel alloc] init];
-    self.postsLab.font = [DZFontSize forumtimeFontSize14];
+    self.postsLab.font = KFont(14);
     self.postsLab.textColor = K_Color_LightText;
     [self.contentView addSubview:self.postsLab];
     
