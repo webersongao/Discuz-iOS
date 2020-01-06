@@ -10,7 +10,6 @@
 #import "DZForumNodeModel.h"
 #import "DZForumItemCell.h"
 #import "DZCollectSectionView.h"
-#import "AsyncAppendency.h"
 #import "DZThreadNetTool.h"
 
 @interface DZForumCollectionController () <UICollectionViewDelegate, UICollectionViewDataSource>

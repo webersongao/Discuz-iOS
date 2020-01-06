@@ -36,7 +36,7 @@
         button.enabled = NO;
         [DZForumTool DZ_PraiseRequestTid:self.cellModel.tid successBlock:^{
             if (self.cellModel.isRecently) {
-                BACK(^{
+                KBack_ThreadBlock(^{
                     if ([DataCheck isValidString:self.cellModel.tid]) {
                         [[DZDatabaseHandle Helper] footThread:self.cellModel];
                     }

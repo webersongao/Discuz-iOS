@@ -20,9 +20,9 @@
 #define AppStorePath @"https://itunes.apple.com/cn/app/id1011658227"
 
 // 邮箱
-#define DeveloperEmail @"zjt182163@163.com"
-#define KdefaultAlert @"网络异常，请稍后重试"
-#define kDeafultCover  [UIImage imageNamed:@"discuz_default"]
+#define DeveloperEmail  @"zjt182163@163.com"
+#define KdefaultAlert   @"网络异常，请稍后重试"
+#define kDeafultCover   [UIImage imageNamed:@"discuz_default"]
 
 #define KWEAKSELF __weak typeof(self) weakSelf = self;
 #define STRONGSELF __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -32,9 +32,6 @@
 #define KHeightScale(value) ((value)*(KScreenHeight/667))
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
-
-#define TIME 1.0
-#define ALINE 35
 
 #define kMargin10   10.0
 #define kMargin15   15.0
@@ -77,11 +74,11 @@
 
 
 //G－C－D
-#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
-#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+#define KBack_ThreadBlock(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define KMain_ThreadBlock(block) dispatch_async(dispatch_get_main_queue(),block)
 
 #ifdef DEBUG
-#define DLog(...) NSLog(__VA_ARGS__)
+#define DLog(...)   NSLog(__VA_ARGS__)
 //#define DLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else
 #define DLog( s, ... )
@@ -89,7 +86,7 @@
 
 // 国际化 字符创
 #define _(x) [LocalStringUtil localString:x]
-#define checkInteger(__X__)        [NSString stringWithFormat:@"%ld",__X__]
+#define checkInteger(__X__)     [NSString stringWithFormat:@"%ld",__X__]
 #define checkTwoStr(X,Y)        [NSString stringWithFormat:@"%@%@",X,Y]
 #define checkNull(__X__)        (__X__) == nil || [(__X__) isEqual:[NSNull null]] ? @"" : [NSString stringWithFormat:@"%@", (__X__)]
 
@@ -97,8 +94,6 @@
 #define TIMEOUT 30.0
 
 // 判断系统版本
-#define  iOS8   ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
-#define  iOS9   ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0)
 #define  iOS10   ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0)
 #define  iOS11   ([[UIDevice currentDevice].systemVersion floatValue] >= 11.0)
 

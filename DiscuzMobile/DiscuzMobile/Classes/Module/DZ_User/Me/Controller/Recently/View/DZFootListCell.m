@@ -239,7 +239,7 @@
             self.priceLab.textLab.text = self.info.recommend_add;
             [DZForumTool DZ_PraiseRequestTid:self.info.tid successBlock:^{
                 if (self.info.isRecently) {
-                    BACK(^{
+                    KBack_ThreadBlock(^{
                         if ([DataCheck isValidString:self.info.tid]) {
                             [[DZDatabaseHandle Helper] footThread:self.info];
                         }

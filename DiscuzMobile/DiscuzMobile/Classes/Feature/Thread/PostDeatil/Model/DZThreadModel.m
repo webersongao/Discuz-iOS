@@ -172,7 +172,7 @@
     //     DZPostThreadModel *listModel = [[DZPostThreadModel alloc] init];
     //     [DZPostThreadModel modelWithJSON:[[dataDic objectForKey:@"Variables"] objectForKey:@"thread"]];
     //    if (self.currentpage == 1) {
-    //        BACK(^{
+    //        KBack_ThreadBlock(^{
     //            if ([DZLoginModule isLogged] && [DataCheck isValidString:listModel.tid]) {
     //                [[DZDatabaseHandle Helper] footThread:listModel];
     //            }

@@ -47,9 +47,9 @@
 - (void)refreshFoot {
     self.page = 1;
     KWEAKSELF;
-    BACK(^{
+    KBack_ThreadBlock(^{
         weakSelf.dataSourceArr = [NSMutableArray arrayWithArray:[[DZDatabaseHandle Helper] searchFootWithUid:[DZMobileCtrl sharedCtrl].Global.member_uid andPage:weakSelf.page andPerpage:weakSelf.perPage]];
-        MAIN(^{
+        KMain_ThreadBlock(^{
             if (weakSelf.dataSourceArr.count >= weakSelf.count) {
                 [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             } else {
@@ -66,10 +66,10 @@
 - (void)addFoot {
     
     KWEAKSELF;
-    BACK(^{
+    KBack_ThreadBlock(^{
         weakSelf.page ++;
         [weakSelf.dataSourceArr addObjectsFromArray:[[DZDatabaseHandle Helper] searchFootWithUid:[DZMobileCtrl sharedCtrl].Global.member_uid andPage:weakSelf.page andPerpage:weakSelf.perPage]];
-        MAIN(^{
+        KMain_ThreadBlock(^{
             if (weakSelf.dataSourceArr.count >= weakSelf.count) {
                 [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             } else {

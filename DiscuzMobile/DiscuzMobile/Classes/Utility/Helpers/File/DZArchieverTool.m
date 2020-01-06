@@ -22,7 +22,6 @@
     [anrchiever finishEncoding];
     
     return data;
-    
 }
 
 // 反归档方法
@@ -32,7 +31,6 @@
     id object = [unArchiever decodeObjectForKey:key];
     [unArchiever finishDecoding];
     return object;
-    
 }
 
 @end

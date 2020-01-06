@@ -62,7 +62,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             UISwitch * sw = [[UISwitch alloc] init];
-            [sw addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+            [sw addTarget:self action:@selector(switchModeAction:) forControlEvents:UIControlEventValueChanged];
             [sw setOn:[[DZMobileCtrl sharedCtrl] isGraphFree]];
             cell.accessoryView = sw;
         } else if (indexPath.row == 1) {
@@ -107,13 +107,13 @@
         }
             break;
         case 1: {
-//            if (indexPath.row == 0) {
-//                [self sendEmail];
-//            }
             if (indexPath.row == 0) {
-                [self evaluateAPP];
+                [self sendEmail];
             }
             if (indexPath.row == 1) {
+                [self evaluateAPP];
+            }
+            if (indexPath.row == 2) {
                 [self shareAPP];
             }
         }
@@ -158,20 +158,17 @@
 }
 
 #pragma mark - 无图浏览设置
--(void)switchAction:(id)btn{
-    UISwitch * switchButton = (UISwitch*)btn;
-    BOOL usbuttonon = [switchButton isOn];
-    [[NSUserDefaults standardUserDefaults] setBool:usbuttonon forKey:DZ_BoolNoImage];
+-(void)switchModeAction:(UISwitch *)switchButton{
+    BOOL isButtonOn = [switchButton isOn];
+    [[NSUserDefaults standardUserDefaults] setBool:isButtonOn forKey:DZ_BoolNoImage];
     [[NSNotificationCenter defaultCenter] postNotificationName:DZ_ImageOrNot_Notify object:nil];
 }
 
 #pragma mark - 推送开启关闭设置
--(void)switchAction1:(id)btn{
+-(void)notifySwitchAction:(UISwitch *)switchButton{
     
-    UISwitch * switchButton = (UISwitch *)btn;
-    
-    BOOL usbuttonon = [switchButton isOn];
-    if (usbuttonon) {
+    BOOL isButtonOn = [switchButton isOn];
+    if (isButtonOn) {
         //开启
         [[DZPushCenter shareInstance] Reregistration];
         
@@ -180,11 +177,11 @@
         } else {
             [[DZPushCenter shareInstance] configPush];
         }
-//        if ([XGPush isUnRegisterStatus]) {
-//            [MBProgressHUD showInfo:@"开启推送"];
-//        } else {
-//            [MBProgressHUD showInfo:@"开启推送失败"];
-//        }
+        //        if ([XGPush isUnRegisterStatus]) {
+        //            [MBProgressHUD showInfo:@"开启推送"];
+        //        } else {
+        //            [MBProgressHUD showInfo:@"开启推送失败"];
+        //        }
     } else {
         // 注销
         [self logoutDevice];
@@ -193,18 +190,19 @@
 
 - (void)logoutDevice{
     
-//    [XGPush unRegisterDevice];
-//    [XGPush setAccount:@"**"];
-//    if ([XGPush isUnRegisterStatus]) {
-//        [MBProgressHUD showInfo:@"注销设备"];
-//    }else {
-//        [MBProgressHUD showInfo:@"注销设备失败"];
-//    }
+    //    [XGPush unRegisterDevice];
+    //    [XGPush setAccount:@"**"];
+    //    if ([XGPush isUnRegisterStatus]) {
+    //        [MBProgressHUD showInfo:@"注销设备"];
+    //    }else {
+    //        [MBProgressHUD showInfo:@"注销设备失败"];
+    //    }
 }
+
 #pragma mark - 清除缓存
 -(void)clearAPP {
     [self.HUD showLoadingMessag:@"正在清理" toView:self.view];
-    BACK(^{
+    KBack_ThreadBlock(^{
         NSString *cachPath = [JTCacheManager sharedInstance].JTKitPath;
         NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
         for (NSString *p in files) {
@@ -218,7 +216,7 @@
         // 清除完，重新创建文件夹、重新创建数据库
         [[JTCacheManager sharedInstance] createDirectoryAtPath:[JTCacheManager sharedInstance].JTAppCachePath];
         [[DZDatabaseHandle Helper] openDB];
-        MAIN(^{
+        KMain_ThreadBlock(^{
             UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
             self.HUD.customView = imageView;
@@ -228,7 +226,7 @@
         sleep(2);
         [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];
     });
-
+    
 }
 // 清除缓存(清除sdWebImage的缓存)
 - (void)cleanSaveImages {
@@ -238,7 +236,6 @@
 }
 
 -(void)clearCacheSuccess {
-    
     [self.HUD hide];
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:1 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationNone];
@@ -247,18 +244,17 @@
 -(NSMutableArray *)listArray{
     if (_listArray == nil) {
         _listArray = [NSMutableArray array];
-            NSMutableArray *setArr = @[@"无图浏览模式",
-                             // @"通知中心设置",
-                                @"清除程序缓存",
-                                @"切换网站",
-                                ].mutableCopy;
-            NSArray *appArr = @[
-        //                        @"反馈问题",
-                                @"评价应用",
-                                @"分享应用"];
-            NSArray *aboutArr = @[[NSString stringWithFormat:@"关于“%@”",DZ_APPNAME],
-                                  @"服务条款"];
-            _listArray = @[setArr,appArr,aboutArr].mutableCopy;
+        NSMutableArray *setArr = @[@"无图浏览模式",
+                                   @"清除程序缓存",
+                                   @"切换网站",
+        ].mutableCopy;
+        NSArray *appArr = @[
+            @"反馈问题",
+            @"评价应用",
+            @"分享应用"];
+        NSArray *aboutArr = @[[NSString stringWithFormat:@"关于“%@”",DZ_APPNAME],
+                              @"服务条款"];
+        _listArray = @[setArr,appArr,aboutArr].mutableCopy;
     }
     return _listArray;
 }

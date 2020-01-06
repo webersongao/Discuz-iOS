@@ -12,7 +12,6 @@
 #import "DZThreadListModel.h"
 #import "DZThreadListModel+Display.h"
 #import "DZShareCenter.h"
-#import "AsyncAppendency.h"
 #import "DZThreadListCell.h"
 #import "VerifyThreadRemindView.h"
 

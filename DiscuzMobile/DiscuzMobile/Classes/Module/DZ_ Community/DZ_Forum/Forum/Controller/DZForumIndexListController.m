@@ -13,7 +13,6 @@
 #import "DZBaseTableView.h"
 #import "DZForumTool.h"
 #import "DZCollectButton.h"
-#import "AsyncAppendency.h"
 #import "DZThreadNetTool.h"
 
 #define lineTag  2018

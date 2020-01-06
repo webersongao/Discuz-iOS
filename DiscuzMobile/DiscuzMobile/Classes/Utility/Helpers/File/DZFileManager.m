@@ -80,9 +80,9 @@
 }
 
 - (void)manageCacheBackThread:(void(^)(void))backThread afterMainThread:(void(^)(void))mainThread {
-    BACK(^{
+    KBack_ThreadBlock(^{
         backThread();
-        MAIN(^{
+        KMain_ThreadBlock(^{
             mainThread();
         });
     });

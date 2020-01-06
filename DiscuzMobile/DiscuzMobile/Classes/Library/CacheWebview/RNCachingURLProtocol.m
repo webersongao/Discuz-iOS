@@ -121,7 +121,7 @@ static NSSet *RNCachingSupportedSchemes;
                 [self.client URLProtocolDidFinishLoading:self];
             } else {
                 
-                MAIN(^{
+                KMain_ThreadBlock(^{
                     [[UIImageView new] sd_setImageWithURL:self.request.URL placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                         if (error) {
                             [self.client URLProtocol:self didFailWithError:error];
