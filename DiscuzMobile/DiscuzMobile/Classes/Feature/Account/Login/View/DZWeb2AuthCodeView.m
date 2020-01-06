@@ -9,7 +9,7 @@
 #import "DZWeb2AuthCodeView.h"
 
 @interface DZWeb2AuthCodeView()<UIGestureRecognizerDelegate>
-@property (nonatomic, strong) WKWebView *webview;
+@property (nonatomic, strong) UIWebView *webview;
 @end
 
 @implementation DZWeb2AuthCodeView
@@ -22,25 +22,11 @@
 }
 
 - (void)p_setupViews {
-    self.backgroundColor = [UIColor whiteColor];
-    self.textField = [[UITextField alloc] init];
-    self.textField.placeholder = @"请输入验证码";
-    self.textField.font = [DZFontSize forumtimeFontSize14];
-    [self.textField setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:self.textField];
-    [self setHidden:YES];
-
-    self.textField.borderStyle = UITextBorderStyleRoundedRect;
     
-    self.webview = [[DZBaseWebView alloc] init];
-    self.webview.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    self.webview.userInteractionEnabled = YES;
-    [self.webview setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.webview.scrollView.scrollEnabled = NO;
-    UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesACtion)];
-    tapges.delegate = self;
-    [self.webview addGestureRecognizer:tapges];
+    self.backgroundColor = [UIColor whiteColor];
+    [self addSubview:self.textField];
     [self addSubview:self.webview];
+    [self setHidden:YES];
     
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
@@ -55,7 +41,7 @@
         int width = KScreenWidth * 0.3;
         make.width.mas_equalTo(width);
     }];
-
+    
 }
 
 -(void)loadRequestWithCodeUrl:(NSString *)urlString{
@@ -70,13 +56,10 @@
 }
 
 - (void)setHidden:(BOOL)hidden {
-    
     [super setHidden:hidden];
-    
     if (self.hidden == NO)  {
         [self.superview layoutIfNeeded];
         if (self.frame.size.height > 2) {
-
             [self.textField mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(self.frame.size.height - 16);
             }];
@@ -84,9 +67,33 @@
                 make.height.mas_equalTo(self.frame.size.height - 10);
             }];
         }
-
     }
 }
 
+
+-(UIWebView *)webview{
+    if (!_webview) {
+        _webview = [[UIWebView alloc] init];
+        _webview.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _webview.userInteractionEnabled = YES;
+        [_webview setTranslatesAutoresizingMaskIntoConstraints:NO];
+        _webview.scrollView.scrollEnabled = NO;
+        UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesACtion)];
+        tapges.delegate = self;
+        [_webview addGestureRecognizer:tapges];
+    }
+    return _webview;
+}
+
+-(UITextField *)textField{
+    if (!_textField) {
+        _textField = [[UITextField alloc] init];
+        _textField.placeholder = @"请输入验证码";
+        _textField.font = [DZFontSize forumtimeFontSize14];
+        [_textField setTranslatesAutoresizingMaskIntoConstraints:NO];
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+    }
+    return _textField;
+}
 
 @end
