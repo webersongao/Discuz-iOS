@@ -33,6 +33,7 @@
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 
+#define kMargin5   5.0
 #define kMargin10   10.0
 #define kMargin15   15.0
 #define kMargin20   20.0

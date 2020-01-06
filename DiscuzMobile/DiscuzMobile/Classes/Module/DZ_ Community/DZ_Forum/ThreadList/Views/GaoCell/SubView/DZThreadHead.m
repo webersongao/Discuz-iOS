@@ -51,7 +51,7 @@
     self.tagView.frame = layout.tagFrame;
     self.timeLabel.frame = layout.timeFrame;
     
-    self.IconButton.layer.cornerRadius = self.IconButton.width/2.f;
+    self.IconButton.layer.cornerRadius = 7.5f;//self.IconButton.width/2.f;
     self.IconButton.clipsToBounds = YES;
 }
 

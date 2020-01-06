@@ -50,6 +50,7 @@
         [self.forumVC listStyleChangeWithBarClick:m_isList];
         self.switchButton.imageView.transform = CGAffineTransformMakeRotation((m_isList ? M_PI : 0));
         [self.switchButton setTitle:(m_isList ? @"列表模式" : @"九宫格模式") forState:UIControlStateNormal];
+        [_switchButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageRight imageTitleSpace:8.f];
     }
 }
 
@@ -86,10 +87,10 @@
 -(UIButton *)switchButton{
     if (_switchButton == nil) {
         _switchButton = [UIButton ButtonNormalWithFrame:CGRectMake((KScreenWidth - 120)/2.f, KNavi_ContainStatusBar_Height - kToolBarHeight, 120, kToolBarHeight) title:@"九宫格模式" titleFont:KBoldFont(16.f) titleColor:[UIColor orangeColor] normalImgPath:@"manu_downarr" touchImgPath:@"manu_downarr" isBackImage:NO];
-        [_switchButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageRight imageTitleSpace:5.f];
+        [_switchButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageRight imageTitleSpace:8.f];
         [_switchButton addTarget:self action:@selector(switchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _switchButton.backgroundColor = [UIColor whiteColor];
-        _switchButton.layer.cornerRadius = 3.f;
+        _switchButton.layer.cornerRadius = kToolBarHeight/2.f;
         _switchButton.clipsToBounds = YES;
         _switchButton.alpha = 0;
     }
