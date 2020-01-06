@@ -40,9 +40,6 @@
     self.gradeLabel.text = Model.gradeName;
     [self.IconButton sd_setImageWithURL:[NSURL URLWithString:Model.avatar] forState:UIControlStateNormal];
     
-    self.IconButton.layer.cornerRadius = self.IconButton.width/2.f;
-    self.IconButton.clipsToBounds = YES;
-    
     [self layoutCellHead:Model.listLayout.headLayout];
 }
 
@@ -54,6 +51,8 @@
     self.tagView.frame = layout.tagFrame;
     self.timeLabel.frame = layout.timeFrame;
     
+    self.IconButton.layer.cornerRadius = self.IconButton.width/2.f;
+    self.IconButton.clipsToBounds = YES;
 }
 
 - (UIButton *)IconButton{
