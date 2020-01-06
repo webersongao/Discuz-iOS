@@ -9,7 +9,7 @@
 #import "DZBaseVarModel.h"
 #import "DZThreadListModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DZHomeVarModel : DZBaseVarModel
 
@@ -17,4 +17,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+

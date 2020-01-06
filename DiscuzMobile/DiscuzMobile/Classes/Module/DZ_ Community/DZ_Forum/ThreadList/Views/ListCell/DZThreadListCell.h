@@ -17,8 +17,8 @@
 @property (nonatomic, strong,readonly) DZThreadListModel *cellModel;  //!< 属性注释
 
 -(void)configThreadCellManager;
-/// @param isTop 是否 置顶帖
-- (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop;
+
+- (void)updateThreadListCell:(DZThreadListModel *)Model;
 
 
 @end

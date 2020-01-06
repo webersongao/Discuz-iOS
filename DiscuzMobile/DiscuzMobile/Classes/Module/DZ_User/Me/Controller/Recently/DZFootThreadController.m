@@ -108,7 +108,7 @@
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toOtherCenter:)];
     cell.headV.tag = [model.authorid integerValue];
     [cell.headV addGestureRecognizer:tapGes];
-    [cell updateThreadCell:model];
+    [cell updateFootListCell:model];
     
     return cell;
 }

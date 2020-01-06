@@ -23,7 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self cofigThreadAttach];
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = KColor(KLine_Color, 1.0);
     }
     return self;
 }

@@ -267,7 +267,7 @@
     
     DZThreadListCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:@"DZThreadListCell" forIndexPath:indexPath];
     
-    [listCell updateThreadCell:listModel isTop:((indexPath.section == 0) ? YES : NO)];
+    [listCell updateThreadListCell:listModel];
     
     return listCell;
 }

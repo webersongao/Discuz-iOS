@@ -1,0 +1,85 @@
+//
+//  DZThreadBottomBar.m
+//  DiscuzMobile
+//
+//  Created by WebersonGao on 2020/1/6.
+//  Copyright © 2020 comsenz-service.com. All rights reserved.
+//
+
+#import "DZThreadBottomBar.h"
+#import "DZThreadListModel.h"
+
+@interface DZThreadBottomBar ()
+
+@property (nonatomic, strong) UIButton *ViewButton;  //!< 浏览数
+@property (nonatomic, strong) UIButton *replyButton;  //!< 回复数
+@property (nonatomic, strong) UIView *sepLine;  //!< 分割线
+@end
+
+@implementation DZThreadBottomBar
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addSubview:self.zanButton];
+        [self addSubview:self.ViewButton];
+        [self addSubview:self.replyButton];
+        [self addSubview:self.sepLine];
+    }
+    return self;
+}
+
+- (void)updateThreadBottomBar:(DZThreadListModel *)Model{
+    
+    [self.ViewButton setTitle:checkTwoStr(@"浏览：", Model.views) forState:UIControlStateNormal];
+    [self.replyButton setTitle:checkTwoStr(@"回复：", Model.replies) forState:UIControlStateNormal];
+    [self.zanButton setTitle:checkTwoStr(@"点赞：", Model.recommend_add) forState:UIControlStateNormal];
+    
+    self.zanButton.selected = [Model.recommend isEqualToString:@"1"];
+    self.zanButton.enabled = [Model.recommend isEqualToString:@"1"] ? NO : YES;
+    
+    [self layoutCellBottomBar:Model.listLayout.bottomLayout];
+}
+
+-(void)layoutCellBottomBar:(DZTHBottomLayout *)layout{
+    
+    self.ViewButton.frame = layout.viewFrame;
+    self.replyButton.frame = layout.replyFrame;
+    self.zanButton.frame = layout.zanFrame;
+    
+}
+
+- (UIButton *)ViewButton{
+    if (!_ViewButton) {
+        _ViewButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"浏览: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_see" touchImgPath:@"list_see" isBackImage:NO];
+        [_ViewButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
+    }
+    return _ViewButton;
+}
+
+- (UIButton *)replyButton{
+    if (!_replyButton) {
+        _replyButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"回复: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_message" touchImgPath:@"list_message" isBackImage:NO];
+        [_replyButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
+    }
+    return _replyButton;
+}
+
+- (UIButton *)zanButton{
+    if (!_zanButton) {
+        _zanButton = [UIButton ButtonNormalWithFrame:CGRectZero title:@"点赞: -" titleFont:KFont(12) titleColor:KColor(K2A2C2F_Color, 1.0) normalImgPath:@"list_zan" touchImgPath:@"list_zan_high" isBackImage:NO];
+        [_zanButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageLeft imageTitleSpace:5];
+    }
+    return _zanButton;
+}
+
+-(UIView *)sepLine{
+    if (!_sepLine) {
+        _sepLine = [[UIView alloc] init];
+        _sepLine.backgroundColor = KColor(KLine_Color, 1.0);
+    }
+    return _sepLine;
+}
+
+@end

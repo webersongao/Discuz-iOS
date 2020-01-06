@@ -41,10 +41,9 @@
 }
 
 
-/// @param isTop 是否 置顶帖
-- (void)updateThreadCell:(DZThreadListModel *)Model isTop:(BOOL)isTop{
+- (void)updateThreadListCell:(DZThreadListModel *)Model{
     _cellModel = Model;
-    [self.cellView updateThreadView:Model isTop:isTop];
+    [self.cellView updateThreadCellView:Model];
 }
 
 

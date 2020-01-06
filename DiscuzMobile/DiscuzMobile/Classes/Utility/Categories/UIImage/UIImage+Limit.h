@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface UIImage (Limit)
 
@@ -24,4 +24,4 @@ NS_ASSUME_NONNULL_BEGIN
                height:(CGFloat)height rotate:(BOOL)rotate;
 @end
 
-NS_ASSUME_NONNULL_END
+

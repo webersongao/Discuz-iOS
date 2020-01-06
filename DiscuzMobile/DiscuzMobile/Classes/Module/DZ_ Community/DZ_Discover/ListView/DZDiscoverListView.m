@@ -48,7 +48,7 @@
     DZThreadListModel *cellModel  = self.dataArray[indexPath.section][indexPath.row];
     DZThreadListCell *listCell = [tableView dequeueReusableCellWithIdentifier:@"DZThreadListCell" forIndexPath:indexPath];
     
-    [listCell updateThreadCell:cellModel isTop:((indexPath.section == 0) ? YES : NO)];
+    [listCell updateThreadListCell:cellModel];
     return listCell;
 }
 

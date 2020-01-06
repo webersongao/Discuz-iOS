@@ -60,7 +60,7 @@
     
 }
 
-- (void)updateThreadCell:(DZThreadListModel *)info {
+- (void)updateFootListCell:(DZThreadListModel *)info {
     
     _info = info;
     

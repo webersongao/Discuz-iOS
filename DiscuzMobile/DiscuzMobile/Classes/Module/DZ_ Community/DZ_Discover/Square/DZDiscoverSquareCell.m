@@ -31,7 +31,7 @@
 
 - (void)updateThreadInnerCell:(DZThreadListModel *)Model isTop:(BOOL)isTop{
     
-    [self.cellView updateThreadView:Model isTop:isTop];
+    [self.cellView updateThreadCellView:Model];
 }
 
 

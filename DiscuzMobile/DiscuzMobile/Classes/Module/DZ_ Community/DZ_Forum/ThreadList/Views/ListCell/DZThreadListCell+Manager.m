@@ -12,9 +12,9 @@
 @implementation DZThreadListCell (Manager)
 
 -(void)configThreadCellManager{
-    [self.cellView.IconButton addTarget:self action:@selector(IconButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cellView.headerView.IconButton addTarget:self action:@selector(IconButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.cellView.zanButton addTarget:self action:@selector(zanButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cellView.bottomBarView.zanButton addTarget:self action:@selector(zanButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 // 点击头像
@@ -51,14 +51,14 @@
 
 - (void)resetPraise:(BOOL)isSuccess {
     
-    self.cellView.zanButton.selected = isSuccess;
+    self.cellView.bottomBarView.zanButton.selected = isSuccess;
     self.cellModel.recommend = isSuccess ? @"1" : @"0";
     if (isSuccess) {
-        self.cellModel.recommend_add = [NSString stringWithFormat:@"%d",[self.cellModel.recommend_add integerValue] + 1];
+        self.cellModel.recommend_add = [NSString stringWithFormat:@"%ld",[self.cellModel.recommend_add integerValue] + 1];
     }else{
-        self.cellView.zanButton.enabled = YES;
+        self.cellView.bottomBarView.zanButton.enabled = YES;
     }
-    [self.cellView.zanButton setTitle:checkTwoStr(@"点赞：", self.cellModel.recommend_add) forState:UIControlStateNormal];
+    [self.cellView.bottomBarView.zanButton setTitle:checkTwoStr(@"点赞：", self.cellModel.recommend_add) forState:UIControlStateNormal];
 }
 
 

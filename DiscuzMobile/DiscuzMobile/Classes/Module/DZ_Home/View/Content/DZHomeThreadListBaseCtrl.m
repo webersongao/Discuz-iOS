@@ -125,7 +125,7 @@
     DZThreadListModel *listModel = self.dataSourceArr[indexPath.row];
     DZThreadListCell * listCell = [self.tableView dequeueReusableCellWithIdentifier:[DZThreadListCell getReuseId] forIndexPath:indexPath];
     
-    [listCell updateThreadCell:[listModel dealSpecialThread] isTop:NO];
+    [listCell updateThreadListCell:[listModel dealSpecialThread]];
     
     return listCell;
 }

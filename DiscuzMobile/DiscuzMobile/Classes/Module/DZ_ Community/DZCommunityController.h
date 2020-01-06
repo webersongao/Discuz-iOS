@@ -8,10 +8,10 @@
 
 #import "DZBaseViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DZCommunityController : DZBaseViewController
 
 @end
 
-NS_ASSUME_NONNULL_END
+

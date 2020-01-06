@@ -27,7 +27,7 @@
 
 - (CGFloat)cellHeight;
 
-- (void)updateThreadCell:(DZThreadListModel *)info;
+- (void)updateFootListCell:(DZThreadListModel *)info;
 
 
 

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "DZThreadListModel.h"
+#import "DZThreadListModel+Display.h"
 #import "DZAttachModel.h"
 
 @implementation DZThreadListModel
@@ -124,8 +124,9 @@
 }
 
 -(void)updateThreadModelLayout{
-    self.listLayout = [[DZThreadLayout alloc] initWithModel:self isList:YES];
-    self.squareLayout = [[DZThreadLayout alloc] initWithModel:self isList:NO];
+    BOOL isCellTop = [self isTopThread];
+    self.listLayout = [[DZThreadLayout alloc] initWithModel:self isList:YES isTop:isCellTop];
+    self.squareLayout = [[DZThreadLayout alloc] initWithModel:self isList:NO isTop:isCellTop];
 }
 
 @end
