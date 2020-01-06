@@ -1,5 +1,5 @@
 //
-//  ThreadModel.h
+//  DZThreadModel.h
 //  DiscuzMobile
 //
 //  Created by HB on 17/3/7.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DZPostVarModel.h"
 
-@interface ThreadModel : NSObject
+@interface DZThreadModel : NSObject
 
 @property (nonatomic, copy, readonly) NSString *subject;
 @property (nonatomic, copy, readonly) NSString *dateline;

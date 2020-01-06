@@ -1,16 +1,16 @@
 //
-//  ThreadModel.m
+//  DZThreadModel.m
 //  DiscuzMobile
 //
 //  Created by HB on 17/3/7.
 //  Copyright © 2017年 comsenz-service.com.  All rights reserved.
 //
 
-#import "ThreadModel.h"
+#import "DZThreadModel.h"
 #import "DZThreadListModel.h"
 
 
-@implementation ThreadModel
+@implementation DZThreadModel
 
 - (void)updateModel:(DZPosResModel *)resModel res:(NSDictionary *)resDict
 {

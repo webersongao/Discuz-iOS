@@ -9,7 +9,7 @@
 #import "DZMobileCtrl.h"
 
 @class PmTypeModel;
-@class ThreadModel;
+@class DZThreadModel;
 @class DZBaseAuthModel;
 @interface DZMobileCtrl (Navi)
 
@@ -101,10 +101,10 @@
 -(void)PushToVisitVotersController:(NSString *)tidStr;
 
 /// 参加活动
-- (void)PushToPartInActivityController:(ThreadModel *)threadModel;
+- (void)PushToPartInActivityController:(DZThreadModel *)threadModel;
 
 /// 活动编辑
-- (void)PushToActivityEditController:(ThreadModel *)threadModel;
+- (void)PushToActivityEditController:(DZThreadModel *)threadModel;
 
 /// 我的子帖主题列表
 - (void)PushToMyMsgSubListController:(NSString *)title Model:(PmTypeModel *)typeModel;

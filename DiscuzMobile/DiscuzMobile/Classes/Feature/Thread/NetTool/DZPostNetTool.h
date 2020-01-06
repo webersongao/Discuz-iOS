@@ -10,7 +10,7 @@
 #import "DZBaseAuthModel.h"
 #import "DZPostVarModel.h"
 #import "DZPollVarModel.h"
-#import "ThreadModel.h"
+#import "DZThreadModel.h"
 
 typedef NS_ENUM(NSUInteger, DZAttacheType) {
     DZAttacheImage,
@@ -54,7 +54,7 @@ typedef NS_ENUM(NSUInteger, DZAttacheType) {
 + (void)DZ_PublistPostThread:(NSString *)fid postDict:(NSDictionary *)postDict completion:(void(^)(DZBaseResModel *resModel,NSString *tidStr,NSError *error))completion;
 
 /// 取消活动
-+ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(ThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
++ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(DZThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion;
 
 
 /// 发布帖子 回复（回帖）

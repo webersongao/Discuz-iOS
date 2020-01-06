@@ -15,7 +15,7 @@
 #import "DZViewPollPotionNumController.h"
 
 #import "ThreadDetailView.h"
-#import "ThreadModel.h"
+#import "DZThreadModel.h"
 #import "DZSecVerifyView.h"
 #import "DZForumTool.h"
 #import "WSImageModel.h"
@@ -43,7 +43,7 @@
 
 // 验证码
 @property (nonatomic, copy) NSString *preSalkey;
-@property (nonatomic, strong) ThreadModel *threadModel;
+@property (nonatomic, strong) DZThreadModel *threadModel;
 @property (nonatomic, strong) DZSecVerifyView *verifyView;
 
 @end
@@ -752,9 +752,9 @@
     return _verifyView;
 }
 
-- (ThreadModel *)threadModel {
+- (DZThreadModel *)threadModel {
     if (!_threadModel) {
-        _threadModel = [[ThreadModel alloc] init];
+        _threadModel = [[DZThreadModel alloc] init];
     }
     return _threadModel;
 }

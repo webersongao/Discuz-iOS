@@ -244,7 +244,7 @@
 		706212D0237936C900130B9D /* DZViewPollPotionNumController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621175237936C800130B9D /* DZViewPollPotionNumController.m */; };
 		706212D1237936C900130B9D /* ParInActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062117A237936C800130B9D /* ParInActiveModel.m */; };
 		706212D3237936C900130B9D /* ApplyActiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062117C237936C800130B9D /* ApplyActiver.m */; };
-		706212D4237936C900130B9D /* ThreadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062117D237936C800130B9D /* ThreadModel.m */; };
+		706212D4237936C900130B9D /* DZThreadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7062117D237936C800130B9D /* DZThreadModel.m */; };
 		706212D5237936C900130B9D /* ActivityApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621184237936C800130B9D /* ActivityApplyCell.m */; };
 		706212D6237936C900130B9D /* PartInMultiSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621185237936C800130B9D /* PartInMultiSelectCell.m */; };
 		706212D7237936C900130B9D /* ExamineActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70621186237936C800130B9D /* ExamineActivityView.m */; };
@@ -943,11 +943,11 @@
 		70621173237936C800130B9D /* DZActivityEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZActivityEditController.m; sourceTree = "<group>"; };
 		70621174237936C800130B9D /* DZThreadDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadDetailController.m; sourceTree = "<group>"; };
 		70621175237936C800130B9D /* DZViewPollPotionNumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZViewPollPotionNumController.m; sourceTree = "<group>"; };
-		70621178237936C800130B9D /* ThreadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadModel.h; sourceTree = "<group>"; };
+		70621178237936C800130B9D /* DZThreadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZThreadModel.h; sourceTree = "<group>"; };
 		70621179237936C800130B9D /* ApplyActiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyActiver.h; sourceTree = "<group>"; };
 		7062117A237936C800130B9D /* ParInActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParInActiveModel.m; sourceTree = "<group>"; };
 		7062117C237936C800130B9D /* ApplyActiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyActiver.m; sourceTree = "<group>"; };
-		7062117D237936C800130B9D /* ThreadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreadModel.m; sourceTree = "<group>"; };
+		7062117D237936C800130B9D /* DZThreadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZThreadModel.m; sourceTree = "<group>"; };
 		7062117E237936C800130B9D /* ParInActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParInActiveModel.h; sourceTree = "<group>"; };
 		70621180237936C800130B9D /* ViewPollpotionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPollpotionCell.h; sourceTree = "<group>"; };
 		70621181237936C800130B9D /* PartInNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartInNormalCell.h; sourceTree = "<group>"; };
@@ -2660,8 +2660,8 @@
 			children = (
 				70621179237936C800130B9D /* ApplyActiver.h */,
 				7062117C237936C800130B9D /* ApplyActiver.m */,
-				70621178237936C800130B9D /* ThreadModel.h */,
-				7062117D237936C800130B9D /* ThreadModel.m */,
+				70621178237936C800130B9D /* DZThreadModel.h */,
+				7062117D237936C800130B9D /* DZThreadModel.m */,
 				7062117E237936C800130B9D /* ParInActiveModel.h */,
 				7062117A237936C800130B9D /* ParInActiveModel.m */,
 				70E5191F239F8E4600BFC238 /* DZPollVarModel.h */,
@@ -4812,7 +4812,7 @@
 				706212CF237936C900130B9D /* DZThreadDetailController.m in Sources */,
 				70DFD7A1237A95DE00A13F0F /* DZBaseDTCell.m in Sources */,
 				70FBDD2B2383FDC400FC296E /* DZHomeCollectionView.m in Sources */,
-				706212D4237936C900130B9D /* ThreadModel.m in Sources */,
+				706212D4237936C900130B9D /* DZThreadModel.m in Sources */,
 				7002A3632383D8CD00BC0C61 /* DZSendMsgViewController.m in Sources */,
 				27D7E0A01E07829E00A933D5 /* DZPushCenter.m in Sources */,
 				70EA90B123BA05A400814952 /* WebLogicManager.mm in Sources */,

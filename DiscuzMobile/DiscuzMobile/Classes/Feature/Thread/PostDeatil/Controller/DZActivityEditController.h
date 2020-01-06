@@ -7,10 +7,10 @@
 //
 
 #import "DZBaseTableViewController.h"
-#import "ThreadModel.h"
+#import "DZThreadModel.h"
 
 @interface DZActivityEditController : DZBaseTableViewController
 
-@property (nonatomic, strong) ThreadModel *threadModel;
+@property (nonatomic, strong) DZThreadModel *threadModel;
 
 @end

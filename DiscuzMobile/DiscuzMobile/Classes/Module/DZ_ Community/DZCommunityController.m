@@ -35,6 +35,7 @@
     [self.view addSubview:self.discoverVC.view];
     
     [self dz_bringNavigationBarToFront];
+    [self.dz_NavigationBar addSubview:self.switchButton];
     [self configNaviBar:@"切换" type:NaviItemText Direction:NaviDirectionLeft];
     [self configNaviBar:@"bar_search" type:NaviItemImage Direction:NaviDirectionRight];
 }
@@ -59,14 +60,18 @@
             [weakSelf.forumVC.view removeFromSuperview];
             [weakSelf.view addSubview:weakSelf.discoverVC.view];
         } completion:^(BOOL finished) {
-            [self.switchButton removeFromSuperview];
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.switchButton.alpha = 0;
+            }];
         }];
     }else{
         [weakSelf transitionFromViewController:self.discoverVC toViewController:self.forumVC duration:0.35 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
             [weakSelf.discoverVC.view removeFromSuperview];
             [weakSelf.view addSubview:weakSelf.forumVC.view];
         } completion:^(BOOL finished) {
-            [weakSelf dz_SetNavigationTitleView:weakSelf.switchButton];
+            [UIView animateWithDuration:0.25 animations:^{
+                weakSelf.switchButton.alpha = 1;
+            }];
         }];
     }
     m_isForum = !m_isForum;
@@ -80,9 +85,13 @@
 
 -(UIButton *)switchButton{
     if (_switchButton == nil) {
-        _switchButton = [UIButton ButtonNormalWithFrame:CGRectMake((KScreenWidth - 120)/2.f, KNavigation_Bar_Height - kToolBarHeight, 120, kToolBarHeight) title:@"九宫格模式" titleFont:KBoldFont(16.f) titleColor:[UIColor orangeColor] normalImgPath:@"manu_downarr" touchImgPath:@"manu_downarr" isBackImage:NO];
+        _switchButton = [UIButton ButtonNormalWithFrame:CGRectMake((KScreenWidth - 120)/2.f, KNavi_ContainStatusBar_Height - kToolBarHeight, 120, kToolBarHeight) title:@"九宫格模式" titleFont:KBoldFont(16.f) titleColor:[UIColor orangeColor] normalImgPath:@"manu_downarr" touchImgPath:@"manu_downarr" isBackImage:NO];
         [_switchButton layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsImageRight imageTitleSpace:5.f];
         [_switchButton addTarget:self action:@selector(switchButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        _switchButton.backgroundColor = [UIColor whiteColor];
+        _switchButton.layer.cornerRadius = 3.f;
+        _switchButton.clipsToBounds = YES;
+        _switchButton.alpha = 0;
     }
     return _switchButton;
 }

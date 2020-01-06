@@ -231,7 +231,7 @@
 
 
 /// 取消活动
-+ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(ThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
++ (void)DZ_CancelPostedActivity:(NSString *)tid Thread:(DZThreadModel *)threadModel completion:(void(^)(DZBaseResModel *resModel,NSError *error))completion{
     
     if (!tid.length || !threadModel || !completion) {
         return;

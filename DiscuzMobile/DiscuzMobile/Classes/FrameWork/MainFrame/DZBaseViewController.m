@@ -183,11 +183,10 @@
 }
 
 - (void)endFullScreen:(NSNotification *)noti {
-    UIWindow * win = (UIWindow *)noti.object;
-    if(win){
-        UIViewController *rootVC = win.rootViewController;
-        NSArray<__kindof UIViewController *> *vcs = rootVC.childViewControllers;
-        if([vcs.firstObject isKindOfClass:NSClassFromString(@"AVPlayerViewController")]){
+    UIWindow * window = (UIWindow *)noti.object;
+    if(window && [window isKindOfClass:[UIWindow class]]){
+        UIViewController *rootVC = window.rootViewController.childViewControllers.firstObject;
+        if([rootVC isKindOfClass:NSClassFromString(@"AVPlayerViewController")]){
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
         }
     }

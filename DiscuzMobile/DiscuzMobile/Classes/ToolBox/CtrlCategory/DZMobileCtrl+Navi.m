@@ -263,7 +263,7 @@
 }
 
 // 活动编辑
-- (void)PushToActivityEditController:(ThreadModel *)threadModel {
+- (void)PushToActivityEditController:(DZThreadModel *)threadModel {
     DZActivityEditController *mgActive = [[DZActivityEditController alloc] init];
     mgActive.threadModel = threadModel;
     [self.mainNavi pushViewController:mgActive animated:YES];
@@ -284,7 +284,7 @@
 }
 
 /// 参加活动
-- (void)PushToPartInActivityController:(ThreadModel *)threadModel {
+- (void)PushToPartInActivityController:(DZThreadModel *)threadModel {
     DZPartInActivityController * partinVc = [[DZPartInActivityController alloc]init];
     partinVc.threadModel = threadModel;
     [self.mainNavi pushViewController:partinVc animated:YES];
