@@ -9,16 +9,14 @@
 #import "DZThreadDetailController.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
-#import "DZForumTool.h"
-#import "DZPostNetTool.h"
-#import "DZThreadTool.h"
-#import "DZViewPollPotionNumController.h"
 
 #import "ThreadDetailView.h"
-#import "DZThreadModel.h"
 #import "DZSecVerifyView.h"
-#import "DZForumTool.h"
+#import "DZThreadModel.h"
+#import "DZPostNetTool.h"
+#import "DZThreadTool.h"
 #import "WSImageModel.h"
+#import "DZForumTool.h"
 #import "DZDevice.h"
 
 #import "DZShareCenter.h"
@@ -603,7 +601,6 @@
                 }
                 self.threadModel.isRequest = NO;
             }
-            // webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
             [self.HUD hide];
         }
     }
