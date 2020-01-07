@@ -9,16 +9,14 @@
 #import "DZThreadDetailController.h"
 #import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
-#import "DZForumTool.h"
-#import "DZPostNetTool.h"
-#import "DZThreadTool.h"
-#import "DZViewPollPotionNumController.h"
 
 #import "ThreadDetailView.h"
-#import "DZThreadModel.h"
 #import "DZSecVerifyView.h"
-#import "DZForumTool.h"
+#import "DZThreadModel.h"
+#import "DZPostNetTool.h"
+#import "DZThreadTool.h"
 #import "WSImageModel.h"
+#import "DZForumTool.h"
 #import "DZDevice.h"
 
 #import "DZShareCenter.h"
@@ -80,7 +78,7 @@
     [self.detailView.emoKeyboard hideCustomerKeyBoard];
 }
 
--(void)handlePinches:(UIPinchGestureRecognizer *)paramSender {
+-(void)handlePinchAction:(UIPinchGestureRecognizer *)paramSender {
     if(paramSender.state == UIGestureRecognizerStateEnded) {
         self.currentScale = paramSender.scale;
         self.detailView.webView.scrollView.zoomScale = self.currentScale;
@@ -418,7 +416,6 @@
             [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
             self.threadModel.recommend = @"1";
             [self.detailView.webView evaluateJavaScript:@"onPraiseSuccess()" completionHandler:nil];
-            //  [self.detailView.webView stringByEvaluatingJavaScriptFromString:@"onPraiseSuccess()"];
         } failureBlock:^(NSError *error) {
             [self.HUD hide];
             [self showServerError:error];
@@ -553,13 +550,11 @@
                     [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                     return;
                 }
-                
                 // 下一页json字符串
                 NSString *addJsonStr= [[NSString alloc] initWithData:self.threadModel.jsonData encoding:NSUTF8StringEncoding];
                 // 加载评论 true 是否时分页
                 [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr] completionHandler:nil];
-                //  [self.detailView.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr]];
-                if(self.threadModel.replies  < self.threadModel.ppp * (_currentPageId)){
+                if(self.threadModel.replies  < self.threadModel.ppp * (self->_currentPageId)){
                     if (self.currentPageId > 0) {
                         [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                         self.currentPageId --;
@@ -598,17 +593,14 @@
                 activitie= YES;
             }
             if (self.threadModel.isRequest == YES) {
-                NSString *noimage = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
+                NSString *isNoimgMode = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
                 if (activitie) {
-                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",noimage] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",noimage]];
+                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",isNoimgMode] completionHandler:nil];
                 }else {
-                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,noimage] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,noimage]];
+                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,isNoimgMode] completionHandler:nil];
                 }
                 self.threadModel.isRequest = NO;
             }
-            //            webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
             [self.HUD hide];
         }
     }
@@ -695,8 +687,6 @@
                             if (self.threadModel.replies + 1 < self.threadModel.ppp - 1) {
                                 //  [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid] completionHandler:nil];
                                 //  [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData] completionHandler:nil];
-                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid]];
-                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData]];
                                 [self newDownLoadData];
                             }
                         }
@@ -765,7 +755,7 @@
         // 设置代理
         _detailView.webView.navigationDelegate = self;
         _detailView.webView.scrollView.delegate = self;
-        UIGestureRecognizer *gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinches:)];
+        UIPinchGestureRecognizer *gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchAction:)];
         [_detailView.webView addGestureRecognizer:gestureRecognizer];
         UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
         tapges.delegate = self;

@@ -12,10 +12,10 @@
 
 @implementation DZThreadModel
 
-- (void)updateModel:(DZPosResModel *)resModel res:(NSDictionary *)resDict
+- (void)updateModel:(DZPosResModel *)resModel res:(NSDictionary *)oriResDict
 {
     [self updateVarPost:resModel];
-    [self updateResDict:resDict];
+    [self updateResDict:oriResDict];
 }
 
 // MARK: - 通过这个set方法获取所有的model参数

@@ -15,12 +15,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commitInit];
+        [self configEmptyView];
     }
     return self;
 }
 
-- (void)commitInit {
+- (void)configEmptyView {
     
     self.backgroundColor = [UIColor whiteColor];
     self.emptyIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:DZ_EMPTYIMAGE]];

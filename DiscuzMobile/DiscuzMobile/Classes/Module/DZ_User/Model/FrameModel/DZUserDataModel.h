@@ -23,6 +23,6 @@ typedef NS_ENUM(NSUInteger, JTCenterType) {
 
 - (instancetype)initWithType:(JTCenterType)type;
 
--(void)updateModel:(DZUserVarModel *)VarModel;
+-(void)updateUserDataModel:(DZUserVarModel *)VarModel;
 
 @end

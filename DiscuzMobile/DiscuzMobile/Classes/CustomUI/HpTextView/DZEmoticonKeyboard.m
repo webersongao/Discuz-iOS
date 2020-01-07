@@ -195,26 +195,25 @@ static const NSInteger RowFaceCount = 9;
         return;
     }
     
+    KWEAKSELF
     if (self.imageboaudIsShow) {
         if (self.isSwitch) { // 点击表情切换按钮后，已经处理过了不让它处理frame
             self.isSwitch = NO;
         } else {
-            KWEAKSELF
             self.imageboaudIsShow = NO;
             [WBEmoticonInputView sharedView].hidden = YES;
             [UIView animateWithDuration:BShowTime animations:^{
-                self.frame = CGRectMake(0, KScreenHeight - (m_keyboardHeight + m_TextBarHeight + self.ChangeHeight), KScreenWidth, m_keyboardHeight + m_TextBarHeight + self.ChangeHeight);
+                weakSelf.frame = CGRectMake(0, KScreenHeight - (m_keyboardHeight + m_TextBarHeight + self.ChangeHeight), KScreenWidth, m_keyboardHeight + m_TextBarHeight + self.ChangeHeight);
                 CGRect textbarRect = self.textBarView.frame;
-                self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, textbarRect.size.height);
-                self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - m_keyboardHeight,KScreenWidth, m_keyboardHeight);
+                weakSelf.textBarView.frame = CGRectMake(0, 0, KScreenWidth, textbarRect.size.height);
+                weakSelf.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - m_keyboardHeight,KScreenWidth, m_keyboardHeight);
             }];
         }
-        
     } else {
         [UIView animateWithDuration:BShowTime animations:^{
-            self.frame = CGRectMake(0, KScreenHeight - CGRectGetHeight(self.textBarView.frame), KScreenWidth, CGRectGetHeight(self.textBarView.frame));
-            self.textBarView.frame = CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(self.textBarView.frame));
-            self.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame),KScreenWidth, m_keyboardHeight);
+            weakSelf.frame = CGRectMake(0, KScreenHeight - CGRectGetHeight(weakSelf.textBarView.frame), KScreenWidth, CGRectGetHeight(self.textBarView.frame));
+            weakSelf.textBarView.frame = CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(self.textBarView.frame));
+            weakSelf.contentView.frame = CGRectMake(0, CGRectGetHeight(self.frame),KScreenWidth, m_keyboardHeight);
         }];
     }
 }

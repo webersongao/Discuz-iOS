@@ -28,7 +28,7 @@
 		placeholder.layer.borderWidth = 1;
 		placeholder.userInteractionEnabled = NO;
 		[self addSubview:placeholder];
-		UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCell:)];
+		UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCellAction:)];
 		[self addGestureRecognizer:tap];
     }
     return self;
@@ -74,7 +74,7 @@
 	}
 }
 
-- (void)tapCell:(UITapGestureRecognizer *)tap{
+- (void)tapCellAction:(UITapGestureRecognizer *)tap{
 	CGPoint location = [tap locationInView:self];
 	if (CGRectContainsPoint(CGRectMake(placeholder.frame.origin.x-5, placeholder.frame.origin.y-5, placeholder.frame.size.width+10, placeholder.frame.size.height+10), location)) {
 		if (self.numOfSelect==nil&&ASSETHELPER.selectdPhotos.count>= ASSETHELPER.maxCount) {

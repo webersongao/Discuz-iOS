@@ -72,7 +72,7 @@
 
 
 -(void)reloadUserInfo:(DZUserVarModel *)VarModel{
-    [self.otherModel updateModel:VarModel];
+    [self.otherModel updateUserDataModel:VarModel];
     
     [self.otherListView updateUserTableView:self.otherModel];
     
