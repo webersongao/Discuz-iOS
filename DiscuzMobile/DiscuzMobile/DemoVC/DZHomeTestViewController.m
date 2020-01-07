@@ -134,8 +134,7 @@
 
 // 账号 自动登录
 - (IBAction)userAutoLoginAction:(UIButton *)sender {
-    DZCommunityController *areaVC = [[DZCommunityController alloc] init];
-    [[DZMobileCtrl sharedCtrl] PushToController:areaVC];
+    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:@"62"];
 }
 
 

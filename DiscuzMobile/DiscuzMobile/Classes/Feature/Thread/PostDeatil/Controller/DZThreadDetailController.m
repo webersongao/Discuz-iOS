@@ -553,13 +553,12 @@
                     [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                     return;
                 }
-                
                 // 下一页json字符串
                 NSString *addJsonStr= [[NSString alloc] initWithData:self.threadModel.jsonData encoding:NSUTF8StringEncoding];
                 // 加载评论 true 是否时分页
                 [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr] completionHandler:nil];
                 //  [self.detailView.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr]];
-                if(self.threadModel.replies  < self.threadModel.ppp * (_currentPageId)){
+                if(self.threadModel.replies  < self.threadModel.ppp * (self->_currentPageId)){
                     if (self.currentPageId > 0) {
                         [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                         self.currentPageId --;
@@ -598,17 +597,17 @@
                 activitie= YES;
             }
             if (self.threadModel.isRequest == YES) {
-                NSString *noimage = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
+                NSString *isNoimgMode = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
                 if (activitie) {
-                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",noimage] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",noimage]];
+                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",isNoimgMode] completionHandler:nil];
+                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",isNoimgMode]];
                 }else {
-                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,noimage] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,noimage]];
+                    [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,isNoimgMode] completionHandler:nil];
+                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,isNoimgMode]];
                 }
                 self.threadModel.isRequest = NO;
             }
-            //            webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
+            // webView.frame = CGRectMake(0, 0, KScreenWidth, KScreenHeight - 50);
             [self.HUD hide];
         }
     }

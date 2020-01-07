@@ -13,10 +13,6 @@
 
 @interface DZViewPollPotionController()<ViewPollpotionCellDelegate>
 
-@property (strong,nonatomic)UITableView *tableview;
-@property (strong,nonatomic)NSArray *array;
-@property (strong,nonatomic)NSArray *arrayImage;
-
 @end
 
 @implementation DZViewPollPotionController

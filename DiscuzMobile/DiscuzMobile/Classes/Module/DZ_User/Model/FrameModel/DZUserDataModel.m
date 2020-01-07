@@ -45,7 +45,7 @@
     self.ListArray = @[self.baseArray,self.UserArray,self.extcreditsArray,@[self.endModel]];
 }
 
--(void)updateModel:(DZUserVarModel *)userVarModel{
+-(void)updateUserDataModel:(DZUserVarModel *)userVarModel{
     _userVarModel = userVarModel;
     _spaceModel = userVarModel.space;
     // 基本信息

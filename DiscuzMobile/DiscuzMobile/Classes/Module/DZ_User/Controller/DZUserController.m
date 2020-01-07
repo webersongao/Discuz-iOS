@@ -80,7 +80,7 @@
 }
 
 -(void)reloadUserController:(DZUserVarModel *)VarModel{
-    [self.centerModel updateModel:VarModel];
+    [self.centerModel updateUserDataModel:VarModel];
     
     [[DZMobileCtrl sharedCtrl] updateGlobalModel:VarModel];
     
