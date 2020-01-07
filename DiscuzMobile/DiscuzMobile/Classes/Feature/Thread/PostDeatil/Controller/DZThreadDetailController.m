@@ -80,7 +80,7 @@
     [self.detailView.emoKeyboard hideCustomerKeyBoard];
 }
 
--(void)handlePinches:(UIPinchGestureRecognizer *)paramSender {
+-(void)handlePinchAction:(UIPinchGestureRecognizer *)paramSender {
     if(paramSender.state == UIGestureRecognizerStateEnded) {
         self.currentScale = paramSender.scale;
         self.detailView.webView.scrollView.zoomScale = self.currentScale;
@@ -765,7 +765,7 @@
         // 设置代理
         _detailView.webView.navigationDelegate = self;
         _detailView.webView.scrollView.delegate = self;
-        UIGestureRecognizer *gestureRecognizer = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinches:)];
+        UIPinchGestureRecognizer *gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchAction:)];
         [_detailView.webView addGestureRecognizer:gestureRecognizer];
         UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
         tapges.delegate = self;
