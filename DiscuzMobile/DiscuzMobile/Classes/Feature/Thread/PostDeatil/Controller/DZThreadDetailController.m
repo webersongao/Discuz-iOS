@@ -418,7 +418,6 @@
             [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
             self.threadModel.recommend = @"1";
             [self.detailView.webView evaluateJavaScript:@"onPraiseSuccess()" completionHandler:nil];
-            //  [self.detailView.webView stringByEvaluatingJavaScriptFromString:@"onPraiseSuccess()"];
         } failureBlock:^(NSError *error) {
             [self.HUD hide];
             [self showServerError:error];
@@ -557,7 +556,6 @@
                 NSString *addJsonStr= [[NSString alloc] initWithData:self.threadModel.jsonData encoding:NSUTF8StringEncoding];
                 // 加载评论 true 是否时分页
                 [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr] completionHandler:nil];
-                //  [self.detailView.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",addJsonStr]];
                 if(self.threadModel.replies  < self.threadModel.ppp * (self->_currentPageId)){
                     if (self.currentPageId > 0) {
                         [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
@@ -600,10 +598,8 @@
                 NSString *isNoimgMode = [[DZMobileCtrl sharedCtrl] isGraphFree] ? @"false" : @"true";
                 if (activitie) {
                     [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",isNoimgMode] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,%@,%@)",jsonStr,self.threadModel.isActivity?@"false":@"true",isNoimgMode]];
                 }else {
                     [webView evaluateJavaScript:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,isNoimgMode] completionHandler:nil];
-                    //  [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat: @"onRefresh(%@,true,%@)",jsonStr,isNoimgMode]];
                 }
                 self.threadModel.isRequest = NO;
             }
@@ -694,8 +690,6 @@
                             if (self.threadModel.replies + 1 < self.threadModel.ppp - 1) {
                                 //  [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid] completionHandler:nil];
                                 //  [self.detailView.webView evaluateJavaScript:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData] completionHandler:nil];
-                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onDiscussSuccess(%@,true,%@,%@)",_strJSONData,self.isnoimage,pid]];
-                                //  [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"onLoadReply(%@,true)",_strJSONData]];
                                 [self newDownLoadData];
                             }
                         }
