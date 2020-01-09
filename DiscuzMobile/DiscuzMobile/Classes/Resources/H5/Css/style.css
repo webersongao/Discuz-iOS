@@ -14,7 +14,7 @@ body {
 /*    font-family:'.PingFang-SC-Light';*/
 font-family:myFirstFont;
     max-width:100%;
-    overflow:hidden;
+    overflow:auto;
 }
 h1, h2, h3, h4, ul, li, p, dl, dt, dd, input, img ,button,strong{
     margin: 0;
