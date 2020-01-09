@@ -47,7 +47,7 @@
     }];
     self.tableView.height = KView_OutNavi_Bounds.size.height - kHomeSegmentHeight;
     [self.view addSubview:self.tableView];
-    ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -10;
+//    ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -10;
 }
 
 #pragma mark - Request

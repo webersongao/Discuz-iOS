@@ -70,7 +70,7 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
     }];
-    ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
+//    ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
 }
 
 - (void)refreshThreadListData {
@@ -180,6 +180,7 @@
     }
 }
 
+/// 分析处理数据
 - (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     self.VarModel = responseObject.Variables;

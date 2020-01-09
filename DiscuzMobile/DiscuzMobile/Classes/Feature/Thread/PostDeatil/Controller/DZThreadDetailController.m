@@ -139,7 +139,7 @@
         weakSelf.currentPageId ++;
         [weakSelf newDownLoadData];
     }];
-    ((MJRefreshAutoFooter *)self.detailView.webView.scrollView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
+//    ((MJRefreshAutoFooter *)self.detailView.webView.scrollView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
     
     //  创建bridge
     [self createBridge];

@@ -40,9 +40,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = m_frame;
+    [self configDiscoverCateCtrlAction];
     [self.view addSubview:self.listView];
     self.view.backgroundColor = KRandom_Color;
     [self.dz_NavigationBar removeFromSuperview];
+}
+
+-(void)configDiscoverCateCtrlAction{
+
+    self.listView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
+        if (self.VarModel.forum) {
+            NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
+            if (threadsCount > self.allArray.count) {
+                self.page ++;
+                [self downLoadListData:self.page andLoadType:JTRequestTypeRefresh];
+            } else {
+                [self.listView.mj_footer endRefreshingWithNoMoreData];
+            }
+        } else {
+            [self.listView.mj_footer endRefreshingWithNoMoreData];
+        }
+    }];
+//    ((MJRefreshAutoFooter *)self.listView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
+    
 }
 
 -(void)updateDiscoverCateControllerView{
@@ -91,6 +111,7 @@
     }];
 }
 
+/// 分析处理数据
 - (void)anylyeThreadListData:(DZThreadResModel *)responseObject {
     
     [self.VarModel updateVarModel:self.forumModel.fid andPage:self.page handle:^(NSArray *topArr, NSArray *commonArr, NSArray *allArr, NSInteger notFourmCount) {
