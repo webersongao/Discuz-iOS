@@ -1185,6 +1185,7 @@
 		70EBEB7F2387C432005333D4 /* DZForumNodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZForumNodeModel.m; sourceTree = "<group>"; };
 		70EBEB812387C4C1005333D4 /* DZBaseForumModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DZBaseForumModel.h; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.h; sourceTree = SOURCE_ROOT; };
 		70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DZBaseForumModel.m; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.m; sourceTree = SOURCE_ROOT; };
+		70ED546723C72C01008CE88E /* Dev_Article.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Dev_Article.md; sourceTree = "<group>"; };
 		70F19E54237A8E9900499BED /* DZNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavigationBar.h; sourceTree = "<group>"; };
 		70F19E55237A8E9900499BED /* DZNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavItemButton.h; sourceTree = "<group>"; };
 		70F19E56237A8E9900499BED /* UIBarButtonItem+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Utils.m"; sourceTree = "<group>"; };
@@ -2885,6 +2886,7 @@
 		706AB8CE237BF55E00BE649F /* DemoVC */ = {
 			isa = PBXGroup;
 			children = (
+				70ED546723C72C01008CE88E /* Dev_Article.md */,
 				705BB913238A6E73002C505A /* Demo */,
 				70DB801323B358C8004B0DB6 /* DZHomeTestViewController.h */,
 				70DB801423B358C8004B0DB6 /* DZHomeTestViewController.m */,

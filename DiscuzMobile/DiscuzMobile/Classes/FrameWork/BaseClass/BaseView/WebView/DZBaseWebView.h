@@ -8,7 +8,14 @@
 
 #import <WebKit/WebKit.h>
 
+typedef enum : NSUInteger {
+    WebCSS_Default,
+    WebCSS_DeviceW, /// 使用设备宽度 铺满父控件
+} WebCSSMode;
+
 @interface DZBaseWebView : WKWebView
+
+- (instancetype)initWithFrame:(CGRect)frame CSSMode:(WebCSSMode)CSSMode;
 
 @end
 
