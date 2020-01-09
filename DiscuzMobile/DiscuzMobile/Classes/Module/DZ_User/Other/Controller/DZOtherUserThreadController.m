@@ -35,9 +35,8 @@
     }];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf addData];
+        [weakSelf loadMoreUserThreadData];
     }];
-    self.tableView.mj_footer.hidden = YES;
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
@@ -47,23 +46,19 @@
     [self downLoadData];
 }
 
-- (void)addData {
-    
+- (void)loadMoreUserThreadData {
     self.page ++;
     [self downLoadData];
-    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 85.0;
-    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.dataSourceArr.count;
-    
 }
 
 

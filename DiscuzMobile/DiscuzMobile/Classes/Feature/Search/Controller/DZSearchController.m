@@ -56,8 +56,6 @@
         weakSelf.page ++;
         [weakSelf requestSearchData];
     }];
-    self.tableView.mj_footer.hidden = YES;
-    
 }
 
 - (void)rightBarBtnClick:(UIButton *)button {
@@ -177,7 +175,6 @@
         [self.cellHeightDict removeAllObjects];
     }
     [self.tableView reloadData];
-    self.tableView.mj_footer.hidden = YES;
     self.tableView.contentOffset = CGPointZero;
     self.page = 1;
     [self requestSearchData];
@@ -232,7 +229,6 @@
         self.historyVC.view.hidden = NO;
         if (self.dataSourceArr.count > 0) {
             self.dataSourceArr = [NSMutableArray array];
-            self.tableView.mj_footer.hidden = YES;
             [self.cellHeightDict removeAllObjects];
             [self.tableView reloadData];
         }

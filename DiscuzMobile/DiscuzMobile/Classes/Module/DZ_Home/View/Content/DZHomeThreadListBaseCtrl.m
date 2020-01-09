@@ -26,7 +26,7 @@
     [self initTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firstRequest:) name:DZ_ContainerRequest_Notify object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:DZ_DomainUrlChange_Notify object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeListData) name:DZ_DomainUrlChange_Notify object:nil];
     
     [self requestLocalCache];
 }
@@ -36,7 +36,7 @@
     [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:[DZThreadListCell getReuseId]];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf refreshData];
+        [weakSelf refreshHomeListData];
         if ([weakSelf.view hu_intersectsWithAnotherView:nil]) {
         }
     }];
@@ -46,7 +46,6 @@
         [weakSelf downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
     }];
     self.tableView.height = KView_OutNavi_Bounds.size.height - kHomeSegmentHeight;
-    self.tableView.mj_footer.hidden = YES;
     [self.view addSubview:self.tableView];
     ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -10;
 }
@@ -73,7 +72,7 @@
     
 }
 
-- (void)refreshData {
+- (void)refreshHomeListData {
     self.page =1;
     [self.tableView.mj_footer resetNoMoreData];
     [self downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];

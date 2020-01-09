@@ -37,7 +37,6 @@
         [weakSelf downLoadFavForumData];
     }];
     [self.view addSubview:self.tableView];
-    self.tableView.mj_footer.hidden = YES;
 }
 
 

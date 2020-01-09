@@ -70,7 +70,6 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
     }];
-    self.tableView.mj_footer.hidden = YES;
     ((MJRefreshAutoFooter *)self.tableView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
 }
 

@@ -39,9 +39,8 @@
     }];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf addData];
+        [weakSelf moreUserPostReplyData];
     }];
-    self.tableView.mj_footer.hidden = YES;
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
@@ -51,7 +50,7 @@
     [self downLoadData];
 }
 
-- (void)addData {
+- (void)moreUserPostReplyData {
     self.page ++;
     [self downLoadData];
     

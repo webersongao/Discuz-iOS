@@ -27,9 +27,8 @@
         [weakSelf reloadData];
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf addData];
+        [weakSelf addMySubjectData];
     }];
-    self.tableView.mj_footer.hidden = YES;
 }
 
 - (void)reloadData {
@@ -38,7 +37,7 @@
     [self downLoadData];
 }
 
-- (void)addData {
+- (void)addMySubjectData {
     self.page ++;
     [self downLoadData];
 }

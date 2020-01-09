@@ -16,9 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的好友";
-    self.tableView.mj_footer.hidden = YES;
     [self.view addSubview:self.tableView];
-    [self downLoadFriendInfoData];
     [self configFriendViewController];
 }
 
@@ -27,6 +25,7 @@
 }
 
 -(void)configFriendViewController{
+    [self downLoadFriendInfoData];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;

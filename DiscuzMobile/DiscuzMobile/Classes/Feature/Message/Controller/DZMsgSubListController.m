@@ -24,19 +24,18 @@
     if ([self.typeModel.module isEqualToString:@"mypm"]) {
         [self configNaviBar:@"发消息" type:NaviItemText Direction:NaviDirectionRight];
     }
-    [self loadData];
+    [self loadMsgSubListData];
     [self.view addSubview:self.tableView];
     KWEAKSELF;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
-        [weakSelf loadData];
+        [weakSelf loadMsgSubListData];
     }];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
-        [weakSelf loadData];
+        [weakSelf loadMsgSubListData];
     }];
-    self.tableView.mj_footer.hidden = YES;
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
@@ -44,7 +43,7 @@
     [[DZMobileCtrl sharedCtrl] PushToMsgSendController:nil];
 }
 
-- (void)loadData {
+- (void)loadMsgSubListData {
     NSMutableArray *parameter = [NSMutableArray array];
     NSString *urlString = @"";
     if ([self.typeModel.module isEqualToString:@"mypm"]) { // 我的消息
