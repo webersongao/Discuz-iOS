@@ -288,7 +288,7 @@
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommonId"];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CommonId"];
+            cell = [[DZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CommonId"];
             cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }

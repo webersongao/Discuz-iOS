@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 @interface DZBaseTableViewCell : UITableViewCell
 @property (nonatomic, strong) UIView *seprateLine;  //!< 属性注释
 @end

@@ -22,7 +22,6 @@
 - (void)p_setupView {
     self.nameV = [[DZHorizontalButton alloc] init];
     [self.contentView addSubview:self.nameV];
-//    [self.contentView addSubview:self.seprateLine];
     
     self.detailLab = [[UILabel alloc] init];
 //    self.detailLab.backgroundColor= [UIColor redColor];

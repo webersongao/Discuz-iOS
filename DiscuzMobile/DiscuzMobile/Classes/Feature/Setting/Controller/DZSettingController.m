@@ -49,7 +49,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellId];
+        cell = [[DZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellId];
         cell.textLabel.font = KFont(14);
         cell.detailTextLabel.font = KFont(11);
         if (indexPath.section == 0 && indexPath.row == 0) {

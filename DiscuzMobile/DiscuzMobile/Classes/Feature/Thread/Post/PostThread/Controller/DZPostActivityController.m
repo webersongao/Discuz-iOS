@@ -352,7 +352,7 @@
     NSString *contentID = [NSString stringWithFormat:@"contentCellId%ld%ld", (long)[indexPath section],(long)[indexPath row]];
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:CellId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
+        cell = [[DZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellId];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     switch (indexPath.section) {

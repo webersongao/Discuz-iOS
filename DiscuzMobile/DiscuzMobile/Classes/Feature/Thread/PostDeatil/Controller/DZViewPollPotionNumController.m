@@ -36,7 +36,7 @@
     static NSString * CellID= @"PostReplyCellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellID];
+        cell = [[DZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     

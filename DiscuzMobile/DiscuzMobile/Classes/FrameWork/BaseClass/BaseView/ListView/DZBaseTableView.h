@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DZBaseTableViewCell.h"
 
 
 @interface DZBaseTableView : UITableView

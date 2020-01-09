@@ -9,6 +9,7 @@
 #import "DZSearchHistoryController.h"
 #import "UIAlertController+Extension.h"
 #import <YYKit/UIColor+YYAdd.h>
+#import "DZBaseTableViewCell.h"
 #import "UIButton+EnlargeEdge.h"
 
 #define TTSEARCH_SEARCH_HISTORY_CACHE_PATH [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"TTSearchhistories.plist"]
@@ -157,7 +158,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[UITableViewCell getReuseId]];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[UITableViewCell getReuseId]];
+        cell = [[DZBaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[UITableViewCell getReuseId]];
         cell.textLabel.textColor = K_Color_Message;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.imageView.image = [UIImage imageNamed:@"search_history"];
