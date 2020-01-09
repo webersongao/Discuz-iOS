@@ -85,7 +85,6 @@
     self.authCodeView.textField.delegate = self;
     [contentView addSubview:self.authCodeView];
     [self.authCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
         make.left.equalTo(self.repassView);
         make.top.equalTo(self.repassView.mas_bottom);
         make.width.equalTo(self.repassView.mas_width);

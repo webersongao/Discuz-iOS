@@ -17,19 +17,13 @@
 @end
 
 @implementation DZResetPwdController
-- (void)loadView {
-    [super loadView];
-    _resetView = [[DZResetPwdView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.view = _resetView;
-}
-
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self.view addSubview:self.resetView];
     self.dz_NavigationItem.title = @"修改密码";
     
-    _resetView.delegate = self;
     [_resetView.submitButton addTarget:self action:@selector(submitButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
     KWEAKSELF;
@@ -38,14 +32,6 @@
     };
     
     [self downlodyan];
-}
-
-- (void)readTerms {
-    [[DZMobileCtrl sharedCtrl] PushToUsertermsController];
-}
-
-- (void)tapAction {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 验证码
@@ -131,6 +117,15 @@
         }
     }];
     
+}
+
+
+-(DZResetPwdView *)resetView{
+    if (!_resetView) {
+        _resetView = [[DZResetPwdView alloc] initWithFrame:KView_OutNavi_Bounds];
+        _resetView.delegate = self;
+    }
+    return _resetView;
 }
 
 @end

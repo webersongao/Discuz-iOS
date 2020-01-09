@@ -23,7 +23,7 @@
     [self.view addSubview:self.scrollview];
     [self dz_bringNavigationBarToFront];
     [self.scrollview addSubview:self.contentLabel];
-    self.scrollview.backgroundColor = [UIColor whiteColor];
+    self.scrollview.backgroundColor = [UIColor redColor];
     self.dz_NavigationItem.title = checkTwoStr(DZ_APPNAME, @"服务条款");
 }
 
@@ -32,6 +32,7 @@
     CGSize messageSize = [self.contentLabel.text sizeWithFont:KFont(14) maxSize:CGSizeMake(KScreenWidth - kMargin30, CGFLOAT_MAX)];
     self.contentLabel.frame = CGRectMake(kMargin15, kMargin15, messageSize.width, messageSize.height);
     self.scrollview.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(self.contentLabel.frame) + KTabbar_Height);
+    DLog(@"");
 }
 
 

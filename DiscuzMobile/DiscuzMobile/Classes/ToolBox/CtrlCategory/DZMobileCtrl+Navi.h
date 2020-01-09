@@ -62,19 +62,19 @@
 -(void)PushToUserPostReplyController:(NSString *)Uid;
 
 /// 账号绑定
-- (void)ShowBindControllerFromVC:(UIViewController *)selfVC;
-
-/// 重置密码
-- (void)ShowResetPwdControllerFromVC:(UIViewController *)selfVC;
+- (void)PushToAccountBindController;
 
 /// 浏览记录
-- (void)ShowFootMarkControllerFromVC:(UIViewController *)selfVC;
+- (void)PushToUserFootMarkController;
 
 /// 发送消息
 -(void)PushToMsgSendController:(NSString *)Uid;
 
 /// 消息聊天界面
 -(void)PushToMsgChatController:(NSString *)touid name:(NSString *)userName;
+
+/// 重置密码
+- (void)PushToResetPwdController;
 
 /// appstore 评价APP
 -(void)PushToAppStoreWebview;

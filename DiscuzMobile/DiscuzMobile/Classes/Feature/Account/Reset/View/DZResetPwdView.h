@@ -19,4 +19,5 @@
 @property (nonatomic, strong) DZWeb2AuthCodeView *authCodeView;
 
 @property (nonatomic, strong) UIButton *submitButton;
+
 @end

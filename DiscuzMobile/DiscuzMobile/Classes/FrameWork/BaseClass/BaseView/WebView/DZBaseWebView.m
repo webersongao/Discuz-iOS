@@ -8,34 +8,37 @@
 
 #import "DZBaseWebView.h"
 
+@interface DZBaseWebView ()
+
+@property(nonatomic,assign) WebCSSMode CssMode;
+
+@end
+
 @implementation DZBaseWebView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.CssMode = WebCSS_Default;
         [self comfigBaseWebView];
     }
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame CSSMode:(WebCSSMode)CSSMode
+- (instancetype)initDeviceModeWithFrame:(CGRect)frame
 {
-    self = nil;
-    if (CSSMode == WebCSS_Default) {
-        self = [super initWithFrame:frame];
-    }else{
-        WKWebViewConfiguration * wkWebConfig = [self baseWebViewConfig];
-        self = [super initWithFrame:frame configuration:wkWebConfig];
-    }
+    WKWebViewConfiguration * wkWebConfig = [self baseWebViewConfig];
+    self = [super initWithFrame:frame configuration:wkWebConfig];
     if (self) {
+        self.CssMode = WebCSS_DeviceW;
         [self comfigBaseWebView];
     }
     return self;
 }
 
 -(void)comfigBaseWebView{
-
+    
     self.backgroundColor = KRandom_Color;
 }
 

@@ -163,7 +163,7 @@
 #pragma mark   /********************* 交互事件 *************************/
 
 - (void)findPasswordAction {
-    
+    [[DZMobileCtrl sharedCtrl] PushToResetPwdController];
 }
 
 

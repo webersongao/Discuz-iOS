@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
 
 @interface DZBaseWebView : WKWebView
 
-- (instancetype)initWithFrame:(CGRect)frame CSSMode:(WebCSSMode)CSSMode;
+- (instancetype)initDeviceModeWithFrame:(CGRect)frame;
 
 @end
 

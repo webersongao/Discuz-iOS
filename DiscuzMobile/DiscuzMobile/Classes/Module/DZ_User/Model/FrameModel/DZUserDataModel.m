@@ -145,16 +145,16 @@
 //
 //    [self.manageArr addObjectsFromArray:@[model01,model02,model03,model04]];
 //if (indexPath.row == 0) {
-//    [[DZMobileCtrl sharedCtrl] ShowBindControllerFromVC:self];
+//    [[DZMobileCtrl sharedCtrl] PushToAccountBindController];
 //}
 //
 //if (indexPath.row == 1) {
 //    return;
-//    [[DZMobileCtrl sharedCtrl] ShowResetPwdControllerFromVC:self];
+//    [[DZMobileCtrl sharedCtrl] PushToResetPwdController];
 //}
 //
 //if (indexPath.row == 2) {
-//    [[DZMobileCtrl sharedCtrl] ShowFootMarkControllerFromVC:self];
+//    [[DZMobileCtrl sharedCtrl] PushToUserFootMarkController];
 //}
 //}
 

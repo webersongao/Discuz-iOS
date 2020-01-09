@@ -7,9 +7,12 @@
 //
 
 #import "DZWeb2AuthCodeView.h"
+#import "DZBaseWebView.h"
 
 @interface DZWeb2AuthCodeView()<UIGestureRecognizerDelegate>
-@property (nonatomic, strong) UIWebView *webview;
+
+@property (nonatomic, strong) DZBaseWebView *codeWebview;
+
 @end
 
 @implementation DZWeb2AuthCodeView
@@ -23,31 +26,15 @@
 
 - (void)p_setupViews {
     
-    self.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.textField];
-    [self addSubview:self.webview];
-    [self setHidden:YES];
-    
-    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.top.equalTo(self).offset(10);
-        make.width.mas_equalTo(KScreenWidth * 0.48);
-        make.height.mas_equalTo(0);
-    }];
-    [self.webview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.mas_right);
-        make.height.mas_equalTo(0);
-        make.top.equalTo(self).offset(10);
-        int width = KScreenWidth * 0.3;
-        make.width.mas_equalTo(width);
-    }];
-    
+    [self addSubview:self.codeWebview];
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 -(void)loadRequestWithCodeUrl:(NSString *)urlString{
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+    [self.codeWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
-- (void)tapGesACtion {
+- (void)tapRefreshCodeGesAction {
     self.refreshAuthCodeBlock?self.refreshAuthCodeBlock():nil;
 }
 
@@ -55,45 +42,35 @@
     return YES;
 }
 
-- (void)setHidden:(BOOL)hidden {
-    [super setHidden:hidden];
-    if (self.hidden == NO)  {
-        [self.superview layoutIfNeeded];
-        if (self.frame.size.height > 2) {
-            [self.textField mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(self.frame.size.height - 16);
-            }];
-            [self.webview mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(self.frame.size.height - 10);
-            }];
-        }
-    }
-}
-
-
--(UIWebView *)webview{
-    if (!_webview) {
-        _webview = [[UIWebView alloc] init];
-        _webview.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        _webview.userInteractionEnabled = YES;
-        [_webview setTranslatesAutoresizingMaskIntoConstraints:NO];
-        _webview.scrollView.scrollEnabled = NO;
-        UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesACtion)];
-        tapges.delegate = self;
-        [_webview addGestureRecognizer:tapges];
-    }
-    return _webview;
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.textField.frame = CGRectMake(0, kMargin10, self.width*0.65, self.height - kMargin10);
+    self.codeWebview.frame = CGRectMake(self.width * 0.7 , kMargin10, self.width * 0.3, self.height - kMargin10);
 }
 
 -(UITextField *)textField{
     if (!_textField) {
-        _textField = [[UITextField alloc] init];
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, kMargin10, KScreenWidth * 0.48, 0)];
         _textField.placeholder = @"请输入验证码";
         _textField.font = KFont(14);
         [_textField setTranslatesAutoresizingMaskIntoConstraints:NO];
         _textField.borderStyle = UITextBorderStyleRoundedRect;
     }
     return _textField;
+}
+
+-(DZBaseWebView *)codeWebview{
+    if (!_codeWebview) {
+        _codeWebview = [[DZBaseWebView alloc] initDeviceModeWithFrame:CGRectMake(0, kMargin10, KScreenWidth * 0.3, 0)];
+        _codeWebview.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        _codeWebview.userInteractionEnabled = YES;
+        [_codeWebview setTranslatesAutoresizingMaskIntoConstraints:NO];
+        _codeWebview.scrollView.scrollEnabled = NO;
+        UITapGestureRecognizer *tapges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRefreshCodeGesAction)];
+        tapges.delegate = self;
+        [_codeWebview addGestureRecognizer:tapges];
+    }
+    return _codeWebview;
 }
 
 @end

@@ -127,7 +127,7 @@
     self.loginBtn.backgroundColor = K_Color_Theme;
     [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView.mas_left);
-        make.top.equalTo(contentView.mas_bottom).offset(16);
+        make.top.equalTo(contentView.mas_bottom).offset(kMargin30);
         make.width.mas_equalTo(contentView.mas_width);
         make.height.mas_equalTo(45);
     }];
@@ -137,7 +137,7 @@
     
     self.forgetBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     [self addSubview:self.forgetBtn];
-    self.forgetBtn.hidden = YES;
+//    self.forgetBtn.hidden = YES;
     self.forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [self.forgetBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
     [self.forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {

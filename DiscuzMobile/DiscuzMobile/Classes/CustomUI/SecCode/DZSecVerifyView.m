@@ -89,7 +89,7 @@
     [bgview addSubview:self.yanTextField];
     
     //验证码webview
-    _identWebView = [[DZBaseWebView alloc]initWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
+    _identWebView = [[DZBaseWebView alloc] initDeviceModeWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
     _identWebView.userInteractionEnabled = YES;
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];

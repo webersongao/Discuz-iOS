@@ -30,15 +30,15 @@
 #import "DZAboutController.h"
 #import "DZUsertermsController.h"
 #import "DZRegisterController.h"
-#import "DZJudgeBoundController.h"
-#import "DZPostNormalController.h"
 #import "DZPostVoteController.h"
 #import "DZFastPostController.h"
+#import "DZMySubjectController.h"
 #import "DZPostDebateController.h"
+#import "DZJudgeBoundController.h"
+#import "DZPostNormalController.h"
+#import "DZMsgSubListController.h"
 #import "DZPostActivityController.h"
 #import "DZActivityEditController.h"
-#import "DZMySubjectController.h"
-#import "DZMsgSubListController.h"
 #import "DZPartInActivityController.h"
 #import "DZViewPollPotionController.h"
 #import "DZViewPollPotionNumController.h"
@@ -181,21 +181,15 @@
 
 
 /// 账号绑定
-- (void)ShowBindControllerFromVC:(UIViewController *)selfVC {
+- (void)PushToAccountBindController {
     DZBindManageController *boundVc = [[DZBindManageController alloc] init];
-    [selfVC showViewController:boundVc sender:nil];
-}
-
-// 重置密码
-- (void)ShowResetPwdControllerFromVC:(UIViewController *)selfVC {
-    DZResetPwdController *restVc = [[DZResetPwdController alloc] init];
-    [selfVC showViewController:restVc sender:nil];
+    [self.mainNavi pushViewController:boundVc animated:YES];
 }
 
 // 浏览记录
-- (void)ShowFootMarkControllerFromVC:(UIViewController *)selfVC {
+- (void)PushToUserFootMarkController {
     DZFootMarkRootController *footRvc = [[DZFootMarkRootController alloc] init];
-    [selfVC showViewController:footRvc sender:nil];
+    [self.mainNavi pushViewController:footRvc animated:YES];
 }
 
 
@@ -217,6 +211,11 @@
     [self.mainNavi pushViewController:mvc animated:YES];
 }
 
+// 重置密码
+- (void)PushToResetPwdController {
+    DZResetPwdController *restVc = [[DZResetPwdController alloc] init];
+    [self.mainNavi pushViewController:restVc animated:YES];
+}
 
 /// 域名选择
 -(void)PushToDomainSettingController {
