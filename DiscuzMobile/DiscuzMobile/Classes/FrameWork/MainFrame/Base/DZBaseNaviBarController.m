@@ -24,7 +24,7 @@
 
 - (DZNavigationBar *)dz_NavigationBar{
     if (!_dz_NavigationBar) {
-        _dz_NavigationBar = [[DZNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, KNavi_ContainStatusBar_Height)];
+        _dz_NavigationBar = [[DZNavigationBar alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KNavi_ContainStatusBar_Height)];
     }
     return _dz_NavigationBar;
 }
