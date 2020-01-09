@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DZRefreshHeader.h"
+#import "DZRefreshFooter.h"
 #import "DZBaseTableViewCell.h"
 
 

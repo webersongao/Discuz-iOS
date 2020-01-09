@@ -26,13 +26,13 @@
     [self downLoadFavForumData];
     
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf.tableView.mj_footer resetNoMoreData];
         weakSelf.page = 1;
         [weakSelf downLoadFavForumData];
     }];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf downLoadFavForumData];
     }];

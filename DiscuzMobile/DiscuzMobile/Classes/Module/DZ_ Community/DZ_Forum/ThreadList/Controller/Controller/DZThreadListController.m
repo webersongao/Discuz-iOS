@@ -57,7 +57,7 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:@"DZThreadListCell"];
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         if (self.VarModel.forum) {
             NSInteger threadsCount = self.VarModel.forum.threadcount + self.notThisFidCount;
             if (threadsCount > self.allArray.count) {

@@ -32,11 +32,11 @@
     [self refreshFoot];
     
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf refreshFoot];
     }];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         [weakSelf addFoot];
     }];
     [self.view addSubview:self.tableView];

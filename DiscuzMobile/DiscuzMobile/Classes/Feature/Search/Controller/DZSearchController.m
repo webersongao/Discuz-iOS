@@ -52,7 +52,7 @@
     [self.tableView registerClass:[DZSearchListCell class] forCellReuseIdentifier:[DZSearchListCell getReuseId]];
     self.tableView.backgroundColor = [UIColor whiteColor];
     KWEAKSELF
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf requestSearchData];
     }];

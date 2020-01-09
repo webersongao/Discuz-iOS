@@ -62,7 +62,7 @@
     [self.headView addSubview:self.foldTableView];
     
     KWEAKSELF;
-    self.tableView.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header  = [DZRefreshHeader headerWithRefreshingBlock:^{
         if (weakSelf.ctvArr.count > 0) {
             DZThreadListController *fVc = weakSelf.ctvArr[weakSelf.selectIndex];
             [fVc refreshThreadListData];

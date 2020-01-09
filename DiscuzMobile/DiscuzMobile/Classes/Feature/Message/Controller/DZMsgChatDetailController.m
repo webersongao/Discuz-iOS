@@ -91,7 +91,7 @@ static CGFloat kToolBarH = 50;
 - (void)refreshMethod {
     KWEAKSELF;
     // 页数
-    self.chatTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.chatTableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         DLog(@"刷新");
         [weakSelf.chatTableView.mj_header endRefreshing];
         

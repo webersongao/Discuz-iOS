@@ -27,11 +27,11 @@
 -(void)configFriendViewController{
     [self downLoadFriendInfoData];
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf refreshFriendListData];
     }];
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf refreshFriendListData];
     }];

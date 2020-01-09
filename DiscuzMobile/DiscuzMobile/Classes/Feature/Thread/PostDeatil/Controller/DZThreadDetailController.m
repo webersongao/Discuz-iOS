@@ -129,13 +129,13 @@
     };
     
     //刷新  下载数据
-    self.detailView.webView.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.detailView.webView.scrollView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         weakSelf.currentPageId = 1;
         [weakSelf newDownLoadData];
     }];
     
     self.detailView.webView.scrollView.backgroundColor = [UIColor whiteColor];
-    self.detailView.webView.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.detailView.webView.scrollView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.currentPageId ++;
         [weakSelf newDownLoadData];
     }];

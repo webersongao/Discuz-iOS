@@ -21,13 +21,13 @@
     
     [self downLoadMyFavThread];
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf.tableView.mj_footer resetNoMoreData];
         [weakSelf downLoadMyFavThread];
     }];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf downLoadMyFavThread];
     }];

@@ -11,6 +11,7 @@
 #import "DZThreadNetTool.h"
 #import "DZForumItemCell.h"
 #import "DZCollectSectionView.h"
+#import "DZRefreshHeader.h"
 
 @interface DZFootForumController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -35,7 +36,7 @@ static NSString * headerSection = @"CellHeader";
     [self loadData];
     
     KWEAKSELF;
-    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.collectionView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf loadData];
     }];
     

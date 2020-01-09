@@ -136,7 +136,7 @@
     };
     
     // 下拉刷新
-    self.UserListView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.UserListView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf downLoadData];
     }];
 }

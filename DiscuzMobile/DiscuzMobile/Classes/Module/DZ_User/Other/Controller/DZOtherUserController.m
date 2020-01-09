@@ -84,7 +84,7 @@
 -(void)configAction{
     
     KWEAKSELF;
-    self.otherListView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.otherListView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf initData];
         [weakSelf downLoadData];
     }];

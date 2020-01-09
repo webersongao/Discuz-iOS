@@ -35,13 +35,13 @@
     
     [self.tableView registerClass:[DZThreadListCell class] forCellReuseIdentifier:[DZThreadListCell getReuseId]];
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf refreshHomeListData];
         if ([weakSelf.view hu_intersectsWithAnotherView:nil]) {
         }
     }];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.page ++;
         [weakSelf downLoadHomeThreadData:self.page andLoadType:JTRequestTypeRefresh];
     }];

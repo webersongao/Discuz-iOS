@@ -34,11 +34,11 @@
     [self downLoadData];
     [self.view addSubview:self.tableView];
     KWEAKSELF;
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.tableView.mj_header = [DZRefreshHeader headerWithRefreshingBlock:^{
         [weakSelf refreshData];
     }];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [DZRefreshFooter footerWithRefreshingBlock:^{
         [weakSelf moreUserPostReplyData];
     }];
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
