@@ -27,7 +27,7 @@
 @property (nonatomic, copy) NSString *groupid;  //!< 属性注释
 @property (nonatomic, copy) NSString *groupexpiry;  //!< 属性注释
 @property (nonatomic, copy) NSString *extgroupids;  //!< 属性注释
-@property (nonatomic, copy) NSString *regdate;  //!< 属性注释 // 1573148340
+@property (nonatomic, copy) NSString *regdate;  //!< 注册时间 // 1573148340
 @property (nonatomic, copy) NSString *credits;  //!< 属性注释
 @property (nonatomic, copy) NSString *notifysound;  //!< 属性注释
 @property (nonatomic, copy) NSString *timeoffset;  //!< 属性注释

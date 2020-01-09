@@ -121,9 +121,9 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 
 - (void)onCreate:(FMDatabase *)database
 {
-    // 用户数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZUserTable\";"];
-    [database executeUpdate:@"CREATE TABLE \"DZUserTable\" (\n"
+    // 1、全局数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZGlobalTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZGlobalTable\" (\n"
      "\t \"cookiepre\" text NOT NULL,\n"
      "\t \"auth\" text NOT NULL,\n"
      "\t \"saltkey\" text NOT NULL,\n"
@@ -142,9 +142,63 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
      "\t \"rowID\" integer NOT NULL PRIMARY KEY AUTOINCREMENT \n"
      ");"];
     
-    // 帖子数据表
-    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZThreadTable\";"];
-    [database executeUpdate:@"CREATE TABLE \"DZThreadTable\" (\n"
+    // 2、热门板块数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZHotForumTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZHotForumTable\" (\n"
+     "\t \"taskId\" text NOT NULL,\n"
+     "\t \"fragMD5\" text NOT NULL,\n"
+     "\t \"serverPath\" text NOT NULL,\n"
+     "\t \"fileRelatePath\" text NOT NULL,\n"
+     "\t \"uploadid\" text NOT NULL,\n"
+     
+     "\t \"fragSize\" long NOT NULL,\n"
+     "\t \"fragOffset\" long NOT NULL,\n"
+     "\t \"fragIndex\" integer NOT NULL,\n"
+     "\t \"fragUpStatus\" integer NOT NULL,\n"
+     
+     "\t \"partseq\" integer NOT NULL,\n"
+     "\t \"fileFragCount\" integer NOT NULL,\n"
+     "\t \"fileTotalSize\" long long NOT NULL,\n"
+     
+     "\t \"fragId\" text NOT NULL,\n"
+     "\t \"fragUrlTag\" double NOT NULL,\n"
+     "\t \"fragSizeRatio\" double NOT NULL,\n"
+     
+     
+     "\t \"rowID\" integer NOT NULL PRIMARY KEY AUTOINCREMENT \n"
+     
+     ");"];
+    
+    // 3、全站 所有版块 数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZForumIndexTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZForumIndexTable\" (\n"
+     "\t \"taskId\" text NOT NULL,\n"
+     "\t \"fragMD5\" text NOT NULL,\n"
+     "\t \"serverPath\" text NOT NULL,\n"
+     "\t \"fileRelatePath\" text NOT NULL,\n"
+     "\t \"uploadid\" text NOT NULL,\n"
+     
+     "\t \"fragSize\" long NOT NULL,\n"
+     "\t \"fragOffset\" long NOT NULL,\n"
+     "\t \"fragIndex\" integer NOT NULL,\n"
+     "\t \"fragUpStatus\" integer NOT NULL,\n"
+     
+     "\t \"partseq\" integer NOT NULL,\n"
+     "\t \"fileFragCount\" integer NOT NULL,\n"
+     "\t \"fileTotalSize\" long long NOT NULL,\n"
+     
+     "\t \"fragId\" text NOT NULL,\n"
+     "\t \"fragUrlTag\" double NOT NULL,\n"
+     "\t \"fragSizeRatio\" double NOT NULL,\n"
+     
+     
+     "\t \"rowID\" integer NOT NULL PRIMARY KEY AUTOINCREMENT \n"
+     
+     ");"];
+    
+    // 4、帖子草稿 数据表
+    [database executeUpdate:@"DROP TABLE IF EXISTS \"DZThreadDraftTable\";"];
+    [database executeUpdate:@"CREATE TABLE \"DZThreadDraftTable\" (\n"
      "\t \"taskId\" text NOT NULL,\n"
      "\t \"fragMD5\" text NOT NULL,\n"
      "\t \"serverPath\" text NOT NULL,\n"

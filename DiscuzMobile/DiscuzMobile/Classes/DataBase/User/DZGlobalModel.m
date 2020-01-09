@@ -31,7 +31,7 @@
 
 - (NSString *)tableName
 {
-    return @"DZUserTable";
+    return @"DZGlobalTable";
 }
 
 - (void)startUpdateProperties

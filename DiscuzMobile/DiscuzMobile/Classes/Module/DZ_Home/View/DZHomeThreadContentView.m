@@ -20,7 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self layoutThreadContentView];
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = KRandom_Color;
     }
     return self;
 }

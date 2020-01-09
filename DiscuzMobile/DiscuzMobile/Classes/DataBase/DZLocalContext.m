@@ -9,8 +9,10 @@
 #import "DZLocalContext.h"
 #import "DZLocalDataHelper.h"
 
-#define kDZUserTable    @"DZUserTable"
-#define kDZThreadTable  @"DZThreadTable"
+#define kDZGlobalTable          @"DZGlobalTable"
+#define KDZHotForumTable        @"DZHotForumTable"
+#define KDZForumIndexTable      @"DZForumIndexTable"
+#define KDZThreadDraftTable     @"DZThreadDraftTable"
 
 static DZLocalContext *infoContext;
 
@@ -35,7 +37,7 @@ static DZLocalContext *infoContext;
 -(BOOL)removeLocalGloabalInfo{
     __block BOOL result = YES;
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        result = [database executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@", kDZUserTable]];
+        result = [database executeUpdate:[NSString stringWithFormat:@"DELETE FROM %@", kDZGlobalTable]];
         *rollback = !result;
     }];
     return result;
@@ -52,7 +54,7 @@ static DZLocalContext *infoContext;
 -(DZGlobalModel *)GetLocalGlobalInfo{
     __block NSMutableArray *userArr = [NSMutableArray array];
     [_helper inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        FMResultSet *resultSet = [database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ order by rowID desc",kDZUserTable]];
+        FMResultSet *resultSet = [database executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ order by rowID desc",kDZGlobalTable]];
         while ([resultSet next]) {
             NSDictionary *dict = [resultSet resultDictionary];
             DZGlobalModel *  user = [DZGlobalModel modelWithJSON:dict];
