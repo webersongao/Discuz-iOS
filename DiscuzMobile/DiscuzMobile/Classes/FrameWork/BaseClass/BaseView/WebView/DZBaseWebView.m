@@ -20,8 +20,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.UIDelegate = self;
-        self.navigationDelegate = self;
         self.CssMode = WebCSS_Default;
         [self comfigBaseWebView];
     }
@@ -33,8 +31,6 @@
     WKWebViewConfiguration * wkWebConfig = [self baseWebViewConfig];
     self = [super initWithFrame:frame configuration:wkWebConfig];
     if (self) {
-        self.UIDelegate = self;
-        self.navigationDelegate = self;
         self.CssMode = WebCSS_DeviceW;
         [self comfigBaseWebView];
     }
@@ -42,7 +38,8 @@
 }
 
 -(void)comfigBaseWebView{
-    
+    self.UIDelegate = self;
+    self.navigationDelegate = self;
     self.backgroundColor = KRandom_Color;
 }
 
