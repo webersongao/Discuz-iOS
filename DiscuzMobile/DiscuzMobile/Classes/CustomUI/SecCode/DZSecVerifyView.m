@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign) BOOL isCreate;
 @property (nonatomic, copy) NSString *type;
-@property (nonatomic, strong) WKWebView * identWebView;
+@property (nonatomic, strong) DZBaseWebView * identWebView;
 
 @end
 
@@ -169,8 +169,7 @@
 }
 
 -(void)creatSecureView {
-    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.secureData.seccode]];
-    [_identWebView loadRequest:request];
+    [_identWebView loadBaseWebUrl:self.secureData.seccode back:nil];
     _secqaaLabel.text = self.secureData.secqaa;
 }
 

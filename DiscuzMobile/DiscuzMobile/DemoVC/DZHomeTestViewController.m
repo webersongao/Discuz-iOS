@@ -134,7 +134,8 @@
 
 // 账号 自动登录
 - (IBAction)userAutoLoginAction:(UIButton *)sender {
-    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:@"62"];
+    [[DZMobileCtrl sharedCtrl] PushToWebViewController:@"https://www.baidu.com/"];
+//    [[DZMobileCtrl sharedCtrl] PushToThreadDetailController:@"62"];
 }
 
 

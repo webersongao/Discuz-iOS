@@ -541,7 +541,7 @@
                 if (self.threadModel.replies + 1 <= self.threadModel.ppp) {
                     [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                 }
-                [self.detailView.webView loadRequest:[NSURLRequest requestWithURL:self.threadModel.baseUrl]];
+                [self.detailView.webView loadBaseWebUrl:self.threadModel.baseUrl.absoluteString back:nil];
             } else {
                 [self.detailView.webView.scrollView.mj_footer endRefreshing];
                 if (!resModel.Variables.postlist.count){

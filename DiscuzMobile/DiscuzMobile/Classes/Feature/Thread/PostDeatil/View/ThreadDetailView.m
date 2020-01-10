@@ -59,7 +59,7 @@
     return _emoKeyboard;
 }
 
--(WKWebView *)webView{
+-(DZBaseWebView *)webView{
     if (!_webView) {
         _webView = [[DZBaseWebView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height-KTabbar_Height)];
         _webView.backgroundColor = [UIColor whiteColor];

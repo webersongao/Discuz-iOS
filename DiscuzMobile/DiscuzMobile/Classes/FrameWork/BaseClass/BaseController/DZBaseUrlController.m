@@ -18,8 +18,6 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DZ_StatusBarTap_Notify object:nil];
-    [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@""]]];
-    [self cleanWebChache];
 }
 
 - (void)viewDidLoad {
@@ -27,17 +25,18 @@
     
     [self.view addSubview:self.webView];
     
-    // 无数据的时候显示
-    if (![_urlString isUrlContainDomain]) {
-        [UIAlertController alertTitle:nil message:@"请求地址不存在" controller:self doneText:@"返回" cancelText:nil doneHandle:^{
-            [self.navigationController popViewControllerAnimated:YES];
+    KWEAKSELF
+    [_webView loadBaseWebUrl:_urlString back:^(NSString *String) {
+        [UIAlertController alertTitle:nil message:String controller:self doneText:@"返回" cancelText:nil doneHandle:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         } cancelHandle:nil];
-        return;
-    }
-    NSURL *url = [NSURL URLWithString:[NSString encodeString:_urlString]];
-    [_webView loadRequest:[NSURLRequest requestWithURL:url]];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
+}
+
+- (void)dz_mainwebView:(DZBaseWebView *)webView didLoadMainTitle:(NSString *)title{
+    [self setTitle:title];
 }
 
 - (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
@@ -65,13 +64,6 @@
     [UIAlertController alertTitle:nil message:[error localizedDescription] controller:self doneText:@"返回" cancelText:nil doneHandle:^{
         [self.navigationController popViewControllerAnimated:YES];
     } cancelHandle:nil];
-}
-
-- (void)cleanWebChache {
-    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"WebKitCacheModelPreferenceKey"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitDiskImageCacheEnabled"];
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitOfflineWebApplicationCacheEnabled"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 // 点击状态栏到顶部
