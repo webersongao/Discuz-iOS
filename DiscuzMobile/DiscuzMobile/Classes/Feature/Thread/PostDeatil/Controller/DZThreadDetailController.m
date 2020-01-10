@@ -7,7 +7,6 @@
 //
 
 #import "DZThreadDetailController.h"
-#import "WebViewJavascriptBridge.h"
 #import "UIAlertController+Extension.h"
 
 #import "ThreadDetailView.h"
@@ -31,7 +30,6 @@
 
 @property (nonatomic, assign) CGFloat currentScale;
 @property (nonatomic, strong) ThreadDetailView *detailView; // 详细页view 替换原来的view
-@property (nonatomic, strong) WebViewJavascriptBridge * javascriptBridge;
 
 @property (nonatomic, assign) BOOL  isReferenceReply;           // 是否是 引用回复
 @property (nonatomic, copy) NSString * noticetrimstr;         // 引用回复内容
@@ -47,7 +45,6 @@
 @end
 
 @implementation DZThreadDetailController
-@synthesize javascriptBridge = _bridge;
 
 - (void)willMoveToParentViewController:(UIViewController *)parent {
     if (parent == nil) {
@@ -139,10 +136,10 @@
         weakSelf.currentPageId ++;
         [weakSelf newDownLoadData];
     }];
-//    ((MJRefreshAutoFooter *)self.detailView.webView.scrollView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
+    //    ((MJRefreshAutoFooter *)self.detailView.webView.scrollView.mj_footer).triggerAutomaticallyRefreshPercent = -20;
     
     //  创建bridge
-    [self createBridge];
+    [self configJavascriptBridge];
 }
 
 - (void)uploadImageArr:(NSArray *)imageArr {
@@ -173,30 +170,24 @@
 }
 
 #pragma mark - 建立webview桥接
--(void)createBridge {
-    
-    /*
-     * 必写，JS调用OC
-     */
-    KWEAKSELF;
-    _bridge = [WebViewJavascriptBridge bridgeForWebView:self.detailView.webView];
-    [_bridge setWebViewDelegate:self];
-    
+-(void)configJavascriptBridge {
+
     /*
      *JS调用OC时必须写的，注册一个JS调用OC的方法
      */
     //注册一个供UI端调用的名为testObjcCallback的处理器，并定义用于响应的处理逻辑
-    [_bridge registerHandler:@"onShare" handler:^(id data, WVJBResponseCallback responseCallback) {
+    KWEAKSELF;
+    [self.detailView.webView dz_registerHandler:@"onShare" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 分享
         [weakSelf shareSome];
     }];
     
-    [_bridge registerHandler:@"onPraise" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onPraise" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 点赞
         [weakSelf createPraise:data];
     }];
     
-    [_bridge registerHandler:@"supportDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"supportDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
         if ([DataCheck isValidString:data]) {
             if ([data isEqualToString:@"0"]) {
                 DLog(@"支持正方辩手");
@@ -206,7 +197,7 @@
         }
     }];
     
-    [_bridge registerHandler:@"joinDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"joinDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
         if ([DataCheck isValidString:data]) {
             if ([data isEqualToString:@"0"]) {
                 DLog(@"加入正方辩手");
@@ -216,21 +207,21 @@
         }
     }];
     
-    [_bridge registerHandler:@"endDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"endDebate" handler:^(id data, WVJBResponseCallback responseCallback) {
         DLog(@"结束辩论");
     }];
     
-    [_bridge registerHandler:@"onDiscussUser" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onDiscussUser" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 引用回复
         [weakSelf ReferenceReply:data textview:weakSelf.detailView.emoKeyboard.textBarView.textView];
     }];
     
-    [_bridge registerHandler:@"onUserInfo" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onUserInfo" handler:^(id data, WVJBResponseCallback responseCallback) {
         //查看用户信息
         [weakSelf creatOterUserCenterVC:data];
     }];
     
-    [_bridge registerHandler:@"onThreadThumbsClicked" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onThreadThumbsClicked" handler:^(id data, WVJBResponseCallback responseCallback) {
         //查看大图
         weakSelf.picurlArray = [NSMutableArray array];
         NSString *urlstr = (NSString *)data;
@@ -239,7 +230,7 @@
         [[DZWebBrowerHelper sharedHelper] showPhotoImageSources:weakSelf.picurlArray thumImages:weakSelf.picurlArray currentIndex:0 imageContainView:weakSelf.detailView.webView];
     }];
     
-    [_bridge registerHandler:@"onthreadContentThumbsClick" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onthreadContentThumbsClick" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSMutableArray *imgs = [data objectForKey:@"imgs"];
         NSString *urlstr = [data objectForKey:@"url"];
         NSInteger index = [imgs indexOfObject:urlstr];
@@ -249,33 +240,33 @@
         [[DZWebBrowerHelper sharedHelper] showPhotoImageSources:imgs thumImages:imgs currentIndex:index imageContainView:weakSelf.detailView.webView];
     }];
     
-    [_bridge registerHandler:@"onLoadMore" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onLoadMore" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 加载更多
     }];
     
-    [_bridge registerHandler:@"onSendPoll" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onSendPoll" handler:^(id data, WVJBResponseCallback responseCallback) {
         // 提交投票
         if (data) {
             [weakSelf createPostVote:data];
         }
     }];
     
-    [_bridge registerHandler:@"onVisitVoters" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onVisitVoters" handler:^(id data, WVJBResponseCallback responseCallback) {
         //查看参与投票人
         [weakSelf createVisitVotesrs:data];
     }];
     
-    [_bridge registerHandler:@"onSubmit" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onSubmit" handler:^(id data, WVJBResponseCallback responseCallback) {
         //参加活动取消活动
         [weakSelf createActivitie:weakSelf.threadModel.isActivity];
     }];
     
-    [_bridge registerHandler:@"onComplain" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"onComplain" handler:^(id data, WVJBResponseCallback responseCallback) {
         //举报
         [weakSelf createComplain:checkNull(data)];
     }];
     
-    [_bridge registerHandler:@"manageActive" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [self.detailView.webView dz_registerHandler:@"manageActive" handler:^(id data, WVJBResponseCallback responseCallback) {
         [weakSelf manageTheActivity];
     }];
 }
@@ -541,7 +532,7 @@
                 if (self.threadModel.replies + 1 <= self.threadModel.ppp) {
                     [self.detailView.webView.scrollView.mj_footer endRefreshingWithNoMoreData];
                 }
-                [self.detailView.webView loadBaseWebUrl:self.threadModel.baseUrl.absoluteString back:nil];
+                [self.detailView.webView dz_loadBaseWebUrl:self.threadModel.baseUrl.absoluteString back:nil];
             } else {
                 [self.detailView.webView.scrollView.mj_footer endRefreshing];
                 if (!resModel.Variables.postlist.count){

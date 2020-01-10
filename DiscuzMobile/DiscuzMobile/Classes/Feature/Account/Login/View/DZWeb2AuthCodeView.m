@@ -32,7 +32,7 @@
 }
 
 -(void)loadRequestWithCodeUrl:(NSString *)urlString{
-    [self.codeWebview loadBaseWebUrl:urlString back:nil];
+    [self.codeWebview dz_loadBaseWebUrl:urlString back:nil];
 }
 - (void)tapRefreshCodeGesAction {
     self.refreshAuthCodeBlock?self.refreshAuthCodeBlock():nil;

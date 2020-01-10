@@ -169,7 +169,7 @@
 }
 
 -(void)creatSecureView {
-    [_identWebView loadBaseWebUrl:self.secureData.seccode back:nil];
+    [_identWebView dz_loadBaseWebUrl:self.secureData.seccode back:nil];
     _secqaaLabel.text = self.secureData.secqaa;
 }
 

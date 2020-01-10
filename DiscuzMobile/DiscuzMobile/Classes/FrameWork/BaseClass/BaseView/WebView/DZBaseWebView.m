@@ -11,7 +11,8 @@
 @interface DZBaseWebView ()<WKNavigationDelegate,WKUIDelegate>
 
 @property(nonatomic,assign) WebCSSMode CssMode;
-
+@property (nonatomic, strong) DZWebUrlHelper *urlHelper;  //!< 属性注释
+@property (nonatomic, strong) WebViewJavascriptBridge * jsBridge;
 @end
 
 @implementation DZBaseWebView
@@ -41,9 +42,12 @@
     self.UIDelegate = self;
     self.navigationDelegate = self;
     self.backgroundColor = KRandom_Color;
+    self.urlHelper = [[DZWebUrlHelper alloc] init];
+    self.jsBridge = [WebViewJavascriptBridge bridgeForWebView:self];
+    [self.jsBridge setWebViewDelegate:self];
 }
 
-- (void)loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock{
+- (void)dz_loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock{
     // 无数据的时候显示
     if (![urlString isUrlContainDomain]) {
         backBlock ? backBlock(@"请求地址不存在") : nil;
@@ -53,6 +57,9 @@
     [self loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
+- (void)dz_registerHandler:(NSString*)handlerName handler:(WVJBHandler)handler{
+    [self.jsBridge registerHandler:handlerName handler:handler];
+}
 
 #pragma mark   /********************* WKUIDelegate *************************/
 
@@ -73,7 +80,12 @@
         decisionHandler(naviPolicy);
         return;
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
+    BOOL allowAjax = [self.urlHelper processWebviewWithReqString:navigationAction.request.URL.absoluteString];
+    if(allowAjax){
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }else{
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }
 }
 
 // 根据客户端受到的服务器响应头以及response相关信息来决定是否可以跳转

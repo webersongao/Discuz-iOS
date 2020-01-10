@@ -23,7 +23,7 @@
     [self.view addSubview:self.scrollview];
     [self dz_bringNavigationBarToFront];
     [self.scrollview addSubview:self.contentLabel];
-    self.scrollview.backgroundColor = [UIColor redColor];
+    self.scrollview.backgroundColor = [UIColor whiteColor];
     self.dz_NavigationItem.title = checkTwoStr(DZ_APPNAME, @"服务条款");
 }
 
@@ -41,7 +41,6 @@
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.numberOfLines = 0;
         _contentLabel.font = KFont(14);
-        //    bbsrule_discuz
         NSString *fileName = DZ_BBSRULE;
         NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"txt"];
         _contentLabel.text = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];

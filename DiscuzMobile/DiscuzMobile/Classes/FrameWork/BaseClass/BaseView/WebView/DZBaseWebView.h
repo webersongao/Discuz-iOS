@@ -7,6 +7,8 @@
 //
 
 #import <WebKit/WebKit.h>
+#import "DZWebUrlHelper.h"
+#import <WebViewJavascriptBridge.h>
 
 typedef enum : NSUInteger {
     WebCSS_Default,
@@ -31,10 +33,6 @@ typedef enum : NSUInteger {
 
 - (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error;
 
-- (void)dz_mainWebViewShouldStartLoadWithData:(id)data;
-- (void)dz_mainWebViewBeginDragWithScrollView:(UIScrollView *)scrollView;
-- (void)dz_mainWebViewDidDeceleratingEndWithScrollView:(UIScrollView *)scrollView;
-
 @end
 
 
@@ -44,7 +42,9 @@ typedef enum : NSUInteger {
 
 - (instancetype)initDeviceModeWithFrame:(CGRect)frame;
 
-- (void)loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock;
+- (void)dz_loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock;
+
+- (void)dz_registerHandler:(NSString*)handlerName handler:(WVJBHandler)handler;
 
 @end
 

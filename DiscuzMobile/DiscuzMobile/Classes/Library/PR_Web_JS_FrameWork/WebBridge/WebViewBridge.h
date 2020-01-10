@@ -21,6 +21,7 @@
 - (void)setWebApiObject:(id)object;
 -(BOOL) processWebviewCB:(WKWebView*) webview
 				 withReq:(NSURLRequest*) request;
+
 - (BOOL)requestIsTel:(NSURLRequest *)request;
 @property (nonatomic, assign) BOOL isAllowPandaJs;  //!< 是否执行抖猫的JS
 

@@ -26,7 +26,7 @@
     [self.view addSubview:self.webView];
     
     KWEAKSELF
-    [_webView loadBaseWebUrl:_urlString back:^(NSString *String) {
+    [_webView dz_loadBaseWebUrl:_urlString back:^(NSString *String) {
         [UIAlertController alertTitle:nil message:String controller:self doneText:@"返回" cancelText:nil doneHandle:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
         } cancelHandle:nil];
