@@ -13,7 +13,31 @@ typedef enum : NSUInteger {
     WebCSS_DeviceW, /// 使用设备宽度 铺满父控件
 } WebCSSMode;
 
+@class DZBaseWebView;
+@protocol DZBaseWebViewDelegate <NSObject>
+
+@optional
+
+- (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation;
+
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation;
+
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error;
+
+- (void)dz_mainWebViewDidFailLoad;
+- (void)dz_mainWebViewDidStartLoad;
+- (void)dz_mainWebViewTitle:(id)data;
+- (void)dz_mainWebViewDidFinishLoad:(id)active;
+- (void)dz_mainWebViewShouldStartLoadWithData:(id)data;
+- (void)dz_mainWebViewBeginDragWithScrollView:(UIScrollView *)scrollView;
+- (void)dz_mainWebViewDidDeceleratingEndWithScrollView:(UIScrollView *)scrollView;
+
+@end
+
+
 @interface DZBaseWebView : WKWebView
+
+@property(nullable,nonatomic,weak) id<DZBaseWebViewDelegate>  WKBaseDelegate;
 
 - (instancetype)initDeviceModeWithFrame:(CGRect)frame;
 

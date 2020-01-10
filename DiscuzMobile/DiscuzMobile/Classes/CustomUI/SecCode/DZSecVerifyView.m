@@ -94,7 +94,7 @@
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonSeccode.frame = CGRectMake(10+_yanTextField.frame.size.width/2, 120, _yanTextField.frame.size.width/2, 40);
-    [buttonSeccode addTarget:self action:@selector(downSecCodeAction) forControlEvents:UIControlEventTouchUpInside];
+    [buttonSeccode addTarget:self action:@selector(refreshSecCodeAction) forControlEvents:UIControlEventTouchUpInside];
     buttonSeccode.layer.cornerRadius = 5;
     [buttonSeccode setTitle:@"看不清?" forState:UIControlStateNormal];
     [buttonSeccode setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -139,7 +139,7 @@
     
 }
 
-- (void)downSecCodeAction {
+- (void)refreshSecCodeAction {
     [self downSeccode:self.type success:nil failure:nil];
 }
 

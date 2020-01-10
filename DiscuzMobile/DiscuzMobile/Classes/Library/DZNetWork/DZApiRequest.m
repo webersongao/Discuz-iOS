@@ -15,6 +15,13 @@
     
     [self requestWithConfig:config progress:nil success:^(id responseObject, JTLoadType type) {
         [self publicDo:responseObject];
+        
+        NSArray *cookieArr = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+        DLog(@"-开始----⚠️----");
+//        for (NSHTTPCookie *cookie in cookieArr) {
+            DLog(@"WBS Cookies is %@ \n",cookieArr);
+//        }
+        DLog(@"-结束-⚠️---❤️---⚠️");
         success(responseObject,type);
     } failed:^(NSError *error) {
         if (failed) {

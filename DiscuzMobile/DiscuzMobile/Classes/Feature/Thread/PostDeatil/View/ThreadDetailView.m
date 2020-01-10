@@ -70,7 +70,6 @@
         //    _webView.dataDetectorTypes = UIDataDetectorTypeLink;
         //取消右侧，下侧滚动条，去处上下滚动边界的黑色背景
         _webView.backgroundColor = [UIColor clearColor];
-        //    [_webView setScalesPageToFit:YES];
     }
     return _webView;
 }

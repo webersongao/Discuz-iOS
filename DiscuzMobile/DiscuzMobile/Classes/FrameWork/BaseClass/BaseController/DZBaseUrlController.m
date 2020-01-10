@@ -9,7 +9,7 @@
 #import "DZBaseUrlController.h"
 #import "UIAlertController+Extension.h"
 
-@interface DZBaseUrlController ()<WKNavigationDelegate>
+@interface DZBaseUrlController ()<DZBaseWebViewDelegate>
 
 @property (nonatomic,strong) DZBaseWebView *webView;
 @end
@@ -40,12 +40,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
 
-- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
     NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:webView.URL];
     NSEnumerator *enumerator = [cookies objectEnumerator];
     NSHTTPCookie *cookie;
@@ -55,7 +55,7 @@
     [self.HUD hideAnimated:YES];
 }
 
-- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     [self.HUD hideAnimated:YES];
     if (error.code == NSURLErrorCancelled) {
         //忽略这个错误。
@@ -84,10 +84,8 @@
         _webView = [[DZBaseWebView alloc] initWithFrame:KView_OutNavi_Bounds];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.userInteractionEnabled = YES;
+        _webView.WKBaseDelegate = self;
         [_webView setOpaque:NO];
-        // 自动缩放适应屏幕
-        //        [_webView setScalesPageToFit:YES];
-        _webView.navigationDelegate = self;
     }
     return _webView;
 }

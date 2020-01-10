@@ -22,7 +22,7 @@
 #import "DZShareCenter.h"
 #import "DZWebBrowerHelper.h"
 
-@interface DZThreadDetailController ()<UITextFieldDelegate, WKNavigationDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
+@interface DZThreadDetailController ()<UITextFieldDelegate, DZBaseWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, assign) BOOL isOnePage;
 @property (nonatomic, copy) NSString * forumtitle;
@@ -583,7 +583,7 @@
 }
 
 // 页面加载完成之后调用
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     if ([webView.URL.absoluteString isEqualToString:self.threadModel.baseUrl.absoluteString]) {
         if (self.currentPageId == 1) {
@@ -753,7 +753,7 @@
     if (!_detailView) {
         _detailView = [[ThreadDetailView alloc] initWithFrame:KView_OutNavi_Bounds];
         // 设置代理
-        _detailView.webView.navigationDelegate = self;
+        _detailView.webView.WKBaseDelegate = self;
         _detailView.webView.scrollView.delegate = self;
         UIPinchGestureRecognizer *gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchAction:)];
         [_detailView.webView addGestureRecognizer:gestureRecognizer];
