@@ -4327,8 +4327,8 @@
 				27D1C8DF1DD2BE8E00B835B7 /* Sources */,
 				27D1C8E01DD2BE8E00B835B7 /* Frameworks */,
 				27D1C8E11DD2BE8E00B835B7 /* Resources */,
-				4ADD5C85089B25EE88D5BCD9 /* [CP] Copy Pods Resources */,
 				5DAC4C80DE8405E83B91874F /* [CP] Embed Pods Frameworks */,
+				7A239624A29529BDCA3CD18E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4533,23 +4533,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4ADD5C85089B25EE88D5BCD9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5DAC4C80DE8405E83B91874F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4565,6 +4548,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A239624A29529BDCA3CD18E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DiscuzMobile/Pods-DiscuzMobile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

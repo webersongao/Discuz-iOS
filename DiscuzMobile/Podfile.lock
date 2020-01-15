@@ -60,11 +60,11 @@ PODS:
     - mob_sharesdk/ShareSDK
     - MOBFoundation
   - MOBFoundation (3.2.8)
-  - SDWebImage (5.4.0):
-    - SDWebImage/Core (= 5.4.0)
-  - SDWebImage/Core (5.4.0)
+  - SDWebImage (5.4.2):
+    - SDWebImage/Core (= 5.4.2)
+  - SDWebImage/Core (5.4.2)
   - WebViewJavascriptBridge (6.0.3)
-  - XHLaunchAd (3.9.8):
+  - XHLaunchAd (3.9.10):
     - FLAnimatedImage (~> 1.0.12)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -119,9 +119,9 @@ SPEC CHECKSUMS:
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
   mob_sharesdk: ecee6e8ba42f76a252a40d2da7a1f7301b9831d6
   MOBFoundation: 2dc0a63371eccccabef13b1df3fe57564003bc85
-  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SDWebImage: 4ca2dc4eefae4224bea8f504251cda485a363745
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
-  XHLaunchAd: 45048592af01aa501c9d2d0c45e95ca74c4d0596
+  XHLaunchAd: 3007a2e10eb5563a8adc828f8d016e34006a01f6
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 PODFILE CHECKSUM: 8a0fce6c00b49e7ceb6c66acb3e3a790b7b091cf
