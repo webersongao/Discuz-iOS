@@ -7,11 +7,11 @@
 //
 
 #import "DZWeb2AuthCodeView.h"
-#import "DZBaseWebView.h"
+#import "DZWebView.h"
 
 @interface DZWeb2AuthCodeView()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) DZBaseWebView *codeWebview;
+@property (nonatomic, strong) DZWebView *codeWebview;
 
 @end
 
@@ -59,9 +59,9 @@
     return _textField;
 }
 
--(DZBaseWebView *)codeWebview{
+-(DZWebView *)codeWebview{
     if (!_codeWebview) {
-        _codeWebview = [[DZBaseWebView alloc] initDeviceModeWithFrame:CGRectMake(0, kMargin10, KScreenWidth * 0.3, 0)];
+        _codeWebview = [[DZWebView alloc] initDeviceModeWithFrame:CGRectMake(0, kMargin10, KScreenWidth * 0.3, 0)];
         _codeWebview.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _codeWebview.userInteractionEnabled = YES;
         [_codeWebview setTranslatesAutoresizingMaskIntoConstraints:NO];

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DZBaseWebView.h"
+#import "DZWebView.h"
 #import "DZEmoticonKeyboard.h"
 #import "DZRefreshHeader.h"
 #import "DZRefreshFooter.h"
 
 @interface ThreadDetailView : UIView
 
-@property (nonatomic,strong) DZBaseWebView *webView;
+@property (nonatomic,strong) DZWebView *webView;
 @property (nonatomic, strong) DZEmoticonKeyboard *emoKeyboard;
 
 @end

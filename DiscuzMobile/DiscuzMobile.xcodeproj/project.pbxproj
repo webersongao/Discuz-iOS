@@ -283,7 +283,7 @@
 		7065AE962386A97A009B6DA7 /* AppDelegate+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065AE952386A97A009B6DA7 /* AppDelegate+Update.m */; };
 		7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */; };
 		7065C9A2237D64400056737C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27382C921EC5B6040071C3A1 /* AVFoundation.framework */; };
-		706649F323BF7D02002B8388 /* DZBaseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706649F223BF7D02002B8388 /* DZBaseWebView.m */; };
+		706649F323BF7D02002B8388 /* DZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 706649F223BF7D02002B8388 /* DZWebView.m */; };
 		706649F623BF9772002B8388 /* DZWebBrowerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 706649F523BF9772002B8388 /* DZWebBrowerHelper.m */; };
 		7066D8CB2382739F00017168 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7066D8CA2382739F00017168 /* Launch.storyboard */; };
 		7068959523A0C47A00A0EFAE /* DZMsgNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7068959423A0C47A00A0EFAE /* DZMsgNetTool.m */; };
@@ -1023,8 +1023,8 @@
 		7065AE952386A97A009B6DA7 /* AppDelegate+Update.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Update.m"; sourceTree = "<group>"; };
 		7065C99F237D61CA0056737C /* DZPostSiriViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZPostSiriViewController.h; sourceTree = "<group>"; };
 		7065C9A0237D61CA0056737C /* DZPostSiriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZPostSiriViewController.m; sourceTree = "<group>"; };
-		706649F123BF7D02002B8388 /* DZBaseWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseWebView.h; sourceTree = "<group>"; };
-		706649F223BF7D02002B8388 /* DZBaseWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseWebView.m; sourceTree = "<group>"; };
+		706649F123BF7D02002B8388 /* DZWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebView.h; sourceTree = "<group>"; };
+		706649F223BF7D02002B8388 /* DZWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebView.m; sourceTree = "<group>"; };
 		706649F423BF9772002B8388 /* DZWebBrowerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebBrowerHelper.h; sourceTree = "<group>"; };
 		706649F523BF9772002B8388 /* DZWebBrowerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebBrowerHelper.m; sourceTree = "<group>"; };
 		7066D8CA2382739F00017168 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
@@ -2818,17 +2818,17 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		706649F023BF7CE5002B8388 /* WebView */ = {
+		706649F023BF7CE5002B8388 /* DZWebView */ = {
 			isa = PBXGroup;
 			children = (
-				706649F123BF7D02002B8388 /* DZBaseWebView.h */,
-				706649F223BF7D02002B8388 /* DZBaseWebView.m */,
-				709B29FF23C889C200BC0A8F /* DZWebUrlCenter.h */,
-				709B2A0023C889C200BC0A8F /* DZWebUrlCenter.m */,
+				706649F123BF7D02002B8388 /* DZWebView.h */,
+				706649F223BF7D02002B8388 /* DZWebView.m */,
 				709B2A0223C8903500BC0A8F /* DZNativeHelper.h */,
 				709B2A0323C8903500BC0A8F /* DZNativeHelper.m */,
+				709B29FF23C889C200BC0A8F /* DZWebUrlCenter.h */,
+				709B2A0023C889C200BC0A8F /* DZWebUrlCenter.m */,
 			);
-			path = WebView;
+			path = DZWebView;
 			sourceTree = "<group>";
 		};
 		7066D8CC2382741D00017168 /* InstroductionView */ = {
@@ -3263,10 +3263,10 @@
 		70DFD772237A95DD00A13F0F /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
-				706649F023BF7CE5002B8388 /* WebView */,
 				70DFD779237A95DD00A13F0F /* ListView */,
 				70DFD773237A95DD00A13F0F /* AuthCode */,
 				709A731F2387F08600DF04CE /* OtherView */,
+				706649F023BF7CE5002B8388 /* DZWebView */,
 				709A731E2387F06800DF04CE /* CollectionView */,
 			);
 			path = BaseView;
@@ -4811,7 +4811,7 @@
 				70621079237935ED00130B9D /* WebImageCacheUrlProtocol.m in Sources */,
 				9494509121196F8B0074C79E /* AudioManager.m in Sources */,
 				9445AA1C20649D0C0008F641 /* DZApiRequest.m in Sources */,
-				706649F323BF7D02002B8388 /* DZBaseWebView.m in Sources */,
+				706649F323BF7D02002B8388 /* DZWebView.m in Sources */,
 				7062128D237936C900130B9D /* DZUploadImageContainView.m in Sources */,
 				7023CC6623A1DAC800FB7E31 /* DZSearchModel.m in Sources */,
 				70FBDD0B2383FC1B00FC296E /* DZForumRightCell.m in Sources */,

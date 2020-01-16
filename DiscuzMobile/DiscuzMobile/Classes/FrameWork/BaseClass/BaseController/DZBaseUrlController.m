@@ -9,9 +9,9 @@
 #import "DZBaseUrlController.h"
 #import "UIAlertController+Extension.h"
 
-@interface DZBaseUrlController ()<DZBaseWebViewDelegate>
+@interface DZBaseUrlController ()<DZWebViewDelegate>
 
-@property (nonatomic,strong) DZBaseWebView *webView;
+@property (nonatomic,strong) DZWebView *webView;
 @end
 
 @implementation DZBaseUrlController
@@ -35,16 +35,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarTappedAction:) name:DZ_StatusBarTap_Notify object:nil];
 }
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didLoadMainTitle:(NSString *)title{
+- (void)dz_mainwebView:(DZWebView *)webView didLoadMainTitle:(NSString *)title{
     [self setTitle:title];
 }
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
     [self.HUD showLoadingMessag:@"正在加载" toView:self.view];
 }
 
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
     NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:webView.URL];
     NSEnumerator *enumerator = [cookies objectEnumerator];
     NSHTTPCookie *cookie;
@@ -54,7 +54,7 @@
     [self.HUD hideAnimated:YES];
 }
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+- (void)dz_mainwebView:(DZWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     [self.HUD hideAnimated:YES];
     if (error.code == NSURLErrorCancelled) {
         //忽略这个错误。
@@ -71,9 +71,9 @@
     [self.webView.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-- (DZBaseWebView *)webView {
+- (DZWebView *)webView {
     if (_webView == nil) {
-        _webView = [[DZBaseWebView alloc] initWithFrame:KView_OutNavi_Bounds];
+        _webView = [[DZWebView alloc] initWithFrame:KView_OutNavi_Bounds];
         _webView.backgroundColor = [UIColor whiteColor];
         _webView.userInteractionEnabled = YES;
         _webView.WKBaseDelegate = self;

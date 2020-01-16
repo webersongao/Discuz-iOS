@@ -8,14 +8,14 @@
 
 #import "DZSecVerifyView.h"
 #import "MBProgressHUD.h"
-#import "DZBaseWebView.h"
+#import "DZWebView.h"
 #import "MBProgressHUD+Add.h"
 
 @interface DZSecVerifyView() <UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) BOOL isCreate;
 @property (nonatomic, copy) NSString *type;
-@property (nonatomic, strong) DZBaseWebView * identWebView;
+@property (nonatomic, strong) DZWebView * identWebView;
 
 @end
 
@@ -89,7 +89,7 @@
     [bgview addSubview:self.yanTextField];
     
     //验证码webview
-    _identWebView = [[DZBaseWebView alloc] initDeviceModeWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
+    _identWebView = [[DZWebView alloc] initDeviceModeWithFrame:CGRectMake(10, 120, _yanTextField.frame.size.width/2, 40)];
     _identWebView.userInteractionEnabled = YES;
     _identWebView.backgroundColor = [UIColor yellowColor];
     UIButton * buttonSeccode = [UIButton buttonWithType:UIButtonTypeCustom];

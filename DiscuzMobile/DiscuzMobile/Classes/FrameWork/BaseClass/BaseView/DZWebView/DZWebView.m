@@ -1,17 +1,17 @@
 //
-//  DZBaseWebView.m
+//  DZWebView.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2020/1/3.
 //  Copyright © 2020 comsenz-service.com. All rights reserved.
 //
 
-#import "DZBaseWebView.h"
+#import "DZWebView.h"
 #import "DZRefreshHeader.h"
 #import "PRNetWorkErrorView.h"
 #import "DZLoadingAnimationView.h"
 
-@interface DZBaseWebView ()<WKNavigationDelegate,WKUIDelegate,PRNetWorkErrorViewDelegate>
+@interface DZWebView ()<WKNavigationDelegate,WKUIDelegate,PRNetWorkErrorViewDelegate>
 {
     BOOL m_isWebReload;
     DZLoadingAnimationView * m_actView;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation DZBaseWebView
+@implementation DZWebView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -59,7 +59,7 @@
 
 -(void)setIsHeaderRefresh:(BOOL)isHeaderRefresh{
     _isHeaderRefresh = isHeaderRefresh;
-    if (isHeaderRefresh) {    
+    if (isHeaderRefresh) {
         self.scrollView.mj_header = self.refreshHeader;
     }else{
         self.scrollView.mj_header = nil;
@@ -339,7 +339,7 @@
 
 -(DZRefreshHeader *)refreshHeader{
     if (!_refreshHeader) {
-     _refreshHeader = [DZRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeaderAction) mode:DZRefreshHeaderModeDefault];
+        _refreshHeader = [DZRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeaderAction) mode:DZRefreshHeaderModeDefault];
     }
     return _refreshHeader;
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 comsenz-service.com. All rights reserved.
 //
 
-#import "DZBaseWebView.h"
+#import "DZWebView.h"
 #import "DZBaseViewController.h"
 
 @interface DZBaseUrlController : DZBaseViewController

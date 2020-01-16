@@ -21,7 +21,7 @@
 #import "DZShareCenter.h"
 #import "DZWebBrowerHelper.h"
 
-@interface DZThreadDetailController ()<UITextFieldDelegate, DZBaseWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
+@interface DZThreadDetailController ()<UITextFieldDelegate, DZWebViewDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, assign) BOOL isOnePage;
 @property (nonatomic, copy) NSString * forumtitle;
@@ -574,7 +574,7 @@
 }
 
 // 页面加载完成之后调用
-- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+- (void)dz_mainwebView:(DZWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     if ([webView.URL.absoluteString isEqualToString:self.threadModel.baseUrl.absoluteString]) {
         if (self.currentPageId == 1) {
