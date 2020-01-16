@@ -39,6 +39,9 @@ typedef enum : NSUInteger {
 @interface DZBaseWebView : WKWebView
 
 @property(nullable,nonatomic,weak) id<DZBaseWebViewDelegate>  WKBaseDelegate;
+@property (nonatomic, assign) BOOL isActionLoading;  //!< 是否带有loading动画 默认为NO
+@property (nonatomic, assign) BOOL isHeaderRefresh;  //!< 是否带有Header下拉刷新 默认为NO
+
 
 - (instancetype)initDeviceModeWithFrame:(CGRect)frame;
 

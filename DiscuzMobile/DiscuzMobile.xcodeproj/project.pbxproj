@@ -311,11 +311,6 @@
 		709A73122387E7FB00DF04CE /* DZRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730E2387E7FB00DF04CE /* DZRefreshHeader.m */; };
 		709A731A2387EF6100DF04CE /* DZDiscoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73192387EF6100DF04CE /* DZDiscoverListView.m */; };
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
-		709B29FA23C8669A00BC0A8F /* DZWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709B29EE23C8669A00BC0A8F /* DZWebView.mm */; };
-		709B29FB23C8669A00BC0A8F /* WebLogicManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709B29F023C8669A00BC0A8F /* WebLogicManager.mm */; };
-		709B29FC23C8669A00BC0A8F /* WebViewApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B29F423C8669A00BC0A8F /* WebViewApi.m */; };
-		709B29FD23C8669A00BC0A8F /* WebViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B29F623C8669A00BC0A8F /* WebViewBridge.m */; };
-		709B29FE23C8669A00BC0A8F /* DZMainWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709B29F923C8669A00BC0A8F /* DZMainWebView.mm */; };
 		709B2A0123C889C200BC0A8F /* DZWebUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B2A0023C889C200BC0A8F /* DZWebUrlHelper.m */; };
 		709B2A0423C8903500BC0A8F /* DZNativeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B2A0323C8903500BC0A8F /* DZNativeHelper.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
@@ -1083,16 +1078,6 @@
 		709A73192387EF6100DF04CE /* DZDiscoverListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverListView.m; sourceTree = "<group>"; };
 		709A73202387F0D000DF04CE /* DZBaseCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseCollectionCell.h; sourceTree = "<group>"; };
 		709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseCollectionCell.m; sourceTree = "<group>"; };
-		709B29EC23C8669A00BC0A8F /* WebLogicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLogicManager.h; sourceTree = "<group>"; };
-		709B29EE23C8669A00BC0A8F /* DZWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DZWebView.mm; sourceTree = "<group>"; };
-		709B29EF23C8669A00BC0A8F /* DZWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZWebView.h; sourceTree = "<group>"; };
-		709B29F023C8669A00BC0A8F /* WebLogicManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLogicManager.mm; sourceTree = "<group>"; };
-		709B29F223C8669A00BC0A8F /* WebViewApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewApi.h; sourceTree = "<group>"; };
-		709B29F323C8669A00BC0A8F /* WebViewBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewBridge.h; sourceTree = "<group>"; };
-		709B29F423C8669A00BC0A8F /* WebViewApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewApi.m; sourceTree = "<group>"; };
-		709B29F623C8669A00BC0A8F /* WebViewBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewBridge.m; sourceTree = "<group>"; };
-		709B29F823C8669A00BC0A8F /* DZMainWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMainWebView.h; sourceTree = "<group>"; };
-		709B29F923C8669A00BC0A8F /* DZMainWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DZMainWebView.mm; sourceTree = "<group>"; };
 		709B29FF23C889C200BC0A8F /* DZWebUrlHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebUrlHelper.h; sourceTree = "<group>"; };
 		709B2A0023C889C200BC0A8F /* DZWebUrlHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebUrlHelper.m; sourceTree = "<group>"; };
 		709B2A0223C8903500BC0A8F /* DZNativeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZNativeHelper.h; sourceTree = "<group>"; };
@@ -2270,7 +2255,6 @@
 				70F19E53237A8E9900499BED /* NavigationBar */,
 				947ECAD92064D403002D3536 /* JTImagePicker */,
 				70621064237935ED00130B9D /* CacheWebview */,
-				709B29EB23C8669A00BC0A8F /* PR_Web_JS_FrameWork */,
 				94F36BCF2080418A002AEF9E /* WebImageBrower */,
 				7062104D237935ED00130B9D /* UUDatePicker_Block */,
 				7062105A237935ED00130B9D /* TYLaunchAnimation */,
@@ -3086,47 +3070,6 @@
 				70DFD777237A95DD00A13F0F /* DZBaseFloatingView.m */,
 			);
 			path = OtherView;
-			sourceTree = "<group>";
-		};
-		709B29EB23C8669A00BC0A8F /* PR_Web_JS_FrameWork */ = {
-			isa = PBXGroup;
-			children = (
-				709B29EC23C8669A00BC0A8F /* WebLogicManager.h */,
-				709B29F023C8669A00BC0A8F /* WebLogicManager.mm */,
-				709B29ED23C8669A00BC0A8F /* WebCommon */,
-				709B29F123C8669A00BC0A8F /* WebBridge */,
-				709B29F723C8669A00BC0A8F /* WebUI */,
-			);
-			path = PR_Web_JS_FrameWork;
-			sourceTree = "<group>";
-		};
-		709B29ED23C8669A00BC0A8F /* WebCommon */ = {
-			isa = PBXGroup;
-			children = (
-				709B29EF23C8669A00BC0A8F /* DZWebView.h */,
-				709B29EE23C8669A00BC0A8F /* DZWebView.mm */,
-			);
-			path = WebCommon;
-			sourceTree = "<group>";
-		};
-		709B29F123C8669A00BC0A8F /* WebBridge */ = {
-			isa = PBXGroup;
-			children = (
-				709B29F223C8669A00BC0A8F /* WebViewApi.h */,
-				709B29F423C8669A00BC0A8F /* WebViewApi.m */,
-				709B29F323C8669A00BC0A8F /* WebViewBridge.h */,
-				709B29F623C8669A00BC0A8F /* WebViewBridge.m */,
-			);
-			path = WebBridge;
-			sourceTree = "<group>";
-		};
-		709B29F723C8669A00BC0A8F /* WebUI */ = {
-			isa = PBXGroup;
-			children = (
-				709B29F823C8669A00BC0A8F /* DZMainWebView.h */,
-				709B29F923C8669A00BC0A8F /* DZMainWebView.mm */,
-			);
-			path = WebUI;
 			sourceTree = "<group>";
 		};
 		70A5E25D23A9D5BA00236105 /* Square */ = {
@@ -4576,7 +4519,6 @@
 			files = (
 				7065C9A1237D61CA0056737C /* DZPostSiriViewController.m in Sources */,
 				706212EA237936C900130B9D /* DZLoginTextField.m in Sources */,
-				709B29FC23C8669A00BC0A8F /* WebViewApi.m in Sources */,
 				94A3E65620E611910039C560 /* DZEmoticonKeyboard.m in Sources */,
 				7002A36F2383D8CD00BC0C61 /* SystemNoteCell.m in Sources */,
 				706212CB237936C900130B9D /* DZAboutView.m in Sources */,
@@ -4698,7 +4640,6 @@
 				7062106D237935ED00130B9D /* UUDatePicker.m in Sources */,
 				70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */,
 				706212C7237936C900130B9D /* DZUserBoundView.m in Sources */,
-				709B29FA23C8669A00BC0A8F /* DZWebView.mm in Sources */,
 				70A5E26C23AA030E00236105 /* DZUserTableView.m in Sources */,
 				706212E7237936C900130B9D /* DZLoginModel.m in Sources */,
 				70FBDCF42383FC1B00FC296E /* DZVerticalButton.m in Sources */,
@@ -4754,7 +4695,6 @@
 				70FBDCFD2383FC1B00FC296E /* FriendCell.m in Sources */,
 				706212E5237936C900130B9D /* DZResetPwdController.m in Sources */,
 				70BA483123852BA200634D76 /* UILabel+Common.m in Sources */,
-				709B29FE23C8669A00BC0A8F /* DZMainWebView.mm in Sources */,
 				708FAA8923B4ACC0001CA6F2 /* DZMobileCtrl+Update.m in Sources */,
 				9494508821196F8B0074C79E /* AudioModel.m in Sources */,
 				70621279237936C900130B9D /* DZPostTypeSelectView.m in Sources */,
@@ -4788,7 +4728,6 @@
 				70F9F8EA237AA72C0067B308 /* NSDate+Extension.m in Sources */,
 				70FBDCE22383FC1B00FC296E /* CollectionThreadController.m in Sources */,
 				706212C6237936C900130B9D /* DZUserBoundController.m in Sources */,
-				709B29FB23C8669A00BC0A8F /* WebLogicManager.mm in Sources */,
 				94A3E64820E611740039C560 /* WBStatusComposeTextParser.m in Sources */,
 				273CCEFF1DD98E7100116331 /* DataCheck.m in Sources */,
 				7062127A237936C900130B9D /* PostTypeModel.m in Sources */,
@@ -4858,7 +4797,6 @@
 				70FBDD0A2383FC1B00FC296E /* DZForumLeftCell.m in Sources */,
 				706212A5237936C900130B9D /* DZLoginModule.m in Sources */,
 				70E51921239F8E4600BFC238 /* DZPollVarModel.m in Sources */,
-				709B29FD23C8669A00BC0A8F /* WebViewBridge.m in Sources */,
 				70FBDCFC2383FC1B00FC296E /* UserInfoCell.m in Sources */,
 				70A7965923B0D19B001FF672 /* UILabel+TopTitle.m in Sources */,
 				70EA90AE23BA024600814952 /* DZShadowView.mm in Sources */,

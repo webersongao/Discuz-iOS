@@ -7,12 +7,22 @@
 //
 
 #import "DZBaseWebView.h"
+#import "DZRefreshHeader.h"
+#import "PRNetWorkErrorView.h"
+#import "DZLoadingAnimationView.h"
 
-@interface DZBaseWebView ()<WKNavigationDelegate,WKUIDelegate>
-
+@interface DZBaseWebView ()<WKNavigationDelegate,WKUIDelegate,PRNetWorkErrorViewDelegate>
+{
+    BOOL m_isWebReload;
+    DZLoadingAnimationView * m_actView;
+}
 @property(nonatomic,assign) WebCSSMode CssMode;
+@property (nonatomic, copy) NSString *urlLoad;  //!< 属性注释
 @property (nonatomic, strong) DZWebUrlHelper *urlHelper;  //!< 属性注释
 @property (nonatomic, strong) WebViewJavascriptBridge * jsBridge;
+@property (nonatomic,strong) PRNetWorkErrorView *errorView;
+@property (nonatomic, weak) DZRefreshHeader *refreshHeader;
+
 @end
 
 @implementation DZBaseWebView
@@ -47,6 +57,129 @@
     [self.jsBridge setWebViewDelegate:self];
 }
 
+-(void)setIsHeaderRefresh:(BOOL)isHeaderRefresh{
+    _isHeaderRefresh = isHeaderRefresh;
+    if (isHeaderRefresh) {    
+        self.scrollView.mj_header = self.refreshHeader;
+    }else{
+        self.scrollView.mj_header = nil;
+    }
+}
+
+/**
+ *  loading view 中间
+ */
+-(void)setIsActionLoading:(BOOL)isActionLoading{
+    _isActionLoading = isActionLoading;
+    if (isActionLoading) {
+        m_actView = [[DZLoadingAnimationView alloc] initWithSuperView:self loadingType:PRLoadingViewNoramlType];
+    }else{
+        m_actView = nil;
+    }
+}
+
+- (void)refreshHeaderAction
+{
+    m_isWebReload = YES;
+    [self startLoadRequest:self.urlLoad];
+}
+
+- (void)stopActIndicatorAnimating
+{
+    [m_actView stopAnimationView];
+}
+
+- (void)completeProgress
+{
+    if (m_actView) {
+        [self stopActIndicatorAnimating];
+    }
+}
+
+/**
+ *  失败页重试按钮代理方法
+ */
+- (void)tryAgainButtonDidClicked
+{
+    [self.errorView removeFromSuperview];
+    [m_actView startAnimationViewWithSuperView:self];
+    [self reloadBtnAction];
+}
+
+- (void)removeErrorView
+{
+    if (_errorView)
+    {
+        [_errorView removeFromSuperview];
+        self.errorView = nil;
+    }
+}
+
+- (void)reloadBtnAction
+{
+    if ([DZMobileCtrl connectedNetwork]) {
+        [self startLoadRequest:self.urlLoad];
+        return;
+    } else {
+        //防止没网络的情况下,点"重试"页面变白
+        [self handleFailureWebView];
+        [m_actView stopAnimationView];
+        return;
+    }
+}
+
+-(void)startLoadRequest:(NSString *)urlStr
+{
+    if (self.isLoading) {
+        [self stopLoading];
+    }
+    [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+}
+
+-(void)handleFailureWebView
+{
+    [self addErrorView];
+}
+
+- (PRNetWorkErrorView *)errorView
+{
+    if (!_errorView) {
+        CGRect errorRect = CGRectMake(0, 0, KScreenWidth, KScreenHeight);
+        _errorView = [[PRNetWorkErrorView alloc] initWithFrame:errorRect viewType:PRErrorViewNoNet];
+        _errorView.delegate = self;
+    }
+    return _errorView;
+}
+
+//加载失败页 PRErrorViewType
+- (void)addErrorView {
+    [self.errorView addErrorViewWithViewType:PRErrorViewNoNet];
+    [self addSubview:self.errorView];
+}
+
+- (void)checkRestartLoadingAnimation
+{
+    if (self.refreshHeader) {
+        [self.refreshHeader checkRestartLoadingAnimation];
+    }
+}
+
+- (void)doneLoadingTableViewData
+{
+    m_isWebReload = NO;
+    if (self.refreshHeader.isRefreshing) {
+        [self.refreshHeader endRefreshing];
+    }
+}
+
+- (void)removeRefreshHeaderView
+{
+    if (self.refreshHeader) {
+        self.refreshHeader.hidden = YES;
+    }
+}
+
+
 - (void)dz_loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock{
     // 无数据的时候显示
     if (![urlString isUrlContainDomain] && ![urlString hasPrefix:@"file://"]) {
@@ -79,6 +212,9 @@
         decisionHandler(naviPolicy);
         return;
     }
+    
+    [self removeErrorView];
+    
     BOOL allowAjax = [self.urlHelper processWebviewWithReqString:navigationAction.request.URL.absoluteString];
     if(allowAjax){
         decisionHandler(WKNavigationActionPolicyAllow);
@@ -94,6 +230,11 @@
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+    
+    if (!m_isWebReload){
+        [m_actView startAnimationViewWithSuperView:self];
+    }
+    
     if ([self.WKBaseDelegate respondsToSelector:@selector(dz_mainwebView:didStartNavigation:)]) {
         [self.WKBaseDelegate dz_mainwebView:self didStartNavigation:navigation];
     }
@@ -107,6 +248,7 @@
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error;{
     
+    [self stopActIndicatorAnimating];
     if (error.code == NSURLErrorCancelled) {
         return; // this is Error -999
     } else {
@@ -115,7 +257,7 @@
             if ([self.WKBaseDelegate respondsToSelector:@selector(dz_mainwebView:didLoadMainTitle:)]) {
                 [self.WKBaseDelegate dz_mainwebView:self didLoadMainTitle:@"网页连接失败"];
             }
-            /// 可以这里 添加一个失败错误页
+            [self handleFailureWebView];
         }
     }
 }
@@ -128,9 +270,13 @@
 }
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+    
+    [self stopActIndicatorAnimating];
+    
     if ([self.WKBaseDelegate respondsToSelector:@selector(dz_mainwebView:didFinishNavigation:)]) {
         [self.WKBaseDelegate dz_mainwebView:self didFinishNavigation:navigation];
     }
+    self.urlLoad = webView.URL.absoluteString;
     /// 屏蔽掉长摁出现的编辑菜单
     [webView evaluateJavaScript:@"document.documentElement.style.webkitUserSelect='none';" completionHandler:nil];
     [webView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:nil];
@@ -147,6 +293,9 @@
 }
 //提交发生错误时调用
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+    
+    [self stopActIndicatorAnimating];
+    
     if ([self.WKBaseDelegate respondsToSelector:@selector(dz_mainwebView:didFailNavigation:withError:)]) {
         [self.WKBaseDelegate dz_mainwebView:self didFailNavigation:navigation withError:error];
     }
@@ -185,6 +334,13 @@
     WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
     wkWebConfig.userContentController = wkUController;
     return wkWebConfig;
+}
+
+-(DZRefreshHeader *)refreshHeader{
+    if (!_refreshHeader) {
+     _refreshHeader = [DZRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshHeaderAction) mode:DZRefreshHeaderModeDefault];
+    }
+    return _refreshHeader;
 }
 
 
