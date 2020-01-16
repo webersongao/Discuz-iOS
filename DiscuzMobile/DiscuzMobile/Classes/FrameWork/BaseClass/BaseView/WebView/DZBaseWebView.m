@@ -49,12 +49,11 @@
 
 - (void)dz_loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock{
     // 无数据的时候显示
-    if (![urlString isUrlContainDomain]) {
-        backBlock ? backBlock(@"请求地址不存在") : nil;
+    if (![urlString isUrlContainDomain] && ![urlString hasPrefix:@"file://"]) {
+        backBlock ? backBlock(@"网络地址异常或不存在，请稍后重试") : nil;
         return;
     }
-    NSURL *url = [NSURL URLWithString:[NSString encodeString:urlString]];
-    [self loadRequest:[NSURLRequest requestWithURL:url]];
+    [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
 - (void)dz_registerHandler:(NSString*)handlerName handler:(WVJBHandler)handler{

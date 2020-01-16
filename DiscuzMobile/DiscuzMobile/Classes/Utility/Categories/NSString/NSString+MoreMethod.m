@@ -186,7 +186,7 @@
 }
 
 - (BOOL)isUrlContainDomain {
-    return  (![self hasPrefix:@"http://"] && ![self hasPrefix:@"https://"]) ? NO : YES;
+    return  ([self hasPrefix:@"http://"] || [self hasPrefix:@"https://"]) ? YES : NO;
 }
 
 // 计算两个时间字符串 开始时间是否早于结束时间 2016-12-05 00:00
