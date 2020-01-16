@@ -7,7 +7,7 @@
 //
 
 #import <WebKit/WebKit.h>
-#import "DZWebUrlHelper.h"
+#import "DZWebUrlCenter.h"
 #import <WebViewJavascriptBridge.h>
 
 typedef enum : NSUInteger {
@@ -25,13 +25,13 @@ typedef enum : NSUInteger {
 
 - (BOOL)dz_mainwebView:(DZBaseWebView *)webView didDecidePolicy:(WKNavigationAction *)navigationAction;
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didStartNavigation:(null_unspecified WKNavigation *)navigation;
+- (void)dz_mainwebView:(DZBaseWebView *)webView didStartNavigation:(WKNavigation *)navigation;
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation;
+- (void)dz_mainwebView:(DZBaseWebView *)webView didCommitNavigation:(WKNavigation *)navigation;
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation;
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
 
-- (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error;
+- (void)dz_mainwebView:(DZBaseWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error;
 
 @end
 

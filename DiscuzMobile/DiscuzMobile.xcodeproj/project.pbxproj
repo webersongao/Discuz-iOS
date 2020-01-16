@@ -311,7 +311,7 @@
 		709A73122387E7FB00DF04CE /* DZRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A730E2387E7FB00DF04CE /* DZRefreshHeader.m */; };
 		709A731A2387EF6100DF04CE /* DZDiscoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73192387EF6100DF04CE /* DZDiscoverListView.m */; };
 		709A73222387F0D000DF04CE /* DZBaseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */; };
-		709B2A0123C889C200BC0A8F /* DZWebUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B2A0023C889C200BC0A8F /* DZWebUrlHelper.m */; };
+		709B2A0123C889C200BC0A8F /* DZWebUrlCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B2A0023C889C200BC0A8F /* DZWebUrlCenter.m */; };
 		709B2A0423C8903500BC0A8F /* DZNativeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B2A0323C8903500BC0A8F /* DZNativeHelper.m */; };
 		709F704B2387831800FEC4A9 /* AppDelegate+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F704A2387831800FEC4A9 /* AppDelegate+Config.m */; };
 		70A5E26823A9D62600236105 /* DZDiscoverSquareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A5E26423A9D62600236105 /* DZDiscoverSquareCell.m */; };
@@ -1078,8 +1078,8 @@
 		709A73192387EF6100DF04CE /* DZDiscoverListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZDiscoverListView.m; sourceTree = "<group>"; };
 		709A73202387F0D000DF04CE /* DZBaseCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZBaseCollectionCell.h; sourceTree = "<group>"; };
 		709A73212387F0D000DF04CE /* DZBaseCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZBaseCollectionCell.m; sourceTree = "<group>"; };
-		709B29FF23C889C200BC0A8F /* DZWebUrlHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebUrlHelper.h; sourceTree = "<group>"; };
-		709B2A0023C889C200BC0A8F /* DZWebUrlHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebUrlHelper.m; sourceTree = "<group>"; };
+		709B29FF23C889C200BC0A8F /* DZWebUrlCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZWebUrlCenter.h; sourceTree = "<group>"; };
+		709B2A0023C889C200BC0A8F /* DZWebUrlCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZWebUrlCenter.m; sourceTree = "<group>"; };
 		709B2A0223C8903500BC0A8F /* DZNativeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZNativeHelper.h; sourceTree = "<group>"; };
 		709B2A0323C8903500BC0A8F /* DZNativeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZNativeHelper.m; sourceTree = "<group>"; };
 		709F70492387831800FEC4A9 /* AppDelegate+Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Config.h"; sourceTree = "<group>"; };
@@ -2823,8 +2823,8 @@
 			children = (
 				706649F123BF7D02002B8388 /* DZBaseWebView.h */,
 				706649F223BF7D02002B8388 /* DZBaseWebView.m */,
-				709B29FF23C889C200BC0A8F /* DZWebUrlHelper.h */,
-				709B2A0023C889C200BC0A8F /* DZWebUrlHelper.m */,
+				709B29FF23C889C200BC0A8F /* DZWebUrlCenter.h */,
+				709B2A0023C889C200BC0A8F /* DZWebUrlCenter.m */,
 				709B2A0223C8903500BC0A8F /* DZNativeHelper.h */,
 				709B2A0323C8903500BC0A8F /* DZNativeHelper.m */,
 			);
@@ -4755,7 +4755,7 @@
 				70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */,
 				70960273239BEE4A0078077D /* DZMobileCtrl+Config.m in Sources */,
 				706322A0237C151A005943AB /* EFSQLiteObject.m in Sources */,
-				709B2A0123C889C200BC0A8F /* DZWebUrlHelper.m in Sources */,
+				709B2A0123C889C200BC0A8F /* DZWebUrlCenter.m in Sources */,
 				703F2B86239DF2A600E7882C /* DZCheckModel.m in Sources */,
 				70621293237936C900130B9D /* DZVoteSelectCell.m in Sources */,
 				70621072237935ED00130B9D /* TYLaunchFadeScaleAnimation.m in Sources */,

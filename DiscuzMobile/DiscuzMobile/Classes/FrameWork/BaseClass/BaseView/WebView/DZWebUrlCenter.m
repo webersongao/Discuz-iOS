@@ -1,23 +1,23 @@
 //
-//  DZWebUrlHelper.m
+//  DZWebUrlCenter.m
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2020/1/10.
 //  Copyright © 2020 comsenz-service.com. All rights reserved.
 //
 
-#import "DZWebUrlHelper.h"
+#import "DZWebUrlCenter.h"
 #import "DZNativeHelper.h"
 
 static NSString *DZJSPrefix = @"wx://doumao_ios/";
 static NSString *DZAppStoreUrl_01 = @"http://itunes.apple";
 static NSString *DZAppStoreUrl_02 = @"https://itunes.apple";
 
-@interface DZWebUrlHelper ()
+@interface DZWebUrlCenter ()
 
 @end
 
-@implementation DZWebUrlHelper
+@implementation DZWebUrlCenter
 
 - (instancetype)init
 {

@@ -1,5 +1,5 @@
 //
-//  DZWebUrlHelper.h
+//  DZWebUrlCenter.h
 //  DiscuzMobile
 //
 //  Created by WebersonGao on 2020/1/10.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DZWebUrlHelper : NSObject
+@interface DZWebUrlCenter : NSObject
 
 @property (nonatomic, assign) BOOL isAllowJS;  //!< 是否执行抖猫的 URl跳转JS
 

@@ -18,7 +18,7 @@
 }
 @property(nonatomic,assign) WebCSSMode CssMode;
 @property (nonatomic, copy) NSString *urlLoad;  //!< 属性注释
-@property (nonatomic, strong) DZWebUrlHelper *urlHelper;  //!< 属性注释
+@property (nonatomic, strong) DZWebUrlCenter *urlCenter;  //!< 属性注释
 @property (nonatomic, strong) WebViewJavascriptBridge * jsBridge;
 @property (nonatomic,strong) PRNetWorkErrorView *errorView;
 @property (nonatomic, weak) DZRefreshHeader *refreshHeader;
@@ -52,7 +52,7 @@
     self.UIDelegate = self;
     self.navigationDelegate = self;
     self.backgroundColor = KRandom_Color;
-    self.urlHelper = [[DZWebUrlHelper alloc] init];
+    self.urlCenter = [[DZWebUrlCenter alloc] init];
     self.jsBridge = [WebViewJavascriptBridge bridgeForWebView:self];
     [self.jsBridge setWebViewDelegate:self];
 }
@@ -179,6 +179,7 @@
     }
 }
 
+#pragma mark   /********************* 对外的接口方法 *************************/
 
 - (void)dz_loadBaseWebUrl:(NSString *)urlString back:(backStringBlock)backBlock{
     // 无数据的时候显示
@@ -215,7 +216,7 @@
     
     [self removeErrorView];
     
-    BOOL allowAjax = [self.urlHelper processWebviewWithReqString:navigationAction.request.URL.absoluteString];
+    BOOL allowAjax = [self.urlCenter processWebviewWithReqString:navigationAction.request.URL.absoluteString];
     if(allowAjax){
         decisionHandler(WKNavigationActionPolicyAllow);
     }else{
