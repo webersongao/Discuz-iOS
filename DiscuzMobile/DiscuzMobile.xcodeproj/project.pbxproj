@@ -361,6 +361,10 @@
 		70EA90AE23BA024600814952 /* DZShadowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 70EA90AC23BA024500814952 /* DZShadowView.mm */; };
 		70EBEB802387C432005333D4 /* DZForumNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB7F2387C432005333D4 /* DZForumNodeModel.m */; };
 		70EBEB832387C4C1005333D4 /* DZBaseForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */; };
+		70ED141423D45ECF0044DFF8 /* DZSnapPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70ED141223D45ECF0044DFF8 /* DZSnapPreviewController.m */; };
+		70ED141823D460AE0044DFF8 /* UIAlertController+WKWebAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 70ED141723D460AE0044DFF8 /* UIAlertController+WKWebAlert.m */; };
+		70ED141A23D460D30044DFF8 /* NSObject+DZRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 70ED141923D460D30044DFF8 /* NSObject+DZRuntime.m */; };
+		70ED141F23D461CE0044DFF8 /* DZBaseMoreMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 70ED141D23D461CD0044DFF8 /* DZBaseMoreMenu.m */; };
 		70F19E5A237A8E9900499BED /* UIBarButtonItem+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E56237A8E9900499BED /* UIBarButtonItem+Utils.m */; };
 		70F19E5B237A8E9900499BED /* DZNavItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E57237A8E9900499BED /* DZNavItemButton.m */; };
 		70F19E5C237A8E9900499BED /* DZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F19E58237A8E9900499BED /* DZNavigationBar.m */; };
@@ -1175,6 +1179,14 @@
 		70EBEB7F2387C432005333D4 /* DZForumNodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZForumNodeModel.m; sourceTree = "<group>"; };
 		70EBEB812387C4C1005333D4 /* DZBaseForumModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DZBaseForumModel.h; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.h; sourceTree = SOURCE_ROOT; };
 		70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DZBaseForumModel.m; path = DiscuzMobile/Classes/DataBase/Forum/DZBaseForumModel.m; sourceTree = SOURCE_ROOT; };
+		70ED141223D45ECF0044DFF8 /* DZSnapPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSnapPreviewController.m; sourceTree = "<group>"; };
+		70ED141323D45ECF0044DFF8 /* DZSnapPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSnapPreviewController.h; sourceTree = "<group>"; };
+		70ED141623D460AE0044DFF8 /* UIAlertController+WKWebAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+WKWebAlert.h"; sourceTree = "<group>"; };
+		70ED141723D460AE0044DFF8 /* UIAlertController+WKWebAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+WKWebAlert.m"; sourceTree = "<group>"; };
+		70ED141923D460D30044DFF8 /* NSObject+DZRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DZRuntime.m"; sourceTree = "<group>"; };
+		70ED141B23D460D90044DFF8 /* NSObject+DZRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DZRuntime.h"; sourceTree = "<group>"; };
+		70ED141D23D461CD0044DFF8 /* DZBaseMoreMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZBaseMoreMenu.m; sourceTree = "<group>"; };
+		70ED141E23D461CD0044DFF8 /* DZBaseMoreMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZBaseMoreMenu.h; sourceTree = "<group>"; };
 		70ED546723C72C01008CE88E /* Dev_Article.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Dev_Article.md; sourceTree = "<group>"; };
 		70F19E54237A8E9900499BED /* DZNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavigationBar.h; sourceTree = "<group>"; };
 		70F19E55237A8E9900499BED /* DZNavItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZNavItemButton.h; sourceTree = "<group>"; };
@@ -1613,6 +1625,7 @@
 		277EDC511E6D5B8D00E8F0E1 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				70ED141023D45EB50044DFF8 /* ToolView */,
 				94430F3122FBB69E008E3F67 /* SecCode */,
 				709A730C2387E7FB00DF04CE /* DZRefresh */,
 				9438F07022F3E1FA0093EB0B /* ImagePicker */,
@@ -3263,6 +3276,7 @@
 		70DFD772237A95DD00A13F0F /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
+				70ED141C23D461C70044DFF8 /* Menu */,
 				70DFD779237A95DD00A13F0F /* ListView */,
 				70DFD773237A95DD00A13F0F /* AuthCode */,
 				709A731F2387F08600DF04CE /* OtherView */,
@@ -3357,6 +3371,44 @@
 				70EBEB822387C4C1005333D4 /* DZBaseForumModel.m */,
 			);
 			path = Forum;
+			sourceTree = "<group>";
+		};
+		70ED141023D45EB50044DFF8 /* ToolView */ = {
+			isa = PBXGroup;
+			children = (
+				70ED141523D460A50044DFF8 /* Alert */,
+				70ED141123D45EC70044DFF8 /* Snap */,
+			);
+			path = ToolView;
+			sourceTree = "<group>";
+		};
+		70ED141123D45EC70044DFF8 /* Snap */ = {
+			isa = PBXGroup;
+			children = (
+				70ED141323D45ECF0044DFF8 /* DZSnapPreviewController.h */,
+				70ED141223D45ECF0044DFF8 /* DZSnapPreviewController.m */,
+			);
+			path = Snap;
+			sourceTree = "<group>";
+		};
+		70ED141523D460A50044DFF8 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				70ED141B23D460D90044DFF8 /* NSObject+DZRuntime.h */,
+				70ED141923D460D30044DFF8 /* NSObject+DZRuntime.m */,
+				70ED141623D460AE0044DFF8 /* UIAlertController+WKWebAlert.h */,
+				70ED141723D460AE0044DFF8 /* UIAlertController+WKWebAlert.m */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		70ED141C23D461C70044DFF8 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				70ED141E23D461CD0044DFF8 /* DZBaseMoreMenu.h */,
+				70ED141D23D461CD0044DFF8 /* DZBaseMoreMenu.m */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		70F19E53237A8E9900499BED /* NavigationBar */ = {
@@ -4682,6 +4734,7 @@
 				70DE5D0F2384026300686F2D /* DZHomeBestListCtrl.m in Sources */,
 				70621078237935ED00130B9D /* RNCachingURLProtocol.m in Sources */,
 				277EDC701E6D5B8D00E8F0E1 /* QRadioButton.m in Sources */,
+				70ED141423D45ECF0044DFF8 /* DZSnapPreviewController.m in Sources */,
 				70DE5D132384029300686F2D /* DZHomeNewListCtrl.m in Sources */,
 				706212CC237936C900130B9D /* DZViewPollPotionController.m in Sources */,
 				70F9F8D1237AA72B0067B308 /* NSDictionary+Utils.m in Sources */,
@@ -4844,6 +4897,7 @@
 				277EDC881E6D5BD700E8F0E1 /* DZPlaceholderTextView.m in Sources */,
 				277EDC681E6D5B8D00E8F0E1 /* DropDownView.m in Sources */,
 				706212D7237936C900130B9D /* ExamineActivityView.m in Sources */,
+				70ED141823D460AE0044DFF8 /* UIAlertController+WKWebAlert.m in Sources */,
 				700BB5DA2394E744002A62DE /* DZUserVarModel.m in Sources */,
 				7002A3672383D8CD00BC0C61 /* MessageModel.m in Sources */,
 				7002A3692383D8CD00BC0C61 /* CellFrameModel.m in Sources */,
@@ -4899,7 +4953,9 @@
 				70EBEB802387C432005333D4 /* DZForumNodeModel.m in Sources */,
 				706212D9237936C900130B9D /* ActivityApplyReplyCell.m in Sources */,
 				70621299237936C900130B9D /* ActiveExtendCell.m in Sources */,
+				70ED141F23D461CE0044DFF8 /* DZBaseMoreMenu.m in Sources */,
 				706301A923B3A42B0029B388 /* DZMobileCtrl+Tool.m in Sources */,
+				70ED141A23D460D30044DFF8 /* NSObject+DZRuntime.m in Sources */,
 				70DB801523B358C8004B0DB6 /* DZHomeTestViewController.m in Sources */,
 				709622D4238BC9F900AF657F /* DZFootListCell.m in Sources */,
 				70DFD79A237A95DE00A13F0F /* DZBaseNavigationController.m in Sources */,

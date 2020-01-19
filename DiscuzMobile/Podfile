@@ -33,7 +33,7 @@ target 'DiscuzMobile' do
   pod 'MBProgressHUD'
   pod 'IQKeyboardManager'
   pod 'WebViewJavascriptBridge'
-  
+  pod 'TYSnapshotScroll'  # 一键截图
   # target 'DiscuzMobileTests' do
   # inherit! :search_paths
   # Pods for testing
