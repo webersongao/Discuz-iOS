@@ -159,12 +159,12 @@
 
 -(void)snapshotBtn{
     KWEAKSELF
-    [TYSnapshotScroll screenSnapshot:self.webView finishBlock:^(UIImage *snapShotImage) {
-        UIViewController *preVc = [[DZSnapPreviewController alloc] init:snapShotImage];
-        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:preVc];
-        nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [weakSelf presentViewController:nc animated:YES completion:nil];
-    }];
+//    [TYSnapshotScroll screenSnapshot:self.webView finishBlock:^(UIImage *snapShotImage) {
+//        UIViewController *preVc = [[DZSnapPreviewController alloc] init:snapShotImage];
+//        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:preVc];
+//        nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//        [weakSelf presentViewController:nc animated:YES completion:nil];
+//    }];
 }
 
 
