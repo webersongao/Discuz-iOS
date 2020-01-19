@@ -510,20 +510,15 @@
             [self.threadModel updateModel:resModel res:resDict];
             
             if (self.currentPageId == 1) {
+                self.title = resModel.Variables.thread.forumnames;
                 [self.detailView.webView.scrollView.mj_header endRefreshing];
                 [self.detailView.webView.scrollView.mj_footer resetNoMoreData];
-                NSString *forumnames = resModel.Variables.thread.forumnames;
-                if ([DataCheck isValidString:forumnames]) {
-                    self.title = forumnames;
-                }
                 if ([DZLoginModule isLogged]) {
                     if ([self.threadModel.favorited isEqualToString:@"1"]) {
                         [self setIsCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
-                        
                     } else {
                         [self setNotCollection:self.detailView.emoKeyboard.textBarView.collectionBtn];
                     }
-                    
                     if ([self.threadModel.recommend isEqualToString:@"1"]) {
                         [self.detailView.emoKeyboard.textBarView.praiseBtn setBackgroundImage:[UIImage imageNamed:@"bar_zans"] forState:UIControlStateNormal];
                     }
@@ -572,7 +567,6 @@
         
     }];
 }
-
 // 页面加载完成之后调用
 - (void)dz_mainwebView:(DZWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
